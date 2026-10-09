@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/wp-hooks/generator/1.0.2/schema.json",
+  "hooks": [
+    {
+      "name": "fc_vat_checkout_eu_vat_number",
+      "file": "inc/checkout-eu-vat.php",
+      "line": 214,
+      "type": "filter",
+      "doc": {
+        "description": "Filters the EU VAT number submitted at checkout before it is validated.",
+        "long_description": "Return the VAT number that should be validated and stored. Normalization such as stripping spaces belongs on this filter.",
+        "long_description_html": "",
+        "tags": [
+          {
+            "name": "since",
+            "content": "1.0.0"
+          },
+          {
+            "name": "param",
+            "content": "VAT number entered by the customer, without a country prefix.",
+            "types": ["string"],
+            "variable": "$vat_number"
+          },
+          {
+            "name": "param",
+            "content": "Billing country code for the current checkout.",
+            "types": ["string"],
+            "variable": "$country"
+          }
+        ]
+      },
+      "args": 2
+    },
+    {
+      "name": "'fc_vat_enable_compat_plugin_' . $plugin_slug",
+      "aliases": [
+        "fc_vat_enable_compat_plugin_woocommerce-subscriptions"
+      ],
+      "file": "inc/compat/plugins/compat-plugin.php",
+      "line": 73,
+      "type": "filter",
+      "doc": {
+        "description": "Filters whether a compatibility module is enabled.",
+        "long_description": "The dynamic portion of the hook name, `$plugin_slug`, is the slug of the third-party plugin being integrated.\n\nPossible hook names include:\n\n- `fc_vat_enable_compat_plugin_woocommerce-subscriptions`\n- `fc_vat_enable_compat_plugin_woocommerce-germanized`",
+        "long_description_html": "",
+        "tags": [
+          {
+            "name": "since",
+            "content": "2.1.0"
+          },
+          {
+            "name": "param",
+            "content": "Whether the compatibility module should load.",
+            "types": ["bool"],
+            "variable": "$enabled"
+          },
+          {
+            "name": "param",
+            "content": "Slug of the third-party plugin.",
+            "types": ["string"],
+            "variable": "$plugin_slug"
+          }
+        ]
+      },
+      "args": 2
+    },
+    {
+      "name": "fc_vat_' . $current_section . '_settings",
+      "file": "inc/admin/admin-settings-eu-vat.php",
+      "line": 131,
+      "type": "filter",
+      "doc": {
+        "description": "Filters the settings registered for one EU-VAT Assistant settings section.",
+        "long_description": "The dynamic portion of the hook name, `$current_section`, is the current settings section id.",
+        "long_description_html": "",
+        "tags": [
+          {
+            "name": "since",
+            "content": "1.3.0"
+          },
+          {
+            "name": "since",
+            "content": "2.0.0",
+            "description": "The `$current_section` parameter was added."
+          },
+          {
+            "name": "param",
+            "content": "Settings fields for the section.",
+            "types": ["array"],
+            "variable": "$settings"
+          },
+          {
+            "name": "param",
+            "content": "Settings section id.",
+            "types": ["string"],
+            "variable": "$current_section"
+          }
+        ]
+      },
+      "args": 2
+    }
+  ]
+}

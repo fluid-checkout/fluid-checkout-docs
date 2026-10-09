@@ -1,0 +1,26 @@
+{
+  "plugins": [
+    {
+      "id": "eu-vat",
+      "label": "EU-VAT Assistant",
+      "navLabel": "EU-VAT",
+      "description": "Validate EU VAT numbers and store them with the WooCommerce order.",
+      "pluginPrefix": "fc_vat",
+      "status": "available",
+      "routeBasePath": "eu-vat",
+      "repository": null
+    },
+    {
+      "id": "lite",
+      "label": "Fluid Checkout Lite",
+      "description": "Hooks for the free Fluid Checkout checkout plugin.",
+      "status": "coming-soon"
+    },
+    {
+      "id": "pro",
+      "label": "Fluid Checkout PRO",
+      "description": "Hooks for Fluid Checkout PRO.",
+      "status": "coming-soon"
+    }
+  ]
+}
