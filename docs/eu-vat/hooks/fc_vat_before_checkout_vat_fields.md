@@ -31,5 +31,3 @@ do_action( 'fc_vat_before_checkout_vat_fields', $checkout );
 ## Source
 
 `inc/checkout-eu-vat.php:186`
-
-The plugin repository is private, so this path is not linked.

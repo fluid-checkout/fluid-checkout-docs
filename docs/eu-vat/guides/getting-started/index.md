@@ -38,9 +38,9 @@ The last argument to `add_filter` is the number of parameters you accept. Match 
 
 ## Dynamic hook names
 
-Some calls build the hook name in PHP. These docs rewrite that expression into a readable name. A variable becomes a `{placeholder}` segment, and `self::$plugin_prefix` is replaced with the plugin prefix `fc_vat`.
+Some hook names change at runtime. On these pages a variable is written in braces, and the plugin prefix `fc_vat` stands in for `self::$plugin_prefix`.
 
-| PHP expression | Name in these docs |
+| In the plugin | Name on this page |
 | --- | --- |
 | `'fc_vat_enable_compat_plugin_' . $plugin_slug` | `fc_vat_enable_compat_plugin_{plugin_slug}` |
 | `'fc_vat_' . $current_section . '_settings'` | `fc_vat_{current_section}_settings` |
@@ -53,8 +53,3 @@ $plugin_slug = 'woocommerce-subscriptions';
 add_filter( "fc_vat_enable_compat_plugin_{$plugin_slug}", '__return_false' );
 ```
 
-## Where the pages come from
-
-Hook pages under `/eu-vat/hooks/` are generated. Guides in this folder are written by hand. The hook list on this site is still a small sample, used so the docs build before the plugin publishes its real export. Use the pages to learn the format. The names will be replaced when that export lands.
-
-Code samples in this guide are MIT licensed. The prose is all rights reserved. See the site footer for both.

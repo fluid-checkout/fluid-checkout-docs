@@ -89,6 +89,16 @@ h6 {
   width: auto;
 }
 
+.navbar__title {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #213245;
+}
+
+[data-theme='dark'] .navbar__title {
+  color: #ffffff;
+}
+
 .footer--dark .footer__link-item:hover {
   color: #5c8fff;
 }

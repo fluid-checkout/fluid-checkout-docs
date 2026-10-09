@@ -29,5 +29,3 @@ This hook does not pass any parameters.
 ## Source
 
 `inc/admin/admin-notices.php:48`
-
-The plugin repository is private, so this path is not linked.

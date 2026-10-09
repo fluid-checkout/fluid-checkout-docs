@@ -10,7 +10,7 @@ const sidebars: SidebarsConfig = {
       link: {
         type: 'generated-index',
         title: 'Guides',
-        description: 'Hand-written guides for EU-VAT Assistant hooks.',
+        description: 'Guides for using EU-VAT Assistant hooks.',
       },
       items: [
         {

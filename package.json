@@ -2,6 +2,7 @@
   "name": "fluid-checkout-docs",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "generate": "node scripts/generate-hooks.mjs",
     "docusaurus": "docusaurus",

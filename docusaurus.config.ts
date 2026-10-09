@@ -107,10 +107,10 @@ const config: Config = {
       disableSwitch: false,
     },
     navbar: {
+      title: 'Fluid Checkout',
       logo: {
         alt: 'Fluid Checkout',
-        src: 'img/logo-horizontal-dark.png',
-        srcDark: 'img/logo-horizontal-light.png',
+        src: 'img/logo.png',
       },
       items: [
         ...availablePlugins.map((plugin) => ({
@@ -146,7 +146,7 @@ const config: Config = {
           })),
         },
       ],
-      copyright: `© ${new Date().getFullYear()} Fluid Checkout OÜ. Documentation content is All rights reserved. Code snippets and examples are MIT licensed.`,
+      copyright: `© ${new Date().getFullYear()} Fluid Checkout OÜ. All rights reserved.`,
     },
     prism: {
       theme: prismThemes.github,

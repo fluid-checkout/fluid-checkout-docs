@@ -35,8 +35,6 @@ apply_filters( 'fc_vat_checkout_eu_vat_number', $vat_number, $country );
 
 `inc/checkout-eu-vat.php:214`
 
-The plugin repository is private, so this path is not linked.
-
 ## Example
 
 <HookExample />

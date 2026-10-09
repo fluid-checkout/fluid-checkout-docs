@@ -32,7 +32,7 @@ examples/<plugin>/<hook-slug>/ # optional hand-written example for one hook
 sidebars/<plugin>.ts           # sidebar for that docs instance
 sidebars/<plugin>.hooks.json   # GENERATED hook sidebar items
 plugins.json                   # plugin id, prefix, public/private repo, status
-static/img/                    # shared logos and favicon
+static/img/                    # site icon and favicon
 static/CNAME                   # docs.fluidcheckout.com
 ```
 
@@ -94,4 +94,4 @@ Run that only for a plain semver tag such as `3.0.1` (`^[0-9]+\.[0-9]+\.[0-9]+$`
 
 ## License
 
-Documentation prose is all rights reserved, © Fluid Checkout OÜ (`LICENSE`). Code snippets and files under `examples/` are MIT (`LICENSE-SNIPPETS`). The site footer states both.
+All content, including code snippets and files under `examples/`, is © Fluid Checkout OÜ, all rights reserved (`LICENSE`). The site footer states the same.

@@ -143,7 +143,7 @@ function writePlugin(plugin, prepared) {
     ].join('\n'),
   );
 
-  fs.writeFileSync(path.join(hooksDir, 'index.md'), renderHooksIndex(indexHooks, plugin.id));
+  fs.writeFileSync(path.join(hooksDir, 'index.md'), renderHooksIndex(indexHooks, plugin.label || plugin.id));
 
   for (const entry of prepared) {
     const exampleFile = path.join(root, 'examples', plugin.id, entry.slug, 'index.md');

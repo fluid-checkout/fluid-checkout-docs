@@ -33,5 +33,3 @@ apply_filters( 'fc_vat_{current_section}_settings', $settings, $current_section 
 ## Source
 
 `inc/admin/admin-settings-eu-vat.php:131`
-
-The plugin repository is private, so this path is not linked.

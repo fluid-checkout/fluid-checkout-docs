@@ -39,5 +39,3 @@ apply_filters( 'fc_vat_enable_compat_plugin_{plugin_slug}', $enabled, $plugin_sl
 ## Source
 
 `inc/compat/plugins/compat-plugin.php:73`
-
-The plugin repository is private, so this path is not linked.

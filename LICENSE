@@ -2,8 +2,6 @@ Copyright (c) 2026 Fluid Checkout OÜ
 
 All rights reserved.
 
-The documentation content in this repository — including written guides, hook descriptions, and other prose — is the proprietary property of Fluid Checkout OÜ.
+All content in this repository — including written guides, hook descriptions, code snippets, and the files under examples/ — is the proprietary property of Fluid Checkout OÜ.
 
-You may read this documentation at https://docs.fluidcheckout.com. You may not copy, modify, publish, or redistribute the documentation content without prior written permission from Fluid Checkout OÜ.
-
-Code snippets and examples are licensed separately under the MIT License. See LICENSE-SNIPPETS.
+You may read this documentation at https://docs.fluidcheckout.com. You may not copy, modify, publish, or redistribute any of it without prior written permission from Fluid Checkout OÜ.
