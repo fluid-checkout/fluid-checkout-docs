@@ -164,11 +164,19 @@
   background-color: var(--ifm-background-surface-color);
 }
 
-/* Prism writes --prism-background-color as an inline style. */
+/*
+ * Prism sets the code background twice: a CSS variable on the container, and an
+ * inline background-color on the pre (Dracula #282a36). The inline value wins
+ * unless the pre background is overridden.
+ */
 :root[data-theme='dark'] .theme-code-block {
   --prism-background-color: #2a2a2a !important;
   border: 1px solid var(--fc-border);
   box-shadow: none;
+}
+
+:root[data-theme='dark'] .theme-code-block pre {
+  background-color: #2a2a2a !important;
 }
 
 :root[data-theme='dark'] :not(pre) > code {
