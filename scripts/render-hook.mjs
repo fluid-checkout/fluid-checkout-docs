@@ -139,8 +139,13 @@ export function renderHookPage(hook, options) {
   lines.push(`**Type:** ${typeLabel}`, '');
 
   if (Array.isArray(hook.aliases) && hook.aliases.length > 0) {
-    const aliases = hook.aliases.map((alias) => `\`${alias}\``).join(', ');
-    lines.push(`**Aliases:** ${aliases}`, '');
+    const aliases = hook.aliases
+      .map((alias) => String(alias).trim())
+      .filter((alias) => alias && alias !== normalizedName)
+      .map((alias) => `\`${alias}\``);
+    if (aliases.length > 0) {
+      lines.push(`**Aliases:** ${aliases.join(', ')}`, '');
+    }
   }
 
   if (deprecated.length > 0) {

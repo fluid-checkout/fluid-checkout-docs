@@ -58,13 +58,13 @@ The sidebar picks the guide up from the `guides` folder. No generator step.
 
 ## Add an example
 
-Create `examples/<plugin>/<hook-slug>/index.md`. `<hook-slug>` is the generated URL slug (braces removed), for example `examples/eu-vat/fc_vat_checkout_eu_vat_number/index.md`. Optional images go in `examples/<plugin>/<hook-slug>/img/` and use a relative path. Re-run `npm run generate`. The hook page imports the example below the reference.
+Create `examples/<plugin>/<hook-slug>/index.md`. `<hook-slug>` is the generated URL slug (braces removed), for example `examples/eu-vat/fc_vat_number_field_args/index.md`. Optional images go in `examples/<plugin>/<hook-slug>/img/` and use a relative path. Re-run `npm run generate`. The hook page imports the example below the reference.
 
 ## Generated data
 
 Plugin repositories will run [wp-hooks/generator](https://github.com/wp-hooks/generator) and open a pull request that updates `data/<plugin>/actions.json` and `data/<plugin>/filters.json`. The contract (paths, branch names, versioning trigger, GitHub App secrets) is in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-`data/eu-vat/*.json` is a fixture so this site builds today. The real EU-VAT export arrives after [fc-vat-assistant#89](https://github.com/fluid-checkout/fc-vat-assistant/pull/89) merges.
+`data/eu-vat/*.json` is the wp-hooks/generator 1.0.2 export from `fluid-checkout/fc-vat-assistant` at `release/next-PATCH`, commit `344de3f169c740ab75e2ddc1d74ec03566f307a8`.
 
 Dynamic PHP hook names are normalized for the page title and URL. `self::$plugin_prefix` uses `pluginPrefix` from `plugins.json` (`fc_vat` for EU-VAT). Private plugins leave `repository` as `null`, so the source line is a file path with no GitHub link. Set `repository.url` and `repository.branch` only for public repositories.
 

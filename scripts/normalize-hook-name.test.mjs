@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {normalizeHookName, slugifyHookName} from './normalize-hook-name.mjs';
-import {buildSignature, escapeMdx, sourceLocation} from './render-hook.mjs';
+import {buildSignature, escapeMdx, renderHookPage, sourceLocation} from './render-hook.mjs';
 
 const prefix = 'fc_vat';
 
@@ -93,6 +93,49 @@ test('links source files only when the plugin repository is public', () => {
       url: 'https://github.com/fluid-checkout/fluid-checkout/blob/trunk/inc/checkout-eu-vat.php#L120',
     },
   );
+});
+
+test('omits an alias that repeats the normalized hook name', () => {
+  const page = renderHookPage(
+    {
+      type: 'filter',
+      args: 1,
+      aliases: ['fc_vat_admin_notices'],
+      file: 'inc/admin/admin-notices.php',
+      doc: {
+        description: 'Filters the admin notices displayed by EU-VAT Assistant.',
+        tags: [{name: 'since', content: '0.1.0'}],
+      },
+    },
+    {
+      normalizedName: 'fc_vat_admin_notices',
+      slug: 'fc_vat_admin_notices',
+      plugin: {repository: null},
+      exampleImport: null,
+    },
+  );
+  assert.equal(page.includes('**Aliases:**'), false);
+  assert.match(page, /`inc\/admin\/admin-notices\.php`/);
+  assert.doesNotMatch(page, /github\.com/);
+});
+
+test('keeps aliases that differ from the normalized hook name', () => {
+  const page = renderHookPage(
+    {
+      type: 'filter',
+      args: 1,
+      aliases: ['fc_vat_vat_number_settings'],
+      file: 'inc/admin/admin-settings-vat-assistant.php',
+      doc: {description: 'Filters settings.', tags: [{name: 'since', content: '0.1.0'}]},
+    },
+    {
+      normalizedName: 'fc_vat_{current_section}_settings',
+      slug: 'fc_vat_current_section_settings',
+      plugin: {repository: null},
+      exampleImport: null,
+    },
+  );
+  assert.match(page, /\*\*Aliases:\*\* `fc_vat_vat_number_settings`/);
 });
 
 test('escapes MDX braces outside code spans only', () => {
