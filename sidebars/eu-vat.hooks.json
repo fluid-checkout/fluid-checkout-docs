@@ -6,7 +6,7 @@
   },
   {
     "type": "category",
-    "label": "Actions",
+    "label": "Filters",
     "items": [
       {
         "type": "doc",
@@ -15,19 +15,8 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_vat_before_checkout_vat_fields",
-        "label": "fc_vat_before_checkout_vat_fields"
-      }
-    ]
-  },
-  {
-    "type": "category",
-    "label": "Filters",
-    "items": [
-      {
-        "type": "doc",
-        "id": "hooks/fc_vat_checkout_eu_vat_number",
-        "label": "fc_vat_checkout_eu_vat_number"
+        "id": "hooks/fc_vat_admin_script_settings",
+        "label": "fc_vat_admin_script_settings"
       },
       {
         "type": "doc",
@@ -36,8 +25,68 @@
       },
       {
         "type": "doc",
+        "id": "hooks/fc_vat_enable_compat_account_details_plugin_style_plugin_slug",
+        "label": "fc_vat_enable_compat_account_details_plugin_style_{plugin_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_enable_compat_account_details_style_theme_slug",
+        "label": "fc_vat_enable_compat_account_details_style_{theme_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_enable_compat_edit_address_plugin_style_plugin_slug",
+        "label": "fc_vat_enable_compat_edit_address_plugin_style_{plugin_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_enable_compat_edit_address_style_theme_slug",
+        "label": "fc_vat_enable_compat_edit_address_style_{theme_slug}"
+      },
+      {
+        "type": "doc",
         "id": "hooks/fc_vat_enable_compat_plugin_plugin_slug",
         "label": "fc_vat_enable_compat_plugin_{plugin_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_enable_compat_plugin_style_plugin_slug",
+        "label": "fc_vat_enable_compat_plugin_style_{plugin_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_enable_compat_theme_style_theme_slug",
+        "label": "fc_vat_enable_compat_theme_style_{theme_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_enable_compat_theme_theme_slug",
+        "label": "fc_vat_enable_compat_theme_{theme_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_is_vat_number_field",
+        "label": "fc_vat_is_vat_number_field"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_js_settings",
+        "label": "fc_vat_js_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_number_field_args",
+        "label": "fc_vat_number_field_args"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_reverse_charge_countries_skip_list_options",
+        "label": "fc_vat_reverse_charge_countries_skip_list_options"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_vat_number_account_details_field_additional_args",
+        "label": "fc_vat_vat_number_account_details_field_additional_args"
       }
     ]
   }

@@ -1,103 +1,446 @@
 {
-  "$schema": "https://raw.githubusercontent.com/wp-hooks/generator/1.0.2/schema.json",
-  "hooks": [
-    {
-      "name": "fc_vat_checkout_eu_vat_number",
-      "file": "inc/checkout-eu-vat.php",
-      "line": 214,
-      "type": "filter",
-      "doc": {
-        "description": "Filters the EU VAT number submitted at checkout before it is validated.",
-        "long_description": "Return the VAT number that should be validated and stored. Normalization such as stripping spaces belongs on this filter.",
-        "long_description_html": "",
-        "tags": [
-          {
-            "name": "since",
-            "content": "1.0.0"
-          },
-          {
-            "name": "param",
-            "content": "VAT number entered by the customer, without a country prefix.",
-            "types": ["string"],
-            "variable": "$vat_number"
-          },
-          {
-            "name": "param",
-            "content": "Billing country code for the current checkout.",
-            "types": ["string"],
-            "variable": "$country"
-          }
-        ]
-      },
-      "args": 2
-    },
-    {
-      "name": "'fc_vat_enable_compat_plugin_' . $plugin_slug",
-      "aliases": [
-        "fc_vat_enable_compat_plugin_woocommerce-subscriptions"
-      ],
-      "file": "inc/compat/plugins/compat-plugin.php",
-      "line": 73,
-      "type": "filter",
-      "doc": {
-        "description": "Filters whether a compatibility module is enabled.",
-        "long_description": "The dynamic portion of the hook name, `$plugin_slug`, is the slug of the third-party plugin being integrated.\n\nPossible hook names include:\n\n- `fc_vat_enable_compat_plugin_woocommerce-subscriptions`\n- `fc_vat_enable_compat_plugin_woocommerce-germanized`",
-        "long_description_html": "",
-        "tags": [
-          {
-            "name": "since",
-            "content": "2.1.0"
-          },
-          {
-            "name": "param",
-            "content": "Whether the compatibility module should load.",
-            "types": ["bool"],
-            "variable": "$enabled"
-          },
-          {
-            "name": "param",
-            "content": "Slug of the third-party plugin.",
-            "types": ["string"],
-            "variable": "$plugin_slug"
-          }
-        ]
-      },
-      "args": 2
-    },
-    {
-      "name": "fc_vat_' . $current_section . '_settings",
-      "file": "inc/admin/admin-settings-eu-vat.php",
-      "line": 131,
-      "type": "filter",
-      "doc": {
-        "description": "Filters the settings registered for one EU-VAT Assistant settings section.",
-        "long_description": "The dynamic portion of the hook name, `$current_section`, is the current settings section id.",
-        "long_description_html": "",
-        "tags": [
-          {
-            "name": "since",
-            "content": "1.3.0"
-          },
-          {
-            "name": "since",
-            "content": "2.0.0",
-            "description": "The `$current_section` parameter was added."
-          },
-          {
-            "name": "param",
-            "content": "Settings fields for the section.",
-            "types": ["array"],
-            "variable": "$settings"
-          },
-          {
-            "name": "param",
-            "content": "Settings section id.",
-            "types": ["string"],
-            "variable": "$current_section"
-          }
-        ]
-      },
-      "args": 2
-    }
-  ]
+    "$schema": "https://raw.githubusercontent.com/wp-hooks/generator/1.0.2/schema.json",
+    "hooks": [
+        {
+            "name": "'fc_vat_enable_compat_account_details_plugin_style_' . $plugin_slug",
+            "file": "inc/enqueue.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether to load the account-details compatibility stylesheet for a plugin.",
+                "long_description": "The dynamic portion of the hook name, `$plugin_slug`, is the directory name of an active plugin, or the main file name without `.php` for a single-file plugin. The filter runs on the account edit-account screen for every active plugin. `css/compat/plugins/compat-account-details-{$plugin_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No account-details plugin stylesheets ship with EU-VAT Assistant. Germanized for WooCommerce Pro registers a callback on `fc_vat_enable_compat_account_details_plugin_style_woocommerce-germanized-pro`.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.0.2"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to load the stylesheet. Default true. Anything other than true skips it.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$enabled"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$plugin_slug</code>, is the directory name of an active plugin, or the main file name without <code>.php</code> for a single-file plugin. The filter runs on the account edit-account screen for every active plugin. <code>css/compat/plugins/compat-account-details-{$plugin_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters. No account-details plugin stylesheets ship with EU-VAT Assistant. Germanized for WooCommerce Pro registers a callback on <code>fc_vat_enable_compat_account_details_plugin_style_woocommerce-germanized-pro</code>.</p>"
+            },
+            "args": 1
+        },
+        {
+            "name": "'fc_vat_enable_compat_account_details_style_' . $theme_slug",
+            "aliases": [
+                "fc_vat_enable_compat_account_details_style_diza",
+                "fc_vat_enable_compat_account_details_style_dt-the7",
+                "fc_vat_enable_compat_account_details_style_fennik",
+                "fc_vat_enable_compat_account_details_style_go",
+                "fc_vat_enable_compat_account_details_style_konte",
+                "fc_vat_enable_compat_account_details_style_neighborhood",
+                "fc_vat_enable_compat_account_details_style_porto",
+                "fc_vat_enable_compat_account_details_style_salient"
+            ],
+            "file": "inc/enqueue.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether to load the account-details compatibility stylesheet for a theme.",
+                "long_description": "The dynamic portion of the hook name, `$theme_slug`, is a theme directory slug. The filter runs on the account edit-account screen for the parent theme (`get_template()`) and the active theme (`get_stylesheet()`). `css/compat/themes/compat-account-details-{$theme_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters.\n Possible hook names include:\n\n  - `fc_vat_enable_compat_account_details_style_diza`\n  - `fc_vat_enable_compat_account_details_style_dt-the7`\n  - `fc_vat_enable_compat_account_details_style_fennik`\n  - `fc_vat_enable_compat_account_details_style_go`\n  - `fc_vat_enable_compat_account_details_style_konte`\n  - `fc_vat_enable_compat_account_details_style_neighborhood`\n  - `fc_vat_enable_compat_account_details_style_porto`\n  - `fc_vat_enable_compat_account_details_style_salient`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.0.2"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to load the stylesheet. Default true. Anything other than true skips it.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$enabled"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$theme_slug</code>, is a theme directory slug. The filter runs on the account edit-account screen for the parent theme (<code>get_template()</code>) and the active theme (<code>get_stylesheet()</code>). <code>css/compat/themes/compat-account-details-{$theme_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters.</p> <p>Possible hook names include:</p> <ul> <li><code>fc_vat_enable_compat_account_details_style_diza</code></li> <li><code>fc_vat_enable_compat_account_details_style_dt-the7</code></li> <li><code>fc_vat_enable_compat_account_details_style_fennik</code></li> <li><code>fc_vat_enable_compat_account_details_style_go</code></li> <li><code>fc_vat_enable_compat_account_details_style_konte</code></li> <li><code>fc_vat_enable_compat_account_details_style_neighborhood</code></li> <li><code>fc_vat_enable_compat_account_details_style_porto</code></li> <li><code>fc_vat_enable_compat_account_details_style_salient</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "'fc_vat_enable_compat_edit_address_plugin_style_' . $plugin_slug",
+            "file": "inc/enqueue.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether to load the edit-address compatibility stylesheet for a plugin.",
+                "long_description": "The dynamic portion of the hook name, `$plugin_slug`, is the directory name of an active plugin, or the main file name without `.php` for a single-file plugin. The filter runs on the account edit-address screen for every active plugin. `css/compat/plugins/compat-edit-address-{$plugin_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address plugin stylesheets ship with EU-VAT Assistant. Germanized for WooCommerce Pro registers a callback on `fc_vat_enable_compat_edit_address_plugin_style_woocommerce-germanized-pro`.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.0.2"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to load the stylesheet. Default true. Anything other than true skips it.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$enabled"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$plugin_slug</code>, is the directory name of an active plugin, or the main file name without <code>.php</code> for a single-file plugin. The filter runs on the account edit-address screen for every active plugin. <code>css/compat/plugins/compat-edit-address-{$plugin_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address plugin stylesheets ship with EU-VAT Assistant. Germanized for WooCommerce Pro registers a callback on <code>fc_vat_enable_compat_edit_address_plugin_style_woocommerce-germanized-pro</code>.</p>"
+            },
+            "args": 1
+        },
+        {
+            "name": "'fc_vat_enable_compat_edit_address_style_' . $theme_slug",
+            "file": "inc/enqueue.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether to load the edit-address compatibility stylesheet for a theme.",
+                "long_description": "The dynamic portion of the hook name, `$theme_slug`, is a theme directory slug. The filter runs on the account edit-address screen for the parent theme (`get_template()`) and the active theme (`get_stylesheet()`). `css/compat/themes/compat-edit-address-{$theme_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address theme stylesheets ship with EU-VAT Assistant.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.0.2"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to load the stylesheet. Default true. Anything other than true skips it.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$enabled"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$theme_slug</code>, is a theme directory slug. The filter runs on the account edit-address screen for the parent theme (<code>get_template()</code>) and the active theme (<code>get_stylesheet()</code>). <code>css/compat/themes/compat-edit-address-{$theme_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address theme stylesheets ship with EU-VAT Assistant.</p>"
+            },
+            "args": 1
+        },
+        {
+            "name": "'fc_vat_enable_compat_plugin_' . $plugin_slug",
+            "aliases": [
+                "fc_vat_enable_compat_plugin_dibs-easy-for-woocommerce",
+                "fc_vat_enable_compat_plugin_dintero-checkout-for-woocommerce",
+                "fc_vat_enable_compat_plugin_fc-address-book",
+                "fc_vat_enable_compat_plugin_klarna-checkout-for-woocommerce",
+                "fc_vat_enable_compat_plugin_krokedil-paysoncheckout-20-for-woocommerce",
+                "fc_vat_enable_compat_plugin_svea-checkout-for-woocommerce",
+                "fc_vat_enable_compat_plugin_woocommerce-checkout-field-editor-pro",
+                "fc_vat_enable_compat_plugin_woocommerce-germanized-pro",
+                "fc_vat_enable_compat_plugin_yith-woocommerce-checkout-manager"
+            ],
+            "file": "fc-vat-assistant.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether to load the PHP compatibility file for a plugin.",
+                "long_description": "The dynamic portion of the hook name, `$plugin_slug`, is the directory name of an active plugin, or the main file name without `.php` for a single-file plugin. The filter runs for every active plugin. The file `inc/compat/plugins/compat-plugin-{$plugin_slug}.php` is loaded only when the filtered value is exactly `true` and that file exists inside this plugin. Returning anything other than `true` (for example `false`) disables it.\n Possible hook names include:\n\n  - `fc_vat_enable_compat_plugin_dibs-easy-for-woocommerce`\n  - `fc_vat_enable_compat_plugin_dintero-checkout-for-woocommerce`\n  - `fc_vat_enable_compat_plugin_fc-address-book`\n  - `fc_vat_enable_compat_plugin_klarna-checkout-for-woocommerce`\n  - `fc_vat_enable_compat_plugin_krokedil-paysoncheckout-20-for-woocommerce`\n  - `fc_vat_enable_compat_plugin_svea-checkout-for-woocommerce`\n  - `fc_vat_enable_compat_plugin_woocommerce-checkout-field-editor-pro`\n  - `fc_vat_enable_compat_plugin_woocommerce-germanized-pro`\n  - `fc_vat_enable_compat_plugin_yith-woocommerce-checkout-manager`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "0.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to load the compatibility file. Default true. Anything other than true skips it.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$enabled"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$plugin_slug</code>, is the directory name of an active plugin, or the main file name without <code>.php</code> for a single-file plugin. The filter runs for every active plugin. The file <code>inc/compat/plugins/compat-plugin-{$plugin_slug}.php</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists inside this plugin. Returning anything other than <code>true</code> (for example <code>false</code>) disables it.</p> <p>Possible hook names include:</p> <ul> <li><code>fc_vat_enable_compat_plugin_dibs-easy-for-woocommerce</code></li> <li><code>fc_vat_enable_compat_plugin_dintero-checkout-for-woocommerce</code></li> <li><code>fc_vat_enable_compat_plugin_fc-address-book</code></li> <li><code>fc_vat_enable_compat_plugin_klarna-checkout-for-woocommerce</code></li> <li><code>fc_vat_enable_compat_plugin_krokedil-paysoncheckout-20-for-woocommerce</code></li> <li><code>fc_vat_enable_compat_plugin_svea-checkout-for-woocommerce</code></li> <li><code>fc_vat_enable_compat_plugin_woocommerce-checkout-field-editor-pro</code></li> <li><code>fc_vat_enable_compat_plugin_woocommerce-germanized-pro</code></li> <li><code>fc_vat_enable_compat_plugin_yith-woocommerce-checkout-manager</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "'fc_vat_enable_compat_plugin_style_' . $plugin_slug",
+            "file": "inc/enqueue.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether to load the checkout compatibility stylesheet for a plugin.",
+                "long_description": "The dynamic portion of the hook name, `$plugin_slug`, is the directory name of an active plugin, or the main file name without `.php` for a single-file plugin. The filter runs for every active plugin. `css/compat/plugins/compat-{$plugin_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No checkout plugin stylesheets ship with EU-VAT Assistant. Germanized for WooCommerce Pro registers a callback on `fc_vat_enable_compat_plugin_style_woocommerce-germanized-pro`.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.0.2"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to load the stylesheet. Default true. Anything other than true skips it.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$enabled"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$plugin_slug</code>, is the directory name of an active plugin, or the main file name without <code>.php</code> for a single-file plugin. The filter runs for every active plugin. <code>css/compat/plugins/compat-{$plugin_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters. No checkout plugin stylesheets ship with EU-VAT Assistant. Germanized for WooCommerce Pro registers a callback on <code>fc_vat_enable_compat_plugin_style_woocommerce-germanized-pro</code>.</p>"
+            },
+            "args": 1
+        },
+        {
+            "name": "'fc_vat_enable_compat_theme_' . $theme_slug",
+            "aliases": [
+                "fc_vat_enable_compat_theme_cartzilla"
+            ],
+            "file": "fc-vat-assistant.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether to load the PHP compatibility file for a theme.",
+                "long_description": "The dynamic portion of the hook name, `$theme_slug`, is a theme directory slug. The filter runs for the parent theme (`get_template()`) and the active theme (`get_stylesheet()`). The file `inc/compat/themes/compat-theme-{$theme_slug}.php` is loaded only when the filtered value is exactly `true` and that file exists inside this plugin. Returning anything other than `true` (for example `false`) disables it.\n Possible hook names include:\n\n  - `fc_vat_enable_compat_theme_cartzilla`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "0.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to load the compatibility file. Default true. Anything other than true skips it.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$enabled"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$theme_slug</code>, is a theme directory slug. The filter runs for the parent theme (<code>get_template()</code>) and the active theme (<code>get_stylesheet()</code>). The file <code>inc/compat/themes/compat-theme-{$theme_slug}.php</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists inside this plugin. Returning anything other than <code>true</code> (for example <code>false</code>) disables it.</p> <p>Possible hook names include:</p> <ul> <li><code>fc_vat_enable_compat_theme_cartzilla</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "'fc_vat_enable_compat_theme_style_' . $theme_slug",
+            "aliases": [
+                "fc_vat_enable_compat_theme_style_neighborhood"
+            ],
+            "file": "inc/enqueue.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether to load the checkout compatibility stylesheet for a theme.",
+                "long_description": "The dynamic portion of the hook name, `$theme_slug`, is a theme directory slug. The filter runs for the parent theme (`get_template()`) and the active theme (`get_stylesheet()`). `css/compat/themes/compat-{$theme_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters.\n Possible hook names include:\n\n  - `fc_vat_enable_compat_theme_style_neighborhood`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.0.2"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to load the stylesheet. Default true. Anything other than true skips it.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$enabled"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$theme_slug</code>, is a theme directory slug. The filter runs for the parent theme (<code>get_template()</code>) and the active theme (<code>get_stylesheet()</code>). <code>css/compat/themes/compat-{$theme_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters.</p> <p>Possible hook names include:</p> <ul> <li><code>fc_vat_enable_compat_theme_style_neighborhood</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_vat_' . $current_section . '_settings",
+            "aliases": [
+                "fc_vat_vat_number_settings"
+            ],
+            "file": "inc/admin/admin-settings-vat-assistant.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the WooCommerce settings fields for a Fluid Checkout settings section.",
+                "long_description": "The dynamic portion of the hook name, `$current_section`, is the settings section slug. Since 1.0.0 the only section this filter runs for is `vat_number`, so the effective hook name is `fc_vat_vat_number_settings`. In 0.1.0 the section slug was `business_number` (`fc_vat_business_number_settings`). The value is an ordered list of WooCommerce settings field definitions, such as `title`, `sectionend`, `text`, `checkbox`, and `select` rows.\n Possible hook names include:\n\n  - `fc_vat_vat_number_settings`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "0.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Settings field definitions for the current section.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$settings"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$current_section</code>, is the settings section slug. Since 1.0.0 the only section this filter runs for is <code>vat_number</code>, so the effective hook name is <code>fc_vat_vat_number_settings</code>. In 0.1.0 the section slug was <code>business_number</code> (<code>fc_vat_business_number_settings</code>). The value is an ordered list of WooCommerce settings field definitions, such as <code>title</code>, <code>sectionend</code>, <code>text</code>, <code>checkbox</code>, and <code>select</code> rows.</p> <p>Possible hook names include:</p> <ul> <li><code>fc_vat_vat_number_settings</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_vat_admin_script_settings",
+            "file": "inc/checkout-eu-vat.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the admin script settings passed to `AdminEUVAT.init()` as `fcVATSettings.adminEUVAT`.",
+                "long_description": "Only added on admin requests.\n Default keys:\n\n  - `ajaxUrl` (string) Admin AJAX URL.\n  - `validateVatNonce` (string) Nonce for the `fc-vat-validate-eu-vat-number` action.\n  - `saveVatAndRecalculateTotalsNonce` (string) Nonce for the `fc-vat-save-vat-and-recalculate-totals` action.\n  - `updateVatMetaboxNonce` (string) Nonce for the `fc-vat-update-vat-metabox` action.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Admin script settings for EU VAT tools.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$settings"
+                    }
+                ],
+                "long_description_html": "<p>Only added on admin requests.</p> <p>Default keys:</p> <ul> <li><code>ajaxUrl</code> (string) Admin AJAX URL.</li> <li><code>validateVatNonce</code> (string) Nonce for the <code>fc-vat-validate-eu-vat-number</code> action.</li> <li><code>saveVatAndRecalculateTotalsNonce</code> (string) Nonce for the <code>fc-vat-save-vat-and-recalculate-totals</code> action.</li> <li><code>updateVatMetaboxNonce</code> (string) Nonce for the <code>fc-vat-update-vat-metabox</code> action.</li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_vat_is_vat_number_field",
+            "file": "inc/checkout-eu-vat.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether a field is considered a VAT number field.",
+                "long_description": "Determines whether a specific field is considered a VAT number field, allowing you to extend VAT logic to custom fields. The default is true only when `$field_key` is `billing_vat_number`.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "0.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether the field is a VAT number field.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$is_vat_number_field"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Field key being checked.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$field_key"
+                    }
+                ],
+                "long_description_html": "<p>Determines whether a specific field is considered a VAT number field, allowing you to extend VAT logic to custom fields. The default is true only when <code>$field_key</code> is <code>billing_vat_number</code>.</p>"
+            },
+            "args": 2
+        },
+        {
+            "name": "fc_vat_js_settings",
+            "file": "inc/enqueue.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the JavaScript settings object output as `fcVATSettings`.",
+                "long_description": "Printed on checkout (except the order-received and order-pay screens), on the account edit-address and add-payment-method screens, and on the admin order edit screen.\n Default keys:\n\n  - `verVAT` (string) Plugin version.\n  - `assetsVersionVAT` (string) Asset version appended to script and style URLs.\n  - `jsPathVAT` (string) Base URL of the plugin `js` directory.\n  - `jsLibPathVAT` (string) Base URL of the plugin `js/lib` directory.\n  - `cssPathVAT` (string) Base URL of the plugin `css` directory.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Plugin settings passed to frontend and admin scripts.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$settings"
+                    }
+                ],
+                "long_description_html": "<p>Printed on checkout (except the order-received and order-pay screens), on the account edit-address and add-payment-method screens, and on the admin order edit screen.</p> <p>Default keys:</p> <ul> <li><code>verVAT</code> (string) Plugin version.</li> <li><code>assetsVersionVAT</code> (string) Asset version appended to script and style URLs.</li> <li><code>jsPathVAT</code> (string) Base URL of the plugin <code>js</code> directory.</li> <li><code>jsLibPathVAT</code> (string) Base URL of the plugin <code>js/lib</code> directory.</li> <li><code>cssPathVAT</code> (string) Base URL of the plugin <code>css</code> directory.</li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_vat_number_field_args",
+            "file": "inc/checkout-eu-vat.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the arguments used for the VAT number field.",
+                "long_description": "These arguments are used when the field is added to checkout and address forms. When EU VAT validation is enabled, the plugin also filters this hook to change the description and field classes.\n Default keys:\n\n  - `label` (string) Field label.\n  - `optional_expand_link_lowercase` (bool) Whether the optional-field expand link is lowercase.\n  - `description` (string|null) Field description. Null when the field is required.\n  - `required` (bool) Whether the field is required.\n  - `class` (string[]) CSS classes for the field row. Defaults include `fc-vat-number-field` and `form-row-wide`.\n  - `priority` (int) Checkout field priority. Default 220.\n  - `type` (string) Input type. Default `text`.\n  - `clear` (bool) Whether the field clears floats. Default true.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "VAT number field arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$args"
+                    }
+                ],
+                "long_description_html": "<p>These arguments are used when the field is added to checkout and address forms. When EU VAT validation is enabled, the plugin also filters this hook to change the description and field classes.</p> <p>Default keys:</p> <ul> <li><code>label</code> (string) Field label.</li> <li><code>optional_expand_link_lowercase</code> (bool) Whether the optional-field expand link is lowercase.</li> <li><code>description</code> (string|null) Field description. Null when the field is required.</li> <li><code>required</code> (bool) Whether the field is required.</li> <li><code>class</code> (string[]) CSS classes for the field row. Defaults include <code>fc-vat-number-field</code> and <code>form-row-wide</code>.</li> <li><code>priority</code> (int) Checkout field priority. Default 220.</li> <li><code>type</code> (string) Input type. Default <code>text</code>.</li> <li><code>clear</code> (bool) Whether the field clears floats. Default true.</li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_vat_reverse_charge_countries_skip_list_options",
+            "file": "inc/checkout-eu-vat.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the countries offered in the Reverse Charge Exceptions setting.",
+                "long_description": "The value passed to the filter is the full WooCommerce country list, keyed by country code. EU-VAT Assistant also attaches callbacks that limit the list to EU countries and remove the shop country.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Country code to country name map.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$countries"
+                    }
+                ],
+                "long_description_html": "<p>The value passed to the filter is the full WooCommerce country list, keyed by country code. EU-VAT Assistant also attaches callbacks that limit the list to EU countries and remove the shop country.</p>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_vat_vat_number_account_details_field_additional_args",
+            "file": "inc/compat/plugins/compat-plugin-fc-address-book.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters extra arguments merged into the VAT number field on the edit-account form.",
+                "long_description": "Merged with `wp_parse_args()` onto the billing VAT number field arguments before the field is rendered. After this filter, `required` is forced to false, so this hook cannot make the account-details field required.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.0.5"
+                    },
+                    {
+                        "name": "param",
+                        "content": "WooCommerce form field arguments to merge in. Default empty array.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$additional_args"
+                    }
+                ],
+                "long_description_html": "<p>Merged with <code>wp_parse_args()</code> onto the billing VAT number field arguments before the field is rendered. After this filter, <code>required</code> is forced to false, so this hook cannot make the account-details field required.</p>"
+            },
+            "args": 1
+        },
+        {
+            "name": "self::$plugin_prefix . '_admin_notices'",
+            "aliases": [
+                "fc_vat_admin_notices"
+            ],
+            "file": "inc/admin/admin-notices.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the admin notices displayed by EU-VAT Assistant.",
+                "long_description": "The dynamic portion of the hook name, `self::$plugin_prefix`, is the prefix `fc_vat`, so the hook name is `fc_vat_admin_notices`. Register callbacks with `add_filter()` and return the notices array. A notice is skipped when `name` is null or that name was already dismissed.\n Each item is an associative array:\n\n  - `name` (string|null) Notice id. Required for the notice to display, and used when dismissing it.\n  - `title` (string) Optional heading.\n  - `description` (string) Notice body. May contain HTML.\n  - `error` (bool) Whether to show the notice as an error.\n  - `actions` (string[]) HTML for buttons and links.\n  - `dismissible` (bool) Whether to add a dismiss link. Default true. `dismissable` is a deprecated alias kept for backwards compatibility. It is used only when `dismissible` is omitted; if both are set, `dismissible` wins.\n  - `dismiss_label` (string) Text of the dismiss link.\n  - `paragraph_wrap` (bool) Whether to wrap the description in a paragraph. Default true. Set this to false when `description` contains block-level HTML.\n Possible hook names include:\n\n  - `fc_vat_admin_notices`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "0.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Admin notice definitions. Default empty array.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$notices"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>self::$plugin_prefix</code>, is the prefix <code>fc_vat</code>, so the hook name is <code>fc_vat_admin_notices</code>. Register callbacks with <code>add_filter()</code> and return the notices array. A notice is skipped when <code>name</code> is null or that name was already dismissed.</p> <p>Each item is an associative array:</p> <ul> <li><code>name</code> (string|null) Notice id. Required for the notice to display, and used when dismissing it.</li> <li><code>title</code> (string) Optional heading.</li> <li><code>description</code> (string) Notice body. May contain HTML.</li> <li><code>error</code> (bool) Whether to show the notice as an error.</li> <li><code>actions</code> (string[]) HTML for buttons and links.</li> <li><code>dismissible</code> (bool) Whether to add a dismiss link. Default true. <code>dismissable</code> is a deprecated alias kept for backwards compatibility. It is used only when <code>dismissible</code> is omitted; if both are set, <code>dismissible</code> wins.</li> <li><code>dismiss_label</code> (string) Text of the dismiss link.</li> <li><code>paragraph_wrap</code> (bool) Whether to wrap the description in a paragraph. Default true. Set this to false when <code>description</code> contains block-level HTML.</li> </ul> <p>Possible hook names include:</p> <ul> <li><code>fc_vat_admin_notices</code></li> </ul>"
+            },
+            "args": 1
+        }
+    ]
 }

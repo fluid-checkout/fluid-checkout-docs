@@ -14,23 +14,22 @@ EU-VAT Assistant runs WordPress actions and filters around the checkout VAT numb
 
 The [hooks reference](/eu-vat/hooks) lists every action and filter exported from the plugin. Open a hook for its type, parameters, the version that introduced it, and the PHP file that runs it.
 
-A filter such as [`fc_vat_checkout_eu_vat_number`](/eu-vat/hooks/fc_vat_checkout_eu_vat_number) receives the current value and must return a replacement. An action is a point where you can print markup or run a side effect.
+A filter such as [`fc_vat_number_field_args`](/eu-vat/hooks/fc_vat_number_field_args) receives the current value and must return a replacement.
 
 ## Attach a callback
 
 ```php
-add_filter( 'fc_vat_checkout_eu_vat_number', 'my_store_normalize_vat_number', 10, 2 );
+add_filter( 'fc_vat_number_field_args', 'my_store_vat_number_field_args' );
 
 /**
- * Strip spaces and uppercase the VAT number before validation.
+ * Change the VAT number field label.
  *
- * @param string $vat_number VAT number entered at checkout.
- * @param string $country    Billing country code.
- * @return string
+ * @param array $args VAT number field arguments.
+ * @return array
  */
-function my_store_normalize_vat_number( $vat_number, $country ) {
-    unset( $country );
-    return strtoupper( preg_replace( '/\s+/', '', (string) $vat_number ) );
+function my_store_vat_number_field_args( $args ) {
+    $args['label'] = __( 'EU VAT number', 'my-store' );
+    return $args;
 }
 ```
 

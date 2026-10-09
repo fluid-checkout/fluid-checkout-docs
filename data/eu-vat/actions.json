@@ -1,47 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/wp-hooks/generator/1.0.2/schema.json",
-  "hooks": [
-    {
-      "name": "self::$plugin_prefix . '_admin_notices'",
-      "file": "inc/admin/admin-notices.php",
-      "line": 48,
-      "type": "action",
-      "doc": {
-        "description": "Fires when EU-VAT Assistant prints admin notices.",
-        "long_description": "Callbacks can echo notice markup. The hook name is built from the plugin prefix, which is `fc_vat` for EU-VAT Assistant.",
-        "long_description_html": "",
-        "tags": [
-          {
-            "name": "since",
-            "content": "1.0.0"
-          }
-        ]
-      },
-      "args": 0
-    },
-    {
-      "name": "fc_vat_before_checkout_vat_fields",
-      "file": "inc/checkout-eu-vat.php",
-      "line": 186,
-      "type": "action",
-      "doc": {
-        "description": "Fires before the EU VAT fields are printed on the checkout page.",
-        "long_description": "Use this action to open a wrapper or print content immediately above the VAT number field.",
-        "long_description_html": "",
-        "tags": [
-          {
-            "name": "since",
-            "content": "2.0.0"
-          },
-          {
-            "name": "param",
-            "content": "Checkout instance for the current request.",
-            "types": ["WC_Checkout"],
-            "variable": "$checkout"
-          }
-        ]
-      },
-      "args": 1
-    }
-  ]
+    "$schema": "https://raw.githubusercontent.com/wp-hooks/generator/1.0.2/schema.json",
+    "hooks": []
 }
