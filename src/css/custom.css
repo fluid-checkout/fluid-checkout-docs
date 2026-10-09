@@ -4,10 +4,13 @@
  *
  * Primary FC Blue: #0047e3
  * Primary dark: #00277a
- * Lighter blue (primary highlight, used as the dark-mode primary): #5c8fff
+ * Lighter blue (primary highlight, used as the dark-mode accent): #5c8fff
  * Body text: #394859
  * Darker grey: #213245
- * Footer navy: #0d2844
+ * Footer navy (light mode): #0d2844
+ *
+ * Dark mode surfaces are neutral greys (no blue cast). #5c8fff is reserved
+ * for accents: links, active and hover items, buttons, focus, admonitions.
  */
 
 :root {
@@ -39,7 +42,15 @@
   --fc-surface-muted: #f9f9f9;
 }
 
-[data-theme='dark'] {
+/*
+ * :root beats Infima's html[data-theme='dark'] and DocSearch's html[data-theme=dark].
+ * Text/link pairs below meet WCAG AA (4.5:1) for normal text:
+ *   #e3e3e3 on #1e1e1e = 13.0, on #2a2a2a = 11.2
+ *   #5c8fff on #1e1e1e = 5.4, on #2a2a2a = 4.7
+ *   #8db1ff on #1e1e1e = 7.8
+ *   #000 on #5c8fff = 6.8 (buttons; white on #5c8fff is only 3.1)
+ */
+:root[data-theme='dark'] {
   --ifm-color-primary: #5c8fff;
   --ifm-color-primary-dark: #5381e6;
   --ifm-color-primary-darker: #4e7ad9;
@@ -47,23 +58,138 @@
   --ifm-color-primary-light: #6c9aff;
   --ifm-color-primary-lighter: #74a0ff;
   --ifm-color-primary-lightest: #8db1ff;
-  --ifm-font-color-base: #f3f4f6;
-  --ifm-heading-color: #ffffff;
-  --ifm-background-color: #0d2844;
-  --ifm-background-surface-color: #12304f;
-  --ifm-navbar-background-color: #0d2844;
-  --ifm-navbar-link-color: #f3f4f6;
+
+  --ifm-color-gray-0: #ffffff;
+  --ifm-color-gray-100: #f5f5f5;
+  --ifm-color-gray-200: #e8e8e8;
+  --ifm-color-gray-300: #dadada;
+  --ifm-color-gray-400: #c8c8c8;
+  --ifm-color-gray-500: #b0b0b0;
+  --ifm-color-gray-600: #8f8f8f;
+  --ifm-color-gray-700: #3a3a3a;
+  --ifm-color-gray-800: #3a3a3a;
+  --ifm-color-gray-900: #2a2a2a;
+  --ifm-color-gray-1000: #000000;
+
+  --ifm-background-color: #1e1e1e;
+  --ifm-background-surface-color: #2a2a2a;
+  --ifm-navbar-background-color: #2a2a2a;
+  --ifm-footer-background-color: #2a2a2a;
+  --ifm-card-background-color: #2a2a2a;
+  --ifm-dropdown-background-color: #2a2a2a;
+  --ifm-hover-overlay: rgba(255, 255, 255, 0.06);
+
+  --ifm-font-color-base: #e3e3e3;
+  --ifm-heading-color: #f2f2f2;
+  --ifm-color-content: #e3e3e3;
+  --ifm-color-content-secondary: #c8c8c8;
+  --ifm-navbar-link-color: #e3e3e3;
   --ifm-navbar-link-hover-color: #5c8fff;
-  --ifm-menu-color: #f3f4f6;
+  --ifm-menu-color: #e3e3e3;
   --ifm-menu-color-active: #5c8fff;
   --ifm-link-color: #5c8fff;
   --ifm-link-hover-color: #8db1ff;
-  --ifm-footer-background-color: #071a2e;
-  --ifm-toc-border-color: #2a4a6b;
-  --ifm-color-emphasis-300: #8c949c;
-  --ifm-hr-border-color: #2a4a6b;
-  --fc-border: #2a4a6b;
-  --fc-surface-muted: #12304f;
+  --ifm-footer-color: #e3e3e3;
+  --ifm-footer-link-color: #e3e3e3;
+  --ifm-footer-title-color: #f2f2f2;
+
+  --ifm-toc-border-color: #3a3a3a;
+  --ifm-hr-border-color: #3a3a3a;
+  --ifm-hr-background-color: #3a3a3a;
+  --ifm-table-border-color: #3a3a3a;
+  --ifm-table-stripe-background: rgba(255, 255, 255, 0.04);
+  --ifm-color-emphasis-200: #3a3a3a;
+  --ifm-color-emphasis-300: #3a3a3a;
+  --fc-border: #3a3a3a;
+  --fc-surface-muted: #2a2a2a;
+
+  --ifm-code-background: #2a2a2a;
+  --ifm-pre-background: #2a2a2a;
+  --prism-background-color: #2a2a2a;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
+
+  --ifm-navbar-search-input-background-color: #1e1e1e;
+  --ifm-navbar-search-input-color: #e3e3e3;
+  --ifm-navbar-search-input-placeholder-color: #b0b0b0;
+
+  --search-local-modal-background: #2a2a2a;
+  --search-local-modal-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  --search-local-hit-background: #1e1e1e;
+  --search-local-hit-color: #e3e3e3;
+  --search-local-hit-shadow: none;
+  --search-local-highlight-color: #5c8fff;
+  --search-local-hit-active-color: #000000;
+  --search-local-muted-color: #b0b0b0;
+  --search-local-input-active-border-color: #5c8fff;
+
+  --docsearch-primary-color: #5c8fff;
+  --docsearch-text-color: #e3e3e3;
+  --docsearch-secondary-text-color: #c8c8c8;
+  --docsearch-subtle-color: #3a3a3a;
+  --docsearch-highlight-color: #5c8fff;
+  --docsearch-focus-color: #5c8fff;
+  --docsearch-soft-primary-color: rgba(255, 255, 255, 0.08);
+  --docsearch-background-color: #1e1e1e;
+  --docsearch-icon-color: #c8c8c8;
+  --docsearch-container-background: rgba(0, 0, 0, 0.65);
+  --docsearch-modal-background: #2a2a2a;
+  --docsearch-modal-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  --docsearch-searchbox-background: #1e1e1e;
+  --docsearch-searchbox-focus-background: #1e1e1e;
+  --docsearch-hit-color: #e3e3e3;
+  --docsearch-hit-shadow: none;
+  --docsearch-hit-background: #1e1e1e;
+  --docsearch-hit-highlight-color: rgba(255, 255, 255, 0.08);
+  --docsearch-key-background: #3a3a3a;
+  --docsearch-key-color: #e3e3e3;
+  --docsearch-footer-background: #1e1e1e;
+  --docsearch-footer-shadow: inset 0 1px 0 #3a3a3a;
+  --docsearch-logo-color: #b0b0b0;
+  --docsearch-muted-color: #b0b0b0;
+  --docsearch-search-button-background: #1e1e1e;
+  --docsearch-search-button-text-color: #e3e3e3;
+  --docsearch-dropdown-menu-background: #1e1e1e;
+  --docsearch-dropdown-menu-item-hover-background: #2a2a2a;
+}
+
+/* .footer--dark redefines these on the footer itself. */
+:root[data-theme='dark'] .footer--dark {
+  --ifm-footer-background-color: #2a2a2a;
+  --ifm-footer-color: #e3e3e3;
+  --ifm-footer-link-color: #e3e3e3;
+  --ifm-footer-title-color: #f2f2f2;
+}
+
+:root[data-theme='dark'] .theme-doc-sidebar-container {
+  background-color: var(--ifm-background-surface-color);
+}
+
+/*
+ * Prism sets the code background twice: a CSS variable on the container, and an
+ * inline background-color on the pre (Dracula #282a36). The inline value wins
+ * unless the pre background is overridden.
+ */
+:root[data-theme='dark'] .theme-code-block {
+  --prism-background-color: #2a2a2a !important;
+  border: 1px solid var(--fc-border);
+  box-shadow: none;
+}
+
+:root[data-theme='dark'] .theme-code-block pre {
+  background-color: #2a2a2a !important;
+}
+
+:root[data-theme='dark'] :not(pre) > code {
+  border-color: #3a3a3a;
+}
+
+/* Dracula comments (#6272a4 on #2a2a2a) are 3.1:1. #b0b0b0 is 6.6:1. */
+:root[data-theme='dark'] .token.comment {
+  color: #b0b0b0 !important;
+}
+
+:root[data-theme='dark'] .plugin-card__status--available {
+  color: #000000;
 }
 
 h1,
@@ -96,7 +222,7 @@ h6 {
 }
 
 [data-theme='dark'] .navbar__title {
-  color: #ffffff;
+  color: #f2f2f2;
 }
 
 .footer--dark .footer__link-item:hover {
