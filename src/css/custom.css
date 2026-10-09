@@ -1,0 +1,163 @@
+/**
+ * Fluid Checkout brand tokens, taken from the live site at fluidcheckout.com
+ * (theme-color and --fluidtheme--color-* on the fluidtheme stylesheet).
+ *
+ * Primary FC Blue: #0047e3
+ * Primary dark: #00277a
+ * Lighter blue (primary highlight, used as the dark-mode primary): #5c8fff
+ * Body text: #394859
+ * Darker grey: #213245
+ * Footer navy: #0d2844
+ */
+
+:root {
+  --ifm-color-primary: #0047e3;
+  --ifm-color-primary-dark: #0040cc;
+  --ifm-color-primary-darker: #003cc1;
+  --ifm-color-primary-darkest: #00277a;
+  --ifm-color-primary-light: #1a59e6;
+  --ifm-color-primary-lighter: #2663e7;
+  --ifm-color-primary-lightest: #5c8fff;
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir, "Segoe UI", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, Arial, sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+  --ifm-font-family-monospace: SFMono-Regular, Menlo, Consolas, "Courier New", Courier, monospace;
+  --ifm-font-color-base: #394859;
+  --ifm-heading-color: #213245;
+  --ifm-background-color: #ffffff;
+  --ifm-navbar-background-color: #ffffff;
+  --ifm-navbar-link-hover-color: #0047e3;
+  --ifm-menu-color-active: #0047e3;
+  --ifm-link-color: #0047e3;
+  --ifm-link-hover-color: #00277a;
+  --ifm-footer-background-color: #0d2844;
+  --ifm-footer-color: #dfdfde;
+  --ifm-footer-link-color: #ffffff;
+  --ifm-footer-title-color: #ffffff;
+  --ifm-code-font-size: 95%;
+  --ifm-global-radius: 0.5rem;
+  --fc-border: #dfdfde;
+  --fc-surface-muted: #f9f9f9;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #5c8fff;
+  --ifm-color-primary-dark: #5381e6;
+  --ifm-color-primary-darker: #4e7ad9;
+  --ifm-color-primary-darkest: #4064b2;
+  --ifm-color-primary-light: #6c9aff;
+  --ifm-color-primary-lighter: #74a0ff;
+  --ifm-color-primary-lightest: #8db1ff;
+  --ifm-font-color-base: #f3f4f6;
+  --ifm-heading-color: #ffffff;
+  --ifm-background-color: #0d2844;
+  --ifm-background-surface-color: #12304f;
+  --ifm-navbar-background-color: #0d2844;
+  --ifm-navbar-link-color: #f3f4f6;
+  --ifm-navbar-link-hover-color: #5c8fff;
+  --ifm-menu-color: #f3f4f6;
+  --ifm-menu-color-active: #5c8fff;
+  --ifm-link-color: #5c8fff;
+  --ifm-link-hover-color: #8db1ff;
+  --ifm-footer-background-color: #071a2e;
+  --ifm-toc-border-color: #2a4a6b;
+  --ifm-color-emphasis-300: #8c949c;
+  --ifm-hr-border-color: #2a4a6b;
+  --fc-border: #2a4a6b;
+  --fc-surface-muted: #12304f;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0.02em;
+}
+
+.menu__link:hover,
+.navbar__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+.navbar__logo {
+  height: 2rem;
+}
+
+.navbar__logo img {
+  height: 100%;
+  width: auto;
+}
+
+.navbar__title {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #213245;
+}
+
+[data-theme='dark'] .navbar__title {
+  color: #ffffff;
+}
+
+.footer--dark .footer__link-item:hover {
+  color: #5c8fff;
+}
+
+.plugin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0 3rem;
+}
+
+.plugin-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--fc-border);
+  border-radius: var(--ifm-global-radius);
+  background: var(--ifm-background-surface-color, #ffffff);
+  height: 100%;
+}
+
+.plugin-card h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.plugin-card p {
+  margin: 0;
+  flex: 1;
+}
+
+.plugin-card__status {
+  align-self: flex-start;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.plugin-card__status--available {
+  color: #ffffff;
+  background: var(--ifm-color-primary);
+}
+
+.plugin-card__status--soon {
+  color: var(--ifm-font-color-base);
+  background: var(--fc-surface-muted);
+  border: 1px solid var(--fc-border);
+}
+
+.hero--fc {
+  padding: 4rem 0 2rem;
+  background: var(--fc-surface-muted);
+}
+
+.hero--fc h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}

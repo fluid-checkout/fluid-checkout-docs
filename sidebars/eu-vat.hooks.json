@@ -1,0 +1,44 @@
+[
+  {
+    "type": "doc",
+    "id": "hooks/index",
+    "label": "All hooks"
+  },
+  {
+    "type": "category",
+    "label": "Actions",
+    "items": [
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_admin_notices",
+        "label": "fc_vat_admin_notices"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_before_checkout_vat_fields",
+        "label": "fc_vat_before_checkout_vat_fields"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Filters",
+    "items": [
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_checkout_eu_vat_number",
+        "label": "fc_vat_checkout_eu_vat_number"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_current_section_settings",
+        "label": "fc_vat_{current_section}_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_enable_compat_plugin_plugin_slug",
+        "label": "fc_vat_enable_compat_plugin_{plugin_slug}"
+      }
+    ]
+  }
+]
