@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="220" viewBox="0 0 880 220" role="img" aria-labelledby="title desc">
   <title id="title">EU-VAT Assistant hook points</title>
-  <desc id="desc">Default VAT number field arguments pass through a filter before the field is rendered.</desc>
+  <desc id="desc">Checkout VAT number flows through a filter, then validation, then storage.</desc>
   <rect width="880" height="220" rx="16" fill="#f9f9f9"/>
   <rect x="24" y="48" width="200" height="124" rx="12" fill="#ffffff" stroke="#dfdfde"/>
   <rect x="340" y="48" width="200" height="124" rx="12" fill="#ffffff" stroke="#0047e3" stroke-width="2"/>
   <rect x="656" y="48" width="200" height="124" rx="12" fill="#ffffff" stroke="#dfdfde"/>
-  <text x="124" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#213245">Field defaults</text>
-  <text x="124" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#394859">Label, classes,</text>
-  <text x="124" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#394859">and priority</text>
+  <text x="124" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#213245">Checkout field</text>
+  <text x="124" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#394859">Customer enters</text>
+  <text x="124" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#394859">a VAT number</text>
   <text x="440" y="96" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#0047e3">Filter</text>
-  <text x="440" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#394859">fc_vat_number_</text>
-  <text x="440" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#394859">field_args</text>
-  <text x="756" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#213245">Rendered field</text>
-  <text x="756" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#394859">Checkout and</text>
-  <text x="756" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#394859">address forms</text>
+  <text x="440" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#394859">fc_vat_checkout_</text>
+  <text x="440" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#394859">eu_vat_number</text>
+  <text x="756" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#213245">Validate and store</text>
+  <text x="756" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#394859">VIES lookup, then</text>
+  <text x="756" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#394859">save on the order</text>
   <path d="M232 110 H328" stroke="#0047e3" stroke-width="2" marker-end="url(#arrow)"/>
   <path d="M548 110 H644" stroke="#0047e3" stroke-width="2" marker-end="url(#arrow)"/>
   <defs>
