@@ -3,10 +3,10 @@ add_filter( 'fc_pro_cart_shipping_calculator_initially_expanded',
     /**
      * Show shipping calculator expanded.
      *
-     * @param bool $is_expanded Whether calculator should be initially expanded. Defaults to false, collapsed.
+     * @param bool $value Whether cart shipping calculator initially expanded. Default false.
      * @return bool Filtered value.
      */
-    function( $is_expanded ) {
+    function( $value ) {
         return true;
     },
     10
@@ -18,10 +18,10 @@ add_filter( 'fc_pro_cart_shipping_calculator_initially_expanded',
     /**
      * Initially expand shipping calculator on cart page.
      *
-     * @param bool $is_expanded Whether calculator should be initially expanded. Defaults to false, collapsed.
+     * @param bool $value Whether cart shipping calculator initially expanded. Default false.
      * @return bool Filtered value.
      */
-    function( $is_expanded ) {
+    function( $value ) {
         return true;
     },
     10

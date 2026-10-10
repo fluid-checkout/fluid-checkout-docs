@@ -5,12 +5,12 @@ add_filter( 'fc_pro_order_details_subsection_custom_section_attributes',
     /**
      * Add custom attributes to subsection.
      *
-     * @param array $attributes Array of HTML attributes.
+     * @param array $additional_attributes HTML attributes.
      * @return array Filtered value.
      */
-    function( $attributes ) {
-        $attributes['data-subsection'] = 'custom';
-        return $attributes;
+    function( $additional_attributes ) {
+        $additional_attributes['data-subsection'] = 'custom';
+        return $additional_attributes;
     },
     10
 );

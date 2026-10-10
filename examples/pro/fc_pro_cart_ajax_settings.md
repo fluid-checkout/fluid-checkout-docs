@@ -3,7 +3,7 @@ add_filter( 'fc_pro_cart_ajax_settings',
     /**
      * Add custom AJAX setting to cart.
      *
-     * @param array $settings Array of AJAX settings.
+     * @param array $settings Settings.
      * @return array Filtered value.
      */
     function( $settings ) {

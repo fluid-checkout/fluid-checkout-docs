@@ -29,3 +29,20 @@ apply_filters( 'fc_apply_address_2_field_description', $value );
 ## Source
 
 [`inc/checkout-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-fields.php)
+
+## Examples
+
+```php
+add_filter( 'fc_apply_address_2_field_description',
+    /**
+     * Disable address 2 field description.
+     *
+     * @param bool $value Value to filter. Default true.
+     * @return bool Filtered value.
+     */
+    function( $value ) {
+        return false;
+    },
+    10
+);
+```

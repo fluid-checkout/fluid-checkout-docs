@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/fc/checkout-page-template/checkout/page-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-page-template/checkout/page-checkout.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_after_main_section_wrapper',
+    /**
+     * Add div closing tag.
+     */
+    function() {
+        echo '</div>';
+    },
+    10
+);
+```

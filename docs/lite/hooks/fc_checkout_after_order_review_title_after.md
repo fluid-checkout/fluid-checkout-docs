@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/fc/checkout-steps/checkout/review-order-section.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/review-order-section.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_after_order_review_title_after',
+    /**
+     * Add order review title suffix.
+     */
+    function() {
+        echo '<div style="display: inline-block;">Suffix</div>';
+    },
+    10
+);
+```

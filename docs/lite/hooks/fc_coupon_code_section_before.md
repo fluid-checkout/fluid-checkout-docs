@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`inc/checkout-coupon-codes.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-coupon-codes.php)
+
+## Examples
+
+```php
+add_action( 'fc_coupon_code_section_before',
+    /**
+     * Add coupon section header.
+     */
+    function() {
+        echo '<div>Enter your coupon code below to enjoy exclusive discounts!</div>';
+    },
+    10
+);
+```

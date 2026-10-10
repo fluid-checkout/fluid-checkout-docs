@@ -29,3 +29,22 @@ apply_filters( 'fc_checkout_progress_bar_inner_attributes', $progress_bar_inner_
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_checkout_progress_bar_inner_attributes',
+    /**
+     * Add custom attributes to progress bar.
+     *
+     * @param array $progress_bar_inner_attributes Progress bar inner attributes.
+     * @return array Filtered value.
+     */
+    function( $progress_bar_inner_attributes ) {
+        // Add custom class to existing classes
+        $progress_bar_inner_attributes['class'] .= ' custom-progress-bar-inner';
+        return $progress_bar_inner_attributes;
+    },
+    10
+);
+```

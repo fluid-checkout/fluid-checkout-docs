@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/fc/checkout-steps/checkout/review-order-section.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/review-order-section.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_after_order_review',
+    /**
+     * Add order review content.
+     */
+    function() {
+        echo '<div class="order-review-info">Custom content</div>';
+    },
+    10
+);
+```

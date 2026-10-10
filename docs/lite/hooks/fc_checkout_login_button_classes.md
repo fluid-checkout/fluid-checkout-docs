@@ -29,3 +29,20 @@ apply_filters( 'fc_checkout_login_button_classes', $classes );
 ## Source
 
 [`templates/fc/checkout-steps/global/form-login.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/global/form-login.php)
+
+## Examples
+
+```php
+add_filter( 'fc_checkout_login_button_classes',
+    /**
+     * Add custom classes to login button.
+     *
+     * @param string $classes CSS classes. Default woocommerce-button button.
+     * @return string Filtered value.
+     */
+    function( $classes ) {
+        return $classes . ' custom-login-btn';
+    },
+    10
+);
+```

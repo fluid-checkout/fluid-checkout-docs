@@ -3,7 +3,7 @@ add_filter( 'fc_pro_cart_update_settings',
     /**
      * Customize cart update settings.
      *
-     * @param array $settings Array of cart update settings.
+     * @param array $settings Settings.
      * @return array Filtered value.
      */
     function( $settings ) {

@@ -29,3 +29,19 @@ do_action( 'fc_checkout_before', $checkout );
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-checkout.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_before',
+    /**
+     * Add div opening tag before checkout.
+     *
+     * @param \WC_Checkout $checkout Checkout object.
+     */
+    function( $checkout ) {
+        echo '<div class="custom-before-checkout">';
+    },
+    10
+);
+```

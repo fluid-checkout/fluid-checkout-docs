@@ -3,14 +3,14 @@ add_filter( 'fc_pro_settings_skip_enabling_list',
     /**
      * Skip enabling specific PRO settings.
      *
-     * @param array $skip_list Array of setting IDs to skip enabling. Defaults to empty array.
+     * @param array $value Filtered value. Default empty array.
      * @return array Filtered value.
      */
-    function( $skip_list ) {
+    function( $value ) {
         // Prevent these settings from being enabled via admin
-        $skip_list[] = 'fc_pro_setting_to_skip';
+        $value[] = 'fc_pro_setting_to_skip';
 
-        return $skip_list;
+        return $value;
     },
     10
 );

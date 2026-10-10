@@ -3,9 +3,9 @@ add_filter( 'fc_pro_order_pay_shipping_method_full_label',
     /**
      * Add estimated delivery time to shipping method label.
      *
-     * @param string $label The full shipping method label.
-     * @param WC_Order_Item_Shipping $order_shipping_method The shipping method item object.
-     * @return string Filtered value.
+     * @param mixed $label Label text.
+     * @param mixed $order_shipping_method The order shipping method.
+     * @return mixed Filtered value.
      */
     function( $label, $order_shipping_method ) {
         $method_id = $order_shipping_method->get_method_id();

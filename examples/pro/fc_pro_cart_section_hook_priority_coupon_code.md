@@ -3,16 +3,16 @@ add_filter( 'fc_pro_cart_section_hook_priority_coupon_code',
     /**
      * Move coupon code section earlier on cart page.
      *
-     * @param array $priority Array with 3 elements: array( 'hook_name', 'callback', priority_number )
-     * @return array Filtered value.
+     * @param mixed $value Filtered value.
+     * @return mixed Filtered value.
      */
-    function( $priority ) {
+    function( $value ) {
         // Adjust priority to display later on same hook
-        if ( 'fc_pro_cart_sections' === $priority[0] ) {
-            $priority[2] = 55;
+        if ( 'fc_pro_cart_sections' === $value[0] ) {
+            $value[2] = 55;
         }
 
-        return $priority;
+        return $value;
     },
     10
 );

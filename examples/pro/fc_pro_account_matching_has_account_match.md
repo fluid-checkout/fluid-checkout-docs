@@ -3,8 +3,8 @@ add_filter( 'fc_pro_account_matching_has_account_match',
     /**
      * Prevent account matching for specific email addresses.
      *
-     * @param bool $has_account_match Whether an account match was found.
-     * @param array $data The form data being checked, including email address and other field values.
+     * @param bool $has_account_match Whether account matching has account match.
+     * @param array $data Posted checkout data.
      * @return bool Filtered value.
      */
     function( $has_account_match, $data ) {

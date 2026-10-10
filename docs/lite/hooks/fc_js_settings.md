@@ -29,3 +29,23 @@ apply_filters( 'fc_js_settings', $settings );
 ## Source
 
 [`inc/enqueue.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/enqueue.php)
+
+## Examples
+
+```php
+add_filter( 'fc_js_settings',
+    /**
+     * Add custom JavaScript settings.
+     *
+     * @param array $settings Settings to output.
+     * @return array Filtered value.
+     */
+    function( $settings ) {
+        $settings['customFeature'] = array(
+            'enabled' => true,
+        );
+        return $settings;
+    },
+    10
+);
+```

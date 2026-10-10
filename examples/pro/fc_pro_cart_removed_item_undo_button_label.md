@@ -3,7 +3,7 @@ add_filter( 'fc_pro_cart_removed_item_undo_button_label',
     /**
      * Customize undo button label.
      *
-     * @param string $label The undo button label. Defaults to “Undo”.
+     * @param string $label Label text.
      * @return string Filtered value.
      */
     function( $label ) {

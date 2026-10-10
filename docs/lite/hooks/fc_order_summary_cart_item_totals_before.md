@@ -31,3 +31,22 @@ do_action( 'fc_order_summary_cart_item_totals_before', $cart_item, $cart_item_ke
 ## Source
 
 [`templates/fc/checkout-steps/checkout/review-order.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/review-order.php)
+
+## Examples
+
+```php
+add_action( 'fc_order_summary_cart_item_totals_before',
+    /**
+     * Add cart totals header.
+     *
+     * @param array $cart_item Cart item data.
+     * @param string $cart_item_key Cart item key.
+     * @param \WC_Product $_product Product object.
+     */
+    function( $cart_item, $cart_item_key, $_product ) {
+        echo '<div>Product total</div>';
+    },
+    10,
+    3
+);
+```

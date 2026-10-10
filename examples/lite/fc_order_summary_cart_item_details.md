@@ -5,7 +5,7 @@ add_action( 'fc_order_summary_cart_item_details',
      *
      * @param array $cart_item Cart item data.
      * @param string $cart_item_key Cart item key.
-     * @param WC_Product $_product Product object.
+     * @param \WC_Product $_product Product object.
      */
     function( $cart_item, $cart_item_key, $_product ) {
         if ( $_product->get_sku() ) {

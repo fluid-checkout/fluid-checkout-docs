@@ -5,7 +5,7 @@ add_action( 'fc_pro_cart_section_header_cart_items',
     /**
      * Add edit link in cart items section header.
      *
-     * @param string $section_id The ID of the cart section being rendered.
+     * @param string $section_id Section ID.
      */
     function( $section_id ) {
         echo '<div class="promotional-banner">';

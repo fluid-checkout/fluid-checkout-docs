@@ -30,3 +30,34 @@ apply_filters( 'fc_shipping_method_option_image_html', $html, $method );
 ## Source
 
 [`inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php)
+
+## Examples
+
+```php
+add_filter( 'fc_shipping_method_option_image_html',
+    /**
+     * Add shipping method images.
+     *
+     * @param string $html HTML markup. Default empty string.
+     * @param \WC_Shipping_Rate $method Method.
+     * @return string Filtered value.
+     */
+    function( $html, $method ) {
+        $method_id = $method->get_method_id();
+        $image_map = array(
+        // Replace {image_url} before using
+            'free_shipping' => '<img src="{image_url}" />',
+            'flat_rate' => '<img src="{image_url}" />',
+            'local_pickup' => '<img src="{image_url}" />',
+        );
+
+        if ( isset( $image_map[ $method_id ] ) ) {
+            $html = $image_map[ $method_id ];
+        }
+
+        return $html;
+    },
+    10,
+    2
+);
+```

@@ -3,7 +3,7 @@ add_action( 'fc_pro_order_overview_before',
     /**
      * Add message before order overview.
      *
-     * @param WC_Order $order The WooCommerce order object.
+     * @param \WC_Order $order Order object.
      */
     function( $order ) {
         echo '<div class="order-overview-intro">';

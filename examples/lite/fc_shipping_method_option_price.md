@@ -9,7 +9,7 @@ add_filter( 'fc_shipping_method_option_price',
      * Customize shipping method price display.
      *
      * @param mixed $method_costs Method costs.
-     * @param WC_Shipping_Rate $method Method.
+     * @param \WC_Shipping_Rate $method Method.
      * @return mixed Filtered value.
      */
     function( $method_costs, $method ) {
@@ -28,7 +28,7 @@ add_filter( 'fc_shipping_method_has_cost',
      * Always show cost for all shipping methods.
      *
      * @param mixed $value Value to filter.
-     * @param WC_Shipping_Rate $method Method.
+     * @param \WC_Shipping_Rate $method Method.
      * @return mixed Filtered value.
      */
     function( $value, $method ) {

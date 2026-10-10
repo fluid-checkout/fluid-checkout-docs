@@ -29,3 +29,21 @@ do_action( 'fc_pro_order_received_successful', $order );
 ## Source
 
 `templates/fc-pro/order-received/checkout/thankyou.php`
+
+## Examples
+
+```php
+add_action( 'fc_pro_order_received_successful',
+    /**
+     * Add custom message.
+     *
+     * @param \WC_Order $order Order object.
+     */
+    function( $order ) {
+        echo '<div style="text-align: center;" class="custom-message">';
+        echo '<p>' . esc_html__( 'Custom message.', 'text-domain' ) . '</p>';
+        echo '</div>';
+    },
+    10
+);
+```

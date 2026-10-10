@@ -29,3 +29,20 @@ apply_filters( 'fc_substep_save_button_classes', $classes );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_substep_save_button_classes',
+    /**
+     * Add custom classes to substep save button.
+     *
+     * @param string $classes CSS classes. Default button.
+     * @return string Filtered value.
+     */
+    function( $classes ) {
+        return $classes . ' custom-save-button';
+    },
+    10
+);
+```

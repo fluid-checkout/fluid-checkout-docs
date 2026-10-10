@@ -29,3 +29,21 @@ apply_filters( 'fc_wrapper_classes', $classes );
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-checkout.php)
+
+## Examples
+
+```php
+add_filter( 'fc_wrapper_classes',
+    /**
+     * Add custom wrapper classes.
+     *
+     * @param string $classes CSS classes. Default empty string.
+     * @return string Filtered value.
+     */
+    function( $classes ) {
+        $classes .= ' custom-checkout-wrapper';
+        return $classes;
+    },
+    10
+);
+```

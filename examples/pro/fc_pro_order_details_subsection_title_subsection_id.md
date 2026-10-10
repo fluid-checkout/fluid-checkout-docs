@@ -5,10 +5,10 @@ add_filter( 'fc_pro_order_details_subsection_title_order_notes',
     /**
      * Customize the Order Notes subsection title.
      *
-     * @param string $title The subsection title.
+     * @param string $subsection_title The subsection title.
      * @return string Filtered value.
      */
-    function( $title ) {
+    function( $subsection_title ) {
         return __( 'Your Special Instructions', 'text-domain' );
     },
     10

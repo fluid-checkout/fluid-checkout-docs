@@ -27,3 +27,21 @@ This hook does not pass any parameters.
 ## Source
 
 `templates/fc-pro/cart/cart/cart.php`
+
+## Examples
+
+```php
+add_action( 'fc_pro_cart_after',
+    /**
+     * Add cart tracking code.
+     */
+    function() {
+        if ( ! is_cart() ) { return; }
+
+        echo '<script>';
+        echo 'console.log("Cart page loaded");';
+        echo '</script>';
+    },
+    10
+);
+```

@@ -29,3 +29,21 @@ apply_filters( 'fc_hide_optional_fields_skip_by_class', $skip );
 ## Source
 
 [`inc/checkout-hide-optional-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-hide-optional-fields.php)
+
+## Examples
+
+```php
+add_filter( 'fc_hide_optional_fields_skip_by_class',
+    /**
+     * Add custom class to skip list.
+     *
+     * @param array $skip Whether to skip the default behavior.
+     * @return array Filtered value.
+     */
+    function( $skip ) {
+        $skip[] = 'custom-class';
+        return $skip;
+    },
+    10
+);
+```

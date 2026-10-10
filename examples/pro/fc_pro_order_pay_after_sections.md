@@ -3,7 +3,7 @@ add_action( 'fc_pro_order_pay_after_sections',
     /**
      * Add help text after order pay sections.
      *
-     * @param WC_Order $order The WooCommerce order object being processed.
+     * @param \WC_Order $order Order object.
      */
     function( $order ) {
         echo '<div class="order-pay-help">';

@@ -31,3 +31,23 @@ apply_filters( 'fc_shipping_method_option_image_markup', $html, $method, $method
 ## Source
 
 [`inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php)
+
+## Examples
+
+```php
+add_filter( 'fc_shipping_method_option_image_markup',
+    /**
+     * Customize shipping method image wrapper adding custom class.
+     *
+     * @param string $html HTML markup.
+     * @param \WC_Shipping_Rate $method Method.
+     * @param string $method_image_html Method image html.
+     * @return string Filtered value.
+     */
+    function( $html, $method, $method_image_html ) {
+        return '<span class="custom-class shipping-method__option-image">%s</span>';
+    },
+    10,
+    3
+);
+```

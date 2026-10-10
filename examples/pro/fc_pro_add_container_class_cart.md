@@ -3,10 +3,10 @@ add_filter( 'fc_pro_add_container_class_cart',
     /**
      * Enable FC container class for cart.
      *
-     * @param bool $add_container Whether to add the container class. Defaults to false.
+     * @param bool $value Whether add container class cart. Default false.
      * @return bool Filtered value.
      */
-    function( $add_container ) {
+    function( $value ) {
         return true;
     },
     10

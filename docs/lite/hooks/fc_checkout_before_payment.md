@@ -29,3 +29,19 @@ do_action( 'fc_checkout_before_payment', $checkout );
 ## Source
 
 [`templates/fc/checkout-steps/checkout/payment.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/payment.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_before_payment',
+    /**
+     * Add payment intro.
+     *
+     * @param \WC_Checkout $checkout Checkout object.
+     */
+    function( $checkout ) {
+        echo '<p>Select your payment method</p>';
+    },
+    10
+);
+```

@@ -29,3 +29,23 @@ apply_filters( 'fc_is_checkout_page_or_fragment', $value );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_is_checkout_page_or_fragment',
+    /**
+     * Mark custom page as a checkout page.
+     *
+     * @param bool $value Value to filter. Default false.
+     * @return bool Filtered value.
+     */
+    function( $value ) {
+        if ( is_page( 'custom-checkout' ) ) {
+            return true;
+        }
+        return $value;
+    },
+    10
+);
+```

@@ -5,7 +5,7 @@ add_action( 'fc_pro_after_cart_section_cart_items',
     /**
      * Add promotional banner after cart items section.
      *
-     * @param string $section_id The ID of the cart section being rendered.
+     * @param string $section_id Section ID.
      */
     function( $section_id ) {
         echo '<div class="promotional-banner">';

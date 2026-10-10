@@ -5,10 +5,10 @@ add_filter( 'fc_pro_enable_compat_theme_twentytwentyfive',
     /**
      * Disable Twenty Twenty-Five theme compatibility.
      *
-     * @param bool $is_enabled Whether the theme compatibility file should be loaded. Defaults to true.
+     * @param bool $enabled Whether to load the compatibility module for a specific theme. Default true.
      * @return bool Filtered value.
      */
-    function( $is_enabled ) {
+    function( $enabled ) {
         return false;
     },
     10

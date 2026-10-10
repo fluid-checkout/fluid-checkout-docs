@@ -3,7 +3,7 @@ add_action( 'fc_pro_order_received_notice_after',
     /**
      * Add promotional message before order received notice.
      *
-     * @param WC_Order $order The order object.
+     * @param \WC_Order $order Order object.
      */
     function( $order ) {
         echo '<div class="order-received-promo">';

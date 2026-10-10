@@ -3,8 +3,8 @@ add_filter( 'fc_pro_order_pay_page_title',
     /**
      * Customize order pay page title.
      *
-     * @param string $title The page title. Defaults to “Pay for order”.
-     * @param WC_Order $order The order object.
+     * @param string $title Title text.
+     * @param \WC_Order $order Order object.
      * @return string Filtered value.
      */
     function( $title, $order ) {

@@ -29,3 +29,20 @@ apply_filters( 'fc_shipping_method_display_package_content_substep_text_lines', 
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_shipping_method_display_package_content_substep_text_lines',
+    /**
+     * Hide package content in substep text.
+     *
+     * @param bool $text Text to display. Default true.
+     * @return bool Filtered value.
+     */
+    function( $text ) {
+        return false;
+    },
+    10
+);
+```

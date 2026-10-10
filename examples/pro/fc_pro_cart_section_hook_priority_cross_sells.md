@@ -3,16 +3,16 @@ add_filter( 'fc_pro_cart_section_hook_priority_cross_sells',
     /**
      * Move cross-sells section to the end.
      *
-     * @param array $priority Array with 3 elements: array( 'hook_name', 'callback', priority_number )
-     * @return array Filtered value.
+     * @param mixed $value Filtered value.
+     * @return mixed Filtered value.
      */
-    function( $priority ) {
+    function( $value ) {
         // Move to after cart actions
-        if ( 'fc_pro_cart_sections' === $priority[0] && 30 === $priority[2] ) {
-            $priority[2] = 120;
+        if ( 'fc_pro_cart_sections' === $value[0] && 30 === $value[2] ) {
+            $value[2] = 120;
         }
 
-        return $priority;
+        return $value;
     },
     10
 );

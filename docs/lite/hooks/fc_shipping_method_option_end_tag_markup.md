@@ -29,3 +29,20 @@ apply_filters( 'fc_shipping_method_option_end_tag_markup', $html );
 ## Source
 
 [`templates/compat/plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/compat/plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php)
+
+## Examples
+
+```php
+add_filter( 'fc_shipping_method_option_end_tag_markup',
+    /**
+     * Add custom content after shipping methods.
+     *
+     * @param string $html HTML markup. Default.
+     * @return string Filtered value.
+     */
+    function( $html ) {
+        return '</ul><!-- End shipping methods -->';
+    },
+    10
+);
+```

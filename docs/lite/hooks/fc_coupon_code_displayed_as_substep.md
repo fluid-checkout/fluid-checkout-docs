@@ -29,3 +29,20 @@ apply_filters( 'fc_coupon_code_displayed_as_substep', $enabled );
 ## Source
 
 [`inc/checkout-coupon-codes.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-coupon-codes.php)
+
+## Examples
+
+```php
+add_filter( 'fc_coupon_code_displayed_as_substep',
+    /**
+     * Disable coupon code substep display.
+     *
+     * @param bool $enabled Whether the feature is enabled. Default true.
+     * @return bool Filtered value.
+     */
+    function( $enabled ) {
+        return false;
+    },
+    10
+);
+```

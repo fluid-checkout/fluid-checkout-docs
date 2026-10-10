@@ -5,7 +5,7 @@ add_action( 'fc_pro_after_order_details_section_customer_information',
     /**
      * Add help text after customer information section.
      *
-     * @param string $section_id The ID of the order details section being rendered.
+     * @param string $section_id Section ID.
      */
     function( $section_id ) {
         echo '<div class="customer-info-help">';

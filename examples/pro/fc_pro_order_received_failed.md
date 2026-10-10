@@ -3,7 +3,7 @@ add_action( 'fc_pro_order_received_failed',
     /**
      * Add support contact for failed orders.
      *
-     * @param WC_Order $order The failed order object.
+     * @param \WC_Order $order Order object.
      */
     function( $order ) {
             echo '<div style="text-align: center;" class="failed-order-support">';

@@ -3,7 +3,7 @@ add_filter( 'fc_pro_cart_removed_item_message',
     /**
      * Customize removed item message.
      *
-     * @param string $message The removed item message template (should contain a %s placeholder for the product name).
+     * @param string $message Message text.
      * @return string Filtered value.
      */
     function( $message ) {

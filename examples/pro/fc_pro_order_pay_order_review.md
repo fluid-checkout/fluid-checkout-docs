@@ -3,7 +3,7 @@ add_action( 'fc_pro_order_pay_order_review',
     /**
      * Add payment deadline notice to order review.
      *
-     * @param WC_Order $order The WooCommerce order object being paid.
+     * @param \WC_Order $order Order object.
      */
     function( $order ) {
         $order_date = $order->get_date_created();

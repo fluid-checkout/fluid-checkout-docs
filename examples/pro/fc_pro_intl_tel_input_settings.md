@@ -3,14 +3,14 @@ add_filter( 'fc_pro_intl_tel_input_settings',
     /**
      * Customize international phone field settings.
      *
-     * @param array $settings The intl-tel-input settings array containing configuration options.
+     * @param array $intl_tel_input_settings The intl tel input settings.
      * @return array Filtered value.
      */
-    function( $settings ) {
+    function( $intl_tel_input_settings ) {
         // add custom data
-        $settings['customData'] = 'custom_data';
+        $intl_tel_input_settings['customData'] = 'custom_data';
 
-        return $settings;
+        return $intl_tel_input_settings;
     },
     10
 );

@@ -36,3 +36,22 @@ apply_filters( 'fc_pro_order_details_subsection_title_{subsection_id}', $subsect
 ## Source
 
 `inc/order-details.php`
+
+## Examples
+
+In `fc_pro_order_details_subsection_title_{subsection_id}`, `order_notes` replaces `{subsection_id}`.
+
+```php
+add_filter( 'fc_pro_order_details_subsection_title_order_notes',
+    /**
+     * Customize the Order Notes subsection title.
+     *
+     * @param string $subsection_title The subsection title.
+     * @return string Filtered value.
+     */
+    function( $subsection_title ) {
+        return __( 'Your Special Instructions', 'text-domain' );
+    },
+    10
+);
+```

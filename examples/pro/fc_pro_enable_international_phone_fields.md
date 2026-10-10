@@ -3,10 +3,10 @@ add_filter( 'fc_pro_enable_international_phone_fields',
     /**
      * Disable international phone fields.
      *
-     * @param bool $is_enabled Whether international phone fields are enabled. Default value comes from plugin settings.
+     * @param bool $enabled Whether international phone fields are enabled.
      * @return bool Filtered value.
      */
-    function( $is_enabled ) {
+    function( $enabled ) {
         return false;
     },
     10

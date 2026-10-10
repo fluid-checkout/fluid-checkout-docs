@@ -5,19 +5,19 @@ add_filter( 'fc_pro_order_pay_substep_order_notes_text_lines',
     /**
      * Add custom text lines to order notes substep.
      *
-     * @param array $text_lines Array of review text lines. Defaults to empty array.
-     * @param WC_Order $order The order object.
+     * @param array $value Filtered value. Default empty array.
+     * @param \WC_Order $order Order object.
      * @return array Filtered value.
      */
-    function( $text_lines, $order ) {
+    function( $value, $order ) {
         // Add order date for reference
         $order_date = $order->get_date_created();
 
         if ( $order_date ) {
-            $text_lines[] = __( 'Order Date:', 'text-domain' ) . ' ' . $order_date->date_i18n( get_option( 'date_format' ) );
+            $value[] = __( 'Order Date:', 'text-domain' ) . ' ' . $order_date->date_i18n( get_option( 'date_format' ) );
         }
 
-        return $text_lines;
+        return $value;
     },
     10,
     2

@@ -29,3 +29,20 @@ apply_filters( 'fc_apply_button_colors_styles', $value );
 ## Source
 
 [`inc/design-templates.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/design-templates.php)
+
+## Examples
+
+```php
+add_filter( 'fc_apply_button_colors_styles',
+    /**
+     * Enable custom button colors.
+     *
+     * @param bool $value Value to filter. Default false.
+     * @return bool Filtered value.
+     */
+    function( $value ) {
+        return true;
+    },
+    10
+);
+```

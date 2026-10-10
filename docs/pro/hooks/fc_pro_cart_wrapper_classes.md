@@ -29,3 +29,20 @@ apply_filters( 'fc_pro_cart_wrapper_classes', $classes );
 ## Source
 
 `templates/fc-pro/cart/cart/cart.php`
+
+## Examples
+
+```php
+add_filter( 'fc_pro_cart_wrapper_classes',
+    /**
+     * Add custom class to cart wrapper.
+     *
+     * @param string $classes CSS classes. Default 'site-main'.
+     * @return string Filtered value.
+     */
+    function( $classes ) {
+        return $classes . ' custom-cart-wrapper';
+    },
+    10
+);
+```

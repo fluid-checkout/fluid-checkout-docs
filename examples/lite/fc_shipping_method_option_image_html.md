@@ -4,7 +4,7 @@ add_filter( 'fc_shipping_method_option_image_html',
      * Add shipping method images.
      *
      * @param string $html HTML markup. Default empty string.
-     * @param WC_Shipping_Rate $method Method.
+     * @param \WC_Shipping_Rate $method Method.
      * @return string Filtered value.
      */
     function( $html, $method ) {

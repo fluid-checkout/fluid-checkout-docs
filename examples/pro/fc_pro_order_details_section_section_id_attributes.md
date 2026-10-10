@@ -5,12 +5,12 @@ add_filter( 'fc_pro_order_details_section_payment_method_attributes',
     /**
      * Add custom attribute to payment method section.
      *
-     * @param array $attributes Array of HTML attributes.
+     * @param array $additional_attributes HTML attributes.
      * @return array Filtered value.
      */
-    function( $attributes ) {
-        $attributes['custom-attribute'] = 'payment-info';
-        return $attributes;
+    function( $additional_attributes ) {
+        $additional_attributes['custom-attribute'] = 'payment-info';
+        return $additional_attributes;
     },
     10
 );

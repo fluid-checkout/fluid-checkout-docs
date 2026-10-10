@@ -29,3 +29,20 @@ apply_filters( 'fc_coupon_code_substep_step_id', $value );
 ## Source
 
 [`inc/checkout-coupon-codes.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-coupon-codes.php)
+
+## Examples
+
+```php
+add_filter( 'fc_coupon_code_substep_step_id',
+    /**
+     * Display coupon codes in shipping step.
+     *
+     * @param string $value Value to filter. Default payment.
+     * @return string Filtered value.
+     */
+    function( $value ) {
+        return 'shipping';
+    },
+    10
+);
+```

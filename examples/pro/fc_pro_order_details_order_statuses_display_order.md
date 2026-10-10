@@ -3,11 +3,11 @@ add_filter( 'fc_pro_order_details_order_statuses_display_order',
     /**
      * Customize status display order for subscription orders.
      *
-     * @param array $status_order Array of order status keys in display order.
-     * @param WC_Order $order The order object.
-     * @return array Filtered value.
+     * @param mixed $value Filtered value.
+     * @param \WC_Order $order Order object.
+     * @return mixed Filtered value.
      */
-    function( $status_order, $order ) {
+    function( $value, $order ) {
         // Completed before other statuses
         return array( 'wc-completed', 'wc-pending', 'wc-processing' );
     },

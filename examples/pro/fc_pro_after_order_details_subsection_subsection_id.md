@@ -5,7 +5,7 @@ add_action( 'fc_pro_after_order_details_subsection_order_notes',
     /**
      * Add help text after order notes subsection.
      *
-     * @param string $subsection_id The ID of the order details subsection being rendered.
+     * @param string $subsection_id Subsection ID.
      */
     function( $subsection_id ) {
         echo '<div class="order-notes-help">';

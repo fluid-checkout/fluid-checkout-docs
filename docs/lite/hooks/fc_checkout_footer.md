@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-footer.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-footer.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_footer',
+    /**
+     * Add checkout footer content.
+     */
+    function() {
+        echo '<div class="checkout-footer">Thank you for shopping with us</div>';
+    },
+    10
+);
+```

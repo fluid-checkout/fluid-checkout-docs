@@ -29,3 +29,20 @@ apply_filters( 'fc_checkout_email_field_description', $value );
 ## Source
 
 [`inc/checkout-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-fields.php)
+
+## Examples
+
+```php
+add_filter( 'fc_checkout_email_field_description',
+    /**
+     * Customize email field description.
+     *
+     * @param string $value Value to filter.
+     * @return string Filtered value.
+     */
+    function( $value ) {
+        return __( 'We will send your order confirmation to this email address.', 'your-text-domain' );
+    },
+    10
+);
+```

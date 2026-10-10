@@ -29,3 +29,20 @@ apply_filters( 'fc_no_order_notes_order_review_notice', $notice );
 ## Source
 
 [`inc/compat/plugins/compat-plugin-yith-woocommerce-checkout-manager.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/plugins/compat-plugin-yith-woocommerce-checkout-manager.php)
+
+## Examples
+
+```php
+add_filter( 'fc_no_order_notes_order_review_notice',
+    /**
+     * Customize no order notes notice.
+     *
+     * @param string $notice Notice shown when the order notes substep has no review text.
+     * @return string Filtered value.
+     */
+    function( $notice ) {
+        return __( 'No special instructions provided.', 'my-theme' );
+    },
+    10
+);
+```

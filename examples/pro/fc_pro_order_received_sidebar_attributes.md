@@ -3,12 +3,12 @@ add_filter( 'fc_pro_order_received_sidebar_attributes',
     /**
      * Add custom data attribute to order received sidebar.
      *
-     * @param array $attributes Array of HTML attributes.
+     * @param array $sidebar_attributes HTML attributes for the sidebar element.
      * @return array Filtered value.
      */
-    function( $attributes ) {
-        $attributes['custom-sidebar'] = 'received';
-        return $attributes;
+    function( $sidebar_attributes ) {
+        $sidebar_attributes['custom-sidebar'] = 'received';
+        return $sidebar_attributes;
     },
     10
 );

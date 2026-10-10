@@ -29,3 +29,20 @@ apply_filters( 'fc_compat_wcbcf_disable_marked_input_phone_feature', $value );
 ## Source
 
 [`inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php)
+
+## Examples
+
+```php
+add_filter( 'fc_compat_wcbcf_disable_marked_input_phone_feature',
+    /**
+     * Disable marked input phone feature for WCBCF.
+     *
+     * @param bool $value Value to filter. Default false.
+     * @return bool Filtered value.
+     */
+    function( $value ) {
+        return true;
+    },
+    10
+);
+```

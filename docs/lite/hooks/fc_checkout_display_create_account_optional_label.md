@@ -29,3 +29,20 @@ apply_filters( 'fc_checkout_display_create_account_optional_label', $label );
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-account-creation.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-account-creation.php)
+
+## Examples
+
+```php
+add_filter( 'fc_checkout_display_create_account_optional_label',
+    /**
+     * Hide optional label for account creation.
+     *
+     * @param bool $label Label text. Default true.
+     * @return bool Filtered value.
+     */
+    function( $label ) {
+        return false;
+    },
+    10
+);
+```

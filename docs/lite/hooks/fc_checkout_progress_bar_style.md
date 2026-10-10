@@ -29,3 +29,20 @@ apply_filters( 'fc_checkout_progress_bar_style', $progress_bar_style );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_checkout_progress_bar_style',
+    /**
+     * Force breadcrumbs style.
+     *
+     * @param string $progress_bar_style Progress bar style slug. bars or breadcrumbs.
+     * @return string Filtered value.
+     */
+    function( $progress_bar_style ) {
+        return 'breadcrumbs';
+    },
+    10
+);
+```

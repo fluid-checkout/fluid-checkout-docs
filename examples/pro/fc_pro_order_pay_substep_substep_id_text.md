@@ -5,8 +5,8 @@ add_filter( 'fc_pro_order_pay_substep_shipping_method_text',
     /**
      * Customize shipping method substep review text.
      *
-     * @param string $html The complete substep review text HTML.
-     * @param WC_Order $order The order object.
+     * @param string $html HTML markup.
+     * @param \WC_Order $order Order object.
      * @return string Filtered value.
      */
     function( $html, $order ) {

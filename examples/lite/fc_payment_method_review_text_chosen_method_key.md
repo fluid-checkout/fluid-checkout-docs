@@ -6,7 +6,7 @@ add_filter( 'fc_payment_method_review_text_bacs',
      * Customize BACS payment method review text.
      *
      * @param string $payment_method_review_text Payment method review text.
-     * @param WC_Payment_Gateway $gateway Payment gateway object.
+     * @param \WC_Payment_Gateway $gateway Payment gateway object.
      * @return string Filtered value.
      */
     function( $payment_method_review_text, $gateway ) {

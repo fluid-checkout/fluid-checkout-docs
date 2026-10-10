@@ -3,12 +3,12 @@ add_filter( 'fc_pro_order_received_sidebar_attributes_inner',
     /**
      * Add custom-data to inner sidebar.
      *
-     * @param array $attributes Array of HTML attributes.
+     * @param array $sidebar_attributes_inner HTML attributes for the inner sidebar element.
      * @return array Filtered value.
      */
-    function( $attributes ) {
-        $attributes['custom-data'] = 'custom-data';
-        return $attributes;
+    function( $sidebar_attributes_inner ) {
+        $sidebar_attributes_inner['custom-data'] = 'custom-data';
+        return $sidebar_attributes_inner;
     },
     10
 );

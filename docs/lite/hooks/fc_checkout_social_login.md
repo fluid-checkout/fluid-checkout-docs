@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-contact-login.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-contact-login.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_social_login',
+    /**
+     * Adds div to Social Login section.
+     */
+    function() {
+        echo '<div class="social-login" style="text-align: center;">Social login</div>';
+    },
+    10
+);
+```

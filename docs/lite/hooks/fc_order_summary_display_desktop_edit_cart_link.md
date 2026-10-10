@@ -29,3 +29,20 @@ apply_filters( 'fc_order_summary_display_desktop_edit_cart_link', $enabled );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_order_summary_display_desktop_edit_cart_link',
+    /**
+     * Hide edit cart link.
+     *
+     * @param bool $enabled Whether the feature is enabled. Default true.
+     * @return bool Filtered value.
+     */
+    function( $enabled ) {
+        return false;
+    },
+    10
+);
+```

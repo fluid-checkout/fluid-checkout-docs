@@ -3,7 +3,7 @@ add_filter( 'fc_pro_cart_wrapper_classes',
     /**
      * Add custom class to cart wrapper.
      *
-     * @param string $classes Space-separated list of CSS classes.
+     * @param string $classes CSS classes. Default 'site-main'.
      * @return string Filtered value.
      */
     function( $classes ) {

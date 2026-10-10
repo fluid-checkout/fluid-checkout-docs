@@ -2,7 +2,6 @@
 add_filter( 'fc_mailcheck_suggestion_message',
     /**
      * Change the Mailcheck email typo suggestion message.
-     * @param  $message  The email typo replacement message. Should include a `%s` marker that will be replaced with the suggested email address fix.
      *
      * @param string $text Text to display.
      * @return string Filtered value.

@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-contact.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-contact.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_contact_after_fields',
+    /**
+     * Add contact fields help text.
+     */
+    function() {
+        echo '<p>We will use information to contact you about your order!</p>';
+    },
+    10
+);
+```

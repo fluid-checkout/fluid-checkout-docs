@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/compat/themes/dt-the7/checkout-page-template/checkout/page-checkout-header.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/compat/themes/dt-the7/checkout-page-template/checkout/page-checkout-header.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_header',
+    /**
+     * Add checkout header content.
+     */
+    function() {
+        echo '<div class="custom-checkout-header" style="text-align: center;">Custom checkout header content</div>';
+    },
+    10
+);
+```

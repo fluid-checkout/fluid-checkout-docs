@@ -3,7 +3,7 @@ add_filter( 'fc_pro_order_details_pending_payment_statuses',
     /**
      * Add custom payment pending status for bank transfer payments.
      *
-     * @param array $statuses Array of order status keys considered as pending payment.
+     * @param array $statuses Order statuses.
      * @return array Filtered value.
      */
     function( $statuses ) {

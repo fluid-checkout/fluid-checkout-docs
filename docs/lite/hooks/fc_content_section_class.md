@@ -29,3 +29,21 @@ apply_filters( 'fc_content_section_class', $classes );
 ## Source
 
 [`inc/checkout-page-template.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-page-template.php)
+
+## Examples
+
+```php
+add_filter( 'fc_content_section_class',
+    /**
+     * Add custom classes to content section.
+     *
+     * @param string $classes CSS classes. Default empty string.
+     * @return string Filtered value.
+     */
+    function( $classes ) {
+        $classes .= ' custom-content-wrapper';
+        return $classes;
+    },
+    10
+);
+```

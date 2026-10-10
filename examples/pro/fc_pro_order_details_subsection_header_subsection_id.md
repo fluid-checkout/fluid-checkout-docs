@@ -5,7 +5,7 @@ add_action( 'fc_pro_order_details_subsection_header_order_notes',
     /**
      * Add custom information in order notes subsection header.
      *
-     * @param string $subsection_id The ID of the order details subsection being rendered.
+     * @param string $subsection_id Subsection ID.
      */
     function( $subsection_id ) {
         echo '<div class="order-notes-custom-info">';

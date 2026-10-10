@@ -3,7 +3,7 @@ add_action( 'fc_pro_order_pay_sections',
     /**
      * Add custom order pay section.
      *
-     * @param WC_Order $order The WooCommerce order object being processed.
+     * @param \WC_Order $order Order object.
      */
     function( $order ) {
         echo '<div class="custom-order-pay-section">';

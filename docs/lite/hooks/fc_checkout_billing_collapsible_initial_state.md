@@ -29,3 +29,20 @@ apply_filters( 'fc_checkout_billing_collapsible_initial_state', $collapsible_ini
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-billing.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-billing.php)
+
+## Examples
+
+```php
+add_filter( 'fc_checkout_billing_collapsible_initial_state',
+    /**
+     * Start with billing address expanded.
+     *
+     * @param mixed $collapsible_initial_state Collapsible initial state.
+     * @return mixed Filtered value.
+     */
+    function( $collapsible_initial_state ) {
+        return 'expanded';
+    },
+    10
+);
+```

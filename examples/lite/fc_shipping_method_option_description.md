@@ -4,7 +4,7 @@ add_filter( 'fc_shipping_method_option_description',
      * Add custom descriptions to shipping methods.
      *
      * @param string $value Value to filter. Default empty string.
-     * @param WC_Shipping_Rate $method Method.
+     * @param \WC_Shipping_Rate $method Method.
      * @return string Filtered value.
      */
     function( $value, $method ) {

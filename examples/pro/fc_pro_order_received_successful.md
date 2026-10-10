@@ -3,7 +3,7 @@ add_action( 'fc_pro_order_received_successful',
     /**
      * Add custom message.
      *
-     * @param WC_Order $order The successful order object.
+     * @param \WC_Order $order Order object.
      */
     function( $order ) {
         echo '<div style="text-align: center;" class="custom-message">';

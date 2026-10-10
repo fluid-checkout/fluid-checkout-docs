@@ -5,10 +5,10 @@ add_filter( 'fc_pro_enable_compat_plugin_woocommerce-subscriptions',
     /**
      * Disable specific plugin compatibility.
      *
-     * @param bool $is_enabled Whether the plugin compatibility file should be loaded. Defaults to true.
+     * @param bool $enabled Whether to load the compatibility module for a specific plugin. Default true.
      * @return bool Filtered value.
      */
-    function( $is_enabled ) {
+    function( $enabled ) {
         return false;
     },
     10

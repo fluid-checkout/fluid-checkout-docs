@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 `templates/fc-pro/cart/cart/page-cart.php`
+
+## Examples
+
+```php
+add_action( 'fc_pro_cart_after_main_section_wrapper',
+    /**
+     * Add custom information.
+     */
+    function() {
+        echo '<div class="custom-info">Custom information</div>';
+    },
+    10
+);
+```
