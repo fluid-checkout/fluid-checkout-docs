@@ -11,7 +11,7 @@ pagination_next: null
 
 # Changelog
 
-This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+This project follows the [changelog format and semantic version numbers](/changelog-format/).
 
 ## 2.1.2 - 2026-08-21 {/* #2-1-2 */}
 

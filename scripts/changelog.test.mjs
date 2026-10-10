@@ -19,6 +19,7 @@ import {
   relatedChangelogCallout,
   relatedChangelogLine,
   relatedChangelogTitle,
+  renderChangelogFormatPage,
   renderChangelogPage,
   resolveRelatedChangelogs,
   versionAnchor,
@@ -133,7 +134,8 @@ test('changelog.md preamble is dropped and the readme copy wins', () => {
   assert.match(page, /slug: \/changelog/);
   assert.match(page, /^# Changelog$/m);
   assert.doesNotMatch(page, /Looking for /);
-  assert.match(page, /This project follows \[Semantic Versioning\]\(https:\/\/semver\.org\/spec\/v2\.0\.0\.html\)\./);
+  assert.match(page, /This project follows the \[changelog format and semantic version numbers\]\(\/changelog-format\/\)\./);
+  assert.doesNotMatch(page, /semver\.org/);
   assert.match(page, /^## 1\.2\.3 - 2024-01-01 \{\/\* #1-2-3 \*\/\}$/m);
   assert.match(page, /^## 1\.2\.0 – 2022-02-05 \(first public release\) \{\/\* #1-2-0 \*\/\}$/m);
   assert.match(page, /\* Added: From readme\./);
@@ -206,7 +208,7 @@ test('relatedChangelogs adds a trailing-slash link and is omitted when unset', (
     changelog: false,
   }, related);
   assert.ok(page.indexOf('# Changelog') < page.indexOf('Looking for Fluid Checkout PRO changes?'));
-  assert.ok(page.indexOf('Looking for Fluid Checkout PRO changes?') < page.indexOf('Semantic Versioning'));
+  assert.ok(page.indexOf('Looking for Fluid Checkout PRO changes?') < page.indexOf('changelog format and semantic version numbers'));
   assert.match(page, /:::info\[Using Fluid Checkout PRO\?\]\n\nLooking for Fluid Checkout PRO changes\? See the \[PRO changelog\]\(\/pro\/changelog\/\)\.\n\n:::/);
 });
 
@@ -332,7 +334,8 @@ test('published plugin changelogs keep every source version and the readme copy'
       .filter((id) => !legacyIds.some((legacyId) => id.startsWith(`${legacyId}-`)));
     assert.deepEqual(anchors, versions.map(versionAnchor));
 
-    assert.match(loaded.page, /This project follows \[Semantic Versioning\]/);
+    assert.match(loaded.page, /This project follows the \[changelog format and semantic version numbers\]\(\/changelog-format\/\)\./);
+    assert.doesNotMatch(loaded.page, /semver\.org/);
     assert.doesNotMatch(loaded.page, /To avoid duplicate work/);
     assert.doesNotMatch(loaded.page, /after a few iterations/);
     assert.doesNotMatch(loaded.page, /All notable changes to this project/);
@@ -409,4 +412,49 @@ test('published plugin changelogs keep every source version and the readme copy'
     lite: 101,
     pro: 77,
   });
+});
+
+function markdownFiles(dir) {
+  /** @type {string[]} */
+  const files = [];
+  for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...markdownFiles(full));
+    } else if (entry.name.endsWith('.md') || entry.name.endsWith('.mdx')) {
+      files.push(full);
+    }
+  }
+  return files;
+}
+
+test('changelog format page is generated and is the only published semver.org link', () => {
+  const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
+  const page = renderChangelogFormatPage(catalog.plugins);
+  const pagePath = path.join(root, 'src/pages/changelog-format.mdx');
+  assert.equal(fs.readFileSync(pagePath, 'utf8'), page, 'changelog format page is stale; run npm run generate');
+  assert.match(page, /^title: "Changelog format and semantic version numbers"$/m);
+  assert.match(page, /^description: "How Fluid Checkout version numbers change, and where to find each product changelog\."$/m);
+  assert.match(page, /\[Semantic Versioning\]\(https:\/\/semver\.org\/\)/);
+  assert.match(page, /features are removed/);
+  assert.match(page, /\(i\.e\. 1\.5\.0-beta-1\)/);
+  assert.doesNotMatch(page, /feature are removed/);
+  assert.match(page, /\[Fluid Checkout Lite\]\(\/lite\/changelog\/\)/);
+  assert.match(page, /\[Fluid Checkout PRO\]\(\/pro\/changelog\/\)/);
+  assert.match(page, /\[EU-VAT Assistant\]\(\/eu-vat\/changelog\/\)/);
+  assert.match(page, /\[Address Book\]\(\/pro\/changelog\/#address-book\) \(part of the Fluid Checkout PRO changelog\)/);
+  assert.match(page, /\[Google Address Autocomplete\]\(\/pro\/changelog\/#google-address-autocomplete\) \(part of the Fluid Checkout PRO changelog\)/);
+  const lite = page.indexOf('[Fluid Checkout Lite](/lite/changelog/)');
+  const pro = page.indexOf('[Fluid Checkout PRO](/pro/changelog/)');
+  const euVat = page.indexOf('[EU-VAT Assistant](/eu-vat/changelog/)');
+  const addressBook = page.indexOf('[Address Book](/pro/changelog/#address-book)');
+  const autocomplete = page.indexOf('[Google Address Autocomplete](/pro/changelog/#google-address-autocomplete)');
+  assert.ok(lite < pro && pro < euVat && euVat < addressBook && addressBook < autocomplete);
+
+  const published = [
+    ...markdownFiles(path.join(root, 'docs')),
+    pagePath,
+  ];
+  const withSemver = published.filter((file) => fs.readFileSync(file, 'utf8').includes('semver.org'));
+  assert.deepEqual(withSemver.map((file) => path.relative(root, file)), ['src/pages/changelog-format.mdx']);
 });

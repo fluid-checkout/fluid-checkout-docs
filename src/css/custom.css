@@ -328,6 +328,12 @@ h6 {
   overflow-wrap: anywhere;
 }
 
+/* Match the docs breadcrumb size on the standalone changelog-format page. */
+.changelog-format-breadcrumbs {
+  --ifm-breadcrumb-size-multiplier: 0.8;
+  margin-bottom: 0.8rem;
+}
+
 /*
  * Info admonitions follow the brand primary already reserved for admonitions.
  * Infima's default info color is cyan.
