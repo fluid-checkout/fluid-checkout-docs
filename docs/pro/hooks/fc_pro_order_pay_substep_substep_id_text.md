@@ -8,18 +8,16 @@ description: "Filters the review text HTML for an order pay substep."
 
 **Type:** Filter
 
-**Aliases:** `fc_pro_order_pay_substep_billing_address_text`, `fc_pro_order_pay_substep_contact_text`, `fc_pro_order_pay_substep_order_notes_text`, `fc_pro_order_pay_substep_payment_text`, `fc_pro_order_pay_substep_shipping_address_text`, `fc_pro_order_pay_substep_shipping_method_text`
-
 Filters the review text HTML for an order pay substep.
 
 The dynamic portion of the hook name, `$substep_id`, is the order pay substep ID. Possible hook names include:
 
-  - `fc_pro_order_pay_substep_billing_address_text`
-  - `fc_pro_order_pay_substep_contact_text`
-  - `fc_pro_order_pay_substep_order_notes_text`
-  - `fc_pro_order_pay_substep_payment_text`
-  - `fc_pro_order_pay_substep_shipping_address_text`
-  - `fc_pro_order_pay_substep_shipping_method_text`
+- `fc_pro_order_pay_substep_billing_address_text`
+- `fc_pro_order_pay_substep_contact_text`
+- `fc_pro_order_pay_substep_order_notes_text`
+- `fc_pro_order_pay_substep_payment_text`
+- `fc_pro_order_pay_substep_shipping_address_text`
+- `fc_pro_order_pay_substep_shipping_method_text`
 
 ## Signature
 

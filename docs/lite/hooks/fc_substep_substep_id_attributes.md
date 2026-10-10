@@ -8,12 +8,17 @@ description: "Filters additional attributes for the substep output, allowing oth
 
 **Type:** Filter
 
-**Aliases:** `fc_substep_billing_address_attributes`, `fc_substep_contact_attributes`, `fc_substep_coupon_codes_attributes`, `fc_substep_order_notes_attributes`, `fc_substep_payment_attributes`, `fc_substep_shipping_address_attributes`, `fc_substep_shipping_method_attributes`
-
 Filters additional attributes for the substep output, allowing other plugins to add or modify attributes.
 
 The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:
- - `fc_substep_contact_attributes` - `fc_substep_shipping_address_attributes` - `fc_substep_shipping_method_attributes` - `fc_substep_order_notes_attributes` - `fc_substep_billing_address_attributes` - `fc_substep_payment_attributes` - `fc_substep_coupon_codes_attributes`
+
+- `fc_substep_contact_attributes`
+- `fc_substep_shipping_address_attributes`
+- `fc_substep_shipping_method_attributes`
+- `fc_substep_order_notes_attributes`
+- `fc_substep_billing_address_attributes`
+- `fc_substep_payment_attributes`
+- `fc_substep_coupon_codes_attributes`
 
 ## Signature
 

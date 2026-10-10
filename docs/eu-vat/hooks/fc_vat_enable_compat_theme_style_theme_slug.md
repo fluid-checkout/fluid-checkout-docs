@@ -8,14 +8,13 @@ description: "Filters whether to load the checkout compatibility stylesheet for 
 
 **Type:** Filter
 
-**Aliases:** `fc_vat_enable_compat_theme_style_neighborhood`
-
 Filters whether to load the checkout compatibility stylesheet for a theme.
 
 The dynamic portion of the hook name, `$theme_slug`, is a theme directory slug. The filter runs for the parent theme (`get_template()`) and the active theme (`get_stylesheet()`). `css/compat/themes/compat-{$theme_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters.
- Possible hook names include:
 
-  - `fc_vat_enable_compat_theme_style_neighborhood`
+Possible hook names include:
+
+- `fc_vat_enable_compat_theme_style_neighborhood`
 
 ## Signature
 

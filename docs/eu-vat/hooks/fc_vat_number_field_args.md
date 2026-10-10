@@ -11,16 +11,17 @@ description: "Filters the arguments used for the VAT number field."
 Filters the arguments used for the VAT number field.
 
 These arguments are used when the field is added to checkout and address forms. When EU VAT validation is enabled, the plugin also filters this hook to change the description and field classes.
- Default keys:
 
-  - `label` (string) Field label.
-  - `optional_expand_link_lowercase` (bool) Whether the optional-field expand link is lowercase.
-  - `description` (string|null) Field description. Null when the field is required.
-  - `required` (bool) Whether the field is required.
-  - `class` (string[]) CSS classes for the field row. Defaults include `fc-vat-number-field` and `form-row-wide`.
-  - `priority` (int) Checkout field priority. Default 220.
-  - `type` (string) Input type. Default `text`.
-  - `clear` (bool) Whether the field clears floats. Default true.
+Default keys:
+
+- `label` (string) Field label.
+- `optional_expand_link_lowercase` (bool) Whether the optional-field expand link is lowercase.
+- `description` (string|null) Field description. Null when the field is required.
+- `required` (bool) Whether the field is required.
+- `class` (string[]) CSS classes for the field row. Defaults include `fc-vat-number-field` and `form-row-wide`.
+- `priority` (int) Checkout field priority. Default 220.
+- `type` (string) Input type. Default `text`.
+- `clear` (bool) Whether the field clears floats. Default true.
 
 ## Signature
 

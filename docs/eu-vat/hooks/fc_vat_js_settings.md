@@ -11,13 +11,14 @@ description: "Filters the JavaScript settings object output as `fcVATSettings`."
 Filters the JavaScript settings object output as `fcVATSettings`.
 
 Printed on checkout (except the order-received and order-pay screens), on the account edit-address and add-payment-method screens, and on the admin order edit screen.
- Default keys:
 
-  - `verVAT` (string) Plugin version.
-  - `assetsVersionVAT` (string) Asset version appended to script and style URLs.
-  - `jsPathVAT` (string) Base URL of the plugin `js` directory.
-  - `jsLibPathVAT` (string) Base URL of the plugin `js/lib` directory.
-  - `cssPathVAT` (string) Base URL of the plugin `css` directory.
+Default keys:
+
+- `verVAT` (string) Plugin version.
+- `assetsVersionVAT` (string) Asset version appended to script and style URLs.
+- `jsPathVAT` (string) Base URL of the plugin `js` directory.
+- `jsLibPathVAT` (string) Base URL of the plugin `js/lib` directory.
+- `cssPathVAT` (string) Base URL of the plugin `css` directory.
 
 ## Signature
 

@@ -1,4 +1,4 @@
-# Getting started with EU-VAT Assistant hooks
+## Getting started with EU-VAT Assistant hooks
 
 EU-VAT Assistant runs WordPress actions and filters around the checkout VAT number. Use them to normalize the number, turn a compatibility module on or off, or print something next to the field. You do not need to edit the plugin.
 
@@ -6,7 +6,7 @@ EU-VAT Assistant runs WordPress actions and filters around the checkout VAT numb
 
 ## Find a hook
 
-The [hooks reference](/eu-vat/hooks) lists every action and filter exported from the plugin. Open a hook for its type, parameters, the version that introduced it, and the PHP file that runs it.
+The [hooks reference](#filters) lists every action and filter exported from the plugin. Open a hook for its type, parameters, the version that introduced it, and the PHP file that runs it.
 
 A filter such as [`fc_vat_number_field_args`](/eu-vat/hooks/fc_vat_number_field_args) receives the current value and must return a replacement.
 

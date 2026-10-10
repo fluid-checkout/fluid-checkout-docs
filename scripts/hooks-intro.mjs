@@ -88,32 +88,3 @@ export function readHooksIntro(pluginId, baseDir) {
 
   return rewriteIntroImagePaths(body, path.dirname(introFile), baseDir).trim();
 }
-
-/**
- * Redirects from retired "Getting started" guides to the hooks index.
- * An available plugin gets one when hooks-intro/<id>/index.md exists.
- *
- * @param {{id?: string, status?: string, routeBasePath?: string}[]} plugins
- * @param {string} baseDir
- * @returns {{from: string, to: string}[]}
- */
-export function gettingStartedRedirects(plugins, baseDir) {
-  if (!Array.isArray(plugins)) {
-    return [];
-  }
-
-  return plugins.flatMap((plugin) => {
-    if (plugin?.status !== 'available' || !plugin.routeBasePath || !plugin.id) {
-      return [];
-    }
-    if (!readHooksIntro(plugin.id, baseDir)) {
-      return [];
-    }
-    return [
-      {
-        from: `/${plugin.routeBasePath}/guides/getting-started`,
-        to: `/${plugin.routeBasePath}/hooks`,
-      },
-    ];
-  });
-}

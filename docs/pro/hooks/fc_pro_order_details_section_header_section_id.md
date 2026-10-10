@@ -8,23 +8,21 @@ description: "Fires in the header of an order details section."
 
 **Type:** Action
 
-**Aliases:** `fc_pro_order_details_section_header_customer_information`, `fc_pro_order_details_section_header_delivery_information`, `fc_pro_order_details_section_header_downloads`, `fc_pro_order_details_section_header_gift_message`, `fc_pro_order_details_section_header_licenses`, `fc_pro_order_details_section_header_order_details`, `fc_pro_order_details_section_header_order_notes`, `fc_pro_order_details_section_header_order_status`, `fc_pro_order_details_section_header_order_summary`, `fc_pro_order_details_section_header_payment_method`, `fc_pro_order_details_section_header_subscriptions`
-
 Fires in the header of an order details section.
 
 The dynamic portion of the hook name, `$section_id`, is the order details section ID. Possible hook names include:
 
-  - `fc_pro_order_details_section_header_customer_information`
-  - `fc_pro_order_details_section_header_delivery_information`
-  - `fc_pro_order_details_section_header_downloads`
-  - `fc_pro_order_details_section_header_gift_message`
-  - `fc_pro_order_details_section_header_licenses`
-  - `fc_pro_order_details_section_header_order_details`
-  - `fc_pro_order_details_section_header_order_notes`
-  - `fc_pro_order_details_section_header_order_status`
-  - `fc_pro_order_details_section_header_order_summary`
-  - `fc_pro_order_details_section_header_payment_method`
-  - `fc_pro_order_details_section_header_subscriptions`
+- `fc_pro_order_details_section_header_customer_information`
+- `fc_pro_order_details_section_header_delivery_information`
+- `fc_pro_order_details_section_header_downloads`
+- `fc_pro_order_details_section_header_gift_message`
+- `fc_pro_order_details_section_header_licenses`
+- `fc_pro_order_details_section_header_order_details`
+- `fc_pro_order_details_section_header_order_notes`
+- `fc_pro_order_details_section_header_order_status`
+- `fc_pro_order_details_section_header_order_summary`
+- `fc_pro_order_details_section_header_payment_method`
+- `fc_pro_order_details_section_header_subscriptions`
 
 ## Signature
 
