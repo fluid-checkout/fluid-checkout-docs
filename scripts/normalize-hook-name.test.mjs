@@ -111,7 +111,6 @@ test('omits an alias that repeats the normalized hook name', () => {
       normalizedName: 'fc_vat_admin_notices',
       slug: 'fc_vat_admin_notices',
       plugin: {repository: null},
-      exampleImport: null,
     },
   );
   assert.equal(page.includes('**Aliases:**'), false);
@@ -132,7 +131,6 @@ test('keeps aliases that differ from the normalized hook name', () => {
       normalizedName: 'fc_vat_{current_section}_settings',
       slug: 'fc_vat_current_section_settings',
       plugin: {repository: null},
-      exampleImport: null,
     },
   );
   assert.match(page, /\*\*Aliases:\*\* `fc_vat_vat_number_settings`/);

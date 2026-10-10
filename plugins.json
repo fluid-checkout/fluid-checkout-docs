@@ -25,18 +25,29 @@
       "icon": "/img/plugins/lite.svg",
       "order": 1,
       "label": "Fluid Checkout Lite",
+      "navLabel": "Lite",
       "description": "Hooks for the free Fluid Checkout checkout plugin.",
+      "pluginPrefix": "fc",
       "hookPrefixes": ["fc_"],
-      "status": "coming-soon"
+      "status": "available",
+      "routeBasePath": "lite",
+      "repository": {
+        "url": "https://github.com/fluid-checkout/fluid-checkout",
+        "branch": "release/next-FEATURE"
+      }
     },
     {
       "id": "pro",
       "icon": "/img/plugins/pro.svg",
       "order": 2,
       "label": "Fluid Checkout PRO",
+      "navLabel": "PRO",
       "description": "Hooks for Fluid Checkout PRO.",
+      "pluginPrefix": "fc_pro",
       "hookPrefixes": ["fc_pro_", "fc_", "fc_adb_", "fc_gaa_"],
-      "status": "coming-soon"
+      "status": "available",
+      "routeBasePath": "pro",
+      "repository": null
     }
   ]
 }

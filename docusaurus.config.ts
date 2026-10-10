@@ -3,6 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import {sortPlugins} from './src/sort-plugins';
 import catalog from './plugins.json';
+import {gettingStartedRedirects} from './scripts/hooks-intro.mjs';
 
 type PluginStatus = 'available' | 'coming-soon';
 
@@ -29,6 +30,7 @@ const availablePlugins = plugins.filter(
   (plugin): plugin is PluginEntry & {routeBasePath: string} =>
     plugin.status === 'available' && Boolean(plugin.routeBasePath),
 );
+const redirects = gettingStartedRedirects(plugins, process.cwd());
 
 function envValue(name: string): string | undefined {
   const value = process.env[name]?.trim();
@@ -74,16 +76,24 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-  plugins: availablePlugins.map((plugin) => [
-    '@docusaurus/plugin-content-docs',
-    {
-      id: plugin.id,
-      path: `docs/${plugin.id}`,
-      routeBasePath: plugin.routeBasePath,
-      sidebarPath: `./sidebars/${plugin.id}.ts`,
-      exclude: ['**/README.md'],
-    },
-  ]),
+  plugins: [
+    ...availablePlugins.map((plugin) => [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: plugin.id,
+        path: `docs/${plugin.id}`,
+        routeBasePath: plugin.routeBasePath,
+        sidebarPath: `./sidebars/${plugin.id}.ts`,
+        exclude: ['**/README.md'],
+      },
+    ]),
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects,
+      },
+    ],
+  ],
   themes: useAlgolia
     ? []
     : [
