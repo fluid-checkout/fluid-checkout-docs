@@ -11,7 +11,11 @@ pagination_next: null
 
 # Changelog
 
+:::info[Lite changelog]
+
 Looking for Fluid Checkout Lite changes? See the [Lite changelog](/lite/changelog/).
+
+:::
 
 This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 

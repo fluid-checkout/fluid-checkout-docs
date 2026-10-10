@@ -43,7 +43,7 @@ export function changelogDescription(pluginLabel) {
  *
  * @param {{id?: string, relatedChangelogs?: unknown}} plugin
  * @param {{id: string, label?: string, navLabel?: string, routeBasePath?: string}[]} plugins
- * @returns {{label: string, linkLabel: string, href: string}[]}
+ * @returns {{id: string, label: string, linkLabel: string, href: string}[]}
  */
 export function resolveRelatedChangelogs(plugin, plugins) {
   const ids = plugin.relatedChangelogs;
@@ -62,6 +62,7 @@ export function resolveRelatedChangelogs(plugin, plugins) {
     const route = String(related.routeBasePath || related.id).replace(/^\/+|\/+$/g, '');
     const label = related.label || related.id;
     return {
+      id: related.id,
       label,
       linkLabel: related.navLabel || label,
       href: `/${route}/changelog/`,
@@ -75,6 +76,36 @@ export function resolveRelatedChangelogs(plugin, plugins) {
  */
 export function relatedChangelogLine(related) {
   return `Looking for ${related.label} changes? See the [${related.linkLabel} changelog](${related.href}).`;
+}
+
+/**
+ * Short admonition title. PRO is the upgrade people look for from Lite.
+ *
+ * @param {{id: string, label: string, linkLabel: string}} related
+ * @returns {string}
+ */
+export function relatedChangelogTitle(related) {
+  if (related.id === 'pro') {
+    return `Using ${related.label}?`;
+  }
+  return `${related.linkLabel} changelog`;
+}
+
+/**
+ * Highlighted cross-link, in the same place as the old plain sentence.
+ * `future.v4` only parses the bracket title form (`:::info[Title]`).
+ *
+ * @param {{id: string, label: string, linkLabel: string, href: string}} related
+ * @returns {string}
+ */
+export function relatedChangelogCallout(related) {
+  return [
+    `:::info[${relatedChangelogTitle(related)}]`,
+    '',
+    relatedChangelogLine(related),
+    '',
+    ':::',
+  ].join('\n');
 }
 
 const LEGACY_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -283,7 +314,7 @@ export function mergeChangelogs(readmeEntries, changelogEntries) {
  * @param {{id: string, label?: string}} plugin
  * @param {ChangelogEntry[]} entries
  * @param {{readme: boolean, changelog: boolean}} sources
- * @param {{label: string, linkLabel: string, href: string}[]} [related]
+ * @param {{id: string, label: string, linkLabel: string, href: string}[]} [related]
  * @param {LegacySection[]} [legacy]
  * @returns {string}
  */
@@ -323,7 +354,7 @@ export function renderChangelogPage(plugin, entries, sources, related = [], lega
   ];
 
   for (const item of related) {
-    lines.push(relatedChangelogLine(item), '');
+    lines.push(relatedChangelogCallout(item), '');
   }
 
   lines.push(SEMVER_NOTE, '');
