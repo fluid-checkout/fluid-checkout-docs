@@ -19,6 +19,26 @@ const SEMVER_NOTE =
   'This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).';
 
 /**
+ * Browser title. The visible heading and sidebar label stay "Changelog".
+ *
+ * @param {string} pluginLabel
+ * @returns {string}
+ */
+export function changelogTitle(pluginLabel) {
+  return `${pluginLabel} changelog`;
+}
+
+/**
+ * Meta description for one plugin's changelog page.
+ *
+ * @param {string} pluginLabel
+ * @returns {string}
+ */
+export function changelogDescription(pluginLabel) {
+  return `Release history for ${pluginLabel}, newest version first.`;
+}
+
+/**
  * @param {string} line
  * @returns {{version: string, dash: string, date: string, suffix: string} | null}
  */
@@ -172,9 +192,9 @@ export function renderChangelogPage(plugin, entries, sources) {
 
   const lines = [
     '---',
-    'title: Changelog',
+    `title: ${JSON.stringify(changelogTitle(label))}`,
     'sidebar_label: Changelog',
-    `description: ${JSON.stringify(`Release history for ${label}.`)}`,
+    `description: ${JSON.stringify(changelogDescription(label))}`,
     'slug: /changelog',
     'pagination_prev: null',
     'pagination_next: null',

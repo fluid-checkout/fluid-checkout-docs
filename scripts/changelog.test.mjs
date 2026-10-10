@@ -119,7 +119,9 @@ test('changelog.md preamble is dropped and the readme copy wins', () => {
     readme: true,
     changelog: true,
   });
-  assert.match(page, /^title: Changelog$/m);
+  assert.match(page, /^title: "Fluid Checkout Lite changelog"$/m);
+  assert.match(page, /^sidebar_label: Changelog$/m);
+  assert.match(page, /^description: "Release history for Fluid Checkout Lite, newest version first\."$/m);
   assert.match(page, /slug: \/changelog/);
   assert.match(page, /^# Changelog$/m);
   assert.match(page, /This project follows \[Semantic Versioning\]\(https:\/\/semver\.org\/spec\/v2\.0\.0\.html\)\./);
@@ -214,6 +216,8 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.equal(lite.merged.entries.at(-1).version, '1.2.0');
   assert.equal(lite.readmeCount, 15);
   assert.ok(lite.merged.entries.some((entry) => entry.version === '4.0.6' && entry.source === 'changelog'));
+  assert.match(lite.page, /^title: "Fluid Checkout Lite changelog"$/m);
+  assert.match(lite.page, /^description: "Release history for Fluid Checkout Lite, newest version first\."$/m);
   assert.match(lite.page, /\{\/\* #4-2-7 \*\/\}/);
   assert.match(lite.page, /Add &lt;field>/);
   assert.match(lite.page, /`fc_expansible_section_toggle_label_\{\$key\}_add_optional_text`/);
@@ -225,6 +229,8 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.equal(pro.merged.entries[0].version, '4.0.6');
   assert.equal(pro.merged.entries.at(-1).version, '1.2.0');
   assert.equal(pro.merged.entries.at(-1).suffix, '(first public release)');
+  assert.match(pro.page, /^title: "Fluid Checkout PRO changelog"$/m);
+  assert.match(pro.page, /^description: "Release history for Fluid Checkout PRO, newest version first\."$/m);
   assert.match(pro.page, /^## 1\.2\.0 – 2022-02-05 \(first public release\) \{\/\* #1-2-0 \*\/\}$/m);
   assert.match(pro.page, /Minimum required version for Fluid Checkout Lite is 4\.2\.0/);
   assert.equal(pro.readmeCount, 7);
@@ -233,6 +239,8 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.equal(euVat.changelogCount, 0);
   assert.equal(euVat.merged.entries[0].version, '2.1.2');
   assert.equal(euVat.merged.entries.at(-1).version, '0.1.0');
+  assert.match(euVat.page, /^title: "EU-VAT Assistant changelog"$/m);
+  assert.match(euVat.page, /^description: "Release history for EU-VAT Assistant, newest version first\."$/m);
   assert.match(euVat.page, /from data\/eu-vat\/readme\.txt\. Do not edit/);
   assert.doesNotMatch(euVat.page, /changelog\.md/);
 

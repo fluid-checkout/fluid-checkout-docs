@@ -3,6 +3,10 @@ import Head from '@docusaurus/Head';
 import {PageMetadata} from '@docusaurus/theme-common';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
 
+/**
+ * Individual hook pages are noindex. The plugin hub, All hooks, and the
+ * changelog stay indexable, and the sitemap keeps those pages.
+ */
 function isIndividualHookPage(docId: string): boolean {
   return docId.startsWith('hooks/') && docId !== 'hooks/index';
 }

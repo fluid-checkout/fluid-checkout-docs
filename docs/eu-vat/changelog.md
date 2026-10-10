@@ -1,7 +1,7 @@
 ---
-title: Changelog
+title: "EU-VAT Assistant changelog"
 sidebar_label: Changelog
-description: "Release history for EU-VAT Assistant."
+description: "Release history for EU-VAT Assistant, newest version first."
 slug: /changelog
 pagination_prev: null
 pagination_next: null

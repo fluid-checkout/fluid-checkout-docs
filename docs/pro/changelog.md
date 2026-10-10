@@ -1,7 +1,7 @@
 ---
-title: Changelog
+title: "Fluid Checkout PRO changelog"
 sidebar_label: Changelog
-description: "Release history for Fluid Checkout PRO."
+description: "Release history for Fluid Checkout PRO, newest version first."
 slug: /changelog
 pagination_prev: null
 pagination_next: null

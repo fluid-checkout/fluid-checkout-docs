@@ -102,7 +102,7 @@ Release notes for each plugin are generated. Put the source files next to the ho
 - `data/<plugin>/readme.txt` — the plugin `readme.txt`. Only the `== Changelog ==` section is used. Those are the newest releases.
 - `data/<plugin>/changelog.md` — older releases. Leave this file out when the plugin repository has no `changelog.md`. EU-VAT Assistant is in that situation.
 
-`npm run generate` writes `docs/<plugin>/changelog.md`. Readme entries stay first, in the order they appear in `readme.txt`. Entries from `changelog.md` follow. A version that is in both files is published from `readme.txt` and the `changelog.md` copy is dropped. The page does not include the `changelog.md` notes about where entries are written first. It does say that the project follows semantic versioning. Each version heading is an anchor, such as `#4-2-7` for 4.2.7.
+`npm run generate` writes `docs/<plugin>/changelog.md`. Readme entries stay first, in the order they appear in `readme.txt`. Entries from `changelog.md` follow. A version that is in both files is published from `readme.txt` and the `changelog.md` copy is dropped. The page does not include the `changelog.md` notes about where entries are written first. It does say that the project follows semantic versioning. Each version heading is an anchor, such as `#4-2-7` for 4.2.7. The browser title is `<plugin label> changelog`, for example `Fluid Checkout Lite changelog`. The sidebar label and page heading stay Changelog.
 
 Do not edit `docs/<plugin>/changelog.md`. Replace the source files and run `npm run generate`.
 
@@ -126,7 +126,7 @@ Local search (`@easyops-cn/docusaurus-search-local`) is on by default. To switch
 
 ## Hosting
 
-GitHub Pages deploys from GitHub Actions on every push to `main` (`.github/workflows/deploy.yml`). `static/CNAME` is `docs.fluidcheckout.com`. The Pages source is already set to GitHub Actions. `static/robots.txt` allows every crawler and points at `https://docs.fluidcheckout.com/sitemap.xml`. Individual hook pages are `noindex, follow` and are omitted from the sitemap. The home page, the three plugin hubs, and the three All hooks pages stay indexable. `/search` is `noindex, follow` and is omitted from the sitemap. Hook pages are not blocked in `robots.txt`.
+GitHub Pages deploys from GitHub Actions on every push to `main` (`.github/workflows/deploy.yml`). `static/CNAME` is `docs.fluidcheckout.com`. The Pages source is already set to GitHub Actions. `static/robots.txt` allows every crawler and points at `https://docs.fluidcheckout.com/sitemap.xml`. It does not block hook pages or changelog pages. Individual hook pages are `noindex, follow` and are omitted from the sitemap. The home page, the three plugin hubs, the three All hooks pages, and the three changelog pages stay indexable and are included in the sitemap. `/search` is `noindex, follow` and is omitted from the sitemap.
 
 After this repository has its first commit on `main`, branch protection can require a pull request before merging to `main`.
 

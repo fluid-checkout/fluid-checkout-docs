@@ -32,8 +32,13 @@ function isIndividualHookPage(docId: string): boolean {
 }
 
 /**
- * BreadcrumbList for a docs page: Home, the plugin hub, All hooks, then the hook.
- * Sidebar crumbs stay as they are. This replaces the one-item list the theme emits.
+ * BreadcrumbList for a docs page. Sidebar crumbs stay as they are.
+ * This replaces the one-item list the theme emits.
+ *
+ * - plugin hub: Home > plugin
+ * - All hooks: Home > plugin > All hooks
+ * - hook page: Home > plugin > All hooks > hook
+ * - changelog: Home > plugin > Changelog
  */
 export default function DocBreadcrumbsStructuredData(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
@@ -62,6 +67,8 @@ export default function DocBreadcrumbsStructuredData(): ReactNode {
   }
   if (onHookPage) {
     crumbs.push({name: metadata.title, item: absolute(siteUrl, metadata.permalink)});
+  } else if (metadata.id === 'changelog') {
+    crumbs.push({name: 'Changelog', item: absolute(siteUrl, `/${route}/changelog/`)});
   } else if (!onHooksIndex && metadata.id !== 'index') {
     crumbs.push({name: metadata.title, item: absolute(siteUrl, metadata.permalink)});
   }
