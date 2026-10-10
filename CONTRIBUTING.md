@@ -26,13 +26,13 @@ Do not edit `docs/<plugin>/hooks/` or `sidebars/<plugin>.hooks.json` by hand. Bo
 | --- | --- |
 | `data/<plugin>/actions.json` | wp-hooks/generator 1.0.x document |
 | `data/<plugin>/filters.json` | wp-hooks/generator 1.0.x document |
-| `plugins.json` | Plugin id, `pluginPrefix`, docs route, and whether the Git repository is public |
+| `plugins.json` | Plugin id, `pluginPrefix`, `hookPrefixes`, docs route, and whether the Git repository is public |
 
 `npm run build` runs `npm run generate` before Docusaurus. Generation reads every plugin with `"status": "available"` that has JSON under `data/<plugin>/`.
 
 A new plugin needs:
 
-- an entry in `plugins.json` with `status`, `routeBasePath`, and `pluginPrefix`
+- an entry in `plugins.json` with `status`, `routeBasePath`, `pluginPrefix`, and `hookPrefixes`
 - `sidebars/<id>.ts` (copy `sidebars/eu-vat.ts`)
 - `docs/<id>/index.md` with `slug: /`
 - `data/<id>/actions.json` and `data/<id>/filters.json`
@@ -53,6 +53,32 @@ Dynamic names from the generator are PHP expressions. They are normalized as fol
 - `'fc_vat_enable_compat_plugin_' . $plugin_slug` → `fc_vat_enable_compat_plugin_{plugin_slug}`
 - `fc_vat_' . $current_section . '_settings` (outer quotes already stripped by the generator) → `fc_vat_{current_section}_settings`
 - `self::$plugin_prefix . '_admin_notices'` → `<pluginPrefix>_admin_notices`
+
+## Which hooks are published
+
+wp-hooks/generator also records hooks the plugin calls that belong to WooCommerce and other third-party code (`woocommerce_*`, `wc_od_*`, Enfold, Germanized, SkyVerge, and similar). Those names are copied hooks. They are not Fluid Checkout hooks, and they must not appear on the docs site.
+
+`hookPrefixes` in `plugins.json` is the allowlist. The generator normalizes the PHP expression first, then keeps a hook only when that normalized name starts with one of the prefixes:
+
+| Plugin | id | `hookPrefixes` |
+| --- | --- | --- |
+| EU-VAT Assistant | `eu-vat` | `fc_vat_` |
+| Fluid Checkout Lite | `lite` | `fc_` |
+| Fluid Checkout PRO | `pro` | `fc_pro_`, `fc_` |
+
+Examples after normalization:
+
+- `fc_checkout_steps` is kept for Lite and PRO
+- `fc_pro_checkout_steps` is kept for PRO (Lite's `fc_` prefix also matches it)
+- `'fc_pro_enable_compat_plugin_' . $plugin_slug` becomes `fc_pro_enable_compat_plugin_{plugin_slug}` and is kept for PRO
+- `self::$plugin_prefix . '_admin_notices'` becomes `<pluginPrefix>_admin_notices` (for EU-VAT, `fc_vat_admin_notices`)
+- `woocommerce_checkout_fields` and `'woocommerce_' . $action` are skipped
+
+A skipped hook has no page, no row on the hooks index, and no sidebar entry. An alias is dropped when its normalized name does not match the same prefixes. An alias such as `fc_vat_enable_compat_plugin_woocommerce-germanized-pro` stays, because the name starts with `fc_vat_` and the `woocommerce` segment is the plugin slug.
+
+`npm run generate` prints the skipped hook count and each skipped name (plus dropped aliases, when any) so the list is visible in CI. A plugin with `"status": "available"` and no `hookPrefixes` fails generation instead of publishing every hook in the JSON.
+
+Lite and PRO stay `"status": "coming-soon"`. Their prefixes are already in `plugins.json`. Their docs sections are a later phase, and the generator does not write pages for them yet.
 
 ## Contract for plugin repositories
 

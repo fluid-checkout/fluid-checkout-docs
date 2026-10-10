@@ -16,6 +16,7 @@ type PluginEntry = {
   navLabel?: string;
   description: string;
   pluginPrefix?: string;
+  hookPrefixes?: string[];
   status: PluginStatus;
   routeBasePath?: string;
   repository?: RepositoryConfig | null;

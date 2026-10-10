@@ -4,6 +4,10 @@
  *
  * Reads data/<plugin>/actions.json and data/<plugin>/filters.json
  * and writes docs/<plugin>/hooks/*.md plus sidebars/<plugin>.hooks.json.
+ *
+ * A hook is published only when its normalized name starts with one of the
+ * plugin's hookPrefixes. Third-party hooks (woocommerce_*, wc_od_*, and
+ * similar) are omitted from the page, index, and sidebar.
  */
 
 import fs from 'node:fs';
@@ -13,43 +17,223 @@ import {normalizeHookName, slugifyHookName} from './normalize-hook-name.mjs';
 import {renderHookPage, renderHooksIndex, renderSidebarItems} from './render-hook.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const requestedPlugin = process.argv[2];
 
-const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
-const plugins = Array.isArray(catalog.plugins) ? catalog.plugins : [];
-
-let generatedPlugins = 0;
-
-for (const plugin of plugins) {
-  if (plugin.status !== 'available') {
-    continue;
+/**
+ * @param {string} name Normalized hook or alias name.
+ * @param {string[]} prefixes
+ * @returns {boolean}
+ */
+export function matchesHookPrefix(name, prefixes) {
+  if (typeof name !== 'string' || name.length === 0 || !Array.isArray(prefixes)) {
+    return false;
   }
-  if (requestedPlugin && plugin.id !== requestedPlugin) {
-    continue;
-  }
-
-  const dataDir = path.join(root, 'data', plugin.id);
-  const actionsPath = path.join(dataDir, 'actions.json');
-  const filtersPath = path.join(dataDir, 'filters.json');
-  if (!fs.existsSync(actionsPath) && !fs.existsSync(filtersPath)) {
-    console.warn(`No hook JSON for ${plugin.id}; skipped.`);
-    continue;
-  }
-
-  const hooks = [
-    ...loadHooks(actionsPath, 'action'),
-    ...loadHooks(filtersPath, 'filter'),
-  ];
-
-  const prepared = prepareHooks(hooks, plugin);
-  writePlugin(plugin, prepared);
-  generatedPlugins += 1;
-  console.log(`Generated ${prepared.length} hook page(s) for ${plugin.id}.`);
+  return prefixes.some((prefix) => typeof prefix === 'string' && prefix.length > 0 && name.startsWith(prefix));
 }
 
-if (generatedPlugins === 0) {
-  console.error('No plugin hook data was generated.');
-  process.exit(1);
+/**
+ * @param {{id?: string, hookPrefixes?: unknown}} plugin
+ * @returns {string[]}
+ */
+export function resolveHookPrefixes(plugin) {
+  const id = plugin?.id || 'unknown';
+  if (!Array.isArray(plugin?.hookPrefixes)) {
+    throw new Error(
+      `Plugin "${id}" is missing hookPrefixes in plugins.json. Set an allowlist such as ["fc_vat_"] so third-party hooks are not published.`,
+    );
+  }
+
+  const prefixes = plugin.hookPrefixes
+    .map((prefix) => String(prefix).trim())
+    .filter((prefix) => prefix.length > 0);
+
+  if (prefixes.length === 0) {
+    throw new Error(
+      `Plugin "${id}" is missing hookPrefixes in plugins.json. Set an allowlist such as ["fc_vat_"] so third-party hooks are not published.`,
+    );
+  }
+
+  return prefixes;
+}
+
+/**
+ * @param {object[]} hooks
+ * @param {{id?: string, pluginPrefix?: string, hookPrefixes?: string[]}} plugin
+ * @returns {{
+ *   hooks: {hook: object, name: string, slug: string, type: string, summary: string}[],
+ *   skipped: {raw: string, name: string}[],
+ *   droppedAliases: {hook: string, raw: string, name: string}[],
+ *   prefixes: string[],
+ * }}
+ */
+export function prepareHooks(hooks, plugin) {
+  const pluginPrefix = plugin.pluginPrefix || '';
+  const prefixes = resolveHookPrefixes(plugin);
+  const usedSlugs = new Set();
+  /** @type {{raw: string, name: string}[]} */
+  const skipped = [];
+  /** @type {{hook: string, raw: string, name: string}[]} */
+  const droppedAliases = [];
+
+  const prepared = [];
+  for (const hook of hooks) {
+    const raw = String(hook.name ?? '');
+    const name = normalizeHookName(raw, pluginPrefix);
+    if (!matchesHookPrefix(name, prefixes)) {
+      skipped.push({raw, name});
+      continue;
+    }
+
+    const aliases = filterAliases(hook.aliases, pluginPrefix, prefixes, name, droppedAliases);
+    let slug = slugifyHookName(name);
+    if (usedSlugs.has(slug)) {
+      let suffix = 2;
+      while (usedSlugs.has(`${slug}-${suffix}`)) {
+        suffix += 1;
+      }
+      slug = `${slug}-${suffix}`;
+    }
+    usedSlugs.add(slug);
+
+    const type = hook.type || 'filter';
+    prepared.push({
+      hook: {
+        ...hook,
+        aliases,
+      },
+      name,
+      slug,
+      type,
+      summary: String(hook.doc?.description || '').replace(/\s+/g, ' ').trim(),
+    });
+  }
+
+  prepared.sort((a, b) => {
+    const key = (hookName) => hookName.replace(/[{}]/g, '').toLowerCase();
+    return key(a.name).localeCompare(key(b.name)) || a.slug.localeCompare(b.slug);
+  });
+
+  return {hooks: prepared, skipped, droppedAliases, prefixes};
+}
+
+/**
+ * Lines printed during `npm run generate` so CI shows which hooks were left out.
+ *
+ * @param {{id: string}} plugin
+ * @param {ReturnType<typeof prepareHooks>} result
+ * @returns {string[]}
+ */
+export function formatHookFilterLog(plugin, result) {
+  const prefixes = result.prefixes.join(', ');
+  /** @type {string[]} */
+  const lines = [];
+  const skippedCount = result.skipped.length;
+  const skippedLabel = `${skippedCount} ${skippedCount === 1 ? 'hook' : 'hooks'}`;
+
+  if (skippedCount === 0) {
+    lines.push(`Skipped ${skippedLabel} for ${plugin.id} (hookPrefixes: ${prefixes}).`);
+  } else {
+    lines.push(`Skipped ${skippedLabel} for ${plugin.id} (hookPrefixes: ${prefixes}):`);
+    for (const hook of result.skipped) {
+      lines.push(`  - ${formatSkippedName(hook)}`);
+    }
+  }
+
+  const droppedCount = result.droppedAliases.length;
+  if (droppedCount > 0) {
+    const droppedLabel = `${droppedCount} ${droppedCount === 1 ? 'alias' : 'aliases'}`;
+    lines.push(`Dropped ${droppedLabel} for ${plugin.id} outside hookPrefixes:`);
+    for (const alias of result.droppedAliases) {
+      lines.push(`  - ${formatSkippedName(alias)} (on ${alias.hook})`);
+    }
+  }
+
+  return lines;
+}
+
+/**
+ * @param {{raw: string, name: string}} entry
+ * @returns {string}
+ */
+function formatSkippedName(entry) {
+  const raw = String(entry.raw).trim();
+  if (entry.name === raw) {
+    return entry.name;
+  }
+  return `${entry.name} (from ${entry.raw})`;
+}
+
+/**
+ * @param {unknown} aliases
+ * @param {string} pluginPrefix
+ * @param {string[]} prefixes
+ * @param {string} hookName
+ * @param {{hook: string, raw: string, name: string}[]} droppedAliases
+ * @returns {string[]}
+ */
+function filterAliases(aliases, pluginPrefix, prefixes, hookName, droppedAliases) {
+  if (!Array.isArray(aliases)) {
+    return [];
+  }
+
+  /** @type {string[]} */
+  const kept = [];
+  for (const alias of aliases) {
+    const raw = String(alias ?? '');
+    const trimmed = raw.trim();
+    if (!trimmed) {
+      continue;
+    }
+    const name = normalizeHookName(trimmed, pluginPrefix);
+    if (!matchesHookPrefix(name, prefixes)) {
+      droppedAliases.push({hook: hookName, raw, name});
+      continue;
+    }
+    kept.push(name);
+  }
+  return kept;
+}
+
+function main() {
+  const requestedPlugin = process.argv[2];
+  const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
+  const plugins = Array.isArray(catalog.plugins) ? catalog.plugins : [];
+
+  let generatedPlugins = 0;
+
+  for (const plugin of plugins) {
+    if (plugin.status !== 'available') {
+      continue;
+    }
+    if (requestedPlugin && plugin.id !== requestedPlugin) {
+      continue;
+    }
+
+    const dataDir = path.join(root, 'data', plugin.id);
+    const actionsPath = path.join(dataDir, 'actions.json');
+    const filtersPath = path.join(dataDir, 'filters.json');
+    if (!fs.existsSync(actionsPath) && !fs.existsSync(filtersPath)) {
+      console.warn(`No hook JSON for ${plugin.id}; skipped.`);
+      continue;
+    }
+
+    const hooks = [
+      ...loadHooks(actionsPath, 'action'),
+      ...loadHooks(filtersPath, 'filter'),
+    ];
+
+    const result = prepareHooks(hooks, plugin);
+    writePlugin(plugin, result.hooks);
+    generatedPlugins += 1;
+    console.log(`Generated ${result.hooks.length} hook page(s) for ${plugin.id}.`);
+    for (const line of formatHookFilterLog(plugin, result)) {
+      console.log(line);
+    }
+  }
+
+  if (generatedPlugins === 0) {
+    console.error('No plugin hook data was generated.');
+    process.exit(1);
+  }
 }
 
 /**
@@ -74,45 +258,8 @@ function loadHooks(filePath, fallbackType) {
 }
 
 /**
- * @param {object[]} hooks
- * @param {{id: string, pluginPrefix?: string}} plugin
- */
-function prepareHooks(hooks, plugin) {
-  const prefix = plugin.pluginPrefix || '';
-  const usedSlugs = new Set();
-
-  const prepared = hooks.map((hook) => {
-    const name = normalizeHookName(hook.name, prefix);
-    let slug = slugifyHookName(name);
-    if (usedSlugs.has(slug)) {
-      let suffix = 2;
-      while (usedSlugs.has(`${slug}-${suffix}`)) {
-        suffix += 1;
-      }
-      slug = `${slug}-${suffix}`;
-    }
-    usedSlugs.add(slug);
-
-    const type = hook.type || 'filter';
-    return {
-      hook,
-      name,
-      slug,
-      type,
-      summary: String(hook.doc?.description || '').replace(/\s+/g, ' ').trim(),
-    };
-  });
-
-  prepared.sort((a, b) => {
-    const key = (name) => name.replace(/[{}]/g, '').toLowerCase();
-    return key(a.name).localeCompare(key(b.name)) || a.slug.localeCompare(b.slug);
-  });
-  return prepared;
-}
-
-/**
- * @param {{id: string, repository?: object | null}} plugin
- * @param {ReturnType<typeof prepareHooks>} prepared
+ * @param {{id: string, label?: string, repository?: object | null}} plugin
+ * @param {ReturnType<typeof prepareHooks>['hooks']} prepared
  */
 function writePlugin(plugin, prepared) {
   const hooksDir = path.join(root, 'docs', plugin.id, 'hooks');
@@ -163,4 +310,9 @@ function writePlugin(plugin, prepared) {
   const sidebarPath = path.join(root, 'sidebars', `${plugin.id}.hooks.json`);
   fs.mkdirSync(path.dirname(sidebarPath), {recursive: true});
   fs.writeFileSync(sidebarPath, `${JSON.stringify(renderSidebarItems(indexHooks), null, 2)}\n`);
+}
+
+const invokedDirectly = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (invokedDirectly) {
+  main();
 }

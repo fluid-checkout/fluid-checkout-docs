@@ -6,6 +6,7 @@
       "navLabel": "EU-VAT",
       "description": "Validate EU VAT numbers and store them with the WooCommerce order.",
       "pluginPrefix": "fc_vat",
+      "hookPrefixes": ["fc_vat_"],
       "status": "available",
       "routeBasePath": "eu-vat",
       "repository": null
@@ -14,12 +15,14 @@
       "id": "lite",
       "label": "Fluid Checkout Lite",
       "description": "Hooks for the free Fluid Checkout checkout plugin.",
+      "hookPrefixes": ["fc_"],
       "status": "coming-soon"
     },
     {
       "id": "pro",
       "label": "Fluid Checkout PRO",
       "description": "Hooks for Fluid Checkout PRO.",
+      "hookPrefixes": ["fc_pro_", "fc_"],
       "status": "coming-soon"
     }
   ]

@@ -31,7 +31,7 @@ docs/<plugin>/hooks/           # GENERATED hook pages — do not edit
 examples/<plugin>/<hook-slug>/ # optional hand-written example for one hook
 sidebars/<plugin>.ts           # sidebar for that docs instance
 sidebars/<plugin>.hooks.json   # GENERATED hook sidebar items
-plugins.json                   # plugin id, prefix, public/private repo, status
+plugins.json                   # plugin id, prefix, hookPrefixes, public/private repo, status
 static/img/                    # site icon and favicon
 static/CNAME                   # docs.fluidcheckout.com
 ```
@@ -67,6 +67,8 @@ Plugin repositories will run [wp-hooks/generator](https://github.com/wp-hooks/ge
 `data/eu-vat/*.json` is a fixture so this site builds today. The real EU-VAT export arrives after [fc-vat-assistant#89](https://github.com/fluid-checkout/fc-vat-assistant/pull/89) merges.
 
 Dynamic PHP hook names are normalized for the page title and URL. `self::$plugin_prefix` uses `pluginPrefix` from `plugins.json` (`fc_vat` for EU-VAT). Private plugins leave `repository` as `null`, so the source line is a file path with no GitHub link. Set `repository.url` and `repository.branch` only for public repositories.
+
+Each plugin's `hookPrefixes` allowlist decides which normalized names are published. EU-VAT publishes names that start with `fc_vat_`. Lite (`fc_`) and PRO (`fc_pro_` and `fc_`) are already listed in `plugins.json` and stay coming soon until their docs are added. Hooks copied from WooCommerce and other third-party code (`woocommerce_*`, `wc_od_*`, Enfold, Germanized, SkyVerge, and similar) are left out of the hook page, the index, and the sidebar. Aliases that do not match are dropped. `npm run generate` logs every skipped name. The full rule is in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Search
 
