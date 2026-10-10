@@ -28,7 +28,7 @@ apply_filters( 'fc_checkout_header_logo_home_url', $url );
 
 ## Source
 
-[`inc/compat/themes/compat-theme-hazel.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/themes/compat-theme-hazel.php)
+[`inc/compat/themes/compat-theme-Divi.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/compat/themes/compat-theme-Divi.php)
 
 ## Examples
 

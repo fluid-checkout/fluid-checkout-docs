@@ -28,4 +28,4 @@ apply_filters( 'fc_addons_catalog', $catalog );
 
 ## Source
 
-[`inc/admin/admin-setting-type-fc-addons.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/admin/admin-setting-type-fc-addons.php)
+[`inc/admin/admin-setting-type-fc-addons.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/admin/admin-setting-type-fc-addons.php)

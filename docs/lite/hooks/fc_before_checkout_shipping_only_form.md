@@ -28,7 +28,7 @@ do_action( 'fc_before_checkout_shipping_only_form', $checkout );
 
 ## Source
 
-[`templates/fc/checkout-steps/checkout/form-shipping.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-shipping.php)
+[`templates/fc/checkout-steps/checkout/form-shipping.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/checkout/form-shipping.php)
 
 ## Examples
 

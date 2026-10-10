@@ -8,12 +8,11 @@ description: "Filters the toggle label of an expansible section."
 
 **Type:** Filter
 
-**Aliases:** `fc_expansible_section_toggle_label_coupon_code`
-
 Filters the toggle label of an expansible section.
 
 The dynamic portion of the hook name, `$section_id`, refers to the expansible section ID. Possible hook names include:
- - `fc_expansible_section_toggle_label_coupon_code`
+
+- `fc_expansible_section_toggle_label_coupon_code`
 
 ## Signature
 
@@ -33,7 +32,7 @@ apply_filters( 'fc_expansible_section_toggle_label_{section_id}', $value );
 
 ## Source
 
-[`inc/checkout-coupon-codes.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-coupon-codes.php)
+[`inc/checkout-coupon-codes.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-coupon-codes.php)
 
 ## Examples
 

@@ -8,19 +8,17 @@ description: "Fires in the header of a cart section."
 
 **Type:** Action
 
-**Aliases:** `fc_pro_cart_section_header_cart_items`, `fc_pro_cart_section_header_coupon_code`, `fc_pro_cart_section_header_cross_sell_display`, `fc_pro_cart_section_header_free-gifts-for-woocommerce_display`, `fc_pro_cart_section_header_gift_card_code`, `fc_pro_cart_section_header_shipping`, `fc_pro_cart_section_header_woodmart-free-gifts_display`
-
 Fires in the header of a cart section.
 
 The dynamic portion of the hook name, `$section_id`, is the cart section ID. Possible hook names include:
 
-  - `fc_pro_cart_section_header_cart_items`
-  - `fc_pro_cart_section_header_coupon_code`
-  - `fc_pro_cart_section_header_cross_sell_display`
-  - `fc_pro_cart_section_header_free-gifts-for-woocommerce_display`
-  - `fc_pro_cart_section_header_gift_card_code`
-  - `fc_pro_cart_section_header_shipping`
-  - `fc_pro_cart_section_header_woodmart-free-gifts_display`
+- `fc_pro_cart_section_header_cart_items`
+- `fc_pro_cart_section_header_coupon_code`
+- `fc_pro_cart_section_header_cross_sell_display`
+- `fc_pro_cart_section_header_free-gifts-for-woocommerce_display`
+- `fc_pro_cart_section_header_gift_card_code`
+- `fc_pro_cart_section_header_shipping`
+- `fc_pro_cart_section_header_woodmart-free-gifts_display`
 
 ## Signature
 

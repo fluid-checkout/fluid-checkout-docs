@@ -28,7 +28,7 @@ apply_filters( 'fc_pro_order_details_overview_show_date', $value );
 
 ## Source
 
-`templates/fc-pro/order-details/order/order-details-overview.php`
+`templates/fc-pro/order-details-emails/emails/plain/email-order-details-overview.php`
 
 ## Examples
 

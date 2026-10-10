@@ -11,12 +11,13 @@ description: "Filters the admin script settings passed to `AdminEUVAT.init()` as
 Filters the admin script settings passed to `AdminEUVAT.init()` as `fcVATSettings.adminEUVAT`.
 
 Only added on admin requests.
- Default keys:
 
-  - `ajaxUrl` (string) Admin AJAX URL.
-  - `validateVatNonce` (string) Nonce for the `fc-vat-validate-eu-vat-number` action.
-  - `saveVatAndRecalculateTotalsNonce` (string) Nonce for the `fc-vat-save-vat-and-recalculate-totals` action.
-  - `updateVatMetaboxNonce` (string) Nonce for the `fc-vat-update-vat-metabox` action.
+Default keys:
+
+- `ajaxUrl` (string) Admin AJAX URL.
+- `validateVatNonce` (string) Nonce for the `fc-vat-validate-eu-vat-number` action.
+- `saveVatAndRecalculateTotalsNonce` (string) Nonce for the `fc-vat-save-vat-and-recalculate-totals` action.
+- `updateVatMetaboxNonce` (string) Nonce for the `fc-vat-update-vat-metabox` action.
 
 ## Signature
 

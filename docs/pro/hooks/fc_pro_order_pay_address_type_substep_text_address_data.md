@@ -8,14 +8,12 @@ description: "Filters the address data used in an order pay address substep."
 
 **Type:** Filter
 
-**Aliases:** `fc_pro_order_pay_billing_substep_text_address_data`, `fc_pro_order_pay_shipping_substep_text_address_data`
-
 Filters the address data used in an order pay address substep.
 
 The dynamic portion of the hook name, `$address_type`, is `billing` or `shipping`. Possible hook names include:
 
-  - `fc_pro_order_pay_billing_substep_text_address_data`
-  - `fc_pro_order_pay_shipping_substep_text_address_data`
+- `fc_pro_order_pay_billing_substep_text_address_data`
+- `fc_pro_order_pay_shipping_substep_text_address_data`
 
 ## Signature
 

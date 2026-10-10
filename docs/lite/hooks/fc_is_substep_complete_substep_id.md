@@ -8,12 +8,17 @@ description: "Filters whether a checkout substep is complete."
 
 **Type:** Filter
 
-**Aliases:** `fc_is_substep_complete_billing_address`, `fc_is_substep_complete_contact`, `fc_is_substep_complete_coupon_codes`, `fc_is_substep_complete_order_notes`, `fc_is_substep_complete_payment`, `fc_is_substep_complete_shipping_address`, `fc_is_substep_complete_shipping_method`
-
 Filters whether a checkout substep is complete.
 
 The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:
- - `fc_is_substep_complete_contact` - `fc_is_substep_complete_shipping_address` - `fc_is_substep_complete_shipping_method` - `fc_is_substep_complete_order_notes` - `fc_is_substep_complete_billing_address` - `fc_is_substep_complete_payment` - `fc_is_substep_complete_coupon_codes`
+
+- `fc_is_substep_complete_contact`
+- `fc_is_substep_complete_shipping_address`
+- `fc_is_substep_complete_shipping_method`
+- `fc_is_substep_complete_order_notes`
+- `fc_is_substep_complete_billing_address`
+- `fc_is_substep_complete_payment`
+- `fc_is_substep_complete_coupon_codes`
 
 ## Signature
 
@@ -33,7 +38,7 @@ apply_filters( 'fc_is_substep_complete_{substep_id}', $is_substep_complete );
 
 ## Source
 
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
 
 ## Examples
 

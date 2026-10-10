@@ -8,12 +8,28 @@ description: "Filters whether the substep review text includes the label for a f
 
 **Type:** Filter
 
-**Aliases:** `fc_substep_text_display_value_show_field_label_checkbox`, `fc_substep_text_display_value_show_field_label_country`, `fc_substep_text_display_value_show_field_label_date`, `fc_substep_text_display_value_show_field_label_datetime`, `fc_substep_text_display_value_show_field_label_datetime-local`, `fc_substep_text_display_value_show_field_label_email`, `fc_substep_text_display_value_show_field_label_month`, `fc_substep_text_display_value_show_field_label_number`, `fc_substep_text_display_value_show_field_label_password`, `fc_substep_text_display_value_show_field_label_radio`, `fc_substep_text_display_value_show_field_label_select`, `fc_substep_text_display_value_show_field_label_state`, `fc_substep_text_display_value_show_field_label_tel`, `fc_substep_text_display_value_show_field_label_text`, `fc_substep_text_display_value_show_field_label_textarea`, `fc_substep_text_display_value_show_field_label_time`, `fc_substep_text_display_value_show_field_label_url`, `fc_substep_text_display_value_show_field_label_week`
-
 Filters whether the substep review text includes the label for a field type.
 
 The dynamic portion of the hook name, `$field_type`, refers to the checkout field type. Custom field types also receive this hook. Possible hook names include:
- - `fc_substep_text_display_value_show_field_label_text` - `fc_substep_text_display_value_show_field_label_password` - `fc_substep_text_display_value_show_field_label_datetime` - `fc_substep_text_display_value_show_field_label_datetime-local` - `fc_substep_text_display_value_show_field_label_date` - `fc_substep_text_display_value_show_field_label_month` - `fc_substep_text_display_value_show_field_label_time` - `fc_substep_text_display_value_show_field_label_week` - `fc_substep_text_display_value_show_field_label_email` - `fc_substep_text_display_value_show_field_label_url` - `fc_substep_text_display_value_show_field_label_tel` - `fc_substep_text_display_value_show_field_label_number` - `fc_substep_text_display_value_show_field_label_checkbox` - `fc_substep_text_display_value_show_field_label_country` - `fc_substep_text_display_value_show_field_label_state` - `fc_substep_text_display_value_show_field_label_radio` - `fc_substep_text_display_value_show_field_label_select` - `fc_substep_text_display_value_show_field_label_textarea`
+
+- `fc_substep_text_display_value_show_field_label_text`
+- `fc_substep_text_display_value_show_field_label_password`
+- `fc_substep_text_display_value_show_field_label_datetime`
+- `fc_substep_text_display_value_show_field_label_datetime-local`
+- `fc_substep_text_display_value_show_field_label_date`
+- `fc_substep_text_display_value_show_field_label_month`
+- `fc_substep_text_display_value_show_field_label_time`
+- `fc_substep_text_display_value_show_field_label_week`
+- `fc_substep_text_display_value_show_field_label_email`
+- `fc_substep_text_display_value_show_field_label_url`
+- `fc_substep_text_display_value_show_field_label_tel`
+- `fc_substep_text_display_value_show_field_label_number`
+- `fc_substep_text_display_value_show_field_label_checkbox`
+- `fc_substep_text_display_value_show_field_label_country`
+- `fc_substep_text_display_value_show_field_label_state`
+- `fc_substep_text_display_value_show_field_label_radio`
+- `fc_substep_text_display_value_show_field_label_select`
+- `fc_substep_text_display_value_show_field_label_textarea`
 
 ## Signature
 
@@ -33,7 +49,7 @@ apply_filters( 'fc_substep_text_display_value_show_field_label_{field_type}', $s
 
 ## Source
 
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
 
 ## Examples
 

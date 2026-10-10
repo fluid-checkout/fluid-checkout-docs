@@ -28,7 +28,7 @@ do_action( 'fc_after_checkout_billing_only_form_inside', $checkout );
 
 ## Source
 
-[`templates/fc/checkout-steps/checkout/form-billing.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-billing.php)
+[`templates/fc/checkout-steps/checkout/form-billing.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/checkout/form-billing.php)
 
 ## Examples
 

@@ -12,7 +12,7 @@ Filters the admin notices displayed by Fluid Checkout PRO.
 
 `$plugin_prefix` is `fc_pro`, so the hook name is `fc_pro_admin_notices`. Possible hook names include:
 
-  - `fc_pro_admin_notices`
+- `fc_pro_admin_notices`
 
 ## Signature
 

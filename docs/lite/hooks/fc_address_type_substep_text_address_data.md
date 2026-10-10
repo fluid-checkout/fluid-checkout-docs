@@ -8,12 +8,12 @@ description: "Filters the address data used to build a substep review text line.
 
 **Type:** Filter
 
-**Aliases:** `fc_billing_substep_text_address_data`, `fc_shipping_substep_text_address_data`
-
 Filters the address data used to build a substep review text line.
 
 The dynamic portion of the hook name, `$address_type`, refers to the address type. Possible hook names include:
- - `fc_billing_substep_text_address_data` - `fc_shipping_substep_text_address_data`
+
+- `fc_billing_substep_text_address_data`
+- `fc_shipping_substep_text_address_data`
 
 ## Signature
 
@@ -33,7 +33,7 @@ apply_filters( 'fc_{address_type}_substep_text_address_data', $address_data );
 
 ## Source
 
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
 
 ## Examples
 

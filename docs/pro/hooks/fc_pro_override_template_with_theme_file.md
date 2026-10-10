@@ -31,7 +31,7 @@ apply_filters( 'fc_pro_override_template_with_theme_file', $override, $template,
 
 ## Source
 
-`inc/order-details.php`
+`inc/account-matching.php`
 
 ## Examples
 

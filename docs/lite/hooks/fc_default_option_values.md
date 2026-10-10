@@ -28,4 +28,4 @@ apply_filters( 'fc_default_option_values', $defaults );
 
 ## Source
 
-[`inc/settings.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/settings.php)
+[`inc/settings.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/settings.php)

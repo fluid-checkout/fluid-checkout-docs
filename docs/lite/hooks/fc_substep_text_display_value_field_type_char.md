@@ -8,12 +8,11 @@ description: "Filters the character used to mask a password field in the substep
 
 **Type:** Filter
 
-**Aliases:** `fc_substep_text_display_value_password_char`
-
 Filters the character used to mask a password field in the substep review text.
 
 The dynamic portion of the hook name, `$field_type`, refers to the checkout field type. The built-in call uses `password`. Possible hook names include:
- - `fc_substep_text_display_value_password_char`
+
+- `fc_substep_text_display_value_password_char`
 
 ## Signature
 
@@ -33,7 +32,7 @@ apply_filters( 'fc_substep_text_display_value_{field_type}_char', $value );
 
 ## Source
 
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
 
 ## Examples
 

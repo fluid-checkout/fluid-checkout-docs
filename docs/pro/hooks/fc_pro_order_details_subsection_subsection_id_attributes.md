@@ -8,14 +8,12 @@ description: "Filters the HTML attributes for an order details subsection."
 
 **Type:** Filter
 
-**Aliases:** `fc_pro_order_details_subsection_downloads_attributes`, `fc_pro_order_details_subsection_order_notes_attributes`
-
 Filters the HTML attributes for an order details subsection.
 
 The dynamic portion of the hook name, `$subsection_id`, is the order details subsection ID. Possible hook names include:
 
-  - `fc_pro_order_details_subsection_downloads_attributes`
-  - `fc_pro_order_details_subsection_order_notes_attributes`
+- `fc_pro_order_details_subsection_downloads_attributes`
+- `fc_pro_order_details_subsection_order_notes_attributes`
 
 ## Signature
 

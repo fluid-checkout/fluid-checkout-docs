@@ -8,12 +8,17 @@ description: "Filters the title of a checkout substep."
 
 **Type:** Filter
 
-**Aliases:** `fc_substep_title_billing_address`, `fc_substep_title_contact`, `fc_substep_title_coupon_codes`, `fc_substep_title_order_notes`, `fc_substep_title_payment`, `fc_substep_title_shipping_address`, `fc_substep_title_shipping_method`
-
 Filters the title of a checkout substep.
 
 The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:
- - `fc_substep_title_contact` - `fc_substep_title_shipping_address` - `fc_substep_title_shipping_method` - `fc_substep_title_order_notes` - `fc_substep_title_billing_address` - `fc_substep_title_payment` - `fc_substep_title_coupon_codes`
+
+- `fc_substep_title_contact`
+- `fc_substep_title_shipping_address`
+- `fc_substep_title_shipping_method`
+- `fc_substep_title_order_notes`
+- `fc_substep_title_billing_address`
+- `fc_substep_title_payment`
+- `fc_substep_title_coupon_codes`
 
 ## Signature
 
@@ -33,7 +38,7 @@ apply_filters( 'fc_substep_title_{substep_id}', $substep_title );
 
 ## Source
 
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
 
 ## Examples
 

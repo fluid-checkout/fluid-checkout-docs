@@ -8,12 +8,14 @@ description: "Filters whether a checkout step is complete."
 
 **Type:** Filter
 
-**Aliases:** `fc_is_step_complete_billing`, `fc_is_step_complete_contact`, `fc_is_step_complete_payment`, `fc_is_step_complete_shipping`
-
 Filters whether a checkout step is complete.
 
 The dynamic portion of the hook name, `$step_id`, refers to the checkout step ID. Additional hook names are created for steps registered by other plugins. Possible hook names include:
- - `fc_is_step_complete_contact` - `fc_is_step_complete_shipping` - `fc_is_step_complete_billing` - `fc_is_step_complete_payment`
+
+- `fc_is_step_complete_contact`
+- `fc_is_step_complete_shipping`
+- `fc_is_step_complete_billing`
+- `fc_is_step_complete_payment`
 
 ## Signature
 
@@ -34,7 +36,7 @@ apply_filters( 'fc_is_step_complete_{step_id}', $is_step_complete, $context );
 
 ## Source
 
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
 
 ## Examples
 

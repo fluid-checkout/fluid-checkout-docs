@@ -8,13 +8,11 @@ description: "Filters the title of a checkout substep."
 
 **Type:** Filter
 
-**Aliases:** `fc_substep_title_order_notes`
-
 Filters the title of a checkout substep.
 
 The dynamic portion of the hook name, `$section_id`, is the substep or section ID. Possible hook names include:
 
-  - `fc_substep_title_order_notes`
+- `fc_substep_title_order_notes`
 
 ## Signature
 

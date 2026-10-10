@@ -8,12 +8,11 @@ description: "Filters the settings for one Fluid Checkout admin section."
 
 **Type:** Filter
 
-**Aliases:** `fc__settings`
-
 Filters the settings for one Fluid Checkout admin section.
 
 The dynamic portion of the hook name, `$current_section`, refers to the settings section slug. The dashboard section slug is an empty string, so the hook name is `fc__settings`. Possible hook names include:
- - `fc__settings`
+
+- `fc__settings`
 
 ## Signature
 
@@ -34,7 +33,7 @@ apply_filters( 'fc_{current_section}_settings', $settings, $current_section );
 
 ## Source
 
-[`inc/admin/admin-settings-dashboard.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/admin/admin-settings-dashboard.php)
+[`inc/admin/admin-settings-dashboard.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/admin/admin-settings-dashboard.php)
 
 ## Examples
 

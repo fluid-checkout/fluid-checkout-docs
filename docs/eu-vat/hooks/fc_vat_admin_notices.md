@@ -11,19 +11,21 @@ description: "Filters the admin notices displayed by EU-VAT Assistant."
 Filters the admin notices displayed by EU-VAT Assistant.
 
 The dynamic portion of the hook name, `self::$plugin_prefix`, is the prefix `fc_vat`, so the hook name is `fc_vat_admin_notices`. Register callbacks with `add_filter()` and return the notices array. A notice is skipped when `name` is null or that name was already dismissed.
- Each item is an associative array:
 
-  - `name` (string|null) Notice id. Required for the notice to display, and used when dismissing it.
-  - `title` (string) Optional heading.
-  - `description` (string) Notice body. May contain HTML.
-  - `error` (bool) Whether to show the notice as an error.
-  - `actions` (string[]) HTML for buttons and links.
-  - `dismissible` (bool) Whether to add a dismiss link. Default true. `dismissable` is a deprecated alias kept for backwards compatibility. It is used only when `dismissible` is omitted; if both are set, `dismissible` wins.
-  - `dismiss_label` (string) Text of the dismiss link.
-  - `paragraph_wrap` (bool) Whether to wrap the description in a paragraph. Default true. Set this to false when `description` contains block-level HTML.
- Possible hook names include:
+Each item is an associative array:
 
-  - `fc_vat_admin_notices`
+- `name` (string|null) Notice id. Required for the notice to display, and used when dismissing it.
+- `title` (string) Optional heading.
+- `description` (string) Notice body. May contain HTML.
+- `error` (bool) Whether to show the notice as an error.
+- `actions` (string[]) HTML for buttons and links.
+- `dismissible` (bool) Whether to add a dismiss link. Default true. `dismissable` is a deprecated alias kept for backwards compatibility. It is used only when `dismissible` is omitted; if both are set, `dismissible` wins.
+- `dismiss_label` (string) Text of the dismiss link.
+- `paragraph_wrap` (bool) Whether to wrap the description in a paragraph. Default true. Set this to false when `description` contains block-level HTML.
+
+Possible hook names include:
+
+- `fc_vat_admin_notices`
 
 ## Signature
 

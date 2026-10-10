@@ -8,12 +8,17 @@ description: "Fires before the fields inside a checkout substep."
 
 **Type:** Action
 
-**Aliases:** `fc_before_substep_fields_billing_address`, `fc_before_substep_fields_contact`, `fc_before_substep_fields_coupon_codes`, `fc_before_substep_fields_order_notes`, `fc_before_substep_fields_payment`, `fc_before_substep_fields_shipping_address`, `fc_before_substep_fields_shipping_method`
-
 Fires before the fields inside a checkout substep.
 
 The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:
- - `fc_before_substep_fields_contact` - `fc_before_substep_fields_shipping_address` - `fc_before_substep_fields_shipping_method` - `fc_before_substep_fields_order_notes` - `fc_before_substep_fields_billing_address` - `fc_before_substep_fields_payment` - `fc_before_substep_fields_coupon_codes`
+
+- `fc_before_substep_fields_contact`
+- `fc_before_substep_fields_shipping_address`
+- `fc_before_substep_fields_shipping_method`
+- `fc_before_substep_fields_order_notes`
+- `fc_before_substep_fields_billing_address`
+- `fc_before_substep_fields_payment`
+- `fc_before_substep_fields_coupon_codes`
 
 ## Signature
 
@@ -36,7 +41,7 @@ do_action( 'fc_before_substep_fields_{substep_id}', $step_id, $substep_id, $coll
 
 ## Source
 
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
 
 ## Examples
 

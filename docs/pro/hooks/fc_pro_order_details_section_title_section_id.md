@@ -8,23 +8,21 @@ description: "Filters the title of an order details section."
 
 **Type:** Filter
 
-**Aliases:** `fc_pro_order_details_section_title_customer_information`, `fc_pro_order_details_section_title_delivery_information`, `fc_pro_order_details_section_title_downloads`, `fc_pro_order_details_section_title_gift_message`, `fc_pro_order_details_section_title_licenses`, `fc_pro_order_details_section_title_order_details`, `fc_pro_order_details_section_title_order_notes`, `fc_pro_order_details_section_title_order_status`, `fc_pro_order_details_section_title_order_summary`, `fc_pro_order_details_section_title_payment_method`, `fc_pro_order_details_section_title_subscriptions`
-
 Filters the title of an order details section.
 
 The dynamic portion of the hook name, `$section_id`, is the order details section ID. Possible hook names include:
 
-  - `fc_pro_order_details_section_title_customer_information`
-  - `fc_pro_order_details_section_title_delivery_information`
-  - `fc_pro_order_details_section_title_downloads`
-  - `fc_pro_order_details_section_title_gift_message`
-  - `fc_pro_order_details_section_title_licenses`
-  - `fc_pro_order_details_section_title_order_details`
-  - `fc_pro_order_details_section_title_order_notes`
-  - `fc_pro_order_details_section_title_order_status`
-  - `fc_pro_order_details_section_title_order_summary`
-  - `fc_pro_order_details_section_title_payment_method`
-  - `fc_pro_order_details_section_title_subscriptions`
+- `fc_pro_order_details_section_title_customer_information`
+- `fc_pro_order_details_section_title_delivery_information`
+- `fc_pro_order_details_section_title_downloads`
+- `fc_pro_order_details_section_title_gift_message`
+- `fc_pro_order_details_section_title_licenses`
+- `fc_pro_order_details_section_title_order_details`
+- `fc_pro_order_details_section_title_order_notes`
+- `fc_pro_order_details_section_title_order_status`
+- `fc_pro_order_details_section_title_order_summary`
+- `fc_pro_order_details_section_title_payment_method`
+- `fc_pro_order_details_section_title_subscriptions`
 
 ## Signature
 

@@ -45,12 +45,10 @@ Routes:
 
 - `/` home page
 - `/eu-vat/`, `/lite/`, and `/pro/` overviews
-- `/<plugin>/hooks/` generated index. EU-VAT includes the hand-written intro above the list. Lite and PRO do not have an intro file.
+- `/<plugin>/hooks/` generated index, with the hand-written intro above the list
 - `/<plugin>/changelog/` release history, newest first
 - `/<plugin>/hooks/<hook-slug>` one page per hook
 - `/<plugin>/guides/...` guides, when that plugin's sidebar has a Guides category
-
-`/eu-vat/guides/getting-started` redirects to `/eu-vat/hooks`. Lite and PRO have no intro file, so they have no getting-started redirect.
 
 Each plugin is a separate Docusaurus docs plugin instance (`routeBasePath` in `plugins.json`), so a later release can version one plugin without versioning the others.
 
@@ -74,9 +72,7 @@ Create `hooks-intro/<plugin>/index.md` for the text that should appear above tha
 
 Run `npm run generate`. The generator copies the intro into `docs/<plugin>/hooks/index.md` and rewrites those image paths. Edit the intro file, not the generated index. The intro is compiled as MDX with the hooks page, so keep `{` and `}` inside inline code or fenced code blocks.
 
-EU-VAT's getting started guide is `hooks-intro/eu-vat/index.md`. Lite and PRO do not have intro files.
-
-For every available plugin that has an intro file, `docusaurus.config.ts` adds a client redirect from `/<routeBasePath>/guides/getting-started` to `/<routeBasePath>/hooks`.
+EU-VAT, Lite, and PRO each have an intro at `hooks-intro/<plugin>/index.md`. The generated page heading and sidebar label are `All hooks`. The browser title is `<plugin label> hooks reference`, for example `Fluid Checkout Lite hooks reference`. Each plugin has its own meta description. Internal links use a trailing slash.
 
 ## Add an example
 
@@ -84,7 +80,7 @@ Create `examples/<plugin>/<hook-slug>.md`. `<plugin>` is the id in `plugins.json
 
 - A normal hook keeps its name: `examples/eu-vat/fc_vat_number_field_args.md`.
 - A dynamic hook drops braces, with no extra separator. `fc_vat_enable_compat_plugin_{plugin_slug}` is `examples/eu-vat/fc_vat_enable_compat_plugin_plugin_slug.md`. `fc_vat_{current_section}_settings` is `examples/eu-vat/fc_vat_current_section_settings.md`.
-- If two hooks in one plugin produce the same slug, the generator appends `-2`, `-3`, and so on. The example file uses that slug, including the suffix.
+- Each normalized hook name has one page. The generator orders call sites by source file, then source line, then JSON order, and ignores later sites of the same name. A `-2` or `-3` slug is only used when two different names share a slug. The example file uses the published slug. An example file or `related_hooks` entry that still points at an unpublished `-N` slug is moved onto the unsuffixed hook.
 
 `npm run generate` inserts the file body under `## Examples`, after the parameters and source sections. A hook with no file has no Examples section. Generation only reads `examples/`. It does not create, overwrite, or delete those files. Do not put examples in `docs/<plugin>/hooks/`; that directory is replaced on every run.
 
@@ -116,7 +112,9 @@ Plugin repositories will run [wp-hooks/generator](https://github.com/wp-hooks/ge
 
 `data/eu-vat/*.json` is a fixture so this site builds today. The real EU-VAT export arrives after [fc-vat-assistant#89](https://github.com/fluid-checkout/fc-vat-assistant/pull/89) merges.
 
-Dynamic PHP hook names are normalized for the page title and URL. `self::$plugin_prefix` uses `pluginPrefix` from `plugins.json` (`fc_vat` for EU-VAT, `fc` for Lite, and `fc_pro` for PRO). Private plugins leave `repository` as `null`, so the source line is a file path with no GitHub link. Set `repository.url` and `repository.branch` only for public repositories.
+Dynamic PHP hook names are normalized for the page title and URL. `self::$plugin_prefix` uses `pluginPrefix` from `plugins.json` (`fc_vat` for EU-VAT, `fc` for Lite, and `fc_pro` for PRO). Private plugins leave `repository` as `null`, so the source line is a file path with no GitHub link. Set `repository.url` only for public repositories.
+
+Source links use the `commit` field on `data/<plugin>/actions.json` and `data/<plugin>/filters.json` (the full SHA the export was generated from), as `blob/<commit>/<file>`. If `commit` is missing, the generator uses `repository.commit`, then `repository.branch`, then `main`. Do not rely on a branch such as `release/next-FEATURE`. The plugin workflow that opens the data pull request has to write that SHA. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Each plugin's `hookPrefixes` allowlist decides which normalized names are published. EU-VAT publishes names that start with `fc_vat_`. Lite publishes names that start with `fc_`. PRO publishes names that start with `fc_pro_`, `fc_`, `fc_adb_`, or `fc_gaa_`. `fc_adb_` is Address Book and `fc_gaa_` is Google Address Autocomplete; both add-ons are merging into PRO. Hooks copied from WooCommerce and other third-party code (`woocommerce_*`, `wc_od_*`, Enfold, Germanized, SkyVerge, and similar) are left out of the hook page, the index, and the sidebar. Aliases that do not match are dropped. `npm run generate` logs every skipped name. The full rule is in [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -128,7 +126,7 @@ Local search (`@easyops-cn/docusaurus-search-local`) is on by default. To switch
 
 ## Hosting
 
-GitHub Pages deploys from GitHub Actions on every push to `main` (`.github/workflows/deploy.yml`). `static/CNAME` is `docs.fluidcheckout.com`. The Pages source is already set to GitHub Actions.
+GitHub Pages deploys from GitHub Actions on every push to `main` (`.github/workflows/deploy.yml`). `static/CNAME` is `docs.fluidcheckout.com`. The Pages source is already set to GitHub Actions. `static/robots.txt` allows every crawler and points at `https://docs.fluidcheckout.com/sitemap.xml`. Individual hook pages are `noindex, follow` and are omitted from the sitemap. The home page, the three plugin hubs, and the three All hooks pages stay indexable. `/search` is `noindex, follow` and is omitted from the sitemap. Hook pages are not blocked in `robots.txt`.
 
 After this repository has its first commit on `main`, branch protection can require a pull request before merging to `main`.
 

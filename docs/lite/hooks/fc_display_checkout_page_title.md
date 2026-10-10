@@ -28,7 +28,7 @@ apply_filters( 'fc_display_checkout_page_title', $title );
 
 ## Source
 
-[`templates/fc/checkout-page-template/checkout/page-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-page-template/checkout/page-checkout.php)
+[`templates/fc/checkout-page-template/checkout/page-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-page-template/checkout/page-checkout.php)
 
 ## Examples
 
@@ -47,4 +47,4 @@ add_filter( 'fc_display_checkout_page_title',
 );
 ```
 
-See example on [`fc_checkout_page_title`](./fc_checkout_page_title).
+See example on [`fc_checkout_page_title`](/lite/hooks/fc_checkout_page_title/).

@@ -28,7 +28,7 @@ apply_filters( 'fc_pro_order_details_table_display_order_summary_footer', $displ
 
 ## Source
 
-`templates/fc-pro/order-pay/order-pay/review-order.php`
+`templates/fc-pro/order-details/order/order-details.php`
 
 ## Examples
 

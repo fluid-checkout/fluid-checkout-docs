@@ -8,12 +8,12 @@ description: "Filters whether to show the \"same as the other address\" notice i
 
 **Type:** Filter
 
-**Aliases:** `fc_billing_same_as_shipping_display_substep_review_text_notice`, `fc_shipping_same_as_billing_display_substep_review_text_notice`
-
 Filters whether to show the "same as the other address" notice in a substep review text.
 
 The dynamic portions of the hook name, `$address_type` and `$address_type_alt`, refer to the current address type and the opposite address type. Possible hook names include:
- - `fc_billing_same_as_shipping_display_substep_review_text_notice` - `fc_shipping_same_as_billing_display_substep_review_text_notice`
+
+- `fc_billing_same_as_shipping_display_substep_review_text_notice`
+- `fc_shipping_same_as_billing_display_substep_review_text_notice`
 
 ## Signature
 
@@ -33,4 +33,4 @@ apply_filters( 'fc_{address_type}_same_as_{address_type_alt}_display_substep_rev
 
 ## Source
 
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)

@@ -30,7 +30,7 @@ apply_filters( 'fc_enable_compat_theme_account_style_{theme_slug}', $value );
 
 ## Source
 
-[`inc/enqueue.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/enqueue.php)
+[`inc/enqueue.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/enqueue.php)
 
 ## Examples
 

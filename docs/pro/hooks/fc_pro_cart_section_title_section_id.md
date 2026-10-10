@@ -8,19 +8,17 @@ description: "Filters the title of a cart section."
 
 **Type:** Filter
 
-**Aliases:** `fc_pro_cart_section_title_cart_items`, `fc_pro_cart_section_title_coupon_code`, `fc_pro_cart_section_title_cross_sell_display`, `fc_pro_cart_section_title_free-gifts-for-woocommerce_display`, `fc_pro_cart_section_title_gift_card_code`, `fc_pro_cart_section_title_shipping`, `fc_pro_cart_section_title_woodmart-free-gifts_display`
-
 Filters the title of a cart section.
 
 The dynamic portion of the hook name, `$section_id`, is the cart section ID. Possible hook names include:
 
-  - `fc_pro_cart_section_title_cart_items`
-  - `fc_pro_cart_section_title_coupon_code`
-  - `fc_pro_cart_section_title_cross_sell_display`
-  - `fc_pro_cart_section_title_free-gifts-for-woocommerce_display`
-  - `fc_pro_cart_section_title_gift_card_code`
-  - `fc_pro_cart_section_title_shipping`
-  - `fc_pro_cart_section_title_woodmart-free-gifts_display`
+- `fc_pro_cart_section_title_cart_items`
+- `fc_pro_cart_section_title_coupon_code`
+- `fc_pro_cart_section_title_cross_sell_display`
+- `fc_pro_cart_section_title_free-gifts-for-woocommerce_display`
+- `fc_pro_cart_section_title_gift_card_code`
+- `fc_pro_cart_section_title_shipping`
+- `fc_pro_cart_section_title_woodmart-free-gifts_display`
 
 ## Signature
 

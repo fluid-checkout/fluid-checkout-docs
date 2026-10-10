@@ -8,12 +8,17 @@ description: "Fires after a checkout substep."
 
 **Type:** Action
 
-**Aliases:** `fc_after_substep_billing_address`, `fc_after_substep_contact`, `fc_after_substep_coupon_codes`, `fc_after_substep_order_notes`, `fc_after_substep_payment`, `fc_after_substep_shipping_address`, `fc_after_substep_shipping_method`
-
 Fires after a checkout substep.
 
 The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. This hook runs before the optional substep edit and save buttons. Additional hook names are created for substeps registered by other plugins. Possible hook names include:
- - `fc_after_substep_contact` - `fc_after_substep_shipping_address` - `fc_after_substep_shipping_method` - `fc_after_substep_order_notes` - `fc_after_substep_billing_address` - `fc_after_substep_payment` - `fc_after_substep_coupon_codes`
+
+- `fc_after_substep_contact`
+- `fc_after_substep_shipping_address`
+- `fc_after_substep_shipping_method`
+- `fc_after_substep_order_notes`
+- `fc_after_substep_billing_address`
+- `fc_after_substep_payment`
+- `fc_after_substep_coupon_codes`
 
 ## Signature
 
@@ -36,7 +41,7 @@ do_action( 'fc_after_substep_{substep_id}', $step_id, $substep_id, $output_edit_
 
 ## Source
 
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
 
 ## Examples
 

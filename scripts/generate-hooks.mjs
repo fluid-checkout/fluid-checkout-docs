@@ -12,17 +12,23 @@
  * hookExcludePrefixes (fc_licenses_*, fc_lcs_*) and hookExcludeNames (internal
  * license hooks). Third-party hooks are omitted the same way.
  *
+ * One page is published per normalized hook name. Eligible hooks are ordered
+ * by source file, then source line, then JSON order. Later call sites of the
+ * same name are ignored, so -2/-3 pages are not created for them. Two different
+ * names that share a slug still get a -N suffix.
+ *
  * Optional examples are read from examples/<plugin>/<hook-slug>.md and copied
- * onto the matching page. That directory is never written or deleted.
+ * onto the matching page. The only write under examples/ is moving a file or
+ * related_hooks entry that still points at an unpublished -N slug.
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {loadHookExamples, resolveExampleSections} from './hook-examples.mjs';
+import {loadHookExamples, relocateUnpublishedSuffixExamples, resolveExampleSections} from './hook-examples.mjs';
 import {normalizeHookName, slugifyHookName} from './normalize-hook-name.mjs';
 import {readHooksIntro} from './hooks-intro.mjs';
-import {renderHookPage, renderHooksIndex, renderSidebarItems} from './render-hook.mjs';
+import {hooksIndexDescription, renderHookPage, renderHooksIndex, renderSidebarItems} from './render-hook.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -130,6 +136,7 @@ export function resolveHookPrefixes(plugin) {
  * @returns {{
  *   hooks: {hook: object, name: string, slug: string, type: string, summary: string}[],
  *   skipped: {raw: string, name: string}[],
+ *   duplicates: {raw: string, name: string, file: string, line: number | null}[],
  *   droppedAliases: {hook: string, raw: string, name: string}[],
  *   prefixes: string[],
  *   excludePrefixes: string[],
@@ -148,20 +155,43 @@ export function prepareHooks(hooks, plugin, exclusions) {
   const usedSlugs = new Set();
   /** @type {{raw: string, name: string}[]} */
   const skipped = [];
+  /** @type {{raw: string, name: string, file: string, line: number | null}[]} */
+  const duplicates = [];
   /** @type {{hook: string, raw: string, name: string}[]} */
   const droppedAliases = [];
 
-  const prepared = [];
-  for (const hook of hooks) {
+  /** @type {{hook: object, index: number, raw: string, name: string}[]} */
+  const eligible = [];
+  hooks.forEach((hook, index) => {
     const raw = String(hook.name ?? '');
     const name = normalizeHookName(raw, pluginPrefix);
     if (!matchesHookPrefix(name, prefixes) || isExcludedHook(name, resolved)) {
       skipped.push({raw, name});
+      return;
+    }
+    eligible.push({hook, index, raw, name});
+  });
+
+  // Stable publication order: file path, then line, then the JSON order
+  // (actions.json, then filters.json). The first entry of a name is the page.
+  eligible.sort((a, b) => compareCallSites(a, b));
+
+  const seenNames = new Set();
+  const prepared = [];
+  for (const entry of eligible) {
+    if (seenNames.has(entry.name)) {
+      duplicates.push({
+        raw: entry.raw,
+        name: entry.name,
+        file: sourceFile(entry.hook),
+        line: sourceLine(entry.hook),
+      });
       continue;
     }
+    seenNames.add(entry.name);
 
-    const aliases = filterAliases(hook.aliases, pluginPrefix, prefixes, resolved, name, droppedAliases);
-    let slug = slugifyHookName(name);
+    const aliases = filterAliases(entry.hook.aliases, pluginPrefix, prefixes, resolved, entry.name, droppedAliases);
+    let slug = slugifyHookName(entry.name);
     if (usedSlugs.has(slug)) {
       let suffix = 2;
       while (usedSlugs.has(`${slug}-${suffix}`)) {
@@ -171,16 +201,16 @@ export function prepareHooks(hooks, plugin, exclusions) {
     }
     usedSlugs.add(slug);
 
-    const type = hook.type || 'filter';
+    const type = entry.hook.type || 'filter';
     prepared.push({
       hook: {
-        ...hook,
+        ...entry.hook,
         aliases,
       },
-      name,
+      name: entry.name,
       slug,
       type,
-      summary: String(hook.doc?.description || '').replace(/\s+/g, ' ').trim(),
+      summary: String(entry.hook.doc?.description || '').replace(/\s+/g, ' ').trim(),
     });
   }
 
@@ -192,11 +222,78 @@ export function prepareHooks(hooks, plugin, exclusions) {
   return {
     hooks: prepared,
     skipped,
+    duplicates,
     droppedAliases,
     prefixes,
     excludePrefixes: resolved.prefixes,
     excludeNames: resolved.names,
   };
+}
+
+/**
+ * @param {{hook: object, index: number}} a
+ * @param {{hook: object, index: number}} b
+ * @returns {number}
+ */
+function compareCallSites(a, b) {
+  const byFile = sourceFile(a.hook).localeCompare(sourceFile(b.hook));
+  if (byFile !== 0) {
+    return byFile;
+  }
+  const lineA = sourceLine(a.hook);
+  const lineB = sourceLine(b.hook);
+  const missingA = lineA == null;
+  const missingB = lineB == null;
+  if (missingA !== missingB) {
+    return missingA ? -1 : 1;
+  }
+  if (!missingA && lineA !== lineB) {
+    return lineA - lineB;
+  }
+  return a.index - b.index;
+}
+
+/**
+ * Path only. An inline `file:line` suffix is not part of the path.
+ *
+ * @param {object} hook
+ * @returns {string}
+ */
+function sourceFile(hook) {
+  let file = typeof hook?.file === 'string' ? hook.file.trim() : '';
+  const inline = file.match(/^(.*?):(\d+)$/);
+  if (inline) {
+    file = inline[1];
+  }
+  return file;
+}
+
+/**
+ * @param {object} hook
+ * @returns {number | null}
+ */
+function sourceLine(hook) {
+  const direct = integerLine(hook?.line);
+  if (direct != null) {
+    return direct;
+  }
+  const file = typeof hook?.file === 'string' ? hook.file : '';
+  const inline = file.match(/:(\d+)$/);
+  return inline ? Number(inline[1]) : null;
+}
+
+/**
+ * @param {unknown} value
+ * @returns {number | null}
+ */
+function integerLine(value) {
+  if (typeof value === 'number' && Number.isInteger(value)) {
+    return value;
+  }
+  if (typeof value === 'string' && /^[0-9]+$/.test(value)) {
+    return Number(value);
+  }
+  return null;
 }
 
 /**
@@ -219,6 +316,19 @@ export function formatHookFilterLog(plugin, result) {
     lines.push(`Skipped ${skippedLabel} for ${plugin.id} (${rule}):`);
     for (const hook of result.skipped) {
       lines.push(`  - ${formatSkippedName(hook)}`);
+    }
+  }
+
+  const duplicateCount = Array.isArray(result.duplicates) ? result.duplicates.length : 0;
+  if (duplicateCount > 0) {
+    const names = [...new Set(result.duplicates.map((entry) => entry.name))].sort();
+    const callLabel = `${duplicateCount} later call ${duplicateCount === 1 ? 'site' : 'sites'}`;
+    const nameLabel = `${names.length} hook ${names.length === 1 ? 'name' : 'names'}`;
+    lines.push(
+      `Ignored ${callLabel} for ${nameLabel} in ${plugin.id} (one page per hook name; sorted by file, then line):`,
+    );
+    for (const name of names) {
+      lines.push(`  - ${name}`);
     }
   }
 
@@ -371,9 +481,11 @@ function loadHooks(filePath, fallbackType) {
     throw new Error(`${path.relative(root, filePath)} is missing a hooks array.`);
   }
 
+  const commit = typeof document.commit === 'string' ? document.commit.trim() : '';
   return document.hooks.map((hook) => ({
     ...hook,
     type: hook.type || fallbackType,
+    sourceCommit: commit,
   }));
 }
 
@@ -409,6 +521,14 @@ export function formatExampleLog(plugin, examples) {
     lines.push(...links);
   }
 
+  if (Array.isArray(examples.moved) && examples.moved.length > 0) {
+    const label = `${examples.moved.length} ${examples.moved.length === 1 ? 'example reference' : 'example references'}`;
+    lines.push(`Moved ${label} for ${plugin.id} onto the unsuffixed hook:`);
+    for (const move of examples.moved) {
+      lines.push(`  - examples/${plugin.id}/${move.from} -> examples/${plugin.id}/${move.to}`);
+    }
+  }
+
   if (examples.unused.length > 0) {
     const label = `${examples.unused.length} ${examples.unused.length === 1 ? 'unused example file' : 'unused example files'}`;
     lines.push(`Left ${label} for ${plugin.id} (no matching published hook; not modified):`);
@@ -422,7 +542,8 @@ export function formatExampleLog(plugin, examples) {
 
 /**
  * Write generated hook pages for one plugin.
- * Reads examples/<plugin>/<hook-slug>.md and does not create, change, or delete those files.
+ * Reads examples/<plugin>/<hook-slug>.md. The only change under examples/ is moving a
+ * file or related_hooks entry off an unpublished -N slug onto the one published hook.
  *
  * @param {string} rootDir
  * @param {{id: string, label?: string, repository?: object | null}} plugin
@@ -430,11 +551,13 @@ export function formatExampleLog(plugin, examples) {
  * @returns {{
  *   loaded: Map<string, {relatedHooks: string[], body: string, fileName: string}>,
  *   unused: string[],
+ *   moved: {from: string, to: string}[],
  *   sections: ReturnType<typeof resolveExampleSections>,
  * }}
  */
 export function writePluginDocs(rootDir, plugin, prepared) {
   const examplesDir = path.join(rootDir, 'examples', plugin.id);
+  const moved = relocateUnpublishedSuffixExamples(examplesDir, prepared);
   const {loaded, unused} = loadHookExamples(examplesDir, prepared, plugin.id);
   const sections = resolveExampleSections(plugin, prepared, loaded);
 
@@ -470,7 +593,13 @@ export function writePluginDocs(rootDir, plugin, prepared) {
 
   fs.writeFileSync(
     path.join(hooksDir, 'index.md'),
-    renderHooksIndex(indexHooks, plugin.label || plugin.id, readHooksIntro(plugin.id, root)),
+    renderHooksIndex(
+      indexHooks,
+      plugin.label || plugin.id,
+      readHooksIntro(plugin.id, root),
+      hooksIndexDescription(plugin),
+      plugin.routeBasePath,
+    ),
   );
 
   for (const entry of prepared) {
@@ -490,7 +619,7 @@ export function writePluginDocs(rootDir, plugin, prepared) {
   fs.mkdirSync(path.dirname(sidebarPath), {recursive: true});
   fs.writeFileSync(sidebarPath, `${JSON.stringify(renderSidebarItems(indexHooks), null, 2)}\n`);
 
-  return {loaded, unused, sections};
+  return {loaded, unused, moved, sections};
 }
 
 /**

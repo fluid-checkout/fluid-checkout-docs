@@ -31,4 +31,4 @@ apply_filters( 'fc_hide_optional_fields_skip_field', $skip, $key, $args, $value 
 
 ## Source
 
-[`inc/checkout-hide-optional-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-hide-optional-fields.php)
+[`inc/checkout-hide-optional-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-hide-optional-fields.php)

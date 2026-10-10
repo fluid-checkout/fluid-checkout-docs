@@ -8,22 +8,21 @@ description: "Filters whether to load the PHP compatibility file for a plugin."
 
 **Type:** Filter
 
-**Aliases:** `fc_vat_enable_compat_plugin_dibs-easy-for-woocommerce`, `fc_vat_enable_compat_plugin_dintero-checkout-for-woocommerce`, `fc_vat_enable_compat_plugin_fc-address-book`, `fc_vat_enable_compat_plugin_klarna-checkout-for-woocommerce`, `fc_vat_enable_compat_plugin_krokedil-paysoncheckout-20-for-woocommerce`, `fc_vat_enable_compat_plugin_svea-checkout-for-woocommerce`, `fc_vat_enable_compat_plugin_woocommerce-checkout-field-editor-pro`, `fc_vat_enable_compat_plugin_woocommerce-germanized-pro`, `fc_vat_enable_compat_plugin_yith-woocommerce-checkout-manager`
-
 Filters whether to load the PHP compatibility file for a plugin.
 
 The dynamic portion of the hook name, `$plugin_slug`, is the directory name of an active plugin, or the main file name without `.php` for a single-file plugin. The filter runs for every active plugin. The file `inc/compat/plugins/compat-plugin-{$plugin_slug}.php` is loaded only when the filtered value is exactly `true` and that file exists inside this plugin. Returning anything other than `true` (for example `false`) disables it.
- Possible hook names include:
 
-  - `fc_vat_enable_compat_plugin_dibs-easy-for-woocommerce`
-  - `fc_vat_enable_compat_plugin_dintero-checkout-for-woocommerce`
-  - `fc_vat_enable_compat_plugin_fc-address-book`
-  - `fc_vat_enable_compat_plugin_klarna-checkout-for-woocommerce`
-  - `fc_vat_enable_compat_plugin_krokedil-paysoncheckout-20-for-woocommerce`
-  - `fc_vat_enable_compat_plugin_svea-checkout-for-woocommerce`
-  - `fc_vat_enable_compat_plugin_woocommerce-checkout-field-editor-pro`
-  - `fc_vat_enable_compat_plugin_woocommerce-germanized-pro`
-  - `fc_vat_enable_compat_plugin_yith-woocommerce-checkout-manager`
+Possible hook names include:
+
+- `fc_vat_enable_compat_plugin_dibs-easy-for-woocommerce`
+- `fc_vat_enable_compat_plugin_dintero-checkout-for-woocommerce`
+- `fc_vat_enable_compat_plugin_fc-address-book`
+- `fc_vat_enable_compat_plugin_klarna-checkout-for-woocommerce`
+- `fc_vat_enable_compat_plugin_krokedil-paysoncheckout-20-for-woocommerce`
+- `fc_vat_enable_compat_plugin_svea-checkout-for-woocommerce`
+- `fc_vat_enable_compat_plugin_woocommerce-checkout-field-editor-pro`
+- `fc_vat_enable_compat_plugin_woocommerce-germanized-pro`
+- `fc_vat_enable_compat_plugin_yith-woocommerce-checkout-manager`
 
 ## Signature
 

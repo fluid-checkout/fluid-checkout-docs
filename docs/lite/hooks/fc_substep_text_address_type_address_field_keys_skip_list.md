@@ -8,12 +8,17 @@ description: "Filters the rendered review text HTML for a checkout substep."
 
 **Type:** Filter
 
-**Aliases:** `fc_substep_billing_address_text`, `fc_substep_contact_text`, `fc_substep_coupon_codes_text`, `fc_substep_order_notes_text`, `fc_substep_payment_text`, `fc_substep_shipping_address_text`, `fc_substep_shipping_method_text`
-
 Filters the rendered review text HTML for a checkout substep.
 
 The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:
- - `fc_substep_contact_text` - `fc_substep_shipping_address_text` - `fc_substep_shipping_method_text` - `fc_substep_order_notes_text` - `fc_substep_billing_address_text` - `fc_substep_payment_text` - `fc_substep_coupon_codes_text`
+
+- `fc_substep_contact_text`
+- `fc_substep_shipping_address_text`
+- `fc_substep_shipping_method_text`
+- `fc_substep_order_notes_text`
+- `fc_substep_billing_address_text`
+- `fc_substep_payment_text`
+- `fc_substep_coupon_codes_text`
 
 ## Signature
 
@@ -33,4 +38,4 @@ apply_filters( 'fc_substep_text_{address_type}_address_field_keys_skip_list', $v
 
 ## Source
 
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
