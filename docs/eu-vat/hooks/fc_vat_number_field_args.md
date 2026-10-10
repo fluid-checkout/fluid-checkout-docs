@@ -44,19 +44,32 @@ apply_filters( 'fc_vat_number_field_args', $args );
 
 ## Examples
 
-Change the VAT number field label, and treat the custom `billing_eu_vat` field as a VAT number field.
-
 ```php
-add_filter( 'fc_vat_number_field_args', function ( $args ) {
-    $args['label'] = __( 'EU VAT number', 'my-store' );
-    return $args;
-} );
+add_filter( 'fc_vat_number_field_args',
+    /**
+     * Customize VAT number field.
+     *
+     * @param array $args VAT number field arguments.
+     * @return array Filtered value.
+     */
+    function( $args ) {
+        // Change field label
+        $args['label'] = __( 'Tax ID Number', 'your-text-domain' );
 
-add_filter( 'fc_vat_is_vat_number_field', function ( $is_vat_number_field, $field_key ) {
-    if ( 'billing_eu_vat' === $field_key ) {
-        return true;
-    }
+        // Change field description
+        $args['description'] = 'Enter your business tax identification number';
 
-    return $is_vat_number_field;
-}, 10, 2 );
+        // Change field priority (display order in form)
+        $args['priority'] = 100;
+
+        // Add custom CSS classes
+        $args['class'][] = 'custom-vat-field';
+
+        // Make field required
+        $args['required'] = true;
+
+        return $args;
+    },
+    10
+);
 ```
