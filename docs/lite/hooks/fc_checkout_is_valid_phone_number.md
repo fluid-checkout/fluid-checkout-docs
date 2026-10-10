@@ -29,6 +29,4 @@ apply_filters( 'fc_checkout_is_valid_phone_number', $is_valid, $phone_number, $f
 
 - `2.0.4`
 
-## Source
-
-[`inc/checkout-validation.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-validation.php)
+Source: `inc/checkout-validation.php`

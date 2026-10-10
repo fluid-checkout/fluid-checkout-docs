@@ -26,9 +26,7 @@ do_action( 'fc_pro_order_pay_before_order_review_heading', $order );
 
 - `3.0.0`
 
-## Source
-
-`templates/fc-pro/order-pay/order-pay/review-order-section.php`
+Source: `templates/fc-pro/order-pay/order-pay/review-order-section.php`
 
 ## Examples
 

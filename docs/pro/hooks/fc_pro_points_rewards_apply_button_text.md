@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_points_rewards_apply_button_text', $text );
 
 - `1.2.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-points-and-rewards.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-points-and-rewards.php`

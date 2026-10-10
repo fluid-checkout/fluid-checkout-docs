@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_order_received_wrapper_classes', $classes );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/order-received/checkout/thankyou.php`
+Source: `templates/fc-pro/order-received/checkout/thankyou.php`
 
 ## Examples
 

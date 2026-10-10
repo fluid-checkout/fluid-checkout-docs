@@ -26,9 +26,7 @@ apply_filters( 'fc_checkout_email_field_description', $value );
 
 - `2.0.3`
 
-## Source
-
-[`inc/checkout-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-fields.php)
+Source: `inc/checkout-fields.php`
 
 ## Examples
 

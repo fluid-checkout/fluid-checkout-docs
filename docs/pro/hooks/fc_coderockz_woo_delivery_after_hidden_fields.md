@@ -24,9 +24,7 @@ This hook does not pass any parameters.
 
 - `4.0.5`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woo-delivery.php`
+Source: `inc/compat/plugins/compat-plugin-woo-delivery.php`
 
 ## Examples
 

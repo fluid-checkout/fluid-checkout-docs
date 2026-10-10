@@ -26,9 +26,7 @@ do_action( 'fc_pro_order_overview_before', $order );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/order-details/order/order-details-overview.php`
+Source: `templates/fc-pro/order-details/order/order-details-overview.php`
 
 ## Examples
 

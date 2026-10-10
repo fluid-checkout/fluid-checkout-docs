@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_order_review_title', $title );
 
 - `1.3.0`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`
 
 ## Examples
 

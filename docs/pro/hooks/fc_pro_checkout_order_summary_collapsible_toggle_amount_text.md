@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_checkout_order_summary_collapsible_toggle_amount_text', $
 
 - `4.0.0`
 
-## Source
-
-`inc/checkout-order-summary.php`
+Source: `inc/checkout-order-summary.php`
 
 ## Examples
 

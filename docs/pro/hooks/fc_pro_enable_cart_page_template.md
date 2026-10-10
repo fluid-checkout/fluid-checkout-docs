@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_enable_cart_page_template', $enabled );
 
 - `2.1.0`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`
 
 ## Examples
 

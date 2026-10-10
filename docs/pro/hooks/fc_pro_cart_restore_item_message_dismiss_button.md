@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_restore_item_message_dismiss_button', $value );
 
 - `1.3.0`
 
-## Source
-
-`inc/cart-ajax.php`
+Source: `inc/cart-ajax.php`
 
 ## Examples
 

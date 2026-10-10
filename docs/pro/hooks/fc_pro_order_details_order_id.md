@@ -27,6 +27,4 @@ apply_filters( 'fc_pro_order_details_order_id', $order_id, $arg_2 );
 
 - `2.0.4`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-myparcel.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-myparcel.php`

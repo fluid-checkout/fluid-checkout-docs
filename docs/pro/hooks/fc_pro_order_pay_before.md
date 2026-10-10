@@ -26,9 +26,7 @@ do_action( 'fc_pro_order_pay_before', $order );
 
 - `3.0.0`
 
-## Source
-
-`templates/fc-pro/order-pay/checkout/form-pay.php`
+Source: `templates/fc-pro/order-pay/checkout/form-pay.php`
 
 ## Examples
 

@@ -26,6 +26,4 @@ apply_filters( 'fc_is_substep_complete_tyche_order_delivery', $is_complete );
 
 - `4.0.6`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-order-delivery-date.php`
+Source: `inc/compat/plugins/compat-plugin-order-delivery-date.php`

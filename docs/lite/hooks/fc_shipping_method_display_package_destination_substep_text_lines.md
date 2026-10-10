@@ -26,9 +26,7 @@ apply_filters( 'fc_shipping_method_display_package_destination_substep_text_line
 
 - `3.0.3`
 
-## Source
-
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
+Source: `inc/checkout-steps.php`
 
 ## Examples
 

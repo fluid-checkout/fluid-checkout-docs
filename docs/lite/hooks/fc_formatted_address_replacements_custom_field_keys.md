@@ -26,9 +26,7 @@ apply_filters( 'fc_formatted_address_replacements_custom_field_keys', $value );
 
 - `3.1.6`
 
-## Source
-
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
+Source: `inc/checkout-steps.php`
 
 ## Examples
 

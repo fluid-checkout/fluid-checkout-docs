@@ -114,9 +114,9 @@ Plugin repositories will run [wp-hooks/generator](https://github.com/wp-hooks/ge
 
 `data/eu-vat/*.json` is a fixture so this site builds today. The real EU-VAT export arrives after [fc-vat-assistant#89](https://github.com/fluid-checkout/fc-vat-assistant/pull/89) merges.
 
-Dynamic PHP hook names are normalized for the page title and URL. `self::$plugin_prefix` uses `pluginPrefix` from `plugins.json` (`fc_vat` for EU-VAT, `fc` for Lite, and `fc_pro` for PRO). Private plugins leave `repository` as `null`, so the source line is a file path with no GitHub link. Set `repository.url` only for public repositories.
+Dynamic PHP hook names are normalized for the page title and URL. `self::$plugin_prefix` uses `pluginPrefix` from `plugins.json` (`fc_vat` for EU-VAT, `fc` for Lite, and `fc_pro` for PRO).
 
-Source links use the `commit` field on `data/<plugin>/actions.json` and `data/<plugin>/filters.json` (the full SHA the export was generated from), as `blob/<commit>/<file>`. If `commit` is missing, the generator uses `repository.commit`, then `repository.branch`, then `main`. Do not rely on a branch such as `release/next-FEATURE`. The plugin workflow that opens the data pull request has to write that SHA. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Each hook page shows where the hook runs as plain text, for example `Source: \`inc/checkout-steps.php\`, line 123`. The page does not link to the file. `data/<plugin>/actions.json` and `data/<plugin>/filters.json` may include a top-level `commit` with the full SHA the export was generated from. That field stays in the JSON for provenance and is not shown on the page. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Each plugin's `hookPrefixes` allowlist decides which normalized names are published. EU-VAT publishes names that start with `fc_vat_`. Lite publishes names that start with `fc_`. PRO publishes names that start with `fc_pro_`, `fc_`, `fc_adb_`, or `fc_gaa_`. `fc_adb_` is Address Book and `fc_gaa_` is Google Address Autocomplete; both add-ons are merging into PRO. Hooks copied from WooCommerce and other third-party code (`woocommerce_*`, `wc_od_*`, Enfold, Germanized, SkyVerge, and similar) are left out of the hook page, the index, and the sidebar. Aliases that do not match are dropped. `npm run generate` logs every skipped name. The full rule is in [CONTRIBUTING.md](CONTRIBUTING.md).
 

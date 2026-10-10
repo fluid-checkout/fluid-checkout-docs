@@ -26,6 +26,4 @@ apply_filters( 'fc_checkout_express_checkout_section_title', $title );
 
 - `1.3.0`
 
-## Source
-
-`inc/checkout-express-checkout.php`
+Source: `inc/checkout-express-checkout.php`

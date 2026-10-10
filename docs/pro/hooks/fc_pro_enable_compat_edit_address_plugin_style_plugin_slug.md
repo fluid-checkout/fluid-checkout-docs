@@ -28,6 +28,4 @@ apply_filters( 'fc_pro_enable_compat_edit_address_plugin_style_{plugin_slug}', $
 
 - `1.8.2`
 
-## Source
-
-`inc/enqueue.php`
+Source: `inc/enqueue.php`

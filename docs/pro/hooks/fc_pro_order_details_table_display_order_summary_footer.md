@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_order_details_table_display_order_summary_footer', $displ
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/order-details/order/order-details.php`
+Source: `templates/fc-pro/order-details/order/order-details.php`
 
 ## Examples
 

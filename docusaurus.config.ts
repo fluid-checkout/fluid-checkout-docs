@@ -6,12 +6,6 @@ import catalog from './plugins.json';
 
 type PluginStatus = 'available' | 'coming-soon';
 
-type RepositoryConfig = {
-  url: string;
-  branch?: string;
-  commit?: string;
-};
-
 type PluginEntry = {
   id: string;
   label: string;
@@ -21,7 +15,6 @@ type PluginEntry = {
   hookPrefixes?: string[];
   status: PluginStatus;
   routeBasePath?: string;
-  repository?: RepositoryConfig | null;
   order?: number;
   productUrl?: string;
 };

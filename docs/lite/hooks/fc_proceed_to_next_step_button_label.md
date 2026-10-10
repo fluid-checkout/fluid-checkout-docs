@@ -28,9 +28,7 @@ apply_filters( 'fc_proceed_to_next_step_button_label', $button_label, $step_id, 
 
 - `3.2.6`
 
-## Source
-
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
+Source: `inc/checkout-steps.php`
 
 ## Examples
 

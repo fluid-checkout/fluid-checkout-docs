@@ -29,9 +29,7 @@ apply_filters( 'fc_pro_override_template_with_theme_file', $override, $template,
 
 - `1.2.0`
 
-## Source
-
-`inc/account-matching.php`
+Source: `inc/account-matching.php`
 
 ## Examples
 

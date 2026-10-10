@@ -26,6 +26,4 @@ apply_filters( 'fc_checkout_login_button_class', $class_name );
 
 - `1.6.0`
 
-## Source
-
-`templates/fc-pro/account-matching/checkout/account-matching-section.php`
+Source: `templates/fc-pro/account-matching/checkout/account-matching-section.php`

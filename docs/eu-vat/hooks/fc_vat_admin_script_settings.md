@@ -35,6 +35,4 @@ apply_filters( 'fc_vat_admin_script_settings', $settings );
 
 - `2.1.0`
 
-## Source
-
-`inc/checkout-eu-vat.php`
+Source: `inc/checkout-eu-vat.php`

@@ -36,9 +36,7 @@ do_action( 'fc_pro_before_cart_section_{section_id}', $section_id );
 
 - `1.3.0`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`
 
 ## Examples
 

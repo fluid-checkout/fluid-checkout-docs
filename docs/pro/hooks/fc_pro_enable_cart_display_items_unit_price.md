@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_enable_cart_display_items_unit_price', $enabled );
 
 - `3.1.4`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`

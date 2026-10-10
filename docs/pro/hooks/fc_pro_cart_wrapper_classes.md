@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_wrapper_classes', $classes );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/cart/cart/cart.php`
+Source: `templates/fc-pro/cart/cart/cart.php`
 
 ## Examples
 

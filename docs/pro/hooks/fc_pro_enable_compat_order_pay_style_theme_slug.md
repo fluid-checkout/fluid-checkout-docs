@@ -28,6 +28,4 @@ apply_filters( 'fc_pro_enable_compat_order_pay_style_{theme_slug}', $enabled );
 
 - `3.0.0`
 
-## Source
-
-`inc/enqueue.php`
+Source: `inc/enqueue.php`

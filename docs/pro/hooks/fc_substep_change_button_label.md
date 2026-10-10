@@ -26,6 +26,4 @@ apply_filters( 'fc_substep_change_button_label', $label );
 
 - `1.4.1`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php`

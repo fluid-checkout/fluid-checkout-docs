@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_checkout_review_order_table_classes', $classes );
 
 - `2.1.0`
 
-## Source
-
-[`templates/fc/checkout-steps/checkout/review-order.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/checkout/review-order.php)
+Source: `templates/fc/checkout-steps/checkout/review-order.php`
 
 ## Examples
 

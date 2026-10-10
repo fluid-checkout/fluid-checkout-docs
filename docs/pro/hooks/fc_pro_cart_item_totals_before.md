@@ -28,9 +28,7 @@ do_action( 'fc_pro_cart_item_totals_before', $cart_item, $cart_item_key, $_produ
 
 - `2.0.5`
 
-## Source
-
-`templates/fc-pro/cart/cart/cart-items-table.php`
+Source: `templates/fc-pro/cart/cart/cart-items-table.php`
 
 ## Examples
 

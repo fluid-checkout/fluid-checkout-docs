@@ -29,6 +29,4 @@ apply_filters( 'fc_pro_woocommerce_subscriptions_order_details_remove_order_agai
 - `1.3.0`
 - `4.0.7` — Changed the filtered value from 'yes'/'no' strings to a boolean. Legacy 'yes'/'no' strings are still accepted for backwards compatibility.
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php`

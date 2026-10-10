@@ -26,6 +26,4 @@ apply_filters( 'fc_checkout_wrapper_inside_element_custom_attributes', $attribut
 
 - `3.0.0`
 
-## Source
-
-`templates/fc-pro/order-pay/checkout/form-pay.php`
+Source: `templates/fc-pro/order-pay/checkout/form-pay.php`

@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_pickup_point_label_text', $text );
 
 - `2.0.1`
 
-## Source
-
-`inc/checkout-local-pickup.php`
+Source: `inc/checkout-local-pickup.php`
 
 ## Examples
 

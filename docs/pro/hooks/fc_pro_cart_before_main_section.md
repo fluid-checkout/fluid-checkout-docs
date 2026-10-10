@@ -24,9 +24,7 @@ This hook does not pass any parameters.
 
 - `2.1.8`
 
-## Source
-
-`templates/fc-pro/cart/cart/page-cart.php`
+Source: `templates/fc-pro/cart/cart/page-cart.php`
 
 ## Examples
 

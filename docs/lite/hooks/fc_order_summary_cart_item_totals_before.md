@@ -28,9 +28,7 @@ do_action( 'fc_order_summary_cart_item_totals_before', $cart_item, $cart_item_ke
 
 - `3.0.5`
 
-## Source
-
-[`templates/fc/checkout-steps/checkout/review-order.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/checkout/review-order.php)
+Source: `templates/fc/checkout-steps/checkout/review-order.php`
 
 ## Examples
 

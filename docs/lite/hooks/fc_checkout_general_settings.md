@@ -26,6 +26,4 @@ apply_filters( 'fc_checkout_general_settings', $settings );
 
 - `1.2.0`
 
-## Source
-
-[`inc/admin/admin-settings-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/admin/admin-settings-checkout.php)
+Source: `inc/admin/admin-settings-checkout.php`

@@ -43,6 +43,4 @@ apply_filters( 'fc_vat_admin_notices', $notices );
 
 - `0.1.0`
 
-## Source
-
-`inc/admin/admin-notices.php`
+Source: `inc/admin/admin-notices.php`

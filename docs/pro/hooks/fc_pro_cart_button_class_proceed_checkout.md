@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_button_class_proceed_checkout', $value );
 
 - `1.5.3`
 
-## Source
-
-`templates/fc-pro/cart/cart/proceed-to-checkout-button.php`
+Source: `templates/fc-pro/cart/cart/proceed-to-checkout-button.php`
 
 ## Examples
 

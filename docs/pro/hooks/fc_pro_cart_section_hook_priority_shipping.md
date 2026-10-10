@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_section_hook_priority_shipping', $value );
 
 - `1.3.0`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`
 
 ## Examples
 

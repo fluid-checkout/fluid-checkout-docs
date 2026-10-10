@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_order_details_display_shipping_status', $display );
 
 - `1.3.0`
 
-## Source
-
-`inc/order-details.php`
+Source: `inc/order-details.php`
 
 ## Examples
 

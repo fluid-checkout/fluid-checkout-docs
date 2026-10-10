@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_ajax_settings', $settings );
 
 - `1.3.0`
 
-## Source
-
-`inc/cart-ajax.php`
+Source: `inc/cart-ajax.php`
 
 ## Examples
 

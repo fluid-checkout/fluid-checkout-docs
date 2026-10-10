@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_removed_item_undo_button_label', $label );
 
 - `1.3.0`
 
-## Source
-
-`inc/cart-ajax.php`
+Source: `inc/cart-ajax.php`
 
 ## Examples
 

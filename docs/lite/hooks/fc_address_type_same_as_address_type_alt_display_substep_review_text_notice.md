@@ -31,6 +31,4 @@ apply_filters( 'fc_{address_type}_same_as_{address_type_alt}_display_substep_rev
 
 - `3.1.10`
 
-## Source
-
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
+Source: `inc/checkout-steps.php`

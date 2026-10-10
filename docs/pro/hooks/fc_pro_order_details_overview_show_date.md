@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_order_details_overview_show_date', $value );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/order-details-emails/emails/plain/email-order-details-overview.php`
+Source: `templates/fc-pro/order-details-emails/emails/plain/email-order-details-overview.php`
 
 ## Examples
 

@@ -26,9 +26,7 @@ apply_filters( 'fc_compat_dibs_easy_skip_undo_hooks_early_classes', $skip );
 
 - `3.1.5`
 
-## Source
-
-[`inc/compat/plugins/compat-plugin-dibs-easy-for-woocommerce.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/compat/plugins/compat-plugin-dibs-easy-for-woocommerce.php)
+Source: `inc/compat/plugins/compat-plugin-dibs-easy-for-woocommerce.php`
 
 ## Examples
 

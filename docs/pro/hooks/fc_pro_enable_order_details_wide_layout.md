@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_enable_order_details_wide_layout', $enabled );
 
 - `1.3.0`
 
-## Source
-
-`inc/order-received-page.php`
+Source: `inc/order-received-page.php`
 
 ## Examples
 

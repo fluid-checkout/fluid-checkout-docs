@@ -28,6 +28,4 @@ apply_filters( 'fc_vat_reverse_charge_countries_skip_list_options', $countries )
 
 - `2.1.0`
 
-## Source
-
-`inc/checkout-eu-vat.php`
+Source: `inc/checkout-eu-vat.php`

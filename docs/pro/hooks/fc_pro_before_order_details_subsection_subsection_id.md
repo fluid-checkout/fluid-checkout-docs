@@ -31,9 +31,7 @@ do_action( 'fc_pro_before_order_details_subsection_{subsection_id}', $subsection
 
 - `1.3.0`
 
-## Source
-
-`inc/order-details.php`
+Source: `inc/order-details.php`
 
 ## Examples
 

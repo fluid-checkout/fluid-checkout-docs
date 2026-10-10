@@ -26,9 +26,7 @@ apply_filters( 'fc_output_billing_same_as_shipping_as_hidden_field', $value );
 
 - `1.5.0`
 
-## Source
-
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
+Source: `inc/checkout-steps.php`
 
 ## Examples
 

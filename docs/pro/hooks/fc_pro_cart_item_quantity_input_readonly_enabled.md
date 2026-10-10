@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_item_quantity_input_readonly_enabled', $enabled );
 
 - `3.0.1`
 
-## Source
-
-`inc/cart-ajax.php`
+Source: `inc/cart-ajax.php`
 
 ## Examples
 

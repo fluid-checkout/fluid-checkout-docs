@@ -26,6 +26,4 @@ apply_filters( 'fc_billing_same_as_shipping_display_substep_review_text_notice',
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`

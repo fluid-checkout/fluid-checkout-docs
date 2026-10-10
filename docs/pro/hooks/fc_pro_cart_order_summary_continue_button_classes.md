@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_order_summary_continue_button_classes', $classes );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/cart/cart/review-order-section-cart.php`
+Source: `templates/fc-pro/cart/cart/review-order-section-cart.php`
 
 ## Examples
 

@@ -24,9 +24,7 @@ This hook does not pass any parameters.
 
 - `3.1.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-iconic-woo-delivery-slots-premium.php`
+Source: `inc/compat/plugins/compat-plugin-iconic-woo-delivery-slots-premium.php`
 
 ## Examples
 

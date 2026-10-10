@@ -26,6 +26,4 @@ apply_filters( 'fc_substep_text_display_value_show_field_label', $label );
 
 - `1.2.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-checkout-field-editor-pro.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-checkout-field-editor-pro.php`

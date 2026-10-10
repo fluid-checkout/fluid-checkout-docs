@@ -28,9 +28,7 @@ apply_filters( 'fc_pro_enable_compat_checkout_edit_cart_theme_style_{theme_slug}
 
 - `1.5.0`
 
-## Source
-
-`inc/enqueue.php`
+Source: `inc/enqueue.php`
 
 ## Examples
 

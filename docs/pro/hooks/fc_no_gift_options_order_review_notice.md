@@ -26,6 +26,4 @@ apply_filters( 'fc_no_gift_options_order_review_notice', $notice );
 
 - `1.3.0`
 
-## Source
-
-`inc/checkout-gift-options.php`
+Source: `inc/checkout-gift-options.php`

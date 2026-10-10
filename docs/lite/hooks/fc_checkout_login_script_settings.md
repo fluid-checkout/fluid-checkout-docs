@@ -26,9 +26,7 @@ apply_filters( 'fc_checkout_login_script_settings', $settings );
 
 - `4.0.4`
 
-## Source
-
-[`inc/checkout-login.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-login.php)
+Source: `inc/checkout-login.php`
 
 ## Examples
 

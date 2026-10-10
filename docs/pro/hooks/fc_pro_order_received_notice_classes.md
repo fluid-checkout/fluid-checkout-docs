@@ -27,9 +27,7 @@ apply_filters( 'fc_pro_order_received_notice_classes', $classes, $order );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/order-received/checkout/order-received-failed.php`
+Source: `templates/fc-pro/order-received/checkout/order-received-failed.php`
 
 ## Examples
 

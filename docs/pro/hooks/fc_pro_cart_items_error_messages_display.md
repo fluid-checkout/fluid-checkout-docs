@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_items_error_messages_display', $display );
 
 - `1.5.1`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`
 
 ## Examples
 

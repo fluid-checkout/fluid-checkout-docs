@@ -28,9 +28,7 @@ do_action( 'fc_pro_cart_item_details', $cart_item, $cart_item_key, $_product );
 
 - `1.5.0`
 
-## Source
-
-`templates/fc-pro/cart/cart/cart-items-table.php`
+Source: `templates/fc-pro/cart/cart/cart-items-table.php`
 
 ## Examples
 

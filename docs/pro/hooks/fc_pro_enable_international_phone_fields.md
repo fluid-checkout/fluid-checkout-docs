@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_enable_international_phone_fields', $enabled );
 
 - `2.0.3`
 
-## Source
-
-`inc/checkout-international-phone-field.php`
+Source: `inc/checkout-international-phone-field.php`
 
 ## Examples
 

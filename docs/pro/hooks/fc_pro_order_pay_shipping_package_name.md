@@ -30,6 +30,4 @@ apply_filters( 'fc_pro_order_pay_shipping_package_name', $value, $package_index,
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`

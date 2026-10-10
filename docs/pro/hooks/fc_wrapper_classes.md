@@ -26,6 +26,4 @@ apply_filters( 'fc_wrapper_classes', $classes );
 
 - `3.0.0`
 
-## Source
-
-`templates/fc-pro/order-pay/checkout/form-pay.php`
+Source: `templates/fc-pro/order-pay/checkout/form-pay.php`

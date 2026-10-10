@@ -28,9 +28,7 @@ apply_filters( 'fc_enable_compat_plugin_edit_address_style_{plugin_slug}', $valu
 
 - `3.1.6`
 
-## Source
-
-[`inc/enqueue.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/enqueue.php)
+Source: `inc/enqueue.php`
 
 ## Examples
 

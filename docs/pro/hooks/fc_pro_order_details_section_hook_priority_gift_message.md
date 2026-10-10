@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_order_details_section_hook_priority_gift_message', $messa
 
 - `1.3.0`
 
-## Source
-
-`inc/checkout-gift-options.php`
+Source: `inc/checkout-gift-options.php`
 
 ## Examples
 

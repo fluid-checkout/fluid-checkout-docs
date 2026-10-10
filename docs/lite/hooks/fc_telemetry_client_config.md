@@ -27,6 +27,4 @@ apply_filters( 'fc_telemetry_client_config', $config, $api_url );
 
 - `4.2.8`
 
-## Source
-
-[`inc/admin/fc-telemetry-client.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/admin/fc-telemetry-client.php)
+Source: `inc/admin/fc-telemetry-client.php`

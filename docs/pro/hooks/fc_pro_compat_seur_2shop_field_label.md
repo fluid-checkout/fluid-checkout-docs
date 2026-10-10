@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_compat_seur_2shop_field_label', $label );
 
 - `2.1.6`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-seur.php`
+Source: `inc/compat/plugins/compat-plugin-seur.php`

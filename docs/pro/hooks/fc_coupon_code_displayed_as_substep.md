@@ -26,6 +26,4 @@ apply_filters( 'fc_coupon_code_displayed_as_substep', $display );
 
 - `3.0.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php`

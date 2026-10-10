@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_integration_woocommerce_points_and_rewards_redeem_message
 
 - `1.4.1`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-points-and-rewards.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-points-and-rewards.php`

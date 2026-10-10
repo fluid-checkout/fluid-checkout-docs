@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_checkout_field_editor_intl_tel_input_skip_list', $value )
 
 - `1.8.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woo-checkout-field-editor-pro.php`
+Source: `inc/compat/plugins/compat-plugin-woo-checkout-field-editor-pro.php`

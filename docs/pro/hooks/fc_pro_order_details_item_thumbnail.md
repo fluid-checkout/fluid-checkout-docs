@@ -28,9 +28,7 @@ apply_filters( 'fc_pro_order_details_item_thumbnail', $product_image, $item, $or
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/order-details/order/order-details-item.php`
+Source: `templates/fc-pro/order-details/order/order-details-item.php`
 
 ## Examples
 

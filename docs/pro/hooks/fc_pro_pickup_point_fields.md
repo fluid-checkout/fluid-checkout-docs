@@ -24,9 +24,7 @@ This hook does not pass any parameters.
 
 - `2.0.2`
 
-## Source
-
-`inc/checkout-local-pickup.php`
+Source: `inc/checkout-local-pickup.php`
 
 ## Examples
 

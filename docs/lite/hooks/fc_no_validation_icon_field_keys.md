@@ -26,9 +26,7 @@ apply_filters( 'fc_no_validation_icon_field_keys', $value );
 
 - `1.5.0`
 
-## Source
-
-[`inc/checkout-validation.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-validation.php)
+Source: `inc/checkout-validation.php`
 
 ## Examples
 

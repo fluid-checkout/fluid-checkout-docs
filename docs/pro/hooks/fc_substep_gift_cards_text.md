@@ -26,6 +26,4 @@ apply_filters( 'fc_substep_gift_cards_text', $html );
 
 - `2.2.4`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php`

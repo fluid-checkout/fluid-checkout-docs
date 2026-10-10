@@ -26,6 +26,4 @@ apply_filters( 'fc_is_substep_complete_attendee_details', $is_complete );
 
 - `3.1.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-fooevents.php`
+Source: `inc/compat/plugins/compat-plugin-fooevents.php`

@@ -26,9 +26,7 @@ apply_filters( 'fc_display_checkout_page_title', $title );
 
 - `1.4.2`
 
-## Source
-
-[`templates/fc/checkout-page-template/checkout/page-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-page-template/checkout/page-checkout.php)
+Source: `templates/fc/checkout-page-template/checkout/page-checkout.php`
 
 ## Examples
 

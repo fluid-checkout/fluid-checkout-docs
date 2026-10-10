@@ -26,6 +26,4 @@ apply_filters( 'fc_checkout_sidebar_attributes', $sidebar_attributes );
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`

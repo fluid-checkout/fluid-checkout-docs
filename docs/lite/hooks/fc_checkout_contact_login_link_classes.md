@@ -26,9 +26,7 @@ apply_filters( 'fc_checkout_contact_login_link_classes', $classes );
 
 - `4.2.8`
 
-## Source
-
-[`templates/fc/checkout-steps/checkout/form-contact-login.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/checkout/form-contact-login.php)
+Source: `templates/fc/checkout-steps/checkout/form-contact-login.php`
 
 ## Examples
 

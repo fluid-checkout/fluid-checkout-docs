@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_order_details_table_hide_payment_method_row', $value );
 
 - `1.3.0`
 
-## Source
-
-`inc/order-details.php`
+Source: `inc/order-details.php`
 
 ## Examples
 

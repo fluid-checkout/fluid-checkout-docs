@@ -27,9 +27,7 @@ apply_filters( 'fc_pro_order_details_customer_shipping_address_label', $label, $
 
 - `3.2.0`
 
-## Source
-
-[`templates/fc/checkout-steps/emails/email-addresses.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/emails/email-addresses.php)
+Source: `templates/fc/checkout-steps/emails/email-addresses.php`
 
 ## Examples
 

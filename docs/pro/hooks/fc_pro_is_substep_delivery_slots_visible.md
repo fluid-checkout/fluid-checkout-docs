@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_is_substep_delivery_slots_visible', $visible );
 
 - `3.1.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-iconic-woo-delivery-slots-premium.php`
+Source: `inc/compat/plugins/compat-plugin-iconic-woo-delivery-slots-premium.php`

@@ -26,6 +26,4 @@ apply_filters( 'fc_show_order_totals_row_highlighted', $value );
 
 - `2.0.4`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`

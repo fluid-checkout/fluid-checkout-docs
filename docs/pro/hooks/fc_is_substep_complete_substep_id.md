@@ -28,6 +28,4 @@ apply_filters( 'fc_is_substep_complete_{substep_id}', $is_complete );
 
 - `3.0.0`
 
-## Source
-
-`inc/checkout-local-pickup.php`
+Source: `inc/checkout-local-pickup.php`

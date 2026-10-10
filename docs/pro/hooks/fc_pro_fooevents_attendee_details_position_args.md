@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_fooevents_attendee_details_position_args', $args );
 
 - `3.1.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-fooevents.php`
+Source: `inc/compat/plugins/compat-plugin-fooevents.php`

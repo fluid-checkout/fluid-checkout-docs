@@ -27,6 +27,4 @@ apply_filters( 'fc_is_local_pickup_available', $is_local_pickup_available, $pack
 
 - `1.3.0`
 
-## Source
-
-`inc/checkout-local-pickup.php`
+Source: `inc/checkout-local-pickup.php`

@@ -31,6 +31,4 @@ apply_filters( 'fc_{address_type}_same_as_{address_type_alt}_display_substep_rev
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`

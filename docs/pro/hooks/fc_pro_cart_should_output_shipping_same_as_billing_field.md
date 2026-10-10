@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_cart_should_output_shipping_same_as_billing_field', $valu
 
 - `4.0.7`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`

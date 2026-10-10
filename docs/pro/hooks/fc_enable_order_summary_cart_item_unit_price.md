@@ -26,6 +26,4 @@ apply_filters( 'fc_enable_order_summary_cart_item_unit_price', $enabled );
 
 - `2.0.0`
 
-## Source
-
-`templates/fc-pro/order-details/order/order-details-item.php`
+Source: `templates/fc-pro/order-details/order/order-details-item.php`

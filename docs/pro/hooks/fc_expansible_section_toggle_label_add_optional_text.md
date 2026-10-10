@@ -26,6 +26,4 @@ apply_filters( 'fc_expansible_section_toggle_label_add_optional_text', $text );
 
 - `1.3.3`
 
-## Source
-
-`templates/fc-pro/gift-options/checkout/form-gift-options.php`
+Source: `templates/fc-pro/gift-options/checkout/form-gift-options.php`

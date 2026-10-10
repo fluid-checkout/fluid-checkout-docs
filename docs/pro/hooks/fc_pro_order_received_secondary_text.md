@@ -27,9 +27,7 @@ apply_filters( 'fc_pro_order_received_secondary_text', $text, $order );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/order-received/checkout/order-received-successful.php`
+Source: `templates/fc-pro/order-received/checkout/order-received-successful.php`
 
 ## Examples
 

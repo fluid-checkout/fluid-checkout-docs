@@ -28,6 +28,4 @@ apply_filters( 'fc_vat_vat_number_account_details_field_additional_args', $addit
 
 - `2.0.5`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-fc-address-book.php`
+Source: `inc/compat/plugins/compat-plugin-fc-address-book.php`

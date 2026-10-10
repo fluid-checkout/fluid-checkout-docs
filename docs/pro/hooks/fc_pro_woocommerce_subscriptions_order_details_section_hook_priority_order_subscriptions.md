@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_woocommerce_subscriptions_order_details_section_hook_prio
 
 - `1.3.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php`

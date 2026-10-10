@@ -65,28 +65,13 @@ export function buildSignature(hook, normalizedName) {
 }
 
 /**
- * Git ref for a source link. A recorded commit SHA outlives a branch name.
- * Order: hook.sourceCommit (from the JSON document), repository.commit, repository.branch, then main.
+ * Plain source location. The export's top-level commit stays in the JSON
+ * for provenance and is not included here.
  *
  * @param {object} hook
- * @param {{commit?: string, branch?: string} | null | undefined} repository
  * @returns {string}
  */
-export function sourceRef(hook, repository) {
-  const commit = firstCommit(hook?.sourceCommit, repository?.commit);
-  if (commit) {
-    return commit;
-  }
-  const branch = typeof repository?.branch === 'string' ? repository.branch.trim() : '';
-  return branch || 'main';
-}
-
-/**
- * @param {object} hook
- * @param {{repository?: {url?: string, branch?: string, commit?: string} | null}} plugin
- * @returns {{label: string, url: string | null}}
- */
-export function sourceLocation(hook, plugin) {
+export function sourceText(hook) {
   let file = typeof hook.file === 'string' ? hook.file : '';
   let line = integerOrNull(hook.line);
 
@@ -96,38 +81,19 @@ export function sourceLocation(hook, plugin) {
     line = Number(inline[2]);
   }
 
+  if (!file) {
+    return 'Source: Unknown file';
+  }
+
   const endLine = integerOrNull(hook.end_line);
-  let label = file || 'Unknown file';
+  const path = `\`${file}\``;
   if (line != null && endLine != null && endLine !== line) {
-    label = `${file}:${line}-${endLine}`;
-  } else if (line != null) {
-    label = `${file}:${line}`;
+    return `Source: ${path}, lines ${line}-${endLine}`;
   }
-
-  const repository = plugin.repository;
-  if (!repository?.url || !file) {
-    return {label, url: null};
+  if (line != null) {
+    return `Source: ${path}, line ${line}`;
   }
-
-  const base = String(repository.url).replace(/\/+$/, '');
-  const hash = line != null ? `#L${line}` : '';
-  return {
-    label,
-    url: `${base}/blob/${sourceRef(hook, repository)}/${file}${hash}`,
-  };
-}
-
-/**
- * @param {...unknown} values
- * @returns {string}
- */
-function firstCommit(...values) {
-  for (const value of values) {
-    if (typeof value === 'string' && /^[0-9a-f]{7,40}$/i.test(value.trim())) {
-      return value.trim();
-    }
-  }
-  return '';
+  return `Source: ${path}`;
 }
 
 /**
@@ -135,7 +101,7 @@ function firstCommit(...values) {
  * @param {object} options
  * @param {string} options.normalizedName
  * @param {string} options.slug
- * @param {{repository?: {url?: string, branch?: string} | null}} options.plugin
+ * @param {object} options.plugin
  * @param {string | null | undefined} options.exampleMarkdown Example body. Front matter is already removed.
  * @param {{name: string, slug: string}[] | undefined} options.relatedExampleLinks
  * @returns {string}
@@ -148,7 +114,7 @@ export function renderHookPage(hook, options) {
   const longDescription = formatLongDescription(hook.doc);
   const typeLabel = TYPE_LABEL[hook.type] || 'Hook';
   const signature = buildSignature(hook, normalizedName);
-  const source = sourceLocation(hook, plugin);
+  const source = sourceText(hook);
   const params = paramTags(hook);
   const sinceTags = tagsNamed(hook, 'since');
   const deprecated = tagsNamed(hook, 'deprecated');
@@ -224,12 +190,7 @@ export function renderHookPage(hook, options) {
     lines.push('');
   }
 
-  lines.push('## Source', '');
-  if (source.url) {
-    lines.push(`[\`${source.label}\`](${source.url})`, '');
-  } else {
-    lines.push(`\`${source.label}\``, '');
-  }
+  lines.push(source, '');
 
   if (exampleMarkdown || relatedExampleLinks.length > 0) {
     lines.push('## Examples', '');

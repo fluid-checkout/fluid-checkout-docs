@@ -30,6 +30,4 @@ apply_filters( 'fc_admin_notices', $value );
 
 - `2.3.2`
 
-## Source
-
-[`inc/admin/admin-notices.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/admin/admin-notices.php)
+Source: `inc/admin/admin-notices.php`

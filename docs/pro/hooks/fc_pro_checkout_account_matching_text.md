@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_checkout_account_matching_text', $text );
 
 - `1.6.0`
 
-## Source
-
-`templates/fc-pro/account-matching/checkout/account-matching-section.php`
+Source: `templates/fc-pro/account-matching/checkout/account-matching-section.php`
 
 ## Examples
 

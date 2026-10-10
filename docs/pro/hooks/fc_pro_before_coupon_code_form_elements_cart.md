@@ -24,9 +24,7 @@ This hook does not pass any parameters.
 
 - `3.1.4`
 
-## Source
-
-`inc/cart-ajax.php`
+Source: `inc/cart-ajax.php`
 
 ## Examples
 

@@ -27,9 +27,7 @@ apply_filters( 'fc_pro_order_details_order_status_skip_list', $value, $order );
 
 - `1.6.1`
 
-## Source
-
-`inc/order-details.php`
+Source: `inc/order-details.php`
 
 ## Examples
 

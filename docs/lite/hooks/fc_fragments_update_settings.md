@@ -26,9 +26,7 @@ apply_filters( 'fc_fragments_update_settings', $settings );
 
 - `3.0.4`
 
-## Source
-
-[`inc/fragments-refresh.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/fragments-refresh.php)
+Source: `inc/fragments-refresh.php`
 
 ## Examples
 

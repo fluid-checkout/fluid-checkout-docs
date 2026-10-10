@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_checkout_coupon_code_hook_priority', $priority );
 
 - `1.4.1`
 
-## Source
-
-`inc/checkout-coupon-codes.php`
+Source: `inc/checkout-coupon-codes.php`
 
 ## Examples
 

@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_compat_seur_2shop_select_option_text', $option_text );
 
 - `2.1.6`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-seur.php`
+Source: `inc/compat/plugins/compat-plugin-seur.php`

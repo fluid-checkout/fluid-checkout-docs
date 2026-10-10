@@ -26,9 +26,7 @@ do_action( 'fc_pro_order_received_successful', $order );
 
 - `1.2.0`
 
-## Source
-
-`templates/fc-pro/order-received/checkout/thankyou.php`
+Source: `templates/fc-pro/order-received/checkout/thankyou.php`
 
 ## Examples
 

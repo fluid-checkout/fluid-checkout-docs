@@ -26,6 +26,4 @@ apply_filters( 'fc_fix_zoom_in_form_fields_mobile_devices', $value );
 
 - `3.0.1`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`

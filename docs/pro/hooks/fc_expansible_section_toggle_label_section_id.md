@@ -32,6 +32,4 @@ apply_filters( 'fc_expansible_section_toggle_label_{section_id}', $value );
 
 - `1.4.1`
 
-## Source
-
-`inc/checkout-coupon-codes.php`
+Source: `inc/checkout-coupon-codes.php`

@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_sidebar_attributes_inner', $sidebar_attributes_inner
 
 - `1.3.0`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`
 
 ## Examples
 

@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_order_details_email_types', $types );
 
 - `1.3.0`
 
-## Source
-
-`inc/order-received-emails.php`
+Source: `inc/order-received-emails.php`
 
 ## Examples
 

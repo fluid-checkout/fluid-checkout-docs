@@ -24,6 +24,4 @@ This hook does not pass any parameters.
 
 - `1.2.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-order-delivery.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-order-delivery.php`

@@ -481,11 +481,11 @@ function loadHooks(filePath, fallbackType) {
     throw new Error(`${path.relative(root, filePath)} is missing a hooks array.`);
   }
 
-  const commit = typeof document.commit === 'string' ? document.commit.trim() : '';
+  // document.commit records which source revision the export came from.
+  // Hook pages do not render it.
   return document.hooks.map((hook) => ({
     ...hook,
     type: hook.type || fallbackType,
-    sourceCommit: commit,
   }));
 }
 
@@ -546,7 +546,7 @@ export function formatExampleLog(plugin, examples) {
  * file or related_hooks entry off an unpublished -N slug onto the one published hook.
  *
  * @param {string} rootDir
- * @param {{id: string, label?: string, repository?: object | null}} plugin
+ * @param {{id: string, label?: string}} plugin
  * @param {ReturnType<typeof prepareHooks>['hooks']} prepared
  * @returns {{
  *   loaded: Map<string, {relatedHooks: string[], body: string, fileName: string}>,

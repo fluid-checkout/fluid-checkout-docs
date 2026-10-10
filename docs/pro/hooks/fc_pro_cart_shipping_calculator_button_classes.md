@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_shipping_calculator_button_classes', $classes );
 
 - `2.1.9`
 
-## Source
-
-`templates/fc-pro/cart/cart/shipping-calculator.php`
+Source: `templates/fc-pro/cart/cart/shipping-calculator.php`
 
 ## Examples
 

@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_view_order_section_hook_priority_order_notes', $value );
 
 - `1.3.0`
 
-## Source
-
-`inc/order-received-emails.php`
+Source: `inc/order-received-emails.php`

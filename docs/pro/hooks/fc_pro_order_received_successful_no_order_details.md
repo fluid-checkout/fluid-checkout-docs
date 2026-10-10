@@ -24,9 +24,7 @@ This hook does not pass any parameters.
 
 - `1.2.0`
 
-## Source
-
-`templates/fc-pro/order-received/checkout/thankyou.php`
+Source: `templates/fc-pro/order-received/checkout/thankyou.php`
 
 ## Examples
 

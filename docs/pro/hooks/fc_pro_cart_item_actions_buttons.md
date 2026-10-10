@@ -28,9 +28,7 @@ do_action( 'fc_pro_cart_item_actions_buttons', $cart_item, $cart_item_key, $prod
 
 - `2.1.10`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`
 
 ## Examples
 

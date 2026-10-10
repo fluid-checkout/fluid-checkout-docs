@@ -26,9 +26,7 @@ apply_filters( 'fc_checkout_html_custom_attributes', $html );
 
 - `3.1.9`
 
-## Source
-
-[`templates/compat/themes/dt-the7/checkout-page-template/checkout/page-checkout-header.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/compat/themes/dt-the7/checkout-page-template/checkout/page-checkout-header.php)
+Source: `templates/compat/themes/dt-the7/checkout-page-template/checkout/page-checkout-header.php`
 
 ## Examples
 

@@ -29,6 +29,4 @@ apply_filters( 'fc_pro_locate_template_cart_cross_sells_skip_template', $skip, $
 
 - `2.1.10`
 
-## Source
-
-`inc/cart-cross-sells.php`
+Source: `inc/cart-cross-sells.php`

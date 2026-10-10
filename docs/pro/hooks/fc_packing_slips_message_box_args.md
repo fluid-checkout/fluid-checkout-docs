@@ -27,6 +27,4 @@ apply_filters( 'fc_packing_slips_message_box_args', $args, $order_id );
 
 - `1.3.0`
 
-## Source
-
-`inc/packing-slips.php`
+Source: `inc/packing-slips.php`

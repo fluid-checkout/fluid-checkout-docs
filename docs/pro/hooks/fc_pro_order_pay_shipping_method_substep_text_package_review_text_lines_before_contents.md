@@ -29,6 +29,4 @@ apply_filters( 'fc_pro_order_pay_shipping_method_substep_text_package_review_tex
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`

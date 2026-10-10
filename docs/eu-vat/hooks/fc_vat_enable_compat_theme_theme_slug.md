@@ -32,9 +32,7 @@ apply_filters( 'fc_vat_enable_compat_theme_{theme_slug}', $enabled );
 
 - `0.1.0`
 
-## Source
-
-`fc-vat-assistant.php`
+Source: `fc-vat-assistant.php`
 
 ## Examples
 

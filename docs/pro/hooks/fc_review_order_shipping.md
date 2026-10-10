@@ -24,6 +24,4 @@ This hook does not pass any parameters.
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/order-summary/checkout/review-order-totals.php`
+Source: `templates/fc-pro/order-summary/checkout/review-order-totals.php`

@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_enable_order_pay', $enabled );
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`
 
 ## Examples
 

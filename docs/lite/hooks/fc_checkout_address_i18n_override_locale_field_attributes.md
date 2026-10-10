@@ -26,9 +26,7 @@ apply_filters( 'fc_checkout_address_i18n_override_locale_field_attributes', $ove
 
 - `4.2.5`
 
-## Source
-
-[`inc/checkout-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-fields.php)
+Source: `inc/checkout-fields.php`
 
 ## Examples
 

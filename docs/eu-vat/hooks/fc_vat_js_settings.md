@@ -36,6 +36,4 @@ apply_filters( 'fc_vat_js_settings', $settings );
 
 - `2.1.0`
 
-## Source
-
-`inc/enqueue.php`
+Source: `inc/enqueue.php`

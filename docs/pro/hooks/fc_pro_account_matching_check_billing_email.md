@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_account_matching_check_billing_email', $value );
 
 - `1.8.0`
 
-## Source
-
-`inc/account-matching.php`
+Source: `inc/account-matching.php`
 
 ## Examples
 

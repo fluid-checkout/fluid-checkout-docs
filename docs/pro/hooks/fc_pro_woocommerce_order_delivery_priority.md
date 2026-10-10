@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_woocommerce_order_delivery_priority', $priority );
 
 - `1.2.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-order-delivery.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-order-delivery.php`
