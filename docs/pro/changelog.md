@@ -870,3 +870,11 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Added: Compatibility with plugin Checkout Field Editor for WooCommerce (PRO) – by ThemeHigh.
 * Added: Compatibility with plugin WooCommerce Order Delivery – by Themesquad.
 * Added: Compatibility with plugin WooCommerce Points and Rewards – by WooCommerce.
+
+## Address Book (before merging into PRO) {/* #address-book */}
+
+Address Book is being merged into Fluid Checkout PRO. Its changelog for earlier versions, from when it was a separate add-on, will be added here.
+
+## Google Address Autocomplete (before merging into PRO) {/* #google-address-autocomplete */}
+
+Google Address Autocomplete is being merged into Fluid Checkout PRO. Its changelog for earlier versions, from when it was a separate add-on, will be added here.

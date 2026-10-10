@@ -52,6 +52,16 @@
       "status": "available",
       "routeBasePath": "pro",
       "relatedChangelogs": ["lite"],
+      "legacyChangelogs": [
+        {
+          "id": "address-book",
+          "title": "Address Book (before merging into PRO)"
+        },
+        {
+          "id": "google-address-autocomplete",
+          "title": "Google Address Autocomplete (before merging into PRO)"
+        }
+      ],
       "repository": null
     }
   ]

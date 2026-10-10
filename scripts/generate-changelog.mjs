@@ -33,6 +33,18 @@ function main() {
     })) {
       console.log(line);
     }
+    for (const section of loaded.legacy) {
+      if (section.placeholder) {
+        console.log(`${plugin.id} legacy ${section.id}: placeholder, no source files yet.`);
+        continue;
+      }
+      for (const line of formatChangelogLog(`${plugin.id} legacy ${section.id}`, section.merged, {
+        readmeCount: section.readmeCount,
+        changelogCount: section.changelogCount,
+      })) {
+        console.log(line);
+      }
+    }
   }
 
   if (generated === 0) {

@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import {fileURLToPath} from 'node:url';
@@ -7,8 +8,11 @@ import {
   entryText,
   escapeChangelogMdx,
   extractReadmeChangelogSection,
+  legacyPlaceholder,
+  loadLegacyChangelogs,
   loadPluginChangelog,
   mergeChangelogs,
+  normalizeLegacyChangelogs,
   parseChangelogDocument,
   parseReadmeChangelog,
   parseVersionHeading,
@@ -190,6 +194,90 @@ test('relatedChangelogs adds a trailing-slash link and is omitted when unset', (
   assert.match(page, /\[PRO changelog\]\(\/pro\/changelog\/\)/);
 });
 
+test('legacy changelogs render source history or a public placeholder', () => {
+  const plugin = {
+    id: 'pro',
+    label: 'Fluid Checkout PRO',
+    legacyChangelogs: [
+      {id: 'address-book', title: 'Address Book (before merging into PRO)'},
+      {id: 'google-address-autocomplete', title: 'Google Address Autocomplete (before merging into PRO)'},
+    ],
+  };
+  assert.equal(
+    legacyPlaceholder('Address Book', 'Fluid Checkout PRO'),
+    'Address Book is being merged into Fluid Checkout PRO. Its changelog for earlier versions, from when it was a separate add-on, will be added here.',
+  );
+  assert.throws(
+    () => normalizeLegacyChangelogs({id: 'pro', legacyChangelogs: [{id: 'Address Book', title: 'Address Book'}]}),
+    /lowercase slug/,
+  );
+
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fc-legacy-'));
+  const dir = path.join(tmp, 'data', 'pro', 'legacy', 'address-book');
+  fs.mkdirSync(dir, {recursive: true});
+  fs.writeFileSync(path.join(dir, 'readme.txt'), [
+    '== Description ==',
+    'Not a release note.',
+    '== Changelog ==',
+    '= 3.1.0 - 2024-05-01 =',
+    '* Added: From readme <field>.',
+    '= 3.0.0 - 2024-01-01 =',
+    '* Added: Shared.',
+    '== Upgrade Notice ==',
+    '= 1.0 =',
+    '* Not part of the page.',
+  ].join('\n'));
+  fs.writeFileSync(path.join(dir, 'changelog.md'), [
+    'To avoid duplicate work, changes are first added to the readme.',
+    '',
+    '= 3.1.0 - 2024-06-01 =',
+    '* Added: From changelog file.',
+    '',
+    '= 2.0.0 - 2023-01-01 =',
+    '* Added: Only changelog.',
+  ].join('\n'));
+
+  const sections = loadLegacyChangelogs(tmp, plugin);
+  assert.equal(sections[0].placeholder, false);
+  assert.deepEqual(sections[0].entries.map((entry) => entry.version), ['3.1.0', '3.0.0', '2.0.0']);
+  assert.equal(sections[0].entries[0].body, '* Added: From readme <field>.');
+  assert.equal(sections[0].entries[0].date, '2024-05-01');
+  assert.equal(sections[1].placeholder, true);
+  assert.equal(sections[1].entries.length, 0);
+
+  const page = renderChangelogPage(plugin, [{
+    version: '4.0.6',
+    dash: '-',
+    date: '2026-08-19',
+    suffix: '',
+    body: '* PRO note.',
+    source: 'readme',
+  }], {readme: true, changelog: false}, [], sections);
+  assert.match(page, /^## 4\.0\.6 - 2026-08-19 \{\/\* #4-0-6 \*\/\}$/m);
+  assert.match(page, /^## Address Book \(before merging into PRO\) \{\/\* #address-book \*\/\}$/m);
+  assert.match(page, /^## 3\.1\.0 - 2024-05-01 \{\/\* #address-book-3-1-0 \*\/\}$/m);
+  assert.match(page, /^## 2\.0\.0 - 2023-01-01 \{\/\* #address-book-2-0-0 \*\/\}$/m);
+  assert.match(page, /From readme &lt;field>/);
+  assert.doesNotMatch(page, /From changelog file/);
+  assert.doesNotMatch(page, /To avoid duplicate work/);
+  assert.doesNotMatch(page, /Upgrade Notice/);
+  assert.match(page, /from data\/pro\/readme.txt and data\/pro\/legacy\/address-book\/readme.txt and data\/pro\/legacy\/address-book\/changelog.md/);
+  assert.match(
+    page,
+    /Google Address Autocomplete is being merged into Fluid Checkout PRO\. Its changelog for earlier versions, from when it was a separate add-on, will be added here\./,
+  );
+  assert.doesNotMatch(page, /Address Book is being merged/);
+  const visible = page.split(/^# Changelog$/m)[1];
+  assert.doesNotMatch(visible, /data\/pro\/legacy/);
+  assert.doesNotMatch(visible, /plugins\.json/);
+  assert.ok(page.indexOf('{/* #4-0-6 */}') < page.indexOf('{/* #address-book */}'));
+  assert.ok(page.indexOf('{/* #address-book */}') < page.indexOf('{/* #address-book-3-1-0 */}'));
+  assert.ok(page.indexOf('{/* #address-book-2-0-0 */}') < page.indexOf('{/* #google-address-autocomplete */}'));
+
+  fs.writeFileSync(path.join(dir, 'readme.txt'), 'No changelog section here.\n');
+  assert.throws(() => loadLegacyChangelogs(tmp, plugin), /no == Changelog == section/);
+});
+
 test('published plugin changelogs keep every source version and the readme copy', () => {
   const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
   /** @type {Record<string, number>} */
@@ -220,7 +308,12 @@ test('published plugin changelogs keep every source version and the readme copy'
       }
     }
 
-    const anchors = [...loaded.page.matchAll(/\{\/\* #(\S+) \*\/\}/g)].map((match) => match[1]);
+    const legacyIds = Array.isArray(plugin.legacyChangelogs)
+      ? plugin.legacyChangelogs.map((item) => item.id)
+      : [];
+    const anchors = [...loaded.page.matchAll(/^## \d.*\{\/\* #(\S+) \*\/\}$/gm)]
+      .map((match) => match[1])
+      .filter((id) => !legacyIds.some((legacyId) => id.startsWith(`${legacyId}-`)));
     assert.deepEqual(anchors, versions.map(versionAnchor));
 
     assert.match(loaded.page, /This project follows \[Semantic Versioning\]/);
@@ -250,6 +343,7 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.equal(lite.readmeCount, 15);
   assert.ok(lite.merged.entries.some((entry) => entry.version === '4.0.6' && entry.source === 'changelog'));
   assert.match(lite.page, /Looking for Fluid Checkout PRO changes\? See the \[PRO changelog\]\(\/pro\/changelog\/\)\./);
+  assert.doesNotMatch(lite.page, /before merging into PRO/);
   assert.ok(lite.page.indexOf('Looking for Fluid Checkout PRO changes?') < lite.page.indexOf('## 4.2.7'));
   assert.match(lite.page, /^title: "Fluid Checkout Lite changelog"$/m);
   assert.match(lite.page, /^description: "Release history for Fluid Checkout Lite, newest version first\."$/m);
@@ -265,6 +359,13 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.equal(pro.merged.entries.at(-1).version, '1.2.0');
   assert.equal(pro.merged.entries.at(-1).suffix, '(first public release)');
   assert.match(pro.page, /Looking for Fluid Checkout Lite changes\? See the \[Lite changelog\]\(\/lite\/changelog\/\)\./);
+  assert.match(pro.page, /^## Address Book \(before merging into PRO\) \{\/\* #address-book \*\/\}$/m);
+  assert.match(pro.page, /Address Book is being merged into Fluid Checkout PRO\. Its changelog for earlier versions, from when it was a separate add-on, will be added here\./);
+  assert.match(pro.page, /^## Google Address Autocomplete \(before merging into PRO\) \{\/\* #google-address-autocomplete \*\/\}$/m);
+  assert.match(pro.page, /Google Address Autocomplete is being merged into Fluid Checkout PRO\. Its changelog for earlier versions, from when it was a separate add-on, will be added here\./);
+  assert.ok(pro.page.lastIndexOf('{/* #1-2-0 */}') < pro.page.indexOf('{/* #address-book */}'));
+  assert.ok(pro.page.indexOf('{/* #address-book */}') < pro.page.indexOf('{/* #google-address-autocomplete */}'));
+  assert.doesNotMatch(pro.page.split(/^# Changelog$/m)[1], /data\/pro\/legacy/);
   assert.match(pro.page, /^title: "Fluid Checkout PRO changelog"$/m);
   assert.match(pro.page, /^description: "Release history for Fluid Checkout PRO, newest version first\."$/m);
   assert.match(pro.page, /^## 1\.2\.0 – 2022-02-05 \(first public release\) \{\/\* #1-2-0 \*\/\}$/m);
@@ -280,6 +381,7 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.match(euVat.page, /from data\/eu-vat\/readme\.txt\. Do not edit/);
   assert.doesNotMatch(euVat.page, /changelog\.md/);
   assert.doesNotMatch(euVat.page, /Looking for /);
+  assert.doesNotMatch(euVat.page, /before merging into PRO/);
 
   assert.equal(lite.merged.entries.length, 101);
   assert.equal(lite.changelogCount, 86);
