@@ -14,7 +14,7 @@
       "productUrl": "https://fluidcheckout.com/fc-eu-vat-assistant/",
       "label": "EU-VAT Assistant",
       "navLabel": "EU-VAT",
-      "description": "Validate EU VAT numbers and store them with the WooCommerce order.",
+      "description": "Hooks for the EU-VAT Assistant add-on.",
       "pluginPrefix": "fc_vat",
       "hookPrefixes": ["fc_vat_"],
       "status": "available",
