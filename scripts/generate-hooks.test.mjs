@@ -9,12 +9,7 @@ import {
   prepareHooks,
   resolveHookExclusions,
 } from './generate-hooks.mjs';
-import {
-  gettingStartedRedirects,
-  readHooksIntro,
-  rewriteIntroImagePaths,
-  stripFrontMatter,
-} from './hooks-intro.mjs';
+import {readHooksIntro, rewriteIntroImagePaths, stripFrontMatter} from './hooks-intro.mjs';
 import {hooksIndexDescription, renderHookPage, renderHooksIndex, renderSidebarItems} from './render-hook.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -532,20 +527,6 @@ test('hooks index places the hand-written intro above the hook list', () => {
   );
   assert.match(linked, /- \[`fc_checkout_steps`\]\(\/lite\/hooks\/fc_checkout_steps\/\) Steps\./);
   assert.doesNotMatch(unnamed, /fc_checkout_steps fc_checkout_steps/);
-
-  assert.deepEqual(gettingStartedRedirects(catalog.plugins, root), [
-    {
-      from: '/eu-vat/guides/getting-started/',
-      to: '/eu-vat/hooks/',
-    },
-  ]);
-  assert.deepEqual(
-    gettingStartedRedirects(
-      [{id: 'missing', status: 'available', routeBasePath: 'missing'}],
-      root,
-    ),
-    [],
-  );
 });
 
 test('long descriptions render docblock lists as one item per line', () => {

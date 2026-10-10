@@ -88,32 +88,3 @@ export function readHooksIntro(pluginId, baseDir) {
 
   return rewriteIntroImagePaths(body, path.dirname(introFile), baseDir).trim();
 }
-
-/**
- * Redirect from the retired EU-VAT "Getting started" guide to its hooks index.
- * Lite and PRO never had `/guides/getting-started`, so they get no redirect.
- *
- * @param {{id?: string, status?: string, routeBasePath?: string}[]} plugins
- * @param {string} baseDir
- * @returns {{from: string, to: string}[]}
- */
-export function gettingStartedRedirects(plugins, baseDir) {
-  if (!Array.isArray(plugins)) {
-    return [];
-  }
-
-  return plugins.flatMap((plugin) => {
-    if (plugin?.id !== 'eu-vat' || plugin.status !== 'available' || !plugin.routeBasePath) {
-      return [];
-    }
-    if (!readHooksIntro(plugin.id, baseDir)) {
-      return [];
-    }
-    return [
-      {
-        from: `/${plugin.routeBasePath}/guides/getting-started/`,
-        to: `/${plugin.routeBasePath}/hooks/`,
-      },
-    ];
-  });
-}
