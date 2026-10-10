@@ -1,0 +1,2617 @@
+{
+    "$schema": "https://raw.githubusercontent.com/wp-hooks/generator/1.0.2/schema.json",
+    "hooks": [
+        {
+            "name": "fc_checkout_express_checkout",
+            "file": "inc/checkout-express-checkout.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the express checkout section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_gift_options_after_fields",
+            "file": "templates/fc-pro/gift-options/checkout/form-gift-options.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the fields in the checkout gift options.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_gift_options_before_fields",
+            "file": "templates/fc-pro/gift-options/checkout/form-gift-options.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the fields in the checkout gift options.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_coderockz_woo_delivery_after_hidden_fields",
+            "file": "inc/compat/plugins/compat-plugin-woo-delivery.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the hidden fields in the coderockz woo delivery.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.5"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_gift_card_section_after",
+            "file": "inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the gift card code field inside the expansible section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.2.4"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_gift_card_section_before",
+            "file": "inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the gift card code field inside the expansible section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.2.4"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_after_cart_section_{$section_id}",
+            "aliases": [
+                "fc_pro_after_cart_section_cart_items",
+                "fc_pro_after_cart_section_coupon_code",
+                "fc_pro_after_cart_section_cross_sell_display",
+                "fc_pro_after_cart_section_free-gifts-for-woocommerce_display",
+                "fc_pro_after_cart_section_gift_card_code",
+                "fc_pro_after_cart_section_shipping",
+                "fc_pro_after_cart_section_woodmart-free-gifts_display"
+            ],
+            "file": "inc/cart-page.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the contents of a cart section.",
+                "long_description": "The dynamic portion of the hook name, `$section_id`, is the cart section ID. Possible hook names include:\n\n  - `fc_pro_after_cart_section_cart_items`\n  - `fc_pro_after_cart_section_coupon_code`\n  - `fc_pro_after_cart_section_cross_sell_display`\n  - `fc_pro_after_cart_section_free-gifts-for-woocommerce_display`\n  - `fc_pro_after_cart_section_gift_card_code`\n  - `fc_pro_after_cart_section_shipping`\n  - `fc_pro_after_cart_section_woodmart-free-gifts_display`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Section ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$section_id"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$section_id</code>, is the cart section ID. Possible hook names include:</p> <ul> <li><code>fc_pro_after_cart_section_cart_items</code></li> <li><code>fc_pro_after_cart_section_coupon_code</code></li> <li><code>fc_pro_after_cart_section_cross_sell_display</code></li> <li><code>fc_pro_after_cart_section_free-gifts-for-woocommerce_display</code></li> <li><code>fc_pro_after_cart_section_gift_card_code</code></li> <li><code>fc_pro_after_cart_section_shipping</code></li> <li><code>fc_pro_after_cart_section_woodmart-free-gifts_display</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_after_coupon_code_form_elements_cart",
+            "file": "inc/cart-ajax.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the coupon code form elements cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.1.4"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_after_order_details_section_{$section_id}",
+            "aliases": [
+                "fc_pro_after_order_details_section_customer_information",
+                "fc_pro_after_order_details_section_delivery_information",
+                "fc_pro_after_order_details_section_downloads",
+                "fc_pro_after_order_details_section_gift_message",
+                "fc_pro_after_order_details_section_licenses",
+                "fc_pro_after_order_details_section_order_details",
+                "fc_pro_after_order_details_section_order_notes",
+                "fc_pro_after_order_details_section_order_status",
+                "fc_pro_after_order_details_section_order_summary",
+                "fc_pro_after_order_details_section_payment_method",
+                "fc_pro_after_order_details_section_subscriptions"
+            ],
+            "file": "inc/order-details.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the contents of an order details section.",
+                "long_description": "The dynamic portion of the hook name, `$section_id`, is the order details section ID. Possible hook names include:\n\n  - `fc_pro_after_order_details_section_customer_information`\n  - `fc_pro_after_order_details_section_delivery_information`\n  - `fc_pro_after_order_details_section_downloads`\n  - `fc_pro_after_order_details_section_gift_message`\n  - `fc_pro_after_order_details_section_licenses`\n  - `fc_pro_after_order_details_section_order_details`\n  - `fc_pro_after_order_details_section_order_notes`\n  - `fc_pro_after_order_details_section_order_status`\n  - `fc_pro_after_order_details_section_order_summary`\n  - `fc_pro_after_order_details_section_payment_method`\n  - `fc_pro_after_order_details_section_subscriptions`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Section ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$section_id"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$section_id</code>, is the order details section ID. Possible hook names include:</p> <ul> <li><code>fc_pro_after_order_details_section_customer_information</code></li> <li><code>fc_pro_after_order_details_section_delivery_information</code></li> <li><code>fc_pro_after_order_details_section_downloads</code></li> <li><code>fc_pro_after_order_details_section_gift_message</code></li> <li><code>fc_pro_after_order_details_section_licenses</code></li> <li><code>fc_pro_after_order_details_section_order_details</code></li> <li><code>fc_pro_after_order_details_section_order_notes</code></li> <li><code>fc_pro_after_order_details_section_order_status</code></li> <li><code>fc_pro_after_order_details_section_order_summary</code></li> <li><code>fc_pro_after_order_details_section_payment_method</code></li> <li><code>fc_pro_after_order_details_section_subscriptions</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_after_order_details_subsection_{$subsection_id}",
+            "aliases": [
+                "fc_pro_after_order_details_subsection_downloads",
+                "fc_pro_after_order_details_subsection_order_notes"
+            ],
+            "file": "inc/order-details.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the contents of an order details subsection.",
+                "long_description": "The dynamic portion of the hook name, `$subsection_id`, is the order details subsection ID. Possible hook names include:\n\n  - `fc_pro_after_order_details_subsection_downloads`\n  - `fc_pro_after_order_details_subsection_order_notes`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Subsection ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$subsection_id"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$subsection_id</code>, is the order details subsection ID. Possible hook names include:</p> <ul> <li><code>fc_pro_after_order_details_subsection_downloads</code></li> <li><code>fc_pro_after_order_details_subsection_order_notes</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_after_shipping_calculator",
+            "file": "templates/fc-pro/cart/cart/shipping-calculator.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the shipping calculator.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_before_cart_section_{$section_id}",
+            "aliases": [
+                "fc_pro_before_cart_section_cart_items",
+                "fc_pro_before_cart_section_coupon_code",
+                "fc_pro_before_cart_section_cross_sell_display",
+                "fc_pro_before_cart_section_free-gifts-for-woocommerce_display",
+                "fc_pro_before_cart_section_gift_card_code",
+                "fc_pro_before_cart_section_shipping",
+                "fc_pro_before_cart_section_woodmart-free-gifts_display"
+            ],
+            "file": "inc/cart-page.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the contents of a cart section.",
+                "long_description": "The dynamic portion of the hook name, `$section_id`, is the cart section ID. Possible hook names include:\n\n  - `fc_pro_before_cart_section_cart_items`\n  - `fc_pro_before_cart_section_coupon_code`\n  - `fc_pro_before_cart_section_cross_sell_display`\n  - `fc_pro_before_cart_section_free-gifts-for-woocommerce_display`\n  - `fc_pro_before_cart_section_gift_card_code`\n  - `fc_pro_before_cart_section_shipping`\n  - `fc_pro_before_cart_section_woodmart-free-gifts_display`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Section ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$section_id"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$section_id</code>, is the cart section ID. Possible hook names include:</p> <ul> <li><code>fc_pro_before_cart_section_cart_items</code></li> <li><code>fc_pro_before_cart_section_coupon_code</code></li> <li><code>fc_pro_before_cart_section_cross_sell_display</code></li> <li><code>fc_pro_before_cart_section_free-gifts-for-woocommerce_display</code></li> <li><code>fc_pro_before_cart_section_gift_card_code</code></li> <li><code>fc_pro_before_cart_section_shipping</code></li> <li><code>fc_pro_before_cart_section_woodmart-free-gifts_display</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_before_coupon_code_form_elements_cart",
+            "file": "inc/cart-ajax.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the coupon code form elements cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.1.4"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_before_order_details_section_{$section_id}",
+            "aliases": [
+                "fc_pro_before_order_details_section_customer_information",
+                "fc_pro_before_order_details_section_delivery_information",
+                "fc_pro_before_order_details_section_downloads",
+                "fc_pro_before_order_details_section_gift_message",
+                "fc_pro_before_order_details_section_licenses",
+                "fc_pro_before_order_details_section_order_details",
+                "fc_pro_before_order_details_section_order_notes",
+                "fc_pro_before_order_details_section_order_status",
+                "fc_pro_before_order_details_section_order_summary",
+                "fc_pro_before_order_details_section_payment_method",
+                "fc_pro_before_order_details_section_subscriptions"
+            ],
+            "file": "inc/order-details.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the contents of an order details section.",
+                "long_description": "The dynamic portion of the hook name, `$section_id`, is the order details section ID. Possible hook names include:\n\n  - `fc_pro_before_order_details_section_customer_information`\n  - `fc_pro_before_order_details_section_delivery_information`\n  - `fc_pro_before_order_details_section_downloads`\n  - `fc_pro_before_order_details_section_gift_message`\n  - `fc_pro_before_order_details_section_licenses`\n  - `fc_pro_before_order_details_section_order_details`\n  - `fc_pro_before_order_details_section_order_notes`\n  - `fc_pro_before_order_details_section_order_status`\n  - `fc_pro_before_order_details_section_order_summary`\n  - `fc_pro_before_order_details_section_payment_method`\n  - `fc_pro_before_order_details_section_subscriptions`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Section ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$section_id"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$section_id</code>, is the order details section ID. Possible hook names include:</p> <ul> <li><code>fc_pro_before_order_details_section_customer_information</code></li> <li><code>fc_pro_before_order_details_section_delivery_information</code></li> <li><code>fc_pro_before_order_details_section_downloads</code></li> <li><code>fc_pro_before_order_details_section_gift_message</code></li> <li><code>fc_pro_before_order_details_section_licenses</code></li> <li><code>fc_pro_before_order_details_section_order_details</code></li> <li><code>fc_pro_before_order_details_section_order_notes</code></li> <li><code>fc_pro_before_order_details_section_order_status</code></li> <li><code>fc_pro_before_order_details_section_order_summary</code></li> <li><code>fc_pro_before_order_details_section_payment_method</code></li> <li><code>fc_pro_before_order_details_section_subscriptions</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_before_order_details_subsection_{$subsection_id}",
+            "aliases": [
+                "fc_pro_before_order_details_subsection_downloads",
+                "fc_pro_before_order_details_subsection_order_notes"
+            ],
+            "file": "inc/order-details.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the contents of an order details subsection.",
+                "long_description": "The dynamic portion of the hook name, `$subsection_id`, is the order details subsection ID. Possible hook names include:\n\n  - `fc_pro_before_order_details_subsection_downloads`\n  - `fc_pro_before_order_details_subsection_order_notes`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Subsection ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$subsection_id"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$subsection_id</code>, is the order details subsection ID. Possible hook names include:</p> <ul> <li><code>fc_pro_before_order_details_subsection_downloads</code></li> <li><code>fc_pro_before_order_details_subsection_order_notes</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_before_shipping_calculator",
+            "file": "templates/fc-pro/cart/cart/shipping-calculator.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the shipping calculator.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_actions",
+            "file": "inc/cart-page.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart actions.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_after",
+            "file": "templates/fc-pro/cart/cart/cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_after_content",
+            "file": "templates/fc-pro/cart/cart/cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the content in the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_after_main_section",
+            "file": "templates/fc-pro/cart/cart/page-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the main section in the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.1.8"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_after_main_section_wrapper",
+            "file": "templates/fc-pro/cart/cart/page-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the main section wrapper in the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.1.8"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_after_order_review",
+            "file": "templates/fc-pro/cart/cart/review-order-section-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the order review in the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_after_order_review_inside",
+            "file": "templates/fc-pro/cart/cart/review-order-section-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the inner content of the order review in the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_after_order_review_table",
+            "file": "templates/fc-pro/cart/cart/review-order-section-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the order review table in the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_before",
+            "file": "templates/fc-pro/cart/cart/cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_before_content",
+            "file": "templates/fc-pro/cart/cart/cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the content in the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_before_main_section",
+            "file": "templates/fc-pro/cart/cart/page-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the main section in the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.1.8"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_before_main_section_wrapper",
+            "file": "templates/fc-pro/cart/cart/page-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the main section wrapper in the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.1.8"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_before_order_review",
+            "file": "templates/fc-pro/cart/cart/review-order-section-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the order review in the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_before_order_review_heading",
+            "file": "templates/fc-pro/cart/cart/review-order-section-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the order review heading in the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_before_order_review_inside",
+            "file": "templates/fc-pro/cart/cart/review-order-section-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the inner content of the order review in the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_before_order_review_table",
+            "file": "templates/fc-pro/cart/cart/review-order-section-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the order review table in the cart.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_cross_sell_item_actions",
+            "file": "templates/fc-pro/cart-cross-sells/cart/cross-sells.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart cross sell item actions.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.0.3"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The product.",
+                        "types": [
+                            "\\WC_Product"
+                        ],
+                        "variable": "$_product"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Template arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$args"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "fc_pro_cart_footer",
+            "file": "templates/fc-pro/cart/cart/footer-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart footer.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_footer",
+            "file": "templates/compat/themes/enfold/fc-pro/cart/cart/footer-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart footer.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_footer_widgets",
+            "file": "templates/fc-pro/cart/cart/cart-footer.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart footer widgets.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.2"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_footer_widgets_inside_after",
+            "file": "inc/cart-widget-areas.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the inner content of cart footer widgets.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.2"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_footer_widgets_inside_before",
+            "file": "inc/cart-widget-areas.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the inner content of cart footer widgets.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.2"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_header",
+            "file": "templates/fc-pro/cart/cart/header-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart header.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_header",
+            "file": "templates/compat/themes/dt-the7/fc-pro/cart/cart/header-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart header.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_header",
+            "file": "templates/compat/themes/enfold/fc-pro/cart/cart/header-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart header.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_header_widgets_inside_after",
+            "file": "inc/cart-widget-areas.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the inner content of cart header widgets.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_header_widgets_inside_before",
+            "file": "inc/cart-widget-areas.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the inner content of cart header widgets.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_item_actions",
+            "file": "inc/cart-page.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart item actions.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.0.3"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item data.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$cart_item"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item key.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$cart_item_key"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Product object.",
+                        "types": [
+                            "\\WC_Product"
+                        ],
+                        "variable": "$product"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_pro_cart_item_actions_buttons",
+            "file": "inc/cart-page.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart item actions buttons.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.1.10"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item data.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$cart_item"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item key.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$cart_item_key"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Product object.",
+                        "types": [
+                            "\\WC_Product"
+                        ],
+                        "variable": "$product"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_pro_cart_item_details",
+            "file": "templates/fc-pro/cart/cart/cart-items-table.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart item details.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.5.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item data.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$cart_item"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item key.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$cart_item_key"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The product.",
+                        "types": [
+                            "\\WC_Product"
+                        ],
+                        "variable": "$_product"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_pro_cart_item_totals_after",
+            "file": "templates/fc-pro/cart/cart/cart-items-table.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the cart item totals.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.0.5"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item data.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$cart_item"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item key.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$cart_item_key"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The product.",
+                        "types": [
+                            "\\WC_Product"
+                        ],
+                        "variable": "$_product"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_pro_cart_item_totals_before",
+            "file": "templates/fc-pro/cart/cart/cart-items-table.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the cart item totals.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.0.5"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item data.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$cart_item"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item key.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$cart_item_key"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The product.",
+                        "types": [
+                            "\\WC_Product"
+                        ],
+                        "variable": "$_product"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_pro_cart_items_table",
+            "file": "templates/fc-pro/cart/cart/cart-items.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart items table.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_order_review",
+            "file": "templates/fc-pro/cart/cart/review-order-section-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart order review.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_order_review_sidebar_before_actions",
+            "file": "templates/fc-pro/cart/cart/review-order-section-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the actions in the cart order review sidebar.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_review_order_after_coupon_code",
+            "file": "templates/fc-pro/cart/cart/review-order-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the coupon code in the cart review order.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_review_order_shipping",
+            "file": "templates/fc-pro/cart/cart/review-order-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart review order shipping.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.4.1"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_review_order_shipping_inside_row",
+            "file": "templates/fc-pro/cart/cart/review-order-shipping-row.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart review order shipping inside row.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.4.1"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_section_header_order_summary",
+            "file": "templates/fc-pro/cart/cart/review-order-section-cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart section header order summary.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_section_header_{$section_id}",
+            "aliases": [
+                "fc_pro_cart_section_header_cart_items",
+                "fc_pro_cart_section_header_coupon_code",
+                "fc_pro_cart_section_header_cross_sell_display",
+                "fc_pro_cart_section_header_free-gifts-for-woocommerce_display",
+                "fc_pro_cart_section_header_gift_card_code",
+                "fc_pro_cart_section_header_shipping",
+                "fc_pro_cart_section_header_woodmart-free-gifts_display"
+            ],
+            "file": "inc/cart-page.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires in the header of a cart section.",
+                "long_description": "The dynamic portion of the hook name, `$section_id`, is the cart section ID. Possible hook names include:\n\n  - `fc_pro_cart_section_header_cart_items`\n  - `fc_pro_cart_section_header_coupon_code`\n  - `fc_pro_cart_section_header_cross_sell_display`\n  - `fc_pro_cart_section_header_free-gifts-for-woocommerce_display`\n  - `fc_pro_cart_section_header_gift_card_code`\n  - `fc_pro_cart_section_header_shipping`\n  - `fc_pro_cart_section_header_woodmart-free-gifts_display`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Section ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$section_id"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$section_id</code>, is the cart section ID. Possible hook names include:</p> <ul> <li><code>fc_pro_cart_section_header_cart_items</code></li> <li><code>fc_pro_cart_section_header_coupon_code</code></li> <li><code>fc_pro_cart_section_header_cross_sell_display</code></li> <li><code>fc_pro_cart_section_header_free-gifts-for-woocommerce_display</code></li> <li><code>fc_pro_cart_section_header_gift_card_code</code></li> <li><code>fc_pro_cart_section_header_shipping</code></li> <li><code>fc_pro_cart_section_header_woodmart-free-gifts_display</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_cart_sections",
+            "file": "templates/fc-pro/cart/cart/cart.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart sections.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cart_sidebar_sections",
+            "file": "inc/cart-page.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the cart sidebar sections.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_checkout_review_order_after_coupon_code",
+            "file": "templates/fc-pro/order-summary/checkout/review-order-totals.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the coupon code in the checkout review order.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_checkout_review_order_after_order_total",
+            "file": "templates/fc-pro/order-summary/checkout/review-order-totals.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the order total in the checkout review order.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_checkout_review_order_before_order_total",
+            "file": "templates/fc-pro/order-summary/checkout/review-order-totals.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the order total in the checkout review order.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_collapsible_order_review_content",
+            "file": "templates/fc-pro/order-summary/checkout/review-order-section-collapsible.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the collapsible order review content.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_collapsible_order_review_toggle_content",
+            "file": "templates/fc-pro/order-summary/checkout/review-order-section-collapsible.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the collapsible order review toggle content.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_cross_sell_item_details_inner_after",
+            "file": "templates/fc-pro/cart-cross-sells/cart/cross-sells.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the cross sell item details inner.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The product.",
+                        "types": [
+                            "\\WC_Product"
+                        ],
+                        "variable": "$_product"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_cross_sell_item_details_inner_before",
+            "file": "templates/fc-pro/cart-cross-sells/cart/cross-sells.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the cross sell item details inner.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The product.",
+                        "types": [
+                            "\\WC_Product"
+                        ],
+                        "variable": "$_product"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_details_section_header_{$section_id}",
+            "aliases": [
+                "fc_pro_order_details_section_header_customer_information",
+                "fc_pro_order_details_section_header_delivery_information",
+                "fc_pro_order_details_section_header_downloads",
+                "fc_pro_order_details_section_header_gift_message",
+                "fc_pro_order_details_section_header_licenses",
+                "fc_pro_order_details_section_header_order_details",
+                "fc_pro_order_details_section_header_order_notes",
+                "fc_pro_order_details_section_header_order_status",
+                "fc_pro_order_details_section_header_order_summary",
+                "fc_pro_order_details_section_header_payment_method",
+                "fc_pro_order_details_section_header_subscriptions"
+            ],
+            "file": "inc/order-details.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires in the header of an order details section.",
+                "long_description": "The dynamic portion of the hook name, `$section_id`, is the order details section ID. Possible hook names include:\n\n  - `fc_pro_order_details_section_header_customer_information`\n  - `fc_pro_order_details_section_header_delivery_information`\n  - `fc_pro_order_details_section_header_downloads`\n  - `fc_pro_order_details_section_header_gift_message`\n  - `fc_pro_order_details_section_header_licenses`\n  - `fc_pro_order_details_section_header_order_details`\n  - `fc_pro_order_details_section_header_order_notes`\n  - `fc_pro_order_details_section_header_order_status`\n  - `fc_pro_order_details_section_header_order_summary`\n  - `fc_pro_order_details_section_header_payment_method`\n  - `fc_pro_order_details_section_header_subscriptions`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Section ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$section_id"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$section_id</code>, is the order details section ID. Possible hook names include:</p> <ul> <li><code>fc_pro_order_details_section_header_customer_information</code></li> <li><code>fc_pro_order_details_section_header_delivery_information</code></li> <li><code>fc_pro_order_details_section_header_downloads</code></li> <li><code>fc_pro_order_details_section_header_gift_message</code></li> <li><code>fc_pro_order_details_section_header_licenses</code></li> <li><code>fc_pro_order_details_section_header_order_details</code></li> <li><code>fc_pro_order_details_section_header_order_notes</code></li> <li><code>fc_pro_order_details_section_header_order_status</code></li> <li><code>fc_pro_order_details_section_header_order_summary</code></li> <li><code>fc_pro_order_details_section_header_payment_method</code></li> <li><code>fc_pro_order_details_section_header_subscriptions</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_details_subsection_header_{$subsection_id}",
+            "aliases": [
+                "fc_pro_order_details_subsection_header_downloads",
+                "fc_pro_order_details_subsection_header_order_notes"
+            ],
+            "file": "inc/order-details.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires in the header of an order details subsection.",
+                "long_description": "The dynamic portion of the hook name, `$subsection_id`, is the order details subsection ID. Possible hook names include:\n\n  - `fc_pro_order_details_subsection_header_downloads`\n  - `fc_pro_order_details_subsection_header_order_notes`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Subsection ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$subsection_id"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$subsection_id</code>, is the order details subsection ID. Possible hook names include:</p> <ul> <li><code>fc_pro_order_details_subsection_header_downloads</code></li> <li><code>fc_pro_order_details_subsection_header_order_notes</code></li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_overview_after",
+            "file": "templates/fc-pro/order-details/order/order-details-overview.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the order overview.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_overview_before",
+            "file": "templates/fc-pro/order-details/order/order-details-overview.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the order overview.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_after",
+            "file": "templates/fc-pro/order-pay/checkout/form-pay.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the order pay.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_after_order_review",
+            "file": "templates/fc-pro/order-pay/order-pay/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the order review in the order pay.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_after_order_review_inside",
+            "file": "templates/fc-pro/order-pay/order-pay/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the inner content of the order review in the order pay.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_after_order_review_table",
+            "file": "templates/fc-pro/order-pay/order-pay/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the order review table in the order pay.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_after_sections",
+            "file": "templates/fc-pro/order-pay/checkout/form-pay.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the sections in the order pay.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_before",
+            "file": "templates/fc-pro/order-pay/checkout/form-pay.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the order pay.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_before_order_review",
+            "file": "templates/fc-pro/order-pay/order-pay/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the order review in the order pay.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_order_pay_before_order_review_heading",
+            "file": "templates/fc-pro/order-pay/order-pay/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the order review heading in the order pay.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_before_order_review_inside",
+            "file": "templates/fc-pro/order-pay/order-pay/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the inner content of the order review in the order pay.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_before_order_review_table",
+            "file": "templates/fc-pro/order-pay/order-pay/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the order review table in the order pay.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_before_sections",
+            "file": "templates/fc-pro/order-pay/checkout/form-pay.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the sections in the order pay.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_order_review",
+            "file": "inc/order-pay-page.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the order pay order review.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_order_review_section",
+            "file": "inc/order-pay-page.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the order pay order review section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_order_review_table",
+            "file": "templates/fc-pro/order-pay/order-pay/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the order pay order review table.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_section_header_order_summary",
+            "file": "templates/fc-pro/order-pay/order-pay/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the order pay section header order summary.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_pay_sections",
+            "file": "templates/fc-pro/order-pay/checkout/form-pay.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the order pay sections.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_received_after",
+            "file": "templates/fc-pro/order-received/checkout/thankyou.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the order received.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_order_received_after_content",
+            "file": "templates/fc-pro/order-received/checkout/thankyou.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the content in the order received.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_order_received_after_main_section",
+            "file": "templates/fc-pro/order-received/checkout/thankyou.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the main section in the order received.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.5"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_order_received_before",
+            "file": "templates/fc-pro/order-received/checkout/thankyou.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the order received.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_order_received_before_content",
+            "file": "templates/fc-pro/order-received/checkout/thankyou.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the content in the order received.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_order_received_failed",
+            "file": "templates/fc-pro/order-received/checkout/thankyou.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the order received failed.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_received_notice_after",
+            "file": "templates/fc-pro/order-received/checkout/order-received-successful.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the order received notice.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_received_notice_before",
+            "file": "templates/fc-pro/order-received/checkout/order-received-successful.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the order received notice.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_received_sidebar_sections",
+            "file": "inc/order-received-page.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the order received sidebar sections.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order ID.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$order_id"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_received_successful",
+            "file": "templates/fc-pro/order-received/checkout/thankyou.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the order received successful.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_order_received_successful_no_order_details",
+            "file": "templates/fc-pro/order-received/checkout/thankyou.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the order received successful no order details.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_pickup_point_fields",
+            "file": "inc/checkout-local-pickup.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the pickup point fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.0.2"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_woo_delivery_slots_after_fields",
+            "file": "inc/compat/plugins/compat-plugin-iconic-woo-delivery-slots.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the fields in the woo delivery slots.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.1.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_woo_delivery_slots_after_fields",
+            "file": "inc/compat/plugins/compat-plugin-iconic-woo-delivery-slots-premium.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the fields in the woo delivery slots.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.1.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_woocommerce_attendee_details_after_fields",
+            "file": "inc/compat/plugins/compat-plugin-fooevents.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the fields in the woocommerce attendee details.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.1.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_woocommerce_germanized_preferred_delivery_after_fields",
+            "file": "inc/compat/plugins/compat-plugin-woocommerce-germanized.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the fields in the woocommerce germanized preferred delivery.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.6"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_woocommerce_order_delivery_after_fields",
+            "file": "inc/compat/plugins/compat-plugin-woocommerce-order-delivery.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the fields in the woocommerce order delivery.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_woocommerce_order_delivery_before_fields",
+            "file": "inc/compat/plugins/compat-plugin-woocommerce-order-delivery.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the fields in the woocommerce order delivery.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_pro_woocommerce_tyche_order_delivery_after_fields",
+            "file": "inc/compat/plugins/compat-plugin-order-delivery-date.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the fields in the woocommerce tyche order delivery.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.6"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_review_order_shipping",
+            "file": "templates/fc-pro/order-summary/checkout/review-order-totals.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the review order shipping.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_substep_gift_cards_text_after",
+            "file": "inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the applied gift cards are listed in the gift cards substep review text.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.2.4"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_substep_gift_cards_text_before",
+            "file": "inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the applied gift cards are listed in the gift cards substep review text.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.2.4"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "wc_od_checkout_after_delivery_details",
+            "file": "templates/compat/plugins/woocommerce-order-delivery/checkout/form-delivery-date.php",
+            "type": "action",
+            "doc": {
+                "description": "Fired after displaying the delivery details in the checkout form.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Template arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$args"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "wc_od_checkout_before_delivery_details",
+            "file": "templates/compat/plugins/woocommerce-order-delivery/checkout/form-delivery-date.php",
+            "type": "action",
+            "doc": {
+                "description": "Fired before displaying the delivery details in the checkout form.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Template arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$args"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "wc_od_checkout_delivery_details",
+            "file": "templates/compat/plugins/woocommerce-order-delivery/checkout/form-delivery-date.php",
+            "type": "action",
+            "doc": {
+                "description": "Displays the delivery details in the checkout form.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.6.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Template arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$args"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_order_details",
+            "file": "templates/fc-pro/order-details/order/order-details.php",
+            "type": "action",
+            "doc": {
+                "description": "Action hook fired after the order details.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.4.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order data.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_quantity_input_field",
+            "file": "templates/fc-pro/cart-ajax/cart/quantity-input.php",
+            "type": "action",
+            "doc": {
+                "description": "Hook to output something after quantity input field",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.6.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_quantity_input_field",
+            "file": "templates/fc-pro/cart-ajax/cart/quantity-input.php",
+            "type": "action",
+            "doc": {
+                "description": "Hook to output something before the quantity input field.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "7.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "woocommerce_email_after_order_table",
+            "file": "templates/fc-pro/order-details-emails/emails/email-order-details.php",
+            "type": "action",
+            "doc": {
+                "description": "Action hook to add custom content after order details in email.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether it's sent to admin or customer.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$sent_to_admin"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether it's a plain text email.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$plain_text"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Email object.",
+                        "types": [
+                            "\\WC_Email"
+                        ],
+                        "variable": "$email"
+                    },
+                    {
+                        "name": "since",
+                        "content": "2.5.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_before_order_table",
+            "file": "templates/fc-pro/order-details-emails/emails/email-order-details.php",
+            "type": "action",
+            "doc": {
+                "description": "Action hook to add custom content before order details in email.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether it's sent to admin or customer.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$sent_to_admin"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether it's a plain text email.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$plain_text"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Email object.",
+                        "types": [
+                            "\\WC_Email"
+                        ],
+                        "variable": "$email"
+                    },
+                    {
+                        "name": "since",
+                        "content": "2.5.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 4
+        },
+        {
+            "name": "woocommerce_order_details_after_customer_address",
+            "file": "templates/fc-pro/order-details/order/order-details-customer.php",
+            "type": "action",
+            "doc": {
+                "description": "Action hook fired after an address in the order customer details.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "8.7.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Type of address (billing or shipping).",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$address_type"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "woocommerce_order_details_after_customer_address",
+            "file": "templates/fc-pro/order-details/order/order-details-customer.php",
+            "type": "action",
+            "doc": {
+                "description": "Action hook fired after an address in the order customer details.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "8.7.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Type of address (billing or shipping).",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$address_type"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "woocommerce_pay_order_before_payment",
+            "file": "templates/fc-pro/order-pay/order-pay/payment.php",
+            "type": "action",
+            "doc": {
+                "description": "Triggered from within the checkout/form-pay.php template, immediately before the payment section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "8.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        }
+    ]
+}

@@ -1,0 +1,2112 @@
+{
+    "$schema": "https://raw.githubusercontent.com/wp-hooks/generator/1.0.2/schema.json",
+    "hooks": [
+        {
+            "name": "fc_after_checkout_billing_only_form_inside",
+            "file": "templates/fc/checkout-steps/checkout/form-billing.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the billing-only checkout fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.5"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_after_substep_fields_{$substep_id}",
+            "aliases": [
+                "fc_after_substep_fields_billing_address",
+                "fc_after_substep_fields_contact",
+                "fc_after_substep_fields_coupon_codes",
+                "fc_after_substep_fields_order_notes",
+                "fc_after_substep_fields_payment",
+                "fc_after_substep_fields_shipping_address",
+                "fc_after_substep_fields_shipping_method"
+            ],
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the fields inside a checkout substep.",
+                "long_description": "The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:\n - `fc_after_substep_fields_contact` - `fc_after_substep_fields_shipping_address` - `fc_after_substep_fields_shipping_method` - `fc_after_substep_fields_order_notes` - `fc_after_substep_fields_billing_address` - `fc_after_substep_fields_payment` - `fc_after_substep_fields_coupon_codes`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.1.3"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$step_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout substep ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$substep_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether the substep fields section is collapsible.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$collapsible"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Context in which the hook runs. Default <code>checkout</code>.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$context"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$substep_id</code>, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:</p> <ul> <li><code>fc_after_substep_fields_contact</code></li> <li><code>fc_after_substep_fields_shipping_address</code></li> <li><code>fc_after_substep_fields_shipping_method</code></li> <li><code>fc_after_substep_fields_order_notes</code></li> <li><code>fc_after_substep_fields_billing_address</code></li> <li><code>fc_after_substep_fields_payment</code></li> <li><code>fc_after_substep_fields_coupon_codes</code></li> </ul>"
+            },
+            "args": 4
+        },
+        {
+            "name": "fc_after_substep_{$substep_id}",
+            "aliases": [
+                "fc_after_substep_billing_address",
+                "fc_after_substep_contact",
+                "fc_after_substep_coupon_codes",
+                "fc_after_substep_order_notes",
+                "fc_after_substep_payment",
+                "fc_after_substep_shipping_address",
+                "fc_after_substep_shipping_method"
+            ],
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after a checkout substep.",
+                "long_description": "The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. This hook runs before the optional substep edit and save buttons. Additional hook names are created for substeps registered by other plugins. Possible hook names include:\n - `fc_after_substep_contact` - `fc_after_substep_shipping_address` - `fc_after_substep_shipping_method` - `fc_after_substep_order_notes` - `fc_after_substep_billing_address` - `fc_after_substep_payment` - `fc_after_substep_coupon_codes`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.9"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$step_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout substep ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$substep_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether edit and save buttons are output for the substep.",
+                        "types": [
+                            "mixed"
+                        ],
+                        "variable": "$output_edit_buttons"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Context in which the hook runs. Default <code>checkout</code>.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$context"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$substep_id</code>, refers to the checkout substep ID. This hook runs before the optional substep edit and save buttons. Additional hook names are created for substeps registered by other plugins. Possible hook names include:</p> <ul> <li><code>fc_after_substep_contact</code></li> <li><code>fc_after_substep_shipping_address</code></li> <li><code>fc_after_substep_shipping_method</code></li> <li><code>fc_after_substep_order_notes</code></li> <li><code>fc_after_substep_billing_address</code></li> <li><code>fc_after_substep_payment</code></li> <li><code>fc_after_substep_coupon_codes</code></li> </ul>"
+            },
+            "args": 4
+        },
+        {
+            "name": "fc_before_checkout_billing_only_form",
+            "file": "templates/fc/checkout-steps/checkout/form-billing.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the billing-only checkout fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.5.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_before_checkout_shipping_address_wrapper",
+            "file": "templates/fc/checkout-steps/checkout/form-shipping.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the shipping address wrapper, where the ship-to-different-address option is rendered.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_before_checkout_shipping_only_form",
+            "file": "templates/fc/checkout-steps/checkout/form-shipping.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the shipping-only checkout fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.5.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_before_substep_fields_{$substep_id}",
+            "aliases": [
+                "fc_before_substep_fields_billing_address",
+                "fc_before_substep_fields_contact",
+                "fc_before_substep_fields_coupon_codes",
+                "fc_before_substep_fields_order_notes",
+                "fc_before_substep_fields_payment",
+                "fc_before_substep_fields_shipping_address",
+                "fc_before_substep_fields_shipping_method"
+            ],
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the fields inside a checkout substep.",
+                "long_description": "The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:\n - `fc_before_substep_fields_contact` - `fc_before_substep_fields_shipping_address` - `fc_before_substep_fields_shipping_method` - `fc_before_substep_fields_order_notes` - `fc_before_substep_fields_billing_address` - `fc_before_substep_fields_payment` - `fc_before_substep_fields_coupon_codes`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.1.3"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$step_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout substep ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$substep_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether the substep fields section is collapsible.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$collapsible"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Context in which the hook runs. Default <code>checkout</code>.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$context"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$substep_id</code>, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:</p> <ul> <li><code>fc_before_substep_fields_contact</code></li> <li><code>fc_before_substep_fields_shipping_address</code></li> <li><code>fc_before_substep_fields_shipping_method</code></li> <li><code>fc_before_substep_fields_order_notes</code></li> <li><code>fc_before_substep_fields_billing_address</code></li> <li><code>fc_before_substep_fields_payment</code></li> <li><code>fc_before_substep_fields_coupon_codes</code></li> </ul>"
+            },
+            "args": 4
+        },
+        {
+            "name": "fc_before_substep_{$substep_id}",
+            "aliases": [
+                "fc_before_substep_billing_address",
+                "fc_before_substep_contact",
+                "fc_before_substep_coupon_codes",
+                "fc_before_substep_order_notes",
+                "fc_before_substep_payment",
+                "fc_before_substep_shipping_address",
+                "fc_before_substep_shipping_method"
+            ],
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before a checkout substep.",
+                "long_description": "The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:\n - `fc_before_substep_contact` - `fc_before_substep_shipping_address` - `fc_before_substep_shipping_method` - `fc_before_substep_order_notes` - `fc_before_substep_billing_address` - `fc_before_substep_payment` - `fc_before_substep_coupon_codes`",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.9"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$step_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout substep ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$substep_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Context in which the hook runs. Default <code>checkout</code>.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$context"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$substep_id</code>, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:</p> <ul> <li><code>fc_before_substep_contact</code></li> <li><code>fc_before_substep_shipping_address</code></li> <li><code>fc_before_substep_shipping_method</code></li> <li><code>fc_before_substep_order_notes</code></li> <li><code>fc_before_substep_billing_address</code></li> <li><code>fc_before_substep_payment</code></li> <li><code>fc_before_substep_coupon_codes</code></li> </ul>"
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_checkout_account_after_fields",
+            "file": "templates/fc/checkout-steps/checkout/form-account-creation.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the account creation fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_checkout_account_before_fields",
+            "file": "templates/fc/checkout-steps/checkout/form-account-creation.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the account creation fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_checkout_account_fields_empty_section",
+            "file": "templates/fc/checkout-steps/checkout/form-account-creation.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when the account creation section has no fields to display.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_checkout_after",
+            "file": "templates/fc/checkout-steps/checkout/form-checkout.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the checkout form contents.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_checkout_after_contact_fields",
+            "file": "templates/fc/checkout-steps/checkout/form-contact.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the contact fields section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_after_main_section",
+            "file": "templates/fc/checkout-page-template/checkout/page-checkout.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the main checkout section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.1.9"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_after_main_section_wrapper",
+            "file": "templates/fc/checkout-page-template/checkout/page-checkout.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the main checkout section wrapper.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.1.9"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_after_order_review",
+            "file": "templates/fc/checkout-steps/checkout/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the order review section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_after_order_review_inside",
+            "file": "templates/fc/checkout-steps/checkout/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires inside the order review section, after its contents.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_after_order_review_title_after",
+            "file": "templates/fc/checkout-steps/checkout/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the inner order review title.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.1.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_after_order_review_title_before",
+            "file": "templates/fc/checkout-steps/checkout/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the inner order review title.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.1.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_after_payment",
+            "file": "templates/fc/checkout-steps/checkout/payment.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the payment section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_checkout_after_step",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after a checkout step element.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$step_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$step_args"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Zero-based position of the step.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$step_index"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Context in which the hook runs. Default <code>checkout</code>.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$context"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 4
+        },
+        {
+            "name": "fc_checkout_after_step_billing_fields",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the billing step fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_after_step_payment_fields",
+            "file": "templates/fc/checkout-steps/checkout/form-payment.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the payment step fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_after_step_shipping_fields",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the shipping step fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_after_step_shipping_fields_inside",
+            "file": "templates/fc/checkout-steps/checkout/form-shipping.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires inside the shipping step, after its fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.5.8"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_after_steps",
+            "file": "templates/fc/checkout-steps/checkout/form-checkout.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the checkout steps.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_checkout_before",
+            "file": "templates/fc/checkout-steps/checkout/form-checkout.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the checkout form contents.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_checkout_before_contact_fields",
+            "file": "templates/fc/checkout-steps/checkout/form-contact.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the contact fields section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_before_main_section",
+            "file": "templates/fc/checkout-page-template/checkout/page-checkout.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the main checkout section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.1.9"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_before_main_section_wrapper",
+            "file": "templates/fc/checkout-page-template/checkout/page-checkout.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the main checkout section wrapper.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.1.9"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_before_order_review",
+            "file": "templates/fc/checkout-steps/checkout/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the order review section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_before_order_review_inside",
+            "file": "templates/fc/checkout-steps/checkout/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires inside the order review section, before its contents.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_before_payment",
+            "file": "templates/fc/checkout-steps/checkout/payment.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the payment section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_checkout_before_step",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before a checkout step element.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$step_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$step_args"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Zero-based position of the step.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$step_index"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Context in which the hook runs. Default <code>checkout</code>.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$context"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 4
+        },
+        {
+            "name": "fc_checkout_before_step_billing_fields",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the billing step fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_before_step_payment_fields",
+            "file": "templates/fc/checkout-steps/checkout/form-payment.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the payment step fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_before_step_shipping_fields",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the shipping step fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_before_step_shipping_fields_inside",
+            "file": "templates/fc/checkout-steps/checkout/form-shipping.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires inside the shipping step, before its fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.5.8"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_before_steps",
+            "file": "templates/fc/checkout-steps/checkout/form-checkout.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the checkout steps.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_checkout_below_contact_login_cta",
+            "file": "templates/fc/checkout-steps/checkout/form-contact-login.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires below the contact step login call to action.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.4.2"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_contact_after_fields",
+            "file": "templates/fc/checkout-steps/checkout/form-contact.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the contact fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_contact_before_fields",
+            "file": "templates/fc/checkout-steps/checkout/form-contact.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the contact fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_end_step",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires at the end of a checkout step, inside the step element.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$step_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$step_args"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Zero-based position of the step.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$step_index"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Context in which the hook runs. Default <code>checkout</code>.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$context"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 4
+        },
+        {
+            "name": "fc_checkout_footer",
+            "file": "templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-footer.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires inside the distraction-free checkout footer.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_footer",
+            "file": "templates/fc/checkout-page-template/checkout/page-checkout-footer.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires inside the distraction-free checkout footer.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_footer_widgets",
+            "file": "templates/fc/checkout-page-template/checkout/checkout-footer.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires where the checkout footer widget area is rendered.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.6.1"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_footer_widgets_inside_after",
+            "file": "inc/checkout-widget-areas.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the widgets inside the checkout footer widget area.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.6.1"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_footer_widgets_inside_before",
+            "file": "inc/checkout-widget-areas.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the widgets inside the checkout footer widget area.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.6.1"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_header",
+            "file": "templates/compat/themes/dt-the7/checkout-page-template/checkout/page-checkout-header.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires inside the distraction-free checkout header.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_header",
+            "file": "templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-header.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires inside the distraction-free checkout header.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_header",
+            "file": "templates/fc/checkout-page-template/checkout/page-checkout-header.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires inside the distraction-free checkout header.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_header_cart_link",
+            "file": "templates/fc/checkout-page-template/checkout/checkout-header.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires where the checkout header cart link is rendered.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_header_logo",
+            "file": "templates/fc/checkout-page-template/checkout/checkout-header.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires where the checkout header logo is rendered.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_header_widgets",
+            "file": "templates/fc/checkout-page-template/checkout/checkout-header.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires where the checkout header widget area is rendered.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_header_widgets_inside_after",
+            "file": "inc/checkout-widget-areas.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the widgets inside the checkout header widget area.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.4.3"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_header_widgets_inside_before",
+            "file": "inc/checkout-widget-areas.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the widgets inside the checkout header widget area.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.4.3"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_order_review_actions",
+            "file": "templates/fc/checkout-steps/checkout/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires where the order review actions are rendered.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_order_review_content",
+            "file": "templates/fc/checkout-steps/checkout/review-order-section.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires where the order review table is rendered.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_order_review_section",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires where the order review section is rendered.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_order_review_sidebar_before_actions",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the actions in the order review sidebar.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_payment",
+            "file": "templates/fc/checkout-steps/checkout/form-payment.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires where the payment section is rendered inside the payment step.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_place_order_terms",
+            "file": "templates/fc/checkout-steps/checkout/place-order.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires where the terms and conditions checkbox is rendered.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.1.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_social_login",
+            "file": "templates/fc/checkout-steps/checkout/form-contact-login.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires where social login buttons are rendered on the contact step.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.1.6"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_checkout_start_step",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires at the start of a checkout step, inside the step element.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$step_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$step_args"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Zero-based position of the step.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$step_index"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Context in which the hook runs. Default <code>checkout</code>.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$context"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 4
+        },
+        {
+            "name": "fc_checkout_steps",
+            "file": "templates/fc/checkout-steps/checkout/form-checkout.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires inside the checkout form where the checkout steps are rendered.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout object.",
+                        "types": [
+                            "\\WC_Checkout"
+                        ],
+                        "variable": "$checkout"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_coupon_code_section_after",
+            "file": "inc/checkout-coupon-codes.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the coupon code field inside the coupon section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.2.3"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_coupon_code_section_before",
+            "file": "inc/checkout-coupon-codes.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the coupon code field inside the coupon section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.2.3"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_dashboard_addons_before_list",
+            "file": "inc/admin/admin-setting-type-fc-addons.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the Dashboard add-ons list.",
+                "long_description": "Extensions can print markup here, for example a PRO site key field.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.2.8"
+                    }
+                ],
+                "long_description_html": "<p>Extensions can print markup here, for example a PRO site key field.</p>"
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_order_summary_cart_item_details",
+            "file": "templates/fc/checkout-steps/checkout/review-order.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires inside each order summary cart item, where the product details are rendered.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item data.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$cart_item"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item key.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$cart_item_key"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Product object.",
+                        "types": [
+                            "\\WC_Product"
+                        ],
+                        "variable": "$_product"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_order_summary_cart_item_totals_after",
+            "file": "templates/fc/checkout-steps/checkout/review-order.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the line total of an order summary cart item.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.5"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item data.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$cart_item"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item key.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$cart_item_key"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Product object.",
+                        "types": [
+                            "\\WC_Product"
+                        ],
+                        "variable": "$_product"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_order_summary_cart_item_totals_before",
+            "file": "templates/fc/checkout-steps/checkout/review-order.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the line total of an order summary cart item.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.5"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item data.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$cart_item"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Cart item key.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$cart_item_key"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Product object.",
+                        "types": [
+                            "\\WC_Product"
+                        ],
+                        "variable": "$_product"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_place_order",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires where the place-order section is rendered.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$step_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Is sidebar.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$is_sidebar"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "fc_place_order_custom_buttons",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires where custom place-order buttons are rendered.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Checkout step ID.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$step_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Is sidebar.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$is_sidebar"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "fc_pro_checkout_review_order_after_coupon_code",
+            "file": "templates/fc/checkout-steps/checkout/review-order.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the coupon code row in the checkout order review.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.0.5"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_register_steps",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when checkout steps are registered so other plugins can add or change steps.",
+                "long_description": "Trigger action to let plugins add or modify checkout steps.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.4.0"
+                    }
+                ],
+                "long_description_html": "<p>Trigger action to let plugins add or modify checkout steps.</p>"
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_review_order_shipping",
+            "file": "templates/fc/checkout-steps/checkout/review-order.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires where the chosen shipping method is rendered in the order review.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_shipping_methods_after_packages",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the shipping method packages.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_shipping_methods_after_packages_inside",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires inside the shipping methods section, after the packages.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.6.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_shipping_methods_before_packages",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the shipping method packages.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.2.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_shipping_methods_before_packages_inside",
+            "file": "inc/checkout-steps.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires inside the shipping methods section, before the packages.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.6.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_substep_coupon_codes_text_after",
+            "file": "inc/checkout-coupon-codes.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the coupon code substep review text.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.1"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "fc_substep_coupon_codes_text_before",
+            "file": "inc/checkout-coupon-codes.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the coupon code substep review text.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.3.1"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "woocommerce_email_customer_address_section",
+            "file": "templates/fc/checkout-steps/emails/email-addresses.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the core address fields in emails.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "8.6.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Address type. Either 'billing' or 'shipping'.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$type"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order instance.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    },
+                    {
+                        "name": "param",
+                        "content": "If this email is being sent to the admin or not.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$sent_to_admin"
+                    },
+                    {
+                        "name": "param",
+                        "content": "If this email is plain text or not.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$plain_text"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_address_section",
+            "file": "templates/fc/checkout-steps/emails/email-addresses.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the core address fields in emails.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "8.6.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Address type. Either 'billing' or 'shipping'.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$type"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order instance.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    },
+                    {
+                        "name": "param",
+                        "content": "If this email is being sent to the admin or not.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$sent_to_admin"
+                    },
+                    {
+                        "name": "param",
+                        "content": "If this email is plain text or not.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$plain_text"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_address_section",
+            "file": "templates/fc/checkout-steps/emails/plain/email-addresses.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the core address fields in emails.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "8.6.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Address type. Either 'billing' or 'shipping'.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$type"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order instance.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    },
+                    {
+                        "name": "param",
+                        "content": "If this email is being sent to the admin or not.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$sent_to_admin"
+                    },
+                    {
+                        "name": "param",
+                        "content": "If this email is plain text or not.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$plain_text"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 4
+        },
+        {
+            "name": "woocommerce_email_customer_address_section",
+            "file": "templates/fc/checkout-steps/emails/plain/email-addresses.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the core address fields in emails.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "8.6.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Address type. Either 'billing' or 'shipping'.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$type"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order instance.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    },
+                    {
+                        "name": "param",
+                        "content": "If this email is being sent to the admin or not.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$sent_to_admin"
+                    },
+                    {
+                        "name": "param",
+                        "content": "If this email is plain text or not.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$plain_text"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 4
+        },
+        {
+            "name": "woocommerce_gzd_review_order_before_submit",
+            "file": "templates/compat/plugins/woocommerce-germanized/checkout/order-submit.php",
+            "type": "action",
+            "doc": {
+                "description": "Before review order submit button.",
+                "long_description": "This hooks fires right before outputting the order submit button.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.0.0"
+                    }
+                ],
+                "long_description_html": "<p>This hooks fires right before outputting the order submit button.</p>"
+            },
+            "args": 0
+        }
+    ]
+}

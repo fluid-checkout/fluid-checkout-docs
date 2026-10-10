@@ -1,0 +1,2089 @@
+[
+  {
+    "type": "doc",
+    "id": "hooks/index",
+    "label": "All hooks"
+  },
+  {
+    "type": "category",
+    "label": "Actions",
+    "items": [
+      {
+        "type": "doc",
+        "id": "hooks/fc_after_checkout_billing_only_form_inside",
+        "label": "fc_after_checkout_billing_only_form_inside"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_after_substep_fields_substep_id",
+        "label": "fc_after_substep_fields_{substep_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_after_substep_substep_id",
+        "label": "fc_after_substep_{substep_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_before_checkout_billing_only_form",
+        "label": "fc_before_checkout_billing_only_form"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_before_checkout_shipping_address_wrapper",
+        "label": "fc_before_checkout_shipping_address_wrapper"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_before_checkout_shipping_only_form",
+        "label": "fc_before_checkout_shipping_only_form"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_before_substep_fields_substep_id",
+        "label": "fc_before_substep_fields_{substep_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_before_substep_substep_id",
+        "label": "fc_before_substep_{substep_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_account_after_fields",
+        "label": "fc_checkout_account_after_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_account_before_fields",
+        "label": "fc_checkout_account_before_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_account_fields_empty_section",
+        "label": "fc_checkout_account_fields_empty_section"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after",
+        "label": "fc_checkout_after"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_contact_fields",
+        "label": "fc_checkout_after_contact_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_main_section",
+        "label": "fc_checkout_after_main_section"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_main_section_wrapper",
+        "label": "fc_checkout_after_main_section_wrapper"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_order_review",
+        "label": "fc_checkout_after_order_review"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_order_review_inside",
+        "label": "fc_checkout_after_order_review_inside"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_order_review_title_after",
+        "label": "fc_checkout_after_order_review_title_after"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_order_review_title_before",
+        "label": "fc_checkout_after_order_review_title_before"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_payment",
+        "label": "fc_checkout_after_payment"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_step",
+        "label": "fc_checkout_after_step"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_step_billing_fields",
+        "label": "fc_checkout_after_step_billing_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_step_payment_fields",
+        "label": "fc_checkout_after_step_payment_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_step_shipping_fields",
+        "label": "fc_checkout_after_step_shipping_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_step_shipping_fields_inside",
+        "label": "fc_checkout_after_step_shipping_fields_inside"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_after_steps",
+        "label": "fc_checkout_after_steps"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_before",
+        "label": "fc_checkout_before"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_before_contact_fields",
+        "label": "fc_checkout_before_contact_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_before_main_section",
+        "label": "fc_checkout_before_main_section"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_before_main_section_wrapper",
+        "label": "fc_checkout_before_main_section_wrapper"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_before_order_review",
+        "label": "fc_checkout_before_order_review"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_before_order_review_inside",
+        "label": "fc_checkout_before_order_review_inside"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_before_payment",
+        "label": "fc_checkout_before_payment"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_before_step",
+        "label": "fc_checkout_before_step"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_before_step_billing_fields",
+        "label": "fc_checkout_before_step_billing_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_before_step_payment_fields",
+        "label": "fc_checkout_before_step_payment_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_before_step_shipping_fields",
+        "label": "fc_checkout_before_step_shipping_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_before_step_shipping_fields_inside",
+        "label": "fc_checkout_before_step_shipping_fields_inside"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_before_steps",
+        "label": "fc_checkout_before_steps"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_below_contact_login_cta",
+        "label": "fc_checkout_below_contact_login_cta"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_contact_after_fields",
+        "label": "fc_checkout_contact_after_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_contact_before_fields",
+        "label": "fc_checkout_contact_before_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_end_step",
+        "label": "fc_checkout_end_step"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_footer",
+        "label": "fc_checkout_footer"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_footer-2",
+        "label": "fc_checkout_footer"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_footer_widgets",
+        "label": "fc_checkout_footer_widgets"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_footer_widgets_inside_after",
+        "label": "fc_checkout_footer_widgets_inside_after"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_footer_widgets_inside_before",
+        "label": "fc_checkout_footer_widgets_inside_before"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_header",
+        "label": "fc_checkout_header"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_header-2",
+        "label": "fc_checkout_header"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_header-3",
+        "label": "fc_checkout_header"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_header_cart_link",
+        "label": "fc_checkout_header_cart_link"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_header_logo",
+        "label": "fc_checkout_header_logo"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_header_widgets",
+        "label": "fc_checkout_header_widgets"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_header_widgets_inside_after",
+        "label": "fc_checkout_header_widgets_inside_after"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_header_widgets_inside_before",
+        "label": "fc_checkout_header_widgets_inside_before"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_order_review_actions",
+        "label": "fc_checkout_order_review_actions"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_order_review_content",
+        "label": "fc_checkout_order_review_content"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_order_review_section",
+        "label": "fc_checkout_order_review_section"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_order_review_sidebar_before_actions",
+        "label": "fc_checkout_order_review_sidebar_before_actions"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_payment",
+        "label": "fc_checkout_payment"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_place_order_terms",
+        "label": "fc_checkout_place_order_terms"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_social_login",
+        "label": "fc_checkout_social_login"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_start_step",
+        "label": "fc_checkout_start_step"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_steps",
+        "label": "fc_checkout_steps"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_coupon_code_section_after",
+        "label": "fc_coupon_code_section_after"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_coupon_code_section_before",
+        "label": "fc_coupon_code_section_before"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_dashboard_addons_before_list",
+        "label": "fc_dashboard_addons_before_list"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_order_summary_cart_item_details",
+        "label": "fc_order_summary_cart_item_details"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_order_summary_cart_item_totals_after",
+        "label": "fc_order_summary_cart_item_totals_after"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_order_summary_cart_item_totals_before",
+        "label": "fc_order_summary_cart_item_totals_before"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_place_order",
+        "label": "fc_place_order"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_place_order_custom_buttons",
+        "label": "fc_place_order_custom_buttons"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_checkout_review_order_after_coupon_code",
+        "label": "fc_pro_checkout_review_order_after_coupon_code"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_register_steps",
+        "label": "fc_register_steps"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_review_order_shipping",
+        "label": "fc_review_order_shipping"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_methods_after_packages",
+        "label": "fc_shipping_methods_after_packages"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_methods_after_packages_inside",
+        "label": "fc_shipping_methods_after_packages_inside"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_methods_before_packages",
+        "label": "fc_shipping_methods_before_packages"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_methods_before_packages_inside",
+        "label": "fc_shipping_methods_before_packages_inside"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_coupon_codes_text_after",
+        "label": "fc_substep_coupon_codes_text_after"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_coupon_codes_text_before",
+        "label": "fc_substep_coupon_codes_text_before"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Filters",
+    "items": [
+      {
+        "type": "doc",
+        "id": "hooks/fc_add_container_class",
+        "label": "fc_add_container_class"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_add_payment_method_button_classes",
+        "label": "fc_add_payment_method_button_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_add_phone_localisation_formats",
+        "label": "fc_add_phone_localisation_formats"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_add_phone_localisation_formats-2",
+        "label": "fc_add_phone_localisation_formats"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_addons_catalog",
+        "label": "fc_addons_catalog"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_address_field_keys",
+        "label": "fc_address_field_keys"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_address_field_keys_skip_list",
+        "label": "fc_address_field_keys_skip_list"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_address_type_same_as_address_type_alt_display_substep_review_text_notice",
+        "label": "fc_{address_type}_same_as_{address_type_alt}_display_substep_review_text_notice"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_address_type_substep_text_address_data",
+        "label": "fc_{address_type}_substep_text_address_data"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_admin_notices",
+        "label": "fc_admin_notices"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_admin_tab_fluidcheckout_exists",
+        "label": "fc_admin_tab_fluidcheckout_exists"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_apply_address_1_field_description",
+        "label": "fc_apply_address_1_field_description"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_apply_address_2_field_description",
+        "label": "fc_apply_address_2_field_description"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_apply_button_colors_styles",
+        "label": "fc_apply_button_colors_styles"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_apply_button_design_styles",
+        "label": "fc_apply_button_design_styles"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_billing_address_substep_position_args",
+        "label": "fc_billing_address_substep_position_args"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_billing_same_as_shipping_display_substep_review_text_notice",
+        "label": "fc_billing_same_as_shipping_display_substep_review_text_notice"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_billing_same_as_shipping_field_keys",
+        "label": "fc_billing_same_as_shipping_field_keys"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_billing_same_as_shipping_field_value",
+        "label": "fc_billing_same_as_shipping_field_value"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_billing_same_as_shipping_field_value-2",
+        "label": "fc_billing_same_as_shipping_field_value"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_billing_same_as_shipping_option_label",
+        "label": "fc_billing_same_as_shipping_option_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_billing_same_as_shipping_skip_fields",
+        "label": "fc_billing_same_as_shipping_skip_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_billing_step_hook_priority",
+        "label": "fc_billing_step_hook_priority"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_cart_has_multiple_packages",
+        "label": "fc_cart_has_multiple_packages"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_cart_has_multiple_packages-2",
+        "label": "fc_cart_has_multiple_packages"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_account_creation_notice_message",
+        "label": "fc_checkout_account_creation_notice_message"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_address_i18n_override_locale_attributes",
+        "label": "fc_checkout_address_i18n_override_locale_attributes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_address_i18n_override_locale_field_attributes",
+        "label": "fc_checkout_address_i18n_override_locale_field_attributes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_address_i18n_override_locale_required_attribute",
+        "label": "fc_checkout_address_i18n_override_locale_required_attribute"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_billing_collapsible_initial_state",
+        "label": "fc_checkout_billing_collapsible_initial_state"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_body_custom_attributes",
+        "label": "fc_checkout_body_custom_attributes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_body_custom_attributes-2",
+        "label": "fc_checkout_body_custom_attributes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_column_layout",
+        "label": "fc_checkout_column_layout"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_contact_login_link_classes",
+        "label": "fc_checkout_contact_login_link_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_contact_step_field_ids",
+        "label": "fc_checkout_contact_step_field_ids"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_coupons_script_settings",
+        "label": "fc_checkout_coupons_script_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_coupons_script_settings-2",
+        "label": "fc_checkout_coupons_script_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_display_create_account_optional_label",
+        "label": "fc_checkout_display_create_account_optional_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_email_field_description",
+        "label": "fc_checkout_email_field_description"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_email_fields_for_mailcheck",
+        "label": "fc_checkout_email_fields_for_mailcheck"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_field_args",
+        "label": "fc_checkout_field_args"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_general_settings",
+        "label": "fc_checkout_general_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_header_cart_link_label_html",
+        "label": "fc_checkout_header_cart_link_label_html"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_header_logo_home_url",
+        "label": "fc_checkout_header_logo_home_url"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_header_logo_home_url-2",
+        "label": "fc_checkout_header_logo_home_url"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_header_logo_home_url-3",
+        "label": "fc_checkout_header_logo_home_url"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_header_logo_home_url-4",
+        "label": "fc_checkout_header_logo_home_url"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_html_custom_attributes",
+        "label": "fc_checkout_html_custom_attributes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_html_custom_attributes-2",
+        "label": "fc_checkout_html_custom_attributes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_is_valid_phone_number",
+        "label": "fc_checkout_is_valid_phone_number"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_login_button_classes",
+        "label": "fc_checkout_login_button_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_login_button_label",
+        "label": "fc_checkout_login_button_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_login_button_label-2",
+        "label": "fc_checkout_login_button_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_login_cta_text",
+        "label": "fc_checkout_login_cta_text"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_login_fields_unique_id",
+        "label": "fc_checkout_login_fields_unique_id"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_login_input_classes",
+        "label": "fc_checkout_login_input_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_login_input_classes-2",
+        "label": "fc_checkout_login_input_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_login_modal_title",
+        "label": "fc_checkout_login_modal_title"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_login_script_settings",
+        "label": "fc_checkout_login_script_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_login_separator_text",
+        "label": "fc_checkout_login_separator_text"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_login_separator_text-2",
+        "label": "fc_checkout_login_separator_text"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_maybe_disable_place_order_button",
+        "label": "fc_checkout_maybe_disable_place_order_button"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_maybe_disable_place_order_button-2",
+        "label": "fc_checkout_maybe_disable_place_order_button"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_maybe_disable_place_order_button-3",
+        "label": "fc_checkout_maybe_disable_place_order_button"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_no_shipping_method_chosen_html",
+        "label": "fc_checkout_no_shipping_method_chosen_html"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_page_title",
+        "label": "fc_checkout_page_title"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_progress_bar_attributes",
+        "label": "fc_checkout_progress_bar_attributes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_progress_bar_display_count",
+        "label": "fc_checkout_progress_bar_display_count"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_progress_bar_inner_attributes",
+        "label": "fc_checkout_progress_bar_inner_attributes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_progress_bar_style",
+        "label": "fc_checkout_progress_bar_style"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_script_settings",
+        "label": "fc_checkout_script_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_shipping_collapsible_initial_state",
+        "label": "fc_checkout_shipping_collapsible_initial_state"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_sidebar_attributes",
+        "label": "fc_checkout_sidebar_attributes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_sidebar_attributes_inner",
+        "label": "fc_checkout_sidebar_attributes_inner"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_social_login_separator_text",
+        "label": "fc_checkout_social_login_separator_text"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_step_attributes",
+        "label": "fc_checkout_step_attributes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_steps_script_settings",
+        "label": "fc_checkout_steps_script_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_update_before_unload",
+        "label": "fc_checkout_update_before_unload"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_update_fields_selectors",
+        "label": "fc_checkout_update_fields_selectors"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_update_on_visibility_change",
+        "label": "fc_checkout_update_on_visibility_change"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_validation_brazilian_documents_script_settings",
+        "label": "fc_checkout_validation_brazilian_documents_script_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_validation_script_settings",
+        "label": "fc_checkout_validation_script_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_wrapper_inside_element_custom_attributes",
+        "label": "fc_checkout_wrapper_inside_element_custom_attributes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_compat_dibs_easy_skip_undo_hooks_classes",
+        "label": "fc_compat_dibs_easy_skip_undo_hooks_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_compat_dibs_easy_skip_undo_hooks_early_classes",
+        "label": "fc_compat_dibs_easy_skip_undo_hooks_early_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_compat_dintero_checkout_skip_undo_hooks_classes",
+        "label": "fc_compat_dintero_checkout_skip_undo_hooks_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_compat_dintero_checkout_skip_undo_hooks_early_classes",
+        "label": "fc_compat_dintero_checkout_skip_undo_hooks_early_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_compat_klarna_checkout_skip_undo_hooks_classes",
+        "label": "fc_compat_klarna_checkout_skip_undo_hooks_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_compat_klarna_checkout_skip_undo_hooks_classes-2",
+        "label": "fc_compat_klarna_checkout_skip_undo_hooks_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_compat_klarna_checkout_skip_undo_hooks_early_classes",
+        "label": "fc_compat_klarna_checkout_skip_undo_hooks_early_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_compat_klarna_checkout_skip_undo_hooks_early_classes-2",
+        "label": "fc_compat_klarna_checkout_skip_undo_hooks_early_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_compat_payson_checkout_skip_undo_hooks_classes",
+        "label": "fc_compat_payson_checkout_skip_undo_hooks_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_compat_payson_checkout_skip_undo_hooks_early_classes",
+        "label": "fc_compat_payson_checkout_skip_undo_hooks_early_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_compat_theme_woodmart_disable_theme_checkout_options",
+        "label": "fc_compat_theme_woodmart_disable_theme_checkout_options"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_compat_wcbcf_disable_marked_input_phone_feature",
+        "label": "fc_compat_wcbcf_disable_marked_input_phone_feature"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_content_section_class",
+        "label": "fc_content_section_class"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_content_section_class-2",
+        "label": "fc_content_section_class"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_copy_billing_to_shipping_address_when_shipping_not_needed",
+        "label": "fc_copy_billing_to_shipping_address_when_shipping_not_needed"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_copy_billing_to_shipping_address_when_shipping_not_needed-2",
+        "label": "fc_copy_billing_to_shipping_address_when_shipping_not_needed"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_coupon_code_apply_button_classes",
+        "label": "fc_coupon_code_apply_button_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_coupon_code_button_label",
+        "label": "fc_coupon_code_button_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_coupon_code_displayed_as_substep",
+        "label": "fc_coupon_code_displayed_as_substep"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_coupon_code_error_message_dismiss_button",
+        "label": "fc_coupon_code_error_message_dismiss_button"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_coupon_code_error_message_dismiss_button_enabled",
+        "label": "fc_coupon_code_error_message_dismiss_button_enabled"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_coupon_code_field_description",
+        "label": "fc_coupon_code_field_description"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_coupon_code_field_initially_expanded",
+        "label": "fc_coupon_code_field_initially_expanded"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_coupon_code_field_label",
+        "label": "fc_coupon_code_field_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_coupon_code_field_placeholder",
+        "label": "fc_coupon_code_field_placeholder"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_coupon_code_substep_priority",
+        "label": "fc_coupon_code_substep_priority"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_coupon_code_substep_step_id",
+        "label": "fc_coupon_code_substep_step_id"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_css_variables",
+        "label": "fc_css_variables"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_current_section_settings",
+        "label": "fc_{current_section}_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_current_section_settings-2",
+        "label": "fc_{current_section}_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_current_section_settings-3",
+        "label": "fc_{current_section}_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_current_section_settings_add",
+        "label": "fc_{current_section}_settings_add"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_customer_meta_data_clear_fields_order_processed",
+        "label": "fc_customer_meta_data_clear_fields_order_processed"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_customer_persisted_data_clear_all_fields_skip_list",
+        "label": "fc_customer_persisted_data_clear_all_fields_skip_list"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_customer_persisted_data_clear_fields_order_processed",
+        "label": "fc_customer_persisted_data_clear_fields_order_processed"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_customer_persisted_data_session_field_keys",
+        "label": "fc_customer_persisted_data_session_field_keys"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_customer_persisted_data_skip_fields",
+        "label": "fc_customer_persisted_data_skip_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_dashboard_addon_actions_html",
+        "label": "fc_dashboard_addon_actions_html"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_default_locale_field_args",
+        "label": "fc_default_locale_field_args"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_default_option_values",
+        "label": "fc_default_option_values"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_default_to_billing_same_as_shipping",
+        "label": "fc_default_to_billing_same_as_shipping"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_default_to_billing_same_as_shipping-2",
+        "label": "fc_default_to_billing_same_as_shipping"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_design_template_option_image_url",
+        "label": "fc_design_template_option_image_url"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_display_checkout_page_title",
+        "label": "fc_display_checkout_page_title"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_do_order_notes_hooks_position",
+        "label": "fc_do_order_notes_hooks_position"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_do_order_notes_hooks_position-2",
+        "label": "fc_do_order_notes_hooks_position"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_do_order_notes_hooks_priority",
+        "label": "fc_do_order_notes_hooks_priority"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_do_order_notes_hooks_priority-2",
+        "label": "fc_do_order_notes_hooks_priority"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_checkout_ajax_login",
+        "label": "fc_enable_checkout_ajax_login"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_checkout_email_mailcheck",
+        "label": "fc_enable_checkout_email_mailcheck"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_checkout_page_template",
+        "label": "fc_enable_checkout_page_template"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_checkout_shortcode_wrapper",
+        "label": "fc_enable_checkout_shortcode_wrapper"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_compat_plugin_edit_address_style_plugin_slug",
+        "label": "fc_enable_compat_plugin_edit_address_style_{plugin_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_compat_plugin_plugin_slug",
+        "label": "fc_enable_compat_plugin_{plugin_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_compat_plugin_style_plugin_slug",
+        "label": "fc_enable_compat_plugin_style_{plugin_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_compat_theme_account_style_theme_slug",
+        "label": "fc_enable_compat_theme_account_style_{theme_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_compat_theme_edit_address_style_theme_slug",
+        "label": "fc_enable_compat_theme_edit_address_style_{theme_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_compat_theme_style_theme_slug",
+        "label": "fc_enable_compat_theme_style_{theme_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_compat_theme_theme_slug",
+        "label": "fc_enable_compat_theme_{theme_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_dark_mode_styles",
+        "label": "fc_enable_dark_mode_styles"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_fragments_refresh",
+        "label": "fc_enable_fragments_refresh"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_fragments_refresh-2",
+        "label": "fc_enable_fragments_refresh"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_enable_order_summary_cart_item_unit_price",
+        "label": "fc_enable_order_summary_cart_item_unit_price"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_expansible_section_toggle_label_add_optional_text",
+        "label": "fc_expansible_section_toggle_label_add_optional_text"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_expansible_section_toggle_label_key",
+        "label": "fc_expansible_section_toggle_label_{key}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_expansible_section_toggle_label_key_add_optional_text",
+        "label": "fc_expansible_section_toggle_label_{key}_add_optional_text"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_expansible_section_toggle_label_section_id",
+        "label": "fc_expansible_section_toggle_label_{section_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_fix_zoom_in_form_fields_mobile_devices",
+        "label": "fc_fix_zoom_in_form_fields_mobile_devices"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_fix_zoom_in_form_fields_mobile_devices-2",
+        "label": "fc_fix_zoom_in_form_fields_mobile_devices"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_formatted_address_replacements_custom_field_keys",
+        "label": "fc_formatted_address_replacements_custom_field_keys"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_fragments_update_settings",
+        "label": "fc_fragments_update_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_get_checkout_layout",
+        "label": "fc_get_checkout_layout"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_get_checkout_steps_before",
+        "label": "fc_get_checkout_steps_before"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_hide_optional_fields_skip_by_class",
+        "label": "fc_hide_optional_fields_skip_by_class"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_hide_optional_fields_skip_field",
+        "label": "fc_hide_optional_fields_skip_field"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_hide_optional_fields_skip_list",
+        "label": "fc_hide_optional_fields_skip_list"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_hide_optional_fields_skip_types",
+        "label": "fc_hide_optional_fields_skip_types"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_integration_woo_checkout_field_editor_pro_enable_edit_address_changes",
+        "label": "fc_integration_woo_checkout_field_editor_pro_enable_edit_address_changes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_integrations_woocommerce_smart_coupons_settings",
+        "label": "fc_integrations_woocommerce_smart_coupons_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_billing_address_available_for_shipping",
+        "label": "fc_is_billing_address_available_for_shipping"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_billing_address_before_shipping_address",
+        "label": "fc_is_billing_address_before_shipping_address"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_billing_address_data_same_as_shipping_before",
+        "label": "fc_is_billing_address_data_same_as_shipping_before"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_billing_address_forced_same_as_shipping_address",
+        "label": "fc_is_billing_address_forced_same_as_shipping_address"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_billing_same_as_shipping_checked",
+        "label": "fc_is_billing_same_as_shipping_checked"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_cart_page_or_fragment",
+        "label": "fc_is_cart_page_or_fragment"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_checkout_layout_multistep",
+        "label": "fc_is_checkout_layout_multistep"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_checkout_page_or_fragment",
+        "label": "fc_is_checkout_page_or_fragment"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_current_step",
+        "label": "fc_is_current_step"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_shipping_address_available_for_billing",
+        "label": "fc_is_shipping_address_available_for_billing"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_shipping_address_data_same_as_billing_before",
+        "label": "fc_is_shipping_address_data_same_as_billing_before"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_shipping_same_as_billing_checked",
+        "label": "fc_is_shipping_same_as_billing_checked"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_step_complete",
+        "label": "fc_is_step_complete"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_step_complete_step_id",
+        "label": "fc_is_step_complete_{step_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_substep_complete_billing_address_field_keys_skip_list",
+        "label": "fc_is_substep_complete_billing_address_field_keys_skip_list"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_substep_complete_shipping_address_field_keys_skip_list",
+        "label": "fc_is_substep_complete_shipping_address_field_keys_skip_list"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_substep_complete_substep_id",
+        "label": "fc_is_substep_complete_{substep_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_substep_complete_substep_id-2",
+        "label": "fc_is_substep_complete_{substep_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_substep_complete_substep_id-3",
+        "label": "fc_is_substep_complete_{substep_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_substep_complete_substep_id-4",
+        "label": "fc_is_substep_complete_{substep_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_is_substep_complete_substep_id-5",
+        "label": "fc_is_substep_complete_{substep_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_js_settings",
+        "label": "fc_js_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_layout_selector_option_image_url",
+        "label": "fc_layout_selector_option_image_url"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_locale_language_variant",
+        "label": "fc_locale_language_variant"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_login_form_class",
+        "label": "fc_login_form_class"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_login_form_inner_class",
+        "label": "fc_login_form_inner_class"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_login_form_wrapper_class",
+        "label": "fc_login_form_wrapper_class"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_mailcheck_suggestion_message",
+        "label": "fc_mailcheck_suggestion_message"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_next_step_button_classes",
+        "label": "fc_next_step_button_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_next_step_button_label",
+        "label": "fc_next_step_button_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_no_order_notes_order_review_notice",
+        "label": "fc_no_order_notes_order_review_notice"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_no_substep_review_text_notice",
+        "label": "fc_no_substep_review_text_notice"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_no_validation_icon_field_keys",
+        "label": "fc_no_validation_icon_field_keys"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_no_validation_icon_field_types",
+        "label": "fc_no_validation_icon_field_types"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_order_review_title",
+        "label": "fc_order_review_title"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_order_summary_continue_button_classes",
+        "label": "fc_order_summary_continue_button_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_order_summary_display_desktop_edit_cart_link",
+        "label": "fc_order_summary_display_desktop_edit_cart_link"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_order_summary_shipping_package_name",
+        "label": "fc_order_summary_shipping_package_name"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_order_summary_shipping_package_price_html",
+        "label": "fc_order_summary_shipping_package_price_html"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_output_billing_same_as_shipping_as_hidden_field",
+        "label": "fc_output_billing_same_as_shipping_as_hidden_field"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_output_checkout_contact_login_cta_section",
+        "label": "fc_output_checkout_contact_login_cta_section"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_output_checkout_contact_logout_cta_section",
+        "label": "fc_output_checkout_contact_logout_cta_section"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_output_custom_styles",
+        "label": "fc_output_custom_styles"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_output_shipping_same_as_billing_as_hidden_field",
+        "label": "fc_output_shipping_same_as_billing_as_hidden_field"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_override_template_with_theme_file",
+        "label": "fc_override_template_with_theme_file"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_override_template_with_theme_file-10",
+        "label": "fc_override_template_with_theme_file"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_override_template_with_theme_file-2",
+        "label": "fc_override_template_with_theme_file"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_override_template_with_theme_file-3",
+        "label": "fc_override_template_with_theme_file"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_override_template_with_theme_file-4",
+        "label": "fc_override_template_with_theme_file"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_override_template_with_theme_file-5",
+        "label": "fc_override_template_with_theme_file"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_override_template_with_theme_file-6",
+        "label": "fc_override_template_with_theme_file"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_override_template_with_theme_file-7",
+        "label": "fc_override_template_with_theme_file"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_override_template_with_theme_file-8",
+        "label": "fc_override_template_with_theme_file"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_override_template_with_theme_file-9",
+        "label": "fc_override_template_with_theme_file"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_parsed_posted_data_reset_field_keys",
+        "label": "fc_parsed_posted_data_reset_field_keys"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_payment_method_review_text_chosen_method_key",
+        "label": "fc_payment_method_review_text_{chosen_method_key}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_payment_not_needed_message",
+        "label": "fc_payment_not_needed_message"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_place_order_button_classes",
+        "label": "fc_place_order_button_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_place_order_button_classes-2",
+        "label": "fc_place_order_button_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_cart_settings",
+        "label": "fc_pro_cart_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_checkout_review_order_table_classes",
+        "label": "fc_pro_checkout_review_order_table_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_order_details_customer_billing_address_formatted",
+        "label": "fc_pro_order_details_customer_billing_address_formatted"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_order_details_customer_billing_address_formatted-2",
+        "label": "fc_pro_order_details_customer_billing_address_formatted"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_order_details_customer_billing_address_label",
+        "label": "fc_pro_order_details_customer_billing_address_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_order_details_customer_billing_address_label-2",
+        "label": "fc_pro_order_details_customer_billing_address_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_order_details_customer_information_show_shipping",
+        "label": "fc_pro_order_details_customer_information_show_shipping"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_order_details_customer_information_show_shipping-2",
+        "label": "fc_pro_order_details_customer_information_show_shipping"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_order_details_customer_shipping_address_formatted",
+        "label": "fc_pro_order_details_customer_shipping_address_formatted"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_order_details_customer_shipping_address_formatted-2",
+        "label": "fc_pro_order_details_customer_shipping_address_formatted"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_order_details_customer_shipping_address_label",
+        "label": "fc_pro_order_details_customer_shipping_address_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_order_details_customer_shipping_address_label-2",
+        "label": "fc_pro_order_details_customer_shipping_address_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_order_pay_settings",
+        "label": "fc_pro_order_pay_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_order_received_settings",
+        "label": "fc_pro_order_received_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_proceed_to_next_step_button_label",
+        "label": "fc_proceed_to_next_step_button_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_progress_bar_step_title_step_id",
+        "label": "fc_progress_bar_step_title_{step_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_register_checkout_step_args",
+        "label": "fc_register_checkout_step_args"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_register_checkout_substep_args",
+        "label": "fc_register_checkout_substep_args"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_save_new_address_data_billing_skip_update",
+        "label": "fc_save_new_address_data_billing_skip_update"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_save_new_address_data_shipping_skip_update",
+        "label": "fc_save_new_address_data_shipping_skip_update"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_select2_field_types",
+        "label": "fc_select2_field_types"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_set_parsed_posted_data",
+        "label": "fc_set_parsed_posted_data"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_description_html_element",
+        "label": "fc_shipping_method_description_html_element"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_description_html_element-2",
+        "label": "fc_shipping_method_description_html_element"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_display_package_content_substep_text_lines",
+        "label": "fc_shipping_method_display_package_content_substep_text_lines"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_display_package_destination_substep_text_lines",
+        "label": "fc_shipping_method_display_package_destination_substep_text_lines"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_display_package_name",
+        "label": "fc_shipping_method_display_package_name"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_has_cost",
+        "label": "fc_shipping_method_has_cost"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_has_cost-2",
+        "label": "fc_shipping_method_has_cost"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_description",
+        "label": "fc_shipping_method_option_description"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_description_markup",
+        "label": "fc_shipping_method_option_description_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_end_tag_markup",
+        "label": "fc_shipping_method_option_end_tag_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_end_tag_markup-2",
+        "label": "fc_shipping_method_option_end_tag_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_image_html",
+        "label": "fc_shipping_method_option_image_html"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_image_html-2",
+        "label": "fc_shipping_method_option_image_html"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_image_markup",
+        "label": "fc_shipping_method_option_image_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_image_markup-2",
+        "label": "fc_shipping_method_option_image_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_label_markup",
+        "label": "fc_shipping_method_option_label_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_label_markup-2",
+        "label": "fc_shipping_method_option_label_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_markup",
+        "label": "fc_shipping_method_option_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_markup-2",
+        "label": "fc_shipping_method_option_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_price",
+        "label": "fc_shipping_method_option_price"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_price-2",
+        "label": "fc_shipping_method_option_price"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_price_markup",
+        "label": "fc_shipping_method_option_price_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_price_markup-2",
+        "label": "fc_shipping_method_option_price_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_start_tag_markup",
+        "label": "fc_shipping_method_option_start_tag_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_option_start_tag_markup-2",
+        "label": "fc_shipping_method_option_start_tag_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_substep_text_chosen_method_label",
+        "label": "fc_shipping_method_substep_text_chosen_method_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_substep_text_chosen_method_label-2",
+        "label": "fc_shipping_method_substep_text_chosen_method_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_substep_text_package_destination_data",
+        "label": "fc_shipping_method_substep_text_package_destination_data"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_substep_text_package_destination_data-2",
+        "label": "fc_shipping_method_substep_text_package_destination_data"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_substep_text_package_destination_text",
+        "label": "fc_shipping_method_substep_text_package_destination_text"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_substep_text_package_destination_text-2",
+        "label": "fc_shipping_method_substep_text_package_destination_text"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_substep_text_package_review_text_lines",
+        "label": "fc_shipping_method_substep_text_package_review_text_lines"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_substep_text_package_review_text_lines-2",
+        "label": "fc_shipping_method_substep_text_package_review_text_lines"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_substep_text_package_review_text_lines_before_contents",
+        "label": "fc_shipping_method_substep_text_package_review_text_lines_before_contents"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_method_substep_text_package_review_text_lines_before_contents-2",
+        "label": "fc_shipping_method_substep_text_package_review_text_lines_before_contents"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_methods_disable_auto_select",
+        "label": "fc_shipping_methods_disable_auto_select"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_not_needed_shipping_field_keys",
+        "label": "fc_shipping_not_needed_shipping_field_keys"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_phone_field_args",
+        "label": "fc_shipping_phone_field_args"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_same_as_billing_display_substep_review_text_notice",
+        "label": "fc_shipping_same_as_billing_display_substep_review_text_notice"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_same_as_billing_field_keys",
+        "label": "fc_shipping_same_as_billing_field_keys"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_same_as_billing_field_value",
+        "label": "fc_shipping_same_as_billing_field_value"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_same_as_billing_field_value-2",
+        "label": "fc_shipping_same_as_billing_field_value"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_same_as_billing_field_value-3",
+        "label": "fc_shipping_same_as_billing_field_value"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_same_as_billing_option_label",
+        "label": "fc_shipping_same_as_billing_option_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_shipping_same_as_billing_skip_fields",
+        "label": "fc_shipping_same_as_billing_skip_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_show_account_creation_notice_checkout_contact_step_text",
+        "label": "fc_show_account_creation_notice_checkout_contact_step_text"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_show_billing_section_highlighted",
+        "label": "fc_show_billing_section_highlighted"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_show_order_totals_row_highlighted",
+        "label": "fc_show_order_totals_row_highlighted"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_show_shipping_section_highlighted",
+        "label": "fc_show_shipping_section_highlighted"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_skip_change_customer_address_field_value_from_checkout_data",
+        "label": "fc_skip_change_customer_address_field_value_from_checkout_data"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_skip_checkout_field_value_from_session_or_posted_data",
+        "label": "fc_skip_checkout_field_value_from_session_or_posted_data"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_step_title_step_id",
+        "label": "fc_step_title_{step_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_steps_count_html",
+        "label": "fc_steps_count_html"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_subscription_shipping_package_name",
+        "label": "fc_subscription_shipping_package_name"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_change_button_label",
+        "label": "fc_substep_change_button_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_coupon_codes_section_title",
+        "label": "fc_substep_coupon_codes_section_title"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_coupon_codes_text",
+        "label": "fc_substep_coupon_codes_text"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_save_button_classes",
+        "label": "fc_substep_save_button_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_save_button_label",
+        "label": "fc_substep_save_button_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_substep_id_attributes",
+        "label": "fc_substep_{substep_id}_attributes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_substep_id_text",
+        "label": "fc_substep_{substep_id}_text"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_substep_id_text_lines",
+        "label": "fc_substep_{substep_id}_text_lines"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_text_address_type_address_field_keys_skip_list",
+        "label": "fc_substep_text_{address_type}_address_field_keys_skip_list"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_text_contact_field_keys_skip_list",
+        "label": "fc_substep_text_contact_field_keys_skip_list"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_text_display_value_field_key",
+        "label": "fc_substep_text_display_value_{field_key}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_text_display_value_field_type",
+        "label": "fc_substep_text_display_value_{field_type}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_text_display_value_field_type_char",
+        "label": "fc_substep_text_display_value_{field_type}_char"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_text_display_value_show_field_label",
+        "label": "fc_substep_text_display_value_show_field_label"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_text_display_value_show_field_label_checkbox",
+        "label": "fc_substep_text_display_value_show_field_label_checkbox"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_text_display_value_show_field_label_field_type",
+        "label": "fc_substep_text_display_value_show_field_label_{field_type}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_text_display_value_show_field_label_field_type-2",
+        "label": "fc_substep_text_display_value_show_field_label_{field_type}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_text_display_value_show_field_label_field_type-3",
+        "label": "fc_substep_text_display_value_show_field_label_{field_type}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_text_display_value_show_field_label_field_type-4",
+        "label": "fc_substep_text_display_value_show_field_label_{field_type}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_text_display_value_show_field_label_field_type-5",
+        "label": "fc_substep_text_display_value_show_field_label_{field_type}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_text_display_value_show_field_label_field_type-6",
+        "label": "fc_substep_text_display_value_show_field_label_{field_type}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_substep_title_substep_id",
+        "label": "fc_substep_title_{substep_id}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_telemetry_api_url",
+        "label": "fc_telemetry_api_url"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_telemetry_api_url-2",
+        "label": "fc_telemetry_api_url"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_telemetry_client_config",
+        "label": "fc_telemetry_client_config"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_telemetry_cron_hook",
+        "label": "fc_telemetry_cron_hook"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_telemetry_cron_hook-2",
+        "label": "fc_telemetry_cron_hook"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_telemetry_is_domain_eligible",
+        "label": "fc_telemetry_is_domain_eligible"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_telemetry_own_plugins",
+        "label": "fc_telemetry_own_plugins"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_thwcfe_clear_field_keys_skip_list",
+        "label": "fc_thwcfe_clear_field_keys_skip_list"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_update_fragments",
+        "label": "fc_update_fragments"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_upsell_order_bump_section_position_args",
+        "label": "fc_upsell_order_bump_section_position_args"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_use_verbose_loading_indicator",
+        "label": "fc_use_verbose_loading_indicator"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_wrapper_classes",
+        "label": "fc_wrapper_classes"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_wrapper_classes_add_payment_method_page",
+        "label": "fc_wrapper_classes_add_payment_method_page"
+      }
+    ]
+  }
+]
