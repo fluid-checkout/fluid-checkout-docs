@@ -23,6 +23,7 @@ type PluginEntry = {
   routeBasePath?: string;
   repository?: RepositoryConfig | null;
   order?: number;
+  productUrl?: string;
 };
 
 const plugins = sortPlugins(catalog.plugins as PluginEntry[]);
@@ -146,7 +147,9 @@ const config: Config = {
           title: 'Fluid Checkout',
           items: [
             {label: 'Website', href: 'https://fluidcheckout.com/'},
-            {label: 'EU-VAT Assistant', href: 'https://fluidcheckout.com/fc-eu-vat-assistant/'},
+            ...plugins.flatMap((plugin) =>
+              plugin.productUrl ? [{label: plugin.label, href: plugin.productUrl}] : [],
+            ),
             {label: 'Support', href: 'https://fluidcheckout.com/support/'},
             {label: 'Product docs', href: 'https://fluidcheckout.com/docs/'},
           ],
