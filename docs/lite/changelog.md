@@ -11,7 +11,11 @@ pagination_next: null
 
 # Changelog
 
+:::info[Using Fluid Checkout PRO?]
+
 Looking for Fluid Checkout PRO changes? See the [PRO changelog](/pro/changelog/).
+
+:::
 
 This project follows the [changelog format and semantic version numbers](/changelog-format/).
 

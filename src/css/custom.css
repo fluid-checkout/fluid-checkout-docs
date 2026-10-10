@@ -333,3 +333,21 @@ h6 {
   --ifm-breadcrumb-size-multiplier: 0.8;
   margin-bottom: 0.8rem;
 }
+
+/*
+ * Info admonitions follow the brand primary already reserved for admonitions.
+ * Infima's default info color is cyan.
+ */
+.alert--info {
+  --ifm-alert-background-color: var(--ifm-color-primary-contrast-background);
+  --ifm-alert-background-color-highlight: rgba(0, 71, 227, 0.15);
+  --ifm-alert-foreground-color: var(--ifm-color-primary-contrast-foreground);
+  --ifm-alert-border-color: var(--ifm-color-primary-dark);
+}
+
+:root[data-theme='dark'] .alert--info {
+  --ifm-alert-background-color: var(--fc-surface-muted);
+  --ifm-alert-background-color-highlight: rgba(92, 143, 255, 0.15);
+  --ifm-alert-foreground-color: var(--ifm-font-color-base);
+  --ifm-alert-border-color: var(--ifm-color-primary);
+}
