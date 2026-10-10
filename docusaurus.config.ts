@@ -67,7 +67,8 @@ const config: Config = {
         blog: false,
         sitemap: {
           // noindex routes are omitted: individual hook pages and /search.
-          // Home, plugin hubs, All hooks, and the three changelog pages stay in.
+          // Home, plugin hubs, All hooks, the three changelog pages, and
+          // /changelog-format/ stay in.
           ignorePatterns: ['/search', '/search/', '/search/**'],
         },
         theme: {
@@ -151,10 +152,13 @@ const config: Config = {
         },
         {
           title: 'Developer docs',
-          items: availablePlugins.map((plugin) => ({
-            label: plugin.label,
-            to: `/${plugin.routeBasePath}/`,
-          })),
+          items: [
+            ...availablePlugins.map((plugin) => ({
+              label: plugin.label,
+              to: `/${plugin.routeBasePath}/`,
+            })),
+            {label: 'Changelog format', to: '/changelog-format/'},
+          ],
         },
       ],
       copyright: `© ${new Date().getFullYear()} Fluid Checkout OÜ. All rights reserved.`,

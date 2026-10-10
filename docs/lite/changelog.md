@@ -13,7 +13,7 @@ pagination_next: null
 
 Looking for Fluid Checkout PRO changes? See the [PRO changelog](/pro/changelog/).
 
-This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+This project follows the [changelog format and semantic version numbers](/changelog-format/).
 
 ## 4.2.7 - 2026-08-19 {/* #4-2-7 */}
 

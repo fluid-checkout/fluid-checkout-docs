@@ -7,7 +7,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {formatChangelogLog, loadPluginChangelog} from './changelog.mjs';
+import {formatChangelogLog, loadPluginChangelog, renderChangelogFormatPage} from './changelog.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -46,6 +46,11 @@ function main() {
       }
     }
   }
+
+  const formatPath = path.join(root, 'src/pages/changelog-format.mdx');
+  fs.mkdirSync(path.dirname(formatPath), {recursive: true});
+  fs.writeFileSync(formatPath, renderChangelogFormatPage(plugins));
+  console.log('Generated src/pages/changelog-format.mdx.');
 
   if (generated === 0) {
     console.error('No changelogs were generated.');
