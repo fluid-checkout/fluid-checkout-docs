@@ -35,7 +35,7 @@ The text at the top of a plugin's hooks index is `hooks-intro/<plugin>/index.md`
 3. Run `npm run generate`. The generator inserts the intro above the hook tables in `docs/<plugin>/hooks/index.md` and rewrites relative image paths so the generated page can load them. The next generate overwrites that index, so change the intro file instead.
 4. Keep `{` and `}` inside inline code or fenced code blocks.
 
-`docusaurus.config.ts` loads `gettingStartedRedirects()` from `scripts/hooks-intro.mjs`. For each plugin with `"status": "available"` and a `hooks-intro/<plugin>/index.md` file, the site redirects `/<routeBasePath>/guides/getting-started` to `/<routeBasePath>/hooks`. Lite and PRO stay coming soon, so they have no intro and no redirect.
+`docusaurus.config.ts` loads `gettingStartedRedirects()` from `scripts/hooks-intro.mjs`. For each plugin with `"status": "available"` and a `hooks-intro/<plugin>/index.md` file, the site redirects `/<routeBasePath>/guides/getting-started` to `/<routeBasePath>/hooks`. Lite and PRO are available and have no intro file, so they have no redirect.
 
 ## Add a hook example
 
@@ -127,7 +127,7 @@ A skipped hook has no page, no row on the hooks index, and no sidebar entry. An 
 
 `npm run generate` prints the skipped hook count and each skipped name (plus dropped aliases, when any) so the list is visible in CI. A plugin with `"status": "available"` and no `hookPrefixes` fails generation instead of publishing every hook in the JSON.
 
-Lite and PRO stay `"status": "coming-soon"`. Their prefixes are already in `plugins.json`. Their docs sections are a later phase, and the generator does not write pages for them yet.
+Lite and PRO are `"status": "available"`. Generation writes their hook pages from `data/lite/` and `data/pro/`. They do not have `hooks-intro/` files.
 
 ## Contract for plugin repositories
 
