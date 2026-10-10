@@ -1,0 +1,166 @@
+{
+  "pro": {
+    "id": "pro",
+    "pluginPrefix": "fc_pro",
+    "hookPrefixes": ["fc_pro_", "fc_", "fc_adb_", "fc_gaa_"],
+    "hooks": [
+      {
+        "name": "fc_checkout_steps",
+        "type": "action",
+        "doc": {"description": "Filters the checkout steps."},
+        "expect": "keep",
+        "normalized": "fc_checkout_steps"
+      },
+      {
+        "name": "fc_pro_checkout_steps",
+        "type": "filter",
+        "doc": {"description": "Filters PRO checkout steps."},
+        "expect": "keep",
+        "normalized": "fc_pro_checkout_steps"
+      },
+      {
+        "name": "'fc_pro_enable_compat_plugin_' . $plugin_slug",
+        "type": "filter",
+        "doc": {"description": "Filters compatibility for a plugin."},
+        "aliases": [
+          "fc_pro_enable_compat_plugin_woocommerce-gateway",
+          "woocommerce_checkout_update_order_review",
+          "'fc_' . $section",
+          "enfold_layout"
+        ],
+        "expect": "keep",
+        "normalized": "fc_pro_enable_compat_plugin_{plugin_slug}",
+        "keptAliases": [
+          "fc_pro_enable_compat_plugin_woocommerce-gateway",
+          "fc_{section}"
+        ],
+        "droppedAliases": [
+          "woocommerce_checkout_update_order_review",
+          "enfold_layout"
+        ]
+      },
+      {
+        "name": "self::$plugin_prefix . '_admin_notices'",
+        "type": "action",
+        "doc": {"description": "Runs admin notices."},
+        "expect": "keep",
+        "normalized": "fc_pro_admin_notices"
+      },
+      {
+        "name": "fc_adb_is_entry_delete_enabled",
+        "type": "filter",
+        "doc": {"description": "Controls whether deleting address book entries is enabled."},
+        "expect": "keep",
+        "normalized": "fc_adb_is_entry_delete_enabled"
+      },
+      {
+        "name": "'fc_adb_enable_compat_plugin_' . $plugin_slug",
+        "type": "filter",
+        "doc": {"description": "Controls Address Book compatibility for a plugin."},
+        "expect": "keep",
+        "normalized": "fc_adb_enable_compat_plugin_{plugin_slug}"
+      },
+      {
+        "name": "fc_gaa_google_autocomplete_js_settings",
+        "type": "filter",
+        "doc": {"description": "Modifies Google Autocomplete frontend script settings."},
+        "expect": "keep",
+        "normalized": "fc_gaa_google_autocomplete_js_settings"
+      },
+      {
+        "name": "'fc_gaa_enable_compat_theme_' . $theme_slug",
+        "type": "filter",
+        "doc": {"description": "Controls Google Address Autocomplete compatibility for a theme."},
+        "expect": "keep",
+        "normalized": "fc_gaa_enable_compat_theme_{theme_slug}"
+      },
+      {
+        "name": "woocommerce_checkout_fields",
+        "type": "filter",
+        "doc": {"description": "WooCommerce checkout fields."},
+        "expect": "skip",
+        "normalized": "woocommerce_checkout_fields"
+      },
+      {
+        "name": "'woocommerce_' . $action",
+        "type": "action",
+        "doc": {"description": "Dynamic WooCommerce action."},
+        "expect": "skip",
+        "normalized": "woocommerce_{action}"
+      },
+      {
+        "name": "wc_od_delivery_date",
+        "type": "filter",
+        "doc": {"description": "Order delivery date."},
+        "expect": "skip",
+        "normalized": "wc_od_delivery_date"
+      }
+    ]
+  },
+  "lite": {
+    "id": "lite",
+    "pluginPrefix": "fc",
+    "hookPrefixes": ["fc_"],
+    "hooks": [
+      {
+        "name": "fc_checkout_steps",
+        "type": "action",
+        "doc": {"description": "Checkout steps."},
+        "expect": "keep",
+        "normalized": "fc_checkout_steps"
+      },
+      {
+        "name": "fc_pro_checkout_steps",
+        "type": "filter",
+        "doc": {"description": "PRO checkout steps copied into Lite data."},
+        "expect": "keep",
+        "normalized": "fc_pro_checkout_steps"
+      },
+      {
+        "name": "woocommerce_cart_item_name",
+        "type": "filter",
+        "doc": {"description": "Cart item name."},
+        "expect": "skip",
+        "normalized": "woocommerce_cart_item_name"
+      }
+    ]
+  },
+  "eu-vat": {
+    "id": "eu-vat",
+    "pluginPrefix": "fc_vat",
+    "hookPrefixes": ["fc_vat_"],
+    "hooks": [
+      {
+        "name": "self::$plugin_prefix . '_admin_notices'",
+        "type": "filter",
+        "doc": {"description": "Admin notices."},
+        "aliases": ["fc_vat_admin_notices", "woocommerce_admin_notices"],
+        "expect": "keep",
+        "normalized": "fc_vat_admin_notices",
+        "keptAliases": ["fc_vat_admin_notices"],
+        "droppedAliases": ["woocommerce_admin_notices"]
+      },
+      {
+        "name": "'fc_vat_enable_compat_plugin_' . $plugin_slug",
+        "type": "filter",
+        "doc": {"description": "Plugin compatibility."},
+        "expect": "keep",
+        "normalized": "fc_vat_enable_compat_plugin_{plugin_slug}"
+      },
+      {
+        "name": "woocommerce_checkout_fields",
+        "type": "filter",
+        "doc": {"description": "WooCommerce checkout fields."},
+        "expect": "skip",
+        "normalized": "woocommerce_checkout_fields"
+      },
+      {
+        "name": "fc_checkout_steps",
+        "type": "action",
+        "doc": {"description": "Lite checkout steps."},
+        "expect": "skip",
+        "normalized": "fc_checkout_steps"
+      }
+    ]
+  }
+}
