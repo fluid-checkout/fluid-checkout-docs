@@ -28,6 +28,4 @@ apply_filters( 'fc_enable_compat_theme_style_{theme_slug}', $enabled );
 
 - `1.2.0`
 
-## Source
-
-`inc/enqueue.php`
+Source: `inc/enqueue.php`

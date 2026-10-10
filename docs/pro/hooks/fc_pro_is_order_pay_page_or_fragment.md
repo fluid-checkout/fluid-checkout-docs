@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_is_order_pay_page_or_fragment', $value );
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`

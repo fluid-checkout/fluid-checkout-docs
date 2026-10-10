@@ -26,6 +26,4 @@ apply_filters( 'fc_woodelivery_no_delivery_options_order_review_notice', $notice
 
 - `3.0.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woo-delivery.php`
+Source: `inc/compat/plugins/compat-plugin-woo-delivery.php`

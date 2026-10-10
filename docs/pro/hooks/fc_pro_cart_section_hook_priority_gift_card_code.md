@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_cart_section_hook_priority_gift_card_code', $value );
 
 - `2.2.4`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php`

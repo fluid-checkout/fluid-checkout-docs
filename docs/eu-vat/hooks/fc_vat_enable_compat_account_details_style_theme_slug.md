@@ -39,9 +39,7 @@ apply_filters( 'fc_vat_enable_compat_account_details_style_{theme_slug}', $enabl
 
 - `1.0.2`
 
-## Source
-
-`inc/enqueue.php`
+Source: `inc/enqueue.php`
 
 ## Examples
 

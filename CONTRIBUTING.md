@@ -71,7 +71,7 @@ Do not edit `docs/<plugin>/hooks/` or `sidebars/<plugin>.hooks.json` by hand. Bo
 | `data/<plugin>/changelog.md` | Older releases. Optional. Omitted when the plugin repository has no `changelog.md`. |
 | `data/<plugin>/legacy/<id>/readme.txt` | Optional earlier changelog for an add-on listed in `legacyChangelogs`. Same `== Changelog ==` rules. |
 | `data/<plugin>/legacy/<id>/changelog.md` | Older releases for that add-on. Optional. |
-| `plugins.json` | Plugin id, `pluginPrefix`, `hookPrefixes`, global `hookExcludePrefixes` and `hookExcludeNames`, docs route, and whether the Git repository is public |
+| `plugins.json` | Plugin id, `pluginPrefix`, `hookPrefixes`, global `hookExcludePrefixes` and `hookExcludeNames`, and the docs route |
 
 `npm run generate` also writes `docs/<plugin>/changelog.md` from those source files. Readme entries come first. A version present in both files is kept from `readme.txt`. Do not edit the generated page. The `changelog.md` introduction that explains where entries are written first is not part of the published page. Optional `relatedChangelogs` on a plugin in `plugins.json` adds a line linking to another plugin's changelog. Lite and PRO list each other. EU-VAT Assistant does not.
 
@@ -87,16 +87,7 @@ A new plugin needs:
 - `data/<id>/actions.json` and `data/<id>/filters.json`
 - `data/<id>/readme.txt`, with an `== Changelog ==` section. Add `data/<id>/changelog.md` too when the plugin repository has that file.
 
-Set `repository` to `null` for a private plugin (file path only). For a public plugin:
-
-```json
-"repository": {
-  "url": "https://github.com/fluid-checkout/fluid-checkout",
-  "branch": "trunk"
-}
-```
-
-Source links use a commit SHA. `data/<plugin>/actions.json` and `data/<plugin>/filters.json` each have a top-level `commit` set to the full SHA the export was generated from. The generator links `file` and the optional `line` to `blob/<commit>/<file>#L<line>`. If `commit` is missing, it uses `repository.commit`, then `repository.branch`, then `main`. `repository.branch` is only that fallback. A branch such as `release/next-FEATURE` is deleted eventually, and a SHA link keeps working.
+Hook pages show the source file and line as plain text, such as `Source: \`inc/checkout-steps.php\`, line 123`. They do not link to GitHub. `data/<plugin>/actions.json` and `data/<plugin>/filters.json` do not include a `commit` field or a repository URL. The generator does not read either one.
 
 ## One page per hook name
 
@@ -165,7 +156,7 @@ Do not add the plugin-side workflow to this repo. Each plugin repository will la
 
 `<plugin-id>` is the id in `plugins.json`, not the GitHub repo name. EU-VAT Assistant uses `eu-vat`. Copy `readme.txt` from the plugin repository on every run. Copy `changelog.md` when the plugin repository has one (EU-VAT Assistant does not). Newest release notes live in `readme.txt` and are moved into `changelog.md` in the plugin repository later. Copy both files as they are. This docs repository merges them and drops a version that appears in both, keeping the `readme.txt` text.
 
-5. Set a top-level `"commit"` on both JSON documents to the full source commit SHA the generator ran against. The docs site uses that SHA in GitHub source links (`blob/<sha>/<file>`). Do not leave the link pointed at a branch name such as `release/next-FEATURE`. This docs repo does not edit the plugin repositories. The plugin workflow has to write the SHA into the JSON before it opens the pull request.
+5. Do not add a top-level `commit` field or a repository URL to `actions.json` or `filters.json`. The docs site does not store GitHub revision info in the hook JSON, and the generator does not read it.
 
 ### Branch name and pull request
 

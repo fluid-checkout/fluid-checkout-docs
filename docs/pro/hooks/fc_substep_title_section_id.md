@@ -30,6 +30,4 @@ apply_filters( 'fc_substep_title_{section_id}', $value );
 
 - `1.3.0`
 
-## Source
-
-`inc/order-details.php`
+Source: `inc/order-details.php`

@@ -26,9 +26,7 @@ apply_filters( 'fc_checkout_social_login_separator_text', $text );
 
 - `4.1.6`
 
-## Source
-
-[`templates/fc/checkout-steps/checkout/form-contact-login.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/checkout/form-contact-login.php)
+Source: `templates/fc/checkout-steps/checkout/form-contact-login.php`
 
 ## Examples
 

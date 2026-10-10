@@ -30,6 +30,4 @@ apply_filters( 'fc_pro_admin_notices', $value );
 
 - `1.6.2`
 
-## Source
-
-`inc/admin/admin-notices.php`
+Source: `inc/admin/admin-notices.php`

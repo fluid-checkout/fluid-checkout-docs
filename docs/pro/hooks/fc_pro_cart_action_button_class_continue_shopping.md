@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_action_button_class_continue_shopping', $value );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/cart/cart/continue-shopping-cart-action.php`
+Source: `templates/fc-pro/cart/cart/continue-shopping-cart-action.php`
 
 ## Examples
 

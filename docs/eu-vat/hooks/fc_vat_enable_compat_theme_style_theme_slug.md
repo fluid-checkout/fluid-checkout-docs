@@ -32,6 +32,4 @@ apply_filters( 'fc_vat_enable_compat_theme_style_{theme_slug}', $enabled );
 
 - `1.0.2`
 
-## Source
-
-`inc/enqueue.php`
+Source: `inc/enqueue.php`

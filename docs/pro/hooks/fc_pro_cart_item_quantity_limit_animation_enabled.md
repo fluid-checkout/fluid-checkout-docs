@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_item_quantity_limit_animation_enabled', $enabled );
 
 - `2.0.6`
 
-## Source
-
-`inc/cart-ajax.php`
+Source: `inc/cart-ajax.php`
 
 ## Examples
 

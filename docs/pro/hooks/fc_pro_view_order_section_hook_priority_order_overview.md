@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_view_order_section_hook_priority_order_overview', $value 
 
 - `1.3.0`
 
-## Source
-
-`inc/order-received-page.php`
+Source: `inc/order-received-page.php`
 
 ## Examples
 

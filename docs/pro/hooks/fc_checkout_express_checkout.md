@@ -24,6 +24,4 @@ This hook does not pass any parameters.
 
 - `1.3.0`
 
-## Source
-
-`inc/checkout-express-checkout.php`
+Source: `inc/checkout-express-checkout.php`

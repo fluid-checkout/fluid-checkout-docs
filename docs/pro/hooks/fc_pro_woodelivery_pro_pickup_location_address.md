@@ -27,9 +27,7 @@ apply_filters( 'fc_pro_woodelivery_pro_pickup_location_address', $value, $pickup
 
 - `4.0.5`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-coderockz-woocommerce-delivery-date-time-pro.php`
+Source: `inc/compat/plugins/compat-plugin-coderockz-woocommerce-delivery-date-time-pro.php`
 
 ## Examples
 

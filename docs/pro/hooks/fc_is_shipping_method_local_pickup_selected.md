@@ -27,6 +27,4 @@ apply_filters( 'fc_is_shipping_method_local_pickup_selected', $is_local_pickup_s
 
 - `1.3.0`
 
-## Source
-
-`inc/checkout-local-pickup.php`
+Source: `inc/checkout-local-pickup.php`

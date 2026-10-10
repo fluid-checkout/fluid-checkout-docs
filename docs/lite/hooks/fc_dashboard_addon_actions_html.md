@@ -29,6 +29,4 @@ apply_filters( 'fc_dashboard_addon_actions_html', $html, $addon, $action_type, $
 
 - `4.2.8`
 
-## Source
-
-[`inc/admin/admin-setting-type-fc-addons.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/admin/admin-setting-type-fc-addons.php)
+Source: `inc/admin/admin-setting-type-fc-addons.php`

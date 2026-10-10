@@ -28,6 +28,4 @@ apply_filters( 'fc_enable_compat_plugin_style_{plugin_slug}', $enabled );
 
 - `1.2.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-coderockz-woocommerce-delivery-date-time-pro.php`
+Source: `inc/compat/plugins/compat-plugin-coderockz-woocommerce-delivery-date-time-pro.php`

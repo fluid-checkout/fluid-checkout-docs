@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_checkout_gift-card_code_message_text', $text );
 
 - `2.2.4`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php`

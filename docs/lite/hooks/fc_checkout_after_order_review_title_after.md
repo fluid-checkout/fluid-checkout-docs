@@ -24,9 +24,7 @@ This hook does not pass any parameters.
 
 - `2.1.0`
 
-## Source
-
-[`templates/fc/checkout-steps/checkout/review-order-section.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/checkout/review-order-section.php)
+Source: `templates/fc/checkout-steps/checkout/review-order-section.php`
 
 ## Examples
 

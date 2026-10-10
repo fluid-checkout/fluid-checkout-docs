@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_settings_skip_enabling_list', $value );
 
 - `2.0.0`
 
-## Source
-
-`inc/admin/admin-settings-general.php`
+Source: `inc/admin/admin-settings-general.php`
 
 ## Examples
 

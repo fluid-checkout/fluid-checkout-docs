@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_enable_cart_quantity_spinner_buttons', $enabled );
 
 - `1.5.0`
 
-## Source
-
-`inc/cart-ajax.php`
+Source: `inc/cart-ajax.php`
 
 ## Examples
 

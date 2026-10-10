@@ -27,9 +27,7 @@ apply_filters( 'fc_pro_order_details_order_statuses_display_order', $value, $ord
 
 - `1.6.1`
 
-## Source
-
-`inc/order-details.php`
+Source: `inc/order-details.php`
 
 ## Examples
 

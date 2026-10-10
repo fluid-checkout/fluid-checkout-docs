@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_display_cart_page_title', $title );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/cart/cart/page-cart.php`
+Source: `templates/fc-pro/cart/cart/page-cart.php`
 
 ## Examples
 

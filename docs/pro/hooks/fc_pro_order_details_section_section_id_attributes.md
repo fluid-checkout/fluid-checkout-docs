@@ -40,9 +40,7 @@ apply_filters( 'fc_pro_order_details_section_{section_id}_attributes', $addition
 
 - `1.3.0`
 
-## Source
-
-`inc/order-details.php`
+Source: `inc/order-details.php`
 
 ## Examples
 

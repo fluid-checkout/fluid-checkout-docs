@@ -27,9 +27,7 @@ apply_filters( 'fc_pro_account_matching_has_account_match', $has_account_match, 
 
 - `1.8.0`
 
-## Source
-
-`inc/account-matching.php`
+Source: `inc/account-matching.php`
 
 ## Examples
 

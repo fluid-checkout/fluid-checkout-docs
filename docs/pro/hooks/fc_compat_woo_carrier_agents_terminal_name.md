@@ -27,6 +27,4 @@ apply_filters( 'fc_compat_woo_carrier_agents_terminal_name', $value, $selected_t
 
 - `2.2.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woo-carrier-agents.php`
+Source: `inc/compat/plugins/compat-plugin-woo-carrier-agents.php`

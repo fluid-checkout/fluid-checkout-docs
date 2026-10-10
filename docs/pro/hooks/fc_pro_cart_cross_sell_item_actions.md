@@ -27,9 +27,7 @@ do_action( 'fc_pro_cart_cross_sell_item_actions', $_product, $args );
 
 - `2.0.3`
 
-## Source
-
-`templates/fc-pro/cart-cross-sells/cart/cross-sells.php`
+Source: `templates/fc-pro/cart-cross-sells/cart/cross-sells.php`
 
 ## Examples
 

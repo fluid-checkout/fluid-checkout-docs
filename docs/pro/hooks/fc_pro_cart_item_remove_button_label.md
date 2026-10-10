@@ -29,9 +29,7 @@ apply_filters( 'fc_pro_cart_item_remove_button_label', $label, $cart_item, $cart
 
 - `2.0.5`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`
 
 ## Examples
 

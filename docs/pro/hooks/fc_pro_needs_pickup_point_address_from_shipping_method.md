@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_needs_pickup_point_address_from_shipping_method', $value 
 
 - `3.0.5`
 
-## Source
-
-`inc/checkout-local-pickup.php`
+Source: `inc/checkout-local-pickup.php`
 
 ## Examples
 

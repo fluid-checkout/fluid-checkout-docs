@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_number_spinner_settings', $settings );
 
 - `1.5.0`
 
-## Source
-
-`inc/cart-ajax.php`
+Source: `inc/cart-ajax.php`
 
 ## Examples
 

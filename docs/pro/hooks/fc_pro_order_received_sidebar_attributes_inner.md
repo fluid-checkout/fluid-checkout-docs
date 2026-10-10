@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_order_received_sidebar_attributes_inner', $sidebar_attrib
 
 - `1.3.0`
 
-## Source
-
-`inc/order-received-page.php`
+Source: `inc/order-received-page.php`
 
 ## Examples
 

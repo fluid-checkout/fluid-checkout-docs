@@ -26,9 +26,7 @@ apply_filters( 'fc_thwcfe_clear_field_keys_skip_list', $skip );
 
 - `2.0.7`
 
-## Source
-
-[`inc/compat/plugins/compat-plugin-woocommerce-checkout-field-editor-pro.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/compat/plugins/compat-plugin-woocommerce-checkout-field-editor-pro.php)
+Source: `inc/compat/plugins/compat-plugin-woocommerce-checkout-field-editor-pro.php`
 
 ## Examples
 

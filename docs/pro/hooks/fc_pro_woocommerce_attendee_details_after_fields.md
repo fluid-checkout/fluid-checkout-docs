@@ -24,6 +24,4 @@ This hook does not pass any parameters.
 
 - `3.1.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-fooevents.php`
+Source: `inc/compat/plugins/compat-plugin-fooevents.php`

@@ -24,6 +24,4 @@ This hook does not pass any parameters.
 
 - `4.0.6`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-order-delivery-date.php`
+Source: `inc/compat/plugins/compat-plugin-order-delivery-date.php`

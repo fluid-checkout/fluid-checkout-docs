@@ -26,6 +26,4 @@ apply_filters( 'fc_enable_packing_slips_integration_options', $enabled );
 
 - `2.0.0`
 
-## Source
-
-`inc/packing-slips.php`
+Source: `inc/packing-slips.php`

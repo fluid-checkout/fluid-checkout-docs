@@ -26,6 +26,4 @@ apply_filters( 'fc_woocommerce_gateway_stripe_show_buttons', $value );
 
 - `1.3.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php`

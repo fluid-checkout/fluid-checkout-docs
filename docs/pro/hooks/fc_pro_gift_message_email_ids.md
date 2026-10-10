@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_gift_message_email_ids', $ids );
 
 - `1.3.0`
 
-## Source
-
-`inc/checkout-gift-options.php`
+Source: `inc/checkout-gift-options.php`

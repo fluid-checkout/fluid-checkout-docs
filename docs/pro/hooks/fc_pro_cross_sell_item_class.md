@@ -27,9 +27,7 @@ apply_filters( 'fc_pro_cross_sell_item_class', $class_name, $_product );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/cart-cross-sells/cart/cross-sells.php`
+Source: `templates/fc-pro/cart-cross-sells/cart/cross-sells.php`
 
 ## Examples
 

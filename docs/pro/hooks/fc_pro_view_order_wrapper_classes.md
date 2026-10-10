@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_view_order_wrapper_classes', $classes );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/view-order/myaccount/view-order.php`
+Source: `templates/fc-pro/view-order/myaccount/view-order.php`
 
 ## Examples
 

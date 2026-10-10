@@ -26,6 +26,4 @@ apply_filters( 'fc_display_gift_message_in_order_details', $display );
 
 - `1.3.0`
 
-## Source
-
-`inc/checkout-gift-options.php`
+Source: `inc/checkout-gift-options.php`

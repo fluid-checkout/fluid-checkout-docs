@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_order_details_overview_show_payment', $value );
 
 - `3.0.0`
 
-## Source
-
-`templates/fc-pro/order-details/order/order-details-overview.php`
+Source: `templates/fc-pro/order-details/order/order-details-overview.php`
 
 ## Examples
 

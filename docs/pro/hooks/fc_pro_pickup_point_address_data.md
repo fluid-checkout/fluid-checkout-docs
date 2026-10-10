@@ -28,6 +28,4 @@ apply_filters( 'fc_pro_pickup_point_address_data', $pickup_point_address, $chose
 
 - `1.4.2`
 
-## Source
-
-`inc/checkout-local-pickup.php`
+Source: `inc/checkout-local-pickup.php`

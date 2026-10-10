@@ -24,6 +24,4 @@ This hook does not pass any parameters.
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/gift-options/checkout/form-gift-options.php`
+Source: `templates/fc-pro/gift-options/checkout/form-gift-options.php`

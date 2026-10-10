@@ -24,9 +24,7 @@ This hook does not pass any parameters.
 
 - `3.0.0`
 
-## Source
-
-`templates/fc-pro/order-pay/order-pay/review-order-section.php`
+Source: `templates/fc-pro/order-pay/order-pay/review-order-section.php`
 
 ## Examples
 

@@ -26,9 +26,7 @@ apply_filters( 'fc_checkout_update_on_visibility_change', $value );
 
 - `2.5.0`
 
-## Source
-
-[`inc/enqueue.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/enqueue.php)
+Source: `inc/enqueue.php`
 
 ## Examples
 

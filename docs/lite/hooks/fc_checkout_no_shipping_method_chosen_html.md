@@ -26,9 +26,7 @@ apply_filters( 'fc_checkout_no_shipping_method_chosen_html', $html );
 
 - `1.2.0`
 
-## Source
-
-[`templates/fc/checkout-steps/checkout/review-order-shipping.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/checkout/review-order-shipping.php)
+Source: `templates/fc/checkout-steps/checkout/review-order-shipping.php`
 
 ## Examples
 

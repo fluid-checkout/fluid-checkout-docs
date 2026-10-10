@@ -26,6 +26,4 @@ apply_filters( 'fc_place_order_button_classes', $classes );
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`

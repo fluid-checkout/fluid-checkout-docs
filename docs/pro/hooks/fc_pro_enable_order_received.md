@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_enable_order_received', $enabled );
 
 - `2.1.8`
 
-## Source
-
-`inc/order-received-page.php`
+Source: `inc/order-received-page.php`
 
 ## Examples
 

@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_points_rewards_display_section_title', $title );
 
 - `1.4.1`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-points-and-rewards.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-points-and-rewards.php`

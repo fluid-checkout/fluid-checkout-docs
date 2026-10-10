@@ -26,6 +26,4 @@ apply_filters( 'fc_checkout_woocommerce_gift_cards_script_settings', $settings )
 
 - `2.2.4`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-gift-cards.php`

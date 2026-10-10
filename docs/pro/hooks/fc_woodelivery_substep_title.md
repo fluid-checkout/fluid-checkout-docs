@@ -26,6 +26,4 @@ apply_filters( 'fc_woodelivery_substep_title', $substep_title );
 
 - `3.0.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woo-delivery.php`
+Source: `inc/compat/plugins/compat-plugin-woo-delivery.php`

@@ -26,9 +26,7 @@ do_action( 'fc_pro_order_pay_order_review', $order );
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`
 
 ## Examples
 

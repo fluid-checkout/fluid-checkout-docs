@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_html_custom_attributes', $attributes );
 
 - `2.1.8`
 
-## Source
-
-`templates/compat/themes/dt-the7/fc-pro/cart/cart/header-cart.php`
+Source: `templates/compat/themes/dt-the7/fc-pro/cart/cart/header-cart.php`
 
 ## Examples
 

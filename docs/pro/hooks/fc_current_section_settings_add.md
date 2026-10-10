@@ -31,6 +31,4 @@ apply_filters( 'fc_{current_section}_settings_add', $settings, $current_section 
 
 - `4.0.7`
 
-## Source
-
-`inc/admin/admin-settings-license-keys.php`
+Source: `inc/admin/admin-settings-license-keys.php`

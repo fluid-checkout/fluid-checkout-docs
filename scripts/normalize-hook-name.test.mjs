@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {normalizeHookName, slugifyHookName} from './normalize-hook-name.mjs';
-import {buildSignature, escapeMdx, renderHookPage, sourceLocation} from './render-hook.mjs';
+import {buildSignature, escapeMdx, renderHookPage, sourceText} from './render-hook.mjs';
 
 const prefix = 'fc_vat';
 
@@ -78,31 +78,32 @@ test('builds a do_action line for a prefix-normalized hook', () => {
   assert.equal(signature, "do_action( 'fc_vat_admin_notices' );");
 });
 
-test('links source files only when the plugin repository is public', () => {
-  const hook = {file: 'inc/checkout-eu-vat.php', line: 120};
-  assert.deepEqual(sourceLocation(hook, {repository: null}), {
-    label: 'inc/checkout-eu-vat.php:120',
-    url: null,
-  });
-  assert.deepEqual(
-    sourceLocation(hook, {
-      repository: {url: 'https://github.com/fluid-checkout/fluid-checkout', branch: 'trunk'},
-    }),
+test('shows the source file and line as plain text', () => {
+  assert.equal(sourceText({file: 'inc/checkout-steps.php', line: 123}), 'Source: `inc/checkout-steps.php`, line 123');
+  assert.equal(
+    sourceText({file: 'inc/checkout-steps.php', line: 10, end_line: 20}),
+    'Source: `inc/checkout-steps.php`, lines 10-20',
+  );
+  assert.equal(sourceText({file: 'inc/checkout-steps.php:123'}), 'Source: `inc/checkout-steps.php`, line 123');
+  assert.equal(sourceText({file: 'inc/checkout-steps.php'}), 'Source: `inc/checkout-steps.php`');
+  assert.equal(sourceText({}), 'Source: Unknown file');
+
+  const page = renderHookPage(
     {
-      label: 'inc/checkout-eu-vat.php:120',
-      url: 'https://github.com/fluid-checkout/fluid-checkout/blob/trunk/inc/checkout-eu-vat.php#L120',
+      type: 'action',
+      file: 'inc/checkout-steps.php',
+      line: 123,
+      sourceCommit: 'bd94362e871bc8abd7ada3ee6cb483762a9eca50',
+      doc: {description: 'Runs in the checkout steps.', tags: []},
+    },
+    {
+      normalizedName: 'fc_checkout_steps',
+      slug: 'fc_checkout_steps',
+      plugin: {repository: {url: 'https://github.com/fluid-checkout/fluid-checkout-pro'}},
     },
   );
-  assert.deepEqual(
-    sourceLocation(
-      {...hook, sourceCommit: 'bd94362e871bc8abd7ada3ee6cb483762a9eca50'},
-      {repository: {url: 'https://github.com/fluid-checkout/fluid-checkout', branch: 'release/next-FEATURE'}},
-    ),
-    {
-      label: 'inc/checkout-eu-vat.php:120',
-      url: 'https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-eu-vat.php#L120',
-    },
-  );
+  assert.match(page, /^Source: `inc\/checkout-steps\.php`, line 123$/m);
+  assert.doesNotMatch(page, /<a |github\.com|bd94362|\[`/);
 });
 
 test('omits an alias that repeats the normalized hook name', () => {

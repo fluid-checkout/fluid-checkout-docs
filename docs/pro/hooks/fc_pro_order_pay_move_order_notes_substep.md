@@ -27,9 +27,7 @@ apply_filters( 'fc_pro_order_pay_move_order_notes_substep', $should_move, $order
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`
 
 ## Examples
 

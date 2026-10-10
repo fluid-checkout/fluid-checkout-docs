@@ -27,9 +27,7 @@ apply_filters( 'fc_pro_order_pay_shipping_method_full_label', $label, $order_shi
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`
 
 ## Examples
 

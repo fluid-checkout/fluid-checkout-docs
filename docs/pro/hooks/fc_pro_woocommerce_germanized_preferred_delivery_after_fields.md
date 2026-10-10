@@ -24,9 +24,7 @@ This hook does not pass any parameters.
 
 - `3.0.6`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-germanized.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-germanized.php`
 
 ## Examples
 

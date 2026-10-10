@@ -36,9 +36,7 @@ apply_filters( 'fc_pro_cart_section_title_{section_id}', $section_title );
 
 - `1.3.0`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`
 
 ## Examples
 

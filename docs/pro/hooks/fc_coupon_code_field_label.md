@@ -26,6 +26,4 @@ apply_filters( 'fc_coupon_code_field_label', $label );
 
 - `1.4.1`
 
-## Source
-
-`inc/checkout-coupon-codes.php`
+Source: `inc/checkout-coupon-codes.php`

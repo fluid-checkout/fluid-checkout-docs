@@ -26,6 +26,4 @@ apply_filters( 'fc_gift_options_from_length', $value );
 
 - `1.3.0`
 
-## Source
-
-`inc/checkout-gift-options.php`
+Source: `inc/checkout-gift-options.php`

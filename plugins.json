@@ -18,8 +18,7 @@
       "pluginPrefix": "fc_vat",
       "hookPrefixes": ["fc_vat_"],
       "status": "available",
-      "routeBasePath": "eu-vat",
-      "repository": null
+      "routeBasePath": "eu-vat"
     },
     {
       "id": "lite",
@@ -33,11 +32,7 @@
       "hookPrefixes": ["fc_"],
       "status": "available",
       "routeBasePath": "lite",
-      "relatedChangelogs": ["pro"],
-      "repository": {
-        "url": "https://github.com/fluid-checkout/fluid-checkout",
-        "branch": "release/next-FEATURE"
-      }
+      "relatedChangelogs": ["pro"]
     },
     {
       "id": "pro",
@@ -61,8 +56,7 @@
           "id": "google-address-autocomplete",
           "title": "Google Address Autocomplete (before merging into PRO)"
         }
-      ],
-      "repository": null
+      ]
     }
   ]
 }

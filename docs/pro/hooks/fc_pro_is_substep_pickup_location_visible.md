@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_is_substep_pickup_location_visible', $visible );
 
 - `2.0.5`
 
-## Source
-
-`inc/checkout-local-pickup.php`
+Source: `inc/checkout-local-pickup.php`
 
 ## Examples
 

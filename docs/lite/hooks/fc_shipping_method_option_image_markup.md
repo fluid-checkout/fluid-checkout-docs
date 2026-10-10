@@ -28,9 +28,7 @@ apply_filters( 'fc_shipping_method_option_image_markup', $html, $method, $method
 
 - `3.1.9`
 
-## Source
-
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
+Source: `inc/checkout-steps.php`
 
 ## Examples
 

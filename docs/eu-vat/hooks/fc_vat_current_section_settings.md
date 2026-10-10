@@ -32,6 +32,4 @@ apply_filters( 'fc_vat_{current_section}_settings', $settings );
 
 - `0.1.0`
 
-## Source
-
-`inc/admin/admin-settings-vat-assistant.php`
+Source: `inc/admin/admin-settings-vat-assistant.php`

@@ -24,9 +24,7 @@ This hook does not pass any parameters.
 
 - `1.3.0`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`
 
 ## Examples
 

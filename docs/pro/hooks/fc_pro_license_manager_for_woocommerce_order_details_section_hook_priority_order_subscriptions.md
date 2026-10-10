@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_license_manager_for_woocommerce_order_details_section_hoo
 
 - `1.3.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-license-manager-for-woocommerce.php`
+Source: `inc/compat/plugins/compat-plugin-license-manager-for-woocommerce.php`

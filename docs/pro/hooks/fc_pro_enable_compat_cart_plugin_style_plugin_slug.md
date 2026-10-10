@@ -28,6 +28,4 @@ apply_filters( 'fc_pro_enable_compat_cart_plugin_style_{plugin_slug}', $enabled 
 
 - `1.3.0`
 
-## Source
-
-`inc/enqueue.php`
+Source: `inc/enqueue.php`

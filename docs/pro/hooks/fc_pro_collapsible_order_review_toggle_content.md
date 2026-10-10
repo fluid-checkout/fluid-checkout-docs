@@ -24,9 +24,7 @@ This hook does not pass any parameters.
 
 - `4.0.0`
 
-## Source
-
-`templates/fc-pro/order-summary/checkout/review-order-section-collapsible.php`
+Source: `templates/fc-pro/order-summary/checkout/review-order-section-collapsible.php`
 
 ## Examples
 

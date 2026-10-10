@@ -28,9 +28,7 @@ apply_filters( 'fc_pro_enable_compat_plugin_{plugin_slug}', $enabled );
 
 - `1.4.1`
 
-## Source
-
-`fluid-checkout-pro.php`
+Source: `fluid-checkout-pro.php`
 
 ## Examples
 

@@ -28,6 +28,4 @@ apply_filters( 'fc_pro_enable_compat_order_received_style_{theme_slug}', $enable
 
 - `1.3.0`
 
-## Source
-
-`inc/enqueue.php`
+Source: `inc/enqueue.php`

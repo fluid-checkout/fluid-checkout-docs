@@ -26,6 +26,4 @@ apply_filters( 'fc_checkout_express_checkout_ignore_required_fields_skip_list', 
 
 - `2.2.2`
 
-## Source
-
-`inc/checkout-express-checkout.php`
+Source: `inc/checkout-express-checkout.php`

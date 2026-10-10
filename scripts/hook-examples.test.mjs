@@ -108,7 +108,7 @@ test('renders example content after parameters and source, and omits the section
   });
 
   const parametersAt = withExample.indexOf('## Parameters');
-  const sourceAt = withExample.indexOf('## Source');
+  const sourceAt = withExample.indexOf('Source:');
   const examplesAt = withExample.indexOf('## Examples');
   assert.ok(parametersAt !== -1 && parametersAt < sourceAt && sourceAt < examplesAt);
   assert.match(withExample, /Pass \{'\{'\}plugin_slug\{'\}'\} through\./);
@@ -361,7 +361,7 @@ test('regenerating hook pages leaves example files unchanged', () => {
     const mainPage = fs.readFileSync(path.join(hooksDir, 'fc_vat_number_field_args.md'), 'utf8');
     const relatedPage = fs.readFileSync(path.join(hooksDir, 'fc_vat_is_vat_number_field.md'), 'utf8');
     const settingsPage = fs.readFileSync(path.join(hooksDir, 'fc_vat_js_settings.md'), 'utf8');
-    assert.match(mainPage, /## Source[\s\S]*## Examples\n\nChange the label\./);
+    assert.match(mainPage, /Source: [\s\S]*## Examples\n\nChange the label\./);
     assert.match(mainPage, /\$args\["label"\] = "EU VAT number"/);
     assert.doesNotMatch(mainPage, /related_hooks/);
     assert.match(relatedPage, /See example on \[`fc_vat_number_field_args`\]\(\.\/fc_vat_number_field_args\)\./);

@@ -28,9 +28,7 @@ apply_filters( 'fc_vat_enable_compat_edit_address_plugin_style_{plugin_slug}', $
 
 - `1.0.2`
 
-## Source
-
-`inc/enqueue.php`
+Source: `inc/enqueue.php`
 
 ## Examples
 

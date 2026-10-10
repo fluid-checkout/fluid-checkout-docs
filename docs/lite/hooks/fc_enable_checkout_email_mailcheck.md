@@ -26,9 +26,7 @@ apply_filters( 'fc_enable_checkout_email_mailcheck', $enabled );
 
 - `3.1.5`
 
-## Source
-
-[`inc/checkout-validation.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-validation.php)
+Source: `inc/checkout-validation.php`
 
 ## Examples
 

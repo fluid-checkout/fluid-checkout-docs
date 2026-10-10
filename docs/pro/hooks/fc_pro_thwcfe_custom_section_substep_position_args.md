@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_thwcfe_custom_section_substep_position_args', $substep_po
 
 - `3.0.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-checkout-field-editor-pro.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-checkout-field-editor-pro.php`
 
 ## Examples
 

@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_update_cart_fragments', $value );
 
 - `1.3.0`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`

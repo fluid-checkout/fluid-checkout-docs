@@ -36,9 +36,7 @@ apply_filters( 'fc_pro_order_pay_substep_{substep_id}_text', $html, $order );
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`
 
 ## Examples
 

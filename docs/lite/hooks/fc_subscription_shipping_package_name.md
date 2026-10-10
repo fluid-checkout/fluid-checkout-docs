@@ -29,6 +29,4 @@ apply_filters( 'fc_subscription_shipping_package_name', $package_name, $package_
 
 - `3.2.5`
 
-## Source
-
-[`templates/compat/plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/compat/plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php)
+Source: `templates/compat/plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php`

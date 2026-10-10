@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_order_details_customer_information_show_email', $value );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/order-details/order/order-details-customer.php`
+Source: `templates/fc-pro/order-details/order/order-details-customer.php`
 
 ## Examples
 

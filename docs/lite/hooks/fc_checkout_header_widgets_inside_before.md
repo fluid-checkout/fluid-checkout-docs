@@ -24,9 +24,7 @@ This hook does not pass any parameters.
 
 - `1.4.3`
 
-## Source
-
-[`inc/checkout-widget-areas.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-widget-areas.php)
+Source: `inc/checkout-widget-areas.php`
 
 ## Examples
 

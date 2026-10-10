@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_tyche_order_delivery_substep_position_args', $args );
 
 - `4.0.6`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-order-delivery-date.php`
+Source: `inc/compat/plugins/compat-plugin-order-delivery-date.php`

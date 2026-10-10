@@ -31,9 +31,7 @@ apply_filters( 'fc_pro_thwcfe_substep_text_display_value_{field_key}', $field_di
 
 - `1.2.0`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-checkout-field-editor-pro.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-checkout-field-editor-pro.php`
 
 ## Examples
 

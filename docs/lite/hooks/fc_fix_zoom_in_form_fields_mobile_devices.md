@@ -26,9 +26,7 @@ apply_filters( 'fc_fix_zoom_in_form_fields_mobile_devices', $value );
 
 - `4.0.1`
 
-## Source
-
-[`inc/account-edit-address.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/account-edit-address.php)
+Source: `inc/account-edit-address.php`
 
 ## Examples
 

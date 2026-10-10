@@ -26,9 +26,7 @@ do_action( 'fc_pro_order_received_notice_before', $order );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/order-received/checkout/order-received-successful.php`
+Source: `templates/fc-pro/order-received/checkout/order-received-successful.php`
 
 ## Examples
 

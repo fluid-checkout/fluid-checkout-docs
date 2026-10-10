@@ -29,9 +29,7 @@ apply_filters( 'fc_payment_method_review_text_{chosen_method_key}', $payment_met
 
 - `2.0.5`
 
-## Source
-
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
+Source: `inc/checkout-steps.php`
 
 ## Examples
 

@@ -26,9 +26,7 @@ apply_filters( 'fc_output_custom_styles', $value );
 
 - `1.4.2`
 
-## Source
-
-[`inc/design-templates.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/design-templates.php)
+Source: `inc/design-templates.php`
 
 ## Examples
 

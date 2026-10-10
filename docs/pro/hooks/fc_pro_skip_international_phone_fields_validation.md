@@ -27,6 +27,4 @@ apply_filters( 'fc_pro_skip_international_phone_fields_validation', $skip, $subs
 
 - `2.0.4`
 
-## Source
-
-`inc/checkout-international-phone-field.php`
+Source: `inc/checkout-international-phone-field.php`

@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_order_pay_settings', $settings );
 
 - `4.0.0`
 
-## Source
-
-[`inc/admin/admin-settings-order-pay.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/admin/admin-settings-order-pay.php)
+Source: `inc/admin/admin-settings-order-pay.php`

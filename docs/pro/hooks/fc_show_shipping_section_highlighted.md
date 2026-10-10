@@ -26,6 +26,4 @@ apply_filters( 'fc_show_shipping_section_highlighted', $value );
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`

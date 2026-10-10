@@ -27,9 +27,7 @@ apply_filters( 'fc_pro_cart_shipping_calculator_show_for_multiple_packages', $va
 
 - `2.0.4`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`
 
 ## Examples
 

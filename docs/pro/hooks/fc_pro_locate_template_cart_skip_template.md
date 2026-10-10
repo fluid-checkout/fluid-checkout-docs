@@ -29,6 +29,4 @@ apply_filters( 'fc_pro_locate_template_cart_skip_template', $skip, $template, $t
 
 - `2.1.10`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`

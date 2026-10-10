@@ -34,9 +34,7 @@ apply_filters( 'fc_step_title_{step_id}', $step_title, $context );
 
 - `1.2.0`
 
-## Source
-
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
+Source: `inc/checkout-steps.php`
 
 ## Examples
 

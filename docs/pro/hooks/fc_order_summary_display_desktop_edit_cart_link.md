@@ -26,6 +26,4 @@ apply_filters( 'fc_order_summary_display_desktop_edit_cart_link', $link );
 
 - `1.5.0`
 
-## Source
-
-`inc/checkout-edit-cart.php`
+Source: `inc/checkout-edit-cart.php`

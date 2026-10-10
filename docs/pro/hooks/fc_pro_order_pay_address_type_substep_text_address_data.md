@@ -32,6 +32,4 @@ apply_filters( 'fc_pro_order_pay_{address_type}_substep_text_address_data', $add
 
 - `3.0.0`
 
-## Source
-
-`inc/order-pay-page.php`
+Source: `inc/order-pay-page.php`

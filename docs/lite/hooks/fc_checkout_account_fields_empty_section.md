@@ -26,6 +26,4 @@ do_action( 'fc_checkout_account_fields_empty_section', $checkout );
 
 - `4.1.0`
 
-## Source
-
-[`templates/fc/checkout-steps/checkout/form-account-creation.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/checkout/form-account-creation.php)
+Source: `templates/fc/checkout-steps/checkout/form-account-creation.php`

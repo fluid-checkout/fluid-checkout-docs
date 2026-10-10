@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_action_label_continue_shopping', $value );
 
 - `2.2.3`
 
-## Source
-
-`inc/checkout-edit-cart.php`
+Source: `inc/checkout-edit-cart.php`
 
 ## Examples
 

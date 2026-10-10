@@ -26,6 +26,4 @@ apply_filters( 'fc_pro_woocommerce_germanized_preferred_delivery_location_positi
 
 - `3.0.6`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-woocommerce-germanized.php`
+Source: `inc/compat/plugins/compat-plugin-woocommerce-germanized.php`

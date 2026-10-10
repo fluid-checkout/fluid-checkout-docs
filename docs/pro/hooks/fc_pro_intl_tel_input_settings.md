@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_intl_tel_input_settings', $intl_tel_input_settings );
 
 - `1.4.0`
 
-## Source
-
-`inc/checkout-international-phone-field.php`
+Source: `inc/checkout-international-phone-field.php`
 
 ## Examples
 

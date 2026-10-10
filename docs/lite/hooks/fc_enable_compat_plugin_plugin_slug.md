@@ -28,6 +28,4 @@ apply_filters( 'fc_enable_compat_plugin_{plugin_slug}', $value );
 
 - `2.0.5`
 
-## Source
-
-[`fluid-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/fluid-checkout.php)
+Source: `fluid-checkout.php`

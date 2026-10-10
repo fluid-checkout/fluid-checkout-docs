@@ -26,9 +26,7 @@ do_action( 'fc_pro_order_received_sidebar_sections', $order_id );
 
 - `1.3.0`
 
-## Source
-
-`inc/order-received-page.php`
+Source: `inc/order-received-page.php`
 
 ## Examples
 

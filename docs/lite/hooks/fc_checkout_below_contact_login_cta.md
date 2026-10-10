@@ -24,9 +24,7 @@ This hook does not pass any parameters.
 
 - `1.4.2`
 
-## Source
-
-[`templates/fc/checkout-steps/checkout/form-contact-login.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/checkout/form-contact-login.php)
+Source: `templates/fc/checkout-steps/checkout/form-contact-login.php`
 
 ## Examples
 

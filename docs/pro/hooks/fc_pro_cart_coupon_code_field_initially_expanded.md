@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_coupon_code_field_initially_expanded', $value );
 
 - `1.3.0`
 
-## Source
-
-`inc/cart-ajax.php`
+Source: `inc/cart-ajax.php`
 
 ## Examples
 

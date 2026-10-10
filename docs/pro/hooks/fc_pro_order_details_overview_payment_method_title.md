@@ -27,9 +27,7 @@ apply_filters( 'fc_pro_order_details_overview_payment_method_title', $payment_me
 
 - `2.0.4`
 
-## Source
-
-`templates/fc-pro/order-details/order/order-details-overview.php`
+Source: `templates/fc-pro/order-details/order/order-details-overview.php`
 
 ## Examples
 

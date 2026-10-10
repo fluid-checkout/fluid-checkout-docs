@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_section_hook_priority_free_gifts_for_woocommerce', $
 
 - `2.2.4`
 
-## Source
-
-`inc/compat/plugins/compat-plugin-free-gifts-for-woocommerce.php`
+Source: `inc/compat/plugins/compat-plugin-free-gifts-for-woocommerce.php`
 
 ## Examples
 

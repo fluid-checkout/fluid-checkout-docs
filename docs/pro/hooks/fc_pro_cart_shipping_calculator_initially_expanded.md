@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_shipping_calculator_initially_expanded', $value );
 
 - `1.3.0`
 
-## Source
-
-`templates/fc-pro/cart/cart/shipping-calculator.php`
+Source: `templates/fc-pro/cart/cart/shipping-calculator.php`
 
 ## Examples
 

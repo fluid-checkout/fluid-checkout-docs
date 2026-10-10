@@ -26,9 +26,7 @@ apply_filters( 'fc_no_order_notes_order_review_notice', $notice );
 
 - `1.2.0`
 
-## Source
-
-[`inc/compat/plugins/compat-plugin-yith-woocommerce-checkout-manager.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/compat/plugins/compat-plugin-yith-woocommerce-checkout-manager.php)
+Source: `inc/compat/plugins/compat-plugin-yith-woocommerce-checkout-manager.php`
 
 ## Examples
 

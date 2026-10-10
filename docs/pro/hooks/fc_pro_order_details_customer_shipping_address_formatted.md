@@ -27,9 +27,7 @@ apply_filters( 'fc_pro_order_details_customer_shipping_address_formatted', $valu
 
 - `2.0.1`
 
-## Source
-
-`templates/fc-pro/order-details/order/order-details-customer.php`
+Source: `templates/fc-pro/order-details/order/order-details-customer.php`
 
 ## Examples
 

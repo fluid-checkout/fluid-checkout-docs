@@ -26,9 +26,7 @@ apply_filters( 'fc_checkout_login_input_classes', $classes );
 
 - `4.1.0`
 
-## Source
-
-[`templates/fc/checkout-steps/global/form-login.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/global/form-login.php)
+Source: `templates/fc/checkout-steps/global/form-login.php`
 
 ## Examples
 

@@ -26,9 +26,7 @@ apply_filters( 'fc_pro_cart_section_hook_priority_woodmart_free_gifts', $value )
 
 - `2.2.4`
 
-## Source
-
-`inc/compat/themes/compat-theme-woodmart.php`
+Source: `inc/compat/themes/compat-theme-woodmart.php`
 
 ## Examples
 

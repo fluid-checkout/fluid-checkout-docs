@@ -29,6 +29,4 @@ apply_filters( 'fc_pro_cart_items_quantity_decimal_places', $value, $cart_item, 
 
 - `1.7.0`
 
-## Source
-
-`inc/cart-page.php`
+Source: `inc/cart-page.php`

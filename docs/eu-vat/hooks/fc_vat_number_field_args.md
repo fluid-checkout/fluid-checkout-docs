@@ -39,9 +39,7 @@ apply_filters( 'fc_vat_number_field_args', $args );
 
 - `1.0.0`
 
-## Source
-
-`inc/checkout-eu-vat.php`
+Source: `inc/checkout-eu-vat.php`
 
 ## Examples
 
