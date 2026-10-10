@@ -20,24 +20,11 @@ The [hooks reference](#filters) lists every action and filter exported from the 
 
 A filter such as [`fc_vat_number_field_args`](/eu-vat/hooks/fc_vat_number_field_args/) receives the current value and must return a replacement.
 
-## Attach a callback
+## Best practices
 
-```php
-add_filter( 'fc_vat_number_field_args', 'my_store_vat_number_field_args' );
+If you are unsure about how to add the code snippet to your website, check our article:
 
-/**
- * Change the VAT number field label.
- *
- * @param array $args VAT number field arguments.
- * @return array
- */
-function my_store_vat_number_field_args( $args ) {
-    $args['label'] = __( 'EU VAT number', 'my-store' );
-    return $args;
-}
-```
-
-The last argument to `add_filter` is the number of parameters you accept. Match it to the parameters table on the hook page.
+[How to safely add code snippets to your WooCommerce website](https://fluidcheckout.com/docs/how-to-add-code-snippets/)
 
 ## Dynamic hook names
 
