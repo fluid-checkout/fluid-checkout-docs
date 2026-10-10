@@ -7,6 +7,7 @@ import {
   formatHookFilterLog,
   matchesHookPrefix,
   prepareHooks,
+  resolveHookExcludePrefixes,
 } from './generate-hooks.mjs';
 import {renderHookPage, renderHooksIndex, renderSidebarItems} from './render-hook.mjs';
 
@@ -185,13 +186,132 @@ test('refuses to publish hooks when hookPrefixes is missing', () => {
   );
 });
 
+test('catalog hookExcludePrefixes skip fc_licenses_ after the allowlist', () => {
+  const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
+  const excludes = resolveHookExcludePrefixes(catalog);
+  assert.deepEqual(excludes, ['fc_licenses_']);
+
+  const licenseHooks = [
+    {
+      name: 'fc_licenses_is_activated',
+      type: 'filter',
+      doc: {description: 'Whether the license is active.'},
+    },
+    {
+      name: "'fc_licenses_client_' . $action",
+      type: 'action',
+      doc: {description: 'Dynamic Fluid Licenses client hook.'},
+    },
+  ];
+
+  const pro = catalog.plugins.find((entry) => entry.id === 'pro');
+  const proHooks = [
+    {name: 'fc_checkout_steps', type: 'action', doc: {description: 'Checkout steps.'}},
+    {
+      name: 'fc_pro_checkout_steps',
+      type: 'filter',
+      doc: {description: 'PRO checkout steps.'},
+      aliases: ['fc_pro_checkout_steps_extra', 'fc_licenses_activated', "'fc_licenses_' . $status"],
+    },
+    ...licenseHooks,
+    {name: 'woocommerce_checkout_fields', type: 'filter', doc: {description: 'WooCommerce checkout fields.'}},
+  ];
+  const keptWithoutExclusion = prepareHooks(licenseHooks, pro);
+  assert.deepEqual(keptWithoutExclusion.hooks.map((hook) => hook.name), [
+    'fc_licenses_client_{action}',
+    'fc_licenses_is_activated',
+  ]);
+
+  const proResult = prepareHooks(proHooks, pro, excludes);
+  assert.deepEqual(proResult.hooks.map((hook) => hook.name), [
+    'fc_checkout_steps',
+    'fc_pro_checkout_steps',
+  ]);
+  assert.deepEqual(proResult.skipped.map((hook) => hook.name), [
+    'fc_licenses_is_activated',
+    'fc_licenses_client_{action}',
+    'woocommerce_checkout_fields',
+  ]);
+  const proSteps = proResult.hooks.find((hook) => hook.name === 'fc_pro_checkout_steps');
+  assert.deepEqual(proSteps.hook.aliases, ['fc_pro_checkout_steps_extra']);
+  assert.deepEqual(proResult.droppedAliases.map((alias) => alias.name), [
+    'fc_licenses_activated',
+    'fc_licenses_{status}',
+  ]);
+
+  const index = renderHooksIndex(
+    proResult.hooks.map((hook) => ({
+      name: hook.name,
+      slug: hook.slug,
+      type: hook.type,
+      summary: hook.summary,
+    })),
+    'Fluid Checkout PRO',
+  );
+  const sidebar = JSON.stringify(renderSidebarItems(proResult.hooks));
+  assert.doesNotMatch(index, /fc_licenses_/);
+  assert.doesNotMatch(sidebar, /fc_licenses_/);
+
+  const lines = formatHookFilterLog(pro, proResult);
+  assert.equal(
+    lines[0],
+    'Skipped 3 hooks for pro (hookPrefixes: fc_pro_, fc_, fc_adb_, fc_gaa_; hookExcludePrefixes: fc_licenses_):',
+  );
+  assert.ok(lines.includes('  - fc_licenses_is_activated'));
+  assert.ok(lines.includes("  - fc_licenses_client_{action} (from 'fc_licenses_client_' . $action)"));
+  assert.ok(lines.includes('  - woocommerce_checkout_fields'));
+  assert.ok(lines.includes('Dropped 2 aliases for pro outside hookPrefixes or matching hookExcludePrefixes:'));
+  assert.ok(lines.includes('  - fc_licenses_activated (on fc_pro_checkout_steps)'));
+  assert.ok(lines.includes("  - fc_licenses_{status} (from 'fc_licenses_' . $status) (on fc_pro_checkout_steps)"));
+
+  const lite = catalog.plugins.find((entry) => entry.id === 'lite');
+  const liteResult = prepareHooks(
+    [
+      {name: 'fc_checkout_steps', type: 'action', doc: {description: 'Checkout steps.'}},
+      ...licenseHooks,
+    ],
+    lite,
+    excludes,
+  );
+  assert.deepEqual(liteResult.hooks.map((hook) => hook.name), ['fc_checkout_steps']);
+  assert.deepEqual(liteResult.skipped.map((hook) => hook.name), [
+    'fc_licenses_is_activated',
+    'fc_licenses_client_{action}',
+  ]);
+
+  const euVat = catalog.plugins.find((entry) => entry.id === 'eu-vat');
+  const euVatResult = prepareHooks(
+    [
+      {name: 'fc_vat_js_settings', type: 'filter', doc: {description: 'Script settings.'}},
+      ...licenseHooks,
+    ],
+    euVat,
+    excludes,
+  );
+  assert.deepEqual(euVatResult.hooks.map((hook) => hook.name), ['fc_vat_js_settings']);
+  assert.deepEqual(euVatResult.skipped.map((hook) => hook.name), [
+    'fc_licenses_is_activated',
+    'fc_licenses_client_{action}',
+  ]);
+  const euVatLines = formatHookFilterLog(euVat, euVatResult);
+  assert.equal(
+    euVatLines[0],
+    'Skipped 2 hooks for eu-vat (hookPrefixes: fc_vat_; hookExcludePrefixes: fc_licenses_):',
+  );
+  assert.ok(euVatLines.includes('  - fc_licenses_is_activated'));
+});
+
 test('eu-vat fixture keeps all 16 fc_vat_ hooks and drops nothing', () => {
   const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
   const plugin = catalog.plugins.find((entry) => entry.id === 'eu-vat');
   const actions = JSON.parse(fs.readFileSync(path.join(root, 'data/eu-vat/actions.json'), 'utf8'));
   const filters = JSON.parse(fs.readFileSync(path.join(root, 'data/eu-vat/filters.json'), 'utf8'));
   const sidebar = JSON.parse(fs.readFileSync(path.join(root, 'sidebars/eu-vat.hooks.json'), 'utf8'));
-  const result = prepareHooks([...actions.hooks, ...filters.hooks], plugin);
+  const result = prepareHooks(
+    [...actions.hooks, ...filters.hooks],
+    plugin,
+    resolveHookExcludePrefixes(catalog),
+  );
 
   assert.deepEqual(plugin.hookPrefixes, ['fc_vat_']);
   const pro = catalog.plugins.find((entry) => entry.id === 'pro');

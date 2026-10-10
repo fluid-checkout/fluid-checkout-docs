@@ -1,4 +1,5 @@
 {
+  "hookExcludePrefixes": ["fc_licenses_"],
   "plugins": [
     {
       "id": "eu-vat",
