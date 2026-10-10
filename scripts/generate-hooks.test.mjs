@@ -29,6 +29,12 @@ test('matches hook prefixes only at the start of the normalized name', () => {
   assert.equal(matchesHookPrefix('fc_checkout_steps', ['fc_']), true);
   assert.equal(matchesHookPrefix('fc_pro_checkout_steps', ['fc_pro_', 'fc_']), true);
   assert.equal(matchesHookPrefix('fc_pro_checkout_steps', ['fc_']), true);
+  assert.equal(matchesHookPrefix('fc_adb_is_entry_delete_enabled', ['fc_adb_']), true);
+  assert.equal(matchesHookPrefix('fc_adb_enable_compat_plugin_{plugin_slug}', ['fc_adb_']), true);
+  assert.equal(matchesHookPrefix('fc_gaa_google_autocomplete_js_settings', ['fc_gaa_']), true);
+  assert.equal(matchesHookPrefix('fc_gaa_enable_compat_theme_{theme_slug}', ['fc_gaa_']), true);
+  assert.equal(matchesHookPrefix('fc_adb_is_entry_delete_enabled', ['fc_pro_']), false);
+  assert.equal(matchesHookPrefix('fc_gaa_settings', ['fc_pro_']), false);
   assert.equal(matchesHookPrefix('fc_vat_admin_notices', ['fc_vat_']), true);
   assert.equal(matchesHookPrefix('woocommerce_checkout_fields', ['fc_vat_']), false);
   assert.equal(matchesHookPrefix('fc_checkout_steps', ['fc_vat_']), false);
@@ -55,6 +61,10 @@ test('keeps fc_ and fc_pro_ hooks and skips WooCommerce and other third-party na
   assert.ok(result.hooks.some((hook) => hook.name === 'fc_pro_checkout_steps'));
   assert.ok(result.hooks.some((hook) => hook.name === 'fc_pro_enable_compat_plugin_{plugin_slug}'));
   assert.ok(result.hooks.some((hook) => hook.name === 'fc_pro_admin_notices'));
+  assert.ok(result.hooks.some((hook) => hook.name === 'fc_adb_is_entry_delete_enabled'));
+  assert.ok(result.hooks.some((hook) => hook.name === 'fc_adb_enable_compat_plugin_{plugin_slug}'));
+  assert.ok(result.hooks.some((hook) => hook.name === 'fc_gaa_google_autocomplete_js_settings'));
+  assert.ok(result.hooks.some((hook) => hook.name === 'fc_gaa_enable_compat_theme_{theme_slug}'));
   assert.equal(result.skipped.some((hook) => hook.name.startsWith('woocommerce_')), true);
 
   const index = renderHooksIndex(
@@ -69,10 +79,14 @@ test('keeps fc_ and fc_pro_ hooks and skips WooCommerce and other third-party na
   const sidebar = JSON.stringify(renderSidebarItems(result.hooks));
   assert.match(index, /fc_checkout_steps/);
   assert.match(index, /fc_pro_enable_compat_plugin_\{plugin_slug\}/);
+  assert.match(index, /fc_adb_enable_compat_plugin_\{plugin_slug\}/);
+  assert.match(index, /fc_gaa_google_autocomplete_js_settings/);
   assert.doesNotMatch(index, /woocommerce_checkout_fields/);
   assert.doesNotMatch(index, /woocommerce_\{action\}/);
   assert.doesNotMatch(index, /wc_od_delivery_date/);
   assert.match(sidebar, /fc_pro_checkout_steps/);
+  assert.match(sidebar, /fc_adb_is_entry_delete_enabled/);
+  assert.match(sidebar, /fc_gaa_enable_compat_theme_theme_slug/);
   assert.doesNotMatch(sidebar, /woocommerce_checkout_fields/);
   assert.doesNotMatch(sidebar, /wc_od_delivery_date/);
 });
@@ -136,7 +150,7 @@ test('logs skipped hook names and dropped aliases', () => {
   const result = prepareHooks(sourceHooks(plugin), plugin);
   const lines = formatHookFilterLog(plugin, result);
 
-  assert.equal(lines[0], 'Skipped 3 hooks for pro (hookPrefixes: fc_pro_, fc_):');
+  assert.equal(lines[0], 'Skipped 3 hooks for pro (hookPrefixes: fc_pro_, fc_, fc_adb_, fc_gaa_):');
   assert.ok(lines.includes('  - woocommerce_checkout_fields'));
   assert.ok(lines.includes("  - woocommerce_{action} (from 'woocommerce_' . $action)"));
   assert.ok(lines.includes('  - wc_od_delivery_date'));
@@ -180,6 +194,9 @@ test('eu-vat fixture keeps all 16 fc_vat_ hooks and drops nothing', () => {
   const result = prepareHooks([...actions.hooks, ...filters.hooks], plugin);
 
   assert.deepEqual(plugin.hookPrefixes, ['fc_vat_']);
+  const pro = catalog.plugins.find((entry) => entry.id === 'pro');
+  assert.deepEqual(pro.hookPrefixes, ['fc_pro_', 'fc_', 'fc_adb_', 'fc_gaa_']);
+  assert.deepEqual(fixture.pro.hookPrefixes, pro.hookPrefixes);
   assert.equal(result.skipped.length, 0);
   assert.equal(result.droppedAliases.length, 0);
   assert.equal(result.hooks.length, 16);

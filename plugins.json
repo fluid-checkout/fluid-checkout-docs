@@ -22,7 +22,7 @@
       "id": "pro",
       "label": "Fluid Checkout PRO",
       "description": "Hooks for Fluid Checkout PRO.",
-      "hookPrefixes": ["fc_pro_", "fc_"],
+      "hookPrefixes": ["fc_pro_", "fc_", "fc_adb_", "fc_gaa_"],
       "status": "coming-soon"
     }
   ]

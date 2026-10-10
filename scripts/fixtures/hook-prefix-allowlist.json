@@ -2,7 +2,7 @@
   "pro": {
     "id": "pro",
     "pluginPrefix": "fc_pro",
-    "hookPrefixes": ["fc_pro_", "fc_"],
+    "hookPrefixes": ["fc_pro_", "fc_", "fc_adb_", "fc_gaa_"],
     "hooks": [
       {
         "name": "fc_checkout_steps",
@@ -45,6 +45,34 @@
         "doc": {"description": "Runs admin notices."},
         "expect": "keep",
         "normalized": "fc_pro_admin_notices"
+      },
+      {
+        "name": "fc_adb_is_entry_delete_enabled",
+        "type": "filter",
+        "doc": {"description": "Controls whether deleting address book entries is enabled."},
+        "expect": "keep",
+        "normalized": "fc_adb_is_entry_delete_enabled"
+      },
+      {
+        "name": "'fc_adb_enable_compat_plugin_' . $plugin_slug",
+        "type": "filter",
+        "doc": {"description": "Controls Address Book compatibility for a plugin."},
+        "expect": "keep",
+        "normalized": "fc_adb_enable_compat_plugin_{plugin_slug}"
+      },
+      {
+        "name": "fc_gaa_google_autocomplete_js_settings",
+        "type": "filter",
+        "doc": {"description": "Modifies Google Autocomplete frontend script settings."},
+        "expect": "keep",
+        "normalized": "fc_gaa_google_autocomplete_js_settings"
+      },
+      {
+        "name": "'fc_gaa_enable_compat_theme_' . $theme_slug",
+        "type": "filter",
+        "doc": {"description": "Controls Google Address Autocomplete compatibility for a theme."},
+        "expect": "keep",
+        "normalized": "fc_gaa_enable_compat_theme_{theme_slug}"
       },
       {
         "name": "woocommerce_checkout_fields",

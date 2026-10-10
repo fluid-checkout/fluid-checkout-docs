@@ -68,7 +68,7 @@ Plugin repositories will run [wp-hooks/generator](https://github.com/wp-hooks/ge
 
 Dynamic PHP hook names are normalized for the page title and URL. `self::$plugin_prefix` uses `pluginPrefix` from `plugins.json` (`fc_vat` for EU-VAT). Private plugins leave `repository` as `null`, so the source line is a file path with no GitHub link. Set `repository.url` and `repository.branch` only for public repositories.
 
-Each plugin's `hookPrefixes` allowlist decides which normalized names are published. EU-VAT publishes names that start with `fc_vat_`. Lite (`fc_`) and PRO (`fc_pro_` and `fc_`) are already listed in `plugins.json` and stay coming soon until their docs are added. Hooks copied from WooCommerce and other third-party code (`woocommerce_*`, `wc_od_*`, Enfold, Germanized, SkyVerge, and similar) are left out of the hook page, the index, and the sidebar. Aliases that do not match are dropped. `npm run generate` logs every skipped name. The full rule is in [CONTRIBUTING.md](CONTRIBUTING.md).
+Each plugin's `hookPrefixes` allowlist decides which normalized names are published. EU-VAT publishes names that start with `fc_vat_`. Lite (`fc_`) and PRO (`fc_pro_`, `fc_`, `fc_adb_`, and `fc_gaa_`) are already listed in `plugins.json` and stay coming soon until their docs are added. `fc_adb_` is Address Book and `fc_gaa_` is Google Address Autocomplete; both add-ons are merging into PRO. Hooks copied from WooCommerce and other third-party code (`woocommerce_*`, `wc_od_*`, Enfold, Germanized, SkyVerge, and similar) are left out of the hook page, the index, and the sidebar. Aliases that do not match are dropped. `npm run generate` logs every skipped name. The full rule is in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Search
 

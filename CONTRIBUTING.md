@@ -64,13 +64,17 @@ wp-hooks/generator also records hooks the plugin calls that belong to WooCommerc
 | --- | --- | --- |
 | EU-VAT Assistant | `eu-vat` | `fc_vat_` |
 | Fluid Checkout Lite | `lite` | `fc_` |
-| Fluid Checkout PRO | `pro` | `fc_pro_`, `fc_` |
+| Fluid Checkout PRO | `pro` | `fc_pro_`, `fc_`, `fc_adb_`, `fc_gaa_` |
+
+Address Book and Google Address Autocomplete are merging into PRO. Address Book's published hooks use `fc_pro_` and `fc_adb_` (compat and feature-control filters such as `fc_adb_enable_compat_plugin_{plugin_slug}`). Google Address Autocomplete's published hooks use `fc_gaa_` only. The Address Book list also includes `fc_override_template_with_theme_file`, which is already covered by `fc_`.
 
 Examples after normalization:
 
 - `fc_checkout_steps` is kept for Lite and PRO
 - `fc_pro_checkout_steps` is kept for PRO (Lite's `fc_` prefix also matches it)
 - `'fc_pro_enable_compat_plugin_' . $plugin_slug` becomes `fc_pro_enable_compat_plugin_{plugin_slug}` and is kept for PRO
+- `'fc_adb_enable_compat_plugin_' . $plugin_slug` becomes `fc_adb_enable_compat_plugin_{plugin_slug}` and is kept for PRO
+- `fc_gaa_google_autocomplete_js_settings` is kept for PRO
 - `self::$plugin_prefix . '_admin_notices'` becomes `<pluginPrefix>_admin_notices` (for EU-VAT, `fc_vat_admin_notices`)
 - `woocommerce_checkout_fields` and `'woocommerce_' . $action` are skipped
 
