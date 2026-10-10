@@ -116,7 +116,7 @@ Plugin repositories will run [wp-hooks/generator](https://github.com/wp-hooks/ge
 
 Dynamic PHP hook names are normalized for the page title and URL. `self::$plugin_prefix` uses `pluginPrefix` from `plugins.json` (`fc_vat` for EU-VAT, `fc` for Lite, and `fc_pro` for PRO).
 
-Each hook page shows where the hook runs as plain text, for example `Source: \`inc/checkout-steps.php\`, line 123`. The page does not link to the file. `data/<plugin>/actions.json` and `data/<plugin>/filters.json` may include a top-level `commit` with the full SHA the export was generated from. That field stays in the JSON for provenance and is not shown on the page. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Each hook page shows where the hook runs as plain text, for example `Source: \`inc/checkout-steps.php\`, line 123`. The page does not link to the file. Hook JSON does not include a commit SHA or a repository URL. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Each plugin's `hookPrefixes` allowlist decides which normalized names are published. EU-VAT publishes names that start with `fc_vat_`. Lite publishes names that start with `fc_`. PRO publishes names that start with `fc_pro_`, `fc_`, `fc_adb_`, or `fc_gaa_`. `fc_adb_` is Address Book and `fc_gaa_` is Google Address Autocomplete; both add-ons are merging into PRO. Hooks copied from WooCommerce and other third-party code (`woocommerce_*`, `wc_od_*`, Enfold, Germanized, SkyVerge, and similar) are left out of the hook page, the index, and the sidebar. Aliases that do not match are dropped. `npm run generate` logs every skipped name. The full rule is in [CONTRIBUTING.md](CONTRIBUTING.md).
 

@@ -87,7 +87,7 @@ A new plugin needs:
 - `data/<id>/actions.json` and `data/<id>/filters.json`
 - `data/<id>/readme.txt`, with an `== Changelog ==` section. Add `data/<id>/changelog.md` too when the plugin repository has that file.
 
-Hook pages show the source file and line as plain text, such as `Source: \`inc/checkout-steps.php\`, line 123`. They do not link to GitHub. `data/<plugin>/actions.json` and `data/<plugin>/filters.json` may each have a top-level `commit` set to the full SHA the export was generated from. That field is kept for provenance and is not rendered.
+Hook pages show the source file and line as plain text, such as `Source: \`inc/checkout-steps.php\`, line 123`. They do not link to GitHub. `data/<plugin>/actions.json` and `data/<plugin>/filters.json` do not include a `commit` field or a repository URL. The generator does not read either one.
 
 ## One page per hook name
 
@@ -156,7 +156,7 @@ Do not add the plugin-side workflow to this repo. Each plugin repository will la
 
 `<plugin-id>` is the id in `plugins.json`, not the GitHub repo name. EU-VAT Assistant uses `eu-vat`. Copy `readme.txt` from the plugin repository on every run. Copy `changelog.md` when the plugin repository has one (EU-VAT Assistant does not). Newest release notes live in `readme.txt` and are moved into `changelog.md` in the plugin repository later. Copy both files as they are. This docs repository merges them and drops a version that appears in both, keeping the `readme.txt` text.
 
-5. Set a top-level `"commit"` on both JSON documents to the full source commit SHA the generator ran against. The docs site keeps that field for provenance and does not show it on hook pages. This docs repo does not edit the plugin repositories. The plugin workflow has to write the SHA into the JSON before it opens the pull request.
+5. Do not add a top-level `commit` field or a repository URL to `actions.json` or `filters.json`. The docs site does not store GitHub revision info in the hook JSON, and the generator does not read it.
 
 ### Branch name and pull request
 

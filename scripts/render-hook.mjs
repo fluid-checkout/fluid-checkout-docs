@@ -65,8 +65,7 @@ export function buildSignature(hook, normalizedName) {
 }
 
 /**
- * Plain source location. The export's top-level commit stays in the JSON
- * for provenance and is not included here.
+ * Plain source location. File and line only.
  *
  * @param {object} hook
  * @returns {string}

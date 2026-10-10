@@ -481,8 +481,6 @@ function loadHooks(filePath, fallbackType) {
     throw new Error(`${path.relative(root, filePath)} is missing a hooks array.`);
   }
 
-  // document.commit records which source revision the export came from.
-  // Hook pages do not render it.
   return document.hooks.map((hook) => ({
     ...hook,
     type: hook.type || fallbackType,
