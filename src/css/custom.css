@@ -73,8 +73,9 @@
 
   --ifm-background-color: #1e1e1e;
   --ifm-background-surface-color: #2a2a2a;
-  --ifm-navbar-background-color: #2a2a2a;
-  --ifm-footer-background-color: #2a2a2a;
+  --ifm-navbar-background-color: #1e1e1e;
+  --ifm-navbar-shadow: none;
+  --ifm-footer-background-color: #1e1e1e;
   --ifm-card-background-color: #2a2a2a;
   --ifm-dropdown-background-color: #2a2a2a;
   --ifm-hover-overlay: rgba(255, 255, 255, 0.06);
@@ -108,7 +109,7 @@
   --prism-background-color: #2a2a2a;
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
 
-  --ifm-navbar-search-input-background-color: #1e1e1e;
+  --ifm-navbar-search-input-background-color: #2a2a2a;
   --ifm-navbar-search-input-color: #e3e3e3;
   --ifm-navbar-search-input-placeholder-color: #b0b0b0;
 
@@ -152,16 +153,26 @@
   --docsearch-dropdown-menu-item-hover-background: #2a2a2a;
 }
 
-/* .footer--dark redefines these on the footer itself. */
+/* .footer--dark redefines the footer background on the element itself. */
 :root[data-theme='dark'] .footer--dark {
-  --ifm-footer-background-color: #2a2a2a;
+  --ifm-footer-background-color: #1e1e1e;
   --ifm-footer-color: #e3e3e3;
   --ifm-footer-link-color: #e3e3e3;
   --ifm-footer-title-color: #f2f2f2;
+  border-top: 1px solid #3a3a3a;
+}
+
+:root[data-theme='dark'] .navbar {
+  border-bottom: 1px solid #3a3a3a;
+}
+
+:root[data-theme='dark'] .navbar__search-input {
+  border: 1px solid #3a3a3a;
 }
 
 :root[data-theme='dark'] .theme-doc-sidebar-container {
-  background-color: var(--ifm-background-surface-color);
+  background-color: var(--ifm-background-color);
+  border-right: 1px solid #3a3a3a;
 }
 
 /*
