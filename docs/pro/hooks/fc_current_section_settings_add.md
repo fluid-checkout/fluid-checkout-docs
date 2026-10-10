@@ -8,8 +8,6 @@ description: "Filters the settings added to a Fluid Checkout admin section."
 
 **Type:** Filter
 
-**Aliases:** `fc_license_keys_settings_add`
-
 Filters the settings added to a Fluid Checkout admin section.
 
 `$current_section` is `license_keys` in this method, so the hook name is `fc_license_keys_settings_add`. Possible hook names include:

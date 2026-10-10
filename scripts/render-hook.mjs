@@ -166,15 +166,9 @@ export function renderHookPage(hook, options) {
     '',
   ];
 
-  if (Array.isArray(hook.aliases) && hook.aliases.length > 0) {
-    const aliases = hook.aliases
-      .map((alias) => String(alias).trim())
-      .filter((alias) => alias && alias !== normalizedName)
-      .map((alias) => `\`${alias}\``);
-    if (aliases.length > 0) {
-      lines.push(`**Aliases:** ${aliases.join(', ')}`, '');
-    }
-  }
+  // The generator's aliases field lists concrete names of a dynamic hook.
+  // Those names are already in the docblock's "Possible hook names" list, so
+  // the page does not repeat them as an Aliases section.
 
   if (deprecated.length > 0) {
     const detail = deprecated

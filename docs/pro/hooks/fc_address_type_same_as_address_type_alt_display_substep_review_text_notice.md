@@ -8,8 +8,6 @@ description: "Filters whether to show the same-address notice on an order pay su
 
 **Type:** Filter
 
-**Aliases:** `fc_billing_same_as_shipping_display_substep_review_text_notice`, `fc_shipping_same_as_billing_display_substep_review_text_notice`
-
 Filters whether to show the same-address notice on an order pay substep.
 
 The dynamic portions of the hook name, `$address_type` and `$address_type_alt`, are `billing` and `shipping` (each is the other). Possible hook names include:

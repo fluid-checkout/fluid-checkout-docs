@@ -8,8 +8,6 @@ description: "Fires after the contents of an order details subsection."
 
 **Type:** Action
 
-**Aliases:** `fc_pro_after_order_details_subsection_downloads`, `fc_pro_after_order_details_subsection_order_notes`
-
 Fires after the contents of an order details subsection.
 
 The dynamic portion of the hook name, `$subsection_id`, is the order details subsection ID. Possible hook names include:

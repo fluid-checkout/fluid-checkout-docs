@@ -8,8 +8,6 @@ description: "Filters the WooCommerce settings fields for a Fluid Checkout setti
 
 **Type:** Filter
 
-**Aliases:** `fc_vat_vat_number_settings`
-
 Filters the WooCommerce settings fields for a Fluid Checkout settings section.
 
 The dynamic portion of the hook name, `$current_section`, is the settings section slug. Since 1.0.0 the only section this filter runs for is `vat_number`, so the effective hook name is `fc_vat_vat_number_settings`. In 0.1.0 the section slug was `business_number` (`fc_vat_business_number_settings`). The value is an ordered list of WooCommerce settings field definitions, such as `title`, `sectionend`, `text`, `checkbox`, and `select` rows.

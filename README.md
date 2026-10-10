@@ -46,7 +46,7 @@ Routes:
 - `/<plugin>/hooks/<hook-slug>` one page per hook
 - `/<plugin>/guides/...` guides, when that plugin's sidebar has a Guides category
 
-`/<plugin>/guides/getting-started` redirects to `/<plugin>/hooks` for each available plugin that has an intro file.
+`/eu-vat/guides/getting-started/` redirects to `/eu-vat/hooks/`. Lite and PRO never had that page, so they have no matching redirect.
 
 Each plugin is a separate Docusaurus docs plugin instance (`routeBasePath` in `plugins.json`), so a later release can version one plugin without versioning the others.
 
@@ -72,7 +72,7 @@ Run `npm run generate`. The generator copies the intro into `docs/<plugin>/hooks
 
 EU-VAT, Lite, and PRO each have an intro at `hooks-intro/<plugin>/index.md`. The generated page heading and sidebar label are `All hooks`. The browser title is `<plugin label> hooks reference`, for example `Fluid Checkout Lite hooks reference`. Each plugin has its own meta description.
 
-For every available plugin that has an intro file, `docusaurus.config.ts` adds a client redirect from `/<routeBasePath>/guides/getting-started/` to `/<routeBasePath>/hooks/`. Internal links use that trailing slash.
+`docusaurus.config.ts` adds a client redirect from `/eu-vat/guides/getting-started/` to `/eu-vat/hooks/`. Lite and PRO never published `/guides/getting-started`, so they have no redirect. Internal links use a trailing slash.
 
 ## Add an example
 

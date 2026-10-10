@@ -8,8 +8,6 @@ description: "Filters the progress bar label of a checkout step."
 
 **Type:** Filter
 
-**Aliases:** `fc_progress_bar_step_title_billing`, `fc_progress_bar_step_title_contact`, `fc_progress_bar_step_title_payment`, `fc_progress_bar_step_title_shipping`
-
 Filters the progress bar label of a checkout step.
 
 The dynamic portion of the hook name, `$step_id`, refers to the checkout step ID. Additional hook names are created for steps registered by other plugins. Possible hook names include:
