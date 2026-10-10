@@ -26,7 +26,7 @@ This hook does not pass any parameters.
 
 ## Source
 
-`templates/fc-pro/cart/cart/header-cart.php`
+`templates/compat/themes/dt-the7/fc-pro/cart/cart/header-cart.php`
 
 ## Examples
 

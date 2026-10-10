@@ -1,6 +1,7 @@
 /**
  * Hand-written hook examples live in examples/<plugin>/<hook-slug>.md.
- * Generation reads them and never writes or deletes them.
+ * Generation reads them. It renames a file, or rewrites a related_hooks entry,
+ * only when that slug ends in -N and the suffix is no longer a published page.
  */
 
 import fs from 'node:fs';
@@ -76,6 +77,7 @@ export function loadHookExamples(examplesDir, prepared, pluginId) {
 export function resolveExampleSections(plugin, prepared, loaded) {
   const byName = new Map(prepared.map((entry) => [entry.name, entry]));
   const bySlug = new Map(prepared.map((entry) => [entry.slug, entry]));
+  const publishedSlugs = new Set(prepared.map((entry) => entry.slug));
   /** @type {Map<string, {name: string, slug: string}[]>} */
   const seeAlso = new Map(prepared.map((entry) => [entry.slug, []]));
 
@@ -93,7 +95,8 @@ export function resolveExampleSections(plugin, prepared, loaded) {
       }
       seen.add(key);
 
-      const target = byName.get(key) || bySlug.get(key);
+      const mapped = mapUnpublishedSuffix(key, publishedSlugs);
+      const target = byName.get(key) || bySlug.get(key) || byName.get(mapped) || bySlug.get(mapped);
       if (!target) {
         throw new Error(
           `examples/${plugin.id}/${example.fileName} related_hooks entry "${key}" does not match a published hook for ${plugin.id}.`,
@@ -122,6 +125,133 @@ export function resolveExampleSections(plugin, prepared, loaded) {
     });
   }
   return sections;
+}
+
+/**
+ * A `-N` slug that is not itself published points at the unsuffixed hook
+ * when that hook is published. A suffix that is still a page (two different
+ * names that share a slug) is left alone.
+ *
+ * @param {string} value
+ * @param {Set<string>} publishedSlugs
+ * @returns {string}
+ */
+export function mapUnpublishedSuffix(value, publishedSlugs) {
+  const match = String(value).match(/^(.*)-(\d+)$/);
+  if (!match || publishedSlugs.has(value) || !publishedSlugs.has(match[1])) {
+    return value;
+  }
+  return match[1];
+}
+
+/**
+ * Move example files named `<slug>-N.md` onto `<slug>.md` when `<slug>-N` is
+ * not a published page and `<slug>` is. Rewrite related_hooks entries the same way.
+ *
+ * @param {string} examplesDir
+ * @param {{slug: string}[]} prepared
+ * @returns {{from: string, to: string}[]}
+ */
+export function relocateUnpublishedSuffixExamples(examplesDir, prepared) {
+  /** @type {{from: string, to: string}[]} */
+  const moved = [];
+  if (!examplesDir || !fs.existsSync(examplesDir)) {
+    return moved;
+  }
+
+  const published = new Set(prepared.map((entry) => entry.slug));
+  const names = fs.readdirSync(examplesDir).filter((name) => name.endsWith('.md'));
+
+  for (const fileName of names) {
+    const match = fileName.match(/^(.*)-(\d+)\.md$/);
+    if (!match) {
+      continue;
+    }
+    const suffixedSlug = fileName.slice(0, -'.md'.length);
+    const baseSlug = match[1];
+    if (published.has(suffixedSlug) || !published.has(baseSlug)) {
+      continue;
+    }
+
+    const destinationName = `${baseSlug}.md`;
+    const destinationPath = path.join(examplesDir, destinationName);
+    if (names.includes(destinationName) || fs.existsSync(destinationPath)) {
+      throw new Error(
+        `examples file ${fileName} uses an unpublished -N slug, but ${destinationName} already exists. Keep the example on ${destinationName}.`,
+      );
+    }
+
+    const fromPath = path.join(examplesDir, fileName);
+    const rewritten = rewriteUnpublishedSuffixReferences(fs.readFileSync(fromPath, 'utf8'), published);
+    fs.writeFileSync(destinationPath, rewritten.endsWith('\n') ? rewritten : `${rewritten}\n`);
+    fs.unlinkSync(fromPath);
+    names.push(destinationName);
+    moved.push({from: fileName, to: destinationName});
+  }
+
+  for (const fileName of fs.readdirSync(examplesDir).filter((name) => name.endsWith('.md'))) {
+    const filePath = path.join(examplesDir, fileName);
+    const original = fs.readFileSync(filePath, 'utf8');
+    const rewritten = rewriteUnpublishedSuffixReferences(original, published);
+    if (rewritten === original) {
+      continue;
+    }
+    fs.writeFileSync(filePath, rewritten);
+    moved.push({from: fileName, to: fileName});
+  }
+
+  return moved;
+}
+
+/**
+ * @param {string} markdown
+ * @param {Set<string>} publishedSlugs
+ * @returns {string}
+ */
+export function rewriteUnpublishedSuffixReferences(markdown, publishedSlugs) {
+  const source = String(markdown);
+  const match = source.match(/^---[ \t]*\r?\n([\s\S]*?)\r?\n---[ \t]*(?:\r?\n|$)/);
+  if (!match) {
+    return source;
+  }
+
+  const front = rewriteRelatedHooksFrontMatter(match[1], publishedSlugs);
+  if (front === match[1]) {
+    return source;
+  }
+
+  const start = match.index + match[0].indexOf(match[1]);
+  return source.slice(0, start) + front + source.slice(start + match[1].length);
+}
+
+/**
+ * @param {string} front
+ * @param {Set<string>} publishedSlugs
+ * @returns {string}
+ */
+function rewriteRelatedHooksFrontMatter(front, publishedSlugs) {
+  const entries = parseRelatedHooks(front);
+  let next = front;
+  for (const entry of entries) {
+    const mapped = mapUnpublishedSuffix(entry, publishedSlugs);
+    if (mapped === entry) {
+      continue;
+    }
+    const pattern = new RegExp(`(^|[\\s\\[,])${escapeRegExp(entry)}(?=$|[\\s,\\]])`, 'm');
+    if (!pattern.test(next)) {
+      throw new Error(`Could not rewrite related_hooks entry "${entry}".`);
+    }
+    next = next.replace(pattern, `$1${mapped}`);
+  }
+  return next;
+}
+
+/**
+ * @param {string} value
+ * @returns {string}
+ */
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 /**

@@ -180,11 +180,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_cart_footer-2",
-        "label": "fc_pro_cart_footer"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_cart_footer_widgets",
         "label": "fc_pro_cart_footer_widgets"
       },
@@ -201,16 +196,6 @@
       {
         "type": "doc",
         "id": "hooks/fc_pro_cart_header",
-        "label": "fc_pro_cart_header"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_cart_header-2",
-        "label": "fc_pro_cart_header"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_cart_header-3",
         "label": "fc_pro_cart_header"
       },
       {
@@ -500,11 +485,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_woo_delivery_slots_after_fields-2",
-        "label": "fc_pro_woo_delivery_slots_after_fields"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_woocommerce_attendee_details_after_fields",
         "label": "fc_pro_woocommerce_attendee_details_after_fields"
       },
@@ -586,17 +566,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_checkout_sidebar_attributes-2",
-        "label": "fc_checkout_sidebar_attributes"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_checkout_sidebar_attributes_inner",
-        "label": "fc_checkout_sidebar_attributes_inner"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_checkout_sidebar_attributes_inner-2",
         "label": "fc_checkout_sidebar_attributes_inner"
       },
       {
@@ -661,16 +631,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_enable_compat_plugin_style_plugin_slug-2",
-        "label": "fc_enable_compat_plugin_style_{plugin_slug}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_enable_compat_plugin_style_plugin_slug-3",
-        "label": "fc_enable_compat_plugin_style_{plugin_slug}"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_enable_compat_theme_style_theme_slug",
         "label": "fc_enable_compat_theme_style_{theme_slug}"
       },
@@ -701,22 +661,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_expansible_section_toggle_label_section_id-2",
-        "label": "fc_expansible_section_toggle_label_{section_id}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_expansible_section_toggle_label_section_id-3",
-        "label": "fc_expansible_section_toggle_label_{section_id}"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_fix_zoom_in_form_fields_mobile_devices",
-        "label": "fc_fix_zoom_in_form_fields_mobile_devices"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_fix_zoom_in_form_fields_mobile_devices-2",
         "label": "fc_fix_zoom_in_form_fields_mobile_devices"
       },
       {
@@ -791,11 +736,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_is_shipping_method_local_pickup_selected-2",
-        "label": "fc_is_shipping_method_local_pickup_selected"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_is_shipping_method_local_pickup_selected_for_package",
         "label": "fc_is_shipping_method_local_pickup_selected_for_package"
       },
@@ -811,36 +751,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_is_substep_complete_substep_id-2",
-        "label": "fc_is_substep_complete_{substep_id}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_is_substep_complete_substep_id-3",
-        "label": "fc_is_substep_complete_{substep_id}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_is_substep_complete_substep_id-4",
-        "label": "fc_is_substep_complete_{substep_id}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_is_substep_complete_substep_id-5",
-        "label": "fc_is_substep_complete_{substep_id}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_is_substep_complete_substep_id-6",
-        "label": "fc_is_substep_complete_{substep_id}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_is_substep_complete_substep_id-7",
-        "label": "fc_is_substep_complete_{substep_id}"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_is_substep_complete_tyche_order_delivery",
         "label": "fc_is_substep_complete_tyche_order_delivery"
       },
@@ -851,132 +761,12 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_no_gift_options_order_review_notice-2",
-        "label": "fc_no_gift_options_order_review_notice"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_order_summary_display_desktop_edit_cart_link",
         "label": "fc_order_summary_display_desktop_edit_cart_link"
       },
       {
         "type": "doc",
         "id": "hooks/fc_override_template_with_theme_file",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-10",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-11",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-12",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-13",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-14",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-15",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-16",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-17",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-18",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-19",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-2",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-20",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-21",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-22",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-23",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-24",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-3",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-4",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-5",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-6",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-7",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-8",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-9",
         "label": "fc_override_template_with_theme_file"
       },
       {
@@ -1026,27 +816,12 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_cart_action_label_continue_shopping-2",
-        "label": "fc_pro_cart_action_label_continue_shopping"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_cart_ajax_settings",
         "label": "fc_pro_cart_ajax_settings"
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_cart_ajax_settings-2",
-        "label": "fc_pro_cart_ajax_settings"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_cart_body_custom_attributes",
-        "label": "fc_pro_cart_body_custom_attributes"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_cart_body_custom_attributes-2",
         "label": "fc_pro_cart_body_custom_attributes"
       },
       {
@@ -1091,17 +866,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_cart_html_custom_attributes-2",
-        "label": "fc_pro_cart_html_custom_attributes"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_cart_item_quantity_input_readonly_enabled",
-        "label": "fc_pro_cart_item_quantity_input_readonly_enabled"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_cart_item_quantity_input_readonly_enabled-2",
         "label": "fc_pro_cart_item_quantity_input_readonly_enabled"
       },
       {
@@ -1216,11 +981,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_cart_shipping_destination_html-2",
-        "label": "fc_pro_cart_shipping_destination_html"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_cart_should_output_shipping_same_as_billing_field",
         "label": "fc_pro_cart_should_output_shipping_same_as_billing_field"
       },
@@ -1296,22 +1056,12 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_content_section_class_cart-2",
-        "label": "fc_pro_content_section_class_cart"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_cross_sell_item_class",
         "label": "fc_pro_cross_sell_item_class"
       },
       {
         "type": "doc",
         "id": "hooks/fc_pro_cross_sell_item_name",
-        "label": "fc_pro_cross_sell_item_name"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_cross_sell_item_name-2",
         "label": "fc_pro_cross_sell_item_name"
       },
       {
@@ -1337,11 +1087,6 @@
       {
         "type": "doc",
         "id": "hooks/fc_pro_enable_cart_page_template",
-        "label": "fc_pro_enable_cart_page_template"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_enable_cart_page_template-2",
         "label": "fc_pro_enable_cart_page_template"
       },
       {
@@ -1486,27 +1231,12 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_is_substep_delivery_slots_visible-2",
-        "label": "fc_pro_is_substep_delivery_slots_visible"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_is_substep_pickup_location_visible",
         "label": "fc_pro_is_substep_pickup_location_visible"
       },
       {
         "type": "doc",
         "id": "hooks/fc_pro_license_manager_for_woocommerce_order_details_section_hook_priority_order_subscriptions",
-        "label": "fc_pro_license_manager_for_woocommerce_order_details_section_hook_priority_order_subscriptions"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_license_manager_for_woocommerce_order_details_section_hook_priority_order_subscriptions-2",
-        "label": "fc_pro_license_manager_for_woocommerce_order_details_section_hook_priority_order_subscriptions"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_license_manager_for_woocommerce_order_details_section_hook_priority_order_subscriptions-3",
         "label": "fc_pro_license_manager_for_woocommerce_order_details_section_hook_priority_order_subscriptions"
       },
       {
@@ -1586,66 +1316,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_order_details_order_id-10",
-        "label": "fc_pro_order_details_order_id"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_order_id-11",
-        "label": "fc_pro_order_details_order_id"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_order_id-12",
-        "label": "fc_pro_order_details_order_id"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_order_id-13",
-        "label": "fc_pro_order_details_order_id"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_order_id-2",
-        "label": "fc_pro_order_details_order_id"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_order_id-3",
-        "label": "fc_pro_order_details_order_id"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_order_id-4",
-        "label": "fc_pro_order_details_order_id"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_order_id-5",
-        "label": "fc_pro_order_details_order_id"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_order_id-6",
-        "label": "fc_pro_order_details_order_id"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_order_id-7",
-        "label": "fc_pro_order_details_order_id"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_order_id-8",
-        "label": "fc_pro_order_details_order_id"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_order_id-9",
-        "label": "fc_pro_order_details_order_id"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_order_details_order_status_skip_list",
         "label": "fc_pro_order_details_order_status_skip_list"
       },
@@ -1671,17 +1341,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_order_details_overview_show_date-2",
-        "label": "fc_pro_order_details_overview_show_date"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_order_details_overview_show_email",
-        "label": "fc_pro_order_details_overview_show_email"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_overview_show_email-2",
         "label": "fc_pro_order_details_overview_show_email"
       },
       {
@@ -1701,11 +1361,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_order_details_payment_method_html-2",
-        "label": "fc_pro_order_details_payment_method_html"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_order_details_payment_method_order_statuses",
         "label": "fc_pro_order_details_payment_method_order_statuses"
       },
@@ -1717,16 +1372,6 @@
       {
         "type": "doc",
         "id": "hooks/fc_pro_order_details_section_hook_priority_gift_message",
-        "label": "fc_pro_order_details_section_hook_priority_gift_message"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_section_hook_priority_gift_message-2",
-        "label": "fc_pro_order_details_section_hook_priority_gift_message"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_section_hook_priority_gift_message-3",
         "label": "fc_pro_order_details_section_hook_priority_gift_message"
       },
       {
@@ -1786,17 +1431,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_order_details_table_display_order_summary_footer-2",
-        "label": "fc_pro_order_details_table_display_order_summary_footer"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_order_details_table_hide_payment_method_row",
-        "label": "fc_pro_order_details_table_hide_payment_method_row"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_table_hide_payment_method_row-2",
         "label": "fc_pro_order_details_table_hide_payment_method_row"
       },
       {
@@ -1906,16 +1541,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_order_received_notice_classes-2",
-        "label": "fc_pro_order_received_notice_classes"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_received_notice_classes-3",
-        "label": "fc_pro_order_received_notice_classes"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_order_received_remove_cancel_order_action",
         "label": "fc_pro_order_received_remove_cancel_order_action"
       },
@@ -1946,101 +1571,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-10",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-11",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-12",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-13",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-14",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-15",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-16",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-17",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-18",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-19",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-2",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-20",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-3",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-4",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-5",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-6",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-7",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-8",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file-9",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_pickup_point_address_data",
         "label": "fc_pro_pickup_point_address_data"
       },
@@ -2066,11 +1596,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_points_rewards_display_section_title-2",
-        "label": "fc_pro_points_rewards_display_section_title"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_points_rewards_redemption_message",
         "label": "fc_pro_points_rewards_redemption_message"
       },
@@ -2082,11 +1607,6 @@
       {
         "type": "doc",
         "id": "hooks/fc_pro_points_rewards_section_title",
-        "label": "fc_pro_points_rewards_section_title"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_points_rewards_section_title-2",
         "label": "fc_pro_points_rewards_section_title"
       },
       {
@@ -2136,27 +1656,12 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_view_order_section_hook_priority_order_downloads-2",
-        "label": "fc_pro_view_order_section_hook_priority_order_downloads"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_view_order_section_hook_priority_order_notes",
         "label": "fc_pro_view_order_section_hook_priority_order_notes"
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_view_order_section_hook_priority_order_notes-2",
-        "label": "fc_pro_view_order_section_hook_priority_order_notes"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_view_order_section_hook_priority_order_overview",
-        "label": "fc_pro_view_order_section_hook_priority_order_overview"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_view_order_section_hook_priority_order_overview-2",
         "label": "fc_pro_view_order_section_hook_priority_order_overview"
       },
       {
@@ -2201,16 +1706,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_woocommerce_subscriptions_order_details_section_hook_priority_order_subscriptions-2",
-        "label": "fc_pro_woocommerce_subscriptions_order_details_section_hook_priority_order_subscriptions"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_woocommerce_subscriptions_order_details_section_hook_priority_order_subscriptions-3",
-        "label": "fc_pro_woocommerce_subscriptions_order_details_section_hook_priority_order_subscriptions"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_woodelivery_pro_pickup_location_address",
         "label": "fc_pro_woodelivery_pro_pickup_location_address"
       },
@@ -2231,22 +1726,12 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_show_order_totals_row_highlighted-2",
-        "label": "fc_show_order_totals_row_highlighted"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_show_shipping_section_highlighted",
         "label": "fc_show_shipping_section_highlighted"
       },
       {
         "type": "doc",
         "id": "hooks/fc_substep_change_button_label",
-        "label": "fc_substep_change_button_label"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_substep_change_button_label-2",
         "label": "fc_substep_change_button_label"
       },
       {
@@ -2272,11 +1757,6 @@
       {
         "type": "doc",
         "id": "hooks/fc_woocommerce_gateway_stripe_show_buttons",
-        "label": "fc_woocommerce_gateway_stripe_show_buttons"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_woocommerce_gateway_stripe_show_buttons-2",
         "label": "fc_woocommerce_gateway_stripe_show_buttons"
       },
       {

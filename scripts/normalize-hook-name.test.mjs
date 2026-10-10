@@ -93,6 +93,16 @@ test('links source files only when the plugin repository is public', () => {
       url: 'https://github.com/fluid-checkout/fluid-checkout/blob/trunk/inc/checkout-eu-vat.php#L120',
     },
   );
+  assert.deepEqual(
+    sourceLocation(
+      {...hook, sourceCommit: 'bd94362e871bc8abd7ada3ee6cb483762a9eca50'},
+      {repository: {url: 'https://github.com/fluid-checkout/fluid-checkout', branch: 'release/next-FEATURE'}},
+    ),
+    {
+      label: 'inc/checkout-eu-vat.php:120',
+      url: 'https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-eu-vat.php#L120',
+    },
+  );
 });
 
 test('omits an alias that repeats the normalized hook name', () => {

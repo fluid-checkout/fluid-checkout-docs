@@ -28,7 +28,7 @@ apply_filters( 'fc_shipping_method_option_start_tag_markup', $html );
 
 ## Source
 
-[`templates/compat/plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/compat/plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php)
+[`templates/compat/plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/compat/plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php)
 
 ## Examples
 

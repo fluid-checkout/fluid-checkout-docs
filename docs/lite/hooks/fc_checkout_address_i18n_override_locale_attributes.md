@@ -30,7 +30,7 @@ apply_filters( 'fc_checkout_address_i18n_override_locale_attributes', $override_
 
 ## Source
 
-[`inc/checkout-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-fields.php)
+[`inc/checkout-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-fields.php)
 
 ## Examples
 

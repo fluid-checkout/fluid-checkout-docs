@@ -28,7 +28,7 @@ apply_filters( 'fc_checkout_body_custom_attributes', $attributes );
 
 ## Source
 
-[`templates/compat/themes/dt-the7/checkout-page-template/checkout/page-checkout-header.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/compat/themes/dt-the7/checkout-page-template/checkout/page-checkout-header.php)
+[`templates/compat/themes/dt-the7/checkout-page-template/checkout/page-checkout-header.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/compat/themes/dt-the7/checkout-page-template/checkout/page-checkout-header.php)
 
 ## Examples
 

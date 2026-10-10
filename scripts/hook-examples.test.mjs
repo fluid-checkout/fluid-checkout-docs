@@ -10,7 +10,12 @@ import {
   resolveHookExclusions,
   writePluginDocs,
 } from './generate-hooks.mjs';
-import {loadHookExamples, parseExampleMarkdown, resolveExampleSections} from './hook-examples.mjs';
+import {
+  loadHookExamples,
+  parseExampleMarkdown,
+  relocateUnpublishedSuffixExamples,
+  resolveExampleSections,
+} from './hook-examples.mjs';
 import {renderHookPage} from './render-hook.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -224,6 +229,53 @@ test('example files use the published slug, including a collision suffix', () =>
   const sections = resolveExampleSections(plugin, result.hooks, loaded);
   assert.equal(sections.get('fc_vat_foo').body, 'Dynamic snippet.');
   assert.equal(sections.get('fc_vat_foo-2').body, 'Plain snippet.');
+});
+
+test('moves an unpublished -N example file and related_hooks entry onto the unsuffixed hook', () => {
+  const plugin = {id: 'lite', pluginPrefix: 'fc', hookPrefixes: ['fc_']};
+  const result = prepareHooks([
+    {name: 'fc_checkout_footer', file: 'inc/a.php', line: 1, type: 'action', doc: {description: 'First.'}},
+    {name: 'fc_checkout_footer', file: 'inc/b.php', line: 2, type: 'action', doc: {description: 'Later.'}},
+    {name: 'fc_checkout_header', file: 'inc/a.php', line: 3, type: 'action', doc: {description: 'Header.'}},
+  ], plugin);
+  assert.deepEqual(result.hooks.map((hook) => hook.slug), ['fc_checkout_footer', 'fc_checkout_header']);
+
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fc-example-move-'));
+  const examplesDir = path.join(dir, 'examples', 'lite');
+  fs.mkdirSync(examplesDir, {recursive: true});
+  fs.writeFileSync(path.join(examplesDir, 'fc_checkout_footer-2.md'), [
+    '---',
+    'related_hooks:',
+    '  - fc_checkout_header-2',
+    '---',
+    'Footer snippet.',
+    '',
+  ].join('\n'));
+  fs.writeFileSync(path.join(examplesDir, 'fc_checkout_header.md'), [
+    '---',
+    'related_hooks: [fc_checkout_footer-2]',
+    '---',
+    'Header snippet.',
+    '',
+  ].join('\n'));
+
+  const moved = relocateUnpublishedSuffixExamples(examplesDir, result.hooks);
+  assert.deepEqual(moved, [
+    {from: 'fc_checkout_footer-2.md', to: 'fc_checkout_footer.md'},
+    {from: 'fc_checkout_header.md', to: 'fc_checkout_header.md'},
+  ]);
+  assert.equal(fs.existsSync(path.join(examplesDir, 'fc_checkout_footer-2.md')), false);
+  assert.match(fs.readFileSync(path.join(examplesDir, 'fc_checkout_footer.md'), 'utf8'), /fc_checkout_header\n/);
+  assert.doesNotMatch(fs.readFileSync(path.join(examplesDir, 'fc_checkout_footer.md'), 'utf8'), /fc_checkout_header-2/);
+  assert.match(fs.readFileSync(path.join(examplesDir, 'fc_checkout_header.md'), 'utf8'), /related_hooks: \[fc_checkout_footer\]/);
+
+  const {loaded, unused} = loadHookExamples(examplesDir, result.hooks, 'lite');
+  assert.deepEqual(unused, []);
+  const sections = resolveExampleSections(plugin, result.hooks, loaded);
+  assert.equal(sections.get('fc_checkout_footer').body, 'Footer snippet.');
+  assert.deepEqual(sections.get('fc_checkout_header').seeAlso, [
+    {name: 'fc_checkout_footer', slug: 'fc_checkout_footer'},
+  ]);
 });
 
 test('regenerating hook pages leaves example files unchanged', () => {

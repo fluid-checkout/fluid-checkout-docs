@@ -28,7 +28,7 @@ apply_filters( 'fc_compat_dintero_checkout_skip_undo_hooks_classes', $skip );
 
 ## Source
 
-[`inc/compat/plugins/compat-plugin-dintero-checkout-for-woocommerce.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/plugins/compat-plugin-dintero-checkout-for-woocommerce.php)
+[`inc/compat/plugins/compat-plugin-dintero-checkout-for-woocommerce.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/compat/plugins/compat-plugin-dintero-checkout-for-woocommerce.php)
 
 ## Examples
 

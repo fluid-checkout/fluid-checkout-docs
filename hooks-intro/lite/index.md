@@ -8,9 +8,9 @@ Put your callbacks in a child theme `functions.php` file, or in a code snippets 
 
 ## Actions and filters
 
-An action runs your code at a moment in the page. [`fc_checkout_before_steps`](/lite/hooks/fc_checkout_before_steps) runs before the checkout steps.
+An action runs your code at a moment in the page. [`fc_checkout_before_steps`](/lite/hooks/fc_checkout_before_steps/) runs before the checkout steps.
 
-A filter receives the current value and must return a replacement. [`fc_proceed_to_next_step_button_label`](/lite/hooks/fc_proceed_to_next_step_button_label) receives the next-step button label.
+A filter receives the current value and must return a replacement. [`fc_proceed_to_next_step_button_label`](/lite/hooks/fc_proceed_to_next_step_button_label/) receives the next-step button label.
 
 The [actions](#actions) and [filters](#filters) lists below include every hook exported from Fluid Checkout Lite.
 

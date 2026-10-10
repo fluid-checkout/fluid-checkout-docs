@@ -28,7 +28,7 @@ apply_filters( 'fc_no_validation_icon_field_keys', $value );
 
 ## Source
 
-[`inc/checkout-validation.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-validation.php)
+[`inc/checkout-validation.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-validation.php)
 
 ## Examples
 

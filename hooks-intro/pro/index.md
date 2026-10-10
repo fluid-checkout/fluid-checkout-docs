@@ -10,9 +10,9 @@ Put your callbacks in a child theme `functions.php` file, or in a code snippets 
 
 ## Actions and filters
 
-An action runs your code at a moment in the page. [`fc_pro_order_received_successful`](/pro/hooks/fc_pro_order_received_successful) runs on the order received page after a successful order.
+An action runs your code at a moment in the page. [`fc_pro_order_received_successful`](/pro/hooks/fc_pro_order_received_successful/) runs on the order received page after a successful order.
 
-A filter receives the current value and must return a replacement. [`fc_pro_cart_action_label_continue_shopping`](/pro/hooks/fc_pro_cart_action_label_continue_shopping) receives the Continue shopping label on the cart.
+A filter receives the current value and must return a replacement. [`fc_pro_cart_action_label_continue_shopping`](/pro/hooks/fc_pro_cart_action_label_continue_shopping/) receives the Continue shopping label on the cart.
 
 The [actions](#actions) and [filters](#filters) lists below include every hook exported from Fluid Checkout PRO.
 

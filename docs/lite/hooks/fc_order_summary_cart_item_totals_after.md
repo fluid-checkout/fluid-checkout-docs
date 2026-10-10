@@ -30,7 +30,7 @@ do_action( 'fc_order_summary_cart_item_totals_after', $cart_item, $cart_item_key
 
 ## Source
 
-[`templates/fc/checkout-steps/checkout/review-order.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/review-order.php)
+[`templates/fc/checkout-steps/checkout/review-order.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/checkout/review-order.php)
 
 ## Examples
 

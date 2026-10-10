@@ -28,4 +28,4 @@ apply_filters( 'fc_pro_view_order_section_hook_priority_order_downloads', $value
 
 ## Source
 
-`inc/view-order-page.php`
+`inc/order-received-emails.php`

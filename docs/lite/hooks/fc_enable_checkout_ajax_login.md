@@ -28,7 +28,7 @@ apply_filters( 'fc_enable_checkout_ajax_login', $enabled );
 
 ## Source
 
-[`inc/checkout-login.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-login.php)
+[`inc/checkout-login.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-login.php)
 
 ## Examples
 

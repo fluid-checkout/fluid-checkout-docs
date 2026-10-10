@@ -28,7 +28,7 @@ apply_filters( 'fc_content_section_class', $classes );
 
 ## Source
 
-[`inc/checkout-page-template.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-page-template.php)
+[`inc/checkout-page-template.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-page-template.php)
 
 ## Examples
 

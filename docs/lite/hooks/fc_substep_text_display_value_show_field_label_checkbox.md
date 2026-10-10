@@ -28,4 +28,4 @@ apply_filters( 'fc_substep_text_display_value_show_field_label_checkbox', $label
 
 ## Source
 
-[`inc/compat/plugins/compat-plugin-flexible-checkout-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/plugins/compat-plugin-flexible-checkout-fields.php)
+[`inc/compat/plugins/compat-plugin-flexible-checkout-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/compat/plugins/compat-plugin-flexible-checkout-fields.php)
