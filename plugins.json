@@ -1,5 +1,11 @@
 {
-  "hookExcludePrefixes": ["fc_licenses_"],
+  "hookExcludePrefixes": ["fc_licenses_", "fc_lcs_"],
+  "hookExcludeNames": [
+    "fc_admin_license_key_script_url",
+    "fc_admin_license_key_style_url",
+    "fc_admin_field_type_license_exists",
+    "fc_show_settings_license_keys"
+  ],
   "plugins": [
     {
       "id": "eu-vat",

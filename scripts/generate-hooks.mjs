@@ -6,10 +6,9 @@
  * and writes docs/<plugin>/hooks/*.md plus sidebars/<plugin>.hooks.json.
  *
  * A hook is published only when its normalized name starts with one of the
- * plugin's hookPrefixes and does not start with a catalog hookExcludePrefixes
- * entry. Third-party hooks (woocommerce_*, wc_od_*, and similar) and bundled
- * Fluid Licenses hooks (fc_licenses_*) are omitted from the page, index, and
- * sidebar.
+ * plugin's hookPrefixes and is not excluded by the catalog. Exclusions are
+ * hookExcludePrefixes (fc_licenses_*, fc_lcs_*) and hookExcludeNames (internal
+ * license hooks). Third-party hooks are omitted the same way.
  */
 
 import fs from 'node:fs';
@@ -43,7 +42,32 @@ export function resolveHookExcludePrefixes(source) {
   if (source == null || source.hookExcludePrefixes == null) {
     return [];
   }
-  return normalizePrefixList(source.hookExcludePrefixes, 'hookExcludePrefixes');
+  return normalizeStringList(source.hookExcludePrefixes, 'hookExcludePrefixes');
+}
+
+/**
+ * Site-wide exact hook names from the catalog root. Missing means none.
+ * Applied after each plugin's allowlist, on the normalized name.
+ *
+ * @param {{hookExcludeNames?: unknown} | null | undefined} source
+ * @returns {string[]}
+ */
+export function resolveHookExcludeNames(source) {
+  if (source == null || source.hookExcludeNames == null) {
+    return [];
+  }
+  return normalizeStringList(source.hookExcludeNames, 'hookExcludeNames');
+}
+
+/**
+ * @param {{hookExcludePrefixes?: unknown, hookExcludeNames?: unknown} | null | undefined} source
+ * @returns {{prefixes: string[], names: string[]}}
+ */
+export function resolveHookExclusions(source) {
+  return {
+    prefixes: resolveHookExcludePrefixes(source),
+    names: resolveHookExcludeNames(source),
+  };
 }
 
 /**
@@ -51,11 +75,20 @@ export function resolveHookExcludePrefixes(source) {
  * @param {string} label
  * @returns {string[]}
  */
-function normalizePrefixList(raw, label) {
+function normalizeStringList(raw, label) {
   if (!Array.isArray(raw)) {
-    throw new Error(`${label} must be an array of hook name prefixes.`);
+    throw new Error(`${label} must be an array of strings.`);
   }
-  return raw.map((prefix) => String(prefix).trim()).filter((prefix) => prefix.length > 0);
+  return raw.map((value) => String(value).trim()).filter((value) => value.length > 0);
+}
+
+/**
+ * @param {string} name
+ * @param {{prefixes: string[], names: string[]}} exclusions
+ * @returns {boolean}
+ */
+function isExcludedHook(name, exclusions) {
+  return matchesHookPrefix(name, exclusions.prefixes) || exclusions.names.includes(name);
 }
 
 /**
@@ -85,22 +118,26 @@ export function resolveHookPrefixes(plugin) {
 
 /**
  * @param {object[]} hooks
- * @param {{id?: string, pluginPrefix?: string, hookPrefixes?: string[], hookExcludePrefixes?: string[]}} plugin
- * @param {string[] | undefined} [excludePrefixes] Catalog exclusions. When omitted, `plugin.hookExcludePrefixes` is used.
+ * @param {{id?: string, pluginPrefix?: string, hookPrefixes?: string[], hookExcludePrefixes?: string[], hookExcludeNames?: string[]}} plugin
+ * @param {{prefixes?: string[], names?: string[]} | undefined} [exclusions] Catalog exclusions. When omitted, the plugin object is used.
  * @returns {{
  *   hooks: {hook: object, name: string, slug: string, type: string, summary: string}[],
  *   skipped: {raw: string, name: string}[],
  *   droppedAliases: {hook: string, raw: string, name: string}[],
  *   prefixes: string[],
  *   excludePrefixes: string[],
+ *   excludeNames: string[],
  * }}
  */
-export function prepareHooks(hooks, plugin, excludePrefixes) {
+export function prepareHooks(hooks, plugin, exclusions) {
   const pluginPrefix = plugin.pluginPrefix || '';
   const prefixes = resolveHookPrefixes(plugin);
-  const excludes = excludePrefixes === undefined
-    ? resolveHookExcludePrefixes(plugin)
-    : normalizePrefixList(excludePrefixes, 'hookExcludePrefixes');
+  const resolved = exclusions === undefined
+    ? resolveHookExclusions(plugin)
+    : {
+        prefixes: normalizeStringList(exclusions.prefixes ?? [], 'hookExcludePrefixes'),
+        names: normalizeStringList(exclusions.names ?? [], 'hookExcludeNames'),
+      };
   const usedSlugs = new Set();
   /** @type {{raw: string, name: string}[]} */
   const skipped = [];
@@ -111,12 +148,12 @@ export function prepareHooks(hooks, plugin, excludePrefixes) {
   for (const hook of hooks) {
     const raw = String(hook.name ?? '');
     const name = normalizeHookName(raw, pluginPrefix);
-    if (!matchesHookPrefix(name, prefixes) || matchesHookPrefix(name, excludes)) {
+    if (!matchesHookPrefix(name, prefixes) || isExcludedHook(name, resolved)) {
       skipped.push({raw, name});
       continue;
     }
 
-    const aliases = filterAliases(hook.aliases, pluginPrefix, prefixes, excludes, name, droppedAliases);
+    const aliases = filterAliases(hook.aliases, pluginPrefix, prefixes, resolved, name, droppedAliases);
     let slug = slugifyHookName(name);
     if (usedSlugs.has(slug)) {
       let suffix = 2;
@@ -145,7 +182,14 @@ export function prepareHooks(hooks, plugin, excludePrefixes) {
     return key(a.name).localeCompare(key(b.name)) || a.slug.localeCompare(b.slug);
   });
 
-  return {hooks: prepared, skipped, droppedAliases, prefixes, excludePrefixes: excludes};
+  return {
+    hooks: prepared,
+    skipped,
+    droppedAliases,
+    prefixes,
+    excludePrefixes: resolved.prefixes,
+    excludeNames: resolved.names,
+  };
 }
 
 /**
@@ -156,11 +200,7 @@ export function prepareHooks(hooks, plugin, excludePrefixes) {
  * @returns {string[]}
  */
 export function formatHookFilterLog(plugin, result) {
-  const prefixes = result.prefixes.join(', ');
-  const excludes = Array.isArray(result.excludePrefixes) ? result.excludePrefixes : [];
-  const rule = excludes.length > 0
-    ? `hookPrefixes: ${prefixes}; hookExcludePrefixes: ${excludes.join(', ')}`
-    : `hookPrefixes: ${prefixes}`;
+  const rule = formatRuleSummary(result);
   /** @type {string[]} */
   const lines = [];
   const skippedCount = result.skipped.length;
@@ -178,9 +218,7 @@ export function formatHookFilterLog(plugin, result) {
   const droppedCount = result.droppedAliases.length;
   if (droppedCount > 0) {
     const droppedLabel = `${droppedCount} ${droppedCount === 1 ? 'alias' : 'aliases'}`;
-    const aliasScope = excludes.length > 0
-      ? 'outside hookPrefixes or matching hookExcludePrefixes'
-      : 'outside hookPrefixes';
+    const aliasScope = formatAliasScope(result);
     lines.push(`Dropped ${droppedLabel} for ${plugin.id} ${aliasScope}:`);
     for (const alias of result.droppedAliases) {
       lines.push(`  - ${formatSkippedName(alias)} (on ${alias.hook})`);
@@ -188,6 +226,36 @@ export function formatHookFilterLog(plugin, result) {
   }
 
   return lines;
+}
+
+/**
+ * @param {ReturnType<typeof prepareHooks>} result
+ * @returns {string}
+ */
+function formatRuleSummary(result) {
+  const parts = [`hookPrefixes: ${result.prefixes.join(', ')}`];
+  if (Array.isArray(result.excludePrefixes) && result.excludePrefixes.length > 0) {
+    parts.push(`hookExcludePrefixes: ${result.excludePrefixes.join(', ')}`);
+  }
+  if (Array.isArray(result.excludeNames) && result.excludeNames.length > 0) {
+    parts.push(`hookExcludeNames: ${result.excludeNames.join(', ')}`);
+  }
+  return parts.join('; ');
+}
+
+/**
+ * @param {ReturnType<typeof prepareHooks>} result
+ * @returns {string}
+ */
+function formatAliasScope(result) {
+  const parts = ['outside hookPrefixes'];
+  if (Array.isArray(result.excludePrefixes) && result.excludePrefixes.length > 0) {
+    parts.push('matching hookExcludePrefixes');
+  }
+  if (Array.isArray(result.excludeNames) && result.excludeNames.length > 0) {
+    parts.push('matching hookExcludeNames');
+  }
+  return parts.join(' or ');
 }
 
 /**
@@ -206,12 +274,12 @@ function formatSkippedName(entry) {
  * @param {unknown} aliases
  * @param {string} pluginPrefix
  * @param {string[]} prefixes
- * @param {string[]} excludes
+ * @param {{prefixes: string[], names: string[]}} exclusions
  * @param {string} hookName
  * @param {{hook: string, raw: string, name: string}[]} droppedAliases
  * @returns {string[]}
  */
-function filterAliases(aliases, pluginPrefix, prefixes, excludes, hookName, droppedAliases) {
+function filterAliases(aliases, pluginPrefix, prefixes, exclusions, hookName, droppedAliases) {
   if (!Array.isArray(aliases)) {
     return [];
   }
@@ -225,7 +293,7 @@ function filterAliases(aliases, pluginPrefix, prefixes, excludes, hookName, drop
       continue;
     }
     const name = normalizeHookName(trimmed, pluginPrefix);
-    if (!matchesHookPrefix(name, prefixes) || matchesHookPrefix(name, excludes)) {
+    if (!matchesHookPrefix(name, prefixes) || isExcludedHook(name, exclusions)) {
       droppedAliases.push({hook: hookName, raw, name});
       continue;
     }
@@ -238,7 +306,7 @@ function main() {
   const requestedPlugin = process.argv[2];
   const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
   const plugins = Array.isArray(catalog.plugins) ? catalog.plugins : [];
-  const excludePrefixes = resolveHookExcludePrefixes(catalog);
+  const exclusions = resolveHookExclusions(catalog);
 
   let generatedPlugins = 0;
 
@@ -263,7 +331,7 @@ function main() {
       ...loadHooks(filtersPath, 'filter'),
     ];
 
-    const result = prepareHooks(hooks, plugin, excludePrefixes);
+    const result = prepareHooks(hooks, plugin, exclusions);
     writePlugin(plugin, result.hooks);
     generatedPlugins += 1;
     console.log(`Generated ${result.hooks.length} hook page(s) for ${plugin.id}.`);

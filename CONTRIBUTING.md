@@ -26,7 +26,7 @@ Do not edit `docs/<plugin>/hooks/` or `sidebars/<plugin>.hooks.json` by hand. Bo
 | --- | --- |
 | `data/<plugin>/actions.json` | wp-hooks/generator 1.0.x document |
 | `data/<plugin>/filters.json` | wp-hooks/generator 1.0.x document |
-| `plugins.json` | Plugin id, `pluginPrefix`, `hookPrefixes`, global `hookExcludePrefixes`, docs route, and whether the Git repository is public |
+| `plugins.json` | Plugin id, `pluginPrefix`, `hookPrefixes`, global `hookExcludePrefixes` and `hookExcludeNames`, docs route, and whether the Git repository is public |
 
 `npm run build` runs `npm run generate` before Docusaurus. Generation reads every plugin with `"status": "available"` that has JSON under `data/<plugin>/`.
 
@@ -77,11 +77,12 @@ Examples after normalization:
 - `fc_gaa_google_autocomplete_js_settings` is kept for PRO
 - `self::$plugin_prefix . '_admin_notices'` becomes `<pluginPrefix>_admin_notices` (for EU-VAT, `fc_vat_admin_notices`)
 - `woocommerce_checkout_fields` and `'woocommerce_' . $action` are skipped
-- `fc_licenses_is_activated` and `'fc_licenses_client_' . $action` are skipped for every plugin
+- `fc_licenses_is_activated`, `'fc_licenses_client_' . $action`, and `fc_lcs_*` are skipped for every plugin
+- `fc_show_settings_license_keys`, `fc_admin_license_key_script_url`, `fc_admin_license_key_style_url`, and `fc_admin_field_type_license_exists` are skipped for every plugin
 
-`hookExcludePrefixes` at the top of `plugins.json` applies to every plugin after the allowlist. It is `fc_licenses_`. Those hooks belong to the separate Fluid Licenses plugin. Other plugins only fire them because they bundle its client class, so they are not documented for PRO, EU-VAT, Lite, or any other plugin. PRO's `fc_` allowlist would otherwise keep `fc_licenses_*`. A matching hook is skipped with the other skipped names: no page, no index row, and no sidebar entry. Aliases that match an exclude prefix are dropped.
+`hookExcludePrefixes` and `hookExcludeNames` at the top of `plugins.json` apply to every plugin after the allowlist. The prefixes are `fc_licenses_` and `fc_lcs_`. The exact names are `fc_admin_license_key_script_url`, `fc_admin_license_key_style_url`, `fc_admin_field_type_license_exists`, and `fc_show_settings_license_keys`. Those hooks belong to the separate Fluid Licenses plugin, including internal-only admin hooks. Other plugins only fire them because they bundle its client class, so they are not documented for PRO, EU-VAT, Lite, or any other plugin. PRO's `fc_` allowlist would otherwise keep them. A matching hook is skipped with the other skipped names: no page, no index row, and no sidebar entry. Aliases that match an exclude prefix or an exact exclude name are dropped.
 
-A skipped hook has no page, no row on the hooks index, and no sidebar entry. An alias is dropped when its normalized name does not match the allowlist or matches an exclude prefix. An alias such as `fc_vat_enable_compat_plugin_woocommerce-germanized-pro` stays, because the name starts with `fc_vat_` and the `woocommerce` segment is the plugin slug.
+A skipped hook has no page, no row on the hooks index, and no sidebar entry. An alias is dropped when its normalized name does not match the allowlist, matches an exclude prefix, or is an exact exclude name. An alias such as `fc_vat_enable_compat_plugin_woocommerce-germanized-pro` stays, because the name starts with `fc_vat_` and the `woocommerce` segment is the plugin slug.
 
 `npm run generate` prints the skipped hook count and each skipped name (plus dropped aliases, when any) so the list is visible in CI. A plugin with `"status": "available"` and no `hookPrefixes` fails generation instead of publishing every hook in the JSON.
 

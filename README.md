@@ -31,7 +31,7 @@ docs/<plugin>/hooks/           # GENERATED hook pages — do not edit
 examples/<plugin>/<hook-slug>/ # optional hand-written example for one hook
 sidebars/<plugin>.ts           # sidebar for that docs instance
 sidebars/<plugin>.hooks.json   # GENERATED hook sidebar items
-plugins.json                   # plugin id, prefix, hookPrefixes, hookExcludePrefixes, repo, status
+plugins.json                   # plugin id, prefixes, hookExcludePrefixes, hookExcludeNames, repo, status
 static/img/                    # site icon and favicon
 static/CNAME                   # docs.fluidcheckout.com
 ```
@@ -70,7 +70,7 @@ Dynamic PHP hook names are normalized for the page title and URL. `self::$plugin
 
 Each plugin's `hookPrefixes` allowlist decides which normalized names are published. EU-VAT publishes names that start with `fc_vat_`. Lite (`fc_`) and PRO (`fc_pro_`, `fc_`, `fc_adb_`, and `fc_gaa_`) are already listed in `plugins.json` and stay coming soon until their docs are added. `fc_adb_` is Address Book and `fc_gaa_` is Google Address Autocomplete; both add-ons are merging into PRO. Hooks copied from WooCommerce and other third-party code (`woocommerce_*`, `wc_od_*`, Enfold, Germanized, SkyVerge, and similar) are left out of the hook page, the index, and the sidebar. Aliases that do not match are dropped. `npm run generate` logs every skipped name. The full rule is in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-`hookExcludePrefixes` at the top of `plugins.json` applies to every plugin after that allowlist. `fc_licenses_` is excluded everywhere: those hooks belong to Fluid Licenses, and other plugins only fire them because they bundle its client class. PRO's `fc_` prefix would otherwise publish them.
+`hookExcludePrefixes` and `hookExcludeNames` at the top of `plugins.json` apply to every plugin after that allowlist. `fc_licenses_` and `fc_lcs_` are excluded everywhere, as are the internal names `fc_admin_license_key_script_url`, `fc_admin_license_key_style_url`, `fc_admin_field_type_license_exists`, and `fc_show_settings_license_keys`. Those hooks belong to Fluid Licenses, and other plugins only fire them because they bundle its client class. PRO's `fc_` prefix would otherwise publish them.
 
 ## Search
 
