@@ -456,13 +456,32 @@ test('eu-vat fixture keeps all 16 fc_vat_ hooks and drops nothing', () => {
 test('hooks index places the hand-written intro above the hook list', () => {
   const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
   const intro = readHooksIntro('eu-vat', root);
-  assert.equal(readHooksIntro('lite', root), null);
-  assert.equal(readHooksIntro('pro', root), null);
-  assert.match(intro, /^# Getting started with EU-VAT Assistant hooks\n/);
+  const liteIntro = readHooksIntro('lite', root);
+  const proIntro = readHooksIntro('pro', root);
+  assert.match(intro, /^## Getting started with EU-VAT Assistant hooks\n/);
   assert.match(intro, /@site\/hooks-intro\/eu-vat\/img\/hooks-overview\.svg/);
+  assert.match(intro, /\]\(#filters\)/);
   assert.match(intro, /fc_vat_enable_compat_plugin_\{plugin_slug\}/);
   assert.match(intro, /fc_vat_enable_compat_plugin_\{\$plugin_slug\}/);
   assert.doesNotMatch(intro, /\{'\{'\}/);
+  assert.doesNotMatch(intro, /\]\(\/eu-vat\/hooks\)/);
+
+  assert.match(liteIntro, /\[actions\]\(#actions\)/);
+  assert.match(liteIntro, /\[filters\]\(#filters\)/);
+  assert.match(liteIntro, /fc_proceed_to_next_step_button_label/);
+  assert.match(liteIntro, /fc_checkout_before_steps/);
+  assert.match(liteIntro, /add_filter\( 'fc_proceed_to_next_step_button_label', function\( \$button_label, \$step_id, \$step_args \) \{\n    return __\( 'Continue', 'my-store' \);\n\}, 10, 3 \);/);
+  assert.doesNotMatch(liteIntro, /\]\(\/lite\/hooks\)/);
+
+  assert.match(proIntro, /\[actions\]\(#actions\)/);
+  assert.match(proIntro, /\[filters\]\(#filters\)/);
+  assert.match(proIntro, /fc_pro_cart_action_label_continue_shopping/);
+  assert.match(proIntro, /fc_pro_order_received_successful/);
+  assert.match(proIntro, /`fc_adb_`/);
+  assert.match(proIntro, /`fc_gaa_`/);
+  assert.match(proIntro, /alongside Fluid Checkout Lite/);
+  assert.doesNotMatch(proIntro, /\]\(\/pro\/hooks\)/);
+  assert.doesNotMatch(`${liteIntro}\n${proIntro}`, /fc_licenses|Fluid Licenses/);
 
   const source = fs.readFileSync(path.join(root, 'hooks-intro/eu-vat/index.md'), 'utf8');
   assert.match(source, /\]\(\.\/img\/hooks-overview\.svg\)/);
@@ -470,20 +489,29 @@ test('hooks index places the hand-written intro above the hook list', () => {
   assert.equal(fs.existsSync(path.join(root, 'docs/eu-vat/guides/getting-started/index.md')), false);
 
   const index = renderHooksIndex(
-    [{name: 'fc_vat_js_settings', slug: 'fc_vat_js_settings', type: 'filter', summary: 'Settings.'}],
+    [
+      {name: 'fc_vat_admin_notices', slug: 'fc_vat_admin_notices', type: 'action', summary: 'Notices.'},
+      {name: 'fc_vat_js_settings', slug: 'fc_vat_js_settings', type: 'filter', summary: 'Settings.'},
+    ],
     'EU-VAT Assistant',
     intro,
   );
-  const heading = index.indexOf('# Getting started with EU-VAT Assistant hooks');
+  assert.match(index, /title: "All hooks — EU-VAT Assistant"/);
+  assert.match(index, /sidebar_label: All hooks/);
+  const heading = index.indexOf('# All hooks');
+  const introHeading = index.indexOf('## Getting started with EU-VAT Assistant hooks');
   const body = index.slice(heading);
   const listSentence = body.indexOf('Actions and filters in EU-VAT Assistant.');
-  const table = body.indexOf('## Filters');
-  assert.ok(heading > 0 && listSentence > 0 && table > listSentence);
+  const actions = body.indexOf('## Actions');
+  const filters = body.indexOf('## Filters');
+  assert.ok(heading > 0 && introHeading > heading && listSentence > 0 && actions > listSentence && filters > actions);
 
   const plain = renderHooksIndex(
     [{name: 'fc_vat_js_settings', slug: 'fc_vat_js_settings', type: 'filter', summary: 'Settings.'}],
     'EU-VAT Assistant',
   );
+  assert.match(plain, /title: "All hooks — EU-VAT Assistant"/);
+  assert.match(plain, /# All hooks/);
   assert.doesNotMatch(plain, /Getting started with EU-VAT Assistant hooks/);
 
   assert.deepEqual(gettingStartedRedirects(catalog.plugins, root), [
@@ -491,10 +519,18 @@ test('hooks index places the hand-written intro above the hook list', () => {
       from: '/eu-vat/guides/getting-started',
       to: '/eu-vat/hooks',
     },
+    {
+      from: '/lite/guides/getting-started',
+      to: '/lite/hooks',
+    },
+    {
+      from: '/pro/guides/getting-started',
+      to: '/pro/hooks',
+    },
   ]);
   assert.deepEqual(
     gettingStartedRedirects(
-      [{id: 'lite', status: 'available', routeBasePath: 'lite'}],
+      [{id: 'missing', status: 'available', routeBasePath: 'missing'}],
       root,
     ),
     [],
