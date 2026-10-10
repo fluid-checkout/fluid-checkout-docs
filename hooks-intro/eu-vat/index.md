@@ -1,9 +1,3 @@
----
-sidebar_position: 1
-title: Getting started with EU-VAT Assistant hooks
-description: Find an EU-VAT Assistant hook and attach your own callback.
----
-
 # Getting started with EU-VAT Assistant hooks
 
 EU-VAT Assistant runs WordPress actions and filters around the checkout VAT number. Use them to normalize the number, turn a compatibility module on or off, or print something next to the field. You do not need to edit the plugin.
@@ -51,4 +45,3 @@ Register the concrete hook when you know the value:
 $plugin_slug = 'woocommerce-subscriptions';
 add_filter( "fc_vat_enable_compat_plugin_{$plugin_slug}", '__return_false' );
 ```
-

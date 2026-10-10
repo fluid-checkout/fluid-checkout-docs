@@ -4,6 +4,8 @@
  *
  * Reads data/<plugin>/actions.json and data/<plugin>/filters.json
  * and writes docs/<plugin>/hooks/*.md plus sidebars/<plugin>.hooks.json.
+ * When hooks-intro/<plugin>/index.md exists, that file is included above the
+ * hook list on the index page.
  *
  * A hook is published only when its normalized name starts with one of the
  * plugin's hookPrefixes and is not excluded by the catalog. Exclusions are
@@ -19,6 +21,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {loadHookExamples, resolveExampleSections} from './hook-examples.mjs';
 import {normalizeHookName, slugifyHookName} from './normalize-hook-name.mjs';
+import {readHooksIntro} from './hooks-intro.mjs';
 import {renderHookPage, renderHooksIndex, renderSidebarItems} from './render-hook.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -465,7 +468,10 @@ export function writePluginDocs(rootDir, plugin, prepared) {
     ].join('\n'),
   );
 
-  fs.writeFileSync(path.join(hooksDir, 'index.md'), renderHooksIndex(indexHooks, plugin.label || plugin.id));
+  fs.writeFileSync(
+    path.join(hooksDir, 'index.md'),
+    renderHooksIndex(indexHooks, plugin.label || plugin.id, readHooksIntro(plugin.id, root)),
+  );
 
   for (const entry of prepared) {
     const section = sections.get(entry.slug);
