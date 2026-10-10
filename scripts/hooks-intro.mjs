@@ -90,8 +90,8 @@ export function readHooksIntro(pluginId, baseDir) {
 }
 
 /**
- * Redirects from retired "Getting started" guides to the hooks index.
- * An available plugin gets one when hooks-intro/<id>/index.md exists.
+ * Redirect from the retired EU-VAT "Getting started" guide to its hooks index.
+ * Lite and PRO never had `/guides/getting-started`, so they get no redirect.
  *
  * @param {{id?: string, status?: string, routeBasePath?: string}[]} plugins
  * @param {string} baseDir
@@ -103,7 +103,7 @@ export function gettingStartedRedirects(plugins, baseDir) {
   }
 
   return plugins.flatMap((plugin) => {
-    if (plugin?.status !== 'available' || !plugin.routeBasePath || !plugin.id) {
+    if (plugin?.id !== 'eu-vat' || plugin.status !== 'available' || !plugin.routeBasePath) {
       return [];
     }
     if (!readHooksIntro(plugin.id, baseDir)) {

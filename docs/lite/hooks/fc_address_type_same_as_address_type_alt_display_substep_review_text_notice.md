@@ -8,8 +8,6 @@ description: "Filters whether to show the \"same as the other address\" notice i
 
 **Type:** Filter
 
-**Aliases:** `fc_billing_same_as_shipping_display_substep_review_text_notice`, `fc_shipping_same_as_billing_display_substep_review_text_notice`
-
 Filters whether to show the "same as the other address" notice in a substep review text.
 
 The dynamic portions of the hook name, `$address_type` and `$address_type_alt`, refer to the current address type and the opposite address type. Possible hook names include:

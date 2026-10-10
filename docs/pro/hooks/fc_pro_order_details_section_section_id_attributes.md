@@ -8,8 +8,6 @@ description: "Filters the HTML attributes for an order details section."
 
 **Type:** Filter
 
-**Aliases:** `fc_pro_order_details_section_customer_information_attributes`, `fc_pro_order_details_section_delivery_information_attributes`, `fc_pro_order_details_section_downloads_attributes`, `fc_pro_order_details_section_gift_message_attributes`, `fc_pro_order_details_section_licenses_attributes`, `fc_pro_order_details_section_order_details_attributes`, `fc_pro_order_details_section_order_notes_attributes`, `fc_pro_order_details_section_order_status_attributes`, `fc_pro_order_details_section_order_summary_attributes`, `fc_pro_order_details_section_payment_method_attributes`, `fc_pro_order_details_section_subscriptions_attributes`
-
 Filters the HTML attributes for an order details section.
 
 The dynamic portion of the hook name, `$section_id`, is the order details section ID. Possible hook names include:

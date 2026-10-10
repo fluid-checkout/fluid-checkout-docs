@@ -8,8 +8,6 @@ description: "Fires before a checkout substep."
 
 **Type:** Action
 
-**Aliases:** `fc_before_substep_billing_address`, `fc_before_substep_contact`, `fc_before_substep_coupon_codes`, `fc_before_substep_order_notes`, `fc_before_substep_payment`, `fc_before_substep_shipping_address`, `fc_before_substep_shipping_method`
-
 Fires before a checkout substep.
 
 The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:

@@ -35,7 +35,7 @@ The text at the top of a plugin's hooks index is `hooks-intro/<plugin>/index.md`
 3. Run `npm run generate`. The generator inserts the intro above the hook tables in `docs/<plugin>/hooks/index.md` and rewrites relative image paths so the generated page can load them. The next generate overwrites that index, so change the intro file instead.
 4. Keep `{` and `}` inside inline code or fenced code blocks.
 
-`docusaurus.config.ts` loads `gettingStartedRedirects()` from `scripts/hooks-intro.mjs`. For each plugin with `"status": "available"` and a `hooks-intro/<plugin>/index.md` file, the site redirects `/<routeBasePath>/guides/getting-started` to `/<routeBasePath>/hooks`. The generated index heading and sidebar label are `All hooks`. The browser title is `All hooks — <plugin label>`. Links inside an intro that refer to the actions list, the filters list, or another heading on that same page use a `#section-id` anchor.
+`docusaurus.config.ts` loads `gettingStartedRedirects()` from `scripts/hooks-intro.mjs`. EU-VAT is the only plugin that had `/<routeBasePath>/guides/getting-started`, so the site redirects `/eu-vat/guides/getting-started` to `/eu-vat/hooks`. Lite and PRO have no such redirect. The generated index heading and sidebar label are `All hooks`. The browser title is `All hooks — <plugin label>`. Links inside an intro that refer to the actions list, the filters list, or another heading on that same page use a `#section-id` anchor.
 
 ## Add a hook example
 

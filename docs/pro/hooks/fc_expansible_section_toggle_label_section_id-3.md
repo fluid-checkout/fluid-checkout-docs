@@ -8,8 +8,6 @@ description: "Filters the toggle label for an expansible section."
 
 **Type:** Filter
 
-**Aliases:** `fc_expansible_section_toggle_label_coupon_code`, `fc_expansible_section_toggle_label_gift_card_code`, `fc_expansible_section_toggle_label_gift_cards`
-
 Filters the toggle label for an expansible section.
 
 The dynamic portion of the hook name, `$section_id`, is the expansible section ID. Possible hook names include:

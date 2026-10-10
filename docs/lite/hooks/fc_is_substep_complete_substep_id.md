@@ -8,8 +8,6 @@ description: "Filters whether a checkout substep is complete."
 
 **Type:** Filter
 
-**Aliases:** `fc_is_substep_complete_billing_address`, `fc_is_substep_complete_contact`, `fc_is_substep_complete_coupon_codes`, `fc_is_substep_complete_order_notes`, `fc_is_substep_complete_payment`, `fc_is_substep_complete_shipping_address`, `fc_is_substep_complete_shipping_method`
-
 Filters whether a checkout substep is complete.
 
 The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:

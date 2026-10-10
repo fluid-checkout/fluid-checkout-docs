@@ -116,8 +116,9 @@ test('drops aliases that do not match the prefix, including after alias normaliz
     slug: dynamic.slug,
     plugin: {repository: null},
   });
-  assert.match(page, /`fc_pro_enable_compat_plugin_woocommerce-gateway`/);
-  assert.match(page, /`fc_\{section\}`/);
+  assert.equal(page.includes('**Aliases:**'), false);
+  assert.doesNotMatch(page, /fc_pro_enable_compat_plugin_woocommerce-gateway/);
+  assert.doesNotMatch(page, /fc_\{section\}/);
   assert.doesNotMatch(page, /woocommerce_checkout_update_order_review/);
   assert.doesNotMatch(page, /enfold_layout/);
 });
@@ -527,14 +528,6 @@ test('hooks index places the hand-written intro above the hook list', () => {
     {
       from: '/eu-vat/guides/getting-started',
       to: '/eu-vat/hooks',
-    },
-    {
-      from: '/lite/guides/getting-started',
-      to: '/lite/hooks',
-    },
-    {
-      from: '/pro/guides/getting-started',
-      to: '/pro/hooks',
     },
   ]);
   assert.deepEqual(
