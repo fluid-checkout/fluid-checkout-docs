@@ -73,7 +73,7 @@ Do not edit `docs/<plugin>/hooks/` or `sidebars/<plugin>.hooks.json` by hand. Bo
 | `data/<plugin>/legacy/<id>/changelog.md` | Older releases for that add-on. Optional. |
 | `plugins.json` | Plugin id, `pluginPrefix`, `hookPrefixes`, global `hookExcludePrefixes` and `hookExcludeNames`, and the docs route |
 
-`npm run generate` also writes `docs/<plugin>/changelog.md` from those source files. Readme entries come first. A version present in both files is kept from `readme.txt`. Do not edit the generated page. The `changelog.md` introduction that explains where entries are written first is not part of the published page. Optional `relatedChangelogs` on a plugin in `plugins.json` adds a line linking to another plugin's changelog. Lite and PRO list each other. EU-VAT Assistant does not.
+`npm run generate` also writes `docs/<plugin>/changelog.md` from those source files. Readme entries come first. A version present in both files is kept from `readme.txt`. Do not edit the generated page. The `changelog.md` introduction that explains where entries are written first is not part of the published page. Optional `relatedChangelogs` on a plugin in `plugins.json` adds an info callout linking to another plugin's changelog. Lite and PRO list each other. EU-VAT Assistant does not.
 
 Optional `legacyChangelogs` lists add-on changelogs for the bottom of a plugin page. Each item has `id` and `title`. PRO uses `address-book` and `google-address-autocomplete`. When `data/pro/legacy/<id>/readme.txt` or `changelog.md` is present, those versions are rendered with anchors such as `#address-book-3-1-0`. Until the files are added, the page shows a short note that the add-on is being merged into Fluid Checkout PRO. That note is the only text published for a missing source.
 
