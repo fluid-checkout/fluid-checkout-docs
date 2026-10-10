@@ -57,424 +57,428 @@ Actions and filters in Fluid Checkout Lite.
 
 ## Actions
 
-| Hook | Description |
-| --- | --- |
-| [`fc_after_checkout_billing_only_form_inside`](./fc_after_checkout_billing_only_form_inside) | Fires after the billing-only checkout fields. |
-| [`fc_after_substep_fields_{substep_id}`](./fc_after_substep_fields_substep_id) | Fires after the fields inside a checkout substep. |
-| [`fc_after_substep_{substep_id}`](./fc_after_substep_substep_id) | Fires after a checkout substep. |
-| [`fc_before_checkout_billing_only_form`](./fc_before_checkout_billing_only_form) | Fires before the billing-only checkout fields. |
-| [`fc_before_checkout_shipping_address_wrapper`](./fc_before_checkout_shipping_address_wrapper) | Fires before the shipping address wrapper, where the ship-to-different-address option is rendered. |
-| [`fc_before_checkout_shipping_only_form`](./fc_before_checkout_shipping_only_form) | Fires before the shipping-only checkout fields. |
-| [`fc_before_substep_fields_{substep_id}`](./fc_before_substep_fields_substep_id) | Fires before the fields inside a checkout substep. |
-| [`fc_before_substep_{substep_id}`](./fc_before_substep_substep_id) | Fires before a checkout substep. |
-| [`fc_checkout_account_after_fields`](./fc_checkout_account_after_fields) | Fires after the account creation fields. |
-| [`fc_checkout_account_before_fields`](./fc_checkout_account_before_fields) | Fires before the account creation fields. |
-| [`fc_checkout_account_fields_empty_section`](./fc_checkout_account_fields_empty_section) | Fires when the account creation section has no fields to display. |
-| [`fc_checkout_after`](./fc_checkout_after) | Fires after the checkout form contents. |
-| [`fc_checkout_after_contact_fields`](./fc_checkout_after_contact_fields) | Fires after the contact fields section. |
-| [`fc_checkout_after_main_section`](./fc_checkout_after_main_section) | Fires after the main checkout section. |
-| [`fc_checkout_after_main_section_wrapper`](./fc_checkout_after_main_section_wrapper) | Fires after the main checkout section wrapper. |
-| [`fc_checkout_after_order_review`](./fc_checkout_after_order_review) | Fires after the order review section. |
-| [`fc_checkout_after_order_review_inside`](./fc_checkout_after_order_review_inside) | Fires inside the order review section, after its contents. |
-| [`fc_checkout_after_order_review_title_after`](./fc_checkout_after_order_review_title_after) | Fires after the inner order review title. |
-| [`fc_checkout_after_order_review_title_before`](./fc_checkout_after_order_review_title_before) | Fires before the inner order review title. |
-| [`fc_checkout_after_payment`](./fc_checkout_after_payment) | Fires after the payment section. |
-| [`fc_checkout_after_step`](./fc_checkout_after_step) | Fires after a checkout step element. |
-| [`fc_checkout_after_step_billing_fields`](./fc_checkout_after_step_billing_fields) | Fires after the billing step fields. |
-| [`fc_checkout_after_step_payment_fields`](./fc_checkout_after_step_payment_fields) | Fires after the payment step fields. |
-| [`fc_checkout_after_step_shipping_fields`](./fc_checkout_after_step_shipping_fields) | Fires after the shipping step fields. |
-| [`fc_checkout_after_step_shipping_fields_inside`](./fc_checkout_after_step_shipping_fields_inside) | Fires inside the shipping step, after its fields. |
-| [`fc_checkout_after_steps`](./fc_checkout_after_steps) | Fires after the checkout steps. |
-| [`fc_checkout_before`](./fc_checkout_before) | Fires before the checkout form contents. |
-| [`fc_checkout_before_contact_fields`](./fc_checkout_before_contact_fields) | Fires before the contact fields section. |
-| [`fc_checkout_before_main_section`](./fc_checkout_before_main_section) | Fires before the main checkout section. |
-| [`fc_checkout_before_main_section_wrapper`](./fc_checkout_before_main_section_wrapper) | Fires before the main checkout section wrapper. |
-| [`fc_checkout_before_order_review`](./fc_checkout_before_order_review) | Fires before the order review section. |
-| [`fc_checkout_before_order_review_inside`](./fc_checkout_before_order_review_inside) | Fires inside the order review section, before its contents. |
-| [`fc_checkout_before_payment`](./fc_checkout_before_payment) | Fires before the payment section. |
-| [`fc_checkout_before_step`](./fc_checkout_before_step) | Fires before a checkout step element. |
-| [`fc_checkout_before_step_billing_fields`](./fc_checkout_before_step_billing_fields) | Fires before the billing step fields. |
-| [`fc_checkout_before_step_payment_fields`](./fc_checkout_before_step_payment_fields) | Fires before the payment step fields. |
-| [`fc_checkout_before_step_shipping_fields`](./fc_checkout_before_step_shipping_fields) | Fires before the shipping step fields. |
-| [`fc_checkout_before_step_shipping_fields_inside`](./fc_checkout_before_step_shipping_fields_inside) | Fires inside the shipping step, before its fields. |
-| [`fc_checkout_before_steps`](./fc_checkout_before_steps) | Fires before the checkout steps. |
-| [`fc_checkout_below_contact_login_cta`](./fc_checkout_below_contact_login_cta) | Fires below the contact step login call to action. |
-| [`fc_checkout_contact_after_fields`](./fc_checkout_contact_after_fields) | Fires after the contact fields. |
-| [`fc_checkout_contact_before_fields`](./fc_checkout_contact_before_fields) | Fires before the contact fields. |
-| [`fc_checkout_end_step`](./fc_checkout_end_step) | Fires at the end of a checkout step, inside the step element. |
-| [`fc_checkout_footer`](./fc_checkout_footer) | Fires inside the distraction-free checkout footer. |
-| [`fc_checkout_footer`](./fc_checkout_footer-2) | Fires inside the distraction-free checkout footer. |
-| [`fc_checkout_footer_widgets`](./fc_checkout_footer_widgets) | Fires where the checkout footer widget area is rendered. |
-| [`fc_checkout_footer_widgets_inside_after`](./fc_checkout_footer_widgets_inside_after) | Fires after the widgets inside the checkout footer widget area. |
-| [`fc_checkout_footer_widgets_inside_before`](./fc_checkout_footer_widgets_inside_before) | Fires before the widgets inside the checkout footer widget area. |
-| [`fc_checkout_header`](./fc_checkout_header) | Fires inside the distraction-free checkout header. |
-| [`fc_checkout_header`](./fc_checkout_header-2) | Fires inside the distraction-free checkout header. |
-| [`fc_checkout_header`](./fc_checkout_header-3) | Fires inside the distraction-free checkout header. |
-| [`fc_checkout_header_cart_link`](./fc_checkout_header_cart_link) | Fires where the checkout header cart link is rendered. |
-| [`fc_checkout_header_logo`](./fc_checkout_header_logo) | Fires where the checkout header logo is rendered. |
-| [`fc_checkout_header_widgets`](./fc_checkout_header_widgets) | Fires where the checkout header widget area is rendered. |
-| [`fc_checkout_header_widgets_inside_after`](./fc_checkout_header_widgets_inside_after) | Fires after the widgets inside the checkout header widget area. |
-| [`fc_checkout_header_widgets_inside_before`](./fc_checkout_header_widgets_inside_before) | Fires before the widgets inside the checkout header widget area. |
-| [`fc_checkout_order_review_actions`](./fc_checkout_order_review_actions) | Fires where the order review actions are rendered. |
-| [`fc_checkout_order_review_content`](./fc_checkout_order_review_content) | Fires where the order review table is rendered. |
-| [`fc_checkout_order_review_section`](./fc_checkout_order_review_section) | Fires where the order review section is rendered. |
-| [`fc_checkout_order_review_sidebar_before_actions`](./fc_checkout_order_review_sidebar_before_actions) | Fires before the actions in the order review sidebar. |
-| [`fc_checkout_payment`](./fc_checkout_payment) | Fires where the payment section is rendered inside the payment step. |
-| [`fc_checkout_place_order_terms`](./fc_checkout_place_order_terms) | Fires where the terms and conditions checkbox is rendered. |
-| [`fc_checkout_social_login`](./fc_checkout_social_login) | Fires where social login buttons are rendered on the contact step. |
-| [`fc_checkout_start_step`](./fc_checkout_start_step) | Fires at the start of a checkout step, inside the step element. |
-| [`fc_checkout_steps`](./fc_checkout_steps) | Fires inside the checkout form where the checkout steps are rendered. |
-| [`fc_coupon_code_section_after`](./fc_coupon_code_section_after) | Fires after the coupon code field inside the coupon section. |
-| [`fc_coupon_code_section_before`](./fc_coupon_code_section_before) | Fires before the coupon code field inside the coupon section. |
-| [`fc_dashboard_addons_before_list`](./fc_dashboard_addons_before_list) | Fires before the Dashboard add-ons list. |
-| [`fc_order_summary_cart_item_details`](./fc_order_summary_cart_item_details) | Fires inside each order summary cart item, where the product details are rendered. |
-| [`fc_order_summary_cart_item_totals_after`](./fc_order_summary_cart_item_totals_after) | Fires after the line total of an order summary cart item. |
-| [`fc_order_summary_cart_item_totals_before`](./fc_order_summary_cart_item_totals_before) | Fires before the line total of an order summary cart item. |
-| [`fc_place_order`](./fc_place_order) | Fires where the place-order section is rendered. |
-| [`fc_place_order_custom_buttons`](./fc_place_order_custom_buttons) | Fires where custom place-order buttons are rendered. |
-| [`fc_pro_checkout_review_order_after_coupon_code`](./fc_pro_checkout_review_order_after_coupon_code) | Fires after the coupon code row in the checkout order review. |
-| [`fc_register_steps`](./fc_register_steps) | Fires when checkout steps are registered so other plugins can add or change steps. |
-| [`fc_review_order_shipping`](./fc_review_order_shipping) | Fires where the chosen shipping method is rendered in the order review. |
-| [`fc_shipping_methods_after_packages`](./fc_shipping_methods_after_packages) | Fires after the shipping method packages. |
-| [`fc_shipping_methods_after_packages_inside`](./fc_shipping_methods_after_packages_inside) | Fires inside the shipping methods section, after the packages. |
-| [`fc_shipping_methods_before_packages`](./fc_shipping_methods_before_packages) | Fires before the shipping method packages. |
-| [`fc_shipping_methods_before_packages_inside`](./fc_shipping_methods_before_packages_inside) | Fires inside the shipping methods section, before the packages. |
-| [`fc_substep_coupon_codes_text_after`](./fc_substep_coupon_codes_text_after) | Fires after the coupon code substep review text. |
-| [`fc_substep_coupon_codes_text_before`](./fc_substep_coupon_codes_text_before) | Fires before the coupon code substep review text. |
+<div className="hook-list">
+
+- [`fc_after_checkout_billing_only_form_inside`](./fc_after_checkout_billing_only_form_inside) Fires after the billing-only checkout fields.
+- [`fc_after_substep_fields_{substep_id}`](./fc_after_substep_fields_substep_id) Fires after the fields inside a checkout substep.
+- [`fc_after_substep_{substep_id}`](./fc_after_substep_substep_id) Fires after a checkout substep.
+- [`fc_before_checkout_billing_only_form`](./fc_before_checkout_billing_only_form) Fires before the billing-only checkout fields.
+- [`fc_before_checkout_shipping_address_wrapper`](./fc_before_checkout_shipping_address_wrapper) Fires before the shipping address wrapper, where the ship-to-different-address option is rendered.
+- [`fc_before_checkout_shipping_only_form`](./fc_before_checkout_shipping_only_form) Fires before the shipping-only checkout fields.
+- [`fc_before_substep_fields_{substep_id}`](./fc_before_substep_fields_substep_id) Fires before the fields inside a checkout substep.
+- [`fc_before_substep_{substep_id}`](./fc_before_substep_substep_id) Fires before a checkout substep.
+- [`fc_checkout_account_after_fields`](./fc_checkout_account_after_fields) Fires after the account creation fields.
+- [`fc_checkout_account_before_fields`](./fc_checkout_account_before_fields) Fires before the account creation fields.
+- [`fc_checkout_account_fields_empty_section`](./fc_checkout_account_fields_empty_section) Fires when the account creation section has no fields to display.
+- [`fc_checkout_after`](./fc_checkout_after) Fires after the checkout form contents.
+- [`fc_checkout_after_contact_fields`](./fc_checkout_after_contact_fields) Fires after the contact fields section.
+- [`fc_checkout_after_main_section`](./fc_checkout_after_main_section) Fires after the main checkout section.
+- [`fc_checkout_after_main_section_wrapper`](./fc_checkout_after_main_section_wrapper) Fires after the main checkout section wrapper.
+- [`fc_checkout_after_order_review`](./fc_checkout_after_order_review) Fires after the order review section.
+- [`fc_checkout_after_order_review_inside`](./fc_checkout_after_order_review_inside) Fires inside the order review section, after its contents.
+- [`fc_checkout_after_order_review_title_after`](./fc_checkout_after_order_review_title_after) Fires after the inner order review title.
+- [`fc_checkout_after_order_review_title_before`](./fc_checkout_after_order_review_title_before) Fires before the inner order review title.
+- [`fc_checkout_after_payment`](./fc_checkout_after_payment) Fires after the payment section.
+- [`fc_checkout_after_step`](./fc_checkout_after_step) Fires after a checkout step element.
+- [`fc_checkout_after_step_billing_fields`](./fc_checkout_after_step_billing_fields) Fires after the billing step fields.
+- [`fc_checkout_after_step_payment_fields`](./fc_checkout_after_step_payment_fields) Fires after the payment step fields.
+- [`fc_checkout_after_step_shipping_fields`](./fc_checkout_after_step_shipping_fields) Fires after the shipping step fields.
+- [`fc_checkout_after_step_shipping_fields_inside`](./fc_checkout_after_step_shipping_fields_inside) Fires inside the shipping step, after its fields.
+- [`fc_checkout_after_steps`](./fc_checkout_after_steps) Fires after the checkout steps.
+- [`fc_checkout_before`](./fc_checkout_before) Fires before the checkout form contents.
+- [`fc_checkout_before_contact_fields`](./fc_checkout_before_contact_fields) Fires before the contact fields section.
+- [`fc_checkout_before_main_section`](./fc_checkout_before_main_section) Fires before the main checkout section.
+- [`fc_checkout_before_main_section_wrapper`](./fc_checkout_before_main_section_wrapper) Fires before the main checkout section wrapper.
+- [`fc_checkout_before_order_review`](./fc_checkout_before_order_review) Fires before the order review section.
+- [`fc_checkout_before_order_review_inside`](./fc_checkout_before_order_review_inside) Fires inside the order review section, before its contents.
+- [`fc_checkout_before_payment`](./fc_checkout_before_payment) Fires before the payment section.
+- [`fc_checkout_before_step`](./fc_checkout_before_step) Fires before a checkout step element.
+- [`fc_checkout_before_step_billing_fields`](./fc_checkout_before_step_billing_fields) Fires before the billing step fields.
+- [`fc_checkout_before_step_payment_fields`](./fc_checkout_before_step_payment_fields) Fires before the payment step fields.
+- [`fc_checkout_before_step_shipping_fields`](./fc_checkout_before_step_shipping_fields) Fires before the shipping step fields.
+- [`fc_checkout_before_step_shipping_fields_inside`](./fc_checkout_before_step_shipping_fields_inside) Fires inside the shipping step, before its fields.
+- [`fc_checkout_before_steps`](./fc_checkout_before_steps) Fires before the checkout steps.
+- [`fc_checkout_below_contact_login_cta`](./fc_checkout_below_contact_login_cta) Fires below the contact step login call to action.
+- [`fc_checkout_contact_after_fields`](./fc_checkout_contact_after_fields) Fires after the contact fields.
+- [`fc_checkout_contact_before_fields`](./fc_checkout_contact_before_fields) Fires before the contact fields.
+- [`fc_checkout_end_step`](./fc_checkout_end_step) Fires at the end of a checkout step, inside the step element.
+- [`fc_checkout_footer`](./fc_checkout_footer) Fires inside the distraction-free checkout footer.
+- [`fc_checkout_footer`](./fc_checkout_footer-2) Fires inside the distraction-free checkout footer.
+- [`fc_checkout_footer_widgets`](./fc_checkout_footer_widgets) Fires where the checkout footer widget area is rendered.
+- [`fc_checkout_footer_widgets_inside_after`](./fc_checkout_footer_widgets_inside_after) Fires after the widgets inside the checkout footer widget area.
+- [`fc_checkout_footer_widgets_inside_before`](./fc_checkout_footer_widgets_inside_before) Fires before the widgets inside the checkout footer widget area.
+- [`fc_checkout_header`](./fc_checkout_header) Fires inside the distraction-free checkout header.
+- [`fc_checkout_header`](./fc_checkout_header-2) Fires inside the distraction-free checkout header.
+- [`fc_checkout_header`](./fc_checkout_header-3) Fires inside the distraction-free checkout header.
+- [`fc_checkout_header_cart_link`](./fc_checkout_header_cart_link) Fires where the checkout header cart link is rendered.
+- [`fc_checkout_header_logo`](./fc_checkout_header_logo) Fires where the checkout header logo is rendered.
+- [`fc_checkout_header_widgets`](./fc_checkout_header_widgets) Fires where the checkout header widget area is rendered.
+- [`fc_checkout_header_widgets_inside_after`](./fc_checkout_header_widgets_inside_after) Fires after the widgets inside the checkout header widget area.
+- [`fc_checkout_header_widgets_inside_before`](./fc_checkout_header_widgets_inside_before) Fires before the widgets inside the checkout header widget area.
+- [`fc_checkout_order_review_actions`](./fc_checkout_order_review_actions) Fires where the order review actions are rendered.
+- [`fc_checkout_order_review_content`](./fc_checkout_order_review_content) Fires where the order review table is rendered.
+- [`fc_checkout_order_review_section`](./fc_checkout_order_review_section) Fires where the order review section is rendered.
+- [`fc_checkout_order_review_sidebar_before_actions`](./fc_checkout_order_review_sidebar_before_actions) Fires before the actions in the order review sidebar.
+- [`fc_checkout_payment`](./fc_checkout_payment) Fires where the payment section is rendered inside the payment step.
+- [`fc_checkout_place_order_terms`](./fc_checkout_place_order_terms) Fires where the terms and conditions checkbox is rendered.
+- [`fc_checkout_social_login`](./fc_checkout_social_login) Fires where social login buttons are rendered on the contact step.
+- [`fc_checkout_start_step`](./fc_checkout_start_step) Fires at the start of a checkout step, inside the step element.
+- [`fc_checkout_steps`](./fc_checkout_steps) Fires inside the checkout form where the checkout steps are rendered.
+- [`fc_coupon_code_section_after`](./fc_coupon_code_section_after) Fires after the coupon code field inside the coupon section.
+- [`fc_coupon_code_section_before`](./fc_coupon_code_section_before) Fires before the coupon code field inside the coupon section.
+- [`fc_dashboard_addons_before_list`](./fc_dashboard_addons_before_list) Fires before the Dashboard add-ons list.
+- [`fc_order_summary_cart_item_details`](./fc_order_summary_cart_item_details) Fires inside each order summary cart item, where the product details are rendered.
+- [`fc_order_summary_cart_item_totals_after`](./fc_order_summary_cart_item_totals_after) Fires after the line total of an order summary cart item.
+- [`fc_order_summary_cart_item_totals_before`](./fc_order_summary_cart_item_totals_before) Fires before the line total of an order summary cart item.
+- [`fc_place_order`](./fc_place_order) Fires where the place-order section is rendered.
+- [`fc_place_order_custom_buttons`](./fc_place_order_custom_buttons) Fires where custom place-order buttons are rendered.
+- [`fc_pro_checkout_review_order_after_coupon_code`](./fc_pro_checkout_review_order_after_coupon_code) Fires after the coupon code row in the checkout order review.
+- [`fc_register_steps`](./fc_register_steps) Fires when checkout steps are registered so other plugins can add or change steps.
+- [`fc_review_order_shipping`](./fc_review_order_shipping) Fires where the chosen shipping method is rendered in the order review.
+- [`fc_shipping_methods_after_packages`](./fc_shipping_methods_after_packages) Fires after the shipping method packages.
+- [`fc_shipping_methods_after_packages_inside`](./fc_shipping_methods_after_packages_inside) Fires inside the shipping methods section, after the packages.
+- [`fc_shipping_methods_before_packages`](./fc_shipping_methods_before_packages) Fires before the shipping method packages.
+- [`fc_shipping_methods_before_packages_inside`](./fc_shipping_methods_before_packages_inside) Fires inside the shipping methods section, before the packages.
+- [`fc_substep_coupon_codes_text_after`](./fc_substep_coupon_codes_text_after) Fires after the coupon code substep review text.
+- [`fc_substep_coupon_codes_text_before`](./fc_substep_coupon_codes_text_before) Fires before the coupon code substep review text.
+
+</div>
 
 ## Filters
 
-| Hook | Description |
-| --- | --- |
-| [`fc_add_container_class`](./fc_add_container_class) | Filters whether the checkout step markup includes the container class. |
-| [`fc_add_payment_method_button_classes`](./fc_add_payment_method_button_classes) | Filters the CSS classes of the add-payment-method button. |
-| [`fc_add_phone_localisation_formats`](./fc_add_phone_localisation_formats) | Filters whether the phone number is added to formatted address formats. |
-| [`fc_add_phone_localisation_formats`](./fc_add_phone_localisation_formats-2) | Filters whether the phone number is added to formatted address formats. |
-| [`fc_addons_catalog`](./fc_addons_catalog) | Filters the add-ons catalog shown on the dashboard. |
-| [`fc_address_field_keys`](./fc_address_field_keys) | Filters the field keys that belong to an address type. |
-| [`fc_address_field_keys_skip_list`](./fc_address_field_keys_skip_list) | Filters the address field keys skipped when formatting an address. |
-| [`fc_{address_type}_same_as_{address_type_alt}_display_substep_review_text_notice`](./fc_address_type_same_as_address_type_alt_display_substep_review_text_notice) | Filters whether to show the "same as the other address" notice in a substep review text. |
-| [`fc_{address_type}_substep_text_address_data`](./fc_address_type_substep_text_address_data) | Filters the address data used to build a substep review text line. |
-| [`fc_admin_notices`](./fc_admin_notices) | Filters the admin notices displayed by Fluid Checkout. |
-| [`fc_admin_tab_fluidcheckout_exists`](./fc_admin_tab_fluidcheckout_exists) | Filters whether the Fluid Checkout settings tab has already been added. |
-| [`fc_apply_address_1_field_description`](./fc_apply_address_1_field_description) | Filters whether the address line 1 field description is replaced. |
-| [`fc_apply_address_2_field_description`](./fc_apply_address_2_field_description) | Filters whether the address line 2 field description and placeholder are replaced. |
-| [`fc_apply_button_colors_styles`](./fc_apply_button_colors_styles) | Filters whether Fluid Checkout button color styles are applied. |
-| [`fc_apply_button_design_styles`](./fc_apply_button_design_styles) | Filters whether Fluid Checkout button design styles are applied. |
-| [`fc_billing_address_substep_position_args`](./fc_billing_address_substep_position_args) | Filters the step and priority used to place the billing address substep. |
-| [`fc_billing_same_as_shipping_display_substep_review_text_notice`](./fc_billing_same_as_shipping_display_substep_review_text_notice) | Filters whether the billing substep review text shows the same-as-shipping notice. |
-| [`fc_billing_same_as_shipping_field_keys`](./fc_billing_same_as_shipping_field_keys) | Filters the billing field keys copied from the shipping address. |
-| [`fc_billing_same_as_shipping_field_value`](./fc_billing_same_as_shipping_field_value) | Filters a billing field value copied from the matching shipping field. |
-| [`fc_billing_same_as_shipping_field_value`](./fc_billing_same_as_shipping_field_value-2) | Filters a billing field value copied from the matching shipping field. |
-| [`fc_billing_same_as_shipping_option_label`](./fc_billing_same_as_shipping_option_label) | Filters the label of the "same as shipping address" option. |
-| [`fc_billing_same_as_shipping_skip_fields`](./fc_billing_same_as_shipping_skip_fields) | Filters the billing field keys that are not copied from the shipping address. |
-| [`fc_billing_step_hook_priority`](./fc_billing_step_hook_priority) | Filters the priority of the billing checkout step. |
-| [`fc_cart_has_multiple_packages`](./fc_cart_has_multiple_packages) | Filters whether the cart is treated as having multiple shipping packages. |
-| [`fc_cart_has_multiple_packages`](./fc_cart_has_multiple_packages-2) | Filters whether the cart is treated as having multiple shipping packages. |
-| [`fc_checkout_account_creation_notice_message`](./fc_checkout_account_creation_notice_message) | Filters the notice shown when an account will be created at checkout. |
-| [`fc_checkout_address_i18n_override_locale_attributes`](./fc_checkout_address_i18n_override_locale_attributes) | Filters which attributes to globally override for address i18n locale information. |
-| [`fc_checkout_address_i18n_override_locale_field_attributes`](./fc_checkout_address_i18n_override_locale_field_attributes) | Filters which attributes to override for specific checkout fields on address i18n locale information. |
-| [`fc_checkout_address_i18n_override_locale_required_attribute`](./fc_checkout_address_i18n_override_locale_required_attribute) | Filters whether to override the `required` attribute for address i18n locale information. |
-| [`fc_checkout_billing_collapsible_initial_state`](./fc_checkout_billing_collapsible_initial_state) | Filters the initial expanded or collapsed state of the billing section. |
-| [`fc_checkout_body_custom_attributes`](./fc_checkout_body_custom_attributes) | Filters custom attributes added to the checkout body element. |
-| [`fc_checkout_body_custom_attributes`](./fc_checkout_body_custom_attributes-2) | Filters custom attributes added to the checkout body element. |
-| [`fc_checkout_column_layout`](./fc_checkout_column_layout) | Filters the checkout column layout slug. |
-| [`fc_checkout_contact_login_link_classes`](./fc_checkout_contact_login_link_classes) | Filters the CSS classes of the checkout contact-step login link. |
-| [`fc_checkout_contact_step_field_ids`](./fc_checkout_contact_step_field_ids) | Filters the field keys displayed in the contact step. |
-| [`fc_checkout_coupons_script_settings`](./fc_checkout_coupons_script_settings) | Filters the coupon code settings passed to the frontend script. |
-| [`fc_checkout_coupons_script_settings`](./fc_checkout_coupons_script_settings-2) | Filters the coupon code settings passed to the frontend script. |
-| [`fc_checkout_display_create_account_optional_label`](./fc_checkout_display_create_account_optional_label) | Filters whether the account creation section shows an "optional" label. |
-| [`fc_checkout_email_field_description`](./fc_checkout_email_field_description) | Filters the description of the billing email field. |
-| [`fc_checkout_email_fields_for_mailcheck`](./fc_checkout_email_fields_for_mailcheck) | Filters the field keys that receive email typo suggestions. |
-| [`fc_checkout_field_args`](./fc_checkout_field_args) | Filters the argument overrides applied to checkout fields. |
-| [`fc_checkout_general_settings`](./fc_checkout_general_settings) | Filters the checkout settings fields. |
-| [`fc_checkout_header_cart_link_label_html`](./fc_checkout_header_cart_link_label_html) | Filters the HTML label of the checkout header cart link. |
-| [`fc_checkout_header_logo_home_url`](./fc_checkout_header_logo_home_url) | Filters the URL used by the checkout header logo. |
-| [`fc_checkout_header_logo_home_url`](./fc_checkout_header_logo_home_url-2) | Filters the URL used by the checkout header logo. |
-| [`fc_checkout_header_logo_home_url`](./fc_checkout_header_logo_home_url-3) | Filters the URL used by the checkout header logo. |
-| [`fc_checkout_header_logo_home_url`](./fc_checkout_header_logo_home_url-4) | Filters the URL used by the checkout header logo. |
-| [`fc_checkout_html_custom_attributes`](./fc_checkout_html_custom_attributes) | Filters custom attributes added to the checkout root HTML element. |
-| [`fc_checkout_html_custom_attributes`](./fc_checkout_html_custom_attributes-2) | Filters custom attributes added to the checkout root HTML element. |
-| [`fc_checkout_is_valid_phone_number`](./fc_checkout_is_valid_phone_number) | Filters whether a checkout phone number passes validation. |
-| [`fc_checkout_login_button_classes`](./fc_checkout_login_button_classes) | Filters the CSS classes of the login submit button. |
-| [`fc_checkout_login_button_label`](./fc_checkout_login_button_label) | Filters the login button label at checkout. |
-| [`fc_checkout_login_button_label`](./fc_checkout_login_button_label-2) | Filters the login button label at checkout. |
-| [`fc_checkout_login_cta_text`](./fc_checkout_login_cta_text) | Filters the call-to-action text prompting customers to log in. |
-| [`fc_checkout_login_fields_unique_id`](./fc_checkout_login_fields_unique_id) | Filters the unique ID suffix used by the checkout login fields. |
-| [`fc_checkout_login_input_classes`](./fc_checkout_login_input_classes) | Filters extra CSS classes for the checkout login inputs. |
-| [`fc_checkout_login_input_classes`](./fc_checkout_login_input_classes-2) | Filters extra CSS classes for the checkout login inputs. |
-| [`fc_checkout_login_modal_title`](./fc_checkout_login_modal_title) | Filters the title of the checkout login modal. |
-| [`fc_checkout_login_script_settings`](./fc_checkout_login_script_settings) | Filters the login settings passed to the frontend script. |
-| [`fc_checkout_login_separator_text`](./fc_checkout_login_separator_text) | Filters the separator text in the checkout login prompt. |
-| [`fc_checkout_login_separator_text`](./fc_checkout_login_separator_text-2) | Filters the separator text in the checkout login prompt. |
-| [`fc_checkout_maybe_disable_place_order_button`](./fc_checkout_maybe_disable_place_order_button) | Filters whether the place order button is disabled until the last checkout step. |
-| [`fc_checkout_maybe_disable_place_order_button`](./fc_checkout_maybe_disable_place_order_button-2) | Filters whether the place order button is disabled until the last checkout step. |
-| [`fc_checkout_maybe_disable_place_order_button`](./fc_checkout_maybe_disable_place_order_button-3) | Filters whether the place order button is disabled until the last checkout step. |
-| [`fc_checkout_no_shipping_method_chosen_html`](./fc_checkout_no_shipping_method_chosen_html) | Filters the placeholder shown when no shipping method has been chosen. |
-| [`fc_checkout_page_title`](./fc_checkout_page_title) | Filters the checkout page title. |
-| [`fc_checkout_progress_bar_attributes`](./fc_checkout_progress_bar_attributes) | Filters the HTML attributes of the checkout progress bar. |
-| [`fc_checkout_progress_bar_display_count`](./fc_checkout_progress_bar_display_count) | Filters whether the progress bar shows the current step number. |
-| [`fc_checkout_progress_bar_inner_attributes`](./fc_checkout_progress_bar_inner_attributes) | Filters the HTML attributes of the inner progress bar element. |
-| [`fc_checkout_progress_bar_style`](./fc_checkout_progress_bar_style) | Filters the progress bar style slug. |
-| [`fc_checkout_script_settings`](./fc_checkout_script_settings) | Filters the checkout behavior settings passed to the frontend script. |
-| [`fc_checkout_shipping_collapsible_initial_state`](./fc_checkout_shipping_collapsible_initial_state) | Filters the initial expanded or collapsed state of the shipping section. |
-| [`fc_checkout_sidebar_attributes`](./fc_checkout_sidebar_attributes) | Filters the HTML attributes of the checkout sidebar. |
-| [`fc_checkout_sidebar_attributes_inner`](./fc_checkout_sidebar_attributes_inner) | Filters the HTML attributes of the inner checkout sidebar element. |
-| [`fc_checkout_social_login_separator_text`](./fc_checkout_social_login_separator_text) | Filters the separator text above the social login buttons. |
-| [`fc_checkout_step_attributes`](./fc_checkout_step_attributes) | Filters the HTML attributes of a checkout step element. |
-| [`fc_checkout_steps_script_settings`](./fc_checkout_steps_script_settings) | Filters the checkout step settings passed to the frontend script. |
-| [`fc_checkout_update_before_unload`](./fc_checkout_update_before_unload) | Filters whether checkout fragments update before the page unloads. |
-| [`fc_checkout_update_fields_selectors`](./fc_checkout_update_fields_selectors) | Filters the CSS selectors of fields that trigger a checkout update. |
-| [`fc_checkout_update_on_visibility_change`](./fc_checkout_update_on_visibility_change) | Filters whether checkout fragments update when the page becomes visible again. |
-| [`fc_checkout_validation_brazilian_documents_script_settings`](./fc_checkout_validation_brazilian_documents_script_settings) | Filters the Brazilian CPF and CNPJ validation settings passed to the frontend script. |
-| [`fc_checkout_validation_script_settings`](./fc_checkout_validation_script_settings) | Filters the checkout field validation settings passed to the frontend script. |
-| [`fc_checkout_wrapper_inside_element_custom_attributes`](./fc_checkout_wrapper_inside_element_custom_attributes) | Filters custom attributes added inside the checkout form wrapper. |
-| [`fc_compat_dibs_easy_skip_undo_hooks_classes`](./fc_compat_dibs_easy_skip_undo_hooks_classes) | Filters the classes whose checkout hooks are not restored when leaving Nets Easy. |
-| [`fc_compat_dibs_easy_skip_undo_hooks_early_classes`](./fc_compat_dibs_easy_skip_undo_hooks_early_classes) | Filters the classes whose checkout hooks are not restored early when leaving Nets Easy. |
-| [`fc_compat_dintero_checkout_skip_undo_hooks_classes`](./fc_compat_dintero_checkout_skip_undo_hooks_classes) | Filters the classes whose checkout hooks are not restored when leaving Dintero Checkout. |
-| [`fc_compat_dintero_checkout_skip_undo_hooks_early_classes`](./fc_compat_dintero_checkout_skip_undo_hooks_early_classes) | Filters the classes whose checkout hooks are not restored early when leaving Dintero Checkout. |
-| [`fc_compat_klarna_checkout_skip_undo_hooks_classes`](./fc_compat_klarna_checkout_skip_undo_hooks_classes) | Filters the classes whose checkout hooks are not restored when leaving Klarna Checkout or Svea Checkout. |
-| [`fc_compat_klarna_checkout_skip_undo_hooks_classes`](./fc_compat_klarna_checkout_skip_undo_hooks_classes-2) | Filters the classes whose checkout hooks are not restored when leaving Klarna Checkout or Svea Checkout. |
-| [`fc_compat_klarna_checkout_skip_undo_hooks_early_classes`](./fc_compat_klarna_checkout_skip_undo_hooks_early_classes) | Filters the classes whose checkout hooks are not restored early when leaving Klarna Checkout or Svea Checkout. |
-| [`fc_compat_klarna_checkout_skip_undo_hooks_early_classes`](./fc_compat_klarna_checkout_skip_undo_hooks_early_classes-2) | Filters the classes whose checkout hooks are not restored early when leaving Klarna Checkout or Svea Checkout. |
-| [`fc_compat_payson_checkout_skip_undo_hooks_classes`](./fc_compat_payson_checkout_skip_undo_hooks_classes) | Filters the classes whose checkout hooks are not restored when leaving Payson Checkout. |
-| [`fc_compat_payson_checkout_skip_undo_hooks_early_classes`](./fc_compat_payson_checkout_skip_undo_hooks_early_classes) | Filters the classes whose checkout hooks are not restored early when leaving Payson Checkout. |
-| [`fc_compat_theme_woodmart_disable_theme_checkout_options`](./fc_compat_theme_woodmart_disable_theme_checkout_options) | Filters whether WoodMart checkout options are disabled while Fluid Checkout is active. |
-| [`fc_compat_wcbcf_disable_marked_input_phone_feature`](./fc_compat_wcbcf_disable_marked_input_phone_feature) | Filters whether the Brazilian Market masked phone input is disabled. |
-| [`fc_content_section_class`](./fc_content_section_class) | Filters extra CSS classes for the checkout content wrapper. |
-| [`fc_content_section_class`](./fc_content_section_class-2) | Filters extra CSS classes for the checkout content wrapper. |
-| [`fc_copy_billing_to_shipping_address_when_shipping_not_needed`](./fc_copy_billing_to_shipping_address_when_shipping_not_needed) | Filters whether the billing address is copied to shipping when the cart does not need shipping. |
-| [`fc_copy_billing_to_shipping_address_when_shipping_not_needed`](./fc_copy_billing_to_shipping_address_when_shipping_not_needed-2) | Filters whether the billing address is copied to shipping when the cart does not need shipping. |
-| [`fc_coupon_code_apply_button_classes`](./fc_coupon_code_apply_button_classes) | Filters the CSS classes of the apply-coupon button. |
-| [`fc_coupon_code_button_label`](./fc_coupon_code_button_label) | Filters the apply-coupon button label. |
-| [`fc_coupon_code_displayed_as_substep`](./fc_coupon_code_displayed_as_substep) | Filters whether coupon codes are displayed as a checkout substep. |
-| [`fc_coupon_code_error_message_dismiss_button`](./fc_coupon_code_error_message_dismiss_button) | Filters the dismiss button HTML for a coupon error message. |
-| [`fc_coupon_code_error_message_dismiss_button_enabled`](./fc_coupon_code_error_message_dismiss_button_enabled) | Filters whether coupon error messages include a dismiss button. |
-| [`fc_coupon_code_field_description`](./fc_coupon_code_field_description) | Filters the coupon code field description. |
-| [`fc_coupon_code_field_initially_expanded`](./fc_coupon_code_field_initially_expanded) | Filters whether the coupon code field starts expanded. |
-| [`fc_coupon_code_field_label`](./fc_coupon_code_field_label) | Filters the coupon code field label. |
-| [`fc_coupon_code_field_placeholder`](./fc_coupon_code_field_placeholder) | Filters the coupon code field placeholder. |
-| [`fc_coupon_code_substep_priority`](./fc_coupon_code_substep_priority) | Filters the priority of the coupon code substep. |
-| [`fc_coupon_code_substep_step_id`](./fc_coupon_code_substep_step_id) | Filters the checkout step ID where the coupon code substep is registered. |
-| [`fc_css_variables`](./fc_css_variables) | Filters the CSS variables output for Fluid Checkout design templates. |
-| [`fc_{current_section}_settings`](./fc_current_section_settings) | Filters the settings for one Fluid Checkout admin section. |
-| [`fc_{current_section}_settings`](./fc_current_section_settings-2) | Filters the settings for one Fluid Checkout admin section. |
-| [`fc_{current_section}_settings`](./fc_current_section_settings-3) | Filters the settings for one Fluid Checkout admin section. |
-| [`fc_{current_section}_settings_add`](./fc_current_section_settings_add) | Filters extra settings rows appended to a Fluid Checkout settings section. |
-| [`fc_customer_meta_data_clear_fields_order_processed`](./fc_customer_meta_data_clear_fields_order_processed) | Filters the customer meta keys cleared after the order is processed. |
-| [`fc_customer_persisted_data_clear_all_fields_skip_list`](./fc_customer_persisted_data_clear_all_fields_skip_list) | Filters the persisted field keys that are not cleared. |
-| [`fc_customer_persisted_data_clear_fields_order_processed`](./fc_customer_persisted_data_clear_fields_order_processed) | Filters the persisted checkout field keys cleared after the order is processed. |
-| [`fc_customer_persisted_data_session_field_keys`](./fc_customer_persisted_data_session_field_keys) | Filters the checkout field keys saved in the customer session. |
-| [`fc_customer_persisted_data_skip_fields`](./fc_customer_persisted_data_skip_fields) | Filters the checkout field keys that are not restored from the session. |
-| [`fc_dashboard_addon_actions_html`](./fc_dashboard_addon_actions_html) | Filters the Dashboard add-on card action HTML. |
-| [`fc_default_locale_field_args`](./fc_default_locale_field_args) | Filters the default field arguments applied for the current locale. |
-| [`fc_default_option_values`](./fc_default_option_values) | Filters the default values for Fluid Checkout options. |
-| [`fc_default_to_billing_same_as_shipping`](./fc_default_to_billing_same_as_shipping) | Filters whether the "same address" checkbox starts checked. |
-| [`fc_default_to_billing_same_as_shipping`](./fc_default_to_billing_same_as_shipping-2) | Filters whether the "same address" checkbox starts checked. |
-| [`fc_design_template_option_image_url`](./fc_design_template_option_image_url) | Filters the preview image URL of a design template option in settings. |
-| [`fc_display_checkout_page_title`](./fc_display_checkout_page_title) | Filters whether the checkout page title is visible. |
-| [`fc_do_order_notes_hooks_position`](./fc_do_order_notes_hooks_position) | Filters the hook used to render the order notes section. |
-| [`fc_do_order_notes_hooks_position`](./fc_do_order_notes_hooks_position-2) | Filters the hook used to render the order notes section. |
-| [`fc_do_order_notes_hooks_priority`](./fc_do_order_notes_hooks_priority) | Filters the priority used to render the order notes section. |
-| [`fc_do_order_notes_hooks_priority`](./fc_do_order_notes_hooks_priority-2) | Filters the priority used to render the order notes section. |
-| [`fc_enable_checkout_ajax_login`](./fc_enable_checkout_ajax_login) | Filters whether AJAX login is enabled at checkout. |
-| [`fc_enable_checkout_email_mailcheck`](./fc_enable_checkout_email_mailcheck) | Filters whether email typo suggestions are enabled at checkout. |
-| [`fc_enable_checkout_page_template`](./fc_enable_checkout_page_template) | Filters whether the distraction-free checkout page template is used. |
-| [`fc_enable_checkout_shortcode_wrapper`](./fc_enable_checkout_shortcode_wrapper) | Filters whether the checkout shortcode output is wrapped in the content container. |
-| [`fc_enable_compat_plugin_edit_address_style_{plugin_slug}`](./fc_enable_compat_plugin_edit_address_style_plugin_slug) | Filters whether to enqueue a plugin compatibility stylesheet on the account edit-address screen. |
-| [`fc_enable_compat_plugin_{plugin_slug}`](./fc_enable_compat_plugin_plugin_slug) | Filters whether to load a plugin compatibility class. |
-| [`fc_enable_compat_plugin_style_{plugin_slug}`](./fc_enable_compat_plugin_style_plugin_slug) | Filters whether to enqueue a plugin compatibility stylesheet on checkout and account screens. |
-| [`fc_enable_compat_theme_account_style_{theme_slug}`](./fc_enable_compat_theme_account_style_theme_slug) | Filters whether to enqueue a theme compatibility stylesheet on customer account screens. |
-| [`fc_enable_compat_theme_edit_address_style_{theme_slug}`](./fc_enable_compat_theme_edit_address_style_theme_slug) | Filters whether to enqueue a theme compatibility stylesheet on the account edit-address screen. |
-| [`fc_enable_compat_theme_style_{theme_slug}`](./fc_enable_compat_theme_style_theme_slug) | Filters whether to enqueue a theme compatibility stylesheet on checkout and account screens. |
-| [`fc_enable_compat_theme_{theme_slug}`](./fc_enable_compat_theme_theme_slug) | Filters whether to load a theme compatibility class. |
-| [`fc_enable_dark_mode_styles`](./fc_enable_dark_mode_styles) | Filters whether dark mode styles are applied. |
-| [`fc_enable_fragments_refresh`](./fc_enable_fragments_refresh) | Filters whether the checkout fragment-refresh feature is enabled. |
-| [`fc_enable_fragments_refresh`](./fc_enable_fragments_refresh-2) | Filters whether the checkout fragment-refresh feature is enabled. |
-| [`fc_enable_order_summary_cart_item_unit_price`](./fc_enable_order_summary_cart_item_unit_price) | Filters whether the order summary shows the cart item unit price. |
-| [`fc_expansible_section_toggle_label_add_optional_text`](./fc_expansible_section_toggle_label_add_optional_text) | Filters whether every expansible section toggle label includes the "optional" text. |
-| [`fc_expansible_section_toggle_label_{key}`](./fc_expansible_section_toggle_label_key) | Filters the toggle label of an expansible section. |
-| [`fc_expansible_section_toggle_label_{key}_add_optional_text`](./fc_expansible_section_toggle_label_key_add_optional_text) | Filters whether to append the "optional" text to one expansible section toggle label. |
-| [`fc_expansible_section_toggle_label_{section_id}`](./fc_expansible_section_toggle_label_section_id) | Filters the toggle label of an expansible section. |
-| [`fc_fix_zoom_in_form_fields_mobile_devices`](./fc_fix_zoom_in_form_fields_mobile_devices) | Filters whether form fields use a 16px font size to prevent mobile browsers from zooming in. |
-| [`fc_fix_zoom_in_form_fields_mobile_devices`](./fc_fix_zoom_in_form_fields_mobile_devices-2) | Filters whether form fields use a 16px font size to prevent mobile browsers from zooming in. |
-| [`fc_formatted_address_replacements_custom_field_keys`](./fc_formatted_address_replacements_custom_field_keys) | Filters the custom field keys added to formatted address replacements. |
-| [`fc_fragments_update_settings`](./fc_fragments_update_settings) | Filters the fragment-refresh settings passed to the frontend script. |
-| [`fc_get_checkout_layout`](./fc_get_checkout_layout) | Filters the checkout layout slug. |
-| [`fc_get_checkout_steps_before`](./fc_get_checkout_steps_before) | Filters the checkout steps list before the default steps are returned. |
-| [`fc_hide_optional_fields_skip_by_class`](./fc_hide_optional_fields_skip_by_class) | Filters the CSS classes that keep an optional field visible. |
-| [`fc_hide_optional_fields_skip_field`](./fc_hide_optional_fields_skip_field) | Filters whether a single optional field is excluded from being collapsed. |
-| [`fc_hide_optional_fields_skip_list`](./fc_hide_optional_fields_skip_list) | Filters the field keys that are not hidden when optional fields are collapsed. |
-| [`fc_hide_optional_fields_skip_types`](./fc_hide_optional_fields_skip_types) | Filters the field types that are not collapsed behind an "Add" link. |
-| [`fc_integration_woo_checkout_field_editor_pro_enable_edit_address_changes`](./fc_integration_woo_checkout_field_editor_pro_enable_edit_address_changes) | Filters whether Checkout Field Editor Pro changes are applied on the edit-address screen. |
-| [`fc_integrations_woocommerce_smart_coupons_settings`](./fc_integrations_woocommerce_smart_coupons_settings) | Filters the Smart Coupons integration settings. |
-| [`fc_is_billing_address_available_for_shipping`](./fc_is_billing_address_available_for_shipping) | Filters whether the billing address can be used as the shipping address. |
-| [`fc_is_billing_address_before_shipping_address`](./fc_is_billing_address_before_shipping_address) | Filters whether the billing address is displayed before the shipping address. |
-| [`fc_is_billing_address_data_same_as_shipping_before`](./fc_is_billing_address_data_same_as_shipping_before) | Filters the early result of comparing billing address data with the shipping address. |
-| [`fc_is_billing_address_forced_same_as_shipping_address`](./fc_is_billing_address_forced_same_as_shipping_address) | Filters whether the billing address is forced to match the shipping address. |
-| [`fc_is_billing_same_as_shipping_checked`](./fc_is_billing_same_as_shipping_checked) | Filters whether the billing address is the same as the shipping address. |
-| [`fc_is_cart_page_or_fragment`](./fc_is_cart_page_or_fragment) | Filters whether the current request is the cart page or a cart fragment. |
-| [`fc_is_checkout_layout_multistep`](./fc_is_checkout_layout_multistep) | Filters whether the checkout uses the multi-step layout. |
-| [`fc_is_checkout_page_or_fragment`](./fc_is_checkout_page_or_fragment) | Filters whether the current request is the checkout page or a checkout fragment. |
-| [`fc_is_current_step`](./fc_is_current_step) | Filters whether a checkout step is the current step. |
-| [`fc_is_shipping_address_available_for_billing`](./fc_is_shipping_address_available_for_billing) | Filters whether the shipping address can be used as the billing address. |
-| [`fc_is_shipping_address_data_same_as_billing_before`](./fc_is_shipping_address_data_same_as_billing_before) | Filters the early result of comparing shipping address data with the billing address. |
-| [`fc_is_shipping_same_as_billing_checked`](./fc_is_shipping_same_as_billing_checked) | Filters whether the shipping address is the same as the billing address. |
-| [`fc_is_step_complete`](./fc_is_step_complete) | Filters whether a checkout step is complete. |
-| [`fc_is_step_complete_{step_id}`](./fc_is_step_complete_step_id) | Filters whether a checkout step is complete. |
-| [`fc_is_substep_complete_billing_address_field_keys_skip_list`](./fc_is_substep_complete_billing_address_field_keys_skip_list) | Filters whether substep complete billing address field keys skip list. |
-| [`fc_is_substep_complete_shipping_address_field_keys_skip_list`](./fc_is_substep_complete_shipping_address_field_keys_skip_list) | Filters whether substep complete shipping address field keys skip list. |
-| [`fc_is_substep_complete_{substep_id}`](./fc_is_substep_complete_substep_id) | Filters whether a checkout substep is complete. |
-| [`fc_is_substep_complete_{substep_id}`](./fc_is_substep_complete_substep_id-2) | Filters whether a checkout substep is complete. |
-| [`fc_is_substep_complete_{substep_id}`](./fc_is_substep_complete_substep_id-3) | Filters whether a checkout substep is complete. |
-| [`fc_is_substep_complete_{substep_id}`](./fc_is_substep_complete_substep_id-4) | Filters whether a checkout substep is complete. |
-| [`fc_is_substep_complete_{substep_id}`](./fc_is_substep_complete_substep_id-5) | Filters whether a checkout substep is complete. |
-| [`fc_js_settings`](./fc_js_settings) | Filters the JavaScript settings passed to the Fluid Checkout frontend script. |
-| [`fc_layout_selector_option_image_url`](./fc_layout_selector_option_image_url) | Filters the URL for the layout selector option image. |
-| [`fc_locale_language_variant`](./fc_locale_language_variant) | Filters the locale used for each language variant when loading translations. |
-| [`fc_login_form_class`](./fc_login_form_class) | Filters the CSS class for the login form. |
-| [`fc_login_form_inner_class`](./fc_login_form_inner_class) | Filters the CSS class for the login form inner. |
-| [`fc_login_form_wrapper_class`](./fc_login_form_wrapper_class) | Filters the CSS class for the login form wrapper. |
-| [`fc_mailcheck_suggestion_message`](./fc_mailcheck_suggestion_message) | Filters the email typo suggestion message. |
-| [`fc_next_step_button_classes`](./fc_next_step_button_classes) | Filters the CSS classes for the next step button. |
-| [`fc_next_step_button_label`](./fc_next_step_button_label) | Filters the label of the button that proceeds to the next checkout step. |
-| [`fc_no_order_notes_order_review_notice`](./fc_no_order_notes_order_review_notice) | Filters the no order notes order review notice. |
-| [`fc_no_substep_review_text_notice`](./fc_no_substep_review_text_notice) | Filters the no substep review text notice. |
-| [`fc_no_validation_icon_field_keys`](./fc_no_validation_icon_field_keys) | Filters the no validation icon field keys. |
-| [`fc_no_validation_icon_field_types`](./fc_no_validation_icon_field_types) | Filters the no validation icon field types. |
-| [`fc_order_review_title`](./fc_order_review_title) | Filters the order review title. |
-| [`fc_order_summary_continue_button_classes`](./fc_order_summary_continue_button_classes) | Filters the CSS classes of the order summary continue button. |
-| [`fc_order_summary_display_desktop_edit_cart_link`](./fc_order_summary_display_desktop_edit_cart_link) | Filters the order summary display desktop edit cart link. |
-| [`fc_order_summary_shipping_package_name`](./fc_order_summary_shipping_package_name) | Filters the order summary shipping package name. |
-| [`fc_order_summary_shipping_package_price_html`](./fc_order_summary_shipping_package_price_html) | Filters the HTML for the order summary shipping package price. |
-| [`fc_output_billing_same_as_shipping_as_hidden_field`](./fc_output_billing_same_as_shipping_as_hidden_field) | Filters the output billing same as shipping as hidden field. |
-| [`fc_output_checkout_contact_login_cta_section`](./fc_output_checkout_contact_login_cta_section) | Filters whether the contact step shows the login call to action. |
-| [`fc_output_checkout_contact_logout_cta_section`](./fc_output_checkout_contact_logout_cta_section) | Filters whether the contact step shows the logout call to action for logged-in customers. |
-| [`fc_output_custom_styles`](./fc_output_custom_styles) | Filters the custom CSS output for the checkout design. |
-| [`fc_output_shipping_same_as_billing_as_hidden_field`](./fc_output_shipping_same_as_billing_as_hidden_field) | Filters the output shipping same as billing as hidden field. |
-| [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file) | Filters whether a theme template file may replace a plugin template. |
-| [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-10) | Filters whether a theme template file may replace a plugin template. |
-| [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-2) | Filters whether a theme template file may replace a plugin template. |
-| [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-3) | Filters whether a theme template file may replace a plugin template. |
-| [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-4) | Filters whether a theme template file may replace a plugin template. |
-| [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-5) | Filters whether a theme template file may replace a plugin template. |
-| [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-6) | Filters whether a theme template file may replace a plugin template. |
-| [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-7) | Filters whether a theme template file may replace a plugin template. |
-| [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-8) | Filters whether a theme template file may replace a plugin template. |
-| [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-9) | Filters whether a theme template file may replace a plugin template. |
-| [`fc_parsed_posted_data_reset_field_keys`](./fc_parsed_posted_data_reset_field_keys) | Filters the parsed posted data reset field keys. |
-| [`fc_payment_method_review_text_{chosen_method_key}`](./fc_payment_method_review_text_chosen_method_key) | Filters the review text for the chosen payment method. |
-| [`fc_payment_not_needed_message`](./fc_payment_not_needed_message) | Filters the message shown when the order total does not require payment. |
-| [`fc_place_order_button_classes`](./fc_place_order_button_classes) | Filters the CSS classes for the place order button. |
-| [`fc_place_order_button_classes`](./fc_place_order_button_classes-2) | Filters the CSS classes for the place order button. |
-| [`fc_pro_cart_settings`](./fc_pro_cart_settings) | Filters the cart settings. |
-| [`fc_pro_checkout_review_order_table_classes`](./fc_pro_checkout_review_order_table_classes) | Filters extra CSS classes on the checkout order review table. |
-| [`fc_pro_order_details_customer_billing_address_formatted`](./fc_pro_order_details_customer_billing_address_formatted) | Filters the formatted billing address shown in order details. |
-| [`fc_pro_order_details_customer_billing_address_formatted`](./fc_pro_order_details_customer_billing_address_formatted-2) | Filters the formatted billing address shown in order details. |
-| [`fc_pro_order_details_customer_billing_address_label`](./fc_pro_order_details_customer_billing_address_label) | Filters the billing address label shown in order details. |
-| [`fc_pro_order_details_customer_billing_address_label`](./fc_pro_order_details_customer_billing_address_label-2) | Filters the billing address label shown in order details. |
-| [`fc_pro_order_details_customer_information_show_shipping`](./fc_pro_order_details_customer_information_show_shipping) | Filters whether the shipping address column is shown in order details. |
-| [`fc_pro_order_details_customer_information_show_shipping`](./fc_pro_order_details_customer_information_show_shipping-2) | Filters whether the shipping address column is shown in order details. |
-| [`fc_pro_order_details_customer_shipping_address_formatted`](./fc_pro_order_details_customer_shipping_address_formatted) | Filters the formatted shipping address shown in order details. |
-| [`fc_pro_order_details_customer_shipping_address_formatted`](./fc_pro_order_details_customer_shipping_address_formatted-2) | Filters the formatted shipping address shown in order details. |
-| [`fc_pro_order_details_customer_shipping_address_label`](./fc_pro_order_details_customer_shipping_address_label) | Filters the shipping address label shown in order details. |
-| [`fc_pro_order_details_customer_shipping_address_label`](./fc_pro_order_details_customer_shipping_address_label-2) | Filters the shipping address label shown in order details. |
-| [`fc_pro_order_pay_settings`](./fc_pro_order_pay_settings) | Filters the order pay settings. |
-| [`fc_pro_order_received_settings`](./fc_pro_order_received_settings) | Filters the order received settings. |
-| [`fc_proceed_to_next_step_button_label`](./fc_proceed_to_next_step_button_label) | Filters the label of the button that proceeds to the next checkout step. |
-| [`fc_progress_bar_step_title_{step_id}`](./fc_progress_bar_step_title_step_id) | Filters the progress bar label of a checkout step. |
-| [`fc_register_checkout_step_args`](./fc_register_checkout_step_args) | Filters the register checkout step args. |
-| [`fc_register_checkout_substep_args`](./fc_register_checkout_substep_args) | Filters the register checkout substep args. |
-| [`fc_save_new_address_data_billing_skip_update`](./fc_save_new_address_data_billing_skip_update) | Filters the save new address data billing skip update. |
-| [`fc_save_new_address_data_shipping_skip_update`](./fc_save_new_address_data_shipping_skip_update) | Filters the save new address data shipping skip update. |
-| [`fc_select2_field_types`](./fc_select2_field_types) | Filters the select2 field types. |
-| [`fc_set_parsed_posted_data`](./fc_set_parsed_posted_data) | Filters the parsed checkout form data before it is stored. |
-| [`fc_shipping_method_description_html_element`](./fc_shipping_method_description_html_element) | Filters the shipping method description HTML element. |
-| [`fc_shipping_method_description_html_element`](./fc_shipping_method_description_html_element-2) | Filters the shipping method description HTML element. |
-| [`fc_shipping_method_display_package_content_substep_text_lines`](./fc_shipping_method_display_package_content_substep_text_lines) | Filters the shipping method display package content substep text lines. |
-| [`fc_shipping_method_display_package_destination_substep_text_lines`](./fc_shipping_method_display_package_destination_substep_text_lines) | Filters whether the package destination is included in the shipping method review text. |
-| [`fc_shipping_method_display_package_name`](./fc_shipping_method_display_package_name) | Filters whether the shipping package name is displayed. |
-| [`fc_shipping_method_has_cost`](./fc_shipping_method_has_cost) | Filters the shipping method has cost. |
-| [`fc_shipping_method_has_cost`](./fc_shipping_method_has_cost-2) | Filters the shipping method has cost. |
-| [`fc_shipping_method_option_description`](./fc_shipping_method_option_description) | Filters the description of a shipping method option. |
-| [`fc_shipping_method_option_description_markup`](./fc_shipping_method_option_description_markup) | Filters the HTML for the shipping method option description. |
-| [`fc_shipping_method_option_end_tag_markup`](./fc_shipping_method_option_end_tag_markup) | Filters the closing markup of the shipping method options list. |
-| [`fc_shipping_method_option_end_tag_markup`](./fc_shipping_method_option_end_tag_markup-2) | Filters the closing markup of the shipping method options list. |
-| [`fc_shipping_method_option_image_html`](./fc_shipping_method_option_image_html) | Filters the HTML for the shipping method option image. |
-| [`fc_shipping_method_option_image_html`](./fc_shipping_method_option_image_html-2) | Filters the HTML for the shipping method option image. |
-| [`fc_shipping_method_option_image_markup`](./fc_shipping_method_option_image_markup) | Filters the HTML for the shipping method option image. |
-| [`fc_shipping_method_option_image_markup`](./fc_shipping_method_option_image_markup-2) | Filters the HTML for the shipping method option image. |
-| [`fc_shipping_method_option_label_markup`](./fc_shipping_method_option_label_markup) | Filters the label markup of a shipping method option. |
-| [`fc_shipping_method_option_label_markup`](./fc_shipping_method_option_label_markup-2) | Filters the label markup of a shipping method option. |
-| [`fc_shipping_method_option_markup`](./fc_shipping_method_option_markup) | Filters the HTML for the shipping method option. |
-| [`fc_shipping_method_option_markup`](./fc_shipping_method_option_markup-2) | Filters the HTML for the shipping method option. |
-| [`fc_shipping_method_option_price`](./fc_shipping_method_option_price) | Filters the shipping method option price. |
-| [`fc_shipping_method_option_price`](./fc_shipping_method_option_price-2) | Filters the shipping method option price. |
-| [`fc_shipping_method_option_price_markup`](./fc_shipping_method_option_price_markup) | Filters the HTML for the shipping method option price. |
-| [`fc_shipping_method_option_price_markup`](./fc_shipping_method_option_price_markup-2) | Filters the HTML for the shipping method option price. |
-| [`fc_shipping_method_option_start_tag_markup`](./fc_shipping_method_option_start_tag_markup) | Filters the opening markup of the shipping method options list. |
-| [`fc_shipping_method_option_start_tag_markup`](./fc_shipping_method_option_start_tag_markup-2) | Filters the opening markup of the shipping method options list. |
-| [`fc_shipping_method_substep_text_chosen_method_label`](./fc_shipping_method_substep_text_chosen_method_label) | Filters the label for the shipping method substep text chosen method. |
-| [`fc_shipping_method_substep_text_chosen_method_label`](./fc_shipping_method_substep_text_chosen_method_label-2) | Filters the label for the shipping method substep text chosen method. |
-| [`fc_shipping_method_substep_text_package_destination_data`](./fc_shipping_method_substep_text_package_destination_data) | Filters the shipping method substep text package destination data. |
-| [`fc_shipping_method_substep_text_package_destination_data`](./fc_shipping_method_substep_text_package_destination_data-2) | Filters the shipping method substep text package destination data. |
-| [`fc_shipping_method_substep_text_package_destination_text`](./fc_shipping_method_substep_text_package_destination_text) | Filters the shipping method substep text package destination text. |
-| [`fc_shipping_method_substep_text_package_destination_text`](./fc_shipping_method_substep_text_package_destination_text-2) | Filters the shipping method substep text package destination text. |
-| [`fc_shipping_method_substep_text_package_review_text_lines`](./fc_shipping_method_substep_text_package_review_text_lines) | Filters the shipping method substep text package review text lines. |
-| [`fc_shipping_method_substep_text_package_review_text_lines`](./fc_shipping_method_substep_text_package_review_text_lines-2) | Filters the shipping method substep text package review text lines. |
-| [`fc_shipping_method_substep_text_package_review_text_lines_before_contents`](./fc_shipping_method_substep_text_package_review_text_lines_before_contents) | Filters the shipping method substep text package review text lines before contents. |
-| [`fc_shipping_method_substep_text_package_review_text_lines_before_contents`](./fc_shipping_method_substep_text_package_review_text_lines_before_contents-2) | Filters the shipping method substep text package review text lines before contents. |
-| [`fc_shipping_methods_disable_auto_select`](./fc_shipping_methods_disable_auto_select) | Filters the shipping methods disable auto select. |
-| [`fc_shipping_not_needed_shipping_field_keys`](./fc_shipping_not_needed_shipping_field_keys) | Filters the shipping not needed shipping field keys. |
-| [`fc_shipping_phone_field_args`](./fc_shipping_phone_field_args) | Filters the shipping phone field args. |
-| [`fc_shipping_same_as_billing_display_substep_review_text_notice`](./fc_shipping_same_as_billing_display_substep_review_text_notice) | Filters whether the shipping substep review text shows the same-as-billing notice. |
-| [`fc_shipping_same_as_billing_field_keys`](./fc_shipping_same_as_billing_field_keys) | Filters the shipping same as billing field keys. |
-| [`fc_shipping_same_as_billing_field_value`](./fc_shipping_same_as_billing_field_value) | Filters a shipping field value copied from the matching billing field. |
-| [`fc_shipping_same_as_billing_field_value`](./fc_shipping_same_as_billing_field_value-2) | Filters a shipping field value copied from the matching billing field. |
-| [`fc_shipping_same_as_billing_field_value`](./fc_shipping_same_as_billing_field_value-3) | Filters a shipping field value copied from the matching billing field. |
-| [`fc_shipping_same_as_billing_option_label`](./fc_shipping_same_as_billing_option_label) | Filters the label of the "same as billing address" option. |
-| [`fc_shipping_same_as_billing_skip_fields`](./fc_shipping_same_as_billing_skip_fields) | Filters the shipping same as billing skip fields. |
-| [`fc_show_account_creation_notice_checkout_contact_step_text`](./fc_show_account_creation_notice_checkout_contact_step_text) | Filters the show account creation notice checkout contact step text. |
-| [`fc_show_billing_section_highlighted`](./fc_show_billing_section_highlighted) | Filters the show billing section highlighted. |
-| [`fc_show_order_totals_row_highlighted`](./fc_show_order_totals_row_highlighted) | Filters the show order totals row highlighted. |
-| [`fc_show_shipping_section_highlighted`](./fc_show_shipping_section_highlighted) | Filters the show shipping section highlighted. |
-| [`fc_skip_change_customer_address_field_value_from_checkout_data`](./fc_skip_change_customer_address_field_value_from_checkout_data) | Filters the skip change customer address field value from checkout data. |
-| [`fc_skip_checkout_field_value_from_session_or_posted_data`](./fc_skip_checkout_field_value_from_session_or_posted_data) | Filters the skip checkout field value from session or posted data. |
-| [`fc_step_title_{step_id}`](./fc_step_title_step_id) | Filters the title of a checkout step. |
-| [`fc_steps_count_html`](./fc_steps_count_html) | Filters the "Step X of Y" HTML in the checkout progress bar. |
-| [`fc_subscription_shipping_package_name`](./fc_subscription_shipping_package_name) | Filters the name of a subscription recurring shipping package. |
-| [`fc_substep_change_button_label`](./fc_substep_change_button_label) | Filters the label of the substep change button. |
-| [`fc_substep_coupon_codes_section_title`](./fc_substep_coupon_codes_section_title) | Filters the coupon code substep title. |
-| [`fc_substep_coupon_codes_text`](./fc_substep_coupon_codes_text) | Filters the substep coupon codes text. |
-| [`fc_substep_save_button_classes`](./fc_substep_save_button_classes) | Filters the CSS classes of the substep save button. |
-| [`fc_substep_save_button_label`](./fc_substep_save_button_label) | Filters the label of the substep save button. |
-| [`fc_substep_{substep_id}_attributes`](./fc_substep_substep_id_attributes) | Filters additional attributes for the substep output, allowing other plugins to add or modify attributes. |
-| [`fc_substep_{substep_id}_text`](./fc_substep_substep_id_text) | Filters the rendered review text HTML for a checkout substep. |
-| [`fc_substep_{substep_id}_text_lines`](./fc_substep_substep_id_text_lines) | Filters the review text lines for a checkout substep. |
-| [`fc_substep_text_{address_type}_address_field_keys_skip_list`](./fc_substep_text_address_type_address_field_keys_skip_list) | Filters the rendered review text HTML for a checkout substep. |
-| [`fc_substep_text_contact_field_keys_skip_list`](./fc_substep_text_contact_field_keys_skip_list) | Filters the substep text contact field keys skip list. |
-| [`fc_substep_text_display_value_{field_key}`](./fc_substep_text_display_value_field_key) | Filters the substep review display value for one checkout field. |
-| [`fc_substep_text_display_value_{field_type}`](./fc_substep_text_display_value_field_type) | Filters the substep review display value for a checkout field type. |
-| [`fc_substep_text_display_value_{field_type}_char`](./fc_substep_text_display_value_field_type_char) | Filters the character used to mask a password field in the substep review text. |
-| [`fc_substep_text_display_value_show_field_label`](./fc_substep_text_display_value_show_field_label) | Filters the label for the substep text display value show field. |
-| [`fc_substep_text_display_value_show_field_label_checkbox`](./fc_substep_text_display_value_show_field_label_checkbox) | Filters the substep text display value show field label checkbox. |
-| [`fc_substep_text_display_value_show_field_label_{field_type}`](./fc_substep_text_display_value_show_field_label_field_type) | Filters whether the substep review text includes the label for a field type. |
-| [`fc_substep_text_display_value_show_field_label_{field_type}`](./fc_substep_text_display_value_show_field_label_field_type-2) | Filters whether the substep review text includes the label for a field type. |
-| [`fc_substep_text_display_value_show_field_label_{field_type}`](./fc_substep_text_display_value_show_field_label_field_type-3) | Filters whether the substep review text includes the label for a field type. |
-| [`fc_substep_text_display_value_show_field_label_{field_type}`](./fc_substep_text_display_value_show_field_label_field_type-4) | Filters whether the substep review text includes the label for a field type. |
-| [`fc_substep_text_display_value_show_field_label_{field_type}`](./fc_substep_text_display_value_show_field_label_field_type-5) | Filters whether the substep review text includes the label for a field type. |
-| [`fc_substep_text_display_value_show_field_label_{field_type}`](./fc_substep_text_display_value_show_field_label_field_type-6) | Filters whether the substep review text includes the label for a field type. |
-| [`fc_substep_title_{substep_id}`](./fc_substep_title_substep_id) | Filters the title of a checkout substep. |
-| [`fc_telemetry_api_url`](./fc_telemetry_api_url) | Filters the remote telemetry API base URL. |
-| [`fc_telemetry_api_url`](./fc_telemetry_api_url-2) | Filters the remote telemetry API base URL. |
-| [`fc_telemetry_client_config`](./fc_telemetry_client_config) | Filters the telemetry client config for an API URL. |
-| [`fc_telemetry_cron_hook`](./fc_telemetry_cron_hook) | Filters the WP-Cron hook used for telemetry. |
-| [`fc_telemetry_cron_hook`](./fc_telemetry_cron_hook-2) | Filters the WP-Cron hook used for telemetry. |
-| [`fc_telemetry_is_domain_eligible`](./fc_telemetry_is_domain_eligible) | Filters whether a site domain may send telemetry. |
-| [`fc_telemetry_own_plugins`](./fc_telemetry_own_plugins) | Filters the own plugins registered for telemetry. |
-| [`fc_thwcfe_clear_field_keys_skip_list`](./fc_thwcfe_clear_field_keys_skip_list) | Filters the thwcfe clear field keys skip list. |
-| [`fc_update_fragments`](./fc_update_fragments) | Filters the HTML fragments returned by the fragment-refresh request. |
-| [`fc_upsell_order_bump_section_position_args`](./fc_upsell_order_bump_section_position_args) | Filters the upsell order bump section position args. |
-| [`fc_use_verbose_loading_indicator`](./fc_use_verbose_loading_indicator) | Filters the use verbose loading indicator. |
-| [`fc_wrapper_classes`](./fc_wrapper_classes) | Filters the CSS classes for the wrapper. |
-| [`fc_wrapper_classes_add_payment_method_page`](./fc_wrapper_classes_add_payment_method_page) | Filters the CSS classes of the wrapper on the add-payment-method page. |
+<div className="hook-list">
+
+- [`fc_add_container_class`](./fc_add_container_class) Filters whether the checkout step markup includes the container class.
+- [`fc_add_payment_method_button_classes`](./fc_add_payment_method_button_classes) Filters the CSS classes of the add-payment-method button.
+- [`fc_add_phone_localisation_formats`](./fc_add_phone_localisation_formats) Filters whether the phone number is added to formatted address formats.
+- [`fc_add_phone_localisation_formats`](./fc_add_phone_localisation_formats-2) Filters whether the phone number is added to formatted address formats.
+- [`fc_addons_catalog`](./fc_addons_catalog) Filters the add-ons catalog shown on the dashboard.
+- [`fc_address_field_keys`](./fc_address_field_keys) Filters the field keys that belong to an address type.
+- [`fc_address_field_keys_skip_list`](./fc_address_field_keys_skip_list) Filters the address field keys skipped when formatting an address.
+- [`fc_{address_type}_same_as_{address_type_alt}_display_substep_review_text_notice`](./fc_address_type_same_as_address_type_alt_display_substep_review_text_notice) Filters whether to show the "same as the other address" notice in a substep review text.
+- [`fc_{address_type}_substep_text_address_data`](./fc_address_type_substep_text_address_data) Filters the address data used to build a substep review text line.
+- [`fc_admin_notices`](./fc_admin_notices) Filters the admin notices displayed by Fluid Checkout.
+- [`fc_admin_tab_fluidcheckout_exists`](./fc_admin_tab_fluidcheckout_exists) Filters whether the Fluid Checkout settings tab has already been added.
+- [`fc_apply_address_1_field_description`](./fc_apply_address_1_field_description) Filters whether the address line 1 field description is replaced.
+- [`fc_apply_address_2_field_description`](./fc_apply_address_2_field_description) Filters whether the address line 2 field description and placeholder are replaced.
+- [`fc_apply_button_colors_styles`](./fc_apply_button_colors_styles) Filters whether Fluid Checkout button color styles are applied.
+- [`fc_apply_button_design_styles`](./fc_apply_button_design_styles) Filters whether Fluid Checkout button design styles are applied.
+- [`fc_billing_address_substep_position_args`](./fc_billing_address_substep_position_args) Filters the step and priority used to place the billing address substep.
+- [`fc_billing_same_as_shipping_display_substep_review_text_notice`](./fc_billing_same_as_shipping_display_substep_review_text_notice) Filters whether the billing substep review text shows the same-as-shipping notice.
+- [`fc_billing_same_as_shipping_field_keys`](./fc_billing_same_as_shipping_field_keys) Filters the billing field keys copied from the shipping address.
+- [`fc_billing_same_as_shipping_field_value`](./fc_billing_same_as_shipping_field_value) Filters a billing field value copied from the matching shipping field.
+- [`fc_billing_same_as_shipping_field_value`](./fc_billing_same_as_shipping_field_value-2) Filters a billing field value copied from the matching shipping field.
+- [`fc_billing_same_as_shipping_option_label`](./fc_billing_same_as_shipping_option_label) Filters the label of the "same as shipping address" option.
+- [`fc_billing_same_as_shipping_skip_fields`](./fc_billing_same_as_shipping_skip_fields) Filters the billing field keys that are not copied from the shipping address.
+- [`fc_billing_step_hook_priority`](./fc_billing_step_hook_priority) Filters the priority of the billing checkout step.
+- [`fc_cart_has_multiple_packages`](./fc_cart_has_multiple_packages) Filters whether the cart is treated as having multiple shipping packages.
+- [`fc_cart_has_multiple_packages`](./fc_cart_has_multiple_packages-2) Filters whether the cart is treated as having multiple shipping packages.
+- [`fc_checkout_account_creation_notice_message`](./fc_checkout_account_creation_notice_message) Filters the notice shown when an account will be created at checkout.
+- [`fc_checkout_address_i18n_override_locale_attributes`](./fc_checkout_address_i18n_override_locale_attributes) Filters which attributes to globally override for address i18n locale information.
+- [`fc_checkout_address_i18n_override_locale_field_attributes`](./fc_checkout_address_i18n_override_locale_field_attributes) Filters which attributes to override for specific checkout fields on address i18n locale information.
+- [`fc_checkout_address_i18n_override_locale_required_attribute`](./fc_checkout_address_i18n_override_locale_required_attribute) Filters whether to override the `required` attribute for address i18n locale information.
+- [`fc_checkout_billing_collapsible_initial_state`](./fc_checkout_billing_collapsible_initial_state) Filters the initial expanded or collapsed state of the billing section.
+- [`fc_checkout_body_custom_attributes`](./fc_checkout_body_custom_attributes) Filters custom attributes added to the checkout body element.
+- [`fc_checkout_body_custom_attributes`](./fc_checkout_body_custom_attributes-2) Filters custom attributes added to the checkout body element.
+- [`fc_checkout_column_layout`](./fc_checkout_column_layout) Filters the checkout column layout slug.
+- [`fc_checkout_contact_login_link_classes`](./fc_checkout_contact_login_link_classes) Filters the CSS classes of the checkout contact-step login link.
+- [`fc_checkout_contact_step_field_ids`](./fc_checkout_contact_step_field_ids) Filters the field keys displayed in the contact step.
+- [`fc_checkout_coupons_script_settings`](./fc_checkout_coupons_script_settings) Filters the coupon code settings passed to the frontend script.
+- [`fc_checkout_coupons_script_settings`](./fc_checkout_coupons_script_settings-2) Filters the coupon code settings passed to the frontend script.
+- [`fc_checkout_display_create_account_optional_label`](./fc_checkout_display_create_account_optional_label) Filters whether the account creation section shows an "optional" label.
+- [`fc_checkout_email_field_description`](./fc_checkout_email_field_description) Filters the description of the billing email field.
+- [`fc_checkout_email_fields_for_mailcheck`](./fc_checkout_email_fields_for_mailcheck) Filters the field keys that receive email typo suggestions.
+- [`fc_checkout_field_args`](./fc_checkout_field_args) Filters the argument overrides applied to checkout fields.
+- [`fc_checkout_general_settings`](./fc_checkout_general_settings) Filters the checkout settings fields.
+- [`fc_checkout_header_cart_link_label_html`](./fc_checkout_header_cart_link_label_html) Filters the HTML label of the checkout header cart link.
+- [`fc_checkout_header_logo_home_url`](./fc_checkout_header_logo_home_url) Filters the URL used by the checkout header logo.
+- [`fc_checkout_header_logo_home_url`](./fc_checkout_header_logo_home_url-2) Filters the URL used by the checkout header logo.
+- [`fc_checkout_header_logo_home_url`](./fc_checkout_header_logo_home_url-3) Filters the URL used by the checkout header logo.
+- [`fc_checkout_header_logo_home_url`](./fc_checkout_header_logo_home_url-4) Filters the URL used by the checkout header logo.
+- [`fc_checkout_html_custom_attributes`](./fc_checkout_html_custom_attributes) Filters custom attributes added to the checkout root HTML element.
+- [`fc_checkout_html_custom_attributes`](./fc_checkout_html_custom_attributes-2) Filters custom attributes added to the checkout root HTML element.
+- [`fc_checkout_is_valid_phone_number`](./fc_checkout_is_valid_phone_number) Filters whether a checkout phone number passes validation.
+- [`fc_checkout_login_button_classes`](./fc_checkout_login_button_classes) Filters the CSS classes of the login submit button.
+- [`fc_checkout_login_button_label`](./fc_checkout_login_button_label) Filters the login button label at checkout.
+- [`fc_checkout_login_button_label`](./fc_checkout_login_button_label-2) Filters the login button label at checkout.
+- [`fc_checkout_login_cta_text`](./fc_checkout_login_cta_text) Filters the call-to-action text prompting customers to log in.
+- [`fc_checkout_login_fields_unique_id`](./fc_checkout_login_fields_unique_id) Filters the unique ID suffix used by the checkout login fields.
+- [`fc_checkout_login_input_classes`](./fc_checkout_login_input_classes) Filters extra CSS classes for the checkout login inputs.
+- [`fc_checkout_login_input_classes`](./fc_checkout_login_input_classes-2) Filters extra CSS classes for the checkout login inputs.
+- [`fc_checkout_login_modal_title`](./fc_checkout_login_modal_title) Filters the title of the checkout login modal.
+- [`fc_checkout_login_script_settings`](./fc_checkout_login_script_settings) Filters the login settings passed to the frontend script.
+- [`fc_checkout_login_separator_text`](./fc_checkout_login_separator_text) Filters the separator text in the checkout login prompt.
+- [`fc_checkout_login_separator_text`](./fc_checkout_login_separator_text-2) Filters the separator text in the checkout login prompt.
+- [`fc_checkout_maybe_disable_place_order_button`](./fc_checkout_maybe_disable_place_order_button) Filters whether the place order button is disabled until the last checkout step.
+- [`fc_checkout_maybe_disable_place_order_button`](./fc_checkout_maybe_disable_place_order_button-2) Filters whether the place order button is disabled until the last checkout step.
+- [`fc_checkout_maybe_disable_place_order_button`](./fc_checkout_maybe_disable_place_order_button-3) Filters whether the place order button is disabled until the last checkout step.
+- [`fc_checkout_no_shipping_method_chosen_html`](./fc_checkout_no_shipping_method_chosen_html) Filters the placeholder shown when no shipping method has been chosen.
+- [`fc_checkout_page_title`](./fc_checkout_page_title) Filters the checkout page title.
+- [`fc_checkout_progress_bar_attributes`](./fc_checkout_progress_bar_attributes) Filters the HTML attributes of the checkout progress bar.
+- [`fc_checkout_progress_bar_display_count`](./fc_checkout_progress_bar_display_count) Filters whether the progress bar shows the current step number.
+- [`fc_checkout_progress_bar_inner_attributes`](./fc_checkout_progress_bar_inner_attributes) Filters the HTML attributes of the inner progress bar element.
+- [`fc_checkout_progress_bar_style`](./fc_checkout_progress_bar_style) Filters the progress bar style slug.
+- [`fc_checkout_script_settings`](./fc_checkout_script_settings) Filters the checkout behavior settings passed to the frontend script.
+- [`fc_checkout_shipping_collapsible_initial_state`](./fc_checkout_shipping_collapsible_initial_state) Filters the initial expanded or collapsed state of the shipping section.
+- [`fc_checkout_sidebar_attributes`](./fc_checkout_sidebar_attributes) Filters the HTML attributes of the checkout sidebar.
+- [`fc_checkout_sidebar_attributes_inner`](./fc_checkout_sidebar_attributes_inner) Filters the HTML attributes of the inner checkout sidebar element.
+- [`fc_checkout_social_login_separator_text`](./fc_checkout_social_login_separator_text) Filters the separator text above the social login buttons.
+- [`fc_checkout_step_attributes`](./fc_checkout_step_attributes) Filters the HTML attributes of a checkout step element.
+- [`fc_checkout_steps_script_settings`](./fc_checkout_steps_script_settings) Filters the checkout step settings passed to the frontend script.
+- [`fc_checkout_update_before_unload`](./fc_checkout_update_before_unload) Filters whether checkout fragments update before the page unloads.
+- [`fc_checkout_update_fields_selectors`](./fc_checkout_update_fields_selectors) Filters the CSS selectors of fields that trigger a checkout update.
+- [`fc_checkout_update_on_visibility_change`](./fc_checkout_update_on_visibility_change) Filters whether checkout fragments update when the page becomes visible again.
+- [`fc_checkout_validation_brazilian_documents_script_settings`](./fc_checkout_validation_brazilian_documents_script_settings) Filters the Brazilian CPF and CNPJ validation settings passed to the frontend script.
+- [`fc_checkout_validation_script_settings`](./fc_checkout_validation_script_settings) Filters the checkout field validation settings passed to the frontend script.
+- [`fc_checkout_wrapper_inside_element_custom_attributes`](./fc_checkout_wrapper_inside_element_custom_attributes) Filters custom attributes added inside the checkout form wrapper.
+- [`fc_compat_dibs_easy_skip_undo_hooks_classes`](./fc_compat_dibs_easy_skip_undo_hooks_classes) Filters the classes whose checkout hooks are not restored when leaving Nets Easy.
+- [`fc_compat_dibs_easy_skip_undo_hooks_early_classes`](./fc_compat_dibs_easy_skip_undo_hooks_early_classes) Filters the classes whose checkout hooks are not restored early when leaving Nets Easy.
+- [`fc_compat_dintero_checkout_skip_undo_hooks_classes`](./fc_compat_dintero_checkout_skip_undo_hooks_classes) Filters the classes whose checkout hooks are not restored when leaving Dintero Checkout.
+- [`fc_compat_dintero_checkout_skip_undo_hooks_early_classes`](./fc_compat_dintero_checkout_skip_undo_hooks_early_classes) Filters the classes whose checkout hooks are not restored early when leaving Dintero Checkout.
+- [`fc_compat_klarna_checkout_skip_undo_hooks_classes`](./fc_compat_klarna_checkout_skip_undo_hooks_classes) Filters the classes whose checkout hooks are not restored when leaving Klarna Checkout or Svea Checkout.
+- [`fc_compat_klarna_checkout_skip_undo_hooks_classes`](./fc_compat_klarna_checkout_skip_undo_hooks_classes-2) Filters the classes whose checkout hooks are not restored when leaving Klarna Checkout or Svea Checkout.
+- [`fc_compat_klarna_checkout_skip_undo_hooks_early_classes`](./fc_compat_klarna_checkout_skip_undo_hooks_early_classes) Filters the classes whose checkout hooks are not restored early when leaving Klarna Checkout or Svea Checkout.
+- [`fc_compat_klarna_checkout_skip_undo_hooks_early_classes`](./fc_compat_klarna_checkout_skip_undo_hooks_early_classes-2) Filters the classes whose checkout hooks are not restored early when leaving Klarna Checkout or Svea Checkout.
+- [`fc_compat_payson_checkout_skip_undo_hooks_classes`](./fc_compat_payson_checkout_skip_undo_hooks_classes) Filters the classes whose checkout hooks are not restored when leaving Payson Checkout.
+- [`fc_compat_payson_checkout_skip_undo_hooks_early_classes`](./fc_compat_payson_checkout_skip_undo_hooks_early_classes) Filters the classes whose checkout hooks are not restored early when leaving Payson Checkout.
+- [`fc_compat_theme_woodmart_disable_theme_checkout_options`](./fc_compat_theme_woodmart_disable_theme_checkout_options) Filters whether WoodMart checkout options are disabled while Fluid Checkout is active.
+- [`fc_compat_wcbcf_disable_marked_input_phone_feature`](./fc_compat_wcbcf_disable_marked_input_phone_feature) Filters whether the Brazilian Market masked phone input is disabled.
+- [`fc_content_section_class`](./fc_content_section_class) Filters extra CSS classes for the checkout content wrapper.
+- [`fc_content_section_class`](./fc_content_section_class-2) Filters extra CSS classes for the checkout content wrapper.
+- [`fc_copy_billing_to_shipping_address_when_shipping_not_needed`](./fc_copy_billing_to_shipping_address_when_shipping_not_needed) Filters whether the billing address is copied to shipping when the cart does not need shipping.
+- [`fc_copy_billing_to_shipping_address_when_shipping_not_needed`](./fc_copy_billing_to_shipping_address_when_shipping_not_needed-2) Filters whether the billing address is copied to shipping when the cart does not need shipping.
+- [`fc_coupon_code_apply_button_classes`](./fc_coupon_code_apply_button_classes) Filters the CSS classes of the apply-coupon button.
+- [`fc_coupon_code_button_label`](./fc_coupon_code_button_label) Filters the apply-coupon button label.
+- [`fc_coupon_code_displayed_as_substep`](./fc_coupon_code_displayed_as_substep) Filters whether coupon codes are displayed as a checkout substep.
+- [`fc_coupon_code_error_message_dismiss_button`](./fc_coupon_code_error_message_dismiss_button) Filters the dismiss button HTML for a coupon error message.
+- [`fc_coupon_code_error_message_dismiss_button_enabled`](./fc_coupon_code_error_message_dismiss_button_enabled) Filters whether coupon error messages include a dismiss button.
+- [`fc_coupon_code_field_description`](./fc_coupon_code_field_description) Filters the coupon code field description.
+- [`fc_coupon_code_field_initially_expanded`](./fc_coupon_code_field_initially_expanded) Filters whether the coupon code field starts expanded.
+- [`fc_coupon_code_field_label`](./fc_coupon_code_field_label) Filters the coupon code field label.
+- [`fc_coupon_code_field_placeholder`](./fc_coupon_code_field_placeholder) Filters the coupon code field placeholder.
+- [`fc_coupon_code_substep_priority`](./fc_coupon_code_substep_priority) Filters the priority of the coupon code substep.
+- [`fc_coupon_code_substep_step_id`](./fc_coupon_code_substep_step_id) Filters the checkout step ID where the coupon code substep is registered.
+- [`fc_css_variables`](./fc_css_variables) Filters the CSS variables output for Fluid Checkout design templates.
+- [`fc_{current_section}_settings`](./fc_current_section_settings) Filters the settings for one Fluid Checkout admin section.
+- [`fc_{current_section}_settings`](./fc_current_section_settings-2) Filters the settings for one Fluid Checkout admin section.
+- [`fc_{current_section}_settings`](./fc_current_section_settings-3) Filters the settings for one Fluid Checkout admin section.
+- [`fc_{current_section}_settings_add`](./fc_current_section_settings_add) Filters extra settings rows appended to a Fluid Checkout settings section.
+- [`fc_customer_meta_data_clear_fields_order_processed`](./fc_customer_meta_data_clear_fields_order_processed) Filters the customer meta keys cleared after the order is processed.
+- [`fc_customer_persisted_data_clear_all_fields_skip_list`](./fc_customer_persisted_data_clear_all_fields_skip_list) Filters the persisted field keys that are not cleared.
+- [`fc_customer_persisted_data_clear_fields_order_processed`](./fc_customer_persisted_data_clear_fields_order_processed) Filters the persisted checkout field keys cleared after the order is processed.
+- [`fc_customer_persisted_data_session_field_keys`](./fc_customer_persisted_data_session_field_keys) Filters the checkout field keys saved in the customer session.
+- [`fc_customer_persisted_data_skip_fields`](./fc_customer_persisted_data_skip_fields) Filters the checkout field keys that are not restored from the session.
+- [`fc_dashboard_addon_actions_html`](./fc_dashboard_addon_actions_html) Filters the Dashboard add-on card action HTML.
+- [`fc_default_locale_field_args`](./fc_default_locale_field_args) Filters the default field arguments applied for the current locale.
+- [`fc_default_option_values`](./fc_default_option_values) Filters the default values for Fluid Checkout options.
+- [`fc_default_to_billing_same_as_shipping`](./fc_default_to_billing_same_as_shipping) Filters whether the "same address" checkbox starts checked.
+- [`fc_default_to_billing_same_as_shipping`](./fc_default_to_billing_same_as_shipping-2) Filters whether the "same address" checkbox starts checked.
+- [`fc_design_template_option_image_url`](./fc_design_template_option_image_url) Filters the preview image URL of a design template option in settings.
+- [`fc_display_checkout_page_title`](./fc_display_checkout_page_title) Filters whether the checkout page title is visible.
+- [`fc_do_order_notes_hooks_position`](./fc_do_order_notes_hooks_position) Filters the hook used to render the order notes section.
+- [`fc_do_order_notes_hooks_position`](./fc_do_order_notes_hooks_position-2) Filters the hook used to render the order notes section.
+- [`fc_do_order_notes_hooks_priority`](./fc_do_order_notes_hooks_priority) Filters the priority used to render the order notes section.
+- [`fc_do_order_notes_hooks_priority`](./fc_do_order_notes_hooks_priority-2) Filters the priority used to render the order notes section.
+- [`fc_enable_checkout_ajax_login`](./fc_enable_checkout_ajax_login) Filters whether AJAX login is enabled at checkout.
+- [`fc_enable_checkout_email_mailcheck`](./fc_enable_checkout_email_mailcheck) Filters whether email typo suggestions are enabled at checkout.
+- [`fc_enable_checkout_page_template`](./fc_enable_checkout_page_template) Filters whether the distraction-free checkout page template is used.
+- [`fc_enable_checkout_shortcode_wrapper`](./fc_enable_checkout_shortcode_wrapper) Filters whether the checkout shortcode output is wrapped in the content container.
+- [`fc_enable_compat_plugin_edit_address_style_{plugin_slug}`](./fc_enable_compat_plugin_edit_address_style_plugin_slug) Filters whether to enqueue a plugin compatibility stylesheet on the account edit-address screen.
+- [`fc_enable_compat_plugin_{plugin_slug}`](./fc_enable_compat_plugin_plugin_slug) Filters whether to load a plugin compatibility class.
+- [`fc_enable_compat_plugin_style_{plugin_slug}`](./fc_enable_compat_plugin_style_plugin_slug) Filters whether to enqueue a plugin compatibility stylesheet on checkout and account screens.
+- [`fc_enable_compat_theme_account_style_{theme_slug}`](./fc_enable_compat_theme_account_style_theme_slug) Filters whether to enqueue a theme compatibility stylesheet on customer account screens.
+- [`fc_enable_compat_theme_edit_address_style_{theme_slug}`](./fc_enable_compat_theme_edit_address_style_theme_slug) Filters whether to enqueue a theme compatibility stylesheet on the account edit-address screen.
+- [`fc_enable_compat_theme_style_{theme_slug}`](./fc_enable_compat_theme_style_theme_slug) Filters whether to enqueue a theme compatibility stylesheet on checkout and account screens.
+- [`fc_enable_compat_theme_{theme_slug}`](./fc_enable_compat_theme_theme_slug) Filters whether to load a theme compatibility class.
+- [`fc_enable_dark_mode_styles`](./fc_enable_dark_mode_styles) Filters whether dark mode styles are applied.
+- [`fc_enable_fragments_refresh`](./fc_enable_fragments_refresh) Filters whether the checkout fragment-refresh feature is enabled.
+- [`fc_enable_fragments_refresh`](./fc_enable_fragments_refresh-2) Filters whether the checkout fragment-refresh feature is enabled.
+- [`fc_enable_order_summary_cart_item_unit_price`](./fc_enable_order_summary_cart_item_unit_price) Filters whether the order summary shows the cart item unit price.
+- [`fc_expansible_section_toggle_label_add_optional_text`](./fc_expansible_section_toggle_label_add_optional_text) Filters whether every expansible section toggle label includes the "optional" text.
+- [`fc_expansible_section_toggle_label_{key}`](./fc_expansible_section_toggle_label_key) Filters the toggle label of an expansible section.
+- [`fc_expansible_section_toggle_label_{key}_add_optional_text`](./fc_expansible_section_toggle_label_key_add_optional_text) Filters whether to append the "optional" text to one expansible section toggle label.
+- [`fc_expansible_section_toggle_label_{section_id}`](./fc_expansible_section_toggle_label_section_id) Filters the toggle label of an expansible section.
+- [`fc_fix_zoom_in_form_fields_mobile_devices`](./fc_fix_zoom_in_form_fields_mobile_devices) Filters whether form fields use a 16px font size to prevent mobile browsers from zooming in.
+- [`fc_fix_zoom_in_form_fields_mobile_devices`](./fc_fix_zoom_in_form_fields_mobile_devices-2) Filters whether form fields use a 16px font size to prevent mobile browsers from zooming in.
+- [`fc_formatted_address_replacements_custom_field_keys`](./fc_formatted_address_replacements_custom_field_keys) Filters the custom field keys added to formatted address replacements.
+- [`fc_fragments_update_settings`](./fc_fragments_update_settings) Filters the fragment-refresh settings passed to the frontend script.
+- [`fc_get_checkout_layout`](./fc_get_checkout_layout) Filters the checkout layout slug.
+- [`fc_get_checkout_steps_before`](./fc_get_checkout_steps_before) Filters the checkout steps list before the default steps are returned.
+- [`fc_hide_optional_fields_skip_by_class`](./fc_hide_optional_fields_skip_by_class) Filters the CSS classes that keep an optional field visible.
+- [`fc_hide_optional_fields_skip_field`](./fc_hide_optional_fields_skip_field) Filters whether a single optional field is excluded from being collapsed.
+- [`fc_hide_optional_fields_skip_list`](./fc_hide_optional_fields_skip_list) Filters the field keys that are not hidden when optional fields are collapsed.
+- [`fc_hide_optional_fields_skip_types`](./fc_hide_optional_fields_skip_types) Filters the field types that are not collapsed behind an "Add" link.
+- [`fc_integration_woo_checkout_field_editor_pro_enable_edit_address_changes`](./fc_integration_woo_checkout_field_editor_pro_enable_edit_address_changes) Filters whether Checkout Field Editor Pro changes are applied on the edit-address screen.
+- [`fc_integrations_woocommerce_smart_coupons_settings`](./fc_integrations_woocommerce_smart_coupons_settings) Filters the Smart Coupons integration settings.
+- [`fc_is_billing_address_available_for_shipping`](./fc_is_billing_address_available_for_shipping) Filters whether the billing address can be used as the shipping address.
+- [`fc_is_billing_address_before_shipping_address`](./fc_is_billing_address_before_shipping_address) Filters whether the billing address is displayed before the shipping address.
+- [`fc_is_billing_address_data_same_as_shipping_before`](./fc_is_billing_address_data_same_as_shipping_before) Filters the early result of comparing billing address data with the shipping address.
+- [`fc_is_billing_address_forced_same_as_shipping_address`](./fc_is_billing_address_forced_same_as_shipping_address) Filters whether the billing address is forced to match the shipping address.
+- [`fc_is_billing_same_as_shipping_checked`](./fc_is_billing_same_as_shipping_checked) Filters whether the billing address is the same as the shipping address.
+- [`fc_is_cart_page_or_fragment`](./fc_is_cart_page_or_fragment) Filters whether the current request is the cart page or a cart fragment.
+- [`fc_is_checkout_layout_multistep`](./fc_is_checkout_layout_multistep) Filters whether the checkout uses the multi-step layout.
+- [`fc_is_checkout_page_or_fragment`](./fc_is_checkout_page_or_fragment) Filters whether the current request is the checkout page or a checkout fragment.
+- [`fc_is_current_step`](./fc_is_current_step) Filters whether a checkout step is the current step.
+- [`fc_is_shipping_address_available_for_billing`](./fc_is_shipping_address_available_for_billing) Filters whether the shipping address can be used as the billing address.
+- [`fc_is_shipping_address_data_same_as_billing_before`](./fc_is_shipping_address_data_same_as_billing_before) Filters the early result of comparing shipping address data with the billing address.
+- [`fc_is_shipping_same_as_billing_checked`](./fc_is_shipping_same_as_billing_checked) Filters whether the shipping address is the same as the billing address.
+- [`fc_is_step_complete`](./fc_is_step_complete) Filters whether a checkout step is complete.
+- [`fc_is_step_complete_{step_id}`](./fc_is_step_complete_step_id) Filters whether a checkout step is complete.
+- [`fc_is_substep_complete_billing_address_field_keys_skip_list`](./fc_is_substep_complete_billing_address_field_keys_skip_list) Filters whether substep complete billing address field keys skip list.
+- [`fc_is_substep_complete_shipping_address_field_keys_skip_list`](./fc_is_substep_complete_shipping_address_field_keys_skip_list) Filters whether substep complete shipping address field keys skip list.
+- [`fc_is_substep_complete_{substep_id}`](./fc_is_substep_complete_substep_id) Filters whether a checkout substep is complete.
+- [`fc_is_substep_complete_{substep_id}`](./fc_is_substep_complete_substep_id-2) Filters whether a checkout substep is complete.
+- [`fc_is_substep_complete_{substep_id}`](./fc_is_substep_complete_substep_id-3) Filters whether a checkout substep is complete.
+- [`fc_is_substep_complete_{substep_id}`](./fc_is_substep_complete_substep_id-4) Filters whether a checkout substep is complete.
+- [`fc_is_substep_complete_{substep_id}`](./fc_is_substep_complete_substep_id-5) Filters whether a checkout substep is complete.
+- [`fc_js_settings`](./fc_js_settings) Filters the JavaScript settings passed to the Fluid Checkout frontend script.
+- [`fc_layout_selector_option_image_url`](./fc_layout_selector_option_image_url) Filters the URL for the layout selector option image.
+- [`fc_locale_language_variant`](./fc_locale_language_variant) Filters the locale used for each language variant when loading translations.
+- [`fc_login_form_class`](./fc_login_form_class) Filters the CSS class for the login form.
+- [`fc_login_form_inner_class`](./fc_login_form_inner_class) Filters the CSS class for the login form inner.
+- [`fc_login_form_wrapper_class`](./fc_login_form_wrapper_class) Filters the CSS class for the login form wrapper.
+- [`fc_mailcheck_suggestion_message`](./fc_mailcheck_suggestion_message) Filters the email typo suggestion message.
+- [`fc_next_step_button_classes`](./fc_next_step_button_classes) Filters the CSS classes for the next step button.
+- [`fc_next_step_button_label`](./fc_next_step_button_label) Filters the label of the button that proceeds to the next checkout step.
+- [`fc_no_order_notes_order_review_notice`](./fc_no_order_notes_order_review_notice) Filters the no order notes order review notice.
+- [`fc_no_substep_review_text_notice`](./fc_no_substep_review_text_notice) Filters the no substep review text notice.
+- [`fc_no_validation_icon_field_keys`](./fc_no_validation_icon_field_keys) Filters the no validation icon field keys.
+- [`fc_no_validation_icon_field_types`](./fc_no_validation_icon_field_types) Filters the no validation icon field types.
+- [`fc_order_review_title`](./fc_order_review_title) Filters the order review title.
+- [`fc_order_summary_continue_button_classes`](./fc_order_summary_continue_button_classes) Filters the CSS classes of the order summary continue button.
+- [`fc_order_summary_display_desktop_edit_cart_link`](./fc_order_summary_display_desktop_edit_cart_link) Filters the order summary display desktop edit cart link.
+- [`fc_order_summary_shipping_package_name`](./fc_order_summary_shipping_package_name) Filters the order summary shipping package name.
+- [`fc_order_summary_shipping_package_price_html`](./fc_order_summary_shipping_package_price_html) Filters the HTML for the order summary shipping package price.
+- [`fc_output_billing_same_as_shipping_as_hidden_field`](./fc_output_billing_same_as_shipping_as_hidden_field) Filters the output billing same as shipping as hidden field.
+- [`fc_output_checkout_contact_login_cta_section`](./fc_output_checkout_contact_login_cta_section) Filters whether the contact step shows the login call to action.
+- [`fc_output_checkout_contact_logout_cta_section`](./fc_output_checkout_contact_logout_cta_section) Filters whether the contact step shows the logout call to action for logged-in customers.
+- [`fc_output_custom_styles`](./fc_output_custom_styles) Filters the custom CSS output for the checkout design.
+- [`fc_output_shipping_same_as_billing_as_hidden_field`](./fc_output_shipping_same_as_billing_as_hidden_field) Filters the output shipping same as billing as hidden field.
+- [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file) Filters whether a theme template file may replace a plugin template.
+- [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-10) Filters whether a theme template file may replace a plugin template.
+- [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-2) Filters whether a theme template file may replace a plugin template.
+- [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-3) Filters whether a theme template file may replace a plugin template.
+- [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-4) Filters whether a theme template file may replace a plugin template.
+- [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-5) Filters whether a theme template file may replace a plugin template.
+- [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-6) Filters whether a theme template file may replace a plugin template.
+- [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-7) Filters whether a theme template file may replace a plugin template.
+- [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-8) Filters whether a theme template file may replace a plugin template.
+- [`fc_override_template_with_theme_file`](./fc_override_template_with_theme_file-9) Filters whether a theme template file may replace a plugin template.
+- [`fc_parsed_posted_data_reset_field_keys`](./fc_parsed_posted_data_reset_field_keys) Filters the parsed posted data reset field keys.
+- [`fc_payment_method_review_text_{chosen_method_key}`](./fc_payment_method_review_text_chosen_method_key) Filters the review text for the chosen payment method.
+- [`fc_payment_not_needed_message`](./fc_payment_not_needed_message) Filters the message shown when the order total does not require payment.
+- [`fc_place_order_button_classes`](./fc_place_order_button_classes) Filters the CSS classes for the place order button.
+- [`fc_place_order_button_classes`](./fc_place_order_button_classes-2) Filters the CSS classes for the place order button.
+- [`fc_pro_cart_settings`](./fc_pro_cart_settings) Filters the cart settings.
+- [`fc_pro_checkout_review_order_table_classes`](./fc_pro_checkout_review_order_table_classes) Filters extra CSS classes on the checkout order review table.
+- [`fc_pro_order_details_customer_billing_address_formatted`](./fc_pro_order_details_customer_billing_address_formatted) Filters the formatted billing address shown in order details.
+- [`fc_pro_order_details_customer_billing_address_formatted`](./fc_pro_order_details_customer_billing_address_formatted-2) Filters the formatted billing address shown in order details.
+- [`fc_pro_order_details_customer_billing_address_label`](./fc_pro_order_details_customer_billing_address_label) Filters the billing address label shown in order details.
+- [`fc_pro_order_details_customer_billing_address_label`](./fc_pro_order_details_customer_billing_address_label-2) Filters the billing address label shown in order details.
+- [`fc_pro_order_details_customer_information_show_shipping`](./fc_pro_order_details_customer_information_show_shipping) Filters whether the shipping address column is shown in order details.
+- [`fc_pro_order_details_customer_information_show_shipping`](./fc_pro_order_details_customer_information_show_shipping-2) Filters whether the shipping address column is shown in order details.
+- [`fc_pro_order_details_customer_shipping_address_formatted`](./fc_pro_order_details_customer_shipping_address_formatted) Filters the formatted shipping address shown in order details.
+- [`fc_pro_order_details_customer_shipping_address_formatted`](./fc_pro_order_details_customer_shipping_address_formatted-2) Filters the formatted shipping address shown in order details.
+- [`fc_pro_order_details_customer_shipping_address_label`](./fc_pro_order_details_customer_shipping_address_label) Filters the shipping address label shown in order details.
+- [`fc_pro_order_details_customer_shipping_address_label`](./fc_pro_order_details_customer_shipping_address_label-2) Filters the shipping address label shown in order details.
+- [`fc_pro_order_pay_settings`](./fc_pro_order_pay_settings) Filters the order pay settings.
+- [`fc_pro_order_received_settings`](./fc_pro_order_received_settings) Filters the order received settings.
+- [`fc_proceed_to_next_step_button_label`](./fc_proceed_to_next_step_button_label) Filters the label of the button that proceeds to the next checkout step.
+- [`fc_progress_bar_step_title_{step_id}`](./fc_progress_bar_step_title_step_id) Filters the progress bar label of a checkout step.
+- [`fc_register_checkout_step_args`](./fc_register_checkout_step_args) Filters the register checkout step args.
+- [`fc_register_checkout_substep_args`](./fc_register_checkout_substep_args) Filters the register checkout substep args.
+- [`fc_save_new_address_data_billing_skip_update`](./fc_save_new_address_data_billing_skip_update) Filters the save new address data billing skip update.
+- [`fc_save_new_address_data_shipping_skip_update`](./fc_save_new_address_data_shipping_skip_update) Filters the save new address data shipping skip update.
+- [`fc_select2_field_types`](./fc_select2_field_types) Filters the select2 field types.
+- [`fc_set_parsed_posted_data`](./fc_set_parsed_posted_data) Filters the parsed checkout form data before it is stored.
+- [`fc_shipping_method_description_html_element`](./fc_shipping_method_description_html_element) Filters the shipping method description HTML element.
+- [`fc_shipping_method_description_html_element`](./fc_shipping_method_description_html_element-2) Filters the shipping method description HTML element.
+- [`fc_shipping_method_display_package_content_substep_text_lines`](./fc_shipping_method_display_package_content_substep_text_lines) Filters the shipping method display package content substep text lines.
+- [`fc_shipping_method_display_package_destination_substep_text_lines`](./fc_shipping_method_display_package_destination_substep_text_lines) Filters whether the package destination is included in the shipping method review text.
+- [`fc_shipping_method_display_package_name`](./fc_shipping_method_display_package_name) Filters whether the shipping package name is displayed.
+- [`fc_shipping_method_has_cost`](./fc_shipping_method_has_cost) Filters the shipping method has cost.
+- [`fc_shipping_method_has_cost`](./fc_shipping_method_has_cost-2) Filters the shipping method has cost.
+- [`fc_shipping_method_option_description`](./fc_shipping_method_option_description) Filters the description of a shipping method option.
+- [`fc_shipping_method_option_description_markup`](./fc_shipping_method_option_description_markup) Filters the HTML for the shipping method option description.
+- [`fc_shipping_method_option_end_tag_markup`](./fc_shipping_method_option_end_tag_markup) Filters the closing markup of the shipping method options list.
+- [`fc_shipping_method_option_end_tag_markup`](./fc_shipping_method_option_end_tag_markup-2) Filters the closing markup of the shipping method options list.
+- [`fc_shipping_method_option_image_html`](./fc_shipping_method_option_image_html) Filters the HTML for the shipping method option image.
+- [`fc_shipping_method_option_image_html`](./fc_shipping_method_option_image_html-2) Filters the HTML for the shipping method option image.
+- [`fc_shipping_method_option_image_markup`](./fc_shipping_method_option_image_markup) Filters the HTML for the shipping method option image.
+- [`fc_shipping_method_option_image_markup`](./fc_shipping_method_option_image_markup-2) Filters the HTML for the shipping method option image.
+- [`fc_shipping_method_option_label_markup`](./fc_shipping_method_option_label_markup) Filters the label markup of a shipping method option.
+- [`fc_shipping_method_option_label_markup`](./fc_shipping_method_option_label_markup-2) Filters the label markup of a shipping method option.
+- [`fc_shipping_method_option_markup`](./fc_shipping_method_option_markup) Filters the HTML for the shipping method option.
+- [`fc_shipping_method_option_markup`](./fc_shipping_method_option_markup-2) Filters the HTML for the shipping method option.
+- [`fc_shipping_method_option_price`](./fc_shipping_method_option_price) Filters the shipping method option price.
+- [`fc_shipping_method_option_price`](./fc_shipping_method_option_price-2) Filters the shipping method option price.
+- [`fc_shipping_method_option_price_markup`](./fc_shipping_method_option_price_markup) Filters the HTML for the shipping method option price.
+- [`fc_shipping_method_option_price_markup`](./fc_shipping_method_option_price_markup-2) Filters the HTML for the shipping method option price.
+- [`fc_shipping_method_option_start_tag_markup`](./fc_shipping_method_option_start_tag_markup) Filters the opening markup of the shipping method options list.
+- [`fc_shipping_method_option_start_tag_markup`](./fc_shipping_method_option_start_tag_markup-2) Filters the opening markup of the shipping method options list.
+- [`fc_shipping_method_substep_text_chosen_method_label`](./fc_shipping_method_substep_text_chosen_method_label) Filters the label for the shipping method substep text chosen method.
+- [`fc_shipping_method_substep_text_chosen_method_label`](./fc_shipping_method_substep_text_chosen_method_label-2) Filters the label for the shipping method substep text chosen method.
+- [`fc_shipping_method_substep_text_package_destination_data`](./fc_shipping_method_substep_text_package_destination_data) Filters the shipping method substep text package destination data.
+- [`fc_shipping_method_substep_text_package_destination_data`](./fc_shipping_method_substep_text_package_destination_data-2) Filters the shipping method substep text package destination data.
+- [`fc_shipping_method_substep_text_package_destination_text`](./fc_shipping_method_substep_text_package_destination_text) Filters the shipping method substep text package destination text.
+- [`fc_shipping_method_substep_text_package_destination_text`](./fc_shipping_method_substep_text_package_destination_text-2) Filters the shipping method substep text package destination text.
+- [`fc_shipping_method_substep_text_package_review_text_lines`](./fc_shipping_method_substep_text_package_review_text_lines) Filters the shipping method substep text package review text lines.
+- [`fc_shipping_method_substep_text_package_review_text_lines`](./fc_shipping_method_substep_text_package_review_text_lines-2) Filters the shipping method substep text package review text lines.
+- [`fc_shipping_method_substep_text_package_review_text_lines_before_contents`](./fc_shipping_method_substep_text_package_review_text_lines_before_contents) Filters the shipping method substep text package review text lines before contents.
+- [`fc_shipping_method_substep_text_package_review_text_lines_before_contents`](./fc_shipping_method_substep_text_package_review_text_lines_before_contents-2) Filters the shipping method substep text package review text lines before contents.
+- [`fc_shipping_methods_disable_auto_select`](./fc_shipping_methods_disable_auto_select) Filters the shipping methods disable auto select.
+- [`fc_shipping_not_needed_shipping_field_keys`](./fc_shipping_not_needed_shipping_field_keys) Filters the shipping not needed shipping field keys.
+- [`fc_shipping_phone_field_args`](./fc_shipping_phone_field_args) Filters the shipping phone field args.
+- [`fc_shipping_same_as_billing_display_substep_review_text_notice`](./fc_shipping_same_as_billing_display_substep_review_text_notice) Filters whether the shipping substep review text shows the same-as-billing notice.
+- [`fc_shipping_same_as_billing_field_keys`](./fc_shipping_same_as_billing_field_keys) Filters the shipping same as billing field keys.
+- [`fc_shipping_same_as_billing_field_value`](./fc_shipping_same_as_billing_field_value) Filters a shipping field value copied from the matching billing field.
+- [`fc_shipping_same_as_billing_field_value`](./fc_shipping_same_as_billing_field_value-2) Filters a shipping field value copied from the matching billing field.
+- [`fc_shipping_same_as_billing_field_value`](./fc_shipping_same_as_billing_field_value-3) Filters a shipping field value copied from the matching billing field.
+- [`fc_shipping_same_as_billing_option_label`](./fc_shipping_same_as_billing_option_label) Filters the label of the "same as billing address" option.
+- [`fc_shipping_same_as_billing_skip_fields`](./fc_shipping_same_as_billing_skip_fields) Filters the shipping same as billing skip fields.
+- [`fc_show_account_creation_notice_checkout_contact_step_text`](./fc_show_account_creation_notice_checkout_contact_step_text) Filters the show account creation notice checkout contact step text.
+- [`fc_show_billing_section_highlighted`](./fc_show_billing_section_highlighted) Filters the show billing section highlighted.
+- [`fc_show_order_totals_row_highlighted`](./fc_show_order_totals_row_highlighted) Filters the show order totals row highlighted.
+- [`fc_show_shipping_section_highlighted`](./fc_show_shipping_section_highlighted) Filters the show shipping section highlighted.
+- [`fc_skip_change_customer_address_field_value_from_checkout_data`](./fc_skip_change_customer_address_field_value_from_checkout_data) Filters the skip change customer address field value from checkout data.
+- [`fc_skip_checkout_field_value_from_session_or_posted_data`](./fc_skip_checkout_field_value_from_session_or_posted_data) Filters the skip checkout field value from session or posted data.
+- [`fc_step_title_{step_id}`](./fc_step_title_step_id) Filters the title of a checkout step.
+- [`fc_steps_count_html`](./fc_steps_count_html) Filters the "Step X of Y" HTML in the checkout progress bar.
+- [`fc_subscription_shipping_package_name`](./fc_subscription_shipping_package_name) Filters the name of a subscription recurring shipping package.
+- [`fc_substep_change_button_label`](./fc_substep_change_button_label) Filters the label of the substep change button.
+- [`fc_substep_coupon_codes_section_title`](./fc_substep_coupon_codes_section_title) Filters the coupon code substep title.
+- [`fc_substep_coupon_codes_text`](./fc_substep_coupon_codes_text) Filters the substep coupon codes text.
+- [`fc_substep_save_button_classes`](./fc_substep_save_button_classes) Filters the CSS classes of the substep save button.
+- [`fc_substep_save_button_label`](./fc_substep_save_button_label) Filters the label of the substep save button.
+- [`fc_substep_{substep_id}_attributes`](./fc_substep_substep_id_attributes) Filters additional attributes for the substep output, allowing other plugins to add or modify attributes.
+- [`fc_substep_{substep_id}_text`](./fc_substep_substep_id_text) Filters the rendered review text HTML for a checkout substep.
+- [`fc_substep_{substep_id}_text_lines`](./fc_substep_substep_id_text_lines) Filters the review text lines for a checkout substep.
+- [`fc_substep_text_{address_type}_address_field_keys_skip_list`](./fc_substep_text_address_type_address_field_keys_skip_list) Filters the rendered review text HTML for a checkout substep.
+- [`fc_substep_text_contact_field_keys_skip_list`](./fc_substep_text_contact_field_keys_skip_list) Filters the substep text contact field keys skip list.
+- [`fc_substep_text_display_value_{field_key}`](./fc_substep_text_display_value_field_key) Filters the substep review display value for one checkout field.
+- [`fc_substep_text_display_value_{field_type}`](./fc_substep_text_display_value_field_type) Filters the substep review display value for a checkout field type.
+- [`fc_substep_text_display_value_{field_type}_char`](./fc_substep_text_display_value_field_type_char) Filters the character used to mask a password field in the substep review text.
+- [`fc_substep_text_display_value_show_field_label`](./fc_substep_text_display_value_show_field_label) Filters the label for the substep text display value show field.
+- [`fc_substep_text_display_value_show_field_label_checkbox`](./fc_substep_text_display_value_show_field_label_checkbox) Filters the substep text display value show field label checkbox.
+- [`fc_substep_text_display_value_show_field_label_{field_type}`](./fc_substep_text_display_value_show_field_label_field_type) Filters whether the substep review text includes the label for a field type.
+- [`fc_substep_text_display_value_show_field_label_{field_type}`](./fc_substep_text_display_value_show_field_label_field_type-2) Filters whether the substep review text includes the label for a field type.
+- [`fc_substep_text_display_value_show_field_label_{field_type}`](./fc_substep_text_display_value_show_field_label_field_type-3) Filters whether the substep review text includes the label for a field type.
+- [`fc_substep_text_display_value_show_field_label_{field_type}`](./fc_substep_text_display_value_show_field_label_field_type-4) Filters whether the substep review text includes the label for a field type.
+- [`fc_substep_text_display_value_show_field_label_{field_type}`](./fc_substep_text_display_value_show_field_label_field_type-5) Filters whether the substep review text includes the label for a field type.
+- [`fc_substep_text_display_value_show_field_label_{field_type}`](./fc_substep_text_display_value_show_field_label_field_type-6) Filters whether the substep review text includes the label for a field type.
+- [`fc_substep_title_{substep_id}`](./fc_substep_title_substep_id) Filters the title of a checkout substep.
+- [`fc_telemetry_api_url`](./fc_telemetry_api_url) Filters the remote telemetry API base URL.
+- [`fc_telemetry_api_url`](./fc_telemetry_api_url-2) Filters the remote telemetry API base URL.
+- [`fc_telemetry_client_config`](./fc_telemetry_client_config) Filters the telemetry client config for an API URL.
+- [`fc_telemetry_cron_hook`](./fc_telemetry_cron_hook) Filters the WP-Cron hook used for telemetry.
+- [`fc_telemetry_cron_hook`](./fc_telemetry_cron_hook-2) Filters the WP-Cron hook used for telemetry.
+- [`fc_telemetry_is_domain_eligible`](./fc_telemetry_is_domain_eligible) Filters whether a site domain may send telemetry.
+- [`fc_telemetry_own_plugins`](./fc_telemetry_own_plugins) Filters the own plugins registered for telemetry.
+- [`fc_thwcfe_clear_field_keys_skip_list`](./fc_thwcfe_clear_field_keys_skip_list) Filters the thwcfe clear field keys skip list.
+- [`fc_update_fragments`](./fc_update_fragments) Filters the HTML fragments returned by the fragment-refresh request.
+- [`fc_upsell_order_bump_section_position_args`](./fc_upsell_order_bump_section_position_args) Filters the upsell order bump section position args.
+- [`fc_use_verbose_loading_indicator`](./fc_use_verbose_loading_indicator) Filters the use verbose loading indicator.
+- [`fc_wrapper_classes`](./fc_wrapper_classes) Filters the CSS classes for the wrapper.
+- [`fc_wrapper_classes_add_payment_method_page`](./fc_wrapper_classes_add_payment_method_page) Filters the CSS classes of the wrapper on the add-payment-method page.
+
+</div>

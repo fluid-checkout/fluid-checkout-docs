@@ -60,21 +60,23 @@ Actions and filters in EU-VAT Assistant.
 
 ## Filters
 
-| Hook | Description |
-| --- | --- |
-| [`fc_vat_admin_notices`](./fc_vat_admin_notices) | Filters the admin notices displayed by EU-VAT Assistant. |
-| [`fc_vat_admin_script_settings`](./fc_vat_admin_script_settings) | Filters the admin script settings passed to `AdminEUVAT.init()` as `fcVATSettings.adminEUVAT`. |
-| [`fc_vat_{current_section}_settings`](./fc_vat_current_section_settings) | Filters the WooCommerce settings fields for a Fluid Checkout settings section. |
-| [`fc_vat_enable_compat_account_details_plugin_style_{plugin_slug}`](./fc_vat_enable_compat_account_details_plugin_style_plugin_slug) | Filters whether to load the account-details compatibility stylesheet for a plugin. |
-| [`fc_vat_enable_compat_account_details_style_{theme_slug}`](./fc_vat_enable_compat_account_details_style_theme_slug) | Filters whether to load the account-details compatibility stylesheet for a theme. |
-| [`fc_vat_enable_compat_edit_address_plugin_style_{plugin_slug}`](./fc_vat_enable_compat_edit_address_plugin_style_plugin_slug) | Filters whether to load the edit-address compatibility stylesheet for a plugin. |
-| [`fc_vat_enable_compat_edit_address_style_{theme_slug}`](./fc_vat_enable_compat_edit_address_style_theme_slug) | Filters whether to load the edit-address compatibility stylesheet for a theme. |
-| [`fc_vat_enable_compat_plugin_{plugin_slug}`](./fc_vat_enable_compat_plugin_plugin_slug) | Filters whether to load the PHP compatibility file for a plugin. |
-| [`fc_vat_enable_compat_plugin_style_{plugin_slug}`](./fc_vat_enable_compat_plugin_style_plugin_slug) | Filters whether to load the checkout compatibility stylesheet for a plugin. |
-| [`fc_vat_enable_compat_theme_style_{theme_slug}`](./fc_vat_enable_compat_theme_style_theme_slug) | Filters whether to load the checkout compatibility stylesheet for a theme. |
-| [`fc_vat_enable_compat_theme_{theme_slug}`](./fc_vat_enable_compat_theme_theme_slug) | Filters whether to load the PHP compatibility file for a theme. |
-| [`fc_vat_is_vat_number_field`](./fc_vat_is_vat_number_field) | Filters whether a field is considered a VAT number field. |
-| [`fc_vat_js_settings`](./fc_vat_js_settings) | Filters the JavaScript settings object output as `fcVATSettings`. |
-| [`fc_vat_number_field_args`](./fc_vat_number_field_args) | Filters the arguments used for the VAT number field. |
-| [`fc_vat_reverse_charge_countries_skip_list_options`](./fc_vat_reverse_charge_countries_skip_list_options) | Filters the countries offered in the Reverse Charge Exceptions setting. |
-| [`fc_vat_vat_number_account_details_field_additional_args`](./fc_vat_vat_number_account_details_field_additional_args) | Filters extra arguments merged into the VAT number field on the edit-account form. |
+<div className="hook-list">
+
+- [`fc_vat_admin_notices`](./fc_vat_admin_notices) Filters the admin notices displayed by EU-VAT Assistant.
+- [`fc_vat_admin_script_settings`](./fc_vat_admin_script_settings) Filters the admin script settings passed to `AdminEUVAT.init()` as `fcVATSettings.adminEUVAT`.
+- [`fc_vat_{current_section}_settings`](./fc_vat_current_section_settings) Filters the WooCommerce settings fields for a Fluid Checkout settings section.
+- [`fc_vat_enable_compat_account_details_plugin_style_{plugin_slug}`](./fc_vat_enable_compat_account_details_plugin_style_plugin_slug) Filters whether to load the account-details compatibility stylesheet for a plugin.
+- [`fc_vat_enable_compat_account_details_style_{theme_slug}`](./fc_vat_enable_compat_account_details_style_theme_slug) Filters whether to load the account-details compatibility stylesheet for a theme.
+- [`fc_vat_enable_compat_edit_address_plugin_style_{plugin_slug}`](./fc_vat_enable_compat_edit_address_plugin_style_plugin_slug) Filters whether to load the edit-address compatibility stylesheet for a plugin.
+- [`fc_vat_enable_compat_edit_address_style_{theme_slug}`](./fc_vat_enable_compat_edit_address_style_theme_slug) Filters whether to load the edit-address compatibility stylesheet for a theme.
+- [`fc_vat_enable_compat_plugin_{plugin_slug}`](./fc_vat_enable_compat_plugin_plugin_slug) Filters whether to load the PHP compatibility file for a plugin.
+- [`fc_vat_enable_compat_plugin_style_{plugin_slug}`](./fc_vat_enable_compat_plugin_style_plugin_slug) Filters whether to load the checkout compatibility stylesheet for a plugin.
+- [`fc_vat_enable_compat_theme_style_{theme_slug}`](./fc_vat_enable_compat_theme_style_theme_slug) Filters whether to load the checkout compatibility stylesheet for a theme.
+- [`fc_vat_enable_compat_theme_{theme_slug}`](./fc_vat_enable_compat_theme_theme_slug) Filters whether to load the PHP compatibility file for a theme.
+- [`fc_vat_is_vat_number_field`](./fc_vat_is_vat_number_field) Filters whether a field is considered a VAT number field.
+- [`fc_vat_js_settings`](./fc_vat_js_settings) Filters the JavaScript settings object output as `fcVATSettings`.
+- [`fc_vat_number_field_args`](./fc_vat_number_field_args) Filters the arguments used for the VAT number field.
+- [`fc_vat_reverse_charge_countries_skip_list_options`](./fc_vat_reverse_charge_countries_skip_list_options) Filters the countries offered in the Reverse Charge Exceptions setting.
+- [`fc_vat_vat_number_account_details_field_additional_args`](./fc_vat_vat_number_account_details_field_additional_args) Filters extra arguments merged into the VAT number field on the edit-account form.
+
+</div>

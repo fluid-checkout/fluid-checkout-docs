@@ -84,8 +84,9 @@ test('keeps fc_ and fc_pro_ hooks and skips WooCommerce and other third-party na
     'Fluid Checkout PRO',
   );
   const sidebar = JSON.stringify(renderSidebarItems(result.hooks));
-  assert.match(index, /fc_checkout_steps/);
+  assert.match(index, /- \[`fc_checkout_steps`\]\(\.\/fc_checkout_steps\) Filters the checkout steps\./);
   assert.match(index, /fc_pro_enable_compat_plugin_\{plugin_slug\}/);
+  assert.doesNotMatch(index, /\| Hook \| Description \|/);
   assert.match(index, /fc_adb_enable_compat_plugin_\{plugin_slug\}/);
   assert.match(index, /fc_gaa_google_autocomplete_js_settings/);
   assert.doesNotMatch(index, /woocommerce_checkout_fields/);
@@ -512,7 +513,15 @@ test('hooks index places the hand-written intro above the hook list', () => {
   );
   assert.match(plain, /title: "All hooks — EU-VAT Assistant"/);
   assert.match(plain, /# All hooks/);
+  assert.match(plain, /- \[`fc_vat_js_settings`\]\(\.\/fc_vat_js_settings\) Settings\./);
   assert.doesNotMatch(plain, /Getting started with EU-VAT Assistant hooks/);
+
+  const unnamed = renderHooksIndex(
+    [{name: 'fc_checkout_steps', slug: 'fc_checkout_steps', type: 'action', summary: ''}],
+    'Fluid Checkout Lite',
+  );
+  assert.match(unnamed, /- \[`fc_checkout_steps`\]\(\.\/fc_checkout_steps\)\n/);
+  assert.doesNotMatch(unnamed, /fc_checkout_steps fc_checkout_steps/);
 
   assert.deepEqual(gettingStartedRedirects(catalog.plugins, root), [
     {

@@ -224,7 +224,7 @@ export function renderHookPage(hook, options) {
 /**
  * @param {{name: string, slug: string, type: string, summary: string}[]} hooks
  * @param {string} pluginLabel
- * @param {string | null | undefined} [introMarkdown] Hand-written intro placed above the hook tables.
+ * @param {string | null | undefined} [introMarkdown] Hand-written intro placed above the hook lists.
  * @returns {string}
  */
 export function renderHooksIndex(hooks, pluginLabel, introMarkdown = null) {
@@ -251,8 +251,8 @@ export function renderHooksIndex(hooks, pluginLabel, introMarkdown = null) {
 
   lines.push(`Actions and filters in ${pluginLabel}.`, '');
 
-  lines.push(...renderHookTable('Actions', actions));
-  lines.push(...renderHookTable('Filters', filters));
+  lines.push(...renderHookList('Actions', actions));
+  lines.push(...renderHookList('Filters', filters));
 
   if (hooks.length === 0) {
     lines.push('No hooks are listed yet.', '');
@@ -298,21 +298,27 @@ export function renderSidebarItems(hooks) {
 }
 
 /**
+ * One list per heading, matching the live docs list at
+ * fluidcheckout.com/docs/fclite-filter-and-action-hooks/: the hook name is a
+ * code link, and the short description follows it. An empty description is
+ * omitted.
+ *
  * @param {string} heading
  * @param {{name: string, slug: string, summary: string}[]} hooks
  * @returns {string[]}
  */
-function renderHookTable(heading, hooks) {
+function renderHookList(heading, hooks) {
   if (hooks.length === 0) {
     return [];
   }
 
-  const lines = [`## ${heading}`, '', '| Hook | Description |', '| --- | --- |'];
+  const lines = [`## ${heading}`, '', '<div className="hook-list">', ''];
   for (const hook of hooks) {
-    const summary = escapeMdx(escapePipes(oneLine(hook.summary || '')));
-    lines.push(`| [\`${hook.name}\`](./${hook.slug}) | ${summary} |`);
+    const summary = escapeMdx(oneLine(hook.summary || ''));
+    const link = `[\`${hook.name}\`](./${hook.slug})`;
+    lines.push(summary ? `- ${link} ${summary}` : `- ${link}`);
   }
-  lines.push('');
+  lines.push('', '</div>', '');
   return lines;
 }
 
