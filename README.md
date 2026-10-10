@@ -46,8 +46,6 @@ Routes:
 - `/<plugin>/hooks/<hook-slug>` one page per hook
 - `/<plugin>/guides/...` guides, when that plugin's sidebar has a Guides category
 
-`/eu-vat/guides/getting-started` redirects to `/eu-vat/hooks`. Lite and PRO never had that page, so they have no matching redirect.
-
 Each plugin is a separate Docusaurus docs plugin instance (`routeBasePath` in `plugins.json`), so a later release can version one plugin without versioning the others.
 
 ## Add a guide
@@ -71,8 +69,6 @@ Create `hooks-intro/<plugin>/index.md` for the text that should appear above tha
 Run `npm run generate`. The generator copies the intro into `docs/<plugin>/hooks/index.md` and rewrites those image paths. Edit the intro file, not the generated index. The intro is compiled as MDX with the hooks page, so keep `{` and `}` inside inline code or fenced code blocks.
 
 EU-VAT, Lite, and PRO each have an intro at `hooks-intro/<plugin>/index.md`. The generated page heading and sidebar label are `All hooks`. The browser title is `All hooks — <plugin label>`.
-
-`docusaurus.config.ts` adds a client redirect from `/eu-vat/guides/getting-started` to `/eu-vat/hooks`. Lite and PRO never published `/guides/getting-started`, so they have no redirect.
 
 ## Add an example
 
