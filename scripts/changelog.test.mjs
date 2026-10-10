@@ -123,8 +123,8 @@ test('changelog.md preamble is dropped and the readme copy wins', () => {
   assert.match(page, /slug: \/changelog/);
   assert.match(page, /^# Changelog$/m);
   assert.match(page, /This project follows \[Semantic Versioning\]\(https:\/\/semver\.org\/spec\/v2\.0\.0\.html\)\./);
-  assert.match(page, /^## 1\.2\.3 - 2024-01-01 \{#1-2-3\}$/m);
-  assert.match(page, /^## 1\.2\.0 – 2022-02-05 \(first public release\) \{#1-2-0\}$/m);
+  assert.match(page, /^## 1\.2\.3 - 2024-01-01 \{\/\* #1-2-3 \*\/\}$/m);
+  assert.match(page, /^## 1\.2\.0 – 2022-02-05 \(first public release\) \{\/\* #1-2-0 \*\/\}$/m);
   assert.match(page, /\* Added: From readme\./);
   assert.doesNotMatch(page, /From changelog file/);
   assert.doesNotMatch(page, /To avoid duplicate work/);
@@ -132,9 +132,9 @@ test('changelog.md preamble is dropped and the readme copy wins', () => {
   assert.doesNotMatch(page, /MAJOR version when incompatible/);
   assert.doesNotMatch(page, /See latest changes/);
   assert.doesNotMatch(page, /Upgrade Notice/);
-  assert.ok(page.indexOf('## 1.2.3') < page.indexOf('{#1-2-3}'));
-  assert.ok(page.indexOf('{#1-2-3}') < page.indexOf('{#1-2-2}'));
-  assert.ok(page.indexOf('{#1-2-2}') < page.indexOf('## 1.2.1'));
+  assert.ok(page.indexOf('## 1.2.3') < page.indexOf('{/* #1-2-3 */}'));
+  assert.ok(page.indexOf('{/* #1-2-3 */}') < page.indexOf('{/* #1-2-2 */}'));
+  assert.ok(page.indexOf('{/* #1-2-2 */}') < page.indexOf('## 1.2.1'));
 });
 
 test('mdx escapes braces and angle brackets outside code spans only', () => {
@@ -185,7 +185,7 @@ test('published plugin changelogs keep every source version and the readme copy'
       }
     }
 
-    const anchors = [...loaded.page.matchAll(/\{#([^}]+)\}/g)].map((match) => match[1]);
+    const anchors = [...loaded.page.matchAll(/\{\/\* #(\S+) \*\/\}/g)].map((match) => match[1]);
     assert.deepEqual(anchors, versions.map(versionAnchor));
 
     assert.match(loaded.page, /This project follows \[Semantic Versioning\]/);
@@ -214,7 +214,7 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.equal(lite.merged.entries.at(-1).version, '1.2.0');
   assert.equal(lite.readmeCount, 15);
   assert.ok(lite.merged.entries.some((entry) => entry.version === '4.0.6' && entry.source === 'changelog'));
-  assert.match(lite.page, /\{#4-2-7\}/);
+  assert.match(lite.page, /\{\/\* #4-2-7 \*\/\}/);
   assert.match(lite.page, /Add &lt;field>/);
   assert.match(lite.page, /`fc_expansible_section_toggle_label_\{\$key\}_add_optional_text`/);
   assert.match(lite.page, /inside the shipping method `<label>` element/);
@@ -225,7 +225,7 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.equal(pro.merged.entries[0].version, '4.0.6');
   assert.equal(pro.merged.entries.at(-1).version, '1.2.0');
   assert.equal(pro.merged.entries.at(-1).suffix, '(first public release)');
-  assert.match(pro.page, /^## 1\.2\.0 – 2022-02-05 \(first public release\) \{#1-2-0\}$/m);
+  assert.match(pro.page, /^## 1\.2\.0 – 2022-02-05 \(first public release\) \{\/\* #1-2-0 \*\/\}$/m);
   assert.match(pro.page, /Minimum required version for Fluid Checkout Lite is 4\.2\.0/);
   assert.equal(pro.readmeCount, 7);
 

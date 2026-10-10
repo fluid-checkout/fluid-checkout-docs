@@ -13,53 +13,53 @@ pagination_next: null
 
 This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 2.1.2 - 2026-08-21 {#2-1-2}
+## 2.1.2 - 2026-08-21 {/* #2-1-2 */}
 
 * Bump tested up to WordPress 7.1+ and WooCommerce 11.0+
 * Improved: Support conditional visibility for admin settings fields.
 * Improved: Show the EU-VAT Assistant plugin icon on admin notices.
 * Improved: Show pending database migration changes in the update notice.
 
-## 2.1.1 - 2026-04-21 {#2-1-1}
+## 2.1.1 - 2026-04-21 {/* #2-1-1 */}
 
 * Fixed: Fatal error when using EU-VAT with Stripe Payments and a block based theme.
 
-## 2.1.0 - 2026-03-10 {#2-1-0}
+## 2.1.0 - 2026-03-10 {/* #2-1-0 */}
 
 * Bump tested up to WooCommerce 10.6.0
 * Added: VAT field validation on admin add/edit order screensto set order as tax-exempt.
 * Added: New option to skip applying reverse charge for selected countries.
 * Fixed: Apply taxes to same country transactions based on shop country from WooCommerce settings when the Shop VAT number has not been set.
 
-## 2.0.9 - 2026-02-26 {#2-0-9}
+## 2.0.9 - 2026-02-26 {/* #2-0-9 */}
 
 * Bump tested up to WooCommerce 10.5.2
 * Fixed: Compatibility with plugin Germanized PRO. Prevent fatal errors when Germanized PRO is active but its features are not loaded because it is missing dependencies.
 * Fixed: Compatibility with plugin WooCommerce Subscriptions. Fatal error in some rare cases.
 * Fixed: Company field being empty and not editable when the autocomplete from VAT number feature is enabled.
 
-## 2.0.8 - 2025-12-12 {#2-0-8}
+## 2.0.8 - 2025-12-12 {/* #2-0-8 */}
 
 * Fixed: Fatal error on empty cart page when a valid VAT number was previously set at checkout and the Address Book add-on is also being used.
 
-## 2.0.7 - 2025-12-05 {#2-0-7}
+## 2.0.7 - 2025-12-05 {/* #2-0-7 */}
 
 * Bump tested up to WordPress 6.9 and WooCommerce 10.3.6
 * Improved: Change descrition of company fields when it cannot be edited because its value is forced to company name returned by VAT Validation.
 * Fixed: Validate VAT numbers as `valid` when using lowercase values, and always show VAT numbers in uppercase on checkout.
 
-## 2.0.6 - 2025-10-21 {#2-0-6}
+## 2.0.6 - 2025-10-21 {/* #2-0-6 */}
 
 * Bump tested up to WooCommerce 10.2.2
 * Fixed: VAT information box not showing when using HPOS (custom order tables).
 
-## 2.0.5 - 2025-08-17 {#2-0-5}
+## 2.0.5 - 2025-08-17 {/* #2-0-5 */}
 
 * Bump tested up to WordPress 6.8.2 and WooCommerce 10.1.0
 * Added: Compatibility with theme Cartzilla.
 * Fixed: Styles for optional VAT number field on the edit account page.
 
-## 2.0.4 - 2025-06-10 {#2-0-4}
+## 2.0.4 - 2025-06-10 {/* #2-0-4 */}
 
 * Bump tested up to WooCommerce 9.9.3
 * Added: Compatibility with plugin YITH WooCommerce Checkout Manager.
@@ -68,25 +68,25 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Compatibility with plugin Nets/Nexi Checkout (formerly Dibs). Fix integration with Redirect and Overlay checkout flow options.
 * Fixed: RTL styles for compatibility with various themes and plugins.
 
-## 2.0.3 - 2025-03-17 {#2-0-3}
+## 2.0.3 - 2025-03-17 {/* #2-0-3 */}
 
 * Bump tested up to WooCommerce 9.7.1
 * Added: Automatic translations for EU languages supported by WordPress, and Deepl or Google Translate.
 * Added: Compatibility with theme The7.
 * Fixed: Allow VAT validation when the Shop VAT number has not been provided in the plugin settings.
 
-## 2.0.2 - 2025-02-24 {#2-0-2}
+## 2.0.2 - 2025-02-24 {/* #2-0-2 */}
 
 * Bump tested up to WordPress 6.7.2 and WooCommerce 9.6.2
 * Fixed: Custom translation files from Loco Translate not loading correctly.
 
-## 2.0.1 - 2025-01-07 {#2-0-1}
+## 2.0.1 - 2025-01-07 {/* #2-0-1 */}
 
 * Bump tested up to WooCommerce 9.5.1
 * Fixed: Fatal error when trying to change the translation file loaded for language variations on versions of WordPress prior to 6.6.0.
 * Fixed: Fatal error when trying to add VAT validation information on substep review text when the VAT Number field is moved to another section using the plugin Checkout Field Editor PRO.
 
-## 2.0.0 - 2024-12-11 {#2-0-0}
+## 2.0.0 - 2024-12-11 {/* #2-0-0 */}
 
 * BREAKING CHANGES - Minimum required version for Fluid Checkout Lite is 4.0.0 for this add-on to work. Please make sure you update Fluid Checkout Lite to 4.0.0+ to continue using this add-on.
 
@@ -94,20 +94,20 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Added: Integration with the Order Pay page feature from Fluid Checkout PRO.
 * Fixed: How the plugin translation files are loaded. Fixes issue with WordPress 6.7 and Loco Translate not loading the correct translations.
 
-## 1.0.11 - 2024-11-14 {#1-0-11}
+## 1.0.11 - 2024-11-14 {/* #1-0-11 */}
 
 * Bump tested up to WordPress 6.7 and WooCommerce 9.4.1
 * Added: Privacy data managers for order VAT validation information.
 * Fixed: Update the VAT validation results when the field is moved out of the billing address section.
 
-## 1.0.10 - 2024-10-10 {#1-0-10}
+## 1.0.10 - 2024-10-10 {/* #1-0-10 */}
 
 * Bump tested up to WooCommerce 9.3.3
 * Added: Compatibility with theme Porto.
 * Improved: Change hook used to run database migrations on first activation.
 * Fixed: Fatal error when activating the plugin for the first time when using HPOS (order tables) WooCommerce feature.
 
-## 1.0.9 - 2024-08-22 {#1-0-9}
+## 1.0.9 - 2024-08-22 {/* #1-0-9 */}
 
 * Bump tested up to WordPress 6.6.1 and WooCommerce 9.2.1
 * Added: Compatibility with theme Konte.
@@ -115,13 +115,13 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Do not apply database migrations when activating the plugin on a multisite installation.
 * Fixed: Change the way plugin compatibility classes are loaded to work also on multisite installations.
 
-## 1.0.8 - 2024-06-11 {#1-0-8}
+## 1.0.8 - 2024-06-11 {/* #1-0-8 */}
 
 * Bump tested up to WordPress 6.5.4 and WooCommerce 8.9.3
 * Added: Compatibility with theme Go.
 * Added: Compatibility with theme Diza.
 
-## 1.0.7 - 2024-04-25 {#1-0-7}
+## 1.0.7 - 2024-04-25 {/* #1-0-7 */}
 
 * Bump tested up to WordPress 6.5.2 and WooCommerce 8.8.2
 * Added: Compatibility with theme Salient.
@@ -129,12 +129,12 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Improved: Automatically apply database migrations on first plugin installation, showing the message for database migration available only when updating the plugin.
 * Fixed: Translations not being loaded correctly for language variations on WordPress 6.5+.
 
-## 1.0.6 - 2024-03-27 {#1-0-6}
+## 1.0.6 - 2024-03-27 {/* #1-0-6 */}
 
 * Bump tested up to WooCommerce 8.7.0
 * Fixed: Missing styles for RTL languages, instead use the main file when the RTL file does not exist.
 
-## 1.0.5 - 2024-03-07 {#1-0-5}
+## 1.0.5 - 2024-03-07 {/* #1-0-5 */}
 
 * Added: Compatibility with theme Aperitif.
 * Added: Compatibility with theme Amphibious.
@@ -142,7 +142,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Convert form field classes to array before trying to merge them to add custom classes.
 * Fixed: Keep VAT number field open on the edit account page when it is cleared.
 
-## 1.0.4 - 2024-02-21 {#1-0-4}
+## 1.0.4 - 2024-02-21 {/* #1-0-4 */}
 
 * Bump tested up to WooCommerce 8.6.1
 * Added: Compatibility with theme Pressmart.
@@ -152,14 +152,14 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Added: Compatibility with plugin Svea Checkout for WooCommerce by The Generation AB.
 * Added: Compatibility with plugin Germanized PRO. Disable the VAT ID validation from the Germanized plugin when the EU-VAT Assistant add-on is active.
 
-## 1.0.3 - 2024-02-02 {#1-0-3}
+## 1.0.3 - 2024-02-02 {/* #1-0-3 */}
 
 * Bump tested up to WordPress 6.4.3 and WooCommerce 8.5.2
 * Added: Compatibility with theme Cartsy.
 * Fixed: File path for PHP Composer autoload file, and update generated PHP composer autoload files.
 * Improved: Add process to automatically generate the installable zip file when creating a new version.
 
-## 1.0.2 - 2024-01-03 {#1-0-2}
+## 1.0.2 - 2024-01-03 {/* #1-0-2 */}
 
 * Added: Support for billing address before shipping address on the checkout page.
 * Added: Compatibility with theme BuddyBoss.
@@ -167,7 +167,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Improved: Add translation for error messages returned by the VIES service.
 * Fixed: Fatal error when trying to access VAT information for orders without any VAT validation data.
 
-## 1.0.1 - 2023-12-14 {#1-0-1}
+## 1.0.1 - 2023-12-14 {/* #1-0-1 */}
 
 * Bump tested up to WordPress 6.4.2 and WooCommerce 8.4.0
 * Added: EU VAT column on the admin orders list.
@@ -175,7 +175,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Layout issues on order edit screen when order does not have VAT information to be displayed.
 * Fixed: Fatal error trying to access edit customer account page when Address Book add-on is activated.
 
-## 1.0.0 - 2023-11-22 {#1-0-0}
+## 1.0.0 - 2023-11-22 {/* #1-0-0 */}
 
 * Bump tested up to WordPress 6.4.1 and WooCommerce 8.3.1
 * Moved out of beta.
@@ -183,6 +183,6 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Added: Add VAT validation information to the REST API order details results.
 * Fixed: Position for location confirmation checkbox on the checkout page.
 
-## 0.1.0 - 2023-09-27 {#0-1-0}
+## 0.1.0 - 2023-09-27 {/* #0-1-0 */}
 
 * First public release - BETA.

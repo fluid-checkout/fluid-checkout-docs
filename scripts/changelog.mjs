@@ -396,7 +396,9 @@ function isProcessLink(line) {
  */
 function renderHeading(entry) {
   const suffix = entry.suffix ? ` ${entry.suffix}` : '';
-  return `## ${entry.version} ${entry.dash} ${entry.date}${suffix} {#${versionAnchor(entry.version)}}`;
+  // `{/* #id */}` is the heading id syntax that compiles with MDX when
+  // future.v4 disables the legacy `{#id}` compatibility escape.
+  return `## ${entry.version} ${entry.dash} ${entry.date}${suffix} {/* #${versionAnchor(entry.version)} */}`;
 }
 
 /**

@@ -13,7 +13,7 @@ pagination_next: null
 
 This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 4.0.6 - 2026-08-19 {#4-0-6}
+## 4.0.6 - 2026-08-19 {/* #4-0-6 */}
 
 * Bump tested up to WordPress 7.1+
 * Added: Compatibility with theme Sober (by Uixthemes).
@@ -25,7 +25,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Precise phone number validation no longer sends checkout back to the shipping address after refresh for US and similar numbers.
 * Fixed: Fatal error when using international phone number fields with 3rd-party plugins that request the checkout address fields multiple times during the checkout initialization.
 
-## 4.0.5 - 2026-07-26 {#4-0-5}
+## 4.0.5 - 2026-07-26 {/* #4-0-5 */}
 
 * Bump tested up to WordPress 7.0.2 and WooCommerce 10.9.4
 * Fixed: Compatibility with theme Twenty Twenty-Five.
@@ -43,24 +43,24 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Pickup point address not being displayed on the order pay page when a local pickup method is selected.
 * Fixed: Billing address section not visible on checkout when using the billing address position "As a sub-step before/after the shipping address section" and the cart does not need shipping.
 
-## 4.0.4 - 2026-05-26 {#4-0-4}
+## 4.0.4 - 2026-05-26 {/* #4-0-4 */}
 
 * Bump tested up to WordPress 7.0 and WooCommerce 10.8.0
 * Improved: Allow opening the order summary popup/dropdown on the cart page when using the distraction free header template in the same way as on the checkout page.
 * Fixed: Show shipping costs on cart page when option to hide shipping at cart is selected but there are already shipping costs applied to the cart.
 
-## 4.0.3 - 2026-04-23 {#4-0-3}
+## 4.0.3 - 2026-04-23 {/* #4-0-3 */}
 
 * Improved: Add CSS variables for product image sizes on the cart page.
 * Fixed: Compatibility with plugin WooCommerce PayPal Payments. Fix place order button disabled on the order pay page.
 * Fixed: Non-logged user verification for order pay page. Additional fixes.
 
-## 4.0.2 - 2026-04-21 {#4-0-2}
+## 4.0.2 - 2026-04-21 {/* #4-0-2 */}
 
 * Improved: Update Fluid Checkout template files to the current latest versions from WooCommerce.
 * Fixed: Non-logged user verification for order pay page.
 
-## 4.0.1 - 2026-04-07 {#4-0-1}
+## 4.0.1 - 2026-04-07 {/* #4-0-1 */}
 
 * Bump tested up to WooCommerce 10.6.1
 * Improved: Update international phone number code library (intl-tel-input) to its latest available version.
@@ -71,7 +71,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Always replace the account creation fragment to prevent it from staying visible when an account match is found for the email provided.
 * Fixed: Distraction free header staying offset when WP admin bar is scrolled out of view on the cart page.
 
-## 4.0.0 - 2026-03-10 {#4-0-0}
+## 4.0.0 - 2026-03-10 {/* #4-0-0 */}
 
 * BREAKING CHANGES - Minimum required version for Fluid Checkout Lite is 4.2.0 for this add-on to work. Please make sure you update Fluid Checkout Lite to 4.2.0+ to continue using this add-on.
 
@@ -82,7 +82,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: International phone number validation behavior on page load.
 * Fixed: Fatal error in rare cases when using the Local Pickup feature and the Address Book add-on.
 
-## 3.1.6 - 2026-02-26 {#3-1-6}
+## 3.1.6 - 2026-02-26 {/* #3-1-6 */}
 
 * Bump tested up to WooCommerce 10.5.2
 * Added: Compatibility with plugin Gift Cards - Coupon Input (by SomewhereWarm).
@@ -90,11 +90,11 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Improved: Compatibility of the International Phone Number feature styles with some themes.
 * Fixed: Compatibility with plugin Germanized PRO. Prevent fatal errors when Germanized PRO is active but its features are not loaded because it is missing dependencies.
 
-## 3.1.5 - 2026-02-26 {#3-1-5}
+## 3.1.5 - 2026-02-26 {/* #3-1-5 */}
 
 * Version number skipped to match with Lite plugin.
 
-## 3.1.4 - 2025-12-05 {#3-1-4}
+## 3.1.4 - 2025-12-05 {/* #3-1-4 */}
 
 * Bump tested up to WordPress 6.9 and WooCommerce 10.3.6
 * Added: Compatibility with plugin Kustom Checkout for WooCommerce (formerly Klarna Checkout for WooCommerce).
@@ -113,12 +113,12 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Compatibility with plugin Germanized for WooCommerce. Fix fatal error when DHL integration is not active.
 * Fixed: JavaScript errors triggered by inline scripts when minified.
 
-## 3.1.3 - 2025-10-28 {#3-1-3}
+## 3.1.3 - 2025-10-28 {/* #3-1-3 */}
 
 * Fixed: Use of deprecated asset handles in WooCommerce 10.3.0+
 * Fixed: Wrong `not-allowed` cursor and other styles being applied to readonly fields of various types.
 
-## 3.1.2 - 2025-10-21 {#3-1-2}
+## 3.1.2 - 2025-10-21 {/* #3-1-2 */}
 
 * Bump tested up to WooCommerce 10.2.2
 * Added: Compatibility with theme Kiosko.
@@ -134,11 +134,11 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: String position marks in Serbian translations.
 * Fixed: Product quantities did not trigger update in some cases, especially when clicking quantity spinner buttons.
 
-## 3.1.1 - 2025-08-22 {#3-1-1}
+## 3.1.1 - 2025-08-22 {/* #3-1-1 */}
 
 * Fixed: Order summary and side bar section not interactive because of transparent pseudo element on top of it.
 
-## 3.1.0 - 2025-08-17 {#3-1-0}
+## 3.1.0 - 2025-08-17 {/* #3-1-0 */}
 
 * Bump tested up to WordPress 6.8.2 and WooCommerce 10.1.0
 * Added: New feature progress bar style options.
@@ -166,12 +166,12 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Show order overview section on email previews.
 * Fixed: Styles for address sections on email messages when optimized email layout is enabled.
 
-## 3.0.7 - 2025-06-18 {#3-0-7}
+## 3.0.7 - 2025-06-18 {/* #3-0-7 */}
 
 * Fixed: Compatibility with plugin WooCommerce Delivery Slots by Iconic (Free and Premium). Prevent PHP error when trying to determine if the product needs shipping on certain pages.
 * Fixed: PHP error on cart page when trying to add a coupon code depending on the position of the coupon code section.
 
-## 3.0.6 - 2025-06-10 {#3-0-6}
+## 3.0.6 - 2025-06-10 {/* #3-0-6 */}
 
 * Bump tested up to WooCommerce 9.9.3
 * Added: Support for modern email design for transactional emails.
@@ -192,7 +192,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: International Phone Number field appearence on edit address page.
 * Fixed: Cached pickup location address data retrieving the previously selected location. Not address is set to the current selected location on the first attempt.
 
-## 3.0.5 - 2025-05-03 {#3-0-5}
+## 3.0.5 - 2025-05-03 {/* #3-0-5 */}
 
 * Bump tested up to WordPress 6.8.1 and WooCommerce 9.8.3
 * Added: Compatibility with theme Twenty Twenty-Four.
@@ -203,7 +203,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Should not set billing address forced to same as shipping when cart does not need shipping. Fixes compatibility issue with the Address Book add-on.
 * Fixed: Issues when trying to update cart item quantities on the cart page when the cart table is output to the page more than once.
 
-## 3.0.4 - 2025-04-15 {#3-0-4}
+## 3.0.4 - 2025-04-15 {/* #3-0-4 */}
 
 * Bump tested up to WooCommerce 9.8.1
 * Added: Compatibility with theme LeadEngine.
@@ -217,14 +217,14 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Content separator line appearing on empty cart page when using "Split" design template.
 * Fixed: Spacing for elements above the order summary section on cart page.
 
-## 3.0.3 - 2025-03-17 {#3-0-3}
+## 3.0.3 - 2025-03-17 {/* #3-0-3 */}
 
 * Bump tested up to WooCommerce 9.7.1
 * Added: Automatic translations for all 83 languages supported by WordPress, and Deepl or Google Translate.
 * Added: Compatibility with theme The7.
 * Fixed: Shipping address not retaining when switching to local pickup shipping method and back.
 
-## 3.0.2 - 2025-02-24 {#3-0-2}
+## 3.0.2 - 2025-02-24 {/* #3-0-2 */}
 
 * Bump tested up to WordPress 6.7.2 and WooCommerce 9.6.2
 * Added: Compatibility with theme Rehub.
@@ -245,7 +245,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Layout styles causing sticky header for some themes to not get sticky.
 * Fixed: Custom translation files from Loco Translate not loading correctly.
 
-## 3.0.1 - 2025-01-07 {#3-0-1}
+## 3.0.1 - 2025-01-07 {/* #3-0-1 */}
 
 * Bump tested up to WooCommerce 9.5.1
 * Added: Option to set form fields font size to 16px and avoid automatic zoom in issue on some mobile browsers.
@@ -266,7 +266,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Fix error when trying to remove phone number from address data in some cases.
 * Fixed: Fatal error when trying to change the translation file loaded for language variations on versions of WordPress prior to 6.6.0.
 
-## 3.0.0 - 2024-12-11 {#3-0-0}
+## 3.0.0 - 2024-12-11 {/* #3-0-0 */}
 
 * BREAKING CHANGES - Minimum required version for Fluid Checkout Lite is 4.0.0 for this add-on to work. Please make sure you update Fluid Checkout Lite to 4.0.0+ to continue using this add-on.
 
@@ -289,11 +289,11 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Express checkout orders not processing because shipping method was not selected correcly when option to prevent automatic selection of shipping method is enabled in the plugin settings.
 * Removed: Deprecated parameters `$is_sidebar_widget` from action hooks `fc_pro_cart_before_order_review`, `fc_pro_cart_before_order_review_inside`, `fc_pro_cart_order_review_sidebar_before_actions`, `fc_pro_cart_after_order_review_inside`, `fc_pro_cart_after_order_review`.
 
-## 2.2.5 - 2024-11-27 {#2-2-5}
+## 2.2.5 - 2024-11-27 {/* #2-2-5 */}
 
 * Fixed: International phone number fields blocking access to other fields after focusing on them. Also fixed other behavior of the international phone fields component.
 
-## 2.2.4 - 2024-11-14 {#2-2-4}
+## 2.2.4 - 2024-11-14 {/* #2-2-4 */}
 
 * Bump tested up to WordPress 6.7 and WooCommerce 9.4.1
 * Added: Compatibility with theme Uncode.
@@ -306,7 +306,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Only apply changes to order item meta html on the order received and view order details pages.
 * Fixed: Text domain for translatable strings on address sections for the order details pages.
 
-## 2.2.3 - 2024-10-10 {#2-2-3}
+## 2.2.3 - 2024-10-10 {/* #2-2-3 */}
 
 * Bump tested up to WooCommerce 9.3.3
 * Added: Compatibility with theme Kapee.
@@ -320,7 +320,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Improved: Output custom CSS variables values to email styles.
 * Fixed: Do not save or show local pickup address for orders that does not require physical delivery.
 
-## 2.2.2 - 2024-09-12 {#2-2-2}
+## 2.2.2 - 2024-09-12 {/* #2-2-2 */}
 
 * Bump tested up to WordPress 6.6.2 and WooCommerce 9.2.3
 * Added: Compatibility with theme Porto.
@@ -334,7 +334,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Javascript error when trying to scroll the page to show error messages on the cart page.
 * Fixed: Trigger update cart items on the checkout page when some custom cart item fields are changed.
 
-## 2.2.1 - 2024-08-22 {#2-2-1}
+## 2.2.1 - 2024-08-22 {/* #2-2-1 */}
 
 * Bump tested up to WordPress 6.6.1 and WooCommerce 9.2.1
 * Added: Translation to Czeck (Czeck Republic).
@@ -347,7 +347,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Fatal error on order details pages when trying to display product image for a product that was deleted. Display the product image placeholder instead.
 * Fixed: Untranslatable strings originated from WooCommerce.
 
-## 2.2.0 - 2024-08-02 {#2-2-0}
+## 2.2.0 - 2024-08-02 {/* #2-2-0 */}
 
 * Bump tested up to WordPress 6.6.1 and WooCommerce 9.1.4
 * Added: Compatibility with plugin Mondial Relay - WordPress.
@@ -361,7 +361,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Same addresses being used for express payments when processing order from other pages other than the checkout page when forcing shipping and billing as a single address section.
 * Fixed: Alignment and spacing for Express Checkout buttons when using multiple plugins compatible with this feature.
 
-## 2.1.10 - 2024-07-03 {#2-1-10}
+## 2.1.10 - 2024-07-03 {/* #2-1-10 */}
 
 * Bump tested up to WooCommerce 9.0.2
 * Added: Compatibility with theme Konte.
@@ -374,7 +374,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Skip loading cart cross-sells template file from Fluid Checkout on other pages other than the cart page.
 * Fixed: Do not check for local pickup shipping methods if the feature Local Pickup is not enabled.
 
-## 2.1.9 - 2024-06-20 {#2-1-9}
+## 2.1.9 - 2024-06-20 {/* #2-1-9 */}
 
 * Bump tested up to WooCommerce 9.0.1
 * Added: Compatibility with theme Kenta.
@@ -384,7 +384,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: PHP warning message on order details pages.
 * Fixed: Layout issues for some elements with class `woocommerce` that are displayed outside the scope of Fluid Checkout.
 
-## 2.1.8 - 2024-06-11 {#2-1-8}
+## 2.1.8 - 2024-06-11 {/* #2-1-8 */}
 
 * Bump tested up to WordPress 6.5.4 and WooCommerce 8.9.3
 * Added: New option to clear selected shipping methods from the pickup location substep, which allows the customer to enter a new shipping address if only pickup locations were previously available and selected.
@@ -406,7 +406,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Fatal error on compatibility with plugin MyParcel.
 * Fixed: Fatal error on account matching feature when trying to check if an account exists but no checkout data is available yet.
 
-## 2.1.7 - 2024-04-25 {#2-1-7}
+## 2.1.7 - 2024-04-25 {/* #2-1-7 */}
 
 * Bump tested up to WordPress 6.5.2 and WooCommerce 8.8.2
 * Added: Compatibility with theme Hub.
@@ -419,7 +419,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Avoid trying to use cart functions too early before it is ready in some cases, which might result in the cart being emptied unexpectedly.
 * Fixed: Translations not being loaded correctly for language variations on WordPress 6.5+.
 
-## 2.1.6 - 2024-03-27 {#2-1-6}
+## 2.1.6 - 2024-03-27 {/* #2-1-6 */}
 
 * Bump tested up to WooCommerce 8.7.0
 * Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing by Acowebs.
@@ -432,7 +432,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Missing styles for RTL languages, instead use the main file when the RTL file does not exist.
 * Fixed: Spacing around cart page on mobile screens when using the design templates Minimalist and Split.
 
-## 2.1.5 - 2024-03-07 {#2-1-5}
+## 2.1.5 - 2024-03-07 {/* #2-1-5 */}
 
 * Added: Compatibility with theme Aperitif.
 * Added: Compatibility with theme Amphibious.
@@ -444,7 +444,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Convert form field classes to array before trying to merge them to add custom classes.
 * Fixed: Do not hide the shipping address section when forcing a single address section for the shipping and billing and a Local Pickup shipping method is selected.
 
-## 2.1.4 - 2024-02-21 {#2-1-4}
+## 2.1.4 - 2024-02-21 {/* #2-1-4 */}
 
 * Bump tested up to WooCommerce 8.6.1
 * Added: Compatibility with theme Kosi.
@@ -460,14 +460,14 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Cart page contents may not be displayed in some cases.
 * Fixed: Shipping state value lost some times when using option to force shipping and billing addresses to be the same.
 
-## 2.1.3 - 2024-02-02 {#2-1-3}
+## 2.1.3 - 2024-02-02 {/* #2-1-3 */}
 
 * Bump tested up to WordPress 6.4.3 and WooCommerce 8.5.2
 * Improved: Add process to automatically generate the installable zip file when creating a new version.
 * Fixed: Prevent fatal error when loading order received hooks while preparing to send related emails in some cases.
 * Fixed: PHP warning on international phone number feature class.
 
-## 2.1.2 - 2024-01-23 {#2-1-2}
+## 2.1.2 - 2024-01-23 {/* #2-1-2 */}
 
 * Bump tested up to WooCommerce 8.5.1
 * Added: Automatically replace the WooCommerce Cart block with the shortcode-based form.
@@ -479,12 +479,12 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Set full phone field numbers before processing checkout form validation.
 * Fixed: Only try to apply shortcode wrapper function meant for the order received page when actually on the order received page. Related to the applying grace period for viewing order received details for non-guest customers without logging in.
 
-## 2.1.1 - 2024-01-05 {#2-1-1}
+## 2.1.1 - 2024-01-05 {/* #2-1-1 */}
 
 * Fixed: File path for PHP Composer autoload file, and update generated PHP composer autoload files.
 * Fixed: Moved shortcode wrappers setup to later on the request lifecycle to avoid PHP warnings when some functions of WooCommerce are used early, usually related to cart data initialization.
 
-## 2.1.0 - 2024-01-03 {#2-1-0}
+## 2.1.0 - 2024-01-03 {/* #2-1-0 */}
 
 * Added: New options of positions to display the billing address, including option to force shipping and billing to the same address.
 * Added: Support for block themes using the Full Site Editor (FSE) mode.
@@ -493,7 +493,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Prevent shipping address section from being unexpectedly closed when updating checkout, only allow these changes when switch between shipping methods involve a `local_pickup` shipping method.
 * Removed: Option `fc_pro_enable_cart_page_template` replaced with a filter with the same name, as it makes more sense to have it as such.
 
-## 2.0.7 - 2023-12-14 {#2-0-7}
+## 2.0.7 - 2023-12-14 {/* #2-0-7 */}
 
 * Bump tested up to WordPress 6.4.2 and WooCommerce 8.4.0
 * Added: Compatibility with theme Goya.
@@ -503,14 +503,14 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Enable pointer events on the cart items remove buttons which might have been disabled by some themes and other plugins.
 * Fixed: Remove extra text "Shipping" added by some themes to the shipping costs value column on the order summary on the cart page.
 
-## 2.0.6 - 2023-11-15 {#2-0-6}
+## 2.0.6 - 2023-11-15 {/* #2-0-6 */}
 
 * Bump tested up to WordPress 6.4.1 and WooCommerce 8.2.2
 * Improved: Play `shake` animation on quantity fields when quantity field for that cart item has been reached.
 * Fixed: Compatibility with plugin Elementor PRO. Show navigation menus above the order summary on the cart page.
 * Removed: Notice about Address Book feature moving to a separate add-on plugin.
 
-## 2.0.5 - 2023-11-10 {#2-0-5}
+## 2.0.5 - 2023-11-10 {/* #2-0-5 */}
 
 * Added: Compatibility with theme Gizmos.
 * Added: Compatibility with theme Botiga.
@@ -526,7 +526,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Apply grace period for viewing order received details for non-guest customers without logging in. This is intended to be a temporary fix until this solution is implemented directly in WooCommerce core as explained here: https://github.com/woocommerce/woocommerce/issues/39750#issuecomment-1783882992
 * Fixed: Fatal error on cart page when generating proceed to checkout on WooCommerce versions older than 7.0.
 
-## 2.0.4 - 2023-09-27 {#2-0-4}
+## 2.0.4 - 2023-09-27 {/* #2-0-4 */}
 
 * Bump tested up to WordPress 6.3.1 and WooCommerce 8.1.1
 * Added: Apply highlight background color the order totals row in the order summary on the cart page.
@@ -544,7 +544,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Do not remove payment method information when email customization option is disabled in the plugin settings.
 * Deprecated: Renamed function `FluidCheckout_PRO_CartPage::get_hide_site_header_footer_at_cart`, use `FluidCheckout_PRO_CartPage::is_distraction_free_header_footer_cart` instead.
 
-## 2.0.3 - 2023-09-13 {#2-0-3}
+## 2.0.3 - 2023-09-13 {/* #2-0-3 */}
 
 * Bump tested up to WooCommerce 8.1
 * Added: Compatibility with theme Artemis.
@@ -556,7 +556,7 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: Missing SVG logo when using distraction free cart header.
 * Fixed: International phone number validation not working for instant validation (front-end).
 
-## 2.0.2 - 2023-08-24 {#2-0-2}
+## 2.0.2 - 2023-08-24 {/* #2-0-2 */}
 
 * Bump tested up to WordPress 6.3 and WooCommerce 8.0.2
 * Added: Compatibility with theme ZK Nito.
@@ -569,13 +569,13 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Fixed: PHP Warning related to gift message options while processing orders with only virtual/digital products.
 * Fixed: Padding and RTL styles for international phone number fields.
 
-## 2.0.1 - 2023-08-04 {#2-0-1}
+## 2.0.1 - 2023-08-04 {/* #2-0-1 */}
 
 * Added: Display pickup location address on the order details pages.
 * Improved: Compatibility with theme Woodmart.
 * Fixed: Changed the file name for the international phone number flags image to avoid issues with some server configurations causing the flag image to be missing.
 
-## 2.0.0 - 2023-07-18 {#2-0-0}
+## 2.0.0 - 2023-07-18 {/* #2-0-0 */}
 
 IMPORTANT CHANGE: Address book features has been removed from PRO and moved to a separate plugin.
 IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 3.0.0 or newer. All PRO features will be disabled until Fluid Checkout Lite is updated.
@@ -587,14 +587,14 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 3.0.0 or n
 * Fixed: Shipping calculator and shipping options not showing in the order summary section on cart page in some cases.
 * Removed: The address book feature has been removed and is now a separate plugin.
 
-## 1.8.2 - 2023-06-30 {#1-8-2}
+## 1.8.2 - 2023-06-30 {/* #1-8-2 */}
 
 * Bump tested up to WordPress 6.2.2 and WooCommerce 7.8.1
 * Added: Translation to Greek (Greece).
 * Added: Compatibility with plugin Extra Product Options & Add-Ons for WooCommerce by ThemeComplete.
 * Improved: Compatibility with theme Kadence. Use theme container class when using the theme's header and footer.
 
-## 1.8.1 - 2023-05-31 {#1-8-1}
+## 1.8.1 - 2023-05-31 {/* #1-8-1 */}
 
 * Added: Compatibility with plugin GP Premium by GeneratePress.
 * Added: Compatibility with theme Enfold.
@@ -602,7 +602,7 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 3.0.0 or n
 * Fixed: Remove duplicate cart item quantity spinner buttons on cart and checkout pages for many themes.
 * Fixed: Scripts not working on order received and view order pages. "Uncaught ReferenceError: fcSettings is not defined".
 
-## 1.8.0 - 2023-05-29 {#1-8-0}
+## 1.8.0 - 2023-05-29 {/* #1-8-0 */}
 
 * Bump tested up to WooCommerce 7.7.0
 * Added: CSS variables for many aspects of the design including: colors, borders, some sizing and spacing aspects.
@@ -615,7 +615,7 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 3.0.0 or n
 * Fixed: Compatibility with theme Minimog, missing dependencies on cart page breaking functionality.
 * Fixed: Missing script dependencies breaking functionality on some themes.
 
-## 1.7.0 - 2023-04-21 {#1-7-0}
+## 1.7.0 - 2023-04-21 {/* #1-7-0 */}
 
 IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or newer. All PRO features will be disabled until Fluid Checkout Lite is updated.
 
@@ -631,14 +631,14 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Fixed: Shipping address and shipping method not updating correctly on the checkout page when address is changed from the shipping calculator on the cart page with the Address Book feature enabled.
 * Fixed: Pressing ENTER key on coupon code fields was not applying the coupon code.
 
-## 1.6.4 - 2023-04-06 {#1-6-4}
+## 1.6.4 - 2023-04-06 {/* #1-6-4 */}
 
 * Bump tested up to WordPress 6.2 and WooCommerce 7.5.1
 * Improved: Only output `has-fc-cart-ajax` body class when on cart page.
 * Fixed: Order summary getting sticky state on mobile when it should not, causing other elements to be overlapped and hidden.
 * Fixed: Try to keep shipping address section open only when switching from local pickup shipping methods.
 
-## 1.6.3 - 2023-03-22 {#1-6-3}
+## 1.6.3 - 2023-03-22 {/* #1-6-3 */}
 
 * Added: Compatibility with plugin "Payment Plugins Braintree For WooCommerce" by Payment Plugins for the Express Checkout feature.
 * Added: Compatibility with plugin WooCommerce Quantity Manager by Barn2.
@@ -647,7 +647,7 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Fixed: Local pickup clearing shipping address when selected, causing shipping address to be set as "undefined" and shipping method selection to be lost in some cases.
 * Fixed: Prevent Cart Ajax feature from throwing errors when trying to update cart item quantities to the same quantity.
 
-## 1.6.2 - 2023-03-13 {#1-6-2}
+## 1.6.2 - 2023-03-13 {/* #1-6-2 */}
 
 * Bump tested up to WooCommerce 7.5
 * Improved: Add a safe location for translation files at `wp-content/languages/fluid-checkout-pro/`.
@@ -658,7 +658,7 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Fixed: Multiple issues when trying to customize template files.
 * Fixed: Update number-spinner.js library to allow decimal steps on quantity fields when properly configured.
 
-## 1.6.1 - 2023-02-28 {#1-6-1}
+## 1.6.1 - 2023-02-28 {/* #1-6-1 */}
 
 * Added: Translation to Polish (Poland).
 * Added: New filter `fc_pro_order_details_order_status_skip_list` to remove order statuses from the order status bar on the order details pages.
@@ -671,7 +671,7 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Fixed: Do not display points and rewards message box when no rewards points will be earned with the purchase.
 * Fixed: PHP warnings on order details pages.
 
-## 1.6.0 - 2023-01-27 {#1-6-0}
+## 1.6.0 - 2023-01-27 {/* #1-6-0 */}
 
 * Bump tested up to WooCommerce 7.4.0
 * Added: New feature account matching to associate guest orders with existing customer accounts.
@@ -682,14 +682,14 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Removed: Filter `fc_pro_init_features_list` as it has no valid use case.
 * Fixed: Wrong redirect to saved addresses list when using the address book feature.
 
-## 1.5.3 - 2023-01-12 {#1-5-3}
+## 1.5.3 - 2023-01-12 {/* #1-5-3 */}
 
 * Added: Compatibility with theme Razzi.
 * Added: Compatibility with theme Qi.
 * Added: New filter `fc_pro_cart_button_class_proceed_checkout` to allow customizing the classes of the main "proceed to checkout" button at the cart page.
 * Fixed: Spacing for order summary on the cart page on mobile view.
 
-## 1.5.2 - 2023-01-04 {#1-5-2}
+## 1.5.2 - 2023-01-04 {/* #1-5-2 */}
 
 * Bump tested up to WooCommerce 7.2.2
 * Added: Compatibility with theme PeakShops.
@@ -697,7 +697,7 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Fixed: Modal styles not being loaded on all pages that use it.
 * Fixed: Show shipping costs on the order summary section at the cart page when using shipping as a separate section.
 
-## 1.5.1 - 2022-12-12 {#1-5-1}
+## 1.5.1 - 2022-12-12 {/* #1-5-1 */}
 
 * Bump tested up to WooCommerce 7.2.0
 * Added: Option to hide cart items errors messages at the checkout page when feature to edit cart items at checkout is enabled, except when submitting checkout for to complete the order.
@@ -711,7 +711,7 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Fixed: Quantity fields broken on pages other than cart and checkout when using cart page optmization feature.
 * Fixed: Only display one message for product "out of stock" or "low stock" when cart item has error.
 
-## 1.5.0 - 2022-12-05 {#1-5-0}
+## 1.5.0 - 2022-12-05 {/* #1-5-0 */}
 
 * Added: New feature to edit cart items at checkout.
 * Added: Compatibility with theme Minimog.
@@ -727,7 +727,7 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Removed: Filter hook `fc_pro_cart_show_cart_item_subtotal` is no longer necessary as the cart layout now always shows the subtotal.
 * Fixed: Do not add payment instructions to order details and emails when order has status `processing`.
 
-## 1.4.5 – 2022-11-21 {#1-4-5}
+## 1.4.5 – 2022-11-21 {/* #1-4-5 */}
 
 * Bump tested up to WordPress 6.1.1 and WooCommerce 7.1.0
 * Added: Compatibility with the upcoming feature WooCommerce HPOS (High Performance Order Storage).
@@ -741,7 +741,7 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Fixed: Position and spacing of cart items table on newer versions of WooCommerce.
 * Fixed: Fatal error when using the Address book feature and Germanized PRO VAT validation.
 
-## 1.4.4 – 2022-10-28 {#1-4-4}
+## 1.4.4 – 2022-10-28 {/* #1-4-4 */}
 
 * Bump tested up to WordPress 6.0.3 and WooCommerce 7.0.0
 * Added: Compatibility with plugin Brazilian Market on WooCommerce.
@@ -752,7 +752,7 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Fixed: Text “Expand/collapse order updates” not translatable.
 * Fixed: Fatal error when using the plugin WooCommerce Shipment Tracking by WooCommerce with the order received page features enabled.
 
-## 1.4.3 – 2022-09-13 {#1-4-3}
+## 1.4.3 – 2022-09-13 {/* #1-4-3 */}
 
 * Bump tested up to WordPress 6.0.2 and WooCommerce 6.8.2
 * Added: Translation to French (France).
@@ -766,14 +766,14 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Improved: Revert changes to Local Pickup feature setting billing address as different from shipping as this code is no longer necessary after implementing a broader solution in the Lite version.
 * Fixed: Do not set step as incomplete for international phone number when field is empty.
 
-## 1.4.2 – 2022-08-19 {#1-4-2}
+## 1.4.2 – 2022-08-19 {/* #1-4-2 */}
 
 * Added: New filter fc_pro_pickup_point_address_data to allow customizing the address displayed as the pickup point.
 * Improved: Compatibility with theme Avada.
 * Fixed: Layout broken for the delivery date step from the WooCommerce Order Delivery plugin, when delivery date and time fields are used.
 * Fixed: Billing address missing values when using Local Pickup feature even when value for the fields provided by the customer.
 
-## 1.4.1 – 2022-08-13 {#1-4-1}
+## 1.4.1 – 2022-08-13 {/* #1-4-1 */}
 
 * Bump tested up to WooCommerce 6.8
 * Added: New option to choose where to display coupon code section on the checkout page.
@@ -788,14 +788,14 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Fixed: Missing hooks woocommerce_before_cart_totals and woocommerce_after_cart_totals on the cart page.
 * Fixed: Fatal error on account address list page when address book is activated.
 
-## 1.4.0 – 2022-08-02 {#1-4-0}
+## 1.4.0 – 2022-08-02 {/* #1-4-0 */}
 
 * Added: New feature to use international phone number formatting and validation.
 * Added: New filter fc_pro_cart_shipping_destination_html to allow customizing the shipping destination text on the cart page.
 * Fixed: Add mini cart to cart page fragments and load fragments after loading cart page. Fixes empty mini-cart section on some themes.
 * Fixed: PHP Warning from Fluid Checkout after updating any plugin.
 
-## 1.3.4 – 2022-07-22 {#1-3-4}
+## 1.3.4 – 2022-07-22 {/* #1-3-4 */}
 
 * Bump tested up to WordPress 6.0.1 and WooCommerce 6.7
 * Improved: Remove draft order statuses from the order details status bar.
@@ -803,14 +803,14 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Fixed: Address label fields being persisted after completing an order. The address label will now be cleared for new orders.
 * Fixed: Error with Address Book feature after placing an order in some cases.
 
-## 1.3.3 – 2022-07-12 {#1-3-3}
+## 1.3.3 – 2022-07-12 {/* #1-3-3 */}
 
 * Added: Compatibility with plugin Oxygen.
 * Added: Compatibility with theme Woodmart.
 * Improved: Compatibility with plugin WooCommerce Amazon Pay.
 * Improved: Add text “(optional)” to link button for adding a gift message.
 
-## 1.3.2 – 2022-07-04 {#1-3-2}
+## 1.3.2 – 2022-07-04 {/* #1-3-2 */}
 
 * Added: New option to choose whether to apply order details layout customizations to the emails.
 * Added: New widget area for the cart footer.
@@ -821,11 +821,11 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Fixed: Detect changes to quantity fields on cart when theme does not trigger the change event as expected.
 * Fixed: Fatal error on PHP versions older than 7.4 when order received feature is enabled.
 
-## 1.3.1 – 2022-06-29 {#1-3-1}
+## 1.3.1 – 2022-06-29 {/* #1-3-1 */}
 
 * Fixed: Empty line before order received class could cause issues in other plugins or cause error depending on PHP settings.
 
-## 1.3.0 – 2022-06-27 {#1-3-0}
+## 1.3.0 – 2022-06-27 {/* #1-3-0 */}
 
 * Bump tested up to WordPress 6.0 and WooCommerce 6.6.1
 * Added: New feature Cart Page layout optimizations.
@@ -839,30 +839,30 @@ IMPORTANT CHANGE: Fluid Checkout PRO now requires Fluid Checkout Lite 2.4.0 or n
 * Improved: Renamed template file order-details-gift-options.php to order-details-gift-message.php.
 * Fixed: Not being able to save addresses to the address book when state field is not required for the country.
 
-## 1.2.5 – 2022-05-20 {#1-2-5}
+## 1.2.5 – 2022-05-20 {/* #1-2-5 */}
 
 * Fixed: Fix hook used to output the new shipping address form when address book is enabled.
 
-## 1.2.4 – 2022-05-20 {#1-2-4}
+## 1.2.4 – 2022-05-20 {/* #1-2-4 */}
 
 * Fixed: Use new hooks fc_checkout_before_step_shipping_fields_inside and fc_checkout_after_step_shipping_fields_inside introduced in Fluid Checkout (free) 1.5.8 for outputing the address book elements.
 
-## 1.2.3 – 2022-03-04 {#1-2-3}
+## 1.2.3 – 2022-03-04 {/* #1-2-3 */}
 
 * Fixed: Only change checked state for “billing same as shipping” from Address Book when customer has at least one saved address.
 * Fixed: Restore previous values entered to new addresses when switching between address sources.
 * Fixed: Only apply checkout fields changes for new address “save” and “label” fields when adding those fields.
 
-## 1.2.2 – 2022-02-07 {#1-2-2}
+## 1.2.2 – 2022-02-07 {/* #1-2-2 */}
 
 * Fixed: Conditional fields not working in some sections – compatibility with Checkout Field Editor for WooCommerce (PRO).
 * Fixed: Prevent fatal errors when using the Plugin Organizer or similar plugins. Also check if the class FluidCheckout from the lite version is available before loading the PRO version features.
 
-## 1.2.1 – 2022-02-05 {#1-2-1}
+## 1.2.1 – 2022-02-05 {/* #1-2-1 */}
 
 * Fixed: Order of fields at checkout page not matching the order set via the plugin Checkout Field Editor for WooCommerce (PRO) – by ThemeHigh.
 
-## 1.2.0 – 2022-02-05 (first public release) {#1-2-0}
+## 1.2.0 – 2022-02-05 (first public release) {/* #1-2-0 */}
 
 * Added: New feature Address Book.
 * Added: Compatibility with plugin Checkout Field Editor for WooCommerce (PRO) – by ThemeHigh.
