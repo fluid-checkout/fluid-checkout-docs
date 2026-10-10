@@ -73,7 +73,8 @@ const config: Config = {
         docs: false,
         blog: false,
         sitemap: {
-          // Hook pages are noindex and drop out via the robots meta. /search is noindex too.
+          // noindex routes are omitted: individual hook pages and /search.
+          // Home, plugin hubs, All hooks, and the three changelog pages stay in.
           ignorePatterns: ['/search', '/search/', '/search/**'],
         },
         theme: {

@@ -9,7 +9,7 @@ import {
   prepareHooks,
   resolveHookExclusions,
 } from './generate-hooks.mjs';
-import {readHooksIntro, rewriteIntroImagePaths, stripFrontMatter} from './hooks-intro.mjs';
+import {CODE_SNIPPETS_ARTICLE_URL, readHooksIntro, rewriteIntroImagePaths, stripFrontMatter} from './hooks-intro.mjs';
 import {hooksIndexDescription, renderHookPage, renderHooksIndex, renderSidebarItems} from './render-hook.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -455,6 +455,25 @@ test('hooks index places the hand-written intro above the hook list', () => {
   const intro = readHooksIntro('eu-vat', root);
   const liteIntro = readHooksIntro('lite', root);
   const proIntro = readHooksIntro('pro', root);
+  assert.equal(CODE_SNIPPETS_ARTICLE_URL, 'https://fluidcheckout.com/docs/how-to-add-code-snippets/');
+  const bestPractices = [
+    '## Best practices',
+    '',
+    'If you are unsure about how to add the code snippet to your website, check our article:',
+    '',
+    `[How to safely add code snippets to your WooCommerce website](${CODE_SNIPPETS_ARTICLE_URL})`,
+  ].join('\n');
+  for (const text of [intro, liteIntro, proIntro]) {
+    assert.match(text, /## Best practices\n/);
+    assert.ok(text.includes(bestPractices));
+    assert.doesNotMatch(text, /Add your own code|Attach a callback|functions\.php|staging\.fluidcheckout/);
+    assert.doesNotMatch(text, /\{\{CODE_SNIPPETS_ARTICLE_URL\}\}/);
+  }
+  assert.equal(
+    [intro, liteIntro, proIntro].join('\n').split(CODE_SNIPPETS_ARTICLE_URL).length - 1,
+    3,
+  );
+
   assert.match(intro, /^## Getting started with EU-VAT Assistant hooks\n/);
   assert.match(intro, /@site\/hooks-intro\/eu-vat\/img\/hooks-overview\.svg/);
   assert.match(intro, /\]\(#filters\)/);

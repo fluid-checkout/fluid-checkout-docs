@@ -14,9 +14,11 @@ Fluid Checkout PRO runs WordPress actions and filters for the cart, order pay, o
 
 Address Book hooks use the prefix `fc_adb_`. Google Address Autocomplete hooks use the prefix `fc_gaa_`. You do not need to edit the plugin.
 
-## Add your own code
+## Best practices
 
-Put your callbacks in a child theme `functions.php` file, or in a code snippets plugin. Plugin updates then leave your code in place.
+If you are unsure about how to add the code snippet to your website, check our article:
+
+[How to safely add code snippets to your WooCommerce website](https://fluidcheckout.com/docs/how-to-add-code-snippets/)
 
 ## Actions and filters
 

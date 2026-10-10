@@ -7,6 +7,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 /**
+ * Article linked from the Best practices section on every All hooks page.
+ * This is the only copy of the URL.
+ */
+export const CODE_SNIPPETS_ARTICLE_URL = 'https://fluidcheckout.com/docs/how-to-add-code-snippets/';
+
+const CODE_SNIPPETS_ARTICLE_TOKEN = '{{CODE_SNIPPETS_ARTICLE_URL}}';
+
+/**
  * @param {string} markdown
  * @returns {string}
  */
@@ -81,10 +89,18 @@ export function readHooksIntro(pluginId, baseDir) {
     return null;
   }
 
-  const body = stripFrontMatter(fs.readFileSync(introFile, 'utf8')).trim();
+  const body = applyIntroTokens(stripFrontMatter(fs.readFileSync(introFile, 'utf8')).trim());
   if (!body) {
     return null;
   }
 
   return rewriteIntroImagePaths(body, path.dirname(introFile), baseDir).trim();
+}
+
+/**
+ * @param {string} markdown
+ * @returns {string}
+ */
+export function applyIntroTokens(markdown) {
+  return String(markdown).replaceAll(CODE_SNIPPETS_ARTICLE_TOKEN, CODE_SNIPPETS_ARTICLE_URL);
 }

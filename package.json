@@ -4,7 +4,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "generate": "node scripts/generate-hooks.mjs",
+    "generate": "node scripts/generate-hooks.mjs && node scripts/generate-changelog.mjs",
     "docusaurus": "docusaurus",
     "start": "npm run generate && docusaurus start",
     "build": "npm run generate && docusaurus build",
