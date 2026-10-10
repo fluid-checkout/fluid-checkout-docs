@@ -34,14 +34,9 @@ function PluginList(): ReactNode {
             <div className="plugin-card__header">
               {plugin.icon ? <PluginIcon src={plugin.icon} name={plugin.label} /> : null}
               <div className="plugin-card__intro">
-                <span
-                  className={
-                    available
-                      ? 'plugin-card__status plugin-card__status--available'
-                      : 'plugin-card__status plugin-card__status--soon'
-                  }>
-                  {available ? 'Available' : 'Coming soon'}
-                </span>
+                {plugin.status === 'coming-soon' ? (
+                  <span className="plugin-card__status plugin-card__status--soon">Coming soon</span>
+                ) : null}
                 <Heading as="h2">{plugin.label}</Heading>
               </div>
             </div>

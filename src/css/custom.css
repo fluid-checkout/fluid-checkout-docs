@@ -199,10 +199,6 @@
   color: #b0b0b0 !important;
 }
 
-:root[data-theme='dark'] .plugin-card__status--available {
-  color: #000000;
-}
-
 h1,
 h2,
 h3,
@@ -260,7 +256,7 @@ h6 {
 
 .plugin-card__header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.875rem;
 }
 
@@ -297,11 +293,6 @@ h6 {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-}
-
-.plugin-card__status--available {
-  color: #ffffff;
-  background: var(--ifm-color-primary);
 }
 
 .plugin-card__status--soon {
