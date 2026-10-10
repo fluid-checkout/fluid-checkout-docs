@@ -29,3 +29,21 @@ apply_filters( 'fc_customer_meta_data_clear_fields_order_processed', $value );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_customer_meta_data_clear_fields_order_processed',
+    /**
+     * Clear custom customer meta after order.
+     *
+     * @param array $value Value to filter. Default empty array.
+     * @return array Filtered value.
+     */
+    function( $value ) {
+        $value[] = '_custom_temporary_preference';
+        return $value;
+    },
+    10
+);
+```

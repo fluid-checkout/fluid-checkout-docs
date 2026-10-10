@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/fc/checkout-steps/checkout/review-order-section.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/review-order-section.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_order_review_actions',
+    /**
+     * Add sidebar actions.
+     */
+    function() {
+        echo '<div class="sidebar-actions">Please review your order before proceeding</div>';
+    },
+    10
+);
+```

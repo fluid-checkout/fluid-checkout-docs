@@ -29,3 +29,21 @@ apply_filters( 'fc_wrapper_classes_add_payment_method_page', $classes );
 ## Source
 
 [`templates/fc/checkout-steps/myaccount/form-add-payment-method.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/myaccount/form-add-payment-method.php)
+
+## Examples
+
+```php
+add_filter( 'fc_wrapper_classes_add_payment_method_page',
+    /**
+     * Add custom classes to add payment method page.
+     *
+     * @param string $classes CSS classes. Default empty string.
+     * @return string Filtered value.
+     */
+    function( $classes ) {
+        $classes .= ' custom-class-payment-page';
+        return $classes;
+    },
+    10
+);
+```

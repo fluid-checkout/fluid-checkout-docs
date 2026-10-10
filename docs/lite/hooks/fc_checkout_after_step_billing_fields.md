@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_after_step_billing_fields',
+    /**
+     * Add billing step footer.
+     */
+    function() {
+        echo '<p>Please review your billing information before proceeding</p>';
+    },
+    10
+);
+```

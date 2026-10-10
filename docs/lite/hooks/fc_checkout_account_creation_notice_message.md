@@ -29,3 +29,20 @@ apply_filters( 'fc_checkout_account_creation_notice_message', $text );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_checkout_account_creation_notice_message',
+    /**
+     * Customize account creation notice message.
+     *
+     * @param string $text Text to display.
+     * @return string Filtered value.
+     */
+    function( $text ) {
+        return __( 'Create an account to track your orders and save time on future purchases.', 'your-text-domain' );
+    },
+    10
+);
+```

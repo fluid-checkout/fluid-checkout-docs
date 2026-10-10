@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_action( 'fc_shipping_methods_before_packages',
+    /**
+     * Add shipping methods header.
+     */
+    function() {
+        echo '<div>Choose Shipping Method</div>';
+    },
+    10
+);
+```

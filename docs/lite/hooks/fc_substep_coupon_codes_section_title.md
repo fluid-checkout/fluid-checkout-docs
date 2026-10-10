@@ -29,3 +29,20 @@ apply_filters( 'fc_substep_coupon_codes_section_title', $title );
 ## Source
 
 [`inc/checkout-coupon-codes.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-coupon-codes.php)
+
+## Examples
+
+```php
+add_filter( 'fc_substep_coupon_codes_section_title',
+    /**
+     * Customize coupon code substep title.
+     *
+     * @param string $title Title text.
+     * @return string Filtered value.
+     */
+    function( $title ) {
+        return __( 'Discount Code', 'my-theme' );
+    },
+    10
+);
+```

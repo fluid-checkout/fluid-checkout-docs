@@ -27,3 +27,19 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/fc/checkout-page-template/checkout/page-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-page-template/checkout/page-checkout.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_before_main_section',
+    /**
+     * Add opening tag for inner container.
+     */
+    function() {
+        ?>
+        <div class="container_inner custom-class">
+        <?php
+    },
+    10
+);
+```

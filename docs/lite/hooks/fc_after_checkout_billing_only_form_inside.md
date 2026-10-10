@@ -29,3 +29,19 @@ do_action( 'fc_after_checkout_billing_only_form_inside', $checkout );
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-billing.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-billing.php)
+
+## Examples
+
+```php
+add_action( 'fc_after_checkout_billing_only_form_inside',
+    /**
+     * Add billing form help.
+     *
+     * @param \WC_Checkout $checkout Checkout object.
+     */
+    function( $checkout ) {
+        echo '<p class="billing-help">Billing information is required</p>';
+    },
+    10
+);
+```

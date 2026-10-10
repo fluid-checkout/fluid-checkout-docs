@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/fc/checkout-steps/checkout/place-order.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/place-order.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_place_order_terms',
+    /**
+     * Add terms and conditions.
+     */
+    function() {
+        echo '<div class="terms-conditions">By placing an order, you agree to our terms:</div>';
+    },
+    10
+);
+```

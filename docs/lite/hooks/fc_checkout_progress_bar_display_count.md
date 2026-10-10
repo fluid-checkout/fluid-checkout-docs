@@ -29,3 +29,20 @@ apply_filters( 'fc_checkout_progress_bar_display_count', $enabled );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_checkout_progress_bar_display_count',
+    /**
+     * Hide step count in progress bar.
+     *
+     * @param bool $enabled Whether the feature is enabled. Default true.
+     * @return bool Filtered value.
+     */
+    function( $enabled ) {
+        return false;
+    },
+    10
+);
+```

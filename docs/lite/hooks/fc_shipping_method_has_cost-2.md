@@ -30,3 +30,9 @@ apply_filters( 'fc_shipping_method_has_cost', $value, $method );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+See example on [`fc_shipping_method_option_price`](./fc_shipping_method_option_price).
+
+See example on [`fc_shipping_method_option_price_markup`](./fc_shipping_method_option_price_markup).

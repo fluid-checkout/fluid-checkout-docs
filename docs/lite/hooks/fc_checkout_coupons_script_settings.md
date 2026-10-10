@@ -29,3 +29,21 @@ apply_filters( 'fc_checkout_coupons_script_settings', $settings );
 ## Source
 
 [`inc/checkout-coupon-codes.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-coupon-codes.php)
+
+## Examples
+
+```php
+add_filter( 'fc_checkout_coupons_script_settings',
+    /**
+     * Add custom JavaScript settings for coupons.
+     *
+     * @param array $settings Settings to output.
+     * @return array Filtered value.
+     */
+    function( $settings ) {
+        $settings['customSetting'] = 'value';
+        return $settings;
+    },
+    10
+);
+```

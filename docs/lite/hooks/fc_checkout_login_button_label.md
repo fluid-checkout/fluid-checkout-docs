@@ -29,3 +29,20 @@ apply_filters( 'fc_checkout_login_button_label', $label );
 ## Source
 
 [`templates/fc/checkout-steps/global/form-login.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/global/form-login.php)
+
+## Examples
+
+```php
+add_filter( 'fc_checkout_login_button_label',
+    /**
+     * Customize login button label.
+     *
+     * @param string $label Label text.
+     * @return string Filtered value.
+     */
+    function( $label ) {
+        return __( 'Sign In', 'your-text-domain' );
+    },
+    10
+);
+```

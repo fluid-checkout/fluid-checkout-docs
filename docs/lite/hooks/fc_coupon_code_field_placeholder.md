@@ -29,3 +29,20 @@ apply_filters( 'fc_coupon_code_field_placeholder', $value );
 ## Source
 
 [`inc/checkout-coupon-codes.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-coupon-codes.php)
+
+## Examples
+
+```php
+add_filter( 'fc_coupon_code_field_placeholder',
+    /**
+     * Customize coupon code field placeholder.
+     *
+     * @param string $value Value to filter.
+     * @return string Filtered value.
+     */
+    function( $value ) {
+        return __( 'Type your discount code', 'my-theme' );
+    },
+    10
+);
+```

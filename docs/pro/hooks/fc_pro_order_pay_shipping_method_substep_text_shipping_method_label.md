@@ -32,3 +32,26 @@ apply_filters( 'fc_pro_order_pay_shipping_method_substep_text_shipping_method_la
 ## Source
 
 `inc/order-pay-page.php`
+
+## Examples
+
+```php
+add_filter( 'fc_pro_order_pay_shipping_method_substep_text_shipping_method_label',
+    /**
+     * Add prefix to shipping method label.
+     *
+     * @param mixed $shipping_method_label The shipping method label.
+     * @param mixed $order_shipping_id The order shipping id.
+     * @param mixed $order_shipping_method The order shipping method.
+     * @param \WC_Order $order Order object.
+     * @return mixed Filtered value.
+     */
+    function( $shipping_method_label, $order_shipping_id, $order_shipping_method, $order ) {
+        // Add prefix to label
+        $shipping_method_label = 'Shipping via ' . $shipping_method_label;
+        return $shipping_method_label;
+    },
+    10,
+    4
+);
+```

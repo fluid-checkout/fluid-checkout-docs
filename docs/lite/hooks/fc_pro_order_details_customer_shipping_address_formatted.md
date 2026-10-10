@@ -30,3 +30,22 @@ apply_filters( 'fc_pro_order_details_customer_shipping_address_formatted', $valu
 ## Source
 
 [`templates/fc/checkout-steps/emails/email-addresses.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/emails/email-addresses.php)
+
+## Examples
+
+```php
+add_filter( 'fc_pro_order_details_customer_shipping_address_formatted',
+    /**
+     * Wrap shipping address in a custom HTML wrapper.
+     *
+     * @param string $value Value to filter.
+     * @param \WC_Order $order Order object.
+     * @return string Filtered value.
+     */
+    function( $value, $order ) {
+        return '<div class="custom-shipping-wrapper">' . $value . '</div>';
+    },
+    10,
+    2
+);
+```

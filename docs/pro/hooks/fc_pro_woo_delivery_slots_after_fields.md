@@ -27,3 +27,18 @@ This hook does not pass any parameters.
 ## Source
 
 `inc/compat/plugins/compat-plugin-iconic-woo-delivery-slots.php`
+
+## Examples
+
+```php
+add_action( 'fc_pro_woo_delivery_slots_after_fields',
+    /**
+     * Customize this hook.
+     */
+    function() {
+        $substep_visible = $this->is_substep_delivery_slots_visible() ? 'yes' : 'no';
+        echo '<input class="fc-substep-visible-state" type="hidden" value="' . $substep_visible . '" />';
+    },
+    5
+);
+```

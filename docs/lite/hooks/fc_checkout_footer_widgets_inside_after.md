@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`inc/checkout-widget-areas.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-widget-areas.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_footer_widgets_inside_after',
+    /**
+     * Add footer widgets footer.
+     */
+    function() {
+        echo '<div class="footer-widgets-footer">Footer widgets loaded</div>';
+    },
+    10
+);
+```

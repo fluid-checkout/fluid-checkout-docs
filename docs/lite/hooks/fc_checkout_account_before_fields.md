@@ -29,3 +29,19 @@ do_action( 'fc_checkout_account_before_fields', $checkout );
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-account-creation.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-account-creation.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_account_before_fields',
+    /**
+     * Add custom message.
+     *
+     * @param \WC_Checkout $checkout Checkout object.
+     */
+    function( $checkout ) {
+        echo '<div>Account Information</div>';
+    },
+    1
+);
+```

@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 `templates/fc-pro/cart/cart/review-order-section-cart.php`
+
+## Examples
+
+```php
+add_action( 'fc_pro_cart_before_order_review_table',
+    /**
+     * Add custom information.
+     */
+    function() {
+        echo '<div class="custom-info">Custom information</div>';
+    },
+    10
+);
+```

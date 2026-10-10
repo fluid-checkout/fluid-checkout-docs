@@ -29,3 +29,22 @@ apply_filters( 'fc_update_fragments', $value );
 ## Source
 
 [`inc/fragments-refresh.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/fragments-refresh.php)
+
+## Examples
+
+```php
+add_filter( 'fc_update_fragments',
+    /**
+     * Customize this hook.
+     *
+     * @param array $value Value to filter. Default empty array.
+     * @return array Filtered value.
+     */
+    function( $value ) {
+        $html = $this->get_vat_number_field_html();
+        $value['.fc-vat-number-field'] = $html;
+        return $value;
+    },
+    10
+);
+```

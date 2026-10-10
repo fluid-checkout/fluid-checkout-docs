@@ -29,3 +29,21 @@ do_action( 'fc_pro_order_overview_after', $order );
 ## Source
 
 `templates/fc-pro/order-details/order/order-details-overview.php`
+
+## Examples
+
+```php
+add_action( 'fc_pro_order_overview_after',
+    /**
+     * Add action links after order overview.
+     *
+     * @param \WC_Order $order Order object.
+     */
+    function( $order ) {
+        echo '<div class="order-overview-intro">';
+        echo '<p style="text-align: center;">Custom information after overview</p>';
+        echo '</div>';
+    },
+    10
+);
+```

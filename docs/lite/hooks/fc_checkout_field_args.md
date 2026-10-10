@@ -29,3 +29,25 @@ apply_filters( 'fc_checkout_field_args', $fields_args );
 ## Source
 
 [`inc/checkout-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-fields.php)
+
+## Examples
+
+```php
+add_filter( 'fc_checkout_field_args',
+    /**
+     * Modify checkout field arguments.
+     *
+     * @param array $fields_args Fields args.
+     * @return array Filtered value.
+     */
+    function( $fields_args ) {
+        // Change billing_first_name field CSS class
+        if ( isset( $fields_args['billing_first_name'] ) ) {
+            $fields_args['billing_first_name']['class'] = array( 'billing-first-name-class' );
+        }
+
+        return $fields_args;
+    },
+    10
+);
+```

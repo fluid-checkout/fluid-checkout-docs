@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/fc/checkout-steps/checkout/review-order-section.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/review-order-section.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_after_order_review_title_before',
+    /**
+     * Add order review title prefix.
+     */
+    function() {
+        echo '<div style="display: inline-block;">Prefix</div>';
+    },
+    10
+);
+```

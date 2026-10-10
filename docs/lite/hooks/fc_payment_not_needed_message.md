@@ -29,3 +29,20 @@ apply_filters( 'fc_payment_not_needed_message', $text );
 ## Source
 
 [`templates/fc/checkout-steps/checkout/payment.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/payment.php)
+
+## Examples
+
+```php
+add_filter( 'fc_payment_not_needed_message',
+    /**
+     * Customize payment not needed message.
+     *
+     * @param string $text Text to display.
+     * @return string Filtered value.
+     */
+    function( $text ) {
+        return __( 'Your order is free! No payment required.', 'my-theme' );
+    },
+    10
+);
+```

@@ -29,3 +29,20 @@ apply_filters( 'fc_integration_woo_checkout_field_editor_pro_enable_edit_address
 ## Source
 
 [`inc/compat/plugins/compat-plugin-woo-checkout-field-editor-pro.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/plugins/compat-plugin-woo-checkout-field-editor-pro.php)
+
+## Examples
+
+```php
+add_filter( 'fc_integration_woo_checkout_field_editor_pro_enable_edit_address_changes',
+    /**
+     * Disable edit address changes for WC Checkout Field Editor Pro.
+     *
+     * @param string $value Value to filter. Default yes.
+     * @return string Filtered value.
+     */
+    function( $value ) {
+        return 'no';
+    },
+    10
+);
+```

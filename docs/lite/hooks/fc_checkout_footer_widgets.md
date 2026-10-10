@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/fc/checkout-page-template/checkout/checkout-footer.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-page-template/checkout/checkout-footer.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_footer_widgets',
+    /**
+     * Add footer widgets.
+     */
+    function() {
+        echo '<div class="footer-widgets">Footer widgets content</div>';
+    },
+    10
+);
+```

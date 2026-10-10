@@ -29,3 +29,20 @@ apply_filters( 'fc_add_container_class', $classes );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_add_container_class',
+    /**
+     * Disable checkout container class for custom styling.
+     *
+     * @param bool $classes CSS classes. Default true.
+     * @return bool Filtered value.
+     */
+    function( $classes ) {
+        return false;
+    },
+    10
+);
+```

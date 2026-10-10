@@ -1,0 +1,21 @@
+```php
+add_filter( 'fc_pro_order_details_overview_payment_method_title',
+    /**
+     * Customize payment method title for bank transfers.
+     *
+     * @param mixed $payment_method_title The payment method title.
+     * @param \WC_Order $order Order object.
+     * @return mixed Filtered value.
+     */
+    function( $payment_method_title, $order ) {
+        // Check if payment method is bank transfer (BACS)
+        if ( $order->get_payment_method() === 'bacs' ) {
+            return $payment_method_title . ' ' . __( '(Awaiting Payment)', 'text-domain' );
+        }
+
+        return $payment_method_title;
+    },
+    10,
+    2
+);
+```

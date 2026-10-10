@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_after_step_shipping_fields',
+    /**
+     * Add custom message.
+     */
+    function() {
+        echo '<div>Custom message after Shipping field</div>';
+    },
+    10
+);
+```

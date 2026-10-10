@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-payment.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-payment.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_payment',
+    /**
+     * Add payment section content.
+     */
+    function() {
+        echo '<div class="payment-info">Choose your payment method</div>';
+    },
+    10
+);
+```
