@@ -28,7 +28,7 @@ data/<plugin>/actions.json     # wp-hooks/generator output (source of truth)
 data/<plugin>/filters.json
 docs/<plugin>/guides/          # hand-written guides, one folder per guide
 docs/<plugin>/hooks/           # GENERATED hook pages — do not edit
-examples/<plugin>/<hook-slug>/ # optional hand-written example for one hook
+examples/<plugin>/<hook-slug>.md # optional hand-written examples; never generated
 sidebars/<plugin>.ts           # sidebar for that docs instance
 sidebars/<plugin>.hooks.json   # GENERATED hook sidebar items
 plugins.json                   # plugin id, prefixes, hookExcludePrefixes, hookExcludeNames, repo, status
@@ -58,7 +58,24 @@ The sidebar picks the guide up from the `guides` folder. No generator step.
 
 ## Add an example
 
-Create `examples/<plugin>/<hook-slug>/index.md`. `<hook-slug>` is the generated URL slug (braces removed), for example `examples/eu-vat/fc_vat_checkout_eu_vat_number/index.md`. Optional images go in `examples/<plugin>/<hook-slug>/img/` and use a relative path. Re-run `npm run generate`. The hook page imports the example below the reference.
+Create `examples/<plugin>/<hook-slug>.md`. `<plugin>` is the id in `plugins.json` (`eu-vat`). `<hook-slug>` is the slug the generator already uses for that hook page:
+
+- A normal hook keeps its name: `examples/eu-vat/fc_vat_number_field_args.md`.
+- A dynamic hook drops braces, with no extra separator. `fc_vat_enable_compat_plugin_{plugin_slug}` is `examples/eu-vat/fc_vat_enable_compat_plugin_plugin_slug.md`. `fc_vat_{current_section}_settings` is `examples/eu-vat/fc_vat_current_section_settings.md`.
+- If two hooks in one plugin produce the same slug, the generator appends `-2`, `-3`, and so on. The example file uses that slug, including the suffix.
+
+`npm run generate` inserts the file body under `## Examples`, after the parameters and source sections. A hook with no file has no Examples section. Generation only reads `examples/`. It does not create, overwrite, or delete those files. Do not put examples in `docs/<plugin>/hooks/`; that directory is replaced on every run.
+
+A snippet that calls several hooks lives on its main hook. Optional front matter points the others at that page:
+
+```yaml
+---
+related_hooks:
+  - fc_vat_is_vat_number_field
+---
+```
+
+`related_hooks: [fc_vat_is_vat_number_field]` is the same list on one line. Each entry is the other hook's normalized name (the page title) or its page slug. Those pages get `See example on <main hook>`, linking to the main hook. The snippet is not copied onto them.
 
 ## Generated data
 

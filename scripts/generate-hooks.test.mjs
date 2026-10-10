@@ -108,7 +108,6 @@ test('drops aliases that do not match the prefix, including after alias normaliz
     normalizedName: dynamic.name,
     slug: dynamic.slug,
     plugin: {repository: null},
-    exampleImport: null,
   });
   assert.match(page, /`fc_pro_enable_compat_plugin_woocommerce-gateway`/);
   assert.match(page, /`fc_\{section\}`/);

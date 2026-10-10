@@ -9,11 +9,15 @@
  * plugin's hookPrefixes and is not excluded by the catalog. Exclusions are
  * hookExcludePrefixes (fc_licenses_*, fc_lcs_*) and hookExcludeNames (internal
  * license hooks). Third-party hooks are omitted the same way.
+ *
+ * Optional examples are read from examples/<plugin>/<hook-slug>.md and copied
+ * onto the matching page. That directory is never written or deleted.
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {loadHookExamples, resolveExampleSections} from './hook-examples.mjs';
 import {normalizeHookName, slugifyHookName} from './normalize-hook-name.mjs';
 import {renderHookPage, renderHooksIndex, renderSidebarItems} from './render-hook.mjs';
 
@@ -332,10 +336,13 @@ function main() {
     ];
 
     const result = prepareHooks(hooks, plugin, exclusions);
-    writePlugin(plugin, result.hooks);
+    const examples = writePluginDocs(root, plugin, result.hooks);
     generatedPlugins += 1;
     console.log(`Generated ${result.hooks.length} hook page(s) for ${plugin.id}.`);
     for (const line of formatHookFilterLog(plugin, result)) {
+      console.log(line);
+    }
+    for (const line of formatExampleLog(plugin, examples)) {
       console.log(line);
     }
   }
@@ -368,13 +375,71 @@ function loadHooks(filePath, fallbackType) {
 }
 
 /**
+ * Lines printed during `npm run generate` for example files that were read.
+ * Unused example files are listed and left in place.
+ *
+ * @param {{id: string}} plugin
+ * @param {ReturnType<typeof writePluginDocs>} examples
+ * @returns {string[]}
+ */
+export function formatExampleLog(plugin, examples) {
+  /** @type {string[]} */
+  const lines = [];
+  const included = [...examples.loaded.values()];
+  if (included.length > 0) {
+    const label = `${included.length} ${included.length === 1 ? 'example file' : 'example files'}`;
+    lines.push(`Included ${label} for ${plugin.id}:`);
+    for (const example of included) {
+      lines.push(`  - examples/${plugin.id}/${example.fileName}`);
+    }
+  }
+
+  /** @type {string[]} */
+  const links = [];
+  for (const section of examples.sections.values()) {
+    for (const link of section.seeAlso) {
+      links.push(`  - ${section.name} -> ${link.name}`);
+    }
+  }
+  if (links.length > 0) {
+    lines.push(`Related example links for ${plugin.id}:`);
+    lines.push(...links);
+  }
+
+  if (examples.unused.length > 0) {
+    const label = `${examples.unused.length} ${examples.unused.length === 1 ? 'unused example file' : 'unused example files'}`;
+    lines.push(`Left ${label} for ${plugin.id} (no matching published hook; not modified):`);
+    for (const fileName of examples.unused) {
+      lines.push(`  - examples/${plugin.id}/${fileName}`);
+    }
+  }
+
+  return lines;
+}
+
+/**
+ * Write generated hook pages for one plugin.
+ * Reads examples/<plugin>/<hook-slug>.md and does not create, change, or delete those files.
+ *
+ * @param {string} rootDir
  * @param {{id: string, label?: string, repository?: object | null}} plugin
  * @param {ReturnType<typeof prepareHooks>['hooks']} prepared
+ * @returns {{
+ *   loaded: Map<string, {relatedHooks: string[], body: string, fileName: string}>,
+ *   unused: string[],
+ *   sections: ReturnType<typeof resolveExampleSections>,
+ * }}
  */
-function writePlugin(plugin, prepared) {
-  const hooksDir = path.join(root, 'docs', plugin.id, 'hooks');
+export function writePluginDocs(rootDir, plugin, prepared) {
+  const examplesDir = path.join(rootDir, 'examples', plugin.id);
+  const {loaded, unused} = loadHookExamples(examplesDir, prepared, plugin.id);
+  const sections = resolveExampleSections(plugin, prepared, loaded);
+
+  const hooksDir = path.join(rootDir, 'docs', plugin.id, 'hooks');
+  assertOutsideExamples(rootDir, hooksDir);
   fs.mkdirSync(hooksDir, {recursive: true});
 
+  // Only generated pages live here. examples/<plugin>/*.md is hand-written.
   for (const entry of fs.readdirSync(hooksDir)) {
     if (entry.endsWith('.md') || entry.endsWith('.mdx')) {
       fs.unlinkSync(path.join(hooksDir, entry));
@@ -403,23 +468,35 @@ function writePlugin(plugin, prepared) {
   fs.writeFileSync(path.join(hooksDir, 'index.md'), renderHooksIndex(indexHooks, plugin.label || plugin.id));
 
   for (const entry of prepared) {
-    const exampleFile = path.join(root, 'examples', plugin.id, entry.slug, 'index.md');
-    const exampleImport = fs.existsSync(exampleFile)
-      ? `@site/examples/${plugin.id}/${entry.slug}/index.md`
-      : null;
-
+    const section = sections.get(entry.slug);
     const page = renderHookPage(entry.hook, {
       normalizedName: entry.name,
       slug: entry.slug,
       plugin,
-      exampleImport,
+      exampleMarkdown: section?.body ?? null,
+      relatedExampleLinks: section?.seeAlso ?? [],
     });
     fs.writeFileSync(path.join(hooksDir, `${entry.slug}.md`), page);
   }
 
-  const sidebarPath = path.join(root, 'sidebars', `${plugin.id}.hooks.json`);
+  const sidebarPath = path.join(rootDir, 'sidebars', `${plugin.id}.hooks.json`);
+  assertOutsideExamples(rootDir, sidebarPath);
   fs.mkdirSync(path.dirname(sidebarPath), {recursive: true});
   fs.writeFileSync(sidebarPath, `${JSON.stringify(renderSidebarItems(indexHooks), null, 2)}\n`);
+
+  return {loaded, unused, sections};
+}
+
+/**
+ * @param {string} rootDir
+ * @param {string} targetPath
+ */
+function assertOutsideExamples(rootDir, targetPath) {
+  const examplesRoot = path.resolve(rootDir, 'examples');
+  const resolved = path.resolve(targetPath);
+  if (resolved === examplesRoot || resolved.startsWith(`${examplesRoot}${path.sep}`)) {
+    throw new Error(`Refusing to write generated files inside ${resolved}. Example files are hand-written.`);
+  }
 }
 
 const invokedDirectly = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);

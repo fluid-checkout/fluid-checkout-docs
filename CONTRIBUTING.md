@@ -13,12 +13,27 @@ Pages are compiled as MDX. Keep `{` and `}` inside inline code or fenced code bl
 
 ## Add a hook example
 
-1. Run `npm run generate` once so you can see the URL slug. Braces are removed: `fc_vat_enable_compat_plugin_{plugin_slug}` becomes `fc_vat_enable_compat_plugin_plugin_slug`.
-2. Add `examples/<plugin>/<hook-slug>/index.md`.
-3. Optional images go in `examples/<plugin>/<hook-slug>/img/` and use a relative path from `index.md`.
-4. Run `npm run generate` again. The hook page imports that file under an Example heading.
+Examples are hand-written Markdown under `examples/`. They are the source of truth. `npm run generate` copies a matching file onto the hook page and never creates, overwrites, or deletes files in `examples/`.
 
-Do not edit `docs/<plugin>/hooks/` or `sidebars/<plugin>.hooks.json` by hand. Both are generated.
+1. Run `npm run generate` once and use the hook page file name under `docs/<plugin>/hooks/` as `<hook-slug>`.
+2. Add `examples/<plugin>/<hook-slug>.md`. `<plugin>` is the id in `plugins.json` (`eu-vat`, `lite`, `pro`), not the GitHub repository name.
+   - A normal hook uses its name: `examples/eu-vat/fc_vat_number_field_args.md`.
+   - A dynamic hook uses the generator slug. Braces are removed and nothing is inserted in their place: `fc_vat_enable_compat_plugin_{plugin_slug}` becomes `examples/eu-vat/fc_vat_enable_compat_plugin_plugin_slug.md`, and `fc_vat_{current_section}_settings` becomes `examples/eu-vat/fc_vat_current_section_settings.md`.
+   - When two hooks share a slug, the generator appends `-2`, `-3`, and so on. Name the example file with that suffixed slug.
+3. Write the example body in that file. The generator adds the `## Examples` heading after the parameters and source sections, so the file should not repeat the heading. Pages are MDX. Keep `{` and `}` inside inline code or fenced code blocks.
+4. When one snippet uses several hooks, keep the full snippet on the main hook and list the others:
+
+   ```yaml
+   ---
+   related_hooks:
+     - fc_vat_is_vat_number_field
+   ---
+   ```
+
+   `related_hooks: [fc_vat_is_vat_number_field]` is the same list on one line. Each entry is the other hook's normalized name (the page title) or its page slug. Each listed page gets one line, `See example on <main hook>`, linking to the main hook page. The snippet stays on the main hook only. A `related_hooks` entry that is not a published hook fails generation.
+5. Run `npm run generate` again.
+
+Do not edit `docs/<plugin>/hooks/` or `sidebars/<plugin>.hooks.json` by hand. Both are generated, and the next run replaces the hook pages. An example file that does not match a published hook is left in place and reported as unused.
 
 ## Hook data in this repo
 
