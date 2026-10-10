@@ -71,7 +71,7 @@ Do not edit `docs/<plugin>/hooks/` or `sidebars/<plugin>.hooks.json` by hand. Bo
 | `data/<plugin>/changelog.md` | Older releases. Optional. Omitted when the plugin repository has no `changelog.md`. |
 | `plugins.json` | Plugin id, `pluginPrefix`, `hookPrefixes`, global `hookExcludePrefixes` and `hookExcludeNames`, docs route, and whether the Git repository is public |
 
-`npm run generate` also writes `docs/<plugin>/changelog.md` from those source files. Readme entries come first. A version present in both files is kept from `readme.txt`. Do not edit the generated page. The `changelog.md` introduction that explains where entries are written first is not part of the published page.
+`npm run generate` also writes `docs/<plugin>/changelog.md` from those source files. Readme entries come first. A version present in both files is kept from `readme.txt`. Do not edit the generated page. The `changelog.md` introduction that explains where entries are written first is not part of the published page. Optional `relatedChangelogs` on a plugin in `plugins.json` adds a line linking to another plugin's changelog. Lite and PRO list each other. EU-VAT Assistant does not.
 
 `npm run build` runs `npm run generate` before Docusaurus. Generation reads every plugin with `"status": "available"` that has JSON under `data/<plugin>/`.
 

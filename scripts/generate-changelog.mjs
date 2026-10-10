@@ -21,7 +21,7 @@ function main() {
       continue;
     }
 
-    const loaded = loadPluginChangelog(root, plugin);
+    const loaded = loadPluginChangelog(root, plugin, plugins);
     const outPath = path.join(root, 'docs', plugin.id, 'changelog.md');
     fs.mkdirSync(path.dirname(outPath), {recursive: true});
     fs.writeFileSync(outPath, loaded.page);

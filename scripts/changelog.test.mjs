@@ -12,7 +12,9 @@ import {
   parseChangelogDocument,
   parseReadmeChangelog,
   parseVersionHeading,
+  relatedChangelogLine,
   renderChangelogPage,
+  resolveRelatedChangelogs,
   versionAnchor,
 } from './changelog.mjs';
 
@@ -124,6 +126,7 @@ test('changelog.md preamble is dropped and the readme copy wins', () => {
   assert.match(page, /^description: "Release history for Fluid Checkout Lite, newest version first\."$/m);
   assert.match(page, /slug: \/changelog/);
   assert.match(page, /^# Changelog$/m);
+  assert.doesNotMatch(page, /Looking for /);
   assert.match(page, /This project follows \[Semantic Versioning\]\(https:\/\/semver\.org\/spec\/v2\.0\.0\.html\)\./);
   assert.match(page, /^## 1\.2\.3 - 2024-01-01 \{\/\* #1-2-3 \*\/\}$/m);
   assert.match(page, /^## 1\.2\.0 – 2022-02-05 \(first public release\) \{\/\* #1-2-0 \*\/\}$/m);
@@ -157,13 +160,43 @@ test('mdx escapes braces and angle brackets outside code spans only', () => {
   assert.match(escaped, /```\n<field> \{\$key\}\n```/);
 });
 
+test('relatedChangelogs adds a trailing-slash link and is omitted when unset', () => {
+  const plugins = [
+    {id: 'lite', label: 'Fluid Checkout Lite', navLabel: 'Lite', routeBasePath: 'lite'},
+    {id: 'pro', label: 'Fluid Checkout PRO', navLabel: 'PRO', routeBasePath: 'pro'},
+  ];
+  const related = resolveRelatedChangelogs({id: 'lite', relatedChangelogs: ['pro']}, plugins);
+  assert.deepEqual(related, [{
+    label: 'Fluid Checkout PRO',
+    linkLabel: 'PRO',
+    href: '/pro/changelog/',
+  }]);
+  assert.equal(
+    relatedChangelogLine(related[0]),
+    'Looking for Fluid Checkout PRO changes? See the [PRO changelog](/pro/changelog/).',
+  );
+  assert.deepEqual(resolveRelatedChangelogs({id: 'eu-vat'}, plugins), []);
+  assert.throws(
+    () => resolveRelatedChangelogs({id: 'lite', relatedChangelogs: ['missing']}, plugins),
+    /unknown plugin "missing"/,
+  );
+
+  const page = renderChangelogPage({id: 'lite', label: 'Fluid Checkout Lite'}, [], {
+    readme: true,
+    changelog: false,
+  }, related);
+  assert.ok(page.indexOf('# Changelog') < page.indexOf('Looking for Fluid Checkout PRO changes?'));
+  assert.ok(page.indexOf('Looking for Fluid Checkout PRO changes?') < page.indexOf('Semantic Versioning'));
+  assert.match(page, /\[PRO changelog\]\(\/pro\/changelog\/\)/);
+});
+
 test('published plugin changelogs keep every source version and the readme copy', () => {
   const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
   /** @type {Record<string, number>} */
   const counts = {};
 
   for (const plugin of catalog.plugins) {
-    const loaded = loadPluginChangelog(root, plugin);
+    const loaded = loadPluginChangelog(root, plugin, catalog.plugins);
     const pagePath = path.join(root, 'docs', plugin.id, 'changelog.md');
     assert.equal(fs.readFileSync(pagePath, 'utf8'), loaded.page, `${plugin.id} page is stale; run npm run generate`);
 
@@ -210,12 +243,14 @@ test('published plugin changelogs keep every source version and the readme copy'
     }
   }
 
-  const lite = loadPluginChangelog(root, catalog.plugins.find((plugin) => plugin.id === 'lite'));
+  const lite = loadPluginChangelog(root, catalog.plugins.find((plugin) => plugin.id === 'lite'), catalog.plugins);
   assert.equal(lite.merged.entries[0].version, '4.2.7');
   assert.equal(lite.merged.entries[0].date, '2026-08-19');
   assert.equal(lite.merged.entries.at(-1).version, '1.2.0');
   assert.equal(lite.readmeCount, 15);
   assert.ok(lite.merged.entries.some((entry) => entry.version === '4.0.6' && entry.source === 'changelog'));
+  assert.match(lite.page, /Looking for Fluid Checkout PRO changes\? See the \[PRO changelog\]\(\/pro\/changelog\/\)\./);
+  assert.ok(lite.page.indexOf('Looking for Fluid Checkout PRO changes?') < lite.page.indexOf('## 4.2.7'));
   assert.match(lite.page, /^title: "Fluid Checkout Lite changelog"$/m);
   assert.match(lite.page, /^description: "Release history for Fluid Checkout Lite, newest version first\."$/m);
   assert.match(lite.page, /\{\/\* #4-2-7 \*\/\}/);
@@ -225,17 +260,18 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.match(lite.page, /POSSIBLY BREAKING CHANGES - Some template files were moved/);
   assert.doesNotMatch(lite.page, /Proceed to <next_step>/);
 
-  const pro = loadPluginChangelog(root, catalog.plugins.find((plugin) => plugin.id === 'pro'));
+  const pro = loadPluginChangelog(root, catalog.plugins.find((plugin) => plugin.id === 'pro'), catalog.plugins);
   assert.equal(pro.merged.entries[0].version, '4.0.6');
   assert.equal(pro.merged.entries.at(-1).version, '1.2.0');
   assert.equal(pro.merged.entries.at(-1).suffix, '(first public release)');
+  assert.match(pro.page, /Looking for Fluid Checkout Lite changes\? See the \[Lite changelog\]\(\/lite\/changelog\/\)\./);
   assert.match(pro.page, /^title: "Fluid Checkout PRO changelog"$/m);
   assert.match(pro.page, /^description: "Release history for Fluid Checkout PRO, newest version first\."$/m);
   assert.match(pro.page, /^## 1\.2\.0 – 2022-02-05 \(first public release\) \{\/\* #1-2-0 \*\/\}$/m);
   assert.match(pro.page, /Minimum required version for Fluid Checkout Lite is 4\.2\.0/);
   assert.equal(pro.readmeCount, 7);
 
-  const euVat = loadPluginChangelog(root, catalog.plugins.find((plugin) => plugin.id === 'eu-vat'));
+  const euVat = loadPluginChangelog(root, catalog.plugins.find((plugin) => plugin.id === 'eu-vat'), catalog.plugins);
   assert.equal(euVat.changelogCount, 0);
   assert.equal(euVat.merged.entries[0].version, '2.1.2');
   assert.equal(euVat.merged.entries.at(-1).version, '0.1.0');
@@ -243,6 +279,7 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.match(euVat.page, /^description: "Release history for EU-VAT Assistant, newest version first\."$/m);
   assert.match(euVat.page, /from data\/eu-vat\/readme\.txt\. Do not edit/);
   assert.doesNotMatch(euVat.page, /changelog\.md/);
+  assert.doesNotMatch(euVat.page, /Looking for /);
 
   assert.equal(lite.merged.entries.length, 101);
   assert.equal(lite.changelogCount, 86);

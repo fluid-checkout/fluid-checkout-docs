@@ -33,6 +33,7 @@
       "hookPrefixes": ["fc_"],
       "status": "available",
       "routeBasePath": "lite",
+      "relatedChangelogs": ["pro"],
       "repository": {
         "url": "https://github.com/fluid-checkout/fluid-checkout",
         "branch": "release/next-FEATURE"
@@ -50,6 +51,7 @@
       "hookPrefixes": ["fc_pro_", "fc_", "fc_adb_", "fc_gaa_"],
       "status": "available",
       "routeBasePath": "pro",
+      "relatedChangelogs": ["lite"],
       "repository": null
     }
   ]

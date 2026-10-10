@@ -11,6 +11,8 @@ pagination_next: null
 
 # Changelog
 
+Looking for Fluid Checkout PRO changes? See the [PRO changelog](/pro/changelog/).
+
 This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## 4.2.7 - 2026-08-19 {/* #4-2-7 */}

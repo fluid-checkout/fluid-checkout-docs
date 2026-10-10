@@ -39,6 +39,45 @@ export function changelogDescription(pluginLabel) {
 }
 
 /**
+ * Other changelog pages named by an optional `relatedChangelogs` list of plugin ids.
+ *
+ * @param {{id?: string, relatedChangelogs?: unknown}} plugin
+ * @param {{id: string, label?: string, navLabel?: string, routeBasePath?: string}[]} plugins
+ * @returns {{label: string, linkLabel: string, href: string}[]}
+ */
+export function resolveRelatedChangelogs(plugin, plugins) {
+  const ids = plugin.relatedChangelogs;
+  if (ids == null) {
+    return [];
+  }
+  if (!Array.isArray(ids) || ids.some((id) => typeof id !== 'string' || id.trim() === '')) {
+    throw new Error(`${plugin.id || 'plugin'} relatedChangelogs must be a list of plugin ids.`);
+  }
+
+  return ids.map((id) => {
+    const related = plugins.find((entry) => entry.id === id);
+    if (!related) {
+      throw new Error(`${plugin.id || 'plugin'} relatedChangelogs references unknown plugin "${id}".`);
+    }
+    const route = String(related.routeBasePath || related.id).replace(/^\/+|\/+$/g, '');
+    const label = related.label || related.id;
+    return {
+      label,
+      linkLabel: related.navLabel || label,
+      href: `/${route}/changelog/`,
+    };
+  });
+}
+
+/**
+ * @param {{label: string, linkLabel: string, href: string}} related
+ * @returns {string}
+ */
+export function relatedChangelogLine(related) {
+  return `Looking for ${related.label} changes? See the [${related.linkLabel} changelog](${related.href}).`;
+}
+
+/**
  * @param {string} line
  * @returns {{version: string, dash: string, date: string, suffix: string} | null}
  */
@@ -181,9 +220,10 @@ export function mergeChangelogs(readmeEntries, changelogEntries) {
  * @param {{id: string, label?: string}} plugin
  * @param {ChangelogEntry[]} entries
  * @param {{readme: boolean, changelog: boolean}} sources
+ * @param {{label: string, linkLabel: string, href: string}[]} [related]
  * @returns {string}
  */
-export function renderChangelogPage(plugin, entries, sources) {
+export function renderChangelogPage(plugin, entries, sources, related = []) {
   const label = plugin.label || plugin.id;
   const sourceList = [
     sources.readme ? `data/${plugin.id}/readme.txt` : null,
@@ -204,9 +244,13 @@ export function renderChangelogPage(plugin, entries, sources) {
     '',
     '# Changelog',
     '',
-    SEMVER_NOTE,
-    '',
   ];
+
+  for (const item of related) {
+    lines.push(relatedChangelogLine(item), '');
+  }
+
+  lines.push(SEMVER_NOTE, '');
 
   for (const entry of entries) {
     lines.push(renderHeading(entry), '');
@@ -295,7 +339,8 @@ export function formatChangelogLog(pluginId, merged, counts) {
 
 /**
  * @param {string} rootDir
- * @param {{id: string, label?: string}} plugin
+ * @param {{id: string, label?: string, relatedChangelogs?: string[]}} plugin
+ * @param {{id: string, label?: string, navLabel?: string, routeBasePath?: string}[]} [plugins]
  * @returns {{
  *   page: string,
  *   merged: ReturnType<typeof mergeChangelogs>,
@@ -303,7 +348,7 @@ export function formatChangelogLog(pluginId, merged, counts) {
  *   changelogCount: number,
  * }}
  */
-export function loadPluginChangelog(rootDir, plugin) {
+export function loadPluginChangelog(rootDir, plugin, plugins = []) {
   const readmePath = path.join(rootDir, 'data', plugin.id, 'readme.txt');
   const changelogPath = path.join(rootDir, 'data', plugin.id, 'changelog.md');
   if (!fs.existsSync(readmePath)) {
@@ -326,10 +371,15 @@ export function loadPluginChangelog(rootDir, plugin) {
     ? parseChangelogDocument(fs.readFileSync(changelogPath, 'utf8'))
     : [];
   const merged = mergeChangelogs(readmeEntries, changelogEntries);
-  const page = renderChangelogPage(plugin, merged.entries, {
-    readme: true,
-    changelog: hasChangelog,
-  });
+  const page = renderChangelogPage(
+    plugin,
+    merged.entries,
+    {
+      readme: true,
+      changelog: hasChangelog,
+    },
+    resolveRelatedChangelogs(plugin, plugins),
+  );
 
   return {
     page,
