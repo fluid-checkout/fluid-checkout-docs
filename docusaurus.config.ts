@@ -2,6 +2,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import catalog from './plugins.json';
+import {sortPlugins} from './src/sort-plugins';
 
 type PluginStatus = 'available' | 'coming-soon';
 
@@ -20,9 +21,10 @@ type PluginEntry = {
   status: PluginStatus;
   routeBasePath?: string;
   repository?: RepositoryConfig | null;
+  order?: number;
 };
 
-const plugins = catalog.plugins as PluginEntry[];
+const plugins = sortPlugins(catalog.plugins as PluginEntry[]);
 const availablePlugins = plugins.filter(
   (plugin): plugin is PluginEntry & {routeBasePath: string} =>
     plugin.status === 'available' && Boolean(plugin.routeBasePath),

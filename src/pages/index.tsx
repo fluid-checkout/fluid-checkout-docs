@@ -5,6 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import catalog from '../../plugins.json';
+import {sortPlugins} from '../sort-plugins';
 
 type PluginCard = {
   id: string;
@@ -13,9 +14,10 @@ type PluginCard = {
   status: 'available' | 'coming-soon';
   routeBasePath?: string;
   icon?: string;
+  order?: number;
 };
 
-const pluginCards = catalog.plugins as PluginCard[];
+const pluginCards = sortPlugins(catalog.plugins as PluginCard[]);
 
 function PluginIcon({src, name}: {src: string; name: string}): ReactNode {
   const iconSrc = useBaseUrl(src);

@@ -10,6 +10,7 @@
     {
       "id": "eu-vat",
       "icon": "/img/plugins/eu-vat.svg",
+      "order": 3,
       "label": "EU-VAT Assistant",
       "navLabel": "EU-VAT",
       "description": "Validate EU VAT numbers and store them with the WooCommerce order.",
@@ -22,6 +23,7 @@
     {
       "id": "lite",
       "icon": "/img/plugins/lite.svg",
+      "order": 1,
       "label": "Fluid Checkout Lite",
       "description": "Hooks for the free Fluid Checkout checkout plugin.",
       "hookPrefixes": ["fc_"],
@@ -30,6 +32,7 @@
     {
       "id": "pro",
       "icon": "/img/plugins/pro.svg",
+      "order": 2,
       "label": "Fluid Checkout PRO",
       "description": "Hooks for Fluid Checkout PRO.",
       "hookPrefixes": ["fc_pro_", "fc_", "fc_adb_", "fc_gaa_"],
