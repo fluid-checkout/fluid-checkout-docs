@@ -9,6 +9,12 @@ import {
   prepareHooks,
   resolveHookExclusions,
 } from './generate-hooks.mjs';
+import {
+  gettingStartedRedirects,
+  readHooksIntro,
+  rewriteIntroImagePaths,
+  stripFrontMatter,
+} from './hooks-intro.mjs';
 import {renderHookPage, renderHooksIndex, renderSidebarItems} from './render-hook.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -446,4 +452,78 @@ test('eu-vat fixture keeps all 16 fc_vat_ hooks and drops nothing', () => {
   const compat = result.hooks.find((hook) => hook.name === 'fc_vat_enable_compat_plugin_{plugin_slug}');
   assert.ok(compat.hook.aliases.includes('fc_vat_enable_compat_plugin_woocommerce-germanized-pro'));
   assert.ok(compat.hook.aliases.includes('fc_vat_enable_compat_plugin_woocommerce-checkout-field-editor-pro'));
+});
+
+test('hooks index places the hand-written intro above the hook list', () => {
+  const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
+  const intro = readHooksIntro('eu-vat', root);
+  assert.equal(readHooksIntro('lite', root), null);
+  assert.equal(readHooksIntro('pro', root), null);
+  assert.match(intro, /^# Getting started with EU-VAT Assistant hooks\n/);
+  assert.match(intro, /@site\/hooks-intro\/eu-vat\/img\/hooks-overview\.svg/);
+  assert.match(intro, /fc_vat_enable_compat_plugin_\{plugin_slug\}/);
+  assert.match(intro, /fc_vat_enable_compat_plugin_\{\$plugin_slug\}/);
+  assert.doesNotMatch(intro, /\{'\{'\}/);
+
+  const source = fs.readFileSync(path.join(root, 'hooks-intro/eu-vat/index.md'), 'utf8');
+  assert.match(source, /\]\(\.\/img\/hooks-overview\.svg\)/);
+  assert.equal(fs.existsSync(path.join(root, 'hooks-intro/eu-vat/img/hooks-overview.svg')), true);
+  assert.equal(fs.existsSync(path.join(root, 'docs/eu-vat/guides/getting-started/index.md')), false);
+
+  const index = renderHooksIndex(
+    [{name: 'fc_vat_js_settings', slug: 'fc_vat_js_settings', type: 'filter', summary: 'Settings.'}],
+    'EU-VAT Assistant',
+    intro,
+  );
+  const heading = index.indexOf('# Getting started with EU-VAT Assistant hooks');
+  const body = index.slice(heading);
+  const listSentence = body.indexOf('Actions and filters in EU-VAT Assistant.');
+  const table = body.indexOf('## Filters');
+  assert.ok(heading > 0 && listSentence > 0 && table > listSentence);
+
+  const plain = renderHooksIndex(
+    [{name: 'fc_vat_js_settings', slug: 'fc_vat_js_settings', type: 'filter', summary: 'Settings.'}],
+    'EU-VAT Assistant',
+  );
+  assert.doesNotMatch(plain, /Getting started with EU-VAT Assistant hooks/);
+
+  assert.deepEqual(gettingStartedRedirects(catalog.plugins, root), [
+    {
+      from: '/eu-vat/guides/getting-started',
+      to: '/eu-vat/hooks',
+    },
+  ]);
+  assert.deepEqual(
+    gettingStartedRedirects(
+      [{id: 'lite', status: 'available', routeBasePath: 'lite'}],
+      root,
+    ),
+    [],
+  );
+});
+
+test('intro image rewrite skips fenced code and absolute links', () => {
+  const markdown = [
+    '---',
+    'title: Ignored',
+    '---',
+    '',
+    '![Diagram](./img/hooks-overview.svg)',
+    '',
+    '```md',
+    '![Not an image](./img/hooks-overview.svg)',
+    '```',
+    '',
+    '[hooks](/eu-vat/hooks)',
+  ].join('\n');
+  assert.match(stripFrontMatter(markdown).trim(), /^!\[Diagram\]/);
+  assert.doesNotMatch(stripFrontMatter(markdown), /^---/);
+  const rewritten = rewriteIntroImagePaths(
+    stripFrontMatter(markdown),
+    '/repo/hooks-intro/eu-vat',
+    '/repo',
+  );
+  assert.match(rewritten, /!\[Diagram\]\(@site\/hooks-intro\/eu-vat\/img\/hooks-overview\.svg\)/);
+  assert.match(rewritten, /```md\n!\[Not an image\]\(\.\/img\/hooks-overview\.svg\)\n```/);
+  assert.match(rewritten, /\(\/eu-vat\/hooks\)/);
 });
