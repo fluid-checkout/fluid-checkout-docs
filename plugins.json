@@ -9,6 +9,9 @@
   "plugins": [
     {
       "id": "eu-vat",
+      "icon": "/img/plugins/eu-vat.svg",
+      "order": 3,
+      "productUrl": "https://fluidcheckout.com/fc-eu-vat-assistant/",
       "label": "EU-VAT Assistant",
       "navLabel": "EU-VAT",
       "description": "Validate EU VAT numbers and store them with the WooCommerce order.",
@@ -20,6 +23,9 @@
     },
     {
       "id": "lite",
+      "icon": "/img/plugins/lite.svg",
+      "order": 1,
+      "productUrl": "https://fluidcheckout.com/pricing/",
       "label": "Fluid Checkout Lite",
       "navLabel": "Lite",
       "description": "Hooks for the free Fluid Checkout checkout plugin.",
@@ -34,6 +40,9 @@
     },
     {
       "id": "pro",
+      "icon": "/img/plugins/pro.svg",
+      "order": 2,
+      "productUrl": "https://fluidcheckout.com/pricing/",
       "label": "Fluid Checkout PRO",
       "navLabel": "PRO",
       "description": "Hooks for Fluid Checkout PRO.",

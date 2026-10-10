@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import {sortPlugins} from './src/sort-plugins';
 import catalog from './plugins.json';
 import {gettingStartedRedirects} from './scripts/hooks-intro.mjs';
 
@@ -21,9 +22,11 @@ type PluginEntry = {
   status: PluginStatus;
   routeBasePath?: string;
   repository?: RepositoryConfig | null;
+  order?: number;
+  productUrl?: string;
 };
 
-const plugins = catalog.plugins as PluginEntry[];
+const plugins = sortPlugins(catalog.plugins as PluginEntry[]);
 const availablePlugins = plugins.filter(
   (plugin): plugin is PluginEntry & {routeBasePath: string} =>
     plugin.status === 'available' && Boolean(plugin.routeBasePath),
@@ -144,7 +147,9 @@ const config: Config = {
           title: 'Fluid Checkout',
           items: [
             {label: 'Website', href: 'https://fluidcheckout.com/'},
-            {label: 'EU-VAT Assistant', href: 'https://fluidcheckout.com/fc-eu-vat-assistant/'},
+            ...plugins.flatMap((plugin) =>
+              plugin.productUrl ? [{label: plugin.label, href: plugin.productUrl}] : [],
+            ),
             {label: 'Support', href: 'https://fluidcheckout.com/support/'},
             {label: 'Product docs', href: 'https://fluidcheckout.com/docs/'},
           ],
