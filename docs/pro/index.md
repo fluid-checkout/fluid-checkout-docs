@@ -12,3 +12,4 @@ Developer reference for Fluid Checkout PRO. These pages cover the WordPress acti
 ## Hooks
 
 - [All hooks](/pro/hooks) lists every action and filter. Each hook page includes the signature, parameters, the version that introduced it, and the source file.
+- [Changelog](/pro/changelog/) lists every release, newest first.

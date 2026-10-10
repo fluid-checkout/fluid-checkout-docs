@@ -13,7 +13,7 @@ npm ci
 npm start
 ```
 
-`npm start` and `npm run build` both run `npm run generate` first. That reads `data/<plugin>/*.json` and writes `docs/<plugin>/hooks/`. If `hooks-intro/<plugin>/index.md` exists, the generator includes it above the hook list.
+`npm start` and `npm run build` both run `npm run generate` first. That reads `data/<plugin>/*.json` and writes `docs/<plugin>/hooks/`. If `hooks-intro/<plugin>/index.md` exists, the generator includes it above the hook list. The same command reads `data/<plugin>/readme.txt` and `data/<plugin>/changelog.md` and writes `docs/<plugin>/changelog.md`.
 
 ```bash
 npm test
@@ -26,10 +26,13 @@ npm run build
 ```text
 data/<plugin>/actions.json     # wp-hooks/generator output (source of truth)
 data/<plugin>/filters.json
+data/<plugin>/readme.txt       # plugin readme; == Changelog == holds the newest releases
+data/<plugin>/changelog.md     # older releases (optional; EU-VAT has none)
 hooks-intro/<plugin>/index.md  # hand-written intro included at the top of the hooks index
 hooks-intro/<plugin>/img/      # images for that intro
 docs/<plugin>/guides/          # hand-written guides, one folder per guide
 docs/<plugin>/hooks/           # GENERATED hook pages — do not edit
+docs/<plugin>/changelog.md     # GENERATED changelog page — do not edit
 examples/<plugin>/<hook-slug>.md # optional hand-written examples; never generated
 sidebars/<plugin>.ts           # sidebar for that docs instance
 sidebars/<plugin>.hooks.json   # GENERATED hook sidebar items
@@ -43,6 +46,7 @@ Routes:
 - `/` home page
 - `/eu-vat/`, `/lite/`, and `/pro/` overviews
 - `/<plugin>/hooks/` generated index. EU-VAT includes the hand-written intro above the list. Lite and PRO do not have an intro file.
+- `/<plugin>/changelog/` release history, newest first
 - `/<plugin>/hooks/<hook-slug>` one page per hook
 - `/<plugin>/guides/...` guides, when that plugin's sidebar has a Guides category
 
@@ -95,9 +99,20 @@ related_hooks:
 
 `related_hooks: [fc_vat_is_vat_number_field]` is the same list on one line. Each entry is the other hook's normalized name (the page title) or its page slug. Those pages get `See example on <main hook>`, linking to the main hook. The snippet is not copied onto them.
 
+## Changelog
+
+Release notes for each plugin are generated. Put the source files next to the hook JSON:
+
+- `data/<plugin>/readme.txt` — the plugin `readme.txt`. Only the `== Changelog ==` section is used. Those are the newest releases.
+- `data/<plugin>/changelog.md` — older releases. Leave this file out when the plugin repository has no `changelog.md`. EU-VAT Assistant is in that situation.
+
+`npm run generate` writes `docs/<plugin>/changelog.md`. Readme entries stay first, in the order they appear in `readme.txt`. Entries from `changelog.md` follow. A version that is in both files is published from `readme.txt` and the `changelog.md` copy is dropped. The page does not include the `changelog.md` notes about where entries are written first. It does say that the project follows semantic versioning. Each version heading is an anchor, such as `#4-2-7` for 4.2.7.
+
+Do not edit `docs/<plugin>/changelog.md`. Replace the source files and run `npm run generate`.
+
 ## Generated data
 
-Plugin repositories will run [wp-hooks/generator](https://github.com/wp-hooks/generator) and open a pull request that updates `data/<plugin>/actions.json` and `data/<plugin>/filters.json`. The contract (paths, branch names, versioning trigger, GitHub App secrets) is in [CONTRIBUTING.md](CONTRIBUTING.md).
+Plugin repositories will run [wp-hooks/generator](https://github.com/wp-hooks/generator) and open a pull request that updates `data/<plugin>/actions.json` and `data/<plugin>/filters.json`. The same pull request copies `readme.txt` and `changelog.md` into `data/<plugin>/`. The contract (paths, branch names, versioning trigger, GitHub App secrets) is in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 `data/eu-vat/*.json` is a fixture so this site builds today. The real EU-VAT export arrives after [fc-vat-assistant#89](https://github.com/fluid-checkout/fc-vat-assistant/pull/89) merges.
 

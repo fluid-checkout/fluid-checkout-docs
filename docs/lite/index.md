@@ -12,3 +12,4 @@ Developer reference for Fluid Checkout Lite. These pages cover the WordPress act
 ## Hooks
 
 - [All hooks](/lite/hooks) lists every action and filter. Each hook page includes the signature, parameters, the version that introduced it, and the source file.
+- [Changelog](/lite/changelog/) lists every release, newest first.

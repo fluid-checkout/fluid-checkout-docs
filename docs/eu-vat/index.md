@@ -13,3 +13,4 @@ Developer reference for the EU-VAT Assistant add-on. These pages cover the WordP
 
 - [Getting started with EU-VAT Assistant hooks](/eu-vat/hooks) shows how to attach a callback and how dynamic hook names are written.
 - [All hooks](/eu-vat/hooks) lists every action and filter. Each hook page includes the signature, parameters, the version that introduced it, and the source file.
+- [Changelog](/eu-vat/changelog/) lists every release, newest first.

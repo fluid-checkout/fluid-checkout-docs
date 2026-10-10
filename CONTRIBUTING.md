@@ -67,7 +67,11 @@ Do not edit `docs/<plugin>/hooks/` or `sidebars/<plugin>.hooks.json` by hand. Bo
 | --- | --- |
 | `data/<plugin>/actions.json` | wp-hooks/generator 1.0.x document |
 | `data/<plugin>/filters.json` | wp-hooks/generator 1.0.x document |
+| `data/<plugin>/readme.txt` | Plugin readme. The changelog page uses the `== Changelog ==` section (newest releases). |
+| `data/<plugin>/changelog.md` | Older releases. Optional. Omitted when the plugin repository has no `changelog.md`. |
 | `plugins.json` | Plugin id, `pluginPrefix`, `hookPrefixes`, global `hookExcludePrefixes` and `hookExcludeNames`, docs route, and whether the Git repository is public |
+
+`npm run generate` also writes `docs/<plugin>/changelog.md` from those source files. Readme entries come first. A version present in both files is kept from `readme.txt`. Do not edit the generated page. The `changelog.md` introduction that explains where entries are written first is not part of the published page.
 
 `npm run build` runs `npm run generate` before Docusaurus. Generation reads every plugin with `"status": "available"` that has JSON under `data/<plugin>/`.
 
@@ -77,6 +81,7 @@ A new plugin needs:
 - `sidebars/<id>.ts` (copy `sidebars/eu-vat.ts`)
 - `docs/<id>/index.md` with `slug: /`
 - `data/<id>/actions.json` and `data/<id>/filters.json`
+- `data/<id>/readme.txt`, with an `== Changelog ==` section. Add `data/<id>/changelog.md` too when the plugin repository has that file.
 
 Set `repository` to `null` for a private plugin (file path only). For a public plugin:
 
@@ -141,8 +146,10 @@ Do not add the plugin-side workflow to this repo. Each plugin repository will la
 4. Open (or update) a pull request against `fluid-checkout/fluid-checkout-docs` that changes **only**:
    - `data/<plugin-id>/actions.json`
    - `data/<plugin-id>/filters.json`
+   - `data/<plugin-id>/readme.txt`
+   - `data/<plugin-id>/changelog.md` when that file exists in the plugin repository
 
-`<plugin-id>` is the id in `plugins.json`, not the GitHub repo name. EU-VAT Assistant uses `eu-vat`.
+`<plugin-id>` is the id in `plugins.json`, not the GitHub repo name. EU-VAT Assistant uses `eu-vat`. Copy `readme.txt` from the plugin repository on every run. Copy `changelog.md` when the plugin repository has one (EU-VAT Assistant does not). Newest release notes live in `readme.txt` and are moved into `changelog.md` in the plugin repository later. Copy both files as they are. This docs repository merges them and drops a version that appears in both, keeping the `readme.txt` text.
 
 ### Branch name and pull request
 
@@ -153,7 +160,7 @@ Do not add the plugin-side workflow to this repo. Each plugin repository will la
 
 The App needs contents and pull request write access on `fluid-checkout/fluid-checkout-docs`.
 
-Generated Markdown in `docs/<plugin>/hooks/` is rebuilt in this repo (`npm run generate`). The plugin pull request does not commit those pages. A maintainer can regenerate and commit them in a follow-up, and the GitHub Pages build regenerates them on every deploy.
+Generated Markdown in `docs/<plugin>/hooks/` and `docs/<plugin>/changelog.md` is rebuilt in this repo (`npm run generate`). The plugin pull request does not commit those pages. A maintainer can regenerate and commit them in a follow-up, and the GitHub Pages build regenerates them on every deploy.
 
 ### Versioning trigger
 
