@@ -116,7 +116,7 @@ export function renderHookPage(hook, options) {
   const exampleMarkdown = typeof options.exampleMarkdown === 'string' ? options.exampleMarkdown.trim() : '';
   const relatedExampleLinks = Array.isArray(options.relatedExampleLinks) ? options.relatedExampleLinks : [];
   const summary = oneLine(hook.doc?.description || '');
-  const longDescription = String(hook.doc?.long_description || '').trim();
+  const longDescription = formatLongDescription(hook.doc);
   const typeLabel = TYPE_LABEL[hook.type] || 'Hook';
   const signature = buildSignature(hook, normalizedName);
   const source = sourceLocation(hook, plugin);
@@ -364,6 +364,120 @@ function integerOrNull(value) {
     return Number(value);
   }
   return null;
+}
+
+/**
+ * Docblock long descriptions are Markdown. Some exports keep a real list in
+ * `long_description_html` while `long_description` has joined the items onto
+ * one line (`- name - name`). Prefer the HTML list, and otherwise split a
+ * collapsed Markdown list so each item is on its own line.
+ *
+ * @param {object | null | undefined} doc
+ * @returns {string}
+ */
+function formatLongDescription(doc) {
+  const text = String(doc?.long_description || '').trim();
+  const html = String(doc?.long_description_html || '').trim();
+  if (/<(ul|ol)\b/i.test(html)) {
+    const markdown = htmlDescriptionToMarkdown(html);
+    if (markdown) {
+      return markdown;
+    }
+  }
+  return expandCollapsedMarkdownLists(text);
+}
+
+/**
+ * @param {string} html
+ * @returns {string}
+ */
+function htmlDescriptionToMarkdown(html) {
+  const blocks = [];
+  const re = /<(p|ul|ol)\b[^>]*>([\s\S]*?)<\/\1>/gi;
+  let match;
+  while ((match = re.exec(html))) {
+    const tag = match[1].toLowerCase();
+    if (tag === 'p') {
+      const paragraph = inlineHtmlToMarkdown(match[2]);
+      if (paragraph) {
+        blocks.push(paragraph);
+      }
+      continue;
+    }
+    const items = [...match[2].matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)]
+      .map((item) => inlineHtmlToMarkdown(item[1]))
+      .filter(Boolean);
+    if (items.length === 0) {
+      continue;
+    }
+    blocks.push(
+      items
+        .map((item, index) => (tag === 'ol' ? `${index + 1}. ${item}` : `- ${item}`))
+        .join('\n'),
+    );
+  }
+  return blocks.join('\n\n').trim();
+}
+
+/**
+ * @param {string} html
+ * @returns {string}
+ */
+function inlineHtmlToMarkdown(html) {
+  let value = String(html);
+  value = value.replace(/<code>([\s\S]*?)<\/code>/gi, (_, code) => `\`${decodeHtmlEntities(code)}\``);
+  value = value.replace(/<(em|strong)>([\s\S]*?)<\/\1>/gi, (_, tag, inner) => {
+    const marker = tag.toLowerCase() === 'strong' ? '**' : '*';
+    return `${marker}${inlineHtmlToMarkdown(inner)}${marker}`;
+  });
+  value = value.replace(/<br\s*\/?>/gi, '\n');
+  value = value.replace(/<[^>]+>/g, '');
+  return decodeHtmlEntities(value).replace(/[ \t]+/g, ' ').replace(/ *\n */g, '\n').trim();
+}
+
+/**
+ * @param {string} value
+ * @returns {string}
+ */
+function decodeHtmlEntities(value) {
+  return String(value)
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#0*39;|&apos;/g, "'")
+    .replace(/&amp;/g, '&');
+}
+
+/**
+ * A collapsed docblock list is one Markdown item line with further ` - `
+ * separators. Two code items, or three or more items of any kind, are split.
+ * A single prose dash inside one item is left alone.
+ *
+ * @param {string} markdown
+ * @returns {string}
+ */
+function expandCollapsedMarkdownLists(markdown) {
+  return String(markdown)
+    .split('\n')
+    .flatMap((line) => {
+      const marker = line.match(/^\s*([-*+]|\d+[.)])\s+/);
+      if (!marker) {
+        return [line];
+      }
+      const pieces = line
+        .slice(marker[0].length)
+        .split(/\s+-\s+/)
+        .map((piece) => piece.trim())
+        .filter(Boolean);
+      const codeItems = pieces.every((piece) => piece.startsWith('`'));
+      if (pieces.length < 2 || (pieces.length < 3 && !codeItems)) {
+        return [line];
+      }
+      const numbered = /^\d+[.)]$/.test(marker[1]);
+      const bullet = marker[1] === '*' || marker[1] === '+' ? marker[1] : '-';
+      return pieces.map((piece, index) => `${numbered ? `${index + 1}. ` : `${bullet} `}${piece}`);
+    })
+    .join('\n');
 }
 
 /**

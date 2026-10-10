@@ -13,7 +13,11 @@ description: "Filters the title of a checkout step."
 Filters the title of a checkout step.
 
 The dynamic portion of the hook name, `$step_id`, refers to the checkout step ID. Additional hook names are created for steps registered by other plugins. Possible hook names include:
- - `fc_step_title_contact` - `fc_step_title_shipping` - `fc_step_title_billing` - `fc_step_title_payment`
+
+- `fc_step_title_contact`
+- `fc_step_title_shipping`
+- `fc_step_title_billing`
+- `fc_step_title_payment`
 
 ## Signature
 

@@ -13,7 +13,25 @@ description: "Filters the substep review display value for a checkout field type
 Filters the substep review display value for a checkout field type.
 
 The dynamic portion of the hook name, `$field_type`, refers to the checkout field type. The field-key hook runs after this one. Possible hook names include:
- - `fc_substep_text_display_value_text` - `fc_substep_text_display_value_password` - `fc_substep_text_display_value_datetime` - `fc_substep_text_display_value_datetime-local` - `fc_substep_text_display_value_date` - `fc_substep_text_display_value_month` - `fc_substep_text_display_value_time` - `fc_substep_text_display_value_week` - `fc_substep_text_display_value_email` - `fc_substep_text_display_value_url` - `fc_substep_text_display_value_tel` - `fc_substep_text_display_value_number` - `fc_substep_text_display_value_checkbox` - `fc_substep_text_display_value_country` - `fc_substep_text_display_value_state` - `fc_substep_text_display_value_radio` - `fc_substep_text_display_value_select` - `fc_substep_text_display_value_textarea`
+
+- `fc_substep_text_display_value_text`
+- `fc_substep_text_display_value_password`
+- `fc_substep_text_display_value_datetime`
+- `fc_substep_text_display_value_datetime-local`
+- `fc_substep_text_display_value_date`
+- `fc_substep_text_display_value_month`
+- `fc_substep_text_display_value_time`
+- `fc_substep_text_display_value_week`
+- `fc_substep_text_display_value_email`
+- `fc_substep_text_display_value_url`
+- `fc_substep_text_display_value_tel`
+- `fc_substep_text_display_value_number`
+- `fc_substep_text_display_value_checkbox`
+- `fc_substep_text_display_value_country`
+- `fc_substep_text_display_value_state`
+- `fc_substep_text_display_value_radio`
+- `fc_substep_text_display_value_select`
+- `fc_substep_text_display_value_textarea`
 
 ## Signature
 

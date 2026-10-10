@@ -11,7 +11,8 @@ description: "Filters the admin notices displayed by Fluid Checkout."
 Filters the admin notices displayed by Fluid Checkout.
 
 The notice list is built from the plugin prefix stored in `FluidCheckout_AdminNotices::$plugin_prefix`, which is `fc`. Possible hook names include:
- - `fc_admin_notices`
+
+- `fc_admin_notices`
 
 ## Signature
 

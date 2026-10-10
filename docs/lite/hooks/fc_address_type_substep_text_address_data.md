@@ -13,7 +13,9 @@ description: "Filters the address data used to build a substep review text line.
 Filters the address data used to build a substep review text line.
 
 The dynamic portion of the hook name, `$address_type`, refers to the address type. Possible hook names include:
- - `fc_billing_substep_text_address_data` - `fc_shipping_substep_text_address_data`
+
+- `fc_billing_substep_text_address_data`
+- `fc_shipping_substep_text_address_data`
 
 ## Signature
 

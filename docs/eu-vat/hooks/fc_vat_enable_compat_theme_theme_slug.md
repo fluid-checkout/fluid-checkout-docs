@@ -13,9 +13,10 @@ description: "Filters whether to load the PHP compatibility file for a theme."
 Filters whether to load the PHP compatibility file for a theme.
 
 The dynamic portion of the hook name, `$theme_slug`, is a theme directory slug. The filter runs for the parent theme (`get_template()`) and the active theme (`get_stylesheet()`). The file `inc/compat/themes/compat-theme-{$theme_slug}.php` is loaded only when the filtered value is exactly `true` and that file exists inside this plugin. Returning anything other than `true` (for example `false`) disables it.
- Possible hook names include:
 
-  - `fc_vat_enable_compat_theme_cartzilla`
+Possible hook names include:
+
+- `fc_vat_enable_compat_theme_cartzilla`
 
 ## Signature
 

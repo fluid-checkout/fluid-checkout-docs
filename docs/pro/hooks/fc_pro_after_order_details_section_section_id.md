@@ -14,17 +14,17 @@ Fires after the contents of an order details section.
 
 The dynamic portion of the hook name, `$section_id`, is the order details section ID. Possible hook names include:
 
-  - `fc_pro_after_order_details_section_customer_information`
-  - `fc_pro_after_order_details_section_delivery_information`
-  - `fc_pro_after_order_details_section_downloads`
-  - `fc_pro_after_order_details_section_gift_message`
-  - `fc_pro_after_order_details_section_licenses`
-  - `fc_pro_after_order_details_section_order_details`
-  - `fc_pro_after_order_details_section_order_notes`
-  - `fc_pro_after_order_details_section_order_status`
-  - `fc_pro_after_order_details_section_order_summary`
-  - `fc_pro_after_order_details_section_payment_method`
-  - `fc_pro_after_order_details_section_subscriptions`
+- `fc_pro_after_order_details_section_customer_information`
+- `fc_pro_after_order_details_section_delivery_information`
+- `fc_pro_after_order_details_section_downloads`
+- `fc_pro_after_order_details_section_gift_message`
+- `fc_pro_after_order_details_section_licenses`
+- `fc_pro_after_order_details_section_order_details`
+- `fc_pro_after_order_details_section_order_notes`
+- `fc_pro_after_order_details_section_order_status`
+- `fc_pro_after_order_details_section_order_summary`
+- `fc_pro_after_order_details_section_payment_method`
+- `fc_pro_after_order_details_section_subscriptions`
 
 ## Signature
 

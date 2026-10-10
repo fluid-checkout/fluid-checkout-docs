@@ -13,7 +13,8 @@ description: "Filters the character used to mask a password field in the substep
 Filters the character used to mask a password field in the substep review text.
 
 The dynamic portion of the hook name, `$field_type`, refers to the checkout field type. The built-in call uses `password`. Possible hook names include:
- - `fc_substep_text_display_value_password_char`
+
+- `fc_substep_text_display_value_password_char`
 
 ## Signature
 

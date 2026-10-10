@@ -546,6 +546,61 @@ test('hooks index places the hand-written intro above the hook list', () => {
   );
 });
 
+test('long descriptions render docblock lists as one item per line', () => {
+  const pageFor = (doc, name) =>
+    renderHookPage(
+      {type: 'filter', args: 1, doc},
+      {normalizedName: name, slug: name, plugin: {repository: null}},
+    );
+
+  const hookNames = pageFor(
+    {
+      description: 'Filters the toggle label of an expansible section.',
+      long_description:
+        'The dynamic portion of the hook name, `$section_id`, refers to the expansible section ID. Possible hook names include:\n - `fc_expansible_section_toggle_label_coupon_code` - `fc_expansible_section_toggle_label_gift_card`',
+      long_description_html:
+        '<p>The dynamic portion of the hook name, <code>$section_id</code>, refers to the expansible section ID. Possible hook names include:</p> <ul> <li><code>fc_expansible_section_toggle_label_coupon_code</code></li> <li><code>fc_expansible_section_toggle_label_gift_card</code></li> </ul>',
+    },
+    'fc_expansible_section_toggle_label_{section_id}',
+  );
+  assert.match(
+    hookNames,
+    /- `fc_expansible_section_toggle_label_coupon_code`\n- `fc_expansible_section_toggle_label_gift_card`/,
+  );
+  assert.doesNotMatch(hookNames, /coupon_code` - `fc_expansible/);
+
+  const keys = pageFor(
+    {
+      description: 'Filters the JavaScript settings.',
+      long_description:
+        'Default keys:\n\n  - `ajaxUrl` (string) Admin AJAX URL.\n  - `validateVatNonce` (string) Nonce for the action.',
+      long_description_html:
+        '<p>Default keys:</p> <ul> <li><code>ajaxUrl</code> (string) Admin AJAX URL.</li> <li><code>validateVatNonce</code> (string) Nonce for the action.</li> </ul>',
+    },
+    'fc_vat_js_settings',
+  );
+  assert.match(keys, /- `ajaxUrl` \(string\) Admin AJAX URL\.\n- `validateVatNonce` \(string\) Nonce for the action\./);
+
+  const collapsed = pageFor(
+    {
+      description: 'Lists the steps.',
+      long_description: 'Steps:\n - First step - Second step - Third step',
+    },
+    'fc_checkout_steps',
+  );
+  assert.match(collapsed, /- First step\n- Second step\n- Third step/);
+
+  const prose = pageFor(
+    {
+      description: 'Keeps a sentence.',
+      long_description: 'Keep this sentence - it is not a list.',
+    },
+    'fc_checkout_steps',
+  );
+  assert.match(prose, /Keep this sentence - it is not a list\./);
+  assert.doesNotMatch(prose, /^- Keep this sentence/m);
+});
+
 test('intro image rewrite skips fenced code and absolute links', () => {
   const markdown = [
     '---',

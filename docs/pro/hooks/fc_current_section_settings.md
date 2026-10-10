@@ -14,7 +14,7 @@ Filters the settings for a Fluid Checkout admin section.
 
 `$current_section` is `license_keys` in this method, so the hook name is `fc_license_keys_settings`. Possible hook names include:
 
-  - `fc_license_keys_settings`
+- `fc_license_keys_settings`
 
 ## Signature
 

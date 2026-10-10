@@ -14,13 +14,13 @@ Filters the HTML attributes for a cart section.
 
 The dynamic portion of the hook name, `$section_id`, is the cart section ID. Possible hook names include:
 
-  - `fc_pro_cart_section_cart_items_attributes`
-  - `fc_pro_cart_section_coupon_code_attributes`
-  - `fc_pro_cart_section_cross_sell_display_attributes`
-  - `fc_pro_cart_section_free-gifts-for-woocommerce_display_attributes`
-  - `fc_pro_cart_section_gift_card_code_attributes`
-  - `fc_pro_cart_section_shipping_attributes`
-  - `fc_pro_cart_section_woodmart-free-gifts_display_attributes`
+- `fc_pro_cart_section_cart_items_attributes`
+- `fc_pro_cart_section_coupon_code_attributes`
+- `fc_pro_cart_section_cross_sell_display_attributes`
+- `fc_pro_cart_section_free-gifts-for-woocommerce_display_attributes`
+- `fc_pro_cart_section_gift_card_code_attributes`
+- `fc_pro_cart_section_shipping_attributes`
+- `fc_pro_cart_section_woodmart-free-gifts_display_attributes`
 
 ## Signature
 

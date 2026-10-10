@@ -14,8 +14,8 @@ Filters the title of an order details subsection.
 
 The dynamic portion of the hook name, `$subsection_id`, is the order details subsection ID. Possible hook names include:
 
-  - `fc_pro_order_details_subsection_title_downloads`
-  - `fc_pro_order_details_subsection_title_order_notes`
+- `fc_pro_order_details_subsection_title_downloads`
+- `fc_pro_order_details_subsection_title_order_notes`
 
 ## Signature
 

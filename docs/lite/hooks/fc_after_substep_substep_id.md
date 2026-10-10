@@ -13,7 +13,14 @@ description: "Fires after a checkout substep."
 Fires after a checkout substep.
 
 The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. This hook runs before the optional substep edit and save buttons. Additional hook names are created for substeps registered by other plugins. Possible hook names include:
- - `fc_after_substep_contact` - `fc_after_substep_shipping_address` - `fc_after_substep_shipping_method` - `fc_after_substep_order_notes` - `fc_after_substep_billing_address` - `fc_after_substep_payment` - `fc_after_substep_coupon_codes`
+
+- `fc_after_substep_contact`
+- `fc_after_substep_shipping_address`
+- `fc_after_substep_shipping_method`
+- `fc_after_substep_order_notes`
+- `fc_after_substep_billing_address`
+- `fc_after_substep_payment`
+- `fc_after_substep_coupon_codes`
 
 ## Signature
 

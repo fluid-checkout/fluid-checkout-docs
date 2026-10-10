@@ -13,7 +13,14 @@ description: "Filters the rendered review text HTML for a checkout substep."
 Filters the rendered review text HTML for a checkout substep.
 
 The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID. Additional hook names are created for substeps registered by other plugins. Possible hook names include:
- - `fc_substep_contact_text` - `fc_substep_shipping_address_text` - `fc_substep_shipping_method_text` - `fc_substep_order_notes_text` - `fc_substep_billing_address_text` - `fc_substep_payment_text` - `fc_substep_coupon_codes_text`
+
+- `fc_substep_contact_text`
+- `fc_substep_shipping_address_text`
+- `fc_substep_shipping_method_text`
+- `fc_substep_order_notes_text`
+- `fc_substep_billing_address_text`
+- `fc_substep_payment_text`
+- `fc_substep_coupon_codes_text`
 
 ## Signature
 

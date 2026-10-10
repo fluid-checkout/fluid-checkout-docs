@@ -14,13 +14,13 @@ Fires after the contents of a cart section.
 
 The dynamic portion of the hook name, `$section_id`, is the cart section ID. Possible hook names include:
 
-  - `fc_pro_after_cart_section_cart_items`
-  - `fc_pro_after_cart_section_coupon_code`
-  - `fc_pro_after_cart_section_cross_sell_display`
-  - `fc_pro_after_cart_section_free-gifts-for-woocommerce_display`
-  - `fc_pro_after_cart_section_gift_card_code`
-  - `fc_pro_after_cart_section_shipping`
-  - `fc_pro_after_cart_section_woodmart-free-gifts_display`
+- `fc_pro_after_cart_section_cart_items`
+- `fc_pro_after_cart_section_coupon_code`
+- `fc_pro_after_cart_section_cross_sell_display`
+- `fc_pro_after_cart_section_free-gifts-for-woocommerce_display`
+- `fc_pro_after_cart_section_gift_card_code`
+- `fc_pro_after_cart_section_shipping`
+- `fc_pro_after_cart_section_woodmart-free-gifts_display`
 
 ## Signature
 

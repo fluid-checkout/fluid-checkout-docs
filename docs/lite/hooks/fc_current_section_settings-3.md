@@ -13,7 +13,8 @@ description: "Filters the settings for one Fluid Checkout admin section."
 Filters the settings for one Fluid Checkout admin section.
 
 The dynamic portion of the hook name, `$current_section`, refers to the settings section slug. At this call the section is fixed by the surrounding condition. Possible hook names include:
- - `fc_tools_settings`
+
+- `fc_tools_settings`
 
 ## Signature
 
