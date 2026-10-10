@@ -28,4 +28,4 @@ apply_filters( 'fc_checkout_maybe_disable_place_order_button', $value );
 
 ## Source
 
-[`inc/compat/plugins/compat-plugin-woocommerce-paypal-payments.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/plugins/compat-plugin-woocommerce-paypal-payments.php)
+[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)

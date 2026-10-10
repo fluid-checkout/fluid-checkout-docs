@@ -26,7 +26,7 @@ This hook does not pass any parameters.
 
 ## Source
 
-[`templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-footer.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-footer.php)
+[`templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-footer.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-footer.php)
 
 ## Examples
 

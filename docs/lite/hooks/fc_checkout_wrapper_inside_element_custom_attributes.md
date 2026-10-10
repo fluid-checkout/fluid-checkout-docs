@@ -28,7 +28,7 @@ apply_filters( 'fc_checkout_wrapper_inside_element_custom_attributes', $attribut
 
 ## Source
 
-[`templates/fc/checkout-steps/checkout/form-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-checkout.php)
+[`templates/fc/checkout-steps/checkout/form-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/templates/fc/checkout-steps/checkout/form-checkout.php)
 
 ## Examples
 

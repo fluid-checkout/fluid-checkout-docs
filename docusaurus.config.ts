@@ -10,6 +10,7 @@ type PluginStatus = 'available' | 'coming-soon';
 type RepositoryConfig = {
   url: string;
   branch?: string;
+  commit?: string;
 };
 
 type PluginEntry = {
@@ -49,6 +50,8 @@ const config: Config = {
   favicon: 'img/favicon.png',
   url: 'https://docs.fluidcheckout.com',
   baseUrl: '/',
+  // GitHub Pages redirects slashless URLs. Canonicals, the sitemap, and links use the slash form.
+  trailingSlash: true,
   organizationName: 'fluid-checkout',
   projectName: 'fluid-checkout-docs',
   onBrokenLinks: 'throw',
@@ -71,6 +74,10 @@ const config: Config = {
       {
         docs: false,
         blog: false,
+        sitemap: {
+          // Hook pages are noindex and drop out via the robots meta. /search is noindex too.
+          ignorePatterns: ['/search', '/search/', '/search/**'],
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -115,6 +122,8 @@ const config: Config = {
         ],
       ],
   themeConfig: {
+    image: 'img/social-card.png',
+    metadata: [{property: 'og:type', content: 'website'}],
     colorMode: {
       defaultMode: 'light',
       respectPrefersColorScheme: true,

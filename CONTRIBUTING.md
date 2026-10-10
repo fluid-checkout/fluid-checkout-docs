@@ -35,7 +35,7 @@ The text at the top of a plugin's hooks index is `hooks-intro/<plugin>/index.md`
 3. Run `npm run generate`. The generator inserts the intro above the hook tables in `docs/<plugin>/hooks/index.md` and rewrites relative image paths so the generated page can load them. The next generate overwrites that index, so change the intro file instead.
 4. Keep `{` and `}` inside inline code or fenced code blocks.
 
-`docusaurus.config.ts` loads `gettingStartedRedirects()` from `scripts/hooks-intro.mjs`. For each plugin with `"status": "available"` and a `hooks-intro/<plugin>/index.md` file, the site redirects `/<routeBasePath>/guides/getting-started` to `/<routeBasePath>/hooks`. The generated index heading and sidebar label are `All hooks`. The browser title is `All hooks — <plugin label>`. Links inside an intro that refer to the actions list, the filters list, or another heading on that same page use a `#section-id` anchor.
+`docusaurus.config.ts` loads `gettingStartedRedirects()` from `scripts/hooks-intro.mjs`. For each plugin with `"status": "available"` and a `hooks-intro/<plugin>/index.md` file, the site redirects `/<routeBasePath>/guides/getting-started/` to `/<routeBasePath>/hooks/`. The generated index heading and sidebar label are `All hooks`. The browser title is `<plugin label> hooks reference` (for example `Fluid Checkout Lite hooks reference`, `Fluid Checkout PRO hooks reference`, and `EU-VAT Assistant hooks reference`). Each of those pages has its own meta description. Links inside an intro that refer to the actions list, the filters list, or another heading on that same page use a `#section-id` anchor. Other internal links include the trailing slash (`/lite/hooks/fc_checkout_before_steps/`).
 
 ## Add a hook example
 
@@ -45,7 +45,7 @@ Examples are hand-written Markdown under `examples/`. They are the source of tru
 2. Add `examples/<plugin>/<hook-slug>.md`. `<plugin>` is the id in `plugins.json` (`eu-vat`, `lite`, `pro`), not the GitHub repository name.
    - A normal hook uses its name: `examples/eu-vat/fc_vat_number_field_args.md`.
    - A dynamic hook uses the generator slug. Braces are removed and nothing is inserted in their place: `fc_vat_enable_compat_plugin_{plugin_slug}` becomes `examples/eu-vat/fc_vat_enable_compat_plugin_plugin_slug.md`, and `fc_vat_{current_section}_settings` becomes `examples/eu-vat/fc_vat_current_section_settings.md`.
-   - When two hooks share a slug, the generator appends `-2`, `-3`, and so on. Name the example file with that suffixed slug.
+   - Each normalized hook name has one page. Call sites are ordered by source file, then source line, then JSON order, and later sites of the same name are ignored. A `-2` or `-3` suffix is only used when two different names share a slug. Name the example file with the published slug. If a file or `related_hooks` entry still uses an unpublished `-N` slug, `npm run generate` moves it onto the unsuffixed hook.
 3. Write the example body in that file. The generator adds the `## Examples` heading after the parameters and source sections, so the file should not repeat the heading. Pages are MDX. Keep `{` and `}` inside inline code or fenced code blocks.
 4. When one snippet uses several hooks, keep the full snippet on the main hook and list the others:
 
@@ -87,7 +87,17 @@ Set `repository` to `null` for a private plugin (file path only). For a public p
 }
 ```
 
-The generator then links `file` and the optional `line` to `blob/<branch>/<file>#L<line>`.
+Source links use a commit SHA. `data/<plugin>/actions.json` and `data/<plugin>/filters.json` each have a top-level `commit` set to the full SHA the export was generated from. The generator links `file` and the optional `line` to `blob/<commit>/<file>#L<line>`. If `commit` is missing, it uses `repository.commit`, then `repository.branch`, then `main`. `repository.branch` is only that fallback. A branch such as `release/next-FEATURE` is deleted eventually, and a SHA link keeps working.
+
+## One page per hook name
+
+The same hook can be called from more than one file. The generator publishes one page per normalized name.
+
+Eligible hooks are ordered by source file path, then by source line. A missing line sorts before numbered lines in that file. When the file and line are the same, the earlier JSON entry wins (`actions.json`, then `filters.json`, in file order). The first hook in that order is the page. Later entries with the same normalized name are ignored, and no `-2` or `-3` page is created for them. `npm run generate` logs each ignored name.
+
+A `-N` suffix is still used when two different normalized names slugify to the same path, for example `fc_vat_{foo}` and `fc_vat_foo`. The second page is `fc_vat_foo-2`.
+
+Example files use the published slug. If an example file or a `related_hooks` entry still uses a `-N` slug and that slug is not published, generation moves the file onto the unsuffixed hook and rewrites the entry. A `-N` slug that is still published (two different names) is left as it is.
 
 Dynamic names from the generator are PHP expressions. They are normalized as follows:
 
@@ -143,6 +153,8 @@ Do not add the plugin-side workflow to this repo. Each plugin repository will la
    - `data/<plugin-id>/filters.json`
 
 `<plugin-id>` is the id in `plugins.json`, not the GitHub repo name. EU-VAT Assistant uses `eu-vat`.
+
+5. Set a top-level `"commit"` on both JSON documents to the full source commit SHA the generator ran against. The docs site uses that SHA in GitHub source links (`blob/<sha>/<file>`). Do not leave the link pointed at a branch name such as `release/next-FEATURE`. This docs repo does not edit the plugin repositories. The plugin workflow has to write the SHA into the JSON before it opens the pull request.
 
 ### Branch name and pull request
 

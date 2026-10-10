@@ -29,7 +29,7 @@ apply_filters( 'fc_pro_cart_shipping_destination_html', $html, $formatted_destin
 
 ## Source
 
-`templates/fc-pro/cart/cart/shipping-methods-calculate-shipping.php`
+`templates/compat/themes/Avada/fc-pro/cart/cart/shipping-methods-calculate-shipping.php`
 
 ## Examples
 

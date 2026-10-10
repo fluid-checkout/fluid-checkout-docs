@@ -28,7 +28,7 @@ apply_filters( 'fc_default_locale_field_args', $new_field_args );
 
 ## Source
 
-[`inc/checkout-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-fields.php)
+[`inc/checkout-fields.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-fields.php)
 
 ## Examples
 

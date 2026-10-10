@@ -35,4 +35,4 @@ apply_filters( 'fc_{current_section}_settings_add', $value, $current_section );
 
 ## Source
 
-[`inc/admin/admin-settings-integrations.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/admin/admin-settings-integrations.php)
+[`inc/admin/admin-settings-integrations.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/admin/admin-settings-integrations.php)

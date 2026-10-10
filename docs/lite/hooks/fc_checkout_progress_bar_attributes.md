@@ -28,7 +28,7 @@ apply_filters( 'fc_checkout_progress_bar_attributes', $progress_bar_attributes )
 
 ## Source
 
-[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
 
 ## Examples
 

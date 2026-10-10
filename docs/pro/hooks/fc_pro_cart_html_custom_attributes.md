@@ -28,7 +28,7 @@ apply_filters( 'fc_pro_cart_html_custom_attributes', $attributes );
 
 ## Source
 
-`templates/fc-pro/cart/cart/header-cart.php`
+`templates/compat/themes/dt-the7/fc-pro/cart/cart/header-cart.php`
 
 ## Examples
 

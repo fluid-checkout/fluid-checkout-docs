@@ -111,8 +111,8 @@ export function gettingStartedRedirects(plugins, baseDir) {
     }
     return [
       {
-        from: `/${plugin.routeBasePath}/guides/getting-started`,
-        to: `/${plugin.routeBasePath}/hooks`,
+        from: `/${plugin.routeBasePath}/guides/getting-started/`,
+        to: `/${plugin.routeBasePath}/hooks/`,
       },
     ];
   });

@@ -29,7 +29,7 @@ apply_filters( 'fc_css_variables', $value, $context );
 
 ## Source
 
-[`inc/design-templates.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/design-templates.php)
+[`inc/design-templates.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/design-templates.php)
 
 ## Examples
 

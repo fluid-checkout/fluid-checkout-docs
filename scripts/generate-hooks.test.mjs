@@ -15,7 +15,7 @@ import {
   rewriteIntroImagePaths,
   stripFrontMatter,
 } from './hooks-intro.mjs';
-import {renderHookPage, renderHooksIndex, renderSidebarItems} from './render-hook.mjs';
+import {hooksIndexDescription, renderHookPage, renderHooksIndex, renderSidebarItems} from './render-hook.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const fixture = JSON.parse(
@@ -497,7 +497,8 @@ test('hooks index places the hand-written intro above the hook list', () => {
     'EU-VAT Assistant',
     intro,
   );
-  assert.match(index, /title: "All hooks — EU-VAT Assistant"/);
+  assert.match(index, /title: "EU-VAT Assistant hooks reference"/);
+  assert.match(index, /description: "Reference for the actions and filters in EU-VAT Assistant."/);
   assert.match(index, /sidebar_label: All hooks/);
   const heading = index.indexOf('# All hooks');
   const introHeading = index.indexOf('## Getting started with EU-VAT Assistant hooks');
@@ -511,7 +512,7 @@ test('hooks index places the hand-written intro above the hook list', () => {
     [{name: 'fc_vat_js_settings', slug: 'fc_vat_js_settings', type: 'filter', summary: 'Settings.'}],
     'EU-VAT Assistant',
   );
-  assert.match(plain, /title: "All hooks — EU-VAT Assistant"/);
+  assert.match(plain, /title: "EU-VAT Assistant hooks reference"/);
   assert.match(plain, /# All hooks/);
   assert.match(plain, /- \[`fc_vat_js_settings`\]\(\.\/fc_vat_js_settings\) Settings\./);
   assert.doesNotMatch(plain, /Getting started with EU-VAT Assistant hooks/);
@@ -521,20 +522,28 @@ test('hooks index places the hand-written intro above the hook list', () => {
     'Fluid Checkout Lite',
   );
   assert.match(unnamed, /- \[`fc_checkout_steps`\]\(\.\/fc_checkout_steps\)\n/);
+  const linked = renderHooksIndex(
+    [{name: 'fc_checkout_steps', slug: 'fc_checkout_steps', type: 'action', summary: 'Steps.'}],
+    'Fluid Checkout Lite',
+    null,
+    null,
+    'lite',
+  );
+  assert.match(linked, /- \[`fc_checkout_steps`\]\(\/lite\/hooks\/fc_checkout_steps\/\) Steps\./);
   assert.doesNotMatch(unnamed, /fc_checkout_steps fc_checkout_steps/);
 
   assert.deepEqual(gettingStartedRedirects(catalog.plugins, root), [
     {
-      from: '/eu-vat/guides/getting-started',
-      to: '/eu-vat/hooks',
+      from: '/eu-vat/guides/getting-started/',
+      to: '/eu-vat/hooks/',
     },
     {
-      from: '/lite/guides/getting-started',
-      to: '/lite/hooks',
+      from: '/lite/guides/getting-started/',
+      to: '/lite/hooks/',
     },
     {
-      from: '/pro/guides/getting-started',
-      to: '/pro/hooks',
+      from: '/pro/guides/getting-started/',
+      to: '/pro/hooks/',
     },
   ]);
   assert.deepEqual(
@@ -625,4 +634,40 @@ test('intro image rewrite skips fenced code and absolute links', () => {
   assert.match(rewritten, /!\[Diagram\]\(@site\/hooks-intro\/eu-vat\/img\/hooks-overview\.svg\)/);
   assert.match(rewritten, /```md\n!\[Not an image\]\(\.\/img\/hooks-overview\.svg\)\n```/);
   assert.match(rewritten, /\(\/eu-vat\/hooks\)/);
+});
+
+test('publishes one page per normalized name, first by file then line', () => {
+  const plugin = {id: 'lite', pluginPrefix: 'fc', hookPrefixes: ['fc_']};
+  const result = prepareHooks([
+    {name: 'fc_checkout_footer', file: 'templates/b.php', line: 10, type: 'action', doc: {description: 'Later file.'}},
+    {name: 'fc_checkout_footer', file: 'inc/a.php', line: 40, type: 'action', doc: {description: 'Same file, later line.'}},
+    {name: 'fc_checkout_footer', file: 'inc/a.php', line: 5, type: 'action', doc: {description: 'First file, first line.'}},
+    {name: 'fc_checkout_header', file: 'inc/a.php', type: 'action', doc: {description: 'No line.'}},
+  ], plugin);
+
+  assert.deepEqual(
+    result.hooks.map((hook) => [hook.name, hook.slug, hook.summary]),
+    [
+      ['fc_checkout_footer', 'fc_checkout_footer', 'First file, first line.'],
+      ['fc_checkout_header', 'fc_checkout_header', 'No line.'],
+    ],
+  );
+  assert.equal(result.duplicates.length, 2);
+  assert.deepEqual(formatHookFilterLog(plugin, result).slice(1), [
+    'Ignored 2 later call sites for 1 hook name in lite (one page per hook name; sorted by file, then line):',
+    '  - fc_checkout_footer',
+  ]);
+
+  assert.equal(
+    hooksIndexDescription({id: 'lite', label: 'Fluid Checkout Lite'}),
+    'Reference for every Fluid Checkout Lite action and filter, including the signature, parameters, and source file.',
+  );
+  assert.equal(
+    hooksIndexDescription({id: 'pro', label: 'Fluid Checkout PRO'}),
+    'Reference for every Fluid Checkout PRO action and filter, including Address Book and Google Address Autocomplete hooks.',
+  );
+  assert.equal(
+    hooksIndexDescription({id: 'eu-vat', label: 'EU-VAT Assistant'}),
+    'Reference for every EU-VAT Assistant filter, including the signature, parameters, and source file.',
+  );
 });

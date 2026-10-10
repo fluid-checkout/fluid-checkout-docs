@@ -230,11 +230,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_checkout_footer-2",
-        "label": "fc_checkout_footer"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_checkout_footer_widgets",
         "label": "fc_checkout_footer_widgets"
       },
@@ -251,16 +246,6 @@
       {
         "type": "doc",
         "id": "hooks/fc_checkout_header",
-        "label": "fc_checkout_header"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_checkout_header-2",
-        "label": "fc_checkout_header"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_checkout_header-3",
         "label": "fc_checkout_header"
       },
       {
@@ -441,11 +426,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_add_phone_localisation_formats-2",
-        "label": "fc_add_phone_localisation_formats"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_addons_catalog",
         "label": "fc_addons_catalog"
       },
@@ -521,11 +501,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_billing_same_as_shipping_field_value-2",
-        "label": "fc_billing_same_as_shipping_field_value"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_billing_same_as_shipping_option_label",
         "label": "fc_billing_same_as_shipping_option_label"
       },
@@ -542,11 +517,6 @@
       {
         "type": "doc",
         "id": "hooks/fc_cart_has_multiple_packages",
-        "label": "fc_cart_has_multiple_packages"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_cart_has_multiple_packages-2",
         "label": "fc_cart_has_multiple_packages"
       },
       {
@@ -581,11 +551,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_checkout_body_custom_attributes-2",
-        "label": "fc_checkout_body_custom_attributes"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_checkout_column_layout",
         "label": "fc_checkout_column_layout"
       },
@@ -602,11 +567,6 @@
       {
         "type": "doc",
         "id": "hooks/fc_checkout_coupons_script_settings",
-        "label": "fc_checkout_coupons_script_settings"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_checkout_coupons_script_settings-2",
         "label": "fc_checkout_coupons_script_settings"
       },
       {
@@ -646,27 +606,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_checkout_header_logo_home_url-2",
-        "label": "fc_checkout_header_logo_home_url"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_checkout_header_logo_home_url-3",
-        "label": "fc_checkout_header_logo_home_url"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_checkout_header_logo_home_url-4",
-        "label": "fc_checkout_header_logo_home_url"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_checkout_html_custom_attributes",
-        "label": "fc_checkout_html_custom_attributes"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_checkout_html_custom_attributes-2",
         "label": "fc_checkout_html_custom_attributes"
       },
       {
@@ -686,11 +626,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_checkout_login_button_label-2",
-        "label": "fc_checkout_login_button_label"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_checkout_login_cta_text",
         "label": "fc_checkout_login_cta_text"
       },
@@ -702,11 +637,6 @@
       {
         "type": "doc",
         "id": "hooks/fc_checkout_login_input_classes",
-        "label": "fc_checkout_login_input_classes"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_checkout_login_input_classes-2",
         "label": "fc_checkout_login_input_classes"
       },
       {
@@ -726,22 +656,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_checkout_login_separator_text-2",
-        "label": "fc_checkout_login_separator_text"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_checkout_maybe_disable_place_order_button",
-        "label": "fc_checkout_maybe_disable_place_order_button"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_checkout_maybe_disable_place_order_button-2",
-        "label": "fc_checkout_maybe_disable_place_order_button"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_checkout_maybe_disable_place_order_button-3",
         "label": "fc_checkout_maybe_disable_place_order_button"
       },
       {
@@ -866,17 +781,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_compat_klarna_checkout_skip_undo_hooks_classes-2",
-        "label": "fc_compat_klarna_checkout_skip_undo_hooks_classes"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_compat_klarna_checkout_skip_undo_hooks_early_classes",
-        "label": "fc_compat_klarna_checkout_skip_undo_hooks_early_classes"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_compat_klarna_checkout_skip_undo_hooks_early_classes-2",
         "label": "fc_compat_klarna_checkout_skip_undo_hooks_early_classes"
       },
       {
@@ -906,17 +811,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_content_section_class-2",
-        "label": "fc_content_section_class"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_copy_billing_to_shipping_address_when_shipping_not_needed",
-        "label": "fc_copy_billing_to_shipping_address_when_shipping_not_needed"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_copy_billing_to_shipping_address_when_shipping_not_needed-2",
         "label": "fc_copy_billing_to_shipping_address_when_shipping_not_needed"
       },
       {
@@ -986,16 +881,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_current_section_settings-2",
-        "label": "fc_{current_section}_settings"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_current_section_settings-3",
-        "label": "fc_{current_section}_settings"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_current_section_settings_add",
         "label": "fc_{current_section}_settings_add"
       },
@@ -1046,11 +931,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_default_to_billing_same_as_shipping-2",
-        "label": "fc_default_to_billing_same_as_shipping"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_design_template_option_image_url",
         "label": "fc_design_template_option_image_url"
       },
@@ -1066,17 +946,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_do_order_notes_hooks_position-2",
-        "label": "fc_do_order_notes_hooks_position"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_do_order_notes_hooks_priority",
-        "label": "fc_do_order_notes_hooks_priority"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_do_order_notes_hooks_priority-2",
         "label": "fc_do_order_notes_hooks_priority"
       },
       {
@@ -1146,11 +1016,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_enable_fragments_refresh-2",
-        "label": "fc_enable_fragments_refresh"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_enable_order_summary_cart_item_unit_price",
         "label": "fc_enable_order_summary_cart_item_unit_price"
       },
@@ -1177,11 +1042,6 @@
       {
         "type": "doc",
         "id": "hooks/fc_fix_zoom_in_form_fields_mobile_devices",
-        "label": "fc_fix_zoom_in_form_fields_mobile_devices"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_fix_zoom_in_form_fields_mobile_devices-2",
         "label": "fc_fix_zoom_in_form_fields_mobile_devices"
       },
       {
@@ -1321,26 +1181,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_is_substep_complete_substep_id-2",
-        "label": "fc_is_substep_complete_{substep_id}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_is_substep_complete_substep_id-3",
-        "label": "fc_is_substep_complete_{substep_id}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_is_substep_complete_substep_id-4",
-        "label": "fc_is_substep_complete_{substep_id}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_is_substep_complete_substep_id-5",
-        "label": "fc_is_substep_complete_{substep_id}"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_js_settings",
         "label": "fc_js_settings"
       },
@@ -1461,51 +1301,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-10",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-2",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-3",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-4",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-5",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-6",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-7",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-8",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file-9",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_parsed_posted_data_reset_field_keys",
         "label": "fc_parsed_posted_data_reset_field_keys"
       },
@@ -1526,11 +1321,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_place_order_button_classes-2",
-        "label": "fc_place_order_button_classes"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_cart_settings",
         "label": "fc_pro_cart_settings"
       },
@@ -1546,17 +1336,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_order_details_customer_billing_address_formatted-2",
-        "label": "fc_pro_order_details_customer_billing_address_formatted"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_order_details_customer_billing_address_label",
-        "label": "fc_pro_order_details_customer_billing_address_label"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_customer_billing_address_label-2",
         "label": "fc_pro_order_details_customer_billing_address_label"
       },
       {
@@ -1566,27 +1346,12 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_order_details_customer_information_show_shipping-2",
-        "label": "fc_pro_order_details_customer_information_show_shipping"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_order_details_customer_shipping_address_formatted",
         "label": "fc_pro_order_details_customer_shipping_address_formatted"
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_order_details_customer_shipping_address_formatted-2",
-        "label": "fc_pro_order_details_customer_shipping_address_formatted"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_order_details_customer_shipping_address_label",
-        "label": "fc_pro_order_details_customer_shipping_address_label"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_order_details_customer_shipping_address_label-2",
         "label": "fc_pro_order_details_customer_shipping_address_label"
       },
       {
@@ -1646,11 +1411,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_shipping_method_description_html_element-2",
-        "label": "fc_shipping_method_description_html_element"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_shipping_method_display_package_content_substep_text_lines",
         "label": "fc_shipping_method_display_package_content_substep_text_lines"
       },
@@ -1671,11 +1431,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_shipping_method_has_cost-2",
-        "label": "fc_shipping_method_has_cost"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_shipping_method_option_description",
         "label": "fc_shipping_method_option_description"
       },
@@ -1691,17 +1446,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_shipping_method_option_end_tag_markup-2",
-        "label": "fc_shipping_method_option_end_tag_markup"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_shipping_method_option_image_html",
-        "label": "fc_shipping_method_option_image_html"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_shipping_method_option_image_html-2",
         "label": "fc_shipping_method_option_image_html"
       },
       {
@@ -1711,17 +1456,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_shipping_method_option_image_markup-2",
-        "label": "fc_shipping_method_option_image_markup"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_shipping_method_option_label_markup",
-        "label": "fc_shipping_method_option_label_markup"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_shipping_method_option_label_markup-2",
         "label": "fc_shipping_method_option_label_markup"
       },
       {
@@ -1731,17 +1466,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_shipping_method_option_markup-2",
-        "label": "fc_shipping_method_option_markup"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_shipping_method_option_price",
-        "label": "fc_shipping_method_option_price"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_shipping_method_option_price-2",
         "label": "fc_shipping_method_option_price"
       },
       {
@@ -1751,17 +1476,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_shipping_method_option_price_markup-2",
-        "label": "fc_shipping_method_option_price_markup"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_shipping_method_option_start_tag_markup",
-        "label": "fc_shipping_method_option_start_tag_markup"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_shipping_method_option_start_tag_markup-2",
         "label": "fc_shipping_method_option_start_tag_markup"
       },
       {
@@ -1771,17 +1486,7 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_shipping_method_substep_text_chosen_method_label-2",
-        "label": "fc_shipping_method_substep_text_chosen_method_label"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_shipping_method_substep_text_package_destination_data",
-        "label": "fc_shipping_method_substep_text_package_destination_data"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_shipping_method_substep_text_package_destination_data-2",
         "label": "fc_shipping_method_substep_text_package_destination_data"
       },
       {
@@ -1791,27 +1496,12 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_shipping_method_substep_text_package_destination_text-2",
-        "label": "fc_shipping_method_substep_text_package_destination_text"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_shipping_method_substep_text_package_review_text_lines",
         "label": "fc_shipping_method_substep_text_package_review_text_lines"
       },
       {
         "type": "doc",
-        "id": "hooks/fc_shipping_method_substep_text_package_review_text_lines-2",
-        "label": "fc_shipping_method_substep_text_package_review_text_lines"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_shipping_method_substep_text_package_review_text_lines_before_contents",
-        "label": "fc_shipping_method_substep_text_package_review_text_lines_before_contents"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_shipping_method_substep_text_package_review_text_lines_before_contents-2",
         "label": "fc_shipping_method_substep_text_package_review_text_lines_before_contents"
       },
       {
@@ -1842,16 +1532,6 @@
       {
         "type": "doc",
         "id": "hooks/fc_shipping_same_as_billing_field_value",
-        "label": "fc_shipping_same_as_billing_field_value"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_shipping_same_as_billing_field_value-2",
-        "label": "fc_shipping_same_as_billing_field_value"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_shipping_same_as_billing_field_value-3",
         "label": "fc_shipping_same_as_billing_field_value"
       },
       {
@@ -1991,31 +1671,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_substep_text_display_value_show_field_label_field_type-2",
-        "label": "fc_substep_text_display_value_show_field_label_{field_type}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_substep_text_display_value_show_field_label_field_type-3",
-        "label": "fc_substep_text_display_value_show_field_label_{field_type}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_substep_text_display_value_show_field_label_field_type-4",
-        "label": "fc_substep_text_display_value_show_field_label_{field_type}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_substep_text_display_value_show_field_label_field_type-5",
-        "label": "fc_substep_text_display_value_show_field_label_{field_type}"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_substep_text_display_value_show_field_label_field_type-6",
-        "label": "fc_substep_text_display_value_show_field_label_{field_type}"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_substep_title_substep_id",
         "label": "fc_substep_title_{substep_id}"
       },
@@ -2026,22 +1681,12 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_telemetry_api_url-2",
-        "label": "fc_telemetry_api_url"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_telemetry_client_config",
         "label": "fc_telemetry_client_config"
       },
       {
         "type": "doc",
         "id": "hooks/fc_telemetry_cron_hook",
-        "label": "fc_telemetry_cron_hook"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_telemetry_cron_hook-2",
         "label": "fc_telemetry_cron_hook"
       },
       {

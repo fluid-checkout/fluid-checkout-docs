@@ -13,7 +13,7 @@ Filters the shipping method substep text package review text lines before conten
 ## Signature
 
 ```php
-apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines_before_contents', $package_review_text_lines, $recurring_cart_package_key, $package, $chosen_recurring_method, $method );
+apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines_before_contents', $package_review_text_lines, $package_index, $package, $chosen_method, $method );
 ```
 
 ## Parameters
@@ -21,9 +21,9 @@ apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines_before
 | Name | Type | Description |
 | --- | --- | --- |
 | `$package_review_text_lines` | `string` | Package review text lines. |
-| `$recurring_cart_package_key` | `mixed` | Recurring cart package key. |
+| `$package_index` | `int` | Zero-based package index. |
 | `$package` | `array` | Shipping package data. |
-| `$chosen_recurring_method` | `mixed` | Chosen recurring method. |
+| `$chosen_method` | `string` | Chosen method. |
 | `$method` | `\WC_Shipping_Rate` | Method. |
 
 ## Since
@@ -32,7 +32,7 @@ apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines_before
 
 ## Source
 
-[`inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php)
+[`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-steps.php)
 
 ## Examples
 

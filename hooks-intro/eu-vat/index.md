@@ -8,7 +8,7 @@ EU-VAT Assistant runs WordPress actions and filters around the checkout VAT numb
 
 The [hooks reference](#filters) lists every action and filter exported from the plugin. Open a hook for its type, parameters, the version that introduced it, and the PHP file that runs it.
 
-A filter such as [`fc_vat_number_field_args`](/eu-vat/hooks/fc_vat_number_field_args) receives the current value and must return a replacement.
+A filter such as [`fc_vat_number_field_args`](/eu-vat/hooks/fc_vat_number_field_args/) receives the current value and must return a replacement.
 
 ## Attach a callback
 

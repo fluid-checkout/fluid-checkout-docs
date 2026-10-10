@@ -28,4 +28,4 @@ apply_filters( 'fc_show_order_totals_row_highlighted', $value );
 
 ## Source
 
-`inc/order-pay-page.php`
+`inc/cart-page.php`

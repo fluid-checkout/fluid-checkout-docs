@@ -26,7 +26,7 @@ This hook does not pass any parameters.
 
 ## Source
 
-`templates/fc-pro/cart/cart/footer-cart.php`
+`templates/compat/themes/enfold/fc-pro/cart/cart/footer-cart.php`
 
 ## Examples
 

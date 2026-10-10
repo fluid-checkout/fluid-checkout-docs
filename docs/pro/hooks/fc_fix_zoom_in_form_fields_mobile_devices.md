@@ -28,4 +28,4 @@ apply_filters( 'fc_fix_zoom_in_form_fields_mobile_devices', $value );
 
 ## Source
 
-`inc/order-pay-page.php`
+`inc/cart-page.php`

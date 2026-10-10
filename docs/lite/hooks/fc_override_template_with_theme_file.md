@@ -31,4 +31,4 @@ apply_filters( 'fc_override_template_with_theme_file', $value, $template, $templ
 
 ## Source
 
-[`inc/compat/themes/compat-theme-enfold.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/themes/compat-theme-enfold.php)
+[`inc/checkout-page-template.php`](https://github.com/fluid-checkout/fluid-checkout/blob/bd94362e871bc8abd7ada3ee6cb483762a9eca50/inc/checkout-page-template.php)
