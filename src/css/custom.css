@@ -258,6 +258,27 @@ h6 {
   height: 100%;
 }
 
+.plugin-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+}
+
+.plugin-card__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.plugin-card__icon {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
 .plugin-card h2 {
   margin: 0;
   font-size: 1.25rem;

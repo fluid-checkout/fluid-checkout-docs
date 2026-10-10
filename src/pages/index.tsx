@@ -1,5 +1,6 @@
 import type {ReactNode} from 'react';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
@@ -11,9 +12,17 @@ type PluginCard = {
   description: string;
   status: 'available' | 'coming-soon';
   routeBasePath?: string;
+  icon?: string;
 };
 
 const pluginCards = catalog.plugins as PluginCard[];
+
+function PluginIcon({src, name}: {src: string; name: string}): ReactNode {
+  const iconSrc = useBaseUrl(src);
+  return (
+    <img className="plugin-card__icon" src={iconSrc} alt={name} width={56} height={56} />
+  );
+}
 
 function PluginList(): ReactNode {
   return (
@@ -22,15 +31,20 @@ function PluginList(): ReactNode {
         const available = plugin.status === 'available' && plugin.routeBasePath;
         return (
           <article key={plugin.id} className="plugin-card">
-            <span
-              className={
-                available
-                  ? 'plugin-card__status plugin-card__status--available'
-                  : 'plugin-card__status plugin-card__status--soon'
-              }>
-              {available ? 'Available' : 'Coming soon'}
-            </span>
-            <Heading as="h2">{plugin.label}</Heading>
+            <div className="plugin-card__header">
+              {plugin.icon ? <PluginIcon src={plugin.icon} name={plugin.label} /> : null}
+              <div className="plugin-card__intro">
+                <span
+                  className={
+                    available
+                      ? 'plugin-card__status plugin-card__status--available'
+                      : 'plugin-card__status plugin-card__status--soon'
+                  }>
+                  {available ? 'Available' : 'Coming soon'}
+                </span>
+                <Heading as="h2">{plugin.label}</Heading>
+              </div>
+            </div>
             <p>{plugin.description}</p>
             {available ? (
               <Link className="button button--primary" to={`/${plugin.routeBasePath}/`}>
