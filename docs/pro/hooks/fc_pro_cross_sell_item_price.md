@@ -30,3 +30,22 @@ apply_filters( 'fc_pro_cross_sell_item_price', $product, $_product );
 ## Source
 
 `templates/fc-pro/cart-cross-sells/cart/cross-sells.php`
+
+## Examples
+
+```php
+add_filter( 'fc_pro_cross_sell_item_price',
+    /**
+     * Add "Price" prefix.
+     *
+     * @param string $product Product object.
+     * @param \WC_Product $_product The product.
+     * @return string Filtered value.
+     */
+    function( $product, $_product ) {
+        return '<span class="from-price">Price: ' . $product . '</span>';
+    },
+    10,
+    2
+);
+```

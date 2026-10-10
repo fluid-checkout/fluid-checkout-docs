@@ -29,3 +29,20 @@ apply_filters( 'fc_coupon_code_field_description', $value );
 ## Source
 
 [`inc/checkout-coupon-codes.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-coupon-codes.php)
+
+## Examples
+
+```php
+add_filter( 'fc_coupon_code_field_description',
+    /**
+     * Add description to coupon code field.
+     *
+     * @param string $value Value to filter. Default empty string.
+     * @return string Filtered value.
+     */
+    function( $value ) {
+        return __( 'Enter your discount code to apply savings.', 'my-theme' );
+    },
+    10
+);
+```

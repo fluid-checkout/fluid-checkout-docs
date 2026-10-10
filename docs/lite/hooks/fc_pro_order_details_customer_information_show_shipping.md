@@ -30,3 +30,22 @@ apply_filters( 'fc_pro_order_details_customer_information_show_shipping', $show_
 ## Source
 
 [`templates/fc/checkout-steps/emails/email-addresses.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/emails/email-addresses.php)
+
+## Examples
+
+```php
+add_filter( 'fc_pro_order_details_customer_information_show_shipping',
+    /**
+     * Always hide shipping address on order details page.
+     *
+     * @param bool $show_shipping Show shipping.
+     * @param \WC_Order $order Order object.
+     * @return bool Filtered value.
+     */
+    function( $show_shipping, $order ) {
+        return false;
+    },
+    10,
+    2
+);
+```

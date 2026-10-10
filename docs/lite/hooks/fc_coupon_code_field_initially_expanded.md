@@ -29,3 +29,20 @@ apply_filters( 'fc_coupon_code_field_initially_expanded', $value );
 ## Source
 
 [`inc/checkout-coupon-codes.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-coupon-codes.php)
+
+## Examples
+
+```php
+add_filter( 'fc_coupon_code_field_initially_expanded',
+    /**
+     * Start with coupon code field expanded.
+     *
+     * @param bool $value Value to filter. Default false.
+     * @return bool Filtered value.
+     */
+    function( $value ) {
+        return true;
+    },
+    10
+);
+```

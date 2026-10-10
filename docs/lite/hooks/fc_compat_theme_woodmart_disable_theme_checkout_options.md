@@ -29,3 +29,20 @@ apply_filters( 'fc_compat_theme_woodmart_disable_theme_checkout_options', $value
 ## Source
 
 [`inc/compat/themes/compat-theme-woodmart.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/themes/compat-theme-woodmart.php)
+
+## Examples
+
+```php
+add_filter( 'fc_compat_theme_woodmart_disable_theme_checkout_options',
+    /**
+     * Enable Woodmart theme checkout options.
+     *
+     * @param bool $value Value to filter. Default false.
+     * @return bool Filtered value.
+     */
+    function( $value ) {
+        return false;
+    },
+    10
+);
+```

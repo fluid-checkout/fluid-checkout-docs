@@ -29,3 +29,19 @@ do_action( 'fc_checkout_after_steps', $checkout );
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-checkout.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_after_steps',
+    /**
+     * Add steps summary with reminder to review information.
+     *
+     * @param \WC_Checkout $checkout Checkout object.
+     */
+    function( $checkout ) {
+        echo '<div class="steps-summary">You are almost there! Please double check all the information provided before placing your order.</div>';
+    },
+    1
+);
+```

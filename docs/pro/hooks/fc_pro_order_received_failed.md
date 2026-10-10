@@ -29,3 +29,23 @@ do_action( 'fc_pro_order_received_failed', $order );
 ## Source
 
 `templates/fc-pro/order-received/checkout/thankyou.php`
+
+## Examples
+
+```php
+add_action( 'fc_pro_order_received_failed',
+    /**
+     * Add support contact for failed orders.
+     *
+     * @param \WC_Order $order Order object.
+     */
+    function( $order ) {
+            echo '<div style="text-align: center;" class="failed-order-support">';
+            echo '<p>' . esc_html__( 'Need help? Contact our support team at 
+        [email protected]
+        ', 'text-domain' ) . '</p>';
+            echo '</div>';
+    },
+    20
+);
+```

@@ -29,3 +29,19 @@ do_action( 'fc_before_checkout_shipping_only_form', $checkout );
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-shipping.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-shipping.php)
+
+## Examples
+
+```php
+add_action( 'fc_before_checkout_shipping_only_form',
+    /**
+     * Add shipping form intro.
+     *
+     * @param \WC_Checkout $checkout Checkout object.
+     */
+    function( $checkout ) {
+        echo '<div style="margin-top: 2rem;">Complete your shipping information</div>';
+    },
+    10
+);
+```

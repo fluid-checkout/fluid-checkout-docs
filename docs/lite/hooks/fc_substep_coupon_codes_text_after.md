@@ -27,3 +27,20 @@ This hook does not pass any parameters.
 ## Source
 
 [`inc/checkout-coupon-codes.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-coupon-codes.php)
+
+## Examples
+
+```php
+add_action( 'fc_substep_coupon_codes_text_after',
+    /**
+     * Add promotional text after coupon codes display.
+     */
+    function() {
+        // Only show if there are coupons applied
+        if ( WC()->cart->get_coupons() ) {
+            echo '<div class="fc-coupon-codes-promo">You are saving money!</div>';
+        }
+    },
+    10
+);
+```

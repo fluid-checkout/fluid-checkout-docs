@@ -29,3 +29,20 @@ apply_filters( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed', $
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed',
+    /**
+     * Disable automatic copying of billing to shipping when shipping not needed.
+     *
+     * @param bool $value Value to filter. Default true.
+     * @return bool Filtered value.
+     */
+    function( $value ) {
+        return false;
+    },
+    10
+);
+```

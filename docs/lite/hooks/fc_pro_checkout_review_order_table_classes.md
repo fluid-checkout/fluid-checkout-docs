@@ -29,3 +29,20 @@ apply_filters( 'fc_pro_checkout_review_order_table_classes', $classes );
 ## Source
 
 [`templates/fc/checkout-steps/checkout/review-order.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/review-order.php)
+
+## Examples
+
+```php
+add_filter( 'fc_pro_checkout_review_order_table_classes',
+    /**
+     * Add custom classes to checkout review order table.
+     *
+     * @param string $classes CSS classes. Default empty string.
+     * @return string Filtered value.
+     */
+    function( $classes ) {
+        return $classes . ' custom-order-table-class';
+    },
+    10
+);
+```

@@ -29,3 +29,20 @@ apply_filters( 'fc_show_order_totals_row_highlighted', $value );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_show_order_totals_row_highlighted',
+    /**
+     * Always highlight order totals row.
+     *
+     * @param string $value Value to filter.
+     * @return string Filtered value.
+     */
+    function( $value ) {
+        return true;
+    },
+    10
+);
+```

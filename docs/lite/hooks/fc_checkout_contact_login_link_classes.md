@@ -29,3 +29,21 @@ apply_filters( 'fc_checkout_contact_login_link_classes', $classes );
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-contact-login.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-contact-login.php)
+
+## Examples
+
+```php
+add_filter( 'fc_checkout_contact_login_link_classes',
+    /**
+     * Customize login button class.
+     *
+     * @param string $classes CSS classes. Default fc-contact-login__action--underline.
+     * @return string Filtered value.
+     */
+    function( $classes ) {
+        $classes .= ' custom-button-class';
+        return $classes;
+    },
+    10
+);
+```

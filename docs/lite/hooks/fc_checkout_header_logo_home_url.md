@@ -29,3 +29,20 @@ apply_filters( 'fc_checkout_header_logo_home_url', $url );
 ## Source
 
 [`inc/compat/themes/compat-theme-hazel.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/themes/compat-theme-hazel.php)
+
+## Examples
+
+```php
+add_filter( 'fc_checkout_header_logo_home_url',
+    /**
+     * Customize header logo home URL.
+     *
+     * @param mixed $url URL.
+     * @return mixed Filtered value.
+     */
+    function( $url ) {
+        return home_url( '/custom-landing-page/' );
+    },
+    10
+);
+```

@@ -29,3 +29,19 @@ do_action( 'fc_before_checkout_shipping_address_wrapper', $checkout );
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-shipping.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-shipping.php)
+
+## Examples
+
+```php
+add_action( 'fc_before_checkout_shipping_address_wrapper',
+    /**
+     * Add shipping fields intro.
+     *
+     * @param \WC_Checkout $checkout Checkout object.
+     */
+    function( $checkout ) {
+        echo '<p>Please make sure to double check your information!</p>';
+    },
+    10
+);
+```

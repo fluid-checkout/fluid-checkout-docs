@@ -29,3 +29,22 @@ apply_filters( 'fc_display_checkout_page_title', $title );
 ## Source
 
 [`templates/fc/checkout-page-template/checkout/page-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-page-template/checkout/page-checkout.php)
+
+## Examples
+
+```php
+add_filter( 'fc_display_checkout_page_title',
+    /**
+     * Show checkout page title.
+     *
+     * @param bool $title Title text. Default false.
+     * @return bool Filtered value.
+     */
+    function( $title ) {
+        return true;
+    },
+    10
+);
+```
+
+See example on [`fc_checkout_page_title`](./fc_checkout_page_title).

@@ -29,3 +29,20 @@ apply_filters( 'fc_do_order_notes_hooks_priority', $priority );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_do_order_notes_hooks_priority',
+    /**
+     * Change order notes hooks priority.
+     *
+     * @param int $priority Hook or step priority. Default 100.
+     * @return int Filtered value.
+     */
+    function( $priority ) {
+        return 1000;
+    },
+    10
+);
+```

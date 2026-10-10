@@ -29,3 +29,20 @@ apply_filters( 'fc_pro_display_cart_page_title', $title );
 ## Source
 
 `templates/fc-pro/cart/cart/page-cart.php`
+
+## Examples
+
+```php
+add_filter( 'fc_pro_display_cart_page_title',
+    /**
+     * Show cart page title.
+     *
+     * @param bool $title Whether to display cart page title. Default false.
+     * @return bool Filtered value.
+     */
+    function( $title ) {
+        return true;
+    },
+    10
+);
+```

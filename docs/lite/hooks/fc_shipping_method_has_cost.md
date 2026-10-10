@@ -30,3 +30,22 @@ apply_filters( 'fc_shipping_method_has_cost', $value, $method );
 ## Source
 
 [`inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php)
+
+## Examples
+
+```php
+add_filter( 'fc_shipping_method_has_cost',
+    /**
+     * Always show cost for all shipping methods.
+     *
+     * @param mixed $value Value to filter.
+     * @param \WC_Shipping_Rate $method Method.
+     * @return mixed Filtered value.
+     */
+    function( $value, $method ) {
+        return true;
+    },
+    10,
+    2
+);
+```

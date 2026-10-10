@@ -29,3 +29,20 @@ apply_filters( 'fc_substep_coupon_codes_text', $html );
 ## Source
 
 [`inc/checkout-coupon-codes.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-coupon-codes.php)
+
+## Examples
+
+```php
+add_filter( 'fc_substep_coupon_codes_text',
+    /**
+     * Customize coupon codes substep text.
+     *
+     * @param string $html HTML markup.
+     * @return string Filtered value.
+     */
+    function( $html ) {
+        return __( 'Applied discount codes will be shown here.', 'my-theme' );
+    },
+    10
+);
+```

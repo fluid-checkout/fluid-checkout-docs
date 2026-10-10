@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/fc/checkout-page-template/checkout/checkout-header.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-page-template/checkout/checkout-header.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_header_cart_link',
+    /**
+     * Add custom cart link.
+     */
+    function() {
+        echo '<a href="' . wc_get_cart_url() . '" class="custom-cart-link">View Cart</a>';
+    },
+    10
+);
+```

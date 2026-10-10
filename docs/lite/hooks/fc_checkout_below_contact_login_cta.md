@@ -27,3 +27,17 @@ This hook does not pass any parameters.
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-contact-login.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-contact-login.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_below_contact_login_cta',
+    /**
+     * Add additional login options.
+     */
+    function() {
+        echo '<div class="additional-login" style="text-align: center;">Quick & secure login</div>';
+    },
+    10
+);
+```

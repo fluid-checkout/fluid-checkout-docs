@@ -29,3 +29,20 @@ apply_filters( 'fc_is_shipping_address_available_for_billing', $is_available );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_is_shipping_address_available_for_billing',
+    /**
+     * Disable using shipping address for billing.
+     *
+     * @param bool $is_available Is available.
+     * @return bool Filtered value.
+     */
+    function( $is_available ) {
+        return false;
+    },
+    10
+);
+```

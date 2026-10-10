@@ -1,0 +1,16 @@
+In `fc_enable_compat_theme_edit_address_style_{theme_slug}`, `twentytwentyfive` replaces `{theme_slug}`.
+
+```php
+add_filter( 'fc_enable_compat_theme_edit_address_style_twentytwentyfive',
+    /**
+     * Disable edit address theme style compatibility.
+     *
+     * @param bool $value Value to filter. Default true.
+     * @return bool Filtered value.
+     */
+    function( $value ) {
+        return false;
+    },
+    10
+);
+```

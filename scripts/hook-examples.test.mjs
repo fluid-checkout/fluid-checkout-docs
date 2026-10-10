@@ -356,7 +356,7 @@ test('a bad related hook fails before generated pages are replaced', () => {
   }
 });
 
-test('the eu-vat sample example attaches to the published field hooks', () => {
+test('live eu-vat examples attach to the published hooks', () => {
   const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
   const plugin = catalog.plugins.find((entry) => entry.id === 'eu-vat');
   const actions = JSON.parse(fs.readFileSync(path.join(root, 'data/eu-vat/actions.json'), 'utf8'));
@@ -366,26 +366,39 @@ test('the eu-vat sample example attaches to the published field hooks', () => {
     plugin,
     resolveHookExclusions(catalog),
   );
-  const samplePath = path.join(root, 'examples', 'eu-vat', 'fc_vat_number_field_args.md');
-  const {loaded, unused} = loadHookExamples(path.join(root, 'examples', 'eu-vat'), result.hooks, 'eu-vat');
+  const examplesDir = path.join(root, 'examples', 'eu-vat');
+  const {loaded, unused} = loadHookExamples(examplesDir, result.hooks, 'eu-vat');
   const sections = resolveExampleSections(plugin, result.hooks, loaded);
-  const parsed = parseExampleMarkdown(fs.readFileSync(samplePath, 'utf8'));
 
+  const fieldPath = path.join(examplesDir, 'fc_vat_number_field_args.md');
+  const field = parseExampleMarkdown(fs.readFileSync(fieldPath, 'utf8'));
   assert.equal(unused.length, 0);
-  assert.deepEqual(parsed.relatedHooks, ['fc_vat_is_vat_number_field']);
-  assert.match(parsed.body, /add_filter\( 'fc_vat_number_field_args'/);
-  assert.match(parsed.body, /add_filter\( 'fc_vat_is_vat_number_field'/);
-  assert.equal(sections.get('fc_vat_number_field_args').body, parsed.body);
-  assert.deepEqual(sections.get('fc_vat_is_vat_number_field').seeAlso, [
-    {name: 'fc_vat_number_field_args', slug: 'fc_vat_number_field_args'},
-  ]);
-  assert.equal(sections.get('fc_vat_is_vat_number_field').body, null);
+  assert.deepEqual(field.relatedHooks, []);
+  assert.match(field.body, /add_filter\( 'fc_vat_number_field_args'/);
+  assert.match(field.body, /Tax ID Number/);
+  assert.match(field.body, /@param array \$args VAT number field arguments\./);
+  assert.doesNotMatch(field.body, /fc_vat_is_vat_number_field/);
+  assert.equal(sections.get('fc_vat_number_field_args').body, field.body);
+  assert.deepEqual(sections.get('fc_vat_number_field_args').seeAlso, []);
+
+  const isFieldPath = path.join(examplesDir, 'fc_vat_is_vat_number_field.md');
+  const isField = parseExampleMarkdown(fs.readFileSync(isFieldPath, 'utf8'));
+  assert.deepEqual(isField.relatedHooks, []);
+  assert.match(isField.body, /billing_tax_id/);
+  assert.match(isField.body, /billing_vat_number/);
+  assert.match(isField.body, /10,\n {4}2/);
+  assert.equal(sections.get('fc_vat_is_vat_number_field').body, isField.body);
+  assert.deepEqual(sections.get('fc_vat_is_vat_number_field').seeAlso, []);
 
   for (const hook of result.hooks) {
-    if (hook.slug === 'fc_vat_number_field_args' || hook.slug === 'fc_vat_is_vat_number_field') {
+    const filePath = path.join(examplesDir, `${hook.slug}.md`);
+    if (!fs.existsSync(filePath)) {
+      assert.equal(sections.get(hook.slug).body, null);
+      assert.deepEqual(sections.get(hook.slug).seeAlso, []);
       continue;
     }
-    assert.equal(sections.get(hook.slug).body, null);
-    assert.deepEqual(sections.get(hook.slug).seeAlso, []);
+    const parsed = parseExampleMarkdown(fs.readFileSync(filePath, 'utf8'));
+    assert.equal(sections.get(hook.slug).body, parsed.body);
+    assert.ok(loaded.has(hook.slug));
   }
 });

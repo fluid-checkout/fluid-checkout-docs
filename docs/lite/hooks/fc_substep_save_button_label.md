@@ -29,3 +29,20 @@ apply_filters( 'fc_substep_save_button_label', $label );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_substep_save_button_label',
+    /**
+     * Customize substep save button label.
+     *
+     * @param string $label Label text.
+     * @return string Filtered value.
+     */
+    function( $label ) {
+        return __( 'Update', 'my-theme' );
+    },
+    10
+);
+```

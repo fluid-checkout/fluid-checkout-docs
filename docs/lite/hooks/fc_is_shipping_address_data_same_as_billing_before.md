@@ -29,3 +29,21 @@ apply_filters( 'fc_is_shipping_address_data_same_as_billing_before', $value );
 ## Source
 
 [`inc/checkout-steps.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-steps.php)
+
+## Examples
+
+```php
+add_filter( 'fc_is_shipping_address_data_same_as_billing_before',
+    /**
+     * Force shipping and billing addresses to always be considered different.
+     *
+     * @param mixed $value Short-circuit value. Return a non-null value to override the default behavior. Default null.
+     * @return mixed Filtered value.
+     */
+    function( $value ) {
+        // Return false
+        return false;
+    },
+    10
+);
+```

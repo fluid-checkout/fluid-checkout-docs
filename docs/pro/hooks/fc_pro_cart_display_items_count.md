@@ -29,3 +29,20 @@ apply_filters( 'fc_pro_cart_display_items_count', $display );
 ## Source
 
 `inc/cart-page.php`
+
+## Examples
+
+```php
+add_filter( 'fc_pro_cart_display_items_count',
+    /**
+     * Hide cart items count.
+     *
+     * @param bool $display Whether to display cart display items count. Default true.
+     * @return bool Filtered value.
+     */
+    function( $display ) {
+        return false;
+    },
+    10
+);
+```

@@ -29,3 +29,21 @@ apply_filters( 'fc_no_validation_icon_field_types', $types );
 ## Source
 
 [`inc/checkout-validation.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-validation.php)
+
+## Examples
+
+```php
+add_filter( 'fc_no_validation_icon_field_types',
+    /**
+     * Add custom field type to hide validation icons.
+     *
+     * @param array $types List of values to filter.
+     * @return array Filtered value.
+     */
+    function( $types ) {
+        $types[] = 'custom_field_type';
+        return $types;
+    },
+    10
+);
+```

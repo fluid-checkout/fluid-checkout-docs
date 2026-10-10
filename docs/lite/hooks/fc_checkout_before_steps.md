@@ -29,3 +29,19 @@ do_action( 'fc_checkout_before_steps', $checkout );
 ## Source
 
 [`templates/fc/checkout-steps/checkout/form-checkout.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/templates/fc/checkout-steps/checkout/form-checkout.php)
+
+## Examples
+
+```php
+add_action( 'fc_checkout_before_steps',
+    /**
+     * Add simple message above steps.
+     *
+     * @param \WC_Checkout $checkout Checkout object.
+     */
+    function( $checkout ) {
+        echo '<p class="notice">Free shipping on orders over $50!</p>';
+    },
+    1
+);
+```

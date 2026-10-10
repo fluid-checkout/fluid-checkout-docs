@@ -29,3 +29,21 @@ apply_filters( 'fc_pro_order_received_sidebar_attributes', $sidebar_attributes )
 ## Source
 
 `inc/order-received-page.php`
+
+## Examples
+
+```php
+add_filter( 'fc_pro_order_received_sidebar_attributes',
+    /**
+     * Add custom data attribute to order received sidebar.
+     *
+     * @param array $sidebar_attributes HTML attributes for the sidebar element.
+     * @return array Filtered value.
+     */
+    function( $sidebar_attributes ) {
+        $sidebar_attributes['custom-sidebar'] = 'received';
+        return $sidebar_attributes;
+    },
+    10
+);
+```

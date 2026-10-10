@@ -27,3 +27,19 @@ This hook does not pass any parameters.
 ## Source
 
 [`inc/checkout-coupon-codes.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/checkout-coupon-codes.php)
+
+## Examples
+
+```php
+add_action( 'fc_substep_coupon_codes_text_before',
+    /**
+     * Add coupon codes header text.
+     */
+    function() {
+        if ( WC()->cart->get_coupons() ) {
+            echo '<div class="fc-coupon-codes__header">Applied coupon codes:</div>';
+        }
+    },
+    10
+);
+```

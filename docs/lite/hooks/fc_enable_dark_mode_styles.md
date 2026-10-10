@@ -29,3 +29,20 @@ apply_filters( 'fc_enable_dark_mode_styles', $enabled );
 ## Source
 
 [`inc/design-templates.php`](https://github.com/fluid-checkout/fluid-checkout/blob/release/next-FEATURE/inc/design-templates.php)
+
+## Examples
+
+```php
+add_filter( 'fc_enable_dark_mode_styles',
+    /**
+     * Enable dark mode.
+     *
+     * @param string $enabled Whether the feature is enabled.
+     * @return string Filtered value.
+     */
+    function( $enabled ) {
+        return true;
+    },
+    10
+);
+```

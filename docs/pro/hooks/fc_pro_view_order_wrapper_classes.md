@@ -29,3 +29,20 @@ apply_filters( 'fc_pro_view_order_wrapper_classes', $classes );
 ## Source
 
 `templates/fc-pro/view-order/myaccount/view-order.php`
+
+## Examples
+
+```php
+add_filter( 'fc_pro_view_order_wrapper_classes',
+    /**
+     * Add custom class to view order wrapper.
+     *
+     * @param string $classes CSS classes. Default empty.
+     * @return string Filtered value.
+     */
+    function( $classes ) {
+        return $classes . ' custom-view-order-wrapper';
+    },
+    10
+);
+```
