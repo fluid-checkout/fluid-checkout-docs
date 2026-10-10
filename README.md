@@ -2,7 +2,7 @@
 
 Developer documentation for Fluid Checkout plugins, published at [docs.fluidcheckout.com](https://docs.fluidcheckout.com).
 
-One Docusaurus site holds every plugin. The pilot is **EU-VAT Assistant** only. Fluid Checkout Lite and PRO are listed on the home page as coming soon. Address Book, Google Address Autocomplete, License Manager, Checkout Kit, and Partial Delivery are out of scope for now.
+One Docusaurus site holds every plugin. EU-VAT Assistant, Fluid Checkout Lite, and Fluid Checkout PRO are published. Address Book and Google Address Autocomplete hooks are included with PRO. License Manager, Checkout Kit, and Partial Delivery are out of scope for now.
 
 ## Local development
 
@@ -38,15 +38,15 @@ static/img/                    # site icon and favicon
 static/CNAME                   # docs.fluidcheckout.com
 ```
 
-EU-VAT routes:
+Routes:
 
 - `/` home page
-- `/eu-vat/` overview
-- `/eu-vat/hooks/` generated index, with the hand-written intro above the list
-- `/eu-vat/hooks/<hook-slug>` one page per hook
-- `/eu-vat/guides/...` guides, when that plugin's sidebar has a Guides category
+- `/eu-vat/`, `/lite/`, and `/pro/` overviews
+- `/<plugin>/hooks/` generated index. EU-VAT includes the hand-written intro above the list. Lite and PRO do not have an intro file.
+- `/<plugin>/hooks/<hook-slug>` one page per hook
+- `/<plugin>/guides/...` guides, when that plugin's sidebar has a Guides category
 
-`/eu-vat/guides/getting-started` redirects to `/eu-vat/hooks`.
+`/eu-vat/guides/getting-started` redirects to `/eu-vat/hooks`. Lite and PRO have no intro file, so they have no getting-started redirect.
 
 Each plugin is a separate Docusaurus docs plugin instance (`routeBasePath` in `plugins.json`), so a later release can version one plugin without versioning the others.
 
@@ -70,7 +70,7 @@ Create `hooks-intro/<plugin>/index.md` for the text that should appear above tha
 
 Run `npm run generate`. The generator copies the intro into `docs/<plugin>/hooks/index.md` and rewrites those image paths. Edit the intro file, not the generated index. The intro is compiled as MDX with the hooks page, so keep `{` and `}` inside inline code or fenced code blocks.
 
-EU-VAT's getting started guide is `hooks-intro/eu-vat/index.md`. Lite and PRO do not have intro files while they are coming soon.
+EU-VAT's getting started guide is `hooks-intro/eu-vat/index.md`. Lite and PRO do not have intro files.
 
 For every available plugin that has an intro file, `docusaurus.config.ts` adds a client redirect from `/<routeBasePath>/guides/getting-started` to `/<routeBasePath>/hooks`.
 
@@ -101,9 +101,9 @@ Plugin repositories will run [wp-hooks/generator](https://github.com/wp-hooks/ge
 
 `data/eu-vat/*.json` is a fixture so this site builds today. The real EU-VAT export arrives after [fc-vat-assistant#89](https://github.com/fluid-checkout/fc-vat-assistant/pull/89) merges.
 
-Dynamic PHP hook names are normalized for the page title and URL. `self::$plugin_prefix` uses `pluginPrefix` from `plugins.json` (`fc_vat` for EU-VAT). Private plugins leave `repository` as `null`, so the source line is a file path with no GitHub link. Set `repository.url` and `repository.branch` only for public repositories.
+Dynamic PHP hook names are normalized for the page title and URL. `self::$plugin_prefix` uses `pluginPrefix` from `plugins.json` (`fc_vat` for EU-VAT, `fc` for Lite, and `fc_pro` for PRO). Private plugins leave `repository` as `null`, so the source line is a file path with no GitHub link. Set `repository.url` and `repository.branch` only for public repositories.
 
-Each plugin's `hookPrefixes` allowlist decides which normalized names are published. EU-VAT publishes names that start with `fc_vat_`. Lite (`fc_`) and PRO (`fc_pro_`, `fc_`, `fc_adb_`, and `fc_gaa_`) are already listed in `plugins.json` and stay coming soon until their docs are added. `fc_adb_` is Address Book and `fc_gaa_` is Google Address Autocomplete; both add-ons are merging into PRO. Hooks copied from WooCommerce and other third-party code (`woocommerce_*`, `wc_od_*`, Enfold, Germanized, SkyVerge, and similar) are left out of the hook page, the index, and the sidebar. Aliases that do not match are dropped. `npm run generate` logs every skipped name. The full rule is in [CONTRIBUTING.md](CONTRIBUTING.md).
+Each plugin's `hookPrefixes` allowlist decides which normalized names are published. EU-VAT publishes names that start with `fc_vat_`. Lite publishes names that start with `fc_`. PRO publishes names that start with `fc_pro_`, `fc_`, `fc_adb_`, or `fc_gaa_`. `fc_adb_` is Address Book and `fc_gaa_` is Google Address Autocomplete; both add-ons are merging into PRO. Hooks copied from WooCommerce and other third-party code (`woocommerce_*`, `wc_od_*`, Enfold, Germanized, SkyVerge, and similar) are left out of the hook page, the index, and the sidebar. Aliases that do not match are dropped. `npm run generate` logs every skipped name. The full rule is in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 `hookExcludePrefixes` and `hookExcludeNames` at the top of `plugins.json` apply to every plugin after that allowlist. `fc_licenses_` and `fc_lcs_` are excluded everywhere, as are the internal names `fc_admin_license_key_script_url`, `fc_admin_license_key_style_url`, `fc_admin_field_type_license_exists`, and `fc_show_settings_license_keys`. Those hooks belong to Fluid Licenses, and other plugins only fire them because they bundle its client class. PRO's `fc_` prefix would otherwise publish them.
 
