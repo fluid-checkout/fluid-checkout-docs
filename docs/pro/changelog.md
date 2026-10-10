@@ -11,7 +11,7 @@ pagination_next: null
 
 # Changelog
 
-:::info Lite changelog
+:::info[Lite changelog]
 
 Looking for Fluid Checkout Lite changes? See the [Lite changelog](/lite/changelog/).
 

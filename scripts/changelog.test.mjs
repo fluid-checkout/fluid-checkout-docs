@@ -186,7 +186,7 @@ test('relatedChangelogs adds a trailing-slash link and is omitted when unset', (
   assert.equal(
     relatedChangelogCallout(related[0]),
     [
-      ':::info Using Fluid Checkout PRO?',
+      ':::info[Using Fluid Checkout PRO?]',
       '',
       'Looking for Fluid Checkout PRO changes? See the [PRO changelog](/pro/changelog/).',
       '',
@@ -207,7 +207,7 @@ test('relatedChangelogs adds a trailing-slash link and is omitted when unset', (
   }, related);
   assert.ok(page.indexOf('# Changelog') < page.indexOf('Looking for Fluid Checkout PRO changes?'));
   assert.ok(page.indexOf('Looking for Fluid Checkout PRO changes?') < page.indexOf('Semantic Versioning'));
-  assert.match(page, /:::info Using Fluid Checkout PRO\?\n\nLooking for Fluid Checkout PRO changes\? See the \[PRO changelog\]\(\/pro\/changelog\/\)\.\n\n:::/);
+  assert.match(page, /:::info\[Using Fluid Checkout PRO\?\]\n\nLooking for Fluid Checkout PRO changes\? See the \[PRO changelog\]\(\/pro\/changelog\/\)\.\n\n:::/);
 });
 
 test('legacy changelogs render source history or a public placeholder', () => {
@@ -358,7 +358,7 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.equal(lite.merged.entries.at(-1).version, '1.2.0');
   assert.equal(lite.readmeCount, 15);
   assert.ok(lite.merged.entries.some((entry) => entry.version === '4.0.6' && entry.source === 'changelog'));
-  assert.match(lite.page, /:::info Using Fluid Checkout PRO\?\n\nLooking for Fluid Checkout PRO changes\? See the \[PRO changelog\]\(\/pro\/changelog\/\)\.\n\n:::/);
+  assert.match(lite.page, /:::info\[Using Fluid Checkout PRO\?\]\n\nLooking for Fluid Checkout PRO changes\? See the \[PRO changelog\]\(\/pro\/changelog\/\)\.\n\n:::/);
   assert.doesNotMatch(lite.page, /before merging into PRO/);
   assert.ok(lite.page.indexOf('Looking for Fluid Checkout PRO changes?') < lite.page.indexOf('## 4.2.7'));
   assert.match(lite.page, /^title: "Fluid Checkout Lite changelog"$/m);
@@ -374,7 +374,7 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.equal(pro.merged.entries[0].version, '4.0.6');
   assert.equal(pro.merged.entries.at(-1).version, '1.2.0');
   assert.equal(pro.merged.entries.at(-1).suffix, '(first public release)');
-  assert.match(pro.page, /:::info Lite changelog\n\nLooking for Fluid Checkout Lite changes\? See the \[Lite changelog\]\(\/lite\/changelog\/\)\.\n\n:::/);
+  assert.match(pro.page, /:::info\[Lite changelog\]\n\nLooking for Fluid Checkout Lite changes\? See the \[Lite changelog\]\(\/lite\/changelog\/\)\.\n\n:::/);
   assert.match(pro.page, /^## Address Book \(before merging into PRO\) \{\/\* #address-book \*\/\}$/m);
   assert.match(pro.page, /Address Book is being merged into Fluid Checkout PRO\. Its changelog for earlier versions, from when it was a separate add-on, will be added here\./);
   assert.match(pro.page, /^## Google Address Autocomplete \(before merging into PRO\) \{\/\* #google-address-autocomplete \*\/\}$/m);

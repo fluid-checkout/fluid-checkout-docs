@@ -93,13 +93,14 @@ export function relatedChangelogTitle(related) {
 
 /**
  * Highlighted cross-link, in the same place as the old plain sentence.
+ * `future.v4` only parses the bracket title form (`:::info[Title]`).
  *
  * @param {{id: string, label: string, linkLabel: string, href: string}} related
  * @returns {string}
  */
 export function relatedChangelogCallout(related) {
   return [
-    `:::info ${relatedChangelogTitle(related)}`,
+    `:::info[${relatedChangelogTitle(related)}]`,
     '',
     relatedChangelogLine(related),
     '',
