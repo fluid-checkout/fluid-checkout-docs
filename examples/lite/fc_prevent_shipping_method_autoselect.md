@@ -1,3 +1,11 @@
+The simplest way to prevent automatic selection.
+
+```php
+add_filter( 'fc_prevent_shipping_method_autoselect', '__return_true', 10 );
+```
+
+Use a callback when you need conditions.
+
 ```php
 add_filter( 'fc_prevent_shipping_method_autoselect',
     /**
