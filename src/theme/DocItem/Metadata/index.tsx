@@ -4,11 +4,17 @@ import {PageMetadata} from '@docusaurus/theme-common';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
 
 /**
- * Individual hook pages are noindex. The plugin hub, Using PHP hooks, and the
- * changelog stay indexable, and the sitemap keeps those pages.
+ * Individual hook and REST endpoint pages are noindex. The plugin hub, Using
+ * PHP hooks, REST API overview, REST API errors, and the changelog stay indexable.
  */
-function isIndividualHookPage(docId: string): boolean {
-  return docId.startsWith('hooks/') && docId !== 'hooks/index';
+function isNoindexDocPage(docId: string): boolean {
+  if (docId.startsWith('hooks/') && docId !== 'hooks/index') {
+    return true;
+  }
+  if (docId.startsWith('rest-api/') && docId !== 'rest-api/index' && docId !== 'rest-api/errors') {
+    return true;
+  }
+  return false;
 }
 
 export default function DocItemMetadata(): ReactNode {
@@ -21,7 +27,7 @@ export default function DocItemMetadata(): ReactNode {
         keywords={frontMatter.keywords}
         image={assets.image ?? frontMatter.image}
       />
-      {isIndividualHookPage(metadata.id) ? (
+      {isNoindexDocPage(metadata.id) ? (
         <Head>
           <meta name="robots" content="noindex, follow" />
         </Head>

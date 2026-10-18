@@ -6,7 +6,38 @@
   },
   {
     "type": "doc",
-    "id": "rest-api/address-book",
-    "label": "Address Book"
+    "id": "rest-api/errors",
+    "label": "Errors"
+  },
+  {
+    "type": "category",
+    "label": "Address Book",
+    "items": [
+      {
+        "type": "doc",
+        "id": "rest-api/get-address-book",
+        "label": "GET /address-book"
+      },
+      {
+        "type": "doc",
+        "id": "rest-api/get-address-book-address-id",
+        "label": "GET /address-book/{address_id}"
+      },
+      {
+        "type": "doc",
+        "id": "rest-api/post-address-book",
+        "label": "POST /address-book"
+      },
+      {
+        "type": "doc",
+        "id": "rest-api/post-address-book-address-id",
+        "label": "POST /address-book/{address_id}"
+      },
+      {
+        "type": "doc",
+        "id": "rest-api/delete-address-book-address-id",
+        "label": "DELETE /address-book/{address_id}"
+      }
+    ]
   }
 ]

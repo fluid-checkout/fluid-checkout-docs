@@ -1,0 +1,49 @@
+{
+  "namespace": "fluid-checkout/v1",
+  "baseUrl": "{site}/wp-json/fluid-checkout/v1",
+  "permissions": "Requests require a logged-in WordPress user. Omit user_id to use the current user's data, or pass user_id to target another account when the caller can edit that user (edit_user capability). Unauthenticated requests return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found.",
+  "responseShape": {
+    "successWithData": "HTTP 200 with { \"data\": { ... } } when the handler returns a payload.",
+    "successWithoutData": "HTTP 200 with { \"success\": true } when there is no payload (for example DELETE).",
+    "errors": "Failures return WordPress REST error JSON from WP_Error (code, message, data.status). Wire codes use the fc_api_* prefix."
+  },
+  "errors": {
+    "fc_api_forbidden": {
+      "message": "Forbidden access.",
+      "status": 403
+    },
+    "fc_api_user_not_found": {
+      "message": "Target user was not found.",
+      "status": 404
+    },
+    "fc_api_unavailable": {
+      "message": "This feature is not available.",
+      "status": 503
+    },
+    "fc_api_required_field_missing": {
+      "message": "A required address field is missing.",
+      "status": 400
+    },
+    "fc_api_invalid_postcode": {
+      "message": "Postcode or ZIP is invalid.",
+      "status": 400
+    },
+    "fc_api_invalid_phone": {
+      "message": "Phone number is invalid.",
+      "status": 400
+    },
+    "fc_api_invalid_state": {
+      "message": "State or county is invalid.",
+      "status": 400
+    },
+    "fc_api_invalid_country": {
+      "message": "Country is invalid or has no address fields.",
+      "status": 400
+    },
+    "fc_api_invalid_request": {
+      "message": "The request could not be processed.",
+      "status": 400
+    }
+  },
+  "resources": []
+}

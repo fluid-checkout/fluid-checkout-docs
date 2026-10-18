@@ -32,7 +32,8 @@
       "hookPrefixes": ["fc_"],
       "status": "available",
       "routeBasePath": "lite",
-      "relatedChangelogs": ["pro"]
+      "relatedChangelogs": ["pro"],
+      "relatedRestApiErrors": ["pro"]
     },
     {
       "id": "pro",
@@ -48,6 +49,7 @@
       "routeBasePath": "pro",
       "restApiDataFile": "rest-api.json",
       "relatedChangelogs": ["lite"],
+      "relatedRestApiErrors": ["lite"],
       "legacyChangelogs": [
         {
           "id": "address-book",
