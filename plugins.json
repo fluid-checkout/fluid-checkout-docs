@@ -33,7 +33,8 @@
       "status": "available",
       "routeBasePath": "lite",
       "relatedChangelogs": ["pro"],
-      "relatedRestApiErrors": ["pro"]
+      "relatedRestApiErrors": ["pro"],
+      "restApiStatus": "upcoming"
     },
     {
       "id": "pro",
@@ -50,6 +51,7 @@
       "restApiDataFile": "rest-api.json",
       "relatedChangelogs": ["lite"],
       "relatedRestApiErrors": ["lite"],
+      "restApiStatus": "upcoming",
       "legacyChangelogs": [
         {
           "id": "address-book",

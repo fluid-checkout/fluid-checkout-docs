@@ -72,6 +72,7 @@ Public `fluid-checkout/v1` routes are documented from exported JSON, the same sp
 - Endpoint pages publish Method, Resource, notes, Route, Parameters, Error codes (link), and optional Examples. Do **not** render PHP source (file, class, or handler), even if the export JSON includes `source` / `handler`.
 - Wire error codes only (`fc_api_*` for `fluid-checkout/v1`). Do not include `featureErrorMap` or feature-layer codes
 - Lite publishes the shared error catalog at `/lite/rest-api/errors/`; PRO publishes Address Book endpoints plus `/pro/rest-api/errors/`. Cross-links use `relatedRestApiErrors` in `plugins.json`.
+- Set `restApiStatus` to `"upcoming"` on a plugin in `plugins.json` to keep REST docs on the site with a sidebar label `REST API (upcoming)`, an Upcoming callout on generated pages, and `noindex` until the API is public. Remove or change that field when the API ships.
 
 Plugin export (Address Book example, from the plugin root with LocalWP env):
 

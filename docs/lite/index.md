@@ -9,9 +9,9 @@ description: Developer hooks and REST API for the Fluid Checkout Lite plugin.
 
 Developer reference for Fluid Checkout Lite. These pages cover the WordPress actions and filters the plugin runs at checkout and in its settings screens, and the shared REST API wire error codes under `fluid-checkout/v1`.
 
-## REST API
+## REST API (upcoming)
 
-- [REST API overview](/lite/rest-api/) covers the shared `fluid-checkout/v1` namespace and response conventions.
+- [REST API overview](/lite/rest-api/) covers the shared `fluid-checkout/v1` namespace and response conventions. This reference is upcoming and may change before the public release.
 - [REST API errors](/lite/rest-api/errors/) lists the core wire error codes (`fc_api_*`) defined in Lite.
 
 ## Hooks
