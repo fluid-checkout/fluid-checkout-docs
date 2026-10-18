@@ -474,14 +474,22 @@ test('hooks index places the hand-written intro above the hook list', () => {
     3,
   );
 
-  assert.match(intro, /^## Getting started with EU-VAT Assistant hooks\n/);
+  assert.match(intro, /^## What hooks are\n/);
+  assert.match(intro, /## Best practices\n/);
+  assert.match(intro, /## Actions and filters\n/);
+  assert.match(intro, /## Read a hook page\n/);
+  assert.match(intro, /## Example\n/);
+  assert.match(intro, /## Dynamic hook names\n/);
   assert.match(intro, /@site\/hooks-intro\/eu-vat\/img\/hooks-overview\.svg/);
   assert.match(intro, /\]\(#filters\)/);
+  assert.match(intro, /fc_vat_number_field_args/);
   assert.match(intro, /fc_vat_enable_compat_plugin_\{plugin_slug\}/);
   assert.match(intro, /fc_vat_enable_compat_plugin_\{\$plugin_slug\}/);
   assert.doesNotMatch(intro, /\{'\{'\}/);
   assert.doesNotMatch(intro, /\]\(\/eu-vat\/hooks\)/);
+  assert.doesNotMatch(intro, /Getting started with EU-VAT Assistant hooks/);
 
+  assert.match(liteIntro, /^## What hooks are\n/);
   assert.match(liteIntro, /\[actions\]\(#actions\)/);
   assert.match(liteIntro, /\[filters\]\(#filters\)/);
   assert.match(liteIntro, /fc_proceed_to_next_step_button_label/);
@@ -489,6 +497,7 @@ test('hooks index places the hand-written intro above the hook list', () => {
   assert.match(liteIntro, /add_filter\( 'fc_proceed_to_next_step_button_label', function\( \$button_label, \$step_id, \$step_args \) \{\n    return __\( 'Continue', 'my-store' \);\n\}, 10, 3 \);/);
   assert.doesNotMatch(liteIntro, /\]\(\/lite\/hooks\)/);
 
+  assert.match(proIntro, /^## What hooks are\n/);
   assert.match(proIntro, /\[actions\]\(#actions\)/);
   assert.match(proIntro, /\[filters\]\(#filters\)/);
   assert.match(proIntro, /fc_pro_cart_action_label_continue_shopping/);
@@ -514,13 +523,13 @@ test('hooks index places the hand-written intro above the hook list', () => {
   );
   assert.match(index, /title: "EU-VAT Assistant hooks reference"/);
   assert.match(index, /description: "Reference for the actions and filters in EU-VAT Assistant."/);
-  assert.match(index, /sidebar_label: All hooks/);
-  const heading = index.indexOf('# All hooks');
-  const introHeading = index.indexOf('## Getting started with EU-VAT Assistant hooks');
+  assert.match(index, /sidebar_label: Using PHP hooks/);
+  const heading = index.indexOf('# Using PHP hooks');
+  const introHeading = index.indexOf('## What hooks are');
   const body = index.slice(heading);
   const listSentence = body.indexOf('Actions and filters in EU-VAT Assistant.');
-  const actions = body.indexOf('## Actions');
-  const filters = body.indexOf('## Filters');
+  const actions = body.indexOf('\n## Actions\n');
+  const filters = body.indexOf('\n## Filters\n');
   assert.ok(heading > 0 && introHeading > heading && listSentence > 0 && actions > listSentence && filters > actions);
 
   const plain = renderHooksIndex(
@@ -528,9 +537,9 @@ test('hooks index places the hand-written intro above the hook list', () => {
     'EU-VAT Assistant',
   );
   assert.match(plain, /title: "EU-VAT Assistant hooks reference"/);
-  assert.match(plain, /# All hooks/);
+  assert.match(plain, /# Using PHP hooks/);
   assert.match(plain, /- \[`fc_vat_js_settings`\]\(\.\/fc_vat_js_settings\) Settings\./);
-  assert.doesNotMatch(plain, /Getting started with EU-VAT Assistant hooks/);
+  assert.doesNotMatch(plain, /## What hooks are/);
 
   const unnamed = renderHooksIndex(
     [{name: 'fc_checkout_steps', slug: 'fc_checkout_steps', type: 'action', summary: ''}],

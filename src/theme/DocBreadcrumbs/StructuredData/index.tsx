@@ -36,8 +36,8 @@ function isIndividualHookPage(docId: string): boolean {
  * This replaces the one-item list the theme emits.
  *
  * - plugin hub: Home > plugin
- * - All hooks: Home > plugin > All hooks
- * - hook page: Home > plugin > All hooks > hook
+ * - Using PHP hooks: Home > plugin > Using PHP hooks
+ * - hook page: Home > plugin > Using PHP hooks > hook
  * - changelog: Home > plugin > Changelog
  */
 export default function DocBreadcrumbsStructuredData(): ReactNode {
@@ -63,7 +63,7 @@ export default function DocBreadcrumbsStructuredData(): ReactNode {
   ];
 
   if (onHooksIndex || onHookPage) {
-    crumbs.push({name: 'All hooks', item: absolute(siteUrl, `/${route}/hooks/`)});
+    crumbs.push({name: 'Using PHP hooks', item: absolute(siteUrl, `/${route}/hooks/`)});
   }
   if (onHookPage) {
     crumbs.push({name: metadata.title, item: absolute(siteUrl, metadata.permalink)});
