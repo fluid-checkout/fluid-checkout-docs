@@ -6,6 +6,7 @@ import test from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {assertRestApiDocument, writeRestApiDocs} from './generate-rest-api.mjs';
 import {
+  isRestApiUpcoming,
   prepareRestApiEndpoints,
   relatedRestApiErrorsCallout,
   renderRestApiEndpointPage,
@@ -14,6 +15,7 @@ import {
   renderRestApiSidebarItems,
   resolveRelatedRestApiErrors,
   restApiRouteSlug,
+  restApiUpcomingCallout,
 } from './render-rest-api.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -123,6 +125,29 @@ test('renderRestApiIndex lists endpoints and links to the errors page', () => {
   assert.match(page, /\[REST API errors\]\(\/pro\/rest-api\/errors\/\)/);
   assert.doesNotMatch(page, /\| `fc_api_forbidden` \|/);
   assert.doesNotMatch(page, /featureErrorMap/);
+  assert.doesNotMatch(page, /rest_api_upcoming/);
+  assert.doesNotMatch(page, /:::caution\[Upcoming\]/);
+});
+
+test('upcoming REST API pages get a callout and rest_api_upcoming front matter', () => {
+  assert.equal(isRestApiUpcoming({restApiStatus: 'upcoming'}), true);
+  assert.match(restApiUpcomingCallout(), /:::caution\[Upcoming\]/);
+
+  const plugin = {
+    id: 'pro',
+    label: 'Fluid Checkout PRO',
+    routeBasePath: 'pro',
+    restApiStatus: 'upcoming',
+  };
+  const index = renderRestApiIndex(fixture, plugin, null);
+  assert.match(index, /rest_api_upcoming: true/);
+  assert.match(index, /:::caution\[Upcoming\]/);
+  assert.match(index, /Upcoming; not a stable public API yet/);
+
+  const endpoints = prepareRestApiEndpoints(fixture);
+  const endpointPage = renderRestApiEndpointPage(endpoints[0], fixture, plugin);
+  assert.match(endpointPage, /rest_api_upcoming: true/);
+  assert.match(endpointPage, /:::caution\[Upcoming\]/);
 });
 
 test('renderRestApiErrorsPage lists all wire codes and related catalogs', () => {

@@ -1,6 +1,7 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 import hookItems from './lite.hooks.json';
 import restApiItems from './lite.rest-api.json';
+import {restApiCategoryLabel} from './rest-api-category';
 import {changelogSidebarItem} from './with-changelog';
 
 const sidebars: SidebarsConfig = {
@@ -8,7 +9,7 @@ const sidebars: SidebarsConfig = {
     'index',
     {
       type: 'category',
-      label: 'REST API',
+      label: restApiCategoryLabel('lite'),
       items: restApiItems as SidebarsConfig[string],
     },
     {
