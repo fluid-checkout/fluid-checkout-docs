@@ -167,7 +167,7 @@ Do not add the plugin-side workflow to this repo. Each plugin repository will la
 2. Redirect stdout to `data/pro/rest-api.json` in this repository.
 3. The JSON must follow `data/rest-api.schema.json`, include **wire codes only** (`fc_api_*` for `fluid-checkout/v1`), and must **not** include `featureErrorMap` or feature-layer codes.
 
-Hand-written authentication and example copy lives in `rest-api-intro/<plugin-id>/index.md`. Generated pages under `docs/<plugin>/rest-api/` and `sidebars/<plugin>.rest-api.json` are rebuilt with `npm run generate` and must not be edited in the plugin pull request.
+Hand-written authentication and overview copy lives in `rest-api-intro/<plugin-id>/index.md`. Optional per-endpoint examples live in `rest-api-examples/<plugin-id>/<endpoint-slug>.md` (slug from method + path, for example `get-address-book` or `post-address-book-address-id`). Each plugin gets a generated `rest-api/errors.md` page; Lite and PRO cross-link via `relatedRestApiErrors` in `plugins.json`. Generated pages under `docs/<plugin>/rest-api/` and `sidebars/<plugin>.rest-api.json` are rebuilt with `npm run generate` and must not be edited in the plugin pull request.
 
 ### Branch name and pull request
 

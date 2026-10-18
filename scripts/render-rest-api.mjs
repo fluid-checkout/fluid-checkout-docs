@@ -1,5 +1,6 @@
 /**
  * Render REST API reference pages from exported JSON.
+ * One generated page per route (method + path), similar to hook pages.
  * Pages are MDX, so `{` outside code spans is escaped.
  */
 
@@ -30,16 +31,169 @@ function escapePipes(value) {
 }
 
 /**
- * @param {{routeBasePath?: string} | null | undefined} plugin
- * @param {string} resourceId
+ * Stable slug for a route page: `get-address-book`, `post-address-book-address_id`.
+ *
+ * @param {string} methods
+ * @param {string} path
  * @returns {string}
  */
-export function restApiResourceHref(plugin, resourceId) {
+export function restApiRouteSlug(methods, path) {
+  const method = String(methods || '')
+    .toLowerCase()
+    .split(/[\s,]+/)
+    .filter(Boolean)[0] || 'route';
+  const pathPart = String(path || '')
+    .replace(/^\//, '')
+    .replace(/\{([^}]+)\}/g, '$1')
+    .replace(/[^a-zA-Z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .toLowerCase();
+  return pathPart ? `${method}-${pathPart}` : method;
+}
+
+/**
+ * Visible label for a route: `GET /address-book`.
+ *
+ * @param {string} methods
+ * @param {string} path
+ * @returns {string}
+ */
+export function restApiRouteLabel(methods, path) {
+  return `${String(methods || '').trim()} ${String(path || '').trim()}`.replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * Flatten resources into one endpoint entry per route.
+ *
+ * @param {object} document
+ * @returns {{
+ *   slug: string,
+ *   label: string,
+ *   methods: string,
+ *   path: string,
+ *   handler: string,
+ *   notes: string,
+ *   args: object,
+ *   resourceId: string,
+ *   resourceTitle: string,
+ *   resourceDescription: string,
+ *   source: {file?: string, class?: string},
+ *   errorIds: string[],
+ * }[]}
+ */
+export function prepareRestApiEndpoints(document) {
+  const resources = Array.isArray(document.resources) ? document.resources : [];
+  /** @type {ReturnType<typeof prepareRestApiEndpoints>} */
+  const endpoints = [];
+  /** @type {Map<string, number>} */
+  const slugCounts = new Map();
+
+  for (const resource of resources) {
+    const resourceId = String(resource.id || '').trim();
+    const resourceTitle = String(resource.title || resourceId);
+    const resourceDescription = String(resource.description || '');
+    const source = resource.source && typeof resource.source === 'object' ? resource.source : {};
+    const errorIds = Array.isArray(resource.errorIds) ? resource.errorIds : [];
+    const routes = Array.isArray(resource.routes) ? resource.routes : [];
+
+    for (const route of routes) {
+      const methods = String(route.methods || '').trim();
+      const routePath = String(route.path || '').trim();
+      let slug = restApiRouteSlug(methods, routePath);
+      const seen = slugCounts.get(slug) || 0;
+      slugCounts.set(slug, seen + 1);
+      if (seen > 0) {
+        slug = `${slug}-${seen + 1}`;
+      }
+
+      endpoints.push({
+        slug,
+        label: restApiRouteLabel(methods, routePath),
+        methods,
+        path: routePath,
+        handler: String(route.handler || ''),
+        notes: String(route.notes || ''),
+        args: route.args && typeof route.args === 'object' ? route.args : {},
+        resourceId,
+        resourceTitle,
+        resourceDescription,
+        source: {
+          file: source.file ? String(source.file) : '',
+          class: source.class ? String(source.class) : '',
+        },
+        errorIds: errorIds.map(String),
+      });
+    }
+  }
+
+  return endpoints;
+}
+
+/**
+ * @param {{routeBasePath?: string} | null | undefined} plugin
+ * @param {string} slug
+ * @returns {string}
+ */
+export function restApiEndpointHref(plugin, slug) {
   const route = typeof plugin?.routeBasePath === 'string' ? plugin.routeBasePath.trim() : '';
   if (!route) {
-    return `./${resourceId}`;
+    return `./${slug}`;
   }
-  return `/${route.replace(/^\/+|\/+$/g, '')}/rest-api/${resourceId}/`;
+  return `/${route.replace(/^\/+|\/+$/g, '')}/rest-api/${slug}/`;
+}
+
+/**
+ * @param {{routeBasePath?: string} | null | undefined} plugin
+ * @returns {string}
+ */
+export function restApiErrorsHref(plugin) {
+  return restApiEndpointHref(plugin, 'errors');
+}
+
+/**
+ * Other REST error pages named by an optional `relatedRestApiErrors` list of plugin ids.
+ *
+ * @param {{id?: string, relatedRestApiErrors?: unknown}} plugin
+ * @param {{id: string, label?: string, navLabel?: string, routeBasePath?: string, status?: string}[]} catalogPlugins
+ * @returns {{id: string, label: string, linkLabel: string, href: string}[]}
+ */
+export function resolveRelatedRestApiErrors(plugin, catalogPlugins) {
+  const ids = plugin.relatedRestApiErrors;
+  if (ids == null) {
+    return [];
+  }
+  if (!Array.isArray(ids)) {
+    throw new Error(`${plugin.id || 'plugin'} relatedRestApiErrors must be a list of plugin ids.`);
+  }
+
+  const byId = new Map(catalogPlugins.map((entry) => [entry.id, entry]));
+  /** @type {{id: string, label: string, linkLabel: string, href: string}[]} */
+  const related = [];
+  for (const id of ids) {
+    const target = byId.get(id);
+    if (!target || target.status === 'unavailable') {
+      throw new Error(
+        `${plugin.id || 'plugin'} relatedRestApiErrors references unknown plugin "${id}".`,
+      );
+    }
+    related.push({
+      id: target.id,
+      label: target.label || target.id,
+      linkLabel: target.navLabel || target.label || target.id,
+      href: restApiErrorsHref(target),
+    });
+  }
+  return related;
+}
+
+/**
+ * @param {{id: string, label: string, linkLabel: string, href: string}} related
+ * @returns {string}
+ */
+export function relatedRestApiErrorsCallout(related) {
+  const title = related.id === 'pro' ? `Using ${related.label}?` : `${related.linkLabel} REST API errors`;
+  const line = `Looking for ${related.label} wire error codes? See the [${related.linkLabel} REST API errors](${related.href}).`;
+  return [`:::info[${title}]`, '', line, '', ':::'].join('\n');
 }
 
 /**
@@ -68,7 +222,7 @@ export function restApiIndexTitle(pluginLabel) {
 export function renderRestApiIndex(document, plugin, introMarkdown = null) {
   const pluginLabel = plugin.label || plugin.id || 'Plugin';
   const intro = typeof introMarkdown === 'string' ? introMarkdown.trim() : '';
-  const resources = Array.isArray(document.resources) ? document.resources : [];
+  const endpoints = prepareRestApiEndpoints(document);
   const namespace = String(document.namespace || '');
   const baseUrl = String(document.baseUrl || `{site}/wp-json/${namespace}`);
 
@@ -112,101 +266,166 @@ export function renderRestApiIndex(document, plugin, introMarkdown = null) {
   }
   lines.push('');
 
-  lines.push('## Resources', '');
-  if (resources.length === 0) {
-    lines.push('No REST resources are listed yet.', '');
+  lines.push('## Endpoints', '');
+  if (endpoints.length === 0) {
+    lines.push('No REST endpoints are listed yet.', '');
   } else {
-    for (const resource of resources) {
-      const id = String(resource.id || '');
-      const title = String(resource.title || id);
-      const summary = oneLine(resource.description || '');
-      const link = `[\`${escapeMdx(title)}\`](${restApiResourceHref(plugin, id)})`;
-      lines.push(summary ? `- ${link} — ${escapeMdx(summary)}` : `- ${link}`);
+    /** @type {Map<string, typeof endpoints>} */
+    const byResource = new Map();
+    for (const endpoint of endpoints) {
+      const key = endpoint.resourceId || endpoint.resourceTitle;
+      if (!byResource.has(key)) {
+        byResource.set(key, []);
+      }
+      byResource.get(key).push(endpoint);
     }
-    lines.push('');
+
+    for (const group of byResource.values()) {
+      const first = group[0];
+      lines.push(`### ${escapeMdx(first.resourceTitle)}`, '');
+      if (first.resourceDescription) {
+        lines.push(escapeMdx(first.resourceDescription), '');
+      }
+      for (const endpoint of group) {
+        const summary = oneLine(endpoint.notes || '');
+        // Keep path placeholders inside the code span; braces there are valid MDX.
+        const link = `[\`${endpoint.label}\`](${restApiEndpointHref(plugin, endpoint.slug)})`;
+        lines.push(summary ? `- ${link} — ${escapeMdx(summary)}` : `- ${link}`);
+      }
+      lines.push('');
+    }
   }
 
-  lines.push(...renderErrorsSection(document.errors, 'Shared error codes'));
+  lines.push(
+    '## Error codes',
+    '',
+    `Wire error codes (\`fc_api_*\`) for this plugin are listed on the [REST API errors](${restApiErrorsHref(plugin)}) page.`,
+    '',
+  );
 
   return `${lines.join('\n').trim()}\n`;
 }
 
 /**
- * @param {object} resource
+ * Shared errors page for a plugin.
+ *
  * @param {object} document
  * @param {{id?: string, label?: string, routeBasePath?: string}} plugin
+ * @param {{id: string, label: string, linkLabel: string, href: string}[]} [related]
  * @returns {string}
  */
-export function renderRestApiResourcePage(resource, document, plugin) {
-  const id = String(resource.id || 'resource');
-  const title = String(resource.title || id);
-  const description = oneLine(resource.description || `REST API resource ${title}.`);
-  const namespace = String(document.namespace || '');
-  const routes = Array.isArray(resource.routes) ? resource.routes : [];
-  const sourceFile = resource.source?.file ? String(resource.source.file) : '';
-  const sourceClass = resource.source?.class ? String(resource.source.class) : '';
-
+export function renderRestApiErrorsPage(document, plugin, related = []) {
+  const pluginLabel = plugin.label || plugin.id || 'Plugin';
   const lines = [
     '---',
-    `title: ${yamlString(title)}`,
-    `sidebar_label: ${yamlString(title)}`,
-    `description: ${yamlString(description)}`,
+    `title: ${yamlString(`${pluginLabel} REST API errors`)}`,
+    'sidebar_label: Errors',
+    `description: ${yamlString(`Wire error codes (fc_api_*) for the ${pluginLabel} REST API.`)}`,
     '---',
     '',
     '{/* Generated by scripts/generate-rest-api.mjs. Do not edit. */}',
     '',
-    `# ${escapeMdx(title)}`,
+    '# REST API errors',
+    '',
+    'Wire codes returned in the REST error JSON `code` field. Feature-layer or WooCommerce-internal codes are not published here.',
     '',
   ];
 
-  if (resource.description) {
-    lines.push(escapeMdx(resource.description), '');
+  if (related.length > 0) {
+    lines.push('## Related error catalogs', '');
+    for (const entry of related) {
+      lines.push(relatedRestApiErrorsCallout(entry), '');
+    }
   }
 
+  lines.push(...renderErrorsSection(document.errors, 'Error codes'));
+
+  return `${lines.join('\n').trim()}\n`;
+}
+
+/**
+ * @param {ReturnType<typeof prepareRestApiEndpoints>[number]} endpoint
+ * @param {object} document
+ * @param {{id?: string, label?: string, routeBasePath?: string}} plugin
+ * @param {{exampleMarkdown?: string | null}} [options]
+ * @returns {string}
+ */
+export function renderRestApiEndpointPage(endpoint, document, plugin, options = {}) {
+  const label = endpoint.label || restApiRouteLabel(endpoint.methods, endpoint.path);
+  const exampleMarkdown = typeof options.exampleMarkdown === 'string' ? options.exampleMarkdown.trim() : '';
+  const notes = oneLine(endpoint.notes || '');
+  const description = notes || `REST API route ${label}.`;
+  const namespace = String(document.namespace || '');
+  const fullPath = `/wp-json/${namespace}${endpoint.path.startsWith('/') ? endpoint.path : `/${endpoint.path}`}`;
+
+  const lines = [
+    '---',
+    `title: ${yamlString(label)}`,
+    `sidebar_label: ${yamlString(label)}`,
+    `description: ${yamlString(description)}`,
+  ];
+  if (endpoint.resourceTitle) {
+    lines.push(`rest_api_resource: ${yamlString(endpoint.resourceTitle)}`);
+  }
   lines.push(
-    `Namespace: \`${escapeMdx(namespace)}\`.`,
+    '---',
+    '',
+    '{/* Generated by scripts/generate-rest-api.mjs. Do not edit. */}',
+    '',
+    `**Method:** ${escapeMdx(endpoint.methods || '')}`,
     '',
   );
 
-  if (sourceFile || sourceClass) {
-    const parts = [];
-    if (sourceFile) {
-      parts.push(`\`${escapeMdx(sourceFile)}\``);
-    }
-    if (sourceClass) {
-      parts.push(`class \`${escapeMdx(sourceClass)}\``);
-    }
-    lines.push(`Source: ${parts.join(', ')}.`, '');
+  if (endpoint.resourceTitle) {
+    lines.push(`**Resource:** ${escapeMdx(endpoint.resourceTitle)}`, '');
   }
 
-  lines.push('## Routes', '');
-  if (routes.length === 0) {
-    lines.push('No routes are listed for this resource.', '');
-  } else {
-    lines.push('| Method | Path | Handler |', '| --- | --- | --- |');
-    for (const route of routes) {
-      const method = escapePipes(String(route.methods || ''));
-      const pathValue = escapePipes(String(route.path || ''));
-      const handler = escapePipes(String(route.handler || ''));
-      lines.push(`| \`${method}\` | \`${pathValue}\` | \`${handler}\` |`);
-    }
-    lines.push('');
-
-    for (const route of routes) {
-      const heading = `${route.methods || ''} ${route.path || ''}`.trim().replace(/`/g, '');
-      // Keep path placeholders inside a code span; braces there do not need MDX escaping.
-      lines.push(`### \`${heading}\``, '');
-      if (route.notes) {
-        lines.push(escapeMdx(route.notes), '');
-      }
-      lines.push(...renderArgsTable(route.args));
-    }
+  if (endpoint.notes) {
+    lines.push(escapeMdx(endpoint.notes), '');
   }
 
-  const resourceErrors = pickErrors(document.errors, resource.errorIds);
-  lines.push(...renderErrorsSection(resourceErrors, 'Error codes'));
+  lines.push(
+    '## Route',
+    '',
+    '```',
+    `${endpoint.methods} ${fullPath}`,
+    '```',
+    '',
+    '## Parameters',
+    '',
+  );
+  lines.push(...renderArgsTable(endpoint.args));
 
-  return `${lines.join('\n').trim()}\n`;
+  const sourceFile = endpoint.source?.file || '';
+  const sourceClass = endpoint.source?.class || '';
+  const handler = endpoint.handler || '';
+  /** @type {string[]} */
+  const sourceParts = [];
+  if (sourceFile) {
+    sourceParts.push(`\`${escapeMdx(sourceFile)}\``);
+  }
+  if (sourceClass) {
+    sourceParts.push(`class \`${escapeMdx(sourceClass)}\``);
+  }
+  if (handler) {
+    sourceParts.push(`handler \`${escapeMdx(handler)}\``);
+  }
+  if (sourceParts.length > 0) {
+    lines.push(`Source: ${sourceParts.join(', ')}.`, '');
+  }
+
+  lines.push(
+    '## Error codes',
+    '',
+    `See the [REST API errors](${restApiErrorsHref(plugin)}) page for every wire code this plugin may return.`,
+    '',
+  );
+
+  if (exampleMarkdown) {
+    lines.push('## Examples', '', escapeMdx(exampleMarkdown), '');
+  }
+
+  return `${lines.join('\n').replace(/\n{3,}/g, '\n\n').trim()}\n`;
 }
 
 /**
@@ -235,41 +454,22 @@ function renderArgsTable(args) {
 
 /**
  * @param {object | null | undefined} errors
- * @param {string[] | null | undefined} errorIds
- * @returns {object}
- */
-function pickErrors(errors, errorIds) {
-  if (!errors || typeof errors !== 'object') {
-    return {};
-  }
-  if (!Array.isArray(errorIds) || errorIds.length === 0) {
-    return {};
-  }
-  /** @type {Record<string, {message?: string, status?: number}>} */
-  const picked = {};
-  for (const id of errorIds) {
-    if (typeof id === 'string' && errors[id]) {
-      picked[id] = errors[id];
-    }
-  }
-  return picked;
-}
-
-/**
- * @param {object | null | undefined} errors
  * @param {string} heading
  * @returns {string[]}
  */
 function renderErrorsSection(errors, heading) {
   const entries = errors && typeof errors === 'object' ? Object.entries(errors) : [];
   if (entries.length === 0) {
-    return [];
+    return [
+      `## ${heading}`,
+      '',
+      'No wire error codes are listed for this plugin yet.',
+      '',
+    ];
   }
 
   const lines = [
     `## ${heading}`,
-    '',
-    'Wire codes returned in the REST error JSON `code` field. Feature-layer or WooCommerce-internal codes are not published here.',
     '',
     '| Code | HTTP status | Message |',
     '| --- | --- | --- |',
@@ -285,10 +485,13 @@ function renderErrorsSection(errors, heading) {
 }
 
 /**
- * @param {{id: string, title: string}[]} resources
+ * Sidebar under the REST API category: Overview, Errors, then one category per
+ * feature (resource) with that feature's endpoint pages.
+ *
+ * @param {{slug: string, label: string, resourceId?: string, resourceTitle?: string}[]} endpoints
  * @returns {object[]}
  */
-export function renderRestApiSidebarItems(resources) {
+export function renderRestApiSidebarItems(endpoints) {
   /** @type {object[]} */
   const items = [
     {
@@ -296,13 +499,33 @@ export function renderRestApiSidebarItems(resources) {
       id: 'rest-api/index',
       label: 'Overview',
     },
+    {
+      type: 'doc',
+      id: 'rest-api/errors',
+      label: 'Errors',
+    },
   ];
 
-  for (const resource of resources) {
-    items.push({
+  /** @type {Map<string, {label: string, items: object[]}>} */
+  const byResource = new Map();
+  for (const endpoint of endpoints) {
+    const key = String(endpoint.resourceId || endpoint.resourceTitle || 'resource').trim() || 'resource';
+    const label = String(endpoint.resourceTitle || endpoint.resourceId || 'Resource').trim() || 'Resource';
+    if (!byResource.has(key)) {
+      byResource.set(key, {label, items: []});
+    }
+    byResource.get(key).items.push({
       type: 'doc',
-      id: `rest-api/${resource.id}`,
-      label: resource.title || resource.id,
+      id: `rest-api/${endpoint.slug}`,
+      label: endpoint.label || endpoint.slug,
+    });
+  }
+
+  for (const group of byResource.values()) {
+    items.push({
+      type: 'category',
+      label: group.label,
+      items: group.items,
     });
   }
 

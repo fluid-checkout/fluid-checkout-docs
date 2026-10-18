@@ -31,6 +31,10 @@ function isIndividualHookPage(docId: string): boolean {
   return docId.startsWith('hooks/') && docId !== 'hooks/index';
 }
 
+function isIndividualRestApiPage(docId: string): boolean {
+  return docId.startsWith('rest-api/') && docId !== 'rest-api/index' && docId !== 'rest-api/errors';
+}
+
 /**
  * BreadcrumbList for a docs page. Sidebar crumbs stay as they are.
  * This replaces the one-item list the theme emits.
@@ -38,12 +42,14 @@ function isIndividualHookPage(docId: string): boolean {
  * - plugin hub: Home > plugin
  * - Using PHP hooks: Home > plugin > Using PHP hooks
  * - hook page: Home > plugin > Using PHP hooks > hook
+ * - REST API overview: Home > plugin > REST API
+ * - REST endpoint: Home > plugin > REST API > feature > endpoint
  * - changelog: Home > plugin > Changelog
  */
 export default function DocBreadcrumbsStructuredData(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   const active = useActivePlugin();
-  const {metadata} = useDoc();
+  const {metadata, frontMatter} = useDoc();
   if (!active) {
     return null;
   }
@@ -57,6 +63,13 @@ export default function DocBreadcrumbsStructuredData(): ReactNode {
   const siteUrl = siteConfig.url;
   const onHooksIndex = metadata.id === 'hooks/index';
   const onHookPage = isIndividualHookPage(metadata.id);
+  const onRestApiIndex = metadata.id === 'rest-api/index';
+  const onRestApiErrors = metadata.id === 'rest-api/errors';
+  const onRestApiPage = isIndividualRestApiPage(metadata.id);
+  const restApiResource =
+    typeof (frontMatter as {rest_api_resource?: unknown}).rest_api_resource === 'string'
+      ? (frontMatter as {rest_api_resource: string}).rest_api_resource.trim()
+      : '';
   const crumbs: Crumb[] = [
     {name: 'Home', item: absolute(siteUrl, '/')},
     {name: plugin?.label || active.pluginId, item: absolute(siteUrl, `/${route}/`)},
@@ -65,11 +78,20 @@ export default function DocBreadcrumbsStructuredData(): ReactNode {
   if (onHooksIndex || onHookPage) {
     crumbs.push({name: 'Using PHP hooks', item: absolute(siteUrl, `/${route}/hooks/`)});
   }
-  if (onHookPage) {
+  if (onRestApiIndex || onRestApiErrors || onRestApiPage) {
+    crumbs.push({name: 'REST API', item: absolute(siteUrl, `/${route}/rest-api/`)});
+  }
+  if (onRestApiErrors) {
+    crumbs.push({name: 'Errors', item: absolute(siteUrl, `/${route}/rest-api/errors/`)});
+  }
+  if (onRestApiPage && restApiResource) {
+    crumbs.push({name: restApiResource, item: absolute(siteUrl, `/${route}/rest-api/`)});
+  }
+  if (onHookPage || onRestApiPage) {
     crumbs.push({name: metadata.title, item: absolute(siteUrl, metadata.permalink)});
   } else if (metadata.id === 'changelog') {
     crumbs.push({name: 'Changelog', item: absolute(siteUrl, `/${route}/changelog/`)});
-  } else if (!onHooksIndex && metadata.id !== 'index') {
+  } else if (!onHooksIndex && !onRestApiIndex && !onRestApiErrors && metadata.id !== 'index') {
     crumbs.push({name: metadata.title, item: absolute(siteUrl, metadata.permalink)});
   }
 
