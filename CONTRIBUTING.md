@@ -153,21 +153,32 @@ Do not add the plugin-side workflow to this repo. Each plugin repository will la
    - `data/<plugin-id>/filters.json`
    - `data/<plugin-id>/readme.txt`
    - `data/<plugin-id>/changelog.md` when that file exists in the plugin repository
+   - `data/<plugin-id>/rest-api.json` when that plugin exports REST API documentation
 
-`<plugin-id>` is the id in `plugins.json`, not the GitHub repo name. EU-VAT Assistant uses `eu-vat`. Copy `readme.txt` from the plugin repository on every run. Copy `changelog.md` when the plugin repository has one (EU-VAT Assistant does not). Newest release notes live in `readme.txt` and are moved into `changelog.md` in the plugin repository later. Copy both files as they are. This docs repository merges them and drops a version that appears in both, keeping the `readme.txt` text.
+`<plugin-id>` is the id in `plugins.json`, not the GitHub repo name. EU-VAT Assistant uses `eu-vat`. Address Book REST docs publish under **pro**. Copy `readme.txt` from the plugin repository on every run. Copy `changelog.md` when the plugin repository has one (EU-VAT Assistant does not). Newest release notes live in `readme.txt` and are moved into `changelog.md` in the plugin repository later. Copy both files as they are. This docs repository merges them and drops a version that appears in both, keeping the `readme.txt` text.
 
 5. Do not add a top-level `commit` field or a repository URL to `actions.json` or `filters.json`. The docs site does not store GitHub revision info in the hook JSON, and the generator does not read it.
 
+### REST API data
+
+`data/<plugin-id>/rest-api.json` is produced by the plugin export CLI (runtime `get_routes()` + wire error catalog). For Address Book:
+
+1. From `fc-address-book`, run `npm run export:rest-api-docs` (loads LocalWP, then `bin/export-rest-api-documentation.php`).
+2. Redirect stdout to `data/pro/rest-api.json` in this repository.
+3. The JSON must follow `data/rest-api.schema.json`, include **wire codes only** (`fc_api_*` for `fluid-checkout/v1`), and must **not** include `featureErrorMap` or feature-layer codes.
+
+Hand-written authentication and example copy lives in `rest-api-intro/<plugin-id>/index.md`. Generated pages under `docs/<plugin>/rest-api/` and `sidebars/<plugin>.rest-api.json` are rebuilt with `npm run generate` and must not be edited in the plugin pull request.
+
 ### Branch name and pull request
 
-- Branch: `docs/<plugin-id>/hooks-<source-sha>`
-- Example: `docs/eu-vat/hooks-a1b2c3d4`
-- Title: `docs(<plugin-id>): update hook data`
+- Branch: `docs/<plugin-id>/hooks-<source-sha>` for hook/changelog updates, or `docs/<plugin-id>/rest-api-<source-sha>` for REST API data
+- Example: `docs/eu-vat/hooks-a1b2c3d4`, `docs/pro/rest-api-a1b2c3d4`
+- Title: `docs(<plugin-id>): update hook data` or `docs(<plugin-id>): update REST API data`
 - The pull request body should name the source repository, commit, and tag (if any).
 
 The App needs contents and pull request write access on `fluid-checkout/fluid-checkout-docs`.
 
-Generated Markdown in `docs/<plugin>/hooks/` and `docs/<plugin>/changelog.md` is rebuilt in this repo (`npm run generate`). The plugin pull request does not commit those pages. A maintainer can regenerate and commit them in a follow-up, and the GitHub Pages build regenerates them on every deploy.
+Generated Markdown in `docs/<plugin>/hooks/`, `docs/<plugin>/rest-api/`, and `docs/<plugin>/changelog.md` is rebuilt in this repo (`npm run generate`). The plugin pull request does not commit those pages. A maintainer can regenerate and commit them in a follow-up, and the GitHub Pages build regenerates them on every deploy.
 
 ### Versioning trigger
 

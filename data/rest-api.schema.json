@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.fluidcheckout.com/schemas/rest-api.json",
+  "title": "Fluid Checkout REST API documentation export",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["namespace", "baseUrl", "permissions", "responseShape", "errors", "resources"],
+  "properties": {
+    "namespace": {
+      "type": "string",
+      "minLength": 1
+    },
+    "baseUrl": {
+      "type": "string",
+      "minLength": 1
+    },
+    "permissions": {
+      "type": "string"
+    },
+    "responseShape": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["successWithData", "successWithoutData", "errors"],
+      "properties": {
+        "successWithData": {"type": "string"},
+        "successWithoutData": {"type": "string"},
+        "errors": {"type": "string"}
+      }
+    },
+    "errors": {
+      "type": "object",
+      "description": "REST wire codes only (fc_api_* for fluid-checkout/v1). No featureErrorMap.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["message", "status"],
+        "properties": {
+          "message": {"type": "string"},
+          "status": {"type": "integer"}
+        }
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "description", "source", "errorIds", "routes"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "title": {"type": "string"},
+          "description": {"type": "string"},
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["class", "file"],
+            "properties": {
+              "class": {"type": "string"},
+              "file": {"type": "string"}
+            }
+          },
+          "errorIds": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "routes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["methods", "path", "handler", "args"],
+              "properties": {
+                "methods": {"type": "string"},
+                "path": {"type": "string"},
+                "handler": {"type": "string"},
+                "notes": {"type": "string"},
+                "args": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["type", "required"],
+                    "properties": {
+                      "type": {"type": "string"},
+                      "required": {"type": "boolean"},
+                      "description": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
