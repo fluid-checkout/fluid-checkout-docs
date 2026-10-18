@@ -344,6 +344,9 @@ export function renderRestApiErrorsPage(document, plugin, related = []) {
 }
 
 /**
+ * One page per route. Do not render PHP source (file, class, or handler);
+ * see fc-rest-api.mdc Developer docs export.
+ *
  * @param {ReturnType<typeof prepareRestApiEndpoints>[number]} endpoint
  * @param {object} document
  * @param {{id?: string, label?: string, routeBasePath?: string}} plugin
@@ -395,24 +398,6 @@ export function renderRestApiEndpointPage(endpoint, document, plugin, options = 
     '',
   );
   lines.push(...renderArgsTable(endpoint.args));
-
-  const sourceFile = endpoint.source?.file || '';
-  const sourceClass = endpoint.source?.class || '';
-  const handler = endpoint.handler || '';
-  /** @type {string[]} */
-  const sourceParts = [];
-  if (sourceFile) {
-    sourceParts.push(`\`${escapeMdx(sourceFile)}\``);
-  }
-  if (sourceClass) {
-    sourceParts.push(`class \`${escapeMdx(sourceClass)}\``);
-  }
-  if (handler) {
-    sourceParts.push(`handler \`${escapeMdx(handler)}\``);
-  }
-  if (sourceParts.length > 0) {
-    lines.push(`Source: ${sourceParts.join(', ')}.`, '');
-  }
 
   lines.push(
     '## Error codes',

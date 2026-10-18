@@ -24,8 +24,6 @@ DELETE /wp-json/fluid-checkout/v1/address-book/{address_id}
 | `user_id` | `integer` | no | WordPress user ID whose address book is targeted. Defaults to the current user. |
 | `address_id` | `integer` | yes | Address book entry ID. |
 
-Source: `inc/rest-api/v1/class-v1-endpoint-address-book.php`, class `FC_AddressBook_REST_API_V1_Endpoint_AddressBook`, handler `delete_address_entry`.
-
 ## Error codes
 
 See the [REST API errors](/pro/rest-api/errors/) page for every wire code this plugin may return.

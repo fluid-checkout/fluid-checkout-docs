@@ -65,10 +65,11 @@ Each plugin is a separate Docusaurus docs plugin instance (`routeBasePath` in `p
 
 Public `fluid-checkout/v1` routes are documented from exported JSON, the same split as hooks: plugin repos export `data/<plugin>/rest-api.json`, and this site generates one Markdown page per route.
 
-- Source: `data/<plugin>/rest-api.json` (schema: `data/rest-api.schema.json`)
+- Data: `data/<plugin>/rest-api.json` (schema: `data/rest-api.schema.json`)
 - Hand-written intro: `rest-api-intro/<plugin>/index.md` (auth and overview). Edit that file, not the generated index.
 - Hand-written examples: `rest-api-examples/<plugin>/<endpoint-slug>.md` (same idea as `examples/` for hooks). File name must match the published endpoint slug (`get-address-book`, `post-address-book-address-id`, …).
 - Generated pages: `docs/<plugin>/rest-api/` (including `errors.md`) and `sidebars/<plugin>.rest-api.json` — do not edit by hand
+- Endpoint pages publish Method, Resource, notes, Route, Parameters, Error codes (link), and optional Examples. Do **not** render PHP source (file, class, or handler), even if the export JSON includes `source` / `handler`.
 - Wire error codes only (`fc_api_*` for `fluid-checkout/v1`). Do not include `featureErrorMap` or feature-layer codes
 - Lite publishes the shared error catalog at `/lite/rest-api/errors/`; PRO publishes Address Book endpoints plus `/pro/rest-api/errors/`. Cross-links use `relatedRestApiErrors` in `plugins.json`.
 
