@@ -12,6 +12,9 @@
  * and copied onto the matching page. The generator never writes under
  * rest-api-examples/.
  *
+ * Endpoint pages omit PHP source (file, class, handler), even when the export
+ * JSON includes those fields. See fc-rest-api.mdc Developer docs export.
+ *
  * Wire error codes only: the exporter must not include featureErrorMap or
  * feature-layer codes. Generation fails if featureErrorMap is present or if
  * any errors key does not look like a wire code for fluid-checkout/v1.

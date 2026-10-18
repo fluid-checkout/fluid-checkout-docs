@@ -23,8 +23,6 @@ GET /wp-json/fluid-checkout/v1/address-book
 | --- | --- | --- | --- |
 | `user_id` | `integer` | no | WordPress user ID whose address book is targeted. Defaults to the current user. |
 
-Source: `inc/rest-api/v1/class-v1-endpoint-address-book.php`, class `FC_AddressBook_REST_API_V1_Endpoint_AddressBook`, handler `get_address_entries`.
-
 ## Error codes
 
 See the [REST API errors](/pro/rest-api/errors/) page for every wire code this plugin may return.

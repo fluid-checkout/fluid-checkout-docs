@@ -161,12 +161,12 @@ test('renderRestApiEndpointPage points Error codes at the shared errors page', (
   assert.match(page, /## Error codes/);
   assert.match(page, /\[REST API errors\]\(\/pro\/rest-api\/errors\/\)/);
   assert.doesNotMatch(page, /\| `fc_api_address_not_found` \|/);
+  assert.doesNotMatch(page, /Source:/);
   assert.match(page, /## Examples/);
   const parametersAt = page.indexOf('## Parameters');
-  const sourceAt = page.indexOf('Source:');
   const errorsAt = page.indexOf('## Error codes');
   const examplesAt = page.indexOf('## Examples');
-  assert.ok(parametersAt !== -1 && parametersAt < sourceAt && sourceAt < errorsAt && errorsAt < examplesAt);
+  assert.ok(parametersAt !== -1 && parametersAt < errorsAt && errorsAt < examplesAt);
 });
 
 test('renderRestApiSidebarItems puts Errors after Overview, then feature categories', () => {

@@ -39,8 +39,6 @@ POST /wp-json/fluid-checkout/v1/address-book/{address_id}
 | `default_shipping` | `boolean` | no | Whether this entry is the default shipping address. |
 | `default_billing` | `boolean` | no | Whether this entry is the default billing address. |
 
-Source: `inc/rest-api/v1/class-v1-endpoint-address-book.php`, class `FC_AddressBook_REST_API_V1_Endpoint_AddressBook`, handler `update_address_entry`.
-
 ## Error codes
 
 See the [REST API errors](/pro/rest-api/errors/) page for every wire code this plugin may return.
