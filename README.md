@@ -97,7 +97,7 @@ Create `hooks-intro/<plugin>/index.md` for the text that should appear above tha
 
 Run `npm run generate`. The generator copies the intro into `docs/<plugin>/hooks/index.md` and rewrites those image paths. Edit the intro file, not the generated index. The intro is compiled as MDX with the hooks page, so keep `{` and `}` inside inline code or fenced code blocks.
 
-EU-VAT, Lite, and PRO each have an intro at `hooks-intro/<plugin>/index.md`. The generated page heading and sidebar label are `All hooks`. The browser title is `<plugin label> hooks reference`, for example `Fluid Checkout Lite hooks reference`. Each plugin has its own meta description. Internal links use a trailing slash.
+EU-VAT, Lite, and PRO each have an intro at `hooks-intro/<plugin>/index.md`. The generated page heading and sidebar label are `Using PHP hooks`. The browser title is `<plugin label> hooks reference`, for example `Fluid Checkout Lite hooks reference`. Each plugin has its own meta description. Internal links use a trailing slash.
 
 ## Add an example
 
@@ -157,7 +157,7 @@ Local search (`@easyops-cn/docusaurus-search-local`) is on by default. To switch
 
 ## Hosting
 
-GitHub Pages deploys from GitHub Actions on every push to `main` (`.github/workflows/deploy.yml`). `static/CNAME` is `docs.fluidcheckout.com`. The Pages source is already set to GitHub Actions. `static/robots.txt` allows every crawler and points at `https://docs.fluidcheckout.com/sitemap.xml`. It does not block hook pages or changelog pages. Individual hook pages are `noindex, follow` and are omitted from the sitemap. The home page, the three plugin hubs, the three All hooks pages, the three changelog pages, and `/changelog-format/` stay indexable and are included in the sitemap. `/search` is `noindex, follow` and is omitted from the sitemap.
+GitHub Pages deploys from GitHub Actions on every push to `main` (`.github/workflows/deploy.yml`). `static/CNAME` is `docs.fluidcheckout.com`. The Pages source is already set to GitHub Actions. `static/robots.txt` allows every crawler and points at `https://docs.fluidcheckout.com/sitemap.xml`. It does not block hook pages or changelog pages. Individual hook pages are `noindex, follow` and are omitted from the sitemap. The home page, the three plugin hubs, the three Using PHP hooks pages, the three changelog pages, and `/changelog-format/` stay indexable and are included in the sitemap. `/search` is `noindex, follow` and is omitted from the sitemap.
 
 After this repository has its first commit on `main`, branch protection can require a pull request before merging to `main`.
 

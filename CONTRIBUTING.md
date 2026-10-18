@@ -22,7 +22,7 @@ This repository is the public developer docs site for Fluid Checkout plugins. Gu
 }
 ```
 
-EU-VAT's sidebar has no Guides category. Its getting started page is the hooks index intro.
+EU-VAT's sidebar has no Guides category. Its hooks index intro follows the same section pattern as Lite and PRO.
 
 Pages are compiled as MDX. Keep `{` and `}` inside inline code or fenced code blocks.
 
@@ -35,7 +35,7 @@ The text at the top of a plugin's hooks index is `hooks-intro/<plugin>/index.md`
 3. Run `npm run generate`. The generator inserts the intro above the hook tables in `docs/<plugin>/hooks/index.md` and rewrites relative image paths so the generated page can load them. The next generate overwrites that index, so change the intro file instead.
 4. Keep `{` and `}` inside inline code or fenced code blocks.
 
-The generated index heading and sidebar label are `All hooks`. The browser title is `<plugin label> hooks reference` (for example `Fluid Checkout Lite hooks reference`, `Fluid Checkout PRO hooks reference`, and `EU-VAT Assistant hooks reference`). Each of those pages has its own meta description. Links inside an intro that refer to the actions list, the filters list, or another heading on that same page use a `#section-id` anchor. Other internal links include the trailing slash (`/lite/hooks/fc_checkout_before_steps/`).
+The generated index heading and sidebar label are `Using PHP hooks`. The browser title is `<plugin label> hooks reference` (for example `Fluid Checkout Lite hooks reference`, `Fluid Checkout PRO hooks reference`, and `EU-VAT Assistant hooks reference`). Each of those pages has its own meta description. Links inside an intro that refer to the actions list, the filters list, or another heading on that same page use a `#section-id` anchor. Other internal links include the trailing slash (`/lite/hooks/fc_checkout_before_steps/`).
 
 ## Add a hook example
 

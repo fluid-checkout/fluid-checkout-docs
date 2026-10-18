@@ -1,6 +1,6 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 import hookItems from './lite.hooks.json';
-import {withChangelogAfterAllHooks} from './with-changelog';
+import {changelogSidebarItem} from './with-changelog';
 
 const sidebars: SidebarsConfig = {
   lite: [
@@ -8,8 +8,9 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Hooks',
-      items: withChangelogAfterAllHooks(hookItems) as SidebarsConfig[string],
+      items: hookItems as SidebarsConfig[string],
     },
+    changelogSidebarItem,
   ],
 };
 
