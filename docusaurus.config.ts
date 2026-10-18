@@ -66,9 +66,9 @@ const config: Config = {
         docs: false,
         blog: false,
         sitemap: {
-          // noindex routes are omitted: individual hook pages and /search.
-          // Home, plugin hubs, Using PHP hooks, the three changelog pages, and
-          // /changelog-format/ stay in.
+          // noindex routes are omitted: individual hook/REST endpoint pages and /search.
+          // Home, plugin hubs, Using PHP hooks, REST API overview/errors, changelog
+          // pages, and /changelog-format/ stay in.
           ignorePatterns: ['/search', '/search/', '/search/**'],
         },
         theme: {

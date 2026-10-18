@@ -33,11 +33,12 @@ data/<plugin>/changelog.md     # older releases (optional; EU-VAT has none)
 hooks-intro/<plugin>/index.md  # hand-written intro included at the top of the hooks index
 hooks-intro/<plugin>/img/      # images for that intro
 rest-api-intro/<plugin>/index.md # hand-written intro for the REST API index
+rest-api-examples/<plugin>/<endpoint-slug>.md # optional hand-written REST examples; never generated
 docs/<plugin>/guides/          # hand-written guides, one folder per guide
 docs/<plugin>/hooks/           # GENERATED hook pages — do not edit
 docs/<plugin>/rest-api/        # GENERATED REST API pages — do not edit
 docs/<plugin>/changelog.md     # GENERATED changelog page — do not edit
-examples/<plugin>/<hook-slug>.md # optional hand-written examples; never generated
+examples/<plugin>/<hook-slug>.md # optional hand-written hook examples; never generated
 sidebars/<plugin>.ts           # sidebar for that docs instance
 sidebars/<plugin>.hooks.json   # GENERATED hook sidebar items
 sidebars/<plugin>.rest-api.json # GENERATED REST API sidebar items
@@ -52,7 +53,8 @@ Routes:
 - `/eu-vat/`, `/lite/`, and `/pro/` overviews
 - `/<plugin>/hooks/` generated index, with the hand-written intro above the list
 - `/<plugin>/rest-api/` generated REST API overview (when `data/<plugin>/rest-api.json` exists)
-- `/<plugin>/rest-api/<resource-id>/` one page per REST resource
+- `/<plugin>/rest-api/errors/` shared wire error codes for that plugin
+- `/<plugin>/rest-api/<endpoint-slug>/` one page per REST route (for example `get-address-book`)
 - `/<plugin>/changelog/` release history, newest first
 - `/<plugin>/hooks/<hook-slug>` one page per hook
 - `/<plugin>/guides/...` guides, when that plugin's sidebar has a Guides category
@@ -61,13 +63,14 @@ Each plugin is a separate Docusaurus docs plugin instance (`routeBasePath` in `p
 
 ## Generated REST API reference
 
-Public `fluid-checkout/v1` routes are documented from exported JSON, the same split as hooks: plugin repos export `data/<plugin>/rest-api.json`, and this site generates Markdown.
+Public `fluid-checkout/v1` routes are documented from exported JSON, the same split as hooks: plugin repos export `data/<plugin>/rest-api.json`, and this site generates one Markdown page per route.
 
 - Source: `data/<plugin>/rest-api.json` (schema: `data/rest-api.schema.json`)
-- Hand-written intro: `rest-api-intro/<plugin>/index.md` (auth and examples). Edit that file, not the generated index.
-- Generated pages: `docs/<plugin>/rest-api/` and `sidebars/<plugin>.rest-api.json` — do not edit by hand
+- Hand-written intro: `rest-api-intro/<plugin>/index.md` (auth and overview). Edit that file, not the generated index.
+- Hand-written examples: `rest-api-examples/<plugin>/<endpoint-slug>.md` (same idea as `examples/` for hooks). File name must match the published endpoint slug (`get-address-book`, `post-address-book-address-id`, …).
+- Generated pages: `docs/<plugin>/rest-api/` (including `errors.md`) and `sidebars/<plugin>.rest-api.json` — do not edit by hand
 - Wire error codes only (`fc_api_*` for `fluid-checkout/v1`). Do not include `featureErrorMap` or feature-layer codes
-- PRO publishes Address Book at `/pro/rest-api/` and `/pro/rest-api/address-book/`
+- Lite publishes the shared error catalog at `/lite/rest-api/errors/`; PRO publishes Address Book endpoints plus `/pro/rest-api/errors/`. Cross-links use `relatedRestApiErrors` in `plugins.json`.
 
 Plugin export (Address Book example, from the plugin root with LocalWP env):
 

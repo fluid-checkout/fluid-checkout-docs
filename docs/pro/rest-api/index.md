@@ -10,7 +10,7 @@ description: "REST API reference for Fluid Checkout PRO, including routes, param
 
 ## Using the API
 
-Fluid Checkout PRO and its Address Book feature expose REST routes under the `fluid-checkout/v1` namespace. The pages below list resources, routes, parameters, and **wire error codes** (`fc_api_*`) returned in the WordPress REST error JSON `code` field.
+Fluid Checkout PRO and its Address Book feature expose REST routes under the `fluid-checkout/v1` namespace. Each endpoint page lists the route, parameters, wire error codes (`fc_api_*`), and optional hand-written examples.
 
 Validation failures use those wire codes. The error `message` may include WooCommerce or store-specific text, but the stable identifier for clients is the wire code.
 
@@ -22,49 +22,6 @@ Requests require a logged-in WordPress user.
 - **Server-to-server:** [Application Passwords](https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/) or another supported WordPress REST authentication method.
 
 Unauthenticated requests return `fc_api_forbidden`. See the [WordPress REST API handbook](https://developer.wordpress.org/rest-api/) for authentication details.
-
-## Example
-
-List address book entries for the current user (replace the host and credentials):
-
-```bash
-curl -X GET 'https://example.com/wp-json/fluid-checkout/v1/address-book' \
-  --user 'USERNAME:APPLICATION_PASSWORD'
-```
-
-Create an entry:
-
-```bash
-curl -X POST 'https://example.com/wp-json/fluid-checkout/v1/address-book' \
-  --user 'USERNAME:APPLICATION_PASSWORD' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "first_name": "Jane",
-    "last_name": "Doe",
-    "country": "US",
-    "address_1": "123 Main Street",
-    "city": "New York",
-    "state": "NY",
-    "postcode": "10001"
-  }'
-```
-
-Update an entry with a **full replace** (GET the entry, change fields, then POST the complete object):
-
-```bash
-curl -X POST 'https://example.com/wp-json/fluid-checkout/v1/address-book/42' \
-  --user 'USERNAME:APPLICATION_PASSWORD' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "first_name": "Jane",
-    "last_name": "Doe",
-    "country": "US",
-    "address_1": "456 Oak Avenue",
-    "city": "New York",
-    "state": "NY",
-    "postcode": "10001"
-  }'
-```
 
 Namespace: `fluid-checkout/v1`. Base URL pattern: `{'{'}site{'}'}/wp-json/fluid-checkout/v1`.
 
@@ -78,28 +35,18 @@ Requests require a logged-in WordPress user. Omit user_id to use the current use
 - HTTP 200 with {'{'} "success": true {'}'} when there is no payload (for example DELETE).
 - Failures return WordPress REST error JSON from WP_Error (code, message, data.status). Wire codes use the fc_api_* prefix.
 
-## Resources
+## Endpoints
 
-- [`Address Book`](/pro/rest-api/address-book/) — REST API endpoint: Address Book (`fluid-checkout/v1/address-book`). Routes intentionally ignore FC_AddressBook_AddressBook::is_feature_enabled(). The API stays available when the storefront feature is disabled so address book data can be prepared first. POST `/address-book` creates an entry via FC_AddressBook_AddressBook::add_new_address_book_entry(). Any `address_id` in the body is ignored; the feature class always assigns a new id. POST `/address-book/{address_id}` replaces the stored entry with the request body. Clients must send the full address entry (same fields as create), not a partial patch.
+### Address Book
 
-## Shared error codes
+REST API endpoint: Address Book (`fluid-checkout/v1/address-book`). Routes intentionally ignore FC_AddressBook_AddressBook::is_feature_enabled(). The API stays available when the storefront feature is disabled so address book data can be prepared first. POST `/address-book` creates an entry via FC_AddressBook_AddressBook::add_new_address_book_entry(). Any `address_id` in the body is ignored; the feature class always assigns a new id. POST `/address-book/{address_id}` replaces the stored entry with the request body. Clients must send the full address entry (same fields as create), not a partial patch.
 
-Wire codes returned in the REST error JSON `code` field. Feature-layer or WooCommerce-internal codes are not published here.
+- [`GET /address-book`](/pro/rest-api/get-address-book/)
+- [`GET /address-book/{address_id}`](/pro/rest-api/get-address-book-address-id/)
+- [`POST /address-book`](/pro/rest-api/post-address-book/) — Creates a new entry. Any address_id in the body is ignored; the feature class assigns a new id.
+- [`POST /address-book/{address_id}`](/pro/rest-api/post-address-book-address-id/) — Full replace: send the complete address entry in the request body. Omitted fields are not merged from storage.
+- [`DELETE /address-book/{address_id}`](/pro/rest-api/delete-address-book-address-id/)
 
-| Code | HTTP status | Message |
-| --- | --- | --- |
-| `fc_api_forbidden` | 403 | Forbidden access. |
-| `fc_api_user_not_found` | 404 | Target user was not found. |
-| `fc_api_unavailable` | 503 | This feature is not available. |
-| `fc_api_required_field_missing` | 400 | A required address field is missing. |
-| `fc_api_invalid_postcode` | 400 | Postcode or ZIP is invalid. |
-| `fc_api_invalid_phone` | 400 | Phone number is invalid. |
-| `fc_api_invalid_state` | 400 | State or county is invalid. |
-| `fc_api_invalid_country` | 400 | Country is invalid or has no address fields. |
-| `fc_api_invalid_request` | 400 | The request could not be processed. |
-| `fc_api_address_not_found` | 404 | Address entry was not found. |
-| `fc_api_address_create_failed` | 400 | Could not create address entry. |
-| `fc_api_address_update_failed` | 400 | Could not update address entry. |
-| `fc_api_address_delete_failed` | 400 | Could not delete address entry. |
-| `fc_api_address_duplicate` | 400 | Another address entry already exists with the same data. |
-| `fc_api_address_id_missing` | 400 | Address ID is required to update an address book entry. |
+## Error codes
+
+Wire error codes (`fc_api_*`) for this plugin are listed on the [REST API errors](/pro/rest-api/errors/) page.
