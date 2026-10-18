@@ -1,0 +1,309 @@
+{
+    "namespace": "fluid-checkout/v1",
+    "baseUrl": "{site}/wp-json/fluid-checkout/v1",
+    "permissions": "Requests require a logged-in WordPress user. Omit user_id to use the current user's data, or pass user_id to target another account when the caller can edit that user (edit_user capability). Unauthenticated requests return fc_api_forbidden. An invalid user_id returns fc_api_user_not_found.",
+    "responseShape": {
+        "successWithData": "HTTP 200 with { \"data\": { ... } } when the handler returns a payload.",
+        "successWithoutData": "HTTP 200 with { \"success\": true } when there is no payload (for example DELETE).",
+        "errors": "Failures return WordPress REST error JSON from WP_Error (code, message, data.status). Wire codes use the fc_api_* prefix."
+    },
+    "errors": {
+        "fc_api_forbidden": {
+            "message": "Forbidden access.",
+            "status": 403
+        },
+        "fc_api_user_not_found": {
+            "message": "Target user was not found.",
+            "status": 404
+        },
+        "fc_api_unavailable": {
+            "message": "This feature is not available.",
+            "status": 503
+        },
+        "fc_api_required_field_missing": {
+            "message": "A required address field is missing.",
+            "status": 400
+        },
+        "fc_api_invalid_postcode": {
+            "message": "Postcode or ZIP is invalid.",
+            "status": 400
+        },
+        "fc_api_invalid_phone": {
+            "message": "Phone number is invalid.",
+            "status": 400
+        },
+        "fc_api_invalid_state": {
+            "message": "State or county is invalid.",
+            "status": 400
+        },
+        "fc_api_invalid_country": {
+            "message": "Country is invalid or has no address fields.",
+            "status": 400
+        },
+        "fc_api_invalid_request": {
+            "message": "The request could not be processed.",
+            "status": 400
+        },
+        "fc_api_address_not_found": {
+            "message": "Address entry was not found.",
+            "status": 404
+        },
+        "fc_api_address_create_failed": {
+            "message": "Could not create address entry.",
+            "status": 400
+        },
+        "fc_api_address_update_failed": {
+            "message": "Could not update address entry.",
+            "status": 400
+        },
+        "fc_api_address_delete_failed": {
+            "message": "Could not delete address entry.",
+            "status": 400
+        },
+        "fc_api_address_duplicate": {
+            "message": "Another address entry already exists with the same data.",
+            "status": 400
+        },
+        "fc_api_address_id_missing": {
+            "message": "Address ID is required to update an address book entry.",
+            "status": 400
+        }
+    },
+    "resources": [
+        {
+            "id": "address-book",
+            "title": "Address Book",
+            "description": "REST API endpoint: Address Book (`fluid-checkout/v1/address-book`). Routes intentionally ignore FC_AddressBook_AddressBook::is_feature_enabled(). The API stays available when the storefront feature is disabled so address book data can be prepared first. POST `/address-book` creates an entry via FC_AddressBook_AddressBook::add_new_address_book_entry(). Any `address_id` in the body is ignored; the feature class always assigns a new id. POST `/address-book/{address_id}` replaces the stored entry with the request body. Clients must send the full address entry (same fields as create), not a partial patch.",
+            "source": {
+                "class": "FC_AddressBook_REST_API_V1_Endpoint_AddressBook",
+                "file": "inc/rest-api/v1/class-v1-endpoint-address-book.php"
+            },
+            "errorIds": [
+                "fc_api_forbidden",
+                "fc_api_user_not_found",
+                "fc_api_unavailable",
+                "fc_api_required_field_missing",
+                "fc_api_invalid_postcode",
+                "fc_api_invalid_phone",
+                "fc_api_invalid_state",
+                "fc_api_invalid_country",
+                "fc_api_invalid_request",
+                "fc_api_address_not_found",
+                "fc_api_address_create_failed",
+                "fc_api_address_update_failed",
+                "fc_api_address_delete_failed",
+                "fc_api_address_duplicate",
+                "fc_api_address_id_missing"
+            ],
+            "routes": [
+                {
+                    "methods": "GET",
+                    "path": "/address-book",
+                    "handler": "get_address_entries",
+                    "args": {
+                        "user_id": {
+                            "type": "integer",
+                            "required": false,
+                            "description": "WordPress user ID whose address book is targeted. Defaults to the current user."
+                        }
+                    }
+                },
+                {
+                    "methods": "GET",
+                    "path": "/address-book/{address_id}",
+                    "handler": "get_address_entry_single",
+                    "args": {
+                        "user_id": {
+                            "type": "integer",
+                            "required": false,
+                            "description": "WordPress user ID whose address book is targeted. Defaults to the current user."
+                        },
+                        "address_id": {
+                            "type": "integer",
+                            "required": true,
+                            "description": "Address book entry ID."
+                        }
+                    }
+                },
+                {
+                    "methods": "POST",
+                    "path": "/address-book",
+                    "handler": "create_address_entry",
+                    "args": {
+                        "user_id": {
+                            "type": "integer",
+                            "required": false,
+                            "description": "WordPress user ID whose address book is targeted. Defaults to the current user."
+                        },
+                        "first_name": {
+                            "type": "string",
+                            "required": false,
+                            "description": "First name."
+                        },
+                        "last_name": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Last name."
+                        },
+                        "company": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Company."
+                        },
+                        "country": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Country code."
+                        },
+                        "address_1": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Address line 1."
+                        },
+                        "address_2": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Address line 2."
+                        },
+                        "city": {
+                            "type": "string",
+                            "required": false,
+                            "description": "City."
+                        },
+                        "state": {
+                            "type": "string",
+                            "required": false,
+                            "description": "State or county."
+                        },
+                        "postcode": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Postcode or ZIP."
+                        },
+                        "address_label": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Address label."
+                        },
+                        "phone": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Phone number."
+                        },
+                        "default_shipping": {
+                            "type": "boolean",
+                            "required": false,
+                            "description": "Whether this entry is the default shipping address."
+                        },
+                        "default_billing": {
+                            "type": "boolean",
+                            "required": false,
+                            "description": "Whether this entry is the default billing address."
+                        }
+                    },
+                    "notes": "Creates a new entry. Any address_id in the body is ignored; the feature class assigns a new id."
+                },
+                {
+                    "methods": "POST",
+                    "path": "/address-book/{address_id}",
+                    "handler": "update_address_entry",
+                    "args": {
+                        "user_id": {
+                            "type": "integer",
+                            "required": false,
+                            "description": "WordPress user ID whose address book is targeted. Defaults to the current user."
+                        },
+                        "address_id": {
+                            "type": "integer",
+                            "required": true,
+                            "description": "Address book entry ID."
+                        },
+                        "first_name": {
+                            "type": "string",
+                            "required": false,
+                            "description": "First name."
+                        },
+                        "last_name": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Last name."
+                        },
+                        "company": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Company."
+                        },
+                        "country": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Country code."
+                        },
+                        "address_1": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Address line 1."
+                        },
+                        "address_2": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Address line 2."
+                        },
+                        "city": {
+                            "type": "string",
+                            "required": false,
+                            "description": "City."
+                        },
+                        "state": {
+                            "type": "string",
+                            "required": false,
+                            "description": "State or county."
+                        },
+                        "postcode": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Postcode or ZIP."
+                        },
+                        "address_label": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Address label."
+                        },
+                        "phone": {
+                            "type": "string",
+                            "required": false,
+                            "description": "Phone number."
+                        },
+                        "default_shipping": {
+                            "type": "boolean",
+                            "required": false,
+                            "description": "Whether this entry is the default shipping address."
+                        },
+                        "default_billing": {
+                            "type": "boolean",
+                            "required": false,
+                            "description": "Whether this entry is the default billing address."
+                        }
+                    },
+                    "notes": "Full replace: send the complete address entry in the request body. Omitted fields are not merged from storage."
+                },
+                {
+                    "methods": "DELETE",
+                    "path": "/address-book/{address_id}",
+                    "handler": "delete_address_entry",
+                    "args": {
+                        "user_id": {
+                            "type": "integer",
+                            "required": false,
+                            "description": "WordPress user ID whose address book is targeted. Defaults to the current user."
+                        },
+                        "address_id": {
+                            "type": "integer",
+                            "required": true,
+                            "description": "Address book entry ID."
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

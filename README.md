@@ -13,7 +13,7 @@ npm ci
 npm start
 ```
 
-`npm start` and `npm run build` both run `npm run generate` first. That reads `data/<plugin>/*.json` and writes `docs/<plugin>/hooks/`. If `hooks-intro/<plugin>/index.md` exists, the generator includes it above the hook list. The same command reads `data/<plugin>/readme.txt` and `data/<plugin>/changelog.md` and writes `docs/<plugin>/changelog.md`.
+`npm start` and `npm run build` both run `npm run generate` first. That reads `data/<plugin>/*.json` and writes `docs/<plugin>/hooks/`. If `hooks-intro/<plugin>/index.md` exists, the generator includes it above the hook list. The same command reads `data/<plugin>/readme.txt` and `data/<plugin>/changelog.md` and writes `docs/<plugin>/changelog.md`. When `data/<plugin>/rest-api.json` exists, it also writes `docs/<plugin>/rest-api/` and `sidebars/<plugin>.rest-api.json`.
 
 ```bash
 npm test
@@ -26,16 +26,21 @@ npm run build
 ```text
 data/<plugin>/actions.json     # wp-hooks/generator output (source of truth)
 data/<plugin>/filters.json
+data/<plugin>/rest-api.json    # REST API export (optional; PRO has Address Book)
+data/rest-api.schema.json      # schema for rest-api.json
 data/<plugin>/readme.txt       # plugin readme; == Changelog == holds the newest releases
 data/<plugin>/changelog.md     # older releases (optional; EU-VAT has none)
 hooks-intro/<plugin>/index.md  # hand-written intro included at the top of the hooks index
 hooks-intro/<plugin>/img/      # images for that intro
+rest-api-intro/<plugin>/index.md # hand-written intro for the REST API index
 docs/<plugin>/guides/          # hand-written guides, one folder per guide
 docs/<plugin>/hooks/           # GENERATED hook pages — do not edit
+docs/<plugin>/rest-api/        # GENERATED REST API pages — do not edit
 docs/<plugin>/changelog.md     # GENERATED changelog page — do not edit
 examples/<plugin>/<hook-slug>.md # optional hand-written examples; never generated
 sidebars/<plugin>.ts           # sidebar for that docs instance
 sidebars/<plugin>.hooks.json   # GENERATED hook sidebar items
+sidebars/<plugin>.rest-api.json # GENERATED REST API sidebar items
 plugins.json                   # plugin id, prefixes, hookExcludePrefixes, hookExcludeNames, repo, status
 static/img/                    # site icon and favicon
 static/CNAME                   # docs.fluidcheckout.com
@@ -46,11 +51,31 @@ Routes:
 - `/` home page
 - `/eu-vat/`, `/lite/`, and `/pro/` overviews
 - `/<plugin>/hooks/` generated index, with the hand-written intro above the list
+- `/<plugin>/rest-api/` generated REST API overview (when `data/<plugin>/rest-api.json` exists)
+- `/<plugin>/rest-api/<resource-id>/` one page per REST resource
 - `/<plugin>/changelog/` release history, newest first
 - `/<plugin>/hooks/<hook-slug>` one page per hook
 - `/<plugin>/guides/...` guides, when that plugin's sidebar has a Guides category
 
 Each plugin is a separate Docusaurus docs plugin instance (`routeBasePath` in `plugins.json`), so a later release can version one plugin without versioning the others.
+
+## Generated REST API reference
+
+Public `fluid-checkout/v1` routes are documented from exported JSON, the same split as hooks: plugin repos export `data/<plugin>/rest-api.json`, and this site generates Markdown.
+
+- Source: `data/<plugin>/rest-api.json` (schema: `data/rest-api.schema.json`)
+- Hand-written intro: `rest-api-intro/<plugin>/index.md` (auth and examples). Edit that file, not the generated index.
+- Generated pages: `docs/<plugin>/rest-api/` and `sidebars/<plugin>.rest-api.json` — do not edit by hand
+- Wire error codes only (`fc_api_*` for `fluid-checkout/v1`). Do not include `featureErrorMap` or feature-layer codes
+- PRO publishes Address Book at `/pro/rest-api/` and `/pro/rest-api/address-book/`
+
+Plugin export (Address Book example, from the plugin root with LocalWP env):
+
+```bash
+npm run export:rest-api-docs > ../fluid-checkout-docs/data/pro/rest-api.json
+```
+
+Then run `npm run generate` in this repository.
 
 ## Add a guide
 

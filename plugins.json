@@ -46,6 +46,7 @@
       "hookPrefixes": ["fc_pro_", "fc_", "fc_adb_", "fc_gaa_"],
       "status": "available",
       "routeBasePath": "pro",
+      "restApiDataFile": "rest-api.json",
       "relatedChangelogs": ["lite"],
       "legacyChangelogs": [
         {

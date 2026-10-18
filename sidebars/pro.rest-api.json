@@ -1,0 +1,12 @@
+[
+  {
+    "type": "doc",
+    "id": "rest-api/index",
+    "label": "Overview"
+  },
+  {
+    "type": "doc",
+    "id": "rest-api/address-book",
+    "label": "Address Book"
+  }
+]
