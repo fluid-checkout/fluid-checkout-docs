@@ -55,10 +55,14 @@ export default function DocBreadcrumbsStructuredData(): ReactNode {
   }
 
   const plugin = (catalog.plugins as CatalogPlugin[]).find((entry) => entry.id === active.pluginId);
-  const route = (plugin?.routeBasePath || active.pluginData.path || '').replace(/^\/+|\/+$/g, '');
+  const compatibilityRoute = active.pluginId === 'compatibility' ? 'compatibility' : '';
+  const route = (plugin?.routeBasePath || compatibilityRoute || active.pluginData.path || '')
+    .replace(/^\/+|\/+$/g, '');
   if (!route) {
     return null;
   }
+  const sectionLabel =
+    plugin?.label || (active.pluginId === 'compatibility' ? 'Compatibility' : active.pluginId);
 
   const siteUrl = siteConfig.url;
   const onHooksIndex = metadata.id === 'hooks/index';
@@ -72,7 +76,7 @@ export default function DocBreadcrumbsStructuredData(): ReactNode {
       : '';
   const crumbs: Crumb[] = [
     {name: 'Home', item: absolute(siteUrl, '/')},
-    {name: plugin?.label || active.pluginId, item: absolute(siteUrl, `/${route}/`)},
+    {name: sectionLabel, item: absolute(siteUrl, `/${route}/`)},
   ];
 
   if (onHooksIndex || onHookPage) {

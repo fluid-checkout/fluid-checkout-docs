@@ -240,7 +240,23 @@ h6 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.25rem;
-  margin: 2rem 0 3rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.compat-home {
+  margin: 0 0 3rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--fc-border);
+  border-radius: var(--ifm-global-radius);
+  background: var(--fc-surface-muted);
+}
+
+.compat-home h2 {
+  margin-bottom: 0.5rem;
+}
+
+.compat-home p {
+  margin-bottom: 1rem;
 }
 
 .plugin-card {

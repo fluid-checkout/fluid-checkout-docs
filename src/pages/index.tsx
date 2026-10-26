@@ -67,6 +67,16 @@ export default function Home(): ReactNode {
       </header>
       <main className="container">
         <PluginList />
+        <section className="compat-home">
+          <Heading as="h2">Compatibility</Heading>
+          <p>
+            Fluid Checkout has explicit compatibility with 150+ plugins and 90+ themes, and most
+            other plugins and themes work out of the box.
+          </p>
+          <Link className="button button--primary" to="/compatibility/">
+            See compatible themes and plugins
+          </Link>
+        </section>
       </main>
     </Layout>
   );
