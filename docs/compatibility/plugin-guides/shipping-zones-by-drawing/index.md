@@ -19,4 +19,4 @@ This happens because Fluid Checkout triggers the Shipping Zones by Drawing plugi
 
 Refreshing the checkout page at this point seems to fix the problem temporarily and allowing the customer to complete the purchase.
 
-If you encounter this issue on your website, please [contact us support team](https://fluidcheckout.com/support/).
+If you encounter this issue on your website, please [contact our support team](https://fluidcheckout.com/support/).

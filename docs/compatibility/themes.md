@@ -124,7 +124,7 @@ If your theme is not on this list, it can still work. The list is the themes we 
 
 Some themes need small adjustments when they do not use the standard WooCommerce hooks or styles, and we are happy to look at yours.
 
-Try Fluid Checkout on your site. If anything looks off, contact us through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we will help you fix it.
+Try Fluid Checkout on your site. If anything looks off, [contact support](https://fluidcheckout.com/support/) and we will help you fix it.
 
 Looking for plugins? See [Plugins compatible with Fluid Checkout](/compatibility/plugins/).
 

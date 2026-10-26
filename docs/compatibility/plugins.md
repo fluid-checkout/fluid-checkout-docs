@@ -312,7 +312,7 @@ These pages are not part of the compatible plugin list. They describe a conflict
 
 If a plugin is not on this list, it can still work. The list is the plugins we have explicit compatibility code for. Most other plugins work out of the box.
 
-Try Fluid Checkout on your site. If you run into an issue, contact us through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we will help you fix it.
+Try Fluid Checkout on your site. If you run into an issue, [contact support](https://fluidcheckout.com/support/) and we will help you fix it.
 
 Looking for themes? See [Themes compatible with Fluid Checkout](/compatibility/themes/).
 

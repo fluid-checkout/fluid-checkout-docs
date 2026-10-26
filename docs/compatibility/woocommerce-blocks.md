@@ -99,7 +99,7 @@ To use the Order confirmation template, replace its blocks with the checkout sho
 ## Known limitations and workarounds
 
 - **Express checkout buttons:** Fluid Checkout is based on the classic shortcode-based checkout form, so payment gateways that only support the WooCommerce block-based checkout will not show their express payment buttons with the Fluid Checkout express checkout feature. See [Express checkout](https://fluidcheckout.com/docs/feature-express-checkout/) for the gateways this affects.
-- **Third-party plugins:** If a plugin does not work as expected while your page still holds the Checkout or Cart block, replace the block with the shortcode as shown above. If that does not help, [ask us on the support forum](https://wordpress.org/support/plugin/fluid-checkout/).
+- **Third-party plugins:** If a plugin does not work as expected while your page still holds the Checkout or Cart block, replace the block with the shortcode as shown above. If that does not help, [contact support](https://fluidcheckout.com/support/).
 - **Keep Fluid Checkout up to date:** Several issues on sites that use the block-based checkout were fixed in newer versions. Examples: the redirect to the cart page when the cart is empty (Lite 3.1.9 and 3.2.0), the order received page showing blank in some cases (Lite 3.1.9), and Advanced Coupons for WooCommerce Free when the checkout form was added as a block (Lite 4.1.0).
 
 ## FAQ
@@ -135,4 +135,4 @@ Yes. Fluid Checkout supports block themes that use the Site Editor (Full Site Ed
 - [Themes compatible with Fluid Checkout](/compatibility/themes/)
 - [Customizing the Cart and Checkout pages (WooCommerce)](https://woocommerce.com/document/woocommerce-store-editing/customizing-cart-and-checkout/)
 
-Still stuck? [Ask us on the support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we will help.
+Still stuck? [Contact support](https://fluidcheckout.com/support/) and we will help.
