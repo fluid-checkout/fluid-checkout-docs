@@ -35,6 +35,8 @@ hooks-intro/<plugin>/img/      # images for that intro
 rest-api-intro/<plugin>/index.md # hand-written intro for the REST API index
 rest-api-examples/<plugin>/<endpoint-slug>.md # optional hand-written REST examples; never generated
 docs/<plugin>/guides/          # hand-written guides, one folder per guide
+docs/compatibility/           # user-facing compatibility guides (hand-written)
+sidebars/compatibility.ts     # sidebar for those guides
 docs/<plugin>/hooks/           # GENERATED hook pages — do not edit
 docs/<plugin>/rest-api/        # GENERATED REST API pages — do not edit
 docs/<plugin>/changelog.md     # GENERATED changelog page — do not edit
@@ -58,6 +60,9 @@ Routes:
 - `/<plugin>/changelog/` release history, newest first
 - `/<plugin>/hooks/<hook-slug>` one page per hook
 - `/<plugin>/guides/...` guides, when that plugin's sidebar has a Guides category
+- `/compatibility/` themes, plugins, and WooCommerce block checkout guides
+
+Compatibility guides are a separate docs instance. They are not a plugin in `plugins.json`, so hook, changelog, and REST generation do not touch them. The pages are hand-written.
 
 Each plugin is a separate Docusaurus docs plugin instance (`routeBasePath` in `plugins.json`), so a later release can version one plugin without versioning the others.
 

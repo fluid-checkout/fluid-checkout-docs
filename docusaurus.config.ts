@@ -88,6 +88,18 @@ const config: Config = {
         exclude: ['**/README.md'],
       },
     ]),
+    // User-facing compatibility guides. Not a product plugin, so they stay out of
+    // plugins.json and are not part of hook, changelog, or REST generation.
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'compatibility',
+        path: 'docs/compatibility',
+        routeBasePath: 'compatibility',
+        sidebarPath: './sidebars/compatibility.ts',
+        exclude: ['**/README.md'],
+      },
+    ],
   ],
   themes: useAlgolia
     ? []
@@ -100,8 +112,14 @@ const config: Config = {
             indexDocs: true,
             indexBlog: false,
             indexPages: false,
-            docsRouteBasePath: availablePlugins.map((plugin) => plugin.routeBasePath),
-            docsDir: availablePlugins.map((plugin) => `docs/${plugin.id}`),
+            docsRouteBasePath: [
+              ...availablePlugins.map((plugin) => plugin.routeBasePath),
+              'compatibility',
+            ],
+            docsDir: [
+              ...availablePlugins.map((plugin) => `docs/${plugin.id}`),
+              'docs/compatibility',
+            ],
             // The default docs instance is disabled. Point version lookup at a real instance
             // so the search bar can render on pages outside the docs (home, 404, /search).
             docsPluginIdForPreferredVersion: availablePlugins[0]?.id,
@@ -131,6 +149,13 @@ const config: Config = {
           label: plugin.navLabel || plugin.label,
         })),
         {
+          type: 'doc' as const,
+          docId: 'index',
+          docsPluginId: 'compatibility',
+          position: 'left' as const,
+          label: 'Compatibility',
+        },
+        {
           type: 'search',
           position: 'right',
         },
@@ -143,6 +168,7 @@ const config: Config = {
           title: 'Fluid Checkout',
           items: [
             {label: 'Website', href: 'https://fluidcheckout.com/'},
+            {label: 'Compatibility', to: '/compatibility/'},
             ...plugins.flatMap((plugin) =>
               plugin.productUrl ? [{label: plugin.label, href: plugin.productUrl}] : [],
             ),
