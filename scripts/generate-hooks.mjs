@@ -4,6 +4,9 @@
  *
  * Reads data/<plugin>/actions.json and data/<plugin>/filters.json
  * and writes docs/<plugin>/hooks/*.md plus sidebars/<plugin>.hooks.json.
+ * Optional data/<plugin>/supplemental/<id>/*.json is merged into that output.
+ * Each supplemental directory has source.json with the pluginPrefix used to
+ * normalize those hooks before they join the plugin's own export.
  * When hooks-intro/<plugin>/index.md exists, that file is included above the
  * hook list on the index page.
  *
@@ -447,12 +450,17 @@ function main() {
       ...loadHooks(actionsPath, 'action'),
       ...loadHooks(filtersPath, 'filter'),
     ];
+    const supplemental = loadSupplementalSets(dataDir);
+    const merged = mergeSupplementalHooks(hooks, supplemental, plugin);
 
-    const result = prepareHooks(hooks, plugin, exclusions);
+    const result = prepareHooks(merged.hooks, plugin, exclusions);
     const examples = writePluginDocs(root, plugin, result.hooks);
     generatedPlugins += 1;
     console.log(`Generated ${result.hooks.length} hook page(s) for ${plugin.id}.`);
     for (const line of formatHookFilterLog(plugin, result)) {
+      console.log(line);
+    }
+    for (const line of formatSupplementalLog(plugin, supplemental, merged.collisions)) {
       console.log(line);
     }
     for (const line of formatExampleLog(plugin, examples)) {
@@ -485,6 +493,136 @@ function loadHooks(filePath, fallbackType) {
     ...hook,
     type: hook.type || fallbackType,
   }));
+}
+
+/**
+ * Normalize a supplemental hook with its own plugin prefix before it is merged.
+ * PRO's prefix is fc_pro. EU VAT hooks that use self::$plugin_prefix must be
+ * normalized with fc_vat first, or they would be published as fc_pro_*.
+ *
+ * @param {object} hook
+ * @param {string} pluginPrefix
+ * @returns {object}
+ */
+export function prenormalizeHook(hook, pluginPrefix) {
+  const name = normalizeHookName(String(hook?.name ?? ''), pluginPrefix);
+  const aliases = Array.isArray(hook?.aliases)
+    ? hook.aliases.map((alias) => normalizeHookName(String(alias ?? ''), pluginPrefix))
+    : hook?.aliases;
+  return {
+    ...hook,
+    name,
+    aliases,
+  };
+}
+
+/**
+ * Optional hook JSON under data/<plugin>/supplemental/<id>/.
+ * source.json must set pluginPrefix. These files are not the plugin export.
+ *
+ * @param {string} dataDir
+ * @returns {{id: string, pluginPrefix: string, hooks: object[]}[]}
+ */
+export function loadSupplementalSets(dataDir) {
+  const supplementalRoot = path.join(dataDir, 'supplemental');
+  if (!fs.existsSync(supplementalRoot)) {
+    return [];
+  }
+
+  /** @type {{id: string, pluginPrefix: string, hooks: object[]}[]} */
+  const sets = [];
+  const entries = fs.readdirSync(supplementalRoot, {withFileTypes: true})
+    .filter((entry) => entry.isDirectory())
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  for (const entry of entries) {
+    const dir = path.join(supplementalRoot, entry.name);
+    const sourcePath = path.join(dir, 'source.json');
+    if (!fs.existsSync(sourcePath)) {
+      throw new Error(`${path.relative(root, sourcePath)} is required and must set pluginPrefix.`);
+    }
+    const source = JSON.parse(fs.readFileSync(sourcePath, 'utf8'));
+    const pluginPrefix = String(source?.pluginPrefix ?? '').trim();
+    if (!pluginPrefix) {
+      throw new Error(`${path.relative(root, sourcePath)} is missing pluginPrefix.`);
+    }
+
+    const hooks = [
+      ...loadHooks(path.join(dir, 'actions.json'), 'action'),
+      ...loadHooks(path.join(dir, 'filters.json'), 'filter'),
+    ].map((hook) => prenormalizeHook(hook, pluginPrefix));
+
+    sets.push({id: entry.name, pluginPrefix, hooks});
+  }
+
+  return sets;
+}
+
+/**
+ * Append supplemental hooks whose normalized names are not already in the
+ * plugin export. A colliding name is skipped so the plugin export wins.
+ *
+ * @param {object[]} primaryHooks
+ * @param {ReturnType<typeof loadSupplementalSets>} sets
+ * @param {{pluginPrefix?: string}} plugin
+ * @returns {{hooks: object[], collisions: {name: string, source: string}[]}}
+ */
+export function mergeSupplementalHooks(primaryHooks, sets, plugin) {
+  const pluginPrefix = plugin?.pluginPrefix || '';
+  const names = new Set(
+    primaryHooks.map((hook) => normalizeHookName(String(hook?.name ?? ''), pluginPrefix)),
+  );
+  /** @type {{name: string, source: string}[]} */
+  const collisions = [];
+  const hooks = [...primaryHooks];
+
+  for (const set of sets) {
+    for (const hook of set.hooks) {
+      if (names.has(hook.name)) {
+        collisions.push({name: hook.name, source: set.id});
+        continue;
+      }
+      names.add(hook.name);
+      hooks.push(hook);
+    }
+  }
+
+  return {hooks, collisions};
+}
+
+/**
+ * @param {{id: string}} plugin
+ * @param {ReturnType<typeof loadSupplementalSets>} sets
+ * @param {{name: string, source: string}[]} collisions
+ * @returns {string[]}
+ */
+export function formatSupplementalLog(plugin, sets, collisions) {
+  if (!Array.isArray(sets) || sets.length === 0) {
+    return [];
+  }
+
+  /** @type {string[]} */
+  const lines = [];
+  for (const set of sets) {
+    const count = set.hooks.length;
+    const label = `${count} supplemental hook${count === 1 ? '' : 's'}`;
+    lines.push(
+      `Merged ${label} into ${plugin.id} from data/${plugin.id}/supplemental/${set.id} (pluginPrefix: ${set.pluginPrefix}).`,
+    );
+  }
+
+  if (collisions.length === 0) {
+    lines.push(`No hook-name collisions between ${plugin.id} data and supplemental hooks.`);
+    return lines;
+  }
+
+  const count = collisions.length;
+  const label = `${count} supplemental hook${count === 1 ? '' : 's'}`;
+  lines.push(`Skipped ${label} for ${plugin.id} that collide with an existing hook name:`);
+  for (const collision of collisions) {
+    lines.push(`  - ${collision.name} (data/${plugin.id}/supplemental/${collision.source})`);
+  }
+  return lines;
 }
 
 /**
@@ -583,6 +721,7 @@ export function writePluginDocs(rootDir, plugin, prepared) {
       '# Generated hook pages',
       '',
       `This directory is generated by \`scripts/generate-hooks.mjs\` from \`data/${plugin.id}/actions.json\` and \`data/${plugin.id}/filters.json\`.`,
+      ...supplementalReadmeLines(rootDir, plugin.id),
       '',
       'Do not edit these files by hand. Update the JSON source, or the generator, then run `npm run generate`.',
       '',
@@ -618,6 +757,43 @@ export function writePluginDocs(rootDir, plugin, prepared) {
   fs.writeFileSync(sidebarPath, `${JSON.stringify(renderSidebarItems(indexHooks), null, 2)}\n`);
 
   return {loaded, unused, moved, sections};
+}
+
+/**
+ * Lines for the generated hooks README when supplemental JSON is merged.
+ *
+ * @param {string} rootDir
+ * @param {string} pluginId
+ * @returns {string[]}
+ */
+function supplementalReadmeLines(rootDir, pluginId) {
+  const supplementalRoot = path.join(rootDir, 'data', pluginId, 'supplemental');
+  if (!fs.existsSync(supplementalRoot)) {
+    return [];
+  }
+
+  /** @type {string[]} */
+  const files = [];
+  const entries = fs.readdirSync(supplementalRoot, {withFileTypes: true})
+    .filter((entry) => entry.isDirectory())
+    .sort((a, b) => a.name.localeCompare(b.name));
+  for (const entry of entries) {
+    for (const name of ['actions.json', 'filters.json']) {
+      const filePath = path.join(supplementalRoot, entry.name, name);
+      if (fs.existsSync(filePath)) {
+        files.push(`data/${pluginId}/supplemental/${entry.name}/${name}`);
+      }
+    }
+  }
+  if (files.length === 0) {
+    return [];
+  }
+
+  return [
+    '',
+    'Supplemental hook JSON is merged into this output. It is not part of the plugin repository export:',
+    ...files.map((file) => `- \`${file}\``),
+  ];
 }
 
 /**

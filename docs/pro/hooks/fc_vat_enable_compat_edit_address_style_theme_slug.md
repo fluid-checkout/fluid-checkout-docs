@@ -10,7 +10,7 @@ description: "Filters whether to load the edit-address compatibility stylesheet 
 
 Filters whether to load the edit-address compatibility stylesheet for a theme.
 
-The dynamic portion of the hook name, `$theme_slug`, is a theme directory slug. The filter runs on the account edit-address screen for the parent theme (`get_template()`) and the active theme (`get_stylesheet()`). `css/compat/themes/compat-edit-address-{$theme_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address theme stylesheets ship with EU-VAT Assistant.
+The dynamic portion of the hook name, `$theme_slug`, is a theme directory slug. The filter runs on the account edit-address screen for the parent theme (`get_template()`) and the active theme (`get_stylesheet()`). `css/compat/themes/compat-edit-address-{$theme_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address theme stylesheets ship with Fluid Checkout PRO.
 
 ## Signature
 

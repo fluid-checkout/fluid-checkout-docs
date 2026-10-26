@@ -197,7 +197,7 @@ test('relatedChangelogs adds a trailing-slash link and is omitted when unset', (
   );
   const liteRelated = resolveRelatedChangelogs({id: 'pro', relatedChangelogs: ['lite']}, plugins);
   assert.equal(relatedChangelogTitle(liteRelated[0]), 'Lite changelog');
-  assert.deepEqual(resolveRelatedChangelogs({id: 'eu-vat'}, plugins), []);
+  assert.deepEqual(resolveRelatedChangelogs({id: 'sample'}, plugins), []);
   assert.throws(
     () => resolveRelatedChangelogs({id: 'lite', relatedChangelogs: ['missing']}, plugins),
     /unknown plugin "missing"/,
@@ -391,24 +391,11 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.match(pro.page, /Minimum required version for Fluid Checkout Lite is 4\.2\.0/);
   assert.equal(pro.readmeCount, 7);
 
-  const euVat = loadPluginChangelog(root, catalog.plugins.find((plugin) => plugin.id === 'eu-vat'), catalog.plugins);
-  assert.equal(euVat.changelogCount, 0);
-  assert.equal(euVat.merged.entries[0].version, '2.1.2');
-  assert.equal(euVat.merged.entries.at(-1).version, '0.1.0');
-  assert.match(euVat.page, /^title: "EU-VAT Assistant changelog"$/m);
-  assert.match(euVat.page, /^description: "Release history for EU-VAT Assistant, newest version first\."$/m);
-  assert.match(euVat.page, /from data\/eu-vat\/readme\.txt\. Do not edit/);
-  assert.doesNotMatch(euVat.page, /changelog\.md/);
-  assert.doesNotMatch(euVat.page, /Looking for /);
-  assert.doesNotMatch(euVat.page, /before merging into PRO/);
-
   assert.equal(lite.merged.entries.length, 101);
   assert.equal(lite.changelogCount, 86);
   assert.equal(pro.merged.entries.length, 77);
   assert.equal(pro.changelogCount, 70);
-  assert.equal(euVat.merged.entries.length, 26);
   assert.deepEqual(counts, {
-    'eu-vat': 26,
     lite: 101,
     pro: 77,
   });
@@ -441,15 +428,15 @@ test('changelog format page is generated and is the only published semver.org li
   assert.doesNotMatch(page, /feature are removed/);
   assert.match(page, /\[Fluid Checkout Lite\]\(\/lite\/changelog\/\)/);
   assert.match(page, /\[Fluid Checkout PRO\]\(\/pro\/changelog\/\)/);
-  assert.match(page, /\[EU-VAT Assistant\]\(\/eu-vat\/changelog\/\)/);
+  assert.doesNotMatch(page, /\/eu-vat\//);
+  assert.doesNotMatch(page, /EU-VAT Assistant/);
   assert.match(page, /\[Address Book\]\(\/pro\/changelog\/#address-book\) \(part of the Fluid Checkout PRO changelog\)/);
   assert.match(page, /\[Google Address Autocomplete\]\(\/pro\/changelog\/#google-address-autocomplete\) \(part of the Fluid Checkout PRO changelog\)/);
   const lite = page.indexOf('[Fluid Checkout Lite](/lite/changelog/)');
   const pro = page.indexOf('[Fluid Checkout PRO](/pro/changelog/)');
-  const euVat = page.indexOf('[EU-VAT Assistant](/eu-vat/changelog/)');
   const addressBook = page.indexOf('[Address Book](/pro/changelog/#address-book)');
   const autocomplete = page.indexOf('[Google Address Autocomplete](/pro/changelog/#google-address-autocomplete)');
-  assert.ok(lite < pro && pro < euVat && euVat < addressBook && addressBook < autocomplete);
+  assert.ok(lite < pro && pro < addressBook && addressBook < autocomplete);
 
   const published = [
     ...markdownFiles(path.join(root, 'docs')),

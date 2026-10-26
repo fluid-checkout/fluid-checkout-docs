@@ -5,7 +5,10 @@ import test from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {
   formatHookFilterLog,
+  formatSupplementalLog,
+  loadSupplementalSets,
   matchesHookPrefix,
+  mergeSupplementalHooks,
   prepareHooks,
   resolveHookExclusions,
 } from './generate-hooks.mjs';
@@ -131,8 +134,8 @@ test('lite prefix fc_ keeps fc_ and fc_pro_ names and skips woocommerce_*', () =
   );
 });
 
-test('eu-vat prefix keeps dynamic fc_vat_ names and skips woocommerce_* and bare fc_', () => {
-  const plugin = fixture['eu-vat'];
+test('fc_vat_ prefix keeps dynamic names and skips woocommerce_* and bare fc_', () => {
+  const plugin = fixture['vat-prefix'];
   const result = prepareHooks(sourceHooks(plugin), plugin);
   assert.deepEqual(result.hooks.map((hook) => hook.name), [
     'fc_vat_admin_notices',
@@ -153,7 +156,7 @@ test('logs skipped hook names and dropped aliases', () => {
   const result = prepareHooks(sourceHooks(plugin), plugin);
   const lines = formatHookFilterLog(plugin, result);
 
-  assert.equal(lines[0], 'Skipped 3 hooks for pro (hookPrefixes: fc_pro_, fc_, fc_adb_, fc_gaa_):');
+  assert.equal(lines[0], 'Skipped 3 hooks for pro (hookPrefixes: fc_pro_, fc_, fc_adb_, fc_gaa_, fc_vat_):');
   assert.ok(lines.includes('  - woocommerce_checkout_fields'));
   assert.ok(lines.includes("  - woocommerce_{action} (from 'woocommerce_' . $action)"));
   assert.ok(lines.includes('  - wc_od_delivery_date'));
@@ -164,7 +167,7 @@ test('logs skipped hook names and dropped aliases', () => {
 
 test('logs a zero skip count when every hook matches', () => {
   const plugin = {
-    id: 'eu-vat',
+    id: 'vat-prefix',
     pluginPrefix: 'fc_vat',
     hookPrefixes: ['fc_vat_'],
   };
@@ -173,7 +176,7 @@ test('logs a zero skip count when every hook matches', () => {
     plugin,
   );
   assert.deepEqual(formatHookFilterLog(plugin, result), [
-    'Skipped 0 hooks for eu-vat (hookPrefixes: fc_vat_).',
+    'Skipped 0 hooks for vat-prefix (hookPrefixes: fc_vat_).',
   ]);
 });
 
@@ -217,6 +220,7 @@ test('catalog hookExcludePrefixes skip fc_licenses_ after the allowlist', () => 
   const pro = catalog.plugins.find((entry) => entry.id === 'pro');
   const proHooks = [
     {name: 'fc_checkout_steps', type: 'action', doc: {description: 'Checkout steps.'}},
+    {name: 'fc_vat_js_settings', type: 'filter', doc: {description: 'EU VAT script settings.'}},
     {
       name: 'fc_pro_checkout_steps',
       type: 'filter',
@@ -236,6 +240,7 @@ test('catalog hookExcludePrefixes skip fc_licenses_ after the allowlist', () => 
   assert.deepEqual(proResult.hooks.map((hook) => hook.name), [
     'fc_checkout_steps',
     'fc_pro_checkout_steps',
+    'fc_vat_js_settings',
   ]);
   assert.deepEqual(proResult.skipped.map((hook) => hook.name), [
     'fc_licenses_is_activated',
@@ -265,7 +270,7 @@ test('catalog hookExcludePrefixes skip fc_licenses_ after the allowlist', () => 
   const lines = formatHookFilterLog(pro, proResult);
   assert.equal(
     lines[0],
-    'Skipped 3 hooks for pro (hookPrefixes: fc_pro_, fc_, fc_adb_, fc_gaa_; hookExcludePrefixes: fc_licenses_, fc_lcs_; hookExcludeNames: fc_admin_license_key_script_url, fc_admin_license_key_style_url, fc_admin_field_type_license_exists, fc_show_settings_license_keys):',
+    'Skipped 3 hooks for pro (hookPrefixes: fc_pro_, fc_, fc_adb_, fc_gaa_, fc_vat_; hookExcludePrefixes: fc_licenses_, fc_lcs_; hookExcludeNames: fc_admin_license_key_script_url, fc_admin_license_key_style_url, fc_admin_field_type_license_exists, fc_show_settings_license_keys):',
   );
   assert.ok(lines.includes('  - fc_licenses_is_activated'));
   assert.ok(lines.includes("  - fc_licenses_client_{action} (from 'fc_licenses_client_' . $action)"));
@@ -289,26 +294,6 @@ test('catalog hookExcludePrefixes skip fc_licenses_ after the allowlist', () => 
     'fc_licenses_client_{action}',
   ]);
 
-  const euVat = catalog.plugins.find((entry) => entry.id === 'eu-vat');
-  const euVatResult = prepareHooks(
-    [
-      {name: 'fc_vat_js_settings', type: 'filter', doc: {description: 'Script settings.'}},
-      ...licenseHooks,
-    ],
-    euVat,
-    exclusions,
-  );
-  assert.deepEqual(euVatResult.hooks.map((hook) => hook.name), ['fc_vat_js_settings']);
-  assert.deepEqual(euVatResult.skipped.map((hook) => hook.name), [
-    'fc_licenses_is_activated',
-    'fc_licenses_client_{action}',
-  ]);
-  const euVatLines = formatHookFilterLog(euVat, euVatResult);
-  assert.equal(
-    euVatLines[0],
-    'Skipped 2 hooks for eu-vat (hookPrefixes: fc_vat_; hookExcludePrefixes: fc_licenses_, fc_lcs_; hookExcludeNames: fc_admin_license_key_script_url, fc_admin_license_key_style_url, fc_admin_field_type_license_exists, fc_show_settings_license_keys):',
-  );
-  assert.ok(euVatLines.includes('  - fc_licenses_is_activated'));
 });
 
 test('catalog exclusions skip fc_lcs_ prefixes and internal license hook names', () => {
@@ -316,7 +301,6 @@ test('catalog exclusions skip fc_lcs_ prefixes and internal license hook names',
   const exclusions = resolveHookExclusions(catalog);
   const pro = catalog.plugins.find((entry) => entry.id === 'pro');
   const lite = catalog.plugins.find((entry) => entry.id === 'lite');
-  const euVat = catalog.plugins.find((entry) => entry.id === 'eu-vat');
   const internalHooks = [
     ...internalLicenseNames.map((name) => ({
       name,
@@ -399,8 +383,8 @@ test('catalog exclusions skip fc_lcs_ prefixes and internal license hook names',
   assert.ok(lines.includes('  - fc_lcs_activated (on fc_checkout_steps)'));
   assert.ok(lines.includes('  - fc_show_settings_license_keys (on fc_checkout_steps)'));
 
-  for (const plugin of [lite, euVat]) {
-    const keptName = plugin.id === 'eu-vat' ? 'fc_vat_js_settings' : 'fc_checkout_steps';
+  for (const plugin of [lite]) {
+    const keptName = 'fc_checkout_steps';
     const result = prepareHooks(
       [
         {name: keptName, type: 'filter', doc: {description: 'Kept hook.'}},
@@ -416,43 +400,52 @@ test('catalog exclusions skip fc_lcs_ prefixes and internal license hook names',
   }
 });
 
-test('eu-vat fixture keeps all 16 fc_vat_ hooks and drops nothing', () => {
+test('supplemental EU VAT hooks merge into PRO without colliding', () => {
   const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
-  const plugin = catalog.plugins.find((entry) => entry.id === 'eu-vat');
-  const actions = JSON.parse(fs.readFileSync(path.join(root, 'data/eu-vat/actions.json'), 'utf8'));
-  const filters = JSON.parse(fs.readFileSync(path.join(root, 'data/eu-vat/filters.json'), 'utf8'));
-  const sidebar = JSON.parse(fs.readFileSync(path.join(root, 'sidebars/eu-vat.hooks.json'), 'utf8'));
-  const result = prepareHooks(
-    [...actions.hooks, ...filters.hooks],
-    plugin,
-    resolveHookExclusions(catalog),
-  );
-
-  assert.deepEqual(plugin.hookPrefixes, ['fc_vat_']);
   const pro = catalog.plugins.find((entry) => entry.id === 'pro');
-  assert.deepEqual(pro.hookPrefixes, ['fc_pro_', 'fc_', 'fc_adb_', 'fc_gaa_']);
-  assert.deepEqual(fixture.pro.hookPrefixes, pro.hookPrefixes);
-  assert.equal(result.skipped.length, 0);
-  assert.equal(result.droppedAliases.length, 0);
-  assert.equal(result.hooks.length, 16);
-  assert.ok(result.hooks.every((hook) => hook.name.startsWith('fc_vat_')));
+  const exclusions = resolveHookExclusions(catalog);
+  const actions = JSON.parse(fs.readFileSync(path.join(root, 'data/pro/actions.json'), 'utf8'));
+  const filters = JSON.parse(fs.readFileSync(path.join(root, 'data/pro/filters.json'), 'utf8'));
+  const supplementalFilters = JSON.parse(fs.readFileSync(path.join(root, 'data/pro/supplemental/eu-vat/filters.json'), 'utf8'));
+  const supplementalActions = JSON.parse(fs.readFileSync(path.join(root, 'data/pro/supplemental/eu-vat/actions.json'), 'utf8'));
+  assert.equal(JSON.stringify(actions).includes('fc_vat_'), false);
+  assert.equal(JSON.stringify(filters).includes('fc_vat_'), false);
+  assert.equal(supplementalActions.hooks.length, 0);
 
+  const sets = loadSupplementalSets(path.join(root, 'data', 'pro'));
+  assert.deepEqual(sets.map((set) => set.id), ['eu-vat']);
+  assert.equal(sets[0].pluginPrefix, 'fc_vat');
+  const merged = mergeSupplementalHooks([...actions.hooks, ...filters.hooks], sets, pro);
+  assert.deepEqual(merged.collisions, []);
+  assert.deepEqual(formatSupplementalLog(pro, sets, merged.collisions), [
+    'Merged 16 supplemental hooks into pro from data/pro/supplemental/eu-vat (pluginPrefix: fc_vat).',
+    'No hook-name collisions between pro data and supplemental hooks.',
+  ]);
+
+  const result = prepareHooks(merged.hooks, pro, exclusions);
+  const vatHooks = result.hooks.filter((hook) => hook.name.startsWith('fc_vat_'));
+  assert.deepEqual(pro.hookPrefixes, ['fc_pro_', 'fc_', 'fc_adb_', 'fc_gaa_', 'fc_vat_']);
+  assert.deepEqual(fixture.pro.hookPrefixes, pro.hookPrefixes);
+  assert.equal(vatHooks.length, 16);
+  assert.equal(supplementalFilters.hooks.length, 16);
+  assert.ok(vatHooks.every((hook) => hook.name.startsWith('fc_vat_')));
+
+  const sidebar = JSON.parse(fs.readFileSync(path.join(root, 'sidebars/pro.hooks.json'), 'utf8'));
   const sidebarLabels = sidebar
     .flatMap((item) => (Array.isArray(item.items) ? item.items : []))
     .map((item) => item.label);
-  assert.deepEqual(
-    result.hooks.map((hook) => hook.name),
-    sidebarLabels,
-  );
+  for (const hook of vatHooks) {
+    assert.ok(sidebarLabels.includes(hook.name), hook.name);
+  }
 
-  const compat = result.hooks.find((hook) => hook.name === 'fc_vat_enable_compat_plugin_{plugin_slug}');
+  const compat = vatHooks.find((hook) => hook.name === 'fc_vat_enable_compat_plugin_{plugin_slug}');
   assert.ok(compat.hook.aliases.includes('fc_vat_enable_compat_plugin_woocommerce-germanized-pro'));
   assert.ok(compat.hook.aliases.includes('fc_vat_enable_compat_plugin_woocommerce-checkout-field-editor-pro'));
+  const notices = vatHooks.find((hook) => hook.name === 'fc_vat_admin_notices');
+  assert.equal(notices.name, 'fc_vat_admin_notices');
 });
 
 test('hooks index places the hand-written intro above the hook list', () => {
-  const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
-  const intro = readHooksIntro('eu-vat', root);
   const liteIntro = readHooksIntro('lite', root);
   const proIntro = readHooksIntro('pro', root);
   assert.equal(CODE_SNIPPETS_ARTICLE_URL, 'https://fluidcheckout.com/docs/how-to-add-code-snippets/');
@@ -463,31 +456,16 @@ test('hooks index places the hand-written intro above the hook list', () => {
     '',
     `[How to safely add code snippets to your WooCommerce website](${CODE_SNIPPETS_ARTICLE_URL})`,
   ].join('\n');
-  for (const text of [intro, liteIntro, proIntro]) {
+  for (const text of [liteIntro, proIntro]) {
     assert.match(text, /## Best practices\n/);
     assert.ok(text.includes(bestPractices));
     assert.doesNotMatch(text, /Add your own code|Attach a callback|functions\.php|staging\.fluidcheckout/);
     assert.doesNotMatch(text, /\{\{CODE_SNIPPETS_ARTICLE_URL\}\}/);
   }
   assert.equal(
-    [intro, liteIntro, proIntro].join('\n').split(CODE_SNIPPETS_ARTICLE_URL).length - 1,
-    3,
+    [liteIntro, proIntro].join('\n').split(CODE_SNIPPETS_ARTICLE_URL).length - 1,
+    2,
   );
-
-  assert.match(intro, /^## What hooks are\n/);
-  assert.match(intro, /## Best practices\n/);
-  assert.match(intro, /## Actions and filters\n/);
-  assert.match(intro, /## Read a hook page\n/);
-  assert.match(intro, /## Example\n/);
-  assert.match(intro, /## Dynamic hook names\n/);
-  assert.match(intro, /@site\/hooks-intro\/eu-vat\/img\/hooks-overview\.svg/);
-  assert.match(intro, /\]\(#filters\)/);
-  assert.match(intro, /fc_vat_number_field_args/);
-  assert.match(intro, /fc_vat_enable_compat_plugin_\{plugin_slug\}/);
-  assert.match(intro, /fc_vat_enable_compat_plugin_\{\$plugin_slug\}/);
-  assert.doesNotMatch(intro, /\{'\{'\}/);
-  assert.doesNotMatch(intro, /\]\(\/eu-vat\/hooks\)/);
-  assert.doesNotMatch(intro, /Getting started with EU-VAT Assistant hooks/);
 
   assert.match(liteIntro, /^## What hooks are\n/);
   assert.match(liteIntro, /\[actions\]\(#actions\)/);
@@ -504,39 +482,51 @@ test('hooks index places the hand-written intro above the hook list', () => {
   assert.match(proIntro, /fc_pro_order_received_successful/);
   assert.match(proIntro, /`fc_adb_`/);
   assert.match(proIntro, /`fc_gaa_`/);
+  assert.match(proIntro, /`fc_vat_`/);
   assert.match(proIntro, /alongside Fluid Checkout Lite/);
+  assert.match(proIntro, /## EU VAT hooks/);
+  assert.match(proIntro, /## Dynamic hook names/);
+  assert.match(proIntro, /@site\/hooks-intro\/pro\/img\/eu-vat-hooks-overview\.svg/);
+  assert.match(proIntro, /fc_vat_number_field_args/);
+  assert.match(proIntro, /fc_vat_enable_compat_plugin_\{plugin_slug\}/);
+  assert.match(proIntro, /fc_vat_enable_compat_plugin_\{\$plugin_slug\}/);
+  assert.match(proIntro, /\/pro\/hooks\/fc_vat_number_field_args\//);
+  assert.doesNotMatch(proIntro, /\{'\{'\}/);
+  assert.doesNotMatch(proIntro, /\/eu-vat\//);
+  assert.doesNotMatch(proIntro, /EU-VAT Assistant/);
   assert.doesNotMatch(proIntro, /\]\(\/pro\/hooks\)/);
   assert.doesNotMatch(`${liteIntro}\n${proIntro}`, /fc_licenses|Fluid Licenses/);
 
-  const source = fs.readFileSync(path.join(root, 'hooks-intro/eu-vat/index.md'), 'utf8');
-  assert.match(source, /\]\(\.\/img\/hooks-overview\.svg\)/);
-  assert.equal(fs.existsSync(path.join(root, 'hooks-intro/eu-vat/img/hooks-overview.svg')), true);
-  assert.equal(fs.existsSync(path.join(root, 'docs/eu-vat/guides/getting-started/index.md')), false);
+  const source = fs.readFileSync(path.join(root, 'hooks-intro/pro/index.md'), 'utf8');
+  assert.match(source, /\]\(\.\/img\/eu-vat-hooks-overview\.svg\)/);
+  assert.equal(fs.existsSync(path.join(root, 'hooks-intro/pro/img/eu-vat-hooks-overview.svg')), true);
+  assert.equal(fs.existsSync(path.join(root, 'hooks-intro/eu-vat/index.md')), false);
+  assert.equal(fs.existsSync(path.join(root, 'docs/eu-vat')), false);
 
   const index = renderHooksIndex(
     [
       {name: 'fc_vat_admin_notices', slug: 'fc_vat_admin_notices', type: 'action', summary: 'Notices.'},
       {name: 'fc_vat_js_settings', slug: 'fc_vat_js_settings', type: 'filter', summary: 'Settings.'},
     ],
-    'EU-VAT Assistant',
-    intro,
+    'Sample plugin',
+    proIntro,
   );
-  assert.match(index, /title: "EU-VAT Assistant hooks reference"/);
-  assert.match(index, /description: "Reference for the actions and filters in EU-VAT Assistant."/);
+  assert.match(index, /title: "Sample plugin hooks reference"/);
+  assert.match(index, /description: "Reference for the actions and filters in Sample plugin."/);
   assert.match(index, /sidebar_label: Using PHP hooks/);
   const heading = index.indexOf('# Using PHP hooks');
   const introHeading = index.indexOf('## What hooks are');
   const body = index.slice(heading);
-  const listSentence = body.indexOf('Actions and filters in EU-VAT Assistant.');
+  const listSentence = body.indexOf('Actions and filters in Sample plugin.');
   const actions = body.indexOf('\n## Actions\n');
   const filters = body.indexOf('\n## Filters\n');
   assert.ok(heading > 0 && introHeading > heading && listSentence > 0 && actions > listSentence && filters > actions);
 
   const plain = renderHooksIndex(
     [{name: 'fc_vat_js_settings', slug: 'fc_vat_js_settings', type: 'filter', summary: 'Settings.'}],
-    'EU-VAT Assistant',
+    'Sample plugin',
   );
-  assert.match(plain, /title: "EU-VAT Assistant hooks reference"/);
+  assert.match(plain, /title: "Sample plugin hooks reference"/);
   assert.match(plain, /# Using PHP hooks/);
   assert.match(plain, /- \[`fc_vat_js_settings`\]\(\.\/fc_vat_js_settings\) Settings\./);
   assert.doesNotMatch(plain, /## What hooks are/);
@@ -624,18 +614,18 @@ test('intro image rewrite skips fenced code and absolute links', () => {
     '![Not an image](./img/hooks-overview.svg)',
     '```',
     '',
-    '[hooks](/eu-vat/hooks)',
+    '[hooks](/pro/hooks/)',
   ].join('\n');
   assert.match(stripFrontMatter(markdown).trim(), /^!\[Diagram\]/);
   assert.doesNotMatch(stripFrontMatter(markdown), /^---/);
   const rewritten = rewriteIntroImagePaths(
     stripFrontMatter(markdown),
-    '/repo/hooks-intro/eu-vat',
+    '/repo/hooks-intro/pro',
     '/repo',
   );
-  assert.match(rewritten, /!\[Diagram\]\(@site\/hooks-intro\/eu-vat\/img\/hooks-overview\.svg\)/);
+  assert.match(rewritten, /!\[Diagram\]\(@site\/hooks-intro\/pro\/img\/hooks-overview\.svg\)/);
   assert.match(rewritten, /```md\n!\[Not an image\]\(\.\/img\/hooks-overview\.svg\)\n```/);
-  assert.match(rewritten, /\(\/eu-vat\/hooks\)/);
+  assert.match(rewritten, /\(\/pro\/hooks\/\)/);
 });
 
 test('publishes one page per normalized name, first by file then line', () => {
@@ -666,10 +656,10 @@ test('publishes one page per normalized name, first by file then line', () => {
   );
   assert.equal(
     hooksIndexDescription({id: 'pro', label: 'Fluid Checkout PRO'}),
-    'Reference for every Fluid Checkout PRO action and filter, including Address Book and Google Address Autocomplete hooks.',
+    'Reference for every Fluid Checkout PRO action and filter, including Address Book, Google Address Autocomplete, and EU VAT hooks.',
   );
   assert.equal(
-    hooksIndexDescription({id: 'eu-vat', label: 'EU-VAT Assistant'}),
-    'Reference for every EU-VAT Assistant filter, including the signature, parameters, and source file.',
+    hooksIndexDescription({id: 'sample', label: 'Sample plugin'}),
+    'Reference for the actions and filters in Sample plugin.',
   );
 });

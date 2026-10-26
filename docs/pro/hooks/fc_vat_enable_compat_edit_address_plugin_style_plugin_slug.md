@@ -10,7 +10,7 @@ description: "Filters whether to load the edit-address compatibility stylesheet 
 
 Filters whether to load the edit-address compatibility stylesheet for a plugin.
 
-The dynamic portion of the hook name, `$plugin_slug`, is the directory name of an active plugin, or the main file name without `.php` for a single-file plugin. The filter runs on the account edit-address screen for every active plugin. `css/compat/plugins/compat-edit-address-{$plugin_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address plugin stylesheets ship with EU-VAT Assistant. Germanized for WooCommerce Pro registers a callback on `fc_vat_enable_compat_edit_address_plugin_style_woocommerce-germanized-pro`.
+The dynamic portion of the hook name, `$plugin_slug`, is the directory name of an active plugin, or the main file name without `.php` for a single-file plugin. The filter runs on the account edit-address screen for every active plugin. `css/compat/plugins/compat-edit-address-{$plugin_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address plugin stylesheets ship with Fluid Checkout PRO. Germanized for WooCommerce Pro registers a callback on `fc_vat_enable_compat_edit_address_plugin_style_woocommerce-germanized-pro`.
 
 ## Signature
 

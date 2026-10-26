@@ -7,7 +7,7 @@
             "type": "filter",
             "doc": {
                 "description": "Filters whether to load the account-details compatibility stylesheet for a plugin.",
-                "long_description": "The dynamic portion of the hook name, `$plugin_slug`, is the directory name of an active plugin, or the main file name without `.php` for a single-file plugin. The filter runs on the account edit-account screen for every active plugin. `css/compat/plugins/compat-account-details-{$plugin_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No account-details plugin stylesheets ship with EU-VAT Assistant. Germanized for WooCommerce Pro registers a callback on `fc_vat_enable_compat_account_details_plugin_style_woocommerce-germanized-pro`.",
+                "long_description": "The dynamic portion of the hook name, `$plugin_slug`, is the directory name of an active plugin, or the main file name without `.php` for a single-file plugin. The filter runs on the account edit-account screen for every active plugin. `css/compat/plugins/compat-account-details-{$plugin_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No account-details plugin stylesheets ship with Fluid Checkout PRO. Germanized for WooCommerce Pro registers a callback on `fc_vat_enable_compat_account_details_plugin_style_woocommerce-germanized-pro`.",
                 "tags": [
                     {
                         "name": "since",
@@ -22,7 +22,7 @@
                         "variable": "$enabled"
                     }
                 ],
-                "long_description_html": "<p>The dynamic portion of the hook name, <code>$plugin_slug</code>, is the directory name of an active plugin, or the main file name without <code>.php</code> for a single-file plugin. The filter runs on the account edit-account screen for every active plugin. <code>css/compat/plugins/compat-account-details-{$plugin_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters. No account-details plugin stylesheets ship with EU-VAT Assistant. Germanized for WooCommerce Pro registers a callback on <code>fc_vat_enable_compat_account_details_plugin_style_woocommerce-germanized-pro</code>.</p>"
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$plugin_slug</code>, is the directory name of an active plugin, or the main file name without <code>.php</code> for a single-file plugin. The filter runs on the account edit-account screen for every active plugin. <code>css/compat/plugins/compat-account-details-{$plugin_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters. No account-details plugin stylesheets ship with Fluid Checkout PRO. Germanized for WooCommerce Pro registers a callback on <code>fc_vat_enable_compat_account_details_plugin_style_woocommerce-germanized-pro</code>.</p>"
             },
             "args": 1
         },
@@ -67,7 +67,7 @@
             "type": "filter",
             "doc": {
                 "description": "Filters whether to load the edit-address compatibility stylesheet for a plugin.",
-                "long_description": "The dynamic portion of the hook name, `$plugin_slug`, is the directory name of an active plugin, or the main file name without `.php` for a single-file plugin. The filter runs on the account edit-address screen for every active plugin. `css/compat/plugins/compat-edit-address-{$plugin_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address plugin stylesheets ship with EU-VAT Assistant. Germanized for WooCommerce Pro registers a callback on `fc_vat_enable_compat_edit_address_plugin_style_woocommerce-germanized-pro`.",
+                "long_description": "The dynamic portion of the hook name, `$plugin_slug`, is the directory name of an active plugin, or the main file name without `.php` for a single-file plugin. The filter runs on the account edit-address screen for every active plugin. `css/compat/plugins/compat-edit-address-{$plugin_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address plugin stylesheets ship with Fluid Checkout PRO. Germanized for WooCommerce Pro registers a callback on `fc_vat_enable_compat_edit_address_plugin_style_woocommerce-germanized-pro`.",
                 "tags": [
                     {
                         "name": "since",
@@ -82,7 +82,7 @@
                         "variable": "$enabled"
                     }
                 ],
-                "long_description_html": "<p>The dynamic portion of the hook name, <code>$plugin_slug</code>, is the directory name of an active plugin, or the main file name without <code>.php</code> for a single-file plugin. The filter runs on the account edit-address screen for every active plugin. <code>css/compat/plugins/compat-edit-address-{$plugin_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address plugin stylesheets ship with EU-VAT Assistant. Germanized for WooCommerce Pro registers a callback on <code>fc_vat_enable_compat_edit_address_plugin_style_woocommerce-germanized-pro</code>.</p>"
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$plugin_slug</code>, is the directory name of an active plugin, or the main file name without <code>.php</code> for a single-file plugin. The filter runs on the account edit-address screen for every active plugin. <code>css/compat/plugins/compat-edit-address-{$plugin_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address plugin stylesheets ship with Fluid Checkout PRO. Germanized for WooCommerce Pro registers a callback on <code>fc_vat_enable_compat_edit_address_plugin_style_woocommerce-germanized-pro</code>.</p>"
             },
             "args": 1
         },
@@ -92,7 +92,7 @@
             "type": "filter",
             "doc": {
                 "description": "Filters whether to load the edit-address compatibility stylesheet for a theme.",
-                "long_description": "The dynamic portion of the hook name, `$theme_slug`, is a theme directory slug. The filter runs on the account edit-address screen for the parent theme (`get_template()`) and the active theme (`get_stylesheet()`). `css/compat/themes/compat-edit-address-{$theme_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address theme stylesheets ship with EU-VAT Assistant.",
+                "long_description": "The dynamic portion of the hook name, `$theme_slug`, is a theme directory slug. The filter runs on the account edit-address screen for the parent theme (`get_template()`) and the active theme (`get_stylesheet()`). `css/compat/themes/compat-edit-address-{$theme_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address theme stylesheets ship with Fluid Checkout PRO.",
                 "tags": [
                     {
                         "name": "since",
@@ -107,7 +107,7 @@
                         "variable": "$enabled"
                     }
                 ],
-                "long_description_html": "<p>The dynamic portion of the hook name, <code>$theme_slug</code>, is a theme directory slug. The filter runs on the account edit-address screen for the parent theme (<code>get_template()</code>) and the active theme (<code>get_stylesheet()</code>). <code>css/compat/themes/compat-edit-address-{$theme_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address theme stylesheets ship with EU-VAT Assistant.</p>"
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$theme_slug</code>, is a theme directory slug. The filter runs on the account edit-address screen for the parent theme (<code>get_template()</code>) and the active theme (<code>get_stylesheet()</code>). <code>css/compat/themes/compat-edit-address-{$theme_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters. No edit-address theme stylesheets ship with Fluid Checkout PRO.</p>"
             },
             "args": 1
         },
@@ -153,7 +153,7 @@
             "type": "filter",
             "doc": {
                 "description": "Filters whether to load the checkout compatibility stylesheet for a plugin.",
-                "long_description": "The dynamic portion of the hook name, `$plugin_slug`, is the directory name of an active plugin, or the main file name without `.php` for a single-file plugin. The filter runs for every active plugin. `css/compat/plugins/compat-{$plugin_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No checkout plugin stylesheets ship with EU-VAT Assistant. Germanized for WooCommerce Pro registers a callback on `fc_vat_enable_compat_plugin_style_woocommerce-germanized-pro`.",
+                "long_description": "The dynamic portion of the hook name, `$plugin_slug`, is the directory name of an active plugin, or the main file name without `.php` for a single-file plugin. The filter runs for every active plugin. `css/compat/plugins/compat-{$plugin_slug}.css` is loaded only when the filtered value is exactly `true` and that file exists. Returning anything other than `true` (for example `false`) skips it. Checkout, edit-address, and account-details styles are separate filters. No checkout plugin stylesheets ship with Fluid Checkout PRO. Germanized for WooCommerce Pro registers a callback on `fc_vat_enable_compat_plugin_style_woocommerce-germanized-pro`.",
                 "tags": [
                     {
                         "name": "since",
@@ -168,7 +168,7 @@
                         "variable": "$enabled"
                     }
                 ],
-                "long_description_html": "<p>The dynamic portion of the hook name, <code>$plugin_slug</code>, is the directory name of an active plugin, or the main file name without <code>.php</code> for a single-file plugin. The filter runs for every active plugin. <code>css/compat/plugins/compat-{$plugin_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters. No checkout plugin stylesheets ship with EU-VAT Assistant. Germanized for WooCommerce Pro registers a callback on <code>fc_vat_enable_compat_plugin_style_woocommerce-germanized-pro</code>.</p>"
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$plugin_slug</code>, is the directory name of an active plugin, or the main file name without <code>.php</code> for a single-file plugin. The filter runs for every active plugin. <code>css/compat/plugins/compat-{$plugin_slug}.css</code> is loaded only when the filtered value is exactly <code>true</code> and that file exists. Returning anything other than <code>true</code> (for example <code>false</code>) skips it. Checkout, edit-address, and account-details styles are separate filters. No checkout plugin stylesheets ship with Fluid Checkout PRO. Germanized for WooCommerce Pro registers a callback on <code>fc_vat_enable_compat_plugin_style_woocommerce-germanized-pro</code>.</p>"
             },
             "args": 1
         },
@@ -370,7 +370,7 @@
             "type": "filter",
             "doc": {
                 "description": "Filters the countries offered in the Reverse Charge Exceptions setting.",
-                "long_description": "The value passed to the filter is the full WooCommerce country list, keyed by country code. EU-VAT Assistant also attaches callbacks that limit the list to EU countries and remove the shop country.",
+                "long_description": "The value passed to the filter is the full WooCommerce country list, keyed by country code. Fluid Checkout PRO also attaches callbacks that limit the list to EU countries and remove the shop country.",
                 "tags": [
                     {
                         "name": "since",
@@ -385,7 +385,7 @@
                         "variable": "$countries"
                     }
                 ],
-                "long_description_html": "<p>The value passed to the filter is the full WooCommerce country list, keyed by country code. EU-VAT Assistant also attaches callbacks that limit the list to EU countries and remove the shop country.</p>"
+                "long_description_html": "<p>The value passed to the filter is the full WooCommerce country list, keyed by country code. Fluid Checkout PRO also attaches callbacks that limit the list to EU countries and remove the shop country.</p>"
             },
             "args": 1
         },
@@ -422,7 +422,7 @@
             "file": "inc/admin/admin-notices.php",
             "type": "filter",
             "doc": {
-                "description": "Filters the admin notices displayed by EU-VAT Assistant.",
+                "description": "Filters the admin notices displayed by the EU VAT features in Fluid Checkout PRO.",
                 "long_description": "The dynamic portion of the hook name, `self::$plugin_prefix`, is the prefix `fc_vat`, so the hook name is `fc_vat_admin_notices`. Register callbacks with `add_filter()` and return the notices array. A notice is skipped when `name` is null or that name was already dismissed.\n Each item is an associative array:\n\n  - `name` (string|null) Notice id. Required for the notice to display, and used when dismissing it.\n  - `title` (string) Optional heading.\n  - `description` (string) Notice body. May contain HTML.\n  - `error` (bool) Whether to show the notice as an error.\n  - `actions` (string[]) HTML for buttons and links.\n  - `dismissible` (bool) Whether to add a dismiss link. Default true. `dismissable` is a deprecated alias kept for backwards compatibility. It is used only when `dismissible` is omitted; if both are set, `dismissible` wins.\n  - `dismiss_label` (string) Text of the dismiss link.\n  - `paragraph_wrap` (bool) Whether to wrap the description in a paragraph. Default true. Set this to false when `description` contains block-level HTML.\n Possible hook names include:\n\n  - `fc_vat_admin_notices`",
                 "tags": [
                     {

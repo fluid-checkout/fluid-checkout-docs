@@ -2,7 +2,7 @@
   "pro": {
     "id": "pro",
     "pluginPrefix": "fc_pro",
-    "hookPrefixes": ["fc_pro_", "fc_", "fc_adb_", "fc_gaa_"],
+    "hookPrefixes": ["fc_pro_", "fc_", "fc_adb_", "fc_gaa_", "fc_vat_"],
     "hooks": [
       {
         "name": "fc_checkout_steps",
@@ -125,8 +125,8 @@
       }
     ]
   },
-  "eu-vat": {
-    "id": "eu-vat",
+  "vat-prefix": {
+    "id": "vat-prefix",
     "pluginPrefix": "fc_vat",
     "hookPrefixes": ["fc_vat_"],
     "hooks": [

@@ -114,7 +114,7 @@ test('omits an alias that repeats the normalized hook name', () => {
       aliases: ['fc_vat_admin_notices'],
       file: 'inc/admin/admin-notices.php',
       doc: {
-        description: 'Filters the admin notices displayed by EU-VAT Assistant.',
+        description: 'Filters the admin notices displayed by the EU VAT features in Fluid Checkout PRO.',
         tags: [{name: 'since', content: '0.1.0'}],
       },
     },

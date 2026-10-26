@@ -35,9 +35,9 @@ Since the main function for our Google Address Autocomplete add-on is to add the
 
 If you try to enable the “Address Autofill” function in the Checkout Field Editor PRO advanced settings, you’ll notice that it is not possible to save that option as enabled, that is because our add-on will set the option value to “always disabled”.
 
-## Fix missing VAT Number field from the EU-VAT Assistant add-on
+## Fix missing VAT Number field
 
-If the VAT Number field is missing, this might be happening because the Checkout Field Editor plugin is not recognizing the newly added field. For more information on why this happens and how to fix this, please visit our documentation [Fix missing VAT field when using checkout fields customization plugins](https://fluidcheckout.com/docs/fix-missing-vat-field/).
+The VAT number field is part of Fluid Checkout PRO. If the VAT Number field is missing, this might be happening because the Checkout Field Editor plugin is not recognizing the newly added field. For more information on why this happens and how to fix this, please visit our documentation [Fix missing VAT field when using checkout fields customization plugins](https://fluidcheckout.com/docs/fix-missing-vat-field/).
 
 ## Filter and action hooks
 
@@ -52,7 +52,7 @@ If you are unsure about how to add the code snippets to your website, check our 
 - [`fc_thwcfe_clear_field_keys_skip_list`](/lite/hooks/fc_thwcfe_clear_field_keys_skip_list/) – Defines field keys to skip when clearing THWCFE fields.
 - [`fc_pro_thwcfe_custom_section_substep_position_args`](/pro/hooks/fc_pro_thwcfe_custom_section_substep_position_args/) – Filters the position arguments for custom section substeps.
 - [`fc_pro_thwcfe_substep_text_display_value_show_field_label`](/pro/hooks/fc_pro_thwcfe_substep_text_display_value_show_field_label/) – Filters whether to show field labels in substep text.
-- [`fc_pro_thwcfe_substep_text_display_value_{field_type}`](https://fluidcheckout.com/docs/fc_pro_thwcfe_substep_text_display_value_field_type/) – Filters the display value for specific field types.
+- [`fc_pro_thwcfe_substep_text_display_value_{field_args}type`](/pro/hooks/fc_pro_thwcfe_substep_text_display_value_field_argstype/) – Filters the display value for specific field types.
 - [`fc_pro_thwcfe_substep_text_display_value_{field_key}`](/pro/hooks/fc_pro_thwcfe_substep_text_display_value_field_key/) – Filters the display value for specific field keys.
 - `fc_pro_thwcfe_substep_text_content_none_{section_name}` – Filters the text displayed when a custom section has no content.
-- [`fc_pro_thwcfe_{section_name}_substep_text`](https://fluidcheckout.com/docs/fc_pro_thwcfe_section_name_substep_text/) – Filters the complete substep text HTML for a specific custom section.
+- `fc_pro_thwcfe_{section_name}_substep_text` – Filters the complete substep text HTML for a specific custom section.

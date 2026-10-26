@@ -206,8 +206,7 @@ export function renderHookPage(hook, options) {
 
 const HOOKS_INDEX_DESCRIPTION = {
   lite: 'Reference for every Fluid Checkout Lite action and filter, including the signature, parameters, and source file.',
-  pro: 'Reference for every Fluid Checkout PRO action and filter, including Address Book and Google Address Autocomplete hooks.',
-  'eu-vat': 'Reference for every EU-VAT Assistant filter, including the signature, parameters, and source file.',
+  pro: 'Reference for every Fluid Checkout PRO action and filter, including Address Book, Google Address Autocomplete, and EU VAT hooks.',
 };
 
 /**

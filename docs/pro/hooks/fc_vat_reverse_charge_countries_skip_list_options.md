@@ -10,7 +10,7 @@ description: "Filters the countries offered in the Reverse Charge Exceptions set
 
 Filters the countries offered in the Reverse Charge Exceptions setting.
 
-The value passed to the filter is the full WooCommerce country list, keyed by country code. EU-VAT Assistant also attaches callbacks that limit the list to EU countries and remove the shop country.
+The value passed to the filter is the full WooCommerce country list, keyed by country code. Fluid Checkout PRO also attaches callbacks that limit the list to EU countries and remove the shop country.
 
 ## Signature
 

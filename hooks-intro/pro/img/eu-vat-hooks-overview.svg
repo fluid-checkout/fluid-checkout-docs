@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="220" viewBox="0 0 880 220" role="img" aria-labelledby="title desc">
-  <title id="title">EU-VAT Assistant hook points</title>
+  <title id="title">EU VAT hook points in Fluid Checkout PRO</title>
   <desc id="desc">Checkout VAT number flows through a filter, then validation, then storage.</desc>
   <rect width="880" height="220" rx="16" fill="#f9f9f9"/>
   <rect x="24" y="48" width="200" height="124" rx="12" fill="#ffffff" stroke="#dfdfde"/>
