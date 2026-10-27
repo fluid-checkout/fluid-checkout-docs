@@ -367,6 +367,48 @@
             "args": 1
         },
         {
+            "name": "'fc_pro_enable_compat_account_details_plugin_style_' . $plugin_slug",
+            "file": "inc/enqueue.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether to load account-details compatibility styles for a specific plugin.",
+                "long_description": "The dynamic portion of the hook name, `$plugin_slug`, is the plugin directory slug (the folder name, or the file name without `.php` for single-file plugins). Anything other than `true` skips loading that compatibility module. The default is `true`.",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Whether to load account-details compatibility styles for a specific plugin. Default true.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$enabled"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$plugin_slug</code>, is the plugin directory slug (the folder name, or the file name without <code>.php</code> for single-file plugins). Anything other than <code>true</code> skips loading that compatibility module. The default is <code>true</code>.</p>"
+            },
+            "args": 1
+        },
+        {
+            "name": "'fc_pro_enable_compat_account_details_style_' . $theme_slug",
+            "file": "inc/enqueue.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether to load account-details compatibility styles for a specific theme.",
+                "long_description": "The dynamic portion of the hook name, `$theme_slug`, is the active theme directory slug. Both the parent theme (`get_template()`) and the child theme (`get_stylesheet()`) are checked. Anything other than `true` skips loading that compatibility module. The default is `true`.",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Whether to load account-details compatibility styles for a specific theme. Default true.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$enabled"
+                    }
+                ],
+                "long_description_html": "<p>The dynamic portion of the hook name, <code>$theme_slug</code>, is the active theme directory slug. Both the parent theme (<code>get_template()</code>) and the child theme (<code>get_stylesheet()</code>) are checked. Anything other than <code>true</code> skips loading that compatibility module. The default is <code>true</code>.</p>"
+            },
+            "args": 1
+        },
+        {
             "name": "'fc_pro_enable_compat_cart_plugin_style_' . $plugin_slug",
             "file": "inc/enqueue.php",
             "type": "filter",
@@ -1020,7 +1062,7 @@
                 "tags": [
                     {
                         "name": "since",
-                        "content": "4.0.7"
+                        "content": "5.0.0"
                     },
                     {
                         "name": "param",
@@ -1056,7 +1098,7 @@
                 "tags": [
                     {
                         "name": "since",
-                        "content": "4.0.7"
+                        "content": "5.0.0"
                     },
                     {
                         "name": "param",
@@ -1080,29 +1122,133 @@
             "args": 2
         },
         {
-            "name": "fc_admin_field_type_license_exists",
-            "file": "inc/admin/admin.php",
+            "name": "fc_adb_is_entry_add_enabled",
+            "file": "inc/address-book.php",
             "type": "filter",
             "doc": {
-                "description": "Filters whether a license key field type is already loaded.",
+                "description": "Filter whether adding new address book entries is enabled.",
                 "long_description": "",
                 "tags": [
                     {
-                        "name": "since",
-                        "content": "4.0.7"
-                    },
-                    {
                         "name": "param",
-                        "content": "Whether the license key field type is already loaded. Default false.",
+                        "content": "Whether adding entries is enabled. Defaults to <code>true</code>.",
                         "types": [
                             "bool"
                         ],
-                        "variable": "$exists"
+                        "variable": "$is_enabled"
                     }
                 ],
                 "long_description_html": ""
             },
             "args": 1
+        },
+        {
+            "name": "fc_adb_is_entry_delete_enabled",
+            "file": "inc/address-book.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter whether deleting address book entries is enabled.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Whether deleting entries is enabled. Defaults to <code>true</code>.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$is_enabled"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The address entry data.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$address_entry"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "fc_adb_is_entry_edit_enabled",
+            "file": "inc/address-book.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter whether editing address book entries is enabled.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Whether editing entries is enabled. Defaults to <code>true</code>.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$is_enabled"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The address entry data.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$address_entry"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "fc_adb_is_new_address_source_enabled",
+            "file": "inc/address-book.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter whether the \"Enter a new address\" source option is available on checkout.",
+                "long_description": "When disabled, customers can only select from their saved addresses.",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Whether the new address source is enabled. Defaults to <code>true</code>.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$is_enabled"
+                    }
+                ],
+                "long_description_html": "<p>When disabled, customers can only select from their saved addresses.</p>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_admin_license_key_activate_response",
+            "file": "inc/admin/admin-setting-type-fc-license-key.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the Activate AJAX success payload.",
+                "long_description": "The admin script dispatches `fc_admin_license_key_activated` with this payload after a successful request. Listeners can add keys for their own UI.",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Plugin slug for the activated field.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$plugin_slug"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Licenses client config for that plugin.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$config"
+                    }
+                ],
+                "long_description_html": "<p>The admin script dispatches <code>fc_admin_license_key_activated</code> with this payload after a successful request. Listeners can add keys for their own UI.</p>"
+            },
+            "args": 3
         },
         {
             "name": "fc_admin_license_key_script_url",
@@ -1111,20 +1257,7 @@
             "doc": {
                 "description": "Filters the script URL for the license key field.",
                 "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "4.0.7"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Script URL. Default empty.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$script_url"
-                    }
-                ],
+                "tags": [],
                 "long_description_html": ""
             },
             "args": 1
@@ -1136,20 +1269,7 @@
             "doc": {
                 "description": "Filters the style URL for the license key field.",
                 "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "4.0.7"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Style URL. Default empty.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$style_url"
-                    }
-                ],
+                "tags": [],
                 "long_description_html": ""
             },
             "args": 1
@@ -1173,6 +1293,31 @@
                             "bool"
                         ],
                         "variable": "$notice"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_checkout_contact_login_link_classes",
+            "file": "templates/fc-pro/account-matching/checkout/account-matching-section.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the CSS classes of the checkout contact-step login link.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "5.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "CSS classes. Default <code>fc-account-matching__action--underline</code>.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$classes"
                     }
                 ],
                 "long_description_html": ""
@@ -1248,31 +1393,6 @@
                             "string"
                         ],
                         "variable": "$title"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 1
-        },
-        {
-            "name": "fc_checkout_login_button_class",
-            "file": "templates/fc-pro/account-matching/checkout/account-matching-section.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters the CSS class for checkout login button.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.6.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "CSS class. Default 'fc-account-matching__action--underline'.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$class_name"
                     }
                 ],
                 "long_description_html": ""
@@ -1423,31 +1543,6 @@
                             "array"
                         ],
                         "variable": "$settings"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 1
-        },
-        {
-            "name": "fc_checkout_wrapper_inside_element_custom_attributes",
-            "file": "templates/fc-pro/order-pay/checkout/form-pay.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters the HTML attributes for checkout wrapper inside element custom.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "3.0.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "HTML attributes. Default empty array.",
-                        "types": [
-                            "array"
-                        ],
-                        "variable": "$attributes"
                     }
                 ],
                 "long_description_html": ""
@@ -1739,6 +1834,31 @@
         },
         {
             "name": "fc_fix_zoom_in_form_fields_mobile_devices",
+            "file": "inc/delayed-account-creation.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether form fields use a 16px font size to prevent mobile browsers from zooming in.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.0.1"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to apply the form field font size fix.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$enabled"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_fix_zoom_in_form_fields_mobile_devices",
             "file": "inc/cart-page.php",
             "type": "filter",
             "doc": {
@@ -1756,6 +1876,134 @@
                             "bool"
                         ],
                         "variable": "$value"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_gaa_brasil_api_autocomplete_js_settings",
+            "file": "inc/brasil-api-address-autocomplete.php",
+            "type": "filter",
+            "doc": {
+                "description": "Allow developers to change settings for the Brasil API address autocomplete integration.",
+                "long_description": "Hook name matches standalone FCGAA for compatibility.",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Brasil API JS settings.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$brasil_api_settings"
+                    }
+                ],
+                "long_description_html": "<p>Hook name matches standalone FCGAA for compatibility.</p>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_gaa_google_autocomplete_js_settings",
+            "file": "inc/google-address-autocomplete.php",
+            "type": "filter",
+            "doc": {
+                "description": "Allow developers to change settings for the integration with Google Address Autocomplete.",
+                "long_description": "The default locale settings are defined in the script `google-address-autocomplete.js`.",
+                "tags": [],
+                "long_description_html": "<p>The default locale settings are defined in the script <code>google-address-autocomplete.js</code>.</p>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_gaa_google_places_api_test_url_parameters",
+            "file": "inc/google-address-autocomplete.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the Google Maps API URL parameters used for API key validation tests.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "URL parameters.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$parameters"
+                    },
+                    {
+                        "name": "param",
+                        "content": "API key being tested.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$api_key"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Global callback function name.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$callback_name"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_gaa_google_places_api_test_url_parameters",
+            "file": "inc/admin/admin-setting-type-fc-google-api-key.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the Google Maps API URL parameters used for API key validation tests.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "URL parameters.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$parameters"
+                    },
+                    {
+                        "name": "param",
+                        "content": "API key being tested, empty because the key is added by the script.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$api_key"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Global callback function name.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$callback_name"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_gaa_settings",
+            "file": "inc/address-autocomplete-settings-bridge.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the Address Autocomplete JavaScript settings (FCGAA-compatible hook name).",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Address Autocomplete JS settings.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$gaa_settings"
                     }
                 ],
                 "long_description_html": ""
@@ -2056,19 +2304,11 @@
                             "bool"
                         ],
                         "variable": "$is_local_pickup_available"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Shipping packages.",
-                        "types": [
-                            "array"
-                        ],
-                        "variable": "$packages"
                     }
                 ],
                 "long_description_html": ""
             },
-            "args": 2
+            "args": 1
         },
         {
             "name": "fc_is_shipping_method_local_pickup",
@@ -2118,39 +2358,6 @@
                 "long_description_html": ""
             },
             "args": 4
-        },
-        {
-            "name": "fc_is_shipping_method_local_pickup_selected",
-            "file": "inc/checkout-local-pickup.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether shipping method local pickup selected.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.3.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether shipping method local pickup selected.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$is_local_pickup_selected"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Shipping packages.",
-                        "types": [
-                            "array"
-                        ],
-                        "variable": "$packages"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 2
         },
         {
             "name": "fc_is_shipping_method_local_pickup_selected",
@@ -2285,10 +2492,6 @@
                 "long_description": "",
                 "tags": [
                     {
-                        "name": "since",
-                        "content": "4.0.7"
-                    },
-                    {
                         "name": "param",
                         "content": "Account URL.",
                         "types": [
@@ -2303,49 +2506,12 @@
         },
         {
             "name": "fc_licenses_api_url",
-            "file": "fluid-checkout-pro.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters the licenses API base URL.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "4.0.7"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Licenses API base URL.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$api_url"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Plugin slug.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$plugin_slug"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 2
-        },
-        {
-            "name": "fc_licenses_api_url",
             "file": "inc/admin/fc-licenses-client.php",
             "type": "filter",
             "doc": {
                 "description": "Filters the licenses API base URL.",
                 "long_description": "",
                 "tags": [
-                    {
-                        "name": "since",
-                        "content": "4.0.7"
-                    },
                     {
                         "name": "param",
                         "content": "Licenses API base URL.",
@@ -2378,10 +2544,6 @@
                 "long_description": "",
                 "tags": [
                     {
-                        "name": "since",
-                        "content": "4.0.7"
-                    },
-                    {
                         "name": "param",
                         "content": "Plugin config.",
                         "types": [
@@ -2410,10 +2572,6 @@
                 "description": "Filters the own-plugins option map keyed by plugin folder slug.",
                 "long_description": "",
                 "tags": [
-                    {
-                        "name": "since",
-                        "content": "4.0.7"
-                    },
                     {
                         "name": "param",
                         "content": "Plugin option map. Default empty array.",
@@ -2510,1182 +2668,6 @@
                 "long_description_html": ""
             },
             "args": 1
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/order-details.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/view-order-page.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/checkout-order-summary.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/cart-ajax.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/order-pay-page.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/compat/themes/compat-theme-enfold.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/compat/themes/compat-theme-dt-the7.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/compat/themes/compat-theme-Avada.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/compat/themes/compat-theme-cartzilla.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woo-stripe-payment.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-license-manager-for-woocommerce.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woocommerce-order-delivery.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-pymntpl-paypal-woocommerce.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woo-payment-gateway.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woocommerce-shipment-tracking.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woocommerce-points-and-rewards.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/account-matching.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/checkout-gift-options.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/cart-page.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/cart-cross-sells.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/order-received-page.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_override_template_with_theme_file",
-            "file": "inc/order-received-emails.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the plugin template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.5.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the plugin template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
         },
         {
             "name": "fc_packing_slips_message_box_args",
@@ -3827,6 +2809,449 @@
                 "long_description_html": ""
             },
             "args": 1
+        },
+        {
+            "name": "fc_pro_address_book_address_sources_options",
+            "file": "inc/address-book.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter checkout address source options for the address book selector.",
+                "long_description": "Option keys may include `saved`, `new`, `same_as_billing`, and `same_as_shipping`. Removing a key also removes it from the sources available to `get_selected_address_source()`.",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Address source options. Keys are stored values; values are labels.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$options"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Address type (<code>shipping</code> or <code>billing</code>).",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$address_type"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Currently selected address source, if any.",
+                        "types": [
+                            "string",
+                            "null"
+                        ],
+                        "variable": "$address_source"
+                    }
+                ],
+                "long_description_html": "<p>Option keys may include <code>saved</code>, <code>new</code>, <code>same_as_billing</code>, and <code>same_as_shipping</code>. Removing a key also removes it from the sources available to <code>get_selected_address_source()</code>.</p>"
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_pro_address_book_display_layout",
+            "file": "inc/address-book.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the current address book display layout value.",
+                "long_description": "",
+                "tags": [],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_address_book_entries_before_add_entry",
+            "file": "inc/address-book.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the list of address book entries before adding a new entry.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "List of address book entries.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$address_book_entries"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Address entry to be added with its data prepared.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$address_entry"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Id of the user.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$user_id"
+                    },
+                    {
+                        "name": "return",
+                        "content": "List of address book entries."
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_pro_address_book_entries_end_tag_markup",
+            "file": "templates/fc-adb/address-book/checkout/address-book-entries.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the address book entries list closing markup (default cards/list `</ul>` or dropdown `</select></p>`).",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The address type.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$address_type"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The address book entries.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$address_book_entries"
+                    },
+                    {
+                        "name": "return",
+                        "content": "The entries list closing markup."
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_pro_address_book_entries_start_tag_markup",
+            "file": "templates/fc-adb/address-book/checkout/address-book-entries.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the address book entries list opening markup (default cards/list `<ul>` or dropdown `<select>`).",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The address type.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$address_type"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The address book entries.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$address_book_entries"
+                    },
+                    {
+                        "name": "return",
+                        "content": "The entries list opening markup."
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_pro_address_book_entry_before_add",
+            "file": "inc/address-book.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the address entry data before adding it to the address book.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Address entry.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$address_entry"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Id of the user.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$user_id"
+                    },
+                    {
+                        "name": "return",
+                        "content": "Address entry with prepared data."
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "fc_pro_address_book_entry_before_update",
+            "file": "inc/address-book.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the address entry data before updating.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Address entry.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$address_entry"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Id of the user.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$user_id"
+                    },
+                    {
+                        "name": "return",
+                        "content": "Address entry with prepared data."
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "fc_pro_address_book_entry_display_data",
+            "file": "templates/fc-adb/address-book/checkout/address-book-entries.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the address entry display data before rendering.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The address id from the entries list key.",
+                        "types": [
+                            "string",
+                            "int"
+                        ],
+                        "variable": "$address_id"
+                    },
+                    {
+                        "name": "return",
+                        "content": "The address entry data."
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "fc_pro_address_book_entry_markup",
+            "file": "templates/fc-adb/address-book/checkout/address-book-entries.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the address book entry markup (default cards/list `<li>` or dropdown `<option>`).",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The address entry data.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$address_entry"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The address type.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$address_type"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The address entry display label.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$address_label"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether the address is selected.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$is_selected_address"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether this is the first entry.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$first"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The address id from the entries list key.",
+                        "types": [
+                            "string",
+                            "int"
+                        ],
+                        "variable": "$address_id"
+                    },
+                    {
+                        "name": "return",
+                        "content": "The address entry markup."
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 7
+        },
+        {
+            "name": "fc_pro_address_book_entry_template",
+            "file": "templates/fc-adb/address-book/checkout/address-book-entries.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the address book entry `sprintf()` template for cards and list layouts.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "return",
+                        "content": "The entry markup template passed to `sprintf()`."
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_address_book_save_from_order_extra_fields",
+            "file": "inc/delayed-account-creation.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the extra address field keys to add when saving order addresses to the address book.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Extra address field keys to add.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$extra_field_keys"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The order ID.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$order_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_pro_address_book_save_from_order_skip_fields",
+            "file": "inc/delayed-account-creation.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the address field keys to skip when saving order addresses to the address book.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Address field keys to skip.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$skip_field_keys"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The order ID.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$order_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_pro_address_book_saved_addresses_filter_min_count",
+            "file": "inc/address-book.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the minimum number of saved addresses required to show the search field.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Minimum number of saved addresses.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$min_count"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The address type.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$address_type"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The address book entries.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$address_book_entries"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
         },
         {
             "name": "fc_pro_cart_action_button_class_continue_shopping",
@@ -5002,7 +4427,7 @@
                 "tags": [
                     {
                         "name": "since",
-                        "content": "4.0.7"
+                        "content": "5.0.0"
                     },
                     {
                         "name": "param",
@@ -5566,6 +4991,140 @@
             "args": 2
         },
         {
+            "name": "fc_pro_delayed_account_creation_display_benefits",
+            "file": "inc/delayed-account-creation.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter whether to display the delayed account creation benefits column.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Whether to display the benefits column.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$display"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Benefits text.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$text"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "fc_pro_delayed_account_creation_privacy_notice_text",
+            "file": "inc/delayed-account-creation.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the privacy notice text for delayed account creation.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Privacy notice text. May include the <code>[privacy_policy]</code> shortcode.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$text"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_delayed_account_creation_script_settings",
+            "file": "inc/delayed-account-creation.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the script settings for the delayed account creation feature.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Settings passed to the feature's JS object.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$script_settings"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_delayed_account_creation_section_position_args",
+            "file": "inc/delayed-account-creation.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the hook position args used to output the delayed account creation section.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Args with the keys <code>hook</code>, <code>callback</code> and <code>priority</code>.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$position_args"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_delayed_account_creation_success_message",
+            "file": "inc/delayed-account-creation.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the success message shown after a customer account is created via delayed account creation.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The success message.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$message"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_delayed_account_creation_terms_notice_text",
+            "file": "inc/delayed-account-creation.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filter the terms notice text for delayed account creation.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Terms notice text. May include the <code>[terms]</code> shortcode.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$text"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
             "name": "fc_pro_display_cart_page_title",
             "file": "templates/fc-pro/cart/cart/page-cart.php",
             "type": "filter",
@@ -5584,6 +5143,31 @@
                             "bool"
                         ],
                         "variable": "$title"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_display_pickup_shipping_zone_filter_fields",
+            "file": "inc/checkout-local-pickup.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether to display the pickup shipping zone filter fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "5.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to display the pickup shipping zone filter fields.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$should_display"
                     }
                 ],
                 "long_description_html": ""
@@ -5916,24 +5500,24 @@
             "args": 1
         },
         {
-            "name": "fc_pro_is_order_pay_page_or_fragment",
-            "file": "inc/order-pay-page.php",
+            "name": "fc_pro_is_ship_delivery_available",
+            "file": "inc/checkout-local-pickup.php",
             "type": "filter",
             "doc": {
-                "description": "Filters whether order pay page or fragment.",
+                "description": "Filters whether ship delivery is available for the current packages.",
                 "long_description": "",
                 "tags": [
                     {
                         "name": "since",
-                        "content": "3.0.0"
+                        "content": "5.0.0"
                     },
                     {
                         "name": "param",
-                        "content": "Whether order pay page or fragment. Default false.",
+                        "content": "Whether ship delivery is available.",
                         "types": [
                             "bool"
                         ],
-                        "variable": "$value"
+                        "variable": "$is_ship_delivery_available"
                     }
                 ],
                 "long_description_html": ""
@@ -5991,24 +5575,24 @@
             "args": 1
         },
         {
-            "name": "fc_pro_is_substep_pickup_location_visible",
+            "name": "fc_pro_is_substep_delivery_visible",
             "file": "inc/checkout-local-pickup.php",
             "type": "filter",
             "doc": {
-                "description": "Filters whether substep pickup location visible.",
+                "description": "Filters whether the delivery substep is visible.",
                 "long_description": "",
                 "tags": [
                     {
                         "name": "since",
-                        "content": "2.0.5"
+                        "content": "5.0.0"
                     },
                     {
                         "name": "param",
-                        "content": "Whether substep pickup location visible.",
+                        "content": "Whether the delivery substep is visible.",
                         "types": [
                             "bool"
                         ],
-                        "variable": "$visible"
+                        "variable": "$substep_visible"
                     }
                 ],
                 "long_description_html": ""
@@ -6084,6 +5668,56 @@
                             "mixed"
                         ],
                         "variable": "$value"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_local_pickup_shipping_address_skip_field_keys",
+            "file": "inc/checkout-local-pickup.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the shipping field keys preserved when clearing or restoring the shipping address for local pickup.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "5.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Shipping field keys to skip. Default empty array.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$skip_field_keys"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_pro_local_pickup_shipping_zone_selected_fields_keys",
+            "file": "inc/checkout-local-pickup.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the pickup shipping zone field keys selected for display.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "5.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Selected shipping zone field keys.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$selected_fields_keys"
                     }
                 ],
                 "long_description_html": ""
@@ -8850,992 +8484,12 @@
             "args": 1
         },
         {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/order-details.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/view-order-page.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/checkout-order-summary.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/cart-ajax.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/order-pay-page.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woo-stripe-payment.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-license-manager-for-woocommerce.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woocommerce-order-delivery.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-pymntpl-paypal-woocommerce.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woo-payment-gateway.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woocommerce-shipment-tracking.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woocommerce-points-and-rewards.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/account-matching.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/checkout-gift-options.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/cart-page.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/cart-cross-sells.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/order-received-page.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
-            "name": "fc_pro_override_template_with_theme_file",
-            "file": "inc/order-received-emails.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters whether a theme template file replaces the Fluid Checkout PRO template.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.2.0"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Whether a theme template file replaces the Fluid Checkout PRO template. Default false.",
-                        "types": [
-                            "bool"
-                        ],
-                        "variable": "$override"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Absolute path of the located template.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template path relative to the templates directory.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_name"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Template directory path.",
-                        "types": [
-                            "string"
-                        ],
-                        "variable": "$template_path"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 4
-        },
-        {
             "name": "fc_pro_pickup_point_address_data",
             "file": "inc/checkout-local-pickup.php",
             "type": "filter",
             "doc": {
                 "description": "Filters the pickup point address data.",
-                "long_description": "",
+                "long_description": "The second argument is the shipping method ID and the third is the package index, as in previous versions. The shipping method object was added as the fourth argument.",
                 "tags": [
                     {
                         "name": "since",
@@ -9843,19 +8497,19 @@
                     },
                     {
                         "name": "param",
-                        "content": "The pickup point address.",
+                        "content": "Pickup point address data.",
                         "types": [
-                            "mixed"
+                            "array"
                         ],
                         "variable": "$pickup_point_address"
                     },
                     {
                         "name": "param",
-                        "content": "The chosen method.",
+                        "content": "Shipping method ID.",
                         "types": [
-                            "mixed"
+                            "string"
                         ],
-                        "variable": "$chosen_method"
+                        "variable": "$method_id"
                     },
                     {
                         "name": "param",
@@ -9864,36 +8518,19 @@
                             "int"
                         ],
                         "variable": "$package_index"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 3
-        },
-        {
-            "name": "fc_pro_pickup_point_label_text",
-            "file": "inc/checkout-local-pickup.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters the text for pickup point label.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "2.0.1"
                     },
                     {
                         "name": "param",
-                        "content": "Text.",
+                        "content": "Shipping method object. Added in 5.0.0.",
                         "types": [
-                            "string"
+                            "mixed"
                         ],
-                        "variable": "$text"
+                        "variable": "$method"
                     }
                 ],
-                "long_description_html": ""
+                "long_description_html": "<p>The second argument is the shipping method ID and the third is the package index, as in previous versions. The shipping method object was added as the fourth argument.</p>"
             },
-            "args": 1
+            "args": 4
         },
         {
             "name": "fc_pro_points_rewards_apply_button_classes",
@@ -10119,6 +8756,80 @@
                 "long_description_html": ""
             },
             "args": 1
+        },
+        {
+            "name": "fc_pro_skip_add_pickup_info_as_shipping_method_description",
+            "file": "inc/checkout-local-pickup.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether to skip adding pickup information to the shipping method description.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "5.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to skip adding pickup information. Default false.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$skip"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Shipping method description.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$shipping_method_description"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Shipping method rate data.",
+                        "types": [
+                            "\\WC_Shipping_Rate"
+                        ],
+                        "variable": "$method"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "fc_pro_skip_choose_pickup_location_description",
+            "file": "inc/checkout-local-pickup.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether to skip the note that asks the customer to choose a pickup location.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "5.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to skip the note. Default false.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$skip"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Shipping method rate data.",
+                        "types": [
+                            "\\WC_Shipping_Rate"
+                        ],
+                        "variable": "$method"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
         },
         {
             "name": "fc_pro_skip_international_phone_fields_validation",
@@ -10805,7 +9516,7 @@
                     },
                     {
                         "name": "since",
-                        "content": "4.0.7",
+                        "content": "5.0.0",
                         "description": "Changed the filtered value from 'yes'/'no' strings to a boolean. Legacy 'yes'/'no' strings are still accepted for backwards compatibility."
                     },
                     {
@@ -11039,7 +9750,7 @@
                 "tags": [
                     {
                         "name": "since",
-                        "content": "4.0.7"
+                        "content": "5.0.0"
                     },
                     {
                         "name": "param",
@@ -11241,6 +9952,131 @@
             "args": 2
         },
         {
+            "name": "fc_vat_account_vat_company_field_script_settings",
+            "file": "inc/checkout-eu-vat.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the script settings passed to `AccountVatCompanyField.init()` as `fcSettings.accountVatCompanyField`.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Account VAT company field script settings.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$script_settings"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_vat_admin_script_settings",
+            "file": "inc/checkout-eu-vat.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the admin script settings passed to `AdminEUVAT.init()` as `fcSettingsAdmin.adminEUVAT`.",
+                "long_description": "Only added on admin order edit screens.\n Default keys:\n\n  - `ajaxUrl` (string) Admin AJAX URL.\n  - `validateVatNonce` (string) Nonce for the `fc-vat-validate-eu-vat-number` action.\n  - `saveVatAndRecalculateTotalsNonce` (string) Nonce for the `fc-vat-save-vat-and-recalculate-totals` action.\n  - `updateVatMetaboxNonce` (string) Nonce for the `fc-vat-update-vat-metabox` action.",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Admin script settings for EU VAT tools.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$settings"
+                    }
+                ],
+                "long_description_html": "<p>Only added on admin order edit screens.</p> <p>Default keys:</p> <ul> <li><code>ajaxUrl</code> (string) Admin AJAX URL.</li> <li><code>validateVatNonce</code> (string) Nonce for the <code>fc-vat-validate-eu-vat-number</code> action.</li> <li><code>saveVatAndRecalculateTotalsNonce</code> (string) Nonce for the <code>fc-vat-save-vat-and-recalculate-totals</code> action.</li> <li><code>updateVatMetaboxNonce</code> (string) Nonce for the <code>fc-vat-update-vat-metabox</code> action.</li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_vat_is_vat_number_field",
+            "file": "inc/checkout-eu-vat.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether a field is considered a VAT number field.",
+                "long_description": "Determines whether a specific field is considered a VAT number field, allowing you to extend VAT logic to custom fields. The default is true only when `$field_key` is `billing_vat_number`.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "0.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether the field is a VAT number field.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$is_vat_number_field"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Field key being checked.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$field_key"
+                    }
+                ],
+                "long_description_html": "<p>Determines whether a specific field is considered a VAT number field, allowing you to extend VAT logic to custom fields. The default is true only when <code>$field_key</code> is <code>billing_vat_number</code>.</p>"
+            },
+            "args": 2
+        },
+        {
+            "name": "fc_vat_number_field_args",
+            "file": "inc/checkout-eu-vat.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the arguments used for the VAT number field.",
+                "long_description": "These arguments are used when the field is added to checkout and address forms. When EU VAT validation is enabled, the plugin also filters this hook to change the description and field classes.\n Default keys:\n\n  - `label` (string) Field label.\n  - `optional_expand_link_lowercase` (bool) Whether the optional-field expand link is lowercase.\n  - `description` (string|null) Field description. Null when the field is required.\n  - `required` (bool) Whether the field is required.\n  - `class` (string[]) CSS classes for the field row. Defaults include `fc-vat-number-field` and `form-row-wide`.\n  - `priority` (int) Checkout field priority. Default 220.\n  - `type` (string) Input type. Default `text`.\n  - `clear` (bool) Whether the field clears floats. Default true.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "1.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "VAT number field arguments.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$args"
+                    }
+                ],
+                "long_description_html": "<p>These arguments are used when the field is added to checkout and address forms. When EU VAT validation is enabled, the plugin also filters this hook to change the description and field classes.</p> <p>Default keys:</p> <ul> <li><code>label</code> (string) Field label.</li> <li><code>optional_expand_link_lowercase</code> (bool) Whether the optional-field expand link is lowercase.</li> <li><code>description</code> (string|null) Field description. Null when the field is required.</li> <li><code>required</code> (bool) Whether the field is required.</li> <li><code>class</code> (string[]) CSS classes for the field row. Defaults include <code>fc-vat-number-field</code> and <code>form-row-wide</code>.</li> <li><code>priority</code> (int) Checkout field priority. Default 220.</li> <li><code>type</code> (string) Input type. Default <code>text</code>.</li> <li><code>clear</code> (bool) Whether the field clears floats. Default true.</li> </ul>"
+            },
+            "args": 1
+        },
+        {
+            "name": "fc_vat_reverse_charge_countries_skip_list_options",
+            "file": "inc/checkout-eu-vat.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters the countries offered in the Reverse Charge Exceptions setting.",
+                "long_description": "The value passed to the filter is the full WooCommerce country list, keyed by country code. EU-VAT Assistant also attaches callbacks that limit the list to EU countries and remove the shop country.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.1.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Country code to country name map.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$countries"
+                    }
+                ],
+                "long_description_html": "<p>The value passed to the filter is the full WooCommerce country list, keyed by country code. EU-VAT Assistant also attaches callbacks that limit the list to EU countries and remove the shop country.</p>"
+            },
+            "args": 1
+        },
+        {
             "name": "fc_woocommerce_gateway_stripe_show_buttons",
             "file": "inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php",
             "type": "filter",
@@ -11420,34 +10256,6 @@
             "args": 1
         },
         {
-            "name": "self::$plugin_prefix . '_admin_notices'",
-            "aliases": [
-                "fc_pro_admin_notices"
-            ],
-            "file": "inc/admin/admin-notices.php",
-            "type": "filter",
-            "doc": {
-                "description": "Filters the admin notices displayed by Fluid Checkout PRO.",
-                "long_description": "`$plugin_prefix` is `fc_pro`, so the hook name is `fc_pro_admin_notices`. Possible hook names include:\n\n  - `fc_pro_admin_notices`",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "1.6.2"
-                    },
-                    {
-                        "name": "param",
-                        "content": "Filtered value. Default empty array.",
-                        "types": [
-                            "array"
-                        ],
-                        "variable": "$value"
-                    }
-                ],
-                "long_description_html": "<p><code>$plugin_prefix</code> is <code>fc_pro</code>, so the hook name is <code>fc_pro_admin_notices</code>. Possible hook names include:</p> <ul> <li><code>fc_pro_admin_notices</code></li> </ul>"
-            },
-            "args": 1
-        },
-        {
             "name": "woocommerce_cart_item_required_stock_is_not_enough",
             "file": "inc/cart-page.php",
             "type": "filter",
@@ -11569,6 +10377,72 @@
                 "long_description_html": ""
             },
             "args": 3
+        },
+        {
+            "name": "woocommerce_cart_no_shipping_available_html",
+            "file": "templates/fc-pro/cart/cart/shipping-methods-calculate-shipping.php",
+            "type": "filter",
+            "doc": {
+                "description": "Provides a means of overriding the default 'no shipping available' HTML string.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "HTML message.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$html"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The formatted shipping destination.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$formatted_destination"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "woocommerce_cart_no_shipping_available_html",
+            "file": "templates/compat/themes/Avada/fc-pro/cart/cart/shipping-methods-calculate-shipping.php",
+            "type": "filter",
+            "doc": {
+                "description": "Provides a means of overriding the default 'no shipping available' HTML string.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "3.0.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "HTML message.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$html"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The formatted shipping destination.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$formatted_destination"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
         },
         {
             "name": "woocommerce_continue_shopping_redirect",
@@ -11744,6 +10618,89 @@
             "args": 3
         },
         {
+            "name": "woocommerce_email_order_item_quantity",
+            "file": "templates/fc-pro/order-details-emails/emails/email-fulfillment-items.php",
+            "type": "filter",
+            "doc": {
+                "description": "Email Order Item Quantity hook.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.4.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_order_shipping_show_free_label",
+            "file": "templates/fc-pro/order-details-emails/emails/plain/email-order-details.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether a zero cost shipping row shows 'Free!' in place of the repeated method name.",
+                "long_description": "Defaults to true only for Free Shipping. Other methods can cost nothing yet still use the name to tell the customer something, such as 'Shipping TBD'.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "11.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to replace the value with 'Free!'.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$show_free_label"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The order being emailed.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": "<p>Defaults to true only for Free Shipping. Other methods can cost nothing yet still use the name to tell the customer something, such as 'Shipping TBD'.</p>"
+            },
+            "args": 2
+        },
+        {
+            "name": "woocommerce_email_order_shipping_show_free_label",
+            "file": "templates/fc-pro/order-details-emails/emails/email-order-details.php",
+            "type": "filter",
+            "doc": {
+                "description": "Filters whether a zero cost shipping row shows 'Free!' in place of the repeated method name.",
+                "long_description": "Defaults to true only for Free Shipping. Other methods can cost nothing yet still use the name to tell the customer something, such as 'Shipping TBD'.",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "11.2.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether to replace the value with 'Free!'.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$show_free_label"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The order being emailed.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": "<p>Defaults to true only for Free Shipping. Other methods can cost nothing yet still use the name to tell the customer something, such as 'Shipping TBD'.</p>"
+            },
+            "args": 2
+        },
+        {
             "name": "woocommerce_order_email_verification_grace_period",
             "file": "inc/order-received-page-user-verification.php",
             "type": "filter",
@@ -11825,6 +10782,122 @@
                 "long_description_html": "<p>Note that this hook is not always triggered, therefore it is (for example) unsuitable as a way of forcing email verification across all order confirmation/order payment scenarios. Instead, the filter primarily exists as a way to <em>remove</em> the email verification step.</p>"
             },
             "args": 3
+        },
+        {
+            "name": "woocommerce_order_item_class",
+            "file": "templates/fc-pro/order-details-emails/emails/email-fulfillment-items.php",
+            "type": "filter",
+            "doc": {
+                "description": "Email Order Item Thumbnail hook.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.1.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "woocommerce_order_item_name",
+            "file": "templates/fc-pro/order-details-emails/emails/email-fulfillment-items.php",
+            "type": "filter",
+            "doc": {
+                "description": "Order Item Name hook.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The item name HTML.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$item_name"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The item being displayed.",
+                        "types": [
+                            "\\WC_Order_Item_Product"
+                        ],
+                        "variable": "$item"
+                    },
+                    {
+                        "name": "since",
+                        "content": "2.1.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 3
+        },
+        {
+            "name": "woocommerce_order_item_thumbnail",
+            "file": "templates/fc-pro/order-details-emails/emails/email-fulfillment-items.php",
+            "type": "filter",
+            "doc": {
+                "description": "Email Order Item Thumbnail hook.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The image HTML.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$image"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The item being displayed.",
+                        "types": [
+                            "\\WC_Order_Item_Product"
+                        ],
+                        "variable": "$item"
+                    },
+                    {
+                        "name": "since",
+                        "content": "2.1.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "woocommerce_order_item_visible",
+            "file": "templates/fc-pro/order-details-emails/emails/email-fulfillment-items.php",
+            "type": "filter",
+            "doc": {
+                "description": "Email Order Item Visibility hook.",
+                "long_description": "This filter allows you to control the visibility of order items in emails.",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "Whether the item is visible in the email.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$visible"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The order item object.",
+                        "types": [
+                            "\\WC_Order_Item_Product"
+                        ],
+                        "variable": "$item"
+                    },
+                    {
+                        "name": "since",
+                        "content": "2.1.0"
+                    }
+                ],
+                "long_description_html": "<p>This filter allows you to control the visibility of order items in emails.</p>"
+            },
+            "args": 2
         },
         {
             "name": "woocommerce_pay_order_button_text",

@@ -61,7 +61,7 @@ add_action( 'fc_pro_order_received_successful', function( $order ) {
 
 ## EU VAT hooks
 
-EU VAT features in Fluid Checkout PRO run actions and filters around the checkout VAT number. Use them to normalize the number, turn a compatibility module on or off, or print something next to the field.
+EU VAT features in Fluid Checkout PRO run filters around the checkout VAT number.
 
 ![EU VAT number moving from the checkout field, through a filter, to validation and storage](@site/hooks-intro/pro/img/eu-vat-hooks-overview.svg)
 
@@ -81,23 +81,6 @@ add_filter( 'fc_vat_number_field_args', function( $args ) {
 }, 10 );
 ```
 
-## Dynamic hook names
-
-Some `fc_vat_` hook names change at runtime. On these pages a variable is written in braces, and the prefix `fc_vat` stands in for `self::$plugin_prefix`.
-
-| In the plugin | Name on this page |
-| --- | --- |
-| `'fc_vat_enable_compat_plugin_' . $plugin_slug` | `fc_vat_enable_compat_plugin_{plugin_slug}` |
-| `'fc_vat_' . $current_section . '_settings'` | `fc_vat_{current_section}_settings` |
-| `self::$plugin_prefix . '_admin_notices'` | `fc_vat_admin_notices` |
-
-Register the concrete hook when you know the value:
-
-```php
-$plugin_slug = 'woocommerce-subscriptions';
-add_filter( "fc_vat_enable_compat_plugin_{$plugin_slug}", '__return_false' );
-```
-
 Actions and filters in Fluid Checkout PRO.
 
 ## Actions
@@ -110,6 +93,8 @@ Actions and filters in Fluid Checkout PRO.
 - [`fc_coderockz_woo_delivery_after_hidden_fields`](/pro/hooks/fc_coderockz_woo_delivery_after_hidden_fields/) Fires after the hidden fields in the coderockz woo delivery.
 - [`fc_gift_card_section_after`](/pro/hooks/fc_gift_card_section_after/) Fires after the gift card code field inside the expansible section.
 - [`fc_gift_card_section_before`](/pro/hooks/fc_gift_card_section_before/) Fires before the gift card code field inside the expansible section.
+- [`fc_pro_address_book_after_checkout_entries_list`](/pro/hooks/fc_pro_address_book_after_checkout_entries_list/) Fires after the checkout address book entries list is output.
+- [`fc_pro_address_book_before_checkout_entries_list`](/pro/hooks/fc_pro_address_book_before_checkout_entries_list/) Fires before the checkout address book entries list is output.
 - [`fc_pro_after_cart_section_{section_id}`](/pro/hooks/fc_pro_after_cart_section_section_id/) Fires after the contents of a cart section.
 - [`fc_pro_after_coupon_code_form_elements_cart`](/pro/hooks/fc_pro_after_coupon_code_form_elements_cart/) Fires after the coupon code form elements cart.
 - [`fc_pro_after_order_details_section_{section_id}`](/pro/hooks/fc_pro_after_order_details_section_section_id/) Fires after the contents of an order details section.
@@ -166,6 +151,8 @@ Actions and filters in Fluid Checkout PRO.
 - [`fc_pro_collapsible_order_review_toggle_content`](/pro/hooks/fc_pro_collapsible_order_review_toggle_content/) Fires when outputting the collapsible order review toggle content.
 - [`fc_pro_cross_sell_item_details_inner_after`](/pro/hooks/fc_pro_cross_sell_item_details_inner_after/) Fires after the cross sell item details inner.
 - [`fc_pro_cross_sell_item_details_inner_before`](/pro/hooks/fc_pro_cross_sell_item_details_inner_before/) Fires before the cross sell item details inner.
+- [`fc_pro_delayed_account_created`](/pro/hooks/fc_pro_delayed_account_created/) Fires after a customer account is created from an order via delayed account creation.
+- [`fc_pro_delivery_fields`](/pro/hooks/fc_pro_delivery_fields/) Fires when outputting the delivery fields.
 - [`fc_pro_order_details_section_header_{section_id}`](/pro/hooks/fc_pro_order_details_section_header_section_id/) Fires in the header of an order details section.
 - [`fc_pro_order_details_subsection_header_{subsection_id}`](/pro/hooks/fc_pro_order_details_subsection_header_subsection_id/) Fires in the header of an order details subsection.
 - [`fc_pro_order_overview_after`](/pro/hooks/fc_pro_order_overview_after/) Fires after the order overview.
@@ -197,7 +184,6 @@ Actions and filters in Fluid Checkout PRO.
 - [`fc_pro_order_received_sidebar_sections`](/pro/hooks/fc_pro_order_received_sidebar_sections/) Fires when outputting the order received sidebar sections.
 - [`fc_pro_order_received_successful`](/pro/hooks/fc_pro_order_received_successful/) Fires when outputting the order received successful.
 - [`fc_pro_order_received_successful_no_order_details`](/pro/hooks/fc_pro_order_received_successful_no_order_details/) Fires when outputting the order received successful no order details.
-- [`fc_pro_pickup_point_fields`](/pro/hooks/fc_pro_pickup_point_fields/) Fires when outputting the pickup point fields.
 - [`fc_pro_woo_delivery_slots_after_fields`](/pro/hooks/fc_pro_woo_delivery_slots_after_fields/) Fires after the fields in the woo delivery slots.
 - [`fc_pro_woocommerce_attendee_details_after_fields`](/pro/hooks/fc_pro_woocommerce_attendee_details_after_fields/) Fires after the fields in the woocommerce attendee details.
 - [`fc_pro_woocommerce_germanized_preferred_delivery_after_fields`](/pro/hooks/fc_pro_woocommerce_germanized_preferred_delivery_after_fields/) Fires after the fields in the woocommerce germanized preferred delivery.
@@ -214,17 +200,21 @@ Actions and filters in Fluid Checkout PRO.
 
 <div className="hook-list">
 
+- [`fc_adb_is_entry_add_enabled`](/pro/hooks/fc_adb_is_entry_add_enabled/) Filter whether adding new address book entries is enabled.
+- [`fc_adb_is_entry_delete_enabled`](/pro/hooks/fc_adb_is_entry_delete_enabled/) Filter whether deleting address book entries is enabled.
+- [`fc_adb_is_entry_edit_enabled`](/pro/hooks/fc_adb_is_entry_edit_enabled/) Filter whether editing address book entries is enabled.
+- [`fc_adb_is_new_address_source_enabled`](/pro/hooks/fc_adb_is_new_address_source_enabled/) Filter whether the "Enter a new address" source option is available on checkout.
 - [`fc_{address_type}_same_as_{address_type_alt}_display_substep_review_text_notice`](/pro/hooks/fc_address_type_same_as_address_type_alt_display_substep_review_text_notice/) Filters whether to show the same-address notice on an order pay substep.
+- [`fc_admin_license_key_activate_response`](/pro/hooks/fc_admin_license_key_activate_response/) Filters the Activate AJAX success payload.
 - [`fc_billing_same_as_shipping_display_substep_review_text_notice`](/pro/hooks/fc_billing_same_as_shipping_display_substep_review_text_notice/) Filters whether to display billing same as shipping display substep review text notice.
+- [`fc_checkout_contact_login_link_classes`](/pro/hooks/fc_checkout_contact_login_link_classes/) Filters the CSS classes of the checkout contact-step login link.
 - [`fc_checkout_express_checkout_ignore_required_fields_skip_list`](/pro/hooks/fc_checkout_express_checkout_ignore_required_fields_skip_list/) Filters the list of items skipped for checkout express checkout ignore required fields.
 - [`fc_checkout_express_checkout_processing_order`](/pro/hooks/fc_checkout_express_checkout_processing_order/) Filters whether an express checkout payment is currently processing an order.
 - [`fc_checkout_express_checkout_section_title`](/pro/hooks/fc_checkout_express_checkout_section_title/) Filters the title for checkout express checkout section.
-- [`fc_checkout_login_button_class`](/pro/hooks/fc_checkout_login_button_class/) Filters the CSS class for checkout login button.
 - [`fc_checkout_sidebar_attributes`](/pro/hooks/fc_checkout_sidebar_attributes/) Filters the HTML attributes for checkout sidebar.
 - [`fc_checkout_sidebar_attributes_inner`](/pro/hooks/fc_checkout_sidebar_attributes_inner/) Filters the checkout sidebar attributes inner.
 - [`fc_checkout_validation_woocommerce_order_delivery_script_settings`](/pro/hooks/fc_checkout_validation_woocommerce_order_delivery_script_settings/) Filters the settings for checkout validation woocommerce order delivery script.
 - [`fc_checkout_woocommerce_gift_cards_script_settings`](/pro/hooks/fc_checkout_woocommerce_gift_cards_script_settings/) Filters the settings for checkout woocommerce gift cards script.
-- [`fc_checkout_wrapper_inside_element_custom_attributes`](/pro/hooks/fc_checkout_wrapper_inside_element_custom_attributes/) Filters the HTML attributes for checkout wrapper inside element custom.
 - [`fc_compat_woo_carrier_agents_terminal_name`](/pro/hooks/fc_compat_woo_carrier_agents_terminal_name/) Filters the compat woo carrier agents terminal name.
 - [`fc_coupon_code_displayed_as_substep`](/pro/hooks/fc_coupon_code_displayed_as_substep/) Filters whether to display coupon code displayed as substep.
 - [`fc_coupon_code_field_label`](/pro/hooks/fc_coupon_code_field_label/) Filters the label for coupon code field.
@@ -241,6 +231,10 @@ Actions and filters in Fluid Checkout PRO.
 - [`fc_expansible_section_toggle_label_gift_options`](/pro/hooks/fc_expansible_section_toggle_label_gift_options/) Filters the expansible section toggle label gift options.
 - [`fc_expansible_section_toggle_label_{section_id}`](/pro/hooks/fc_expansible_section_toggle_label_section_id/) Filters the toggle label for an expansible section.
 - [`fc_fix_zoom_in_form_fields_mobile_devices`](/pro/hooks/fc_fix_zoom_in_form_fields_mobile_devices/) Filters whether fix zoom in form fields mobile devices.
+- [`fc_gaa_brasil_api_autocomplete_js_settings`](/pro/hooks/fc_gaa_brasil_api_autocomplete_js_settings/) Allow developers to change settings for the Brasil API address autocomplete integration.
+- [`fc_gaa_google_autocomplete_js_settings`](/pro/hooks/fc_gaa_google_autocomplete_js_settings/) Allow developers to change settings for the integration with Google Address Autocomplete.
+- [`fc_gaa_google_places_api_test_url_parameters`](/pro/hooks/fc_gaa_google_places_api_test_url_parameters/) Filters the Google Maps API URL parameters used for API key validation tests.
+- [`fc_gaa_settings`](/pro/hooks/fc_gaa_settings/) Filters the Address Autocomplete JavaScript settings (FCGAA-compatible hook name).
 - [`fc_gift_card_apply_button_classes`](/pro/hooks/fc_gift_card_apply_button_classes/) Filters the CSS classes for gift card apply button.
 - [`fc_gift_card_button_label`](/pro/hooks/fc_gift_card_button_label/) Filters the label for gift card button.
 - [`fc_gift_card_code_field_label`](/pro/hooks/fc_gift_card_code_field_label/) Filters the label for gift card code field.
@@ -261,13 +255,24 @@ Actions and filters in Fluid Checkout PRO.
 - [`fc_is_substep_complete_tyche_order_delivery`](/pro/hooks/fc_is_substep_complete_tyche_order_delivery/) Filters whether substep complete tyche order delivery.
 - [`fc_no_gift_options_order_review_notice`](/pro/hooks/fc_no_gift_options_order_review_notice/) Filters the notice for no gift options order review.
 - [`fc_order_summary_display_desktop_edit_cart_link`](/pro/hooks/fc_order_summary_display_desktop_edit_cart_link/) Filters whether to display order summary display desktop edit cart link.
-- [`fc_override_template_with_theme_file`](/pro/hooks/fc_override_template_with_theme_file/) Filters whether a theme template file replaces the plugin template.
 - [`fc_packing_slips_message_box_args`](/pro/hooks/fc_packing_slips_message_box_args/) Filters the arguments for packing slips message box.
 - [`fc_place_order_button_classes`](/pro/hooks/fc_place_order_button_classes/) Filters the CSS classes for place order button.
 - [`fc_pro_account_matching_check_billing_email`](/pro/hooks/fc_pro_account_matching_check_billing_email/) Filters whether account matching check billing email.
 - [`fc_pro_account_matching_has_account_match`](/pro/hooks/fc_pro_account_matching_has_account_match/) Filters whether account matching has account match.
 - [`fc_pro_add_container_class_cart`](/pro/hooks/fc_pro_add_container_class_cart/) Filters whether add container class cart.
-- [`fc_pro_admin_notices`](/pro/hooks/fc_pro_admin_notices/) Filters the admin notices displayed by Fluid Checkout PRO.
+- [`fc_pro_address_book_address_sources_options`](/pro/hooks/fc_pro_address_book_address_sources_options/) Filter checkout address source options for the address book selector.
+- [`fc_pro_address_book_display_layout`](/pro/hooks/fc_pro_address_book_display_layout/) Filter the current address book display layout value.
+- [`fc_pro_address_book_entries_before_add_entry`](/pro/hooks/fc_pro_address_book_entries_before_add_entry/) Filter the list of address book entries before adding a new entry.
+- [`fc_pro_address_book_entries_end_tag_markup`](/pro/hooks/fc_pro_address_book_entries_end_tag_markup/) Filter the address book entries list closing markup (default cards/list `</ul>` or dropdown `</select></p>`).
+- [`fc_pro_address_book_entries_start_tag_markup`](/pro/hooks/fc_pro_address_book_entries_start_tag_markup/) Filter the address book entries list opening markup (default cards/list `<ul>` or dropdown `<select>`).
+- [`fc_pro_address_book_entry_before_add`](/pro/hooks/fc_pro_address_book_entry_before_add/) Filter the address entry data before adding it to the address book.
+- [`fc_pro_address_book_entry_before_update`](/pro/hooks/fc_pro_address_book_entry_before_update/) Filter the address entry data before updating.
+- [`fc_pro_address_book_entry_display_data`](/pro/hooks/fc_pro_address_book_entry_display_data/) Filter the address entry display data before rendering.
+- [`fc_pro_address_book_entry_markup`](/pro/hooks/fc_pro_address_book_entry_markup/) Filter the address book entry markup (default cards/list `<li>` or dropdown `<option>`).
+- [`fc_pro_address_book_entry_template`](/pro/hooks/fc_pro_address_book_entry_template/) Filter the address book entry `sprintf()` template for cards and list layouts.
+- [`fc_pro_address_book_save_from_order_extra_fields`](/pro/hooks/fc_pro_address_book_save_from_order_extra_fields/) Filter the extra address field keys to add when saving order addresses to the address book.
+- [`fc_pro_address_book_save_from_order_skip_fields`](/pro/hooks/fc_pro_address_book_save_from_order_skip_fields/) Filter the address field keys to skip when saving order addresses to the address book.
+- [`fc_pro_address_book_saved_addresses_filter_min_count`](/pro/hooks/fc_pro_address_book_saved_addresses_filter_min_count/) Filter the minimum number of saved addresses required to show the search field.
 - [`fc_pro_cart_action_button_class_continue_shopping`](/pro/hooks/fc_pro_cart_action_button_class_continue_shopping/) Filters the cart action button class continue shopping.
 - [`fc_pro_cart_action_button_class_proceed_checkout`](/pro/hooks/fc_pro_cart_action_button_class_proceed_checkout/) Filters the cart action button class proceed checkout.
 - [`fc_pro_cart_action_label_continue_shopping`](/pro/hooks/fc_pro_cart_action_label_continue_shopping/) Filters the cart action label continue shopping.
@@ -323,10 +328,19 @@ Actions and filters in Fluid Checkout PRO.
 - [`fc_pro_cross_sell_item_name`](/pro/hooks/fc_pro_cross_sell_item_name/) Filters the cross sell item name.
 - [`fc_pro_cross_sell_item_price`](/pro/hooks/fc_pro_cross_sell_item_price/) Filters the cross sell item price.
 - [`fc_pro_cross_sell_item_thumbnail`](/pro/hooks/fc_pro_cross_sell_item_thumbnail/) Filters the cross sell item thumbnail.
+- [`fc_pro_delayed_account_creation_display_benefits`](/pro/hooks/fc_pro_delayed_account_creation_display_benefits/) Filter whether to display the delayed account creation benefits column.
+- [`fc_pro_delayed_account_creation_privacy_notice_text`](/pro/hooks/fc_pro_delayed_account_creation_privacy_notice_text/) Filter the privacy notice text for delayed account creation.
+- [`fc_pro_delayed_account_creation_script_settings`](/pro/hooks/fc_pro_delayed_account_creation_script_settings/) Filter the script settings for the delayed account creation feature.
+- [`fc_pro_delayed_account_creation_section_position_args`](/pro/hooks/fc_pro_delayed_account_creation_section_position_args/) Filter the hook position args used to output the delayed account creation section.
+- [`fc_pro_delayed_account_creation_success_message`](/pro/hooks/fc_pro_delayed_account_creation_success_message/) Filter the success message shown after a customer account is created via delayed account creation.
+- [`fc_pro_delayed_account_creation_terms_notice_text`](/pro/hooks/fc_pro_delayed_account_creation_terms_notice_text/) Filter the terms notice text for delayed account creation.
 - [`fc_pro_display_cart_page_title`](/pro/hooks/fc_pro_display_cart_page_title/) Filters whether to display cart page title.
+- [`fc_pro_display_pickup_shipping_zone_filter_fields`](/pro/hooks/fc_pro_display_pickup_shipping_zone_filter_fields/) Filters whether to display the pickup shipping zone filter fields.
 - [`fc_pro_enable_cart_display_items_unit_price`](/pro/hooks/fc_pro_enable_cart_display_items_unit_price/) Filters whether cart items show the unit price.
 - [`fc_pro_enable_cart_page_template`](/pro/hooks/fc_pro_enable_cart_page_template/) Filters whether the plugin cart page template is used.
 - [`fc_pro_enable_cart_quantity_spinner_buttons`](/pro/hooks/fc_pro_enable_cart_quantity_spinner_buttons/) Filters whether cart quantity fields use spinner buttons.
+- [`fc_pro_enable_compat_account_details_plugin_style_{plugin_slug}`](/pro/hooks/fc_pro_enable_compat_account_details_plugin_style_plugin_slug/) Filters whether to load account-details compatibility styles for a specific plugin.
+- [`fc_pro_enable_compat_account_details_style_{theme_slug}`](/pro/hooks/fc_pro_enable_compat_account_details_style_theme_slug/) Filters whether to load account-details compatibility styles for a specific theme.
 - [`fc_pro_enable_compat_cart_plugin_style_{plugin_slug}`](/pro/hooks/fc_pro_enable_compat_cart_plugin_style_plugin_slug/) Filters whether to load cart compatibility styles for a specific plugin.
 - [`fc_pro_enable_compat_cart_theme_style_{theme_slug}`](/pro/hooks/fc_pro_enable_compat_cart_theme_style_theme_slug/) Filters whether to load cart compatibility styles for a specific theme.
 - [`fc_pro_enable_compat_checkout_edit_cart_plugin_style_{plugin_slug}`](/pro/hooks/fc_pro_enable_compat_checkout_edit_cart_plugin_style_plugin_slug/) Filters whether to load checkout edit-cart compatibility styles for a specific plugin.
@@ -352,10 +366,12 @@ Actions and filters in Fluid Checkout PRO.
 - [`fc_pro_integration_woocommerce_gift_card_code_checkout_section_hook_priority`](/pro/hooks/fc_pro_integration_woocommerce_gift_card_code_checkout_section_hook_priority/) Filters the hook priority for integration woocommerce gift card code checkout section.
 - [`fc_pro_integration_woocommerce_points_and_rewards_redeem_message_hook_priority`](/pro/hooks/fc_pro_integration_woocommerce_points_and_rewards_redeem_message_hook_priority/) Filters the hook priority for integration woocommerce points and rewards redeem message.
 - [`fc_pro_intl_tel_input_settings`](/pro/hooks/fc_pro_intl_tel_input_settings/) Filters the settings for intl tel input.
-- [`fc_pro_is_order_pay_page_or_fragment`](/pro/hooks/fc_pro_is_order_pay_page_or_fragment/) Filters whether order pay page or fragment.
+- [`fc_pro_is_ship_delivery_available`](/pro/hooks/fc_pro_is_ship_delivery_available/) Filters whether ship delivery is available for the current packages.
 - [`fc_pro_is_substep_delivery_slots_visible`](/pro/hooks/fc_pro_is_substep_delivery_slots_visible/) Filters whether substep delivery slots visible.
-- [`fc_pro_is_substep_pickup_location_visible`](/pro/hooks/fc_pro_is_substep_pickup_location_visible/) Filters whether substep pickup location visible.
+- [`fc_pro_is_substep_delivery_visible`](/pro/hooks/fc_pro_is_substep_delivery_visible/) Filters whether the delivery substep is visible.
 - [`fc_pro_license_manager_for_woocommerce_order_details_section_hook_priority_order_subscriptions`](/pro/hooks/fc_pro_license_manager_for_woocommerce_order_details_section_hook_priority_order_subscriptions/) Filters the hook priority for license manager for woocommerce order details section order subscriptions.
+- [`fc_pro_local_pickup_shipping_address_skip_field_keys`](/pro/hooks/fc_pro_local_pickup_shipping_address_skip_field_keys/) Filters the shipping field keys preserved when clearing or restoring the shipping address for local pickup.
+- [`fc_pro_local_pickup_shipping_zone_selected_fields_keys`](/pro/hooks/fc_pro_local_pickup_shipping_zone_selected_fields_keys/) Filters the pickup shipping zone field keys selected for display.
 - [`fc_pro_locate_template_cart_cross_sells_skip_template`](/pro/hooks/fc_pro_locate_template_cart_cross_sells_skip_template/) Filters whether locating the cart cross-sells template should be skipped.
 - [`fc_pro_locate_template_cart_skip_template`](/pro/hooks/fc_pro_locate_template_cart_skip_template/) Filters whether locating a cart template should be skipped.
 - [`fc_pro_needs_pickup_point_address_from_shipping_method`](/pro/hooks/fc_pro_needs_pickup_point_address_from_shipping_method/) Filters whether needs pickup point address from shipping method is needed.
@@ -421,9 +437,7 @@ Actions and filters in Fluid Checkout PRO.
 - [`fc_pro_order_received_sidebar_attributes`](/pro/hooks/fc_pro_order_received_sidebar_attributes/) Filters the HTML attributes for order received sidebar.
 - [`fc_pro_order_received_sidebar_attributes_inner`](/pro/hooks/fc_pro_order_received_sidebar_attributes_inner/) Filters the order received sidebar attributes inner.
 - [`fc_pro_order_received_wrapper_classes`](/pro/hooks/fc_pro_order_received_wrapper_classes/) Filters the CSS classes for order received wrapper.
-- [`fc_pro_override_template_with_theme_file`](/pro/hooks/fc_pro_override_template_with_theme_file/) Filters whether a theme template file replaces the Fluid Checkout PRO template.
 - [`fc_pro_pickup_point_address_data`](/pro/hooks/fc_pro_pickup_point_address_data/) Filters the pickup point address data.
-- [`fc_pro_pickup_point_label_text`](/pro/hooks/fc_pro_pickup_point_label_text/) Filters the text for pickup point label.
 - [`fc_pro_points_rewards_apply_button_classes`](/pro/hooks/fc_pro_points_rewards_apply_button_classes/) Filters the CSS classes for points rewards apply button.
 - [`fc_pro_points_rewards_apply_button_text`](/pro/hooks/fc_pro_points_rewards_apply_button_text/) Filters the text for points rewards apply button.
 - [`fc_pro_points_rewards_display_section_title`](/pro/hooks/fc_pro_points_rewards_display_section_title/) Filters whether to display points rewards display section title.
@@ -431,6 +445,8 @@ Actions and filters in Fluid Checkout PRO.
 - [`fc_pro_points_rewards_script_settings`](/pro/hooks/fc_pro_points_rewards_script_settings/) Filters the settings for points rewards script.
 - [`fc_pro_points_rewards_section_title`](/pro/hooks/fc_pro_points_rewards_section_title/) Filters the title for points rewards section.
 - [`fc_pro_settings_skip_enabling_list`](/pro/hooks/fc_pro_settings_skip_enabling_list/) Filters the settings skip enabling list.
+- [`fc_pro_skip_add_pickup_info_as_shipping_method_description`](/pro/hooks/fc_pro_skip_add_pickup_info_as_shipping_method_description/) Filters whether to skip adding pickup information to the shipping method description.
+- [`fc_pro_skip_choose_pickup_location_description`](/pro/hooks/fc_pro_skip_choose_pickup_location_description/) Filters whether to skip the note that asks the customer to choose a pickup location.
 - [`fc_pro_skip_international_phone_fields_validation`](/pro/hooks/fc_pro_skip_international_phone_fields_validation/) Filters whether international phone validation is skipped for a substep.
 - [`fc_pro_thwcfe_custom_section_substep_position_args`](/pro/hooks/fc_pro_thwcfe_custom_section_substep_position_args/) Filters the arguments for thwcfe custom section substep position.
 - [`fc_pro_thwcfe_substep_text_display_value_{field_args}type`](/pro/hooks/fc_pro_thwcfe_substep_text_display_value_field_argstype/) Filters the displayed value of a Checkout Field Editor field by field type.
@@ -459,22 +475,11 @@ Actions and filters in Fluid Checkout PRO.
 - [`fc_substep_text_display_value_show_field_label`](/pro/hooks/fc_substep_text_display_value_show_field_label/) Filters whether to display substep text display value show field label.
 - [`fc_substep_title_{section_id}`](/pro/hooks/fc_substep_title_section_id/) Filters the title of a checkout substep.
 - [`fc_thankyou_order_received_failed_title`](/pro/hooks/fc_thankyou_order_received_failed_title/) Filters the title for thankyou order received failed.
-- [`fc_vat_admin_notices`](/pro/hooks/fc_vat_admin_notices/) Filters the admin notices displayed by the EU VAT features in Fluid Checkout PRO.
-- [`fc_vat_admin_script_settings`](/pro/hooks/fc_vat_admin_script_settings/) Filters the admin script settings passed to `AdminEUVAT.init()` as `fcVATSettings.adminEUVAT`.
-- [`fc_vat_{current_section}_settings`](/pro/hooks/fc_vat_current_section_settings/) Filters the WooCommerce settings fields for a Fluid Checkout settings section.
-- [`fc_vat_enable_compat_account_details_plugin_style_{plugin_slug}`](/pro/hooks/fc_vat_enable_compat_account_details_plugin_style_plugin_slug/) Filters whether to load the account-details compatibility stylesheet for a plugin.
-- [`fc_vat_enable_compat_account_details_style_{theme_slug}`](/pro/hooks/fc_vat_enable_compat_account_details_style_theme_slug/) Filters whether to load the account-details compatibility stylesheet for a theme.
-- [`fc_vat_enable_compat_edit_address_plugin_style_{plugin_slug}`](/pro/hooks/fc_vat_enable_compat_edit_address_plugin_style_plugin_slug/) Filters whether to load the edit-address compatibility stylesheet for a plugin.
-- [`fc_vat_enable_compat_edit_address_style_{theme_slug}`](/pro/hooks/fc_vat_enable_compat_edit_address_style_theme_slug/) Filters whether to load the edit-address compatibility stylesheet for a theme.
-- [`fc_vat_enable_compat_plugin_{plugin_slug}`](/pro/hooks/fc_vat_enable_compat_plugin_plugin_slug/) Filters whether to load the PHP compatibility file for a plugin.
-- [`fc_vat_enable_compat_plugin_style_{plugin_slug}`](/pro/hooks/fc_vat_enable_compat_plugin_style_plugin_slug/) Filters whether to load the checkout compatibility stylesheet for a plugin.
-- [`fc_vat_enable_compat_theme_style_{theme_slug}`](/pro/hooks/fc_vat_enable_compat_theme_style_theme_slug/) Filters whether to load the checkout compatibility stylesheet for a theme.
-- [`fc_vat_enable_compat_theme_{theme_slug}`](/pro/hooks/fc_vat_enable_compat_theme_theme_slug/) Filters whether to load the PHP compatibility file for a theme.
+- [`fc_vat_account_vat_company_field_script_settings`](/pro/hooks/fc_vat_account_vat_company_field_script_settings/) Filters the script settings passed to `AccountVatCompanyField.init()` as `fcSettings.accountVatCompanyField`.
+- [`fc_vat_admin_script_settings`](/pro/hooks/fc_vat_admin_script_settings/) Filters the admin script settings passed to `AdminEUVAT.init()` as `fcSettingsAdmin.adminEUVAT`.
 - [`fc_vat_is_vat_number_field`](/pro/hooks/fc_vat_is_vat_number_field/) Filters whether a field is considered a VAT number field.
-- [`fc_vat_js_settings`](/pro/hooks/fc_vat_js_settings/) Filters the JavaScript settings object output as `fcVATSettings`.
 - [`fc_vat_number_field_args`](/pro/hooks/fc_vat_number_field_args/) Filters the arguments used for the VAT number field.
 - [`fc_vat_reverse_charge_countries_skip_list_options`](/pro/hooks/fc_vat_reverse_charge_countries_skip_list_options/) Filters the countries offered in the Reverse Charge Exceptions setting.
-- [`fc_vat_vat_number_account_details_field_additional_args`](/pro/hooks/fc_vat_vat_number_account_details_field_additional_args/) Filters extra arguments merged into the VAT number field on the edit-account form.
 - [`fc_woocommerce_gateway_stripe_show_buttons`](/pro/hooks/fc_woocommerce_gateway_stripe_show_buttons/) Filters whether to show woocommerce gateway stripe show buttons.
 - [`fc_woocommerce_order_delivery_no_delivery_date_order_review_notice`](/pro/hooks/fc_woocommerce_order_delivery_no_delivery_date_order_review_notice/) Filters the notice for woocommerce order delivery no delivery date order review.
 - [`fc_woodelivery_no_delivery_options_order_review_notice`](/pro/hooks/fc_woodelivery_no_delivery_options_order_review_notice/) Filters the notice for woodelivery no delivery options order review.

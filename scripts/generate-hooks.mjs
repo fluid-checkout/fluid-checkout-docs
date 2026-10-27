@@ -497,8 +497,8 @@ function loadHooks(filePath, fallbackType) {
 
 /**
  * Normalize a supplemental hook with its own plugin prefix before it is merged.
- * PRO's prefix is fc_pro. EU VAT hooks that use self::$plugin_prefix must be
- * normalized with fc_vat first, or they would be published as fc_pro_*.
+ * PRO's prefix is fc_pro. A supplemental set that uses self::$plugin_prefix
+ * must be normalized with its own prefix first, or those names would become fc_pro_*.
  *
  * @param {object} hook
  * @param {string} pluginPrefix

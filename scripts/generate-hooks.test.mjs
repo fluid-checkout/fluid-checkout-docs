@@ -400,49 +400,59 @@ test('catalog exclusions skip fc_lcs_ prefixes and internal license hook names',
   }
 });
 
-test('supplemental EU VAT hooks merge into PRO without colliding', () => {
+test('PRO export publishes the five EU VAT filters and has no supplemental set', () => {
   const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
   const pro = catalog.plugins.find((entry) => entry.id === 'pro');
   const exclusions = resolveHookExclusions(catalog);
   const actions = JSON.parse(fs.readFileSync(path.join(root, 'data/pro/actions.json'), 'utf8'));
   const filters = JSON.parse(fs.readFileSync(path.join(root, 'data/pro/filters.json'), 'utf8'));
-  const supplementalFilters = JSON.parse(fs.readFileSync(path.join(root, 'data/pro/supplemental/eu-vat/filters.json'), 'utf8'));
-  const supplementalActions = JSON.parse(fs.readFileSync(path.join(root, 'data/pro/supplemental/eu-vat/actions.json'), 'utf8'));
-  assert.equal(JSON.stringify(actions).includes('fc_vat_'), false);
-  assert.equal(JSON.stringify(filters).includes('fc_vat_'), false);
-  assert.equal(supplementalActions.hooks.length, 0);
+  assert.equal(actions.hooks.length, 127);
+  assert.equal(filters.hooks.length, 386);
+  assert.equal(fs.existsSync(path.join(root, 'data/pro/supplemental')), false);
 
   const sets = loadSupplementalSets(path.join(root, 'data', 'pro'));
-  assert.deepEqual(sets.map((set) => set.id), ['eu-vat']);
-  assert.equal(sets[0].pluginPrefix, 'fc_vat');
-  const merged = mergeSupplementalHooks([...actions.hooks, ...filters.hooks], sets, pro);
-  assert.deepEqual(merged.collisions, []);
-  assert.deepEqual(formatSupplementalLog(pro, sets, merged.collisions), [
-    'Merged 16 supplemental hooks into pro from data/pro/supplemental/eu-vat (pluginPrefix: fc_vat).',
-    'No hook-name collisions between pro data and supplemental hooks.',
-  ]);
+  assert.deepEqual(sets, []);
+  assert.deepEqual(formatSupplementalLog(pro, sets, []), []);
 
-  const result = prepareHooks(merged.hooks, pro, exclusions);
-  const vatHooks = result.hooks.filter((hook) => hook.name.startsWith('fc_vat_'));
+  const merged = mergeSupplementalHooks(
+    [...actions.hooks, ...filters.hooks],
+    [{
+      id: 'sample',
+      pluginPrefix: 'fc_sample',
+      hooks: [
+        {name: 'fc_vat_number_field_args', type: 'filter'},
+        {name: 'fc_sample_extra', type: 'filter'},
+      ],
+    }],
+    pro,
+  );
+  assert.deepEqual(merged.collisions, [{name: 'fc_vat_number_field_args', source: 'sample'}]);
+  assert.equal(merged.hooks.filter((hook) => hook.name === 'fc_sample_extra').length, 1);
+  assert.equal(merged.hooks.filter((hook) => hook.name === 'fc_vat_number_field_args').length, 1);
+
+  const result = prepareHooks([...actions.hooks, ...filters.hooks], pro, exclusions);
+  assert.deepEqual(
+    result.hooks.filter((hook) => hook.name.startsWith('fc_vat_')).map((hook) => hook.name),
+    [
+      'fc_vat_account_vat_company_field_script_settings',
+      'fc_vat_admin_script_settings',
+      'fc_vat_is_vat_number_field',
+      'fc_vat_number_field_args',
+      'fc_vat_reverse_charge_countries_skip_list_options',
+    ],
+  );
+  for (const name of [
+    'fc_vat_admin_notices',
+    'fc_vat_current_section_settings',
+    'fc_vat_enable_compat_plugin_{plugin_slug}',
+    'fc_vat_js_settings',
+    'fc_vat_vat_number_account_details_field_additional_args',
+    'fc_vat_{current_section}_settings',
+  ]) {
+    assert.equal(result.hooks.some((hook) => hook.name === name || hook.slug === name), false, name);
+  }
   assert.deepEqual(pro.hookPrefixes, ['fc_pro_', 'fc_', 'fc_adb_', 'fc_gaa_', 'fc_vat_']);
   assert.deepEqual(fixture.pro.hookPrefixes, pro.hookPrefixes);
-  assert.equal(vatHooks.length, 16);
-  assert.equal(supplementalFilters.hooks.length, 16);
-  assert.ok(vatHooks.every((hook) => hook.name.startsWith('fc_vat_')));
-
-  const sidebar = JSON.parse(fs.readFileSync(path.join(root, 'sidebars/pro.hooks.json'), 'utf8'));
-  const sidebarLabels = sidebar
-    .flatMap((item) => (Array.isArray(item.items) ? item.items : []))
-    .map((item) => item.label);
-  for (const hook of vatHooks) {
-    assert.ok(sidebarLabels.includes(hook.name), hook.name);
-  }
-
-  const compat = vatHooks.find((hook) => hook.name === 'fc_vat_enable_compat_plugin_{plugin_slug}');
-  assert.ok(compat.hook.aliases.includes('fc_vat_enable_compat_plugin_woocommerce-germanized-pro'));
-  assert.ok(compat.hook.aliases.includes('fc_vat_enable_compat_plugin_woocommerce-checkout-field-editor-pro'));
-  const notices = vatHooks.find((hook) => hook.name === 'fc_vat_admin_notices');
-  assert.equal(notices.name, 'fc_vat_admin_notices');
 });
 
 test('hooks index places the hand-written intro above the hook list', () => {
@@ -485,11 +495,11 @@ test('hooks index places the hand-written intro above the hook list', () => {
   assert.match(proIntro, /`fc_vat_`/);
   assert.match(proIntro, /alongside Fluid Checkout Lite/);
   assert.match(proIntro, /## EU VAT hooks/);
-  assert.match(proIntro, /## Dynamic hook names/);
+  assert.doesNotMatch(proIntro, /## Dynamic hook names/);
+  assert.doesNotMatch(proIntro, /fc_vat_enable_compat_plugin_/);
+  assert.doesNotMatch(proIntro, /fc_vat_admin_notices/);
   assert.match(proIntro, /@site\/hooks-intro\/pro\/img\/eu-vat-hooks-overview\.svg/);
   assert.match(proIntro, /fc_vat_number_field_args/);
-  assert.match(proIntro, /fc_vat_enable_compat_plugin_\{plugin_slug\}/);
-  assert.match(proIntro, /fc_vat_enable_compat_plugin_\{\$plugin_slug\}/);
   assert.match(proIntro, /\/pro\/hooks\/fc_vat_number_field_args\//);
   assert.doesNotMatch(proIntro, /\{'\{'\}/);
   assert.doesNotMatch(proIntro, /\/eu-vat\//);

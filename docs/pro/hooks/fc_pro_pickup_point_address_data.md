@@ -10,19 +10,22 @@ description: "Filters the pickup point address data."
 
 Filters the pickup point address data.
 
+The second argument is the shipping method ID and the third is the package index, as in previous versions. The shipping method object was added as the fourth argument.
+
 ## Signature
 
 ```php
-apply_filters( 'fc_pro_pickup_point_address_data', $pickup_point_address, $chosen_method, $package_index );
+apply_filters( 'fc_pro_pickup_point_address_data', $pickup_point_address, $method_id, $package_index, $method );
 ```
 
 ## Parameters
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `$pickup_point_address` | `mixed` | The pickup point address. |
-| `$chosen_method` | `mixed` | The chosen method. |
+| `$pickup_point_address` | `array` | Pickup point address data. |
+| `$method_id` | `string` | Shipping method ID. |
 | `$package_index` | `int` | Shipping package index. |
+| `$method` | `mixed` | Shipping method object. Added in 5.0.0. |
 
 ## Since
 

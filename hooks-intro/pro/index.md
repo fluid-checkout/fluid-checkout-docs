@@ -51,7 +51,7 @@ add_action( 'fc_pro_order_received_successful', function( $order ) {
 
 ## EU VAT hooks
 
-EU VAT features in Fluid Checkout PRO run actions and filters around the checkout VAT number. Use them to normalize the number, turn a compatibility module on or off, or print something next to the field.
+EU VAT features in Fluid Checkout PRO run filters around the checkout VAT number.
 
 ![EU VAT number moving from the checkout field, through a filter, to validation and storage](./img/eu-vat-hooks-overview.svg)
 
@@ -69,21 +69,4 @@ add_filter( 'fc_vat_number_field_args', function( $args ) {
     $args['description'] = __( 'Enter your business tax identification number.', 'my-store' );
     return $args;
 }, 10 );
-```
-
-## Dynamic hook names
-
-Some `fc_vat_` hook names change at runtime. On these pages a variable is written in braces, and the prefix `fc_vat` stands in for `self::$plugin_prefix`.
-
-| In the plugin | Name on this page |
-| --- | --- |
-| `'fc_vat_enable_compat_plugin_' . $plugin_slug` | `fc_vat_enable_compat_plugin_{plugin_slug}` |
-| `'fc_vat_' . $current_section . '_settings'` | `fc_vat_{current_section}_settings` |
-| `self::$plugin_prefix . '_admin_notices'` | `fc_vat_admin_notices` |
-
-Register the concrete hook when you know the value:
-
-```php
-$plugin_slug = 'woocommerce-subscriptions';
-add_filter( "fc_vat_enable_compat_plugin_{$plugin_slug}", '__return_false' );
 ```

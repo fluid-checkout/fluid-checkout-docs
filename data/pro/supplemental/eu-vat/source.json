@@ -1,4 +1,0 @@
-{
-  "pluginPrefix": "fc_vat",
-  "note": "Temporary. These hooks are the former EU-VAT Assistant fixture, merged into PRO hook pages until fluid-checkout/fluid-checkout-pro on release/next-FEATURE publishes them in data/pro/actions.json and data/pro/filters.json. Do not copy this JSON into those files."
-}

@@ -30,7 +30,7 @@ data/<plugin>/rest-api.json    # REST API export (optional; PRO has Address Book
 data/rest-api.schema.json      # schema for rest-api.json
 data/<plugin>/readme.txt       # plugin readme; == Changelog == holds the newest releases
 data/<plugin>/changelog.md     # older releases (optional)
-data/<plugin>/supplemental/<id>/  # optional hook JSON merged into that plugin; PRO has eu-vat until the PRO repo publishes those hooks
+data/<plugin>/supplemental/<id>/  # optional extra hook JSON merged at generate time; PRO has none
 hooks-intro/<plugin>/index.md  # hand-written intro included at the top of the hooks index
 hooks-intro/<plugin>/img/      # images for that intro
 rest-api-intro/<plugin>/index.md # hand-written intro for the REST API index
@@ -115,7 +115,7 @@ Lite and PRO each have an intro at `hooks-intro/<plugin>/index.md`. The PRO intr
 Create `examples/<plugin>/<hook-slug>.md`. `<plugin>` is the id in `plugins.json` (`lite` or `pro`). EU VAT examples are under `examples/pro/`. `<hook-slug>` is the slug the generator already uses for that hook page:
 
 - A normal hook keeps its name: `examples/pro/fc_vat_number_field_args.md`.
-- A dynamic hook drops braces, with no extra separator. `fc_vat_enable_compat_plugin_{plugin_slug}` is `examples/pro/fc_vat_enable_compat_plugin_plugin_slug.md`. `fc_vat_{current_section}_settings` is `examples/pro/fc_vat_current_section_settings.md`.
+- A dynamic hook drops braces, with no extra separator. `fc_pro_enable_compat_account_details_plugin_style_{plugin_slug}` is `examples/pro/fc_pro_enable_compat_account_details_plugin_style_plugin_slug.md`.
 - Each normalized hook name has one page. The generator orders call sites by source file, then source line, then JSON order, and ignores later sites of the same name. A `-2` or `-3` slug is only used when two different names share a slug. The example file uses the published slug. An example file or `related_hooks` entry that still points at an unpublished `-N` slug is moved onto the unsuffixed hook.
 
 `npm run generate` inserts the file body under `## Examples`, after the parameters and source sections. A hook with no file has no Examples section. Generation only reads `examples/`. It does not create, overwrite, or delete those files. Do not put examples in `docs/<plugin>/hooks/`; that directory is replaced on every run.
@@ -152,9 +152,11 @@ Do not edit `docs/<plugin>/changelog.md`. Replace the source files and run `npm 
 
 Plugin repositories will run [wp-hooks/generator](https://github.com/wp-hooks/generator) and open a pull request that updates `data/<plugin>/actions.json` and `data/<plugin>/filters.json`. The same pull request copies `readme.txt` and `changelog.md` into `data/<plugin>/`. The contract (paths, branch names, versioning trigger, GitHub App secrets) is in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-`data/pro/supplemental/eu-vat/*.json` is the former EU VAT fixture, merged into the PRO hook pages until `fluid-checkout/fluid-checkout-pro` on `release/next-FEATURE` publishes those hooks in `data/pro/actions.json` and `data/pro/filters.json`. Do not treat the supplemental files as that export.
+`data/pro/actions.json` and `data/pro/filters.json` are the Hook docs data export from `fluid-checkout/fluid-checkout-pro` on `release/next-FEATURE` (plugin version 5.0.0-alpha-19, commit `7162374503006fad19fc1e7362dbad1987148349`). EU VAT hooks in that export use `fc_vat_` and are published with the other PRO hooks.
 
-Dynamic PHP hook names are normalized for the page title and URL. `self::$plugin_prefix` uses `pluginPrefix` from `plugins.json` (`fc` for Lite, and `fc_pro` for PRO). Supplemental EU VAT JSON is normalized with `fc_vat` from `data/pro/supplemental/eu-vat/source.json` before it is merged, so those hooks stay `fc_vat_*`.
+Optional `data/<plugin>/supplemental/<id>/` is merged at generate time when present. PRO has no supplemental directory. A supplemental hook is normalized with `pluginPrefix` from that directory's `source.json`, then skipped when the plugin export already has the same name.
+
+Dynamic PHP hook names are normalized for the page title and URL. `self::$plugin_prefix` uses `pluginPrefix` from `plugins.json` (`fc` for Lite, and `fc_pro` for PRO).
 
 Each hook page shows where the hook runs as plain text, for example `Source: \`inc/checkout-steps.php\`, line 123`. The page does not link to the file. Hook JSON does not include a commit SHA or a repository URL. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
