@@ -35,6 +35,34 @@ const algoliaApiKey = envValue('ALGOLIA_API_KEY');
 const algoliaIndexName = envValue('ALGOLIA_INDEX_NAME');
 const useAlgolia = Boolean(algoliaAppId && algoliaApiKey && algoliaIndexName);
 
+// Queues the first page view. `src/clientModules/matomo.ts` skips the initial
+// `onRouteDidUpdate` (previousLocation is null), so this view is sent once.
+// `docusaurus start` leaves NODE_ENV as development, so local dev has no snippet
+// and the client module no-ops because `window._paq` was never created.
+const matomoTrackingScript = `
+var _paq = window._paq = window._paq || [];
+_paq.push(['setCookieDomain', '*.fluidcheckout.com']);
+_paq.push(['setDomains', ['*.fluidcheckout.com']]);
+_paq.push(['enableLinkTracking']);
+_paq.push(['setTrackerUrl', 'https://fluidcheckout.matomo.cloud/matomo.php']);
+_paq.push(['setSiteId', '3']);
+_paq.push(['trackPageView']);
+var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];
+g.async=true;g.src='https://cdn.matomo.cloud/fluidcheckout.matomo.cloud/matomo.js';s.parentNode.insertBefore(g,s);
+`.trim();
+
+const matomoHeadTags: Config['headTags'] =
+  process.env.NODE_ENV === 'production'
+    ? [
+        {
+          tagName: 'script',
+          // Config validation requires `attributes` on every head tag.
+          attributes: {},
+          innerHTML: matomoTrackingScript,
+        },
+      ]
+    : [];
+
 const config: Config = {
   title: 'Fluid Checkout Docs',
   tagline: 'Developer documentation for Fluid Checkout plugins',
@@ -59,6 +87,8 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  clientModules: ['./src/clientModules/matomo.ts'],
+  headTags: matomoHeadTags,
   presets: [
     [
       'classic',
