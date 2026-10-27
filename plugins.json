@@ -47,6 +47,10 @@
         {
           "id": "google-address-autocomplete",
           "title": "Google Address Autocomplete (before merging into PRO)"
+        },
+        {
+          "id": "eu-vat",
+          "title": "EU VAT (before merging into PRO)"
         }
       ]
     }

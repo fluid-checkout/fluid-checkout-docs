@@ -378,12 +378,31 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.equal(pro.merged.entries.at(-1).version, '1.2.0');
   assert.equal(pro.merged.entries.at(-1).suffix, '(first public release)');
   assert.match(pro.page, /:::info\[Lite changelog\]\n\nLooking for Fluid Checkout Lite changes\? See the \[Lite changelog\]\(\/lite\/changelog\/\)\.\n\n:::/);
+  assert.equal(pro.legacy.map((section) => section.id).join(','), 'address-book,google-address-autocomplete,eu-vat');
+  assert.equal(pro.legacy.every((section) => section.placeholder === false), true);
+  assert.deepEqual(pro.legacy.map((section) => section.entries.length), [35, 52, 26]);
+  assert.equal(pro.legacy[0].entries[0].version, '3.1.6');
+  assert.equal(pro.legacy[0].entries[0].date, '2026-10-26');
+  assert.equal(pro.legacy[0].entries.at(-1).version, '2.0.0');
+  assert.equal(pro.legacy[1].entries[0].version, '2.3.1');
+  assert.equal(pro.legacy[1].entries[0].date, '2026-10-26');
+  assert.equal(pro.legacy[1].entries.at(-1).version, '1.0.0');
+  assert.equal(pro.legacy[2].entries[0].version, '2.1.2');
+  assert.equal(pro.legacy[2].entries.at(-1).version, '0.1.0');
+  assert.equal(pro.legacy[2].entries.at(-1).date, '2023-09-27');
   assert.match(pro.page, /^## Address Book \(before merging into PRO\) \{\/\* #address-book \*\/\}$/m);
-  assert.match(pro.page, /Address Book is being merged into Fluid Checkout PRO\. Its changelog for earlier versions, from when it was a separate add-on, will be added here\./);
+  assert.match(pro.page, /^## 3\.1\.6 - 2026-10-26 \{\/\* #address-book-3-1-6 \*\/\}$/m);
   assert.match(pro.page, /^## Google Address Autocomplete \(before merging into PRO\) \{\/\* #google-address-autocomplete \*\/\}$/m);
-  assert.match(pro.page, /Google Address Autocomplete is being merged into Fluid Checkout PRO\. Its changelog for earlier versions, from when it was a separate add-on, will be added here\./);
+  assert.match(pro.page, /^## 2\.3\.1 - 2026-10-26 \{\/\* #google-address-autocomplete-2-3-1 \*\/\}$/m);
+  assert.match(pro.page, /^## EU VAT \(before merging into PRO\) \{\/\* #eu-vat \*\/\}$/m);
+  assert.match(pro.page, /^## 2\.1\.2 - 2026-08-21 \{\/\* #eu-vat-2-1-2 \*\/\}$/m);
+  assert.match(pro.page, /^## 0\.1\.0 - 2023-09-27 \{\/\* #eu-vat-0-1-0 \*\/\}$/m);
+  assert.doesNotMatch(pro.page, /is being merged into Fluid Checkout PRO/);
   assert.ok(pro.page.lastIndexOf('{/* #1-2-0 */}') < pro.page.indexOf('{/* #address-book */}'));
-  assert.ok(pro.page.indexOf('{/* #address-book */}') < pro.page.indexOf('{/* #google-address-autocomplete */}'));
+  assert.ok(pro.page.indexOf('{/* #address-book */}') < pro.page.indexOf('{/* #address-book-3-1-6 */}'));
+  assert.ok(pro.page.indexOf('{/* #address-book-3-1-6 */}') < pro.page.indexOf('{/* #google-address-autocomplete */}'));
+  assert.ok(pro.page.indexOf('{/* #google-address-autocomplete */}') < pro.page.indexOf('{/* #eu-vat */}'));
+  assert.match(pro.page, /from data\/pro\/readme.txt and data\/pro\/changelog.md and data\/pro\/legacy\/address-book\/readme.txt and data\/pro\/legacy\/google-address-autocomplete\/readme.txt and data\/pro\/legacy\/eu-vat\/readme.txt/);
   assert.doesNotMatch(pro.page.split(/^# Changelog$/m)[1], /data\/pro\/legacy/);
   assert.match(pro.page, /^title: "Fluid Checkout PRO changelog"$/m);
   assert.match(pro.page, /^description: "Release history for Fluid Checkout PRO, newest version first\."$/m);
@@ -432,11 +451,13 @@ test('changelog format page is generated and is the only published semver.org li
   assert.doesNotMatch(page, /EU-VAT Assistant/);
   assert.match(page, /\[Address Book\]\(\/pro\/changelog\/#address-book\) \(part of the Fluid Checkout PRO changelog\)/);
   assert.match(page, /\[Google Address Autocomplete\]\(\/pro\/changelog\/#google-address-autocomplete\) \(part of the Fluid Checkout PRO changelog\)/);
+  assert.match(page, /\[EU VAT\]\(\/pro\/changelog\/#eu-vat\) \(part of the Fluid Checkout PRO changelog\)/);
   const lite = page.indexOf('[Fluid Checkout Lite](/lite/changelog/)');
   const pro = page.indexOf('[Fluid Checkout PRO](/pro/changelog/)');
   const addressBook = page.indexOf('[Address Book](/pro/changelog/#address-book)');
   const autocomplete = page.indexOf('[Google Address Autocomplete](/pro/changelog/#google-address-autocomplete)');
-  assert.ok(lite < pro && pro < addressBook && addressBook < autocomplete);
+  const euVat = page.indexOf('[EU VAT](/pro/changelog/#eu-vat)');
+  assert.ok(lite < pro && pro < addressBook && addressBook < autocomplete && autocomplete < euVat);
 
   const published = [
     ...markdownFiles(path.join(root, 'docs')),
