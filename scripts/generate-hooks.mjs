@@ -23,6 +23,9 @@
  * Optional examples are read from examples/<plugin>/<hook-slug>.md and copied
  * onto the matching page. The only write under examples/ is moving a file or
  * related_hooks entry that still points at an unpublished -N slug.
+ *
+ * Optional data/<plugin>/hook-text.json replaces the short description or the
+ * long description of a published hook. The export JSON is left unchanged.
  */
 
 import fs from 'node:fs';
@@ -677,9 +680,98 @@ export function formatExampleLog(plugin, examples) {
 }
 
 /**
+ * Optional replacements for published hook text. Keyed by normalized hook name.
+ * A long_description replacement drops long_description_html so the export HTML
+ * cannot put the original sentence back on the page.
+ *
+ * @param {string} dataDir
+ * @returns {Record<string, {description?: string, long_description?: string}>}
+ */
+export function loadHookTextOverrides(dataDir) {
+  const filePath = path.join(dataDir, 'hook-text.json');
+  if (!fs.existsSync(filePath)) {
+    return {};
+  }
+
+  const parsed = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  if (parsed == null || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    throw new Error(`${filePath} must be a JSON object keyed by hook name.`);
+  }
+
+  /** @type {Record<string, {description?: string, long_description?: string}>} */
+  const overrides = {};
+  for (const [name, value] of Object.entries(parsed)) {
+    if (value == null || typeof value !== 'object' || Array.isArray(value)) {
+      throw new Error(`${filePath} entry "${name}" must be an object.`);
+    }
+    const description = value.description;
+    const longDescription = value.long_description;
+    if (description != null && typeof description !== 'string') {
+      throw new Error(`${filePath} entry "${name}" description must be a string.`);
+    }
+    if (longDescription != null && typeof longDescription !== 'string') {
+      throw new Error(`${filePath} entry "${name}" long_description must be a string.`);
+    }
+    const hasDescription = typeof description === 'string' && description.trim().length > 0;
+    const hasLongDescription = typeof longDescription === 'string' && longDescription.trim().length > 0;
+    if (!hasDescription && !hasLongDescription) {
+      throw new Error(`${filePath} entry "${name}" needs description or long_description.`);
+    }
+    /** @type {{description?: string, long_description?: string}} */
+    const entry = {};
+    if (hasDescription) {
+      entry.description = description;
+    }
+    if (hasLongDescription) {
+      entry.long_description = longDescription;
+    }
+    overrides[name] = entry;
+  }
+  return overrides;
+}
+
+/**
+ * @param {object} hook
+ * @param {string} name
+ * @param {Record<string, {description?: string, long_description?: string}>} overrides
+ * @returns {object}
+ */
+export function applyHookTextOverride(hook, name, overrides) {
+  const override = overrides?.[name];
+  if (override == null) {
+    return hook;
+  }
+  const doc = {...(hook.doc ?? {})};
+  if (typeof override.description === 'string') {
+    doc.description = override.description;
+  }
+  if (typeof override.long_description === 'string') {
+    doc.long_description = override.long_description;
+    delete doc.long_description_html;
+  }
+  return {...hook, doc};
+}
+
+/**
+ * @param {Record<string, unknown>} overrides
+ * @param {{name: string}[]} prepared
+ * @param {string} pluginId
+ */
+function assertHookTextOverridesUsed(overrides, prepared, pluginId) {
+  const published = new Set(prepared.map((entry) => entry.name));
+  const missing = Object.keys(overrides).filter((name) => !published.has(name));
+  if (missing.length > 0) {
+    throw new Error(
+      `data/${pluginId}/hook-text.json names hooks that are not published: ${missing.join(', ')}`,
+    );
+  }
+}
+
+/**
  * Write generated hook pages for one plugin.
  * Reads examples/<plugin>/<hook-slug>.md. The only change under examples/ is moving a
  * file or related_hooks entry off an unpublished -N slug onto the one published hook.
+ * data/<plugin>/hook-text.json, when present, replaces published sentences.
  *
  * @param {string} rootDir
  * @param {{id: string, label?: string}} plugin
@@ -692,6 +784,9 @@ export function formatExampleLog(plugin, examples) {
  * }}
  */
 export function writePluginDocs(rootDir, plugin, prepared) {
+  const textOverrides = loadHookTextOverrides(path.join(rootDir, 'data', plugin.id));
+  assertHookTextOverridesUsed(textOverrides, prepared, plugin.id);
+
   const examplesDir = path.join(rootDir, 'examples', plugin.id);
   const moved = relocateUnpublishedSuffixExamples(examplesDir, prepared);
   const {loaded, unused} = loadHookExamples(examplesDir, prepared, plugin.id);
@@ -708,12 +803,19 @@ export function writePluginDocs(rootDir, plugin, prepared) {
     }
   }
 
-  const indexHooks = prepared.map((entry) => ({
-    name: entry.name,
-    slug: entry.slug,
-    type: entry.type,
-    summary: entry.summary,
-  }));
+  const indexHooks = prepared.map((entry) => {
+    const hook = applyHookTextOverride(entry.hook, entry.name, textOverrides);
+    const description = hook.doc?.description;
+    const summary = hook === entry.hook || description === entry.hook.doc?.description
+      ? entry.summary
+      : String(description || '').replace(/\s+/g, ' ').trim();
+    return {
+      name: entry.name,
+      slug: entry.slug,
+      type: entry.type,
+      summary,
+    };
+  });
 
   fs.writeFileSync(
     path.join(hooksDir, 'README.md'),
@@ -724,6 +826,7 @@ export function writePluginDocs(rootDir, plugin, prepared) {
       ...supplementalReadmeLines(rootDir, plugin.id),
       '',
       'Do not edit these files by hand. Update the JSON source, or the generator, then run `npm run generate`.',
+      ...hookTextReadmeLines(rootDir, plugin.id),
       '',
     ].join('\n'),
   );
@@ -741,7 +844,7 @@ export function writePluginDocs(rootDir, plugin, prepared) {
 
   for (const entry of prepared) {
     const section = sections.get(entry.slug);
-    const page = renderHookPage(entry.hook, {
+    const page = renderHookPage(applyHookTextOverride(entry.hook, entry.name, textOverrides), {
       normalizedName: entry.name,
       slug: entry.slug,
       plugin,
@@ -757,6 +860,24 @@ export function writePluginDocs(rootDir, plugin, prepared) {
   fs.writeFileSync(sidebarPath, `${JSON.stringify(renderSidebarItems(indexHooks), null, 2)}\n`);
 
   return {loaded, unused, moved, sections};
+}
+
+/**
+ * Lines for the generated hooks README when published text replaces the export.
+ *
+ * @param {string} rootDir
+ * @param {string} pluginId
+ * @returns {string[]}
+ */
+function hookTextReadmeLines(rootDir, pluginId) {
+  const filePath = path.join(rootDir, 'data', pluginId, 'hook-text.json');
+  if (!fs.existsSync(filePath)) {
+    return [];
+  }
+  return [
+    '',
+    `Published sentences in \`data/${pluginId}/hook-text.json\` replace the matching export text. The export JSON is left unchanged.`,
+  ];
 }
 
 /**

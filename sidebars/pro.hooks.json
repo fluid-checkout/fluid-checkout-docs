@@ -571,11 +571,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_admin_license_key_activate_response",
-        "label": "fc_admin_license_key_activate_response"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_billing_same_as_shipping_display_substep_review_text_notice",
         "label": "fc_billing_same_as_shipping_display_substep_review_text_notice"
       },

@@ -4,7 +4,8 @@
     "fc_admin_license_key_script_url",
     "fc_admin_license_key_style_url",
     "fc_admin_field_type_license_exists",
-    "fc_show_settings_license_keys"
+    "fc_show_settings_license_keys",
+    "fc_admin_license_key_activate_response"
   ],
   "plugins": [
     {

@@ -205,7 +205,6 @@ Actions and filters in Fluid Checkout PRO.
 - [`fc_adb_is_entry_edit_enabled`](/pro/hooks/fc_adb_is_entry_edit_enabled/) Filter whether editing address book entries is enabled.
 - [`fc_adb_is_new_address_source_enabled`](/pro/hooks/fc_adb_is_new_address_source_enabled/) Filter whether the "Enter a new address" source option is available on checkout.
 - [`fc_{address_type}_same_as_{address_type_alt}_display_substep_review_text_notice`](/pro/hooks/fc_address_type_same_as_address_type_alt_display_substep_review_text_notice/) Filters whether to show the same-address notice on an order pay substep.
-- [`fc_admin_license_key_activate_response`](/pro/hooks/fc_admin_license_key_activate_response/) Filters the Activate AJAX success payload.
 - [`fc_billing_same_as_shipping_display_substep_review_text_notice`](/pro/hooks/fc_billing_same_as_shipping_display_substep_review_text_notice/) Filters whether to display billing same as shipping display substep review text notice.
 - [`fc_checkout_contact_login_link_classes`](/pro/hooks/fc_checkout_contact_login_link_classes/) Filters the CSS classes of the checkout contact-step login link.
 - [`fc_checkout_express_checkout_ignore_required_fields_skip_list`](/pro/hooks/fc_checkout_express_checkout_ignore_required_fields_skip_list/) Filters the list of items skipped for checkout express checkout ignore required fields.

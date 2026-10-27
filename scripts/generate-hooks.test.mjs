@@ -4,8 +4,10 @@ import path from 'node:path';
 import test from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {
+  applyHookTextOverride,
   formatHookFilterLog,
   formatSupplementalLog,
+  loadHookTextOverrides,
   loadSupplementalSets,
   matchesHookPrefix,
   mergeSupplementalHooks,
@@ -196,6 +198,7 @@ const internalLicenseNames = [
   'fc_admin_license_key_style_url',
   'fc_admin_field_type_license_exists',
   'fc_show_settings_license_keys',
+  'fc_admin_license_key_activate_response',
 ];
 
 test('catalog hookExcludePrefixes skip fc_licenses_ after the allowlist', () => {
@@ -270,7 +273,7 @@ test('catalog hookExcludePrefixes skip fc_licenses_ after the allowlist', () => 
   const lines = formatHookFilterLog(pro, proResult);
   assert.equal(
     lines[0],
-    'Skipped 3 hooks for pro (hookPrefixes: fc_pro_, fc_, fc_adb_, fc_gaa_, fc_vat_; hookExcludePrefixes: fc_licenses_, fc_lcs_; hookExcludeNames: fc_admin_license_key_script_url, fc_admin_license_key_style_url, fc_admin_field_type_license_exists, fc_show_settings_license_keys):',
+    'Skipped 3 hooks for pro (hookPrefixes: fc_pro_, fc_, fc_adb_, fc_gaa_, fc_vat_; hookExcludePrefixes: fc_licenses_, fc_lcs_; hookExcludeNames: fc_admin_license_key_script_url, fc_admin_license_key_style_url, fc_admin_field_type_license_exists, fc_show_settings_license_keys, fc_admin_license_key_activate_response):',
   );
   assert.ok(lines.includes('  - fc_licenses_is_activated'));
   assert.ok(lines.includes("  - fc_licenses_client_{action} (from 'fc_licenses_client_' . $action)"));
@@ -376,7 +379,7 @@ test('catalog exclusions skip fc_lcs_ prefixes and internal license hook names',
 
   const lines = formatHookFilterLog(pro, proResult);
   assert.match(lines[0], /hookExcludePrefixes: fc_licenses_, fc_lcs_/);
-  assert.match(lines[0], /fc_admin_license_key_script_url, fc_admin_license_key_style_url, fc_admin_field_type_license_exists, fc_show_settings_license_keys/);
+  assert.match(lines[0], /fc_admin_license_key_script_url, fc_admin_license_key_style_url, fc_admin_field_type_license_exists, fc_show_settings_license_keys, fc_admin_license_key_activate_response/);
   assert.ok(lines.includes('  - fc_lcs_is_activated'));
   assert.ok(lines.includes("  - fc_lcs_client_{action} (from 'fc_lcs_client_' . $action)"));
   assert.ok(lines.includes('  - fc_show_settings_license_keys'));
@@ -453,6 +456,28 @@ test('PRO export publishes the five EU VAT filters and has no supplemental set',
   }
   assert.deepEqual(pro.hookPrefixes, ['fc_pro_', 'fc_', 'fc_adb_', 'fc_gaa_', 'fc_vat_']);
   assert.deepEqual(fixture.pro.hookPrefixes, pro.hookPrefixes);
+  assert.equal(result.hooks.some((hook) => hook.name === 'fc_admin_license_key_activate_response'), false);
+  assert.ok(result.skipped.some((hook) => hook.name === 'fc_admin_license_key_activate_response'));
+});
+
+test('hook-text.json replaces a published long description and leaves the export unchanged', () => {
+  const overrides = loadHookTextOverrides(path.join(root, 'data/pro'));
+  const replacement = overrides.fc_vat_reverse_charge_countries_skip_list_options.long_description;
+  assert.match(replacement, /Fluid Checkout PRO attaches callbacks/);
+  assert.doesNotMatch(replacement, /EU-VAT Assistant/);
+
+  const filters = JSON.parse(fs.readFileSync(path.join(root, 'data/pro/filters.json'), 'utf8'));
+  const source = filters.hooks.find((hook) => hook.name === 'fc_vat_reverse_charge_countries_skip_list_options');
+  assert.match(source.doc.long_description, /EU-VAT Assistant also attaches callbacks/);
+  assert.match(source.doc.long_description_html, /EU-VAT Assistant also attaches callbacks/);
+
+  const page = renderHookPage(
+    applyHookTextOverride(source, source.name, overrides),
+    {normalizedName: source.name, slug: source.name, plugin: {id: 'pro'}},
+  );
+  assert.match(page, /Fluid Checkout PRO attaches callbacks that limit the list to EU countries and remove the shop country\./);
+  assert.doesNotMatch(page, /EU-VAT Assistant/);
+  assert.equal(source.doc.long_description_html.includes('EU-VAT Assistant'), true);
 });
 
 test('hooks index places the hand-written intro above the hook list', () => {

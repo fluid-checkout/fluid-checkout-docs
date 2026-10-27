@@ -162,7 +162,9 @@ Each hook page shows where the hook runs as plain text, for example `Source: \`i
 
 Each plugin's `hookPrefixes` allowlist decides which normalized names are published. Lite publishes names that start with `fc_`. PRO publishes names that start with `fc_pro_`, `fc_`, `fc_adb_`, `fc_gaa_`, or `fc_vat_`. `fc_adb_` is Address Book, `fc_gaa_` is Google Address Autocomplete, and `fc_vat_` is EU VAT. Address Book and Google Address Autocomplete are merging into PRO. EU VAT features are already part of PRO. Hooks copied from WooCommerce and other third-party code (`woocommerce_*`, `wc_od_*`, Enfold, Germanized, SkyVerge, and similar) are left out of the hook page, the index, and the sidebar. Aliases that do not match are dropped. `npm run generate` logs every skipped name. The full rule is in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-`hookExcludePrefixes` and `hookExcludeNames` at the top of `plugins.json` apply to every plugin after that allowlist. `fc_licenses_` and `fc_lcs_` are excluded everywhere, as are the internal names `fc_admin_license_key_script_url`, `fc_admin_license_key_style_url`, `fc_admin_field_type_license_exists`, and `fc_show_settings_license_keys`. Those hooks belong to Fluid Licenses, and other plugins only fire them because they bundle its client class. PRO's `fc_` prefix would otherwise publish them.
+`hookExcludePrefixes` and `hookExcludeNames` at the top of `plugins.json` apply to every plugin after that allowlist. `fc_licenses_` and `fc_lcs_` are excluded everywhere, as are the internal names `fc_admin_license_key_script_url`, `fc_admin_license_key_style_url`, `fc_admin_field_type_license_exists`, `fc_show_settings_license_keys`, and `fc_admin_license_key_activate_response`. Those hooks belong to Fluid Licenses, and other plugins only fire them because they bundle its client class. PRO's `fc_` prefix would otherwise publish them.
+
+Optional `data/<plugin>/hook-text.json` replaces a published hook's short or long description. The export JSON is left unchanged. PRO uses it for `fc_vat_reverse_charge_countries_skip_list_options`.
 
 ## Search
 
