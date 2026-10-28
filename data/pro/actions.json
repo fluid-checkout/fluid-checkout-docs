@@ -104,6 +104,64 @@
             "args": 0
         },
         {
+            "name": "fc_pro_address_book_after_checkout_entries_list",
+            "file": "templates/fc-adb/address-book/checkout/address-book-entries.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after the checkout address book entries list is output.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The address type.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$address_type"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The address book entries.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$address_book_entries"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "fc_pro_address_book_before_checkout_entries_list",
+            "file": "templates/fc-adb/address-book/checkout/address-book-entries.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires before the checkout address book entries list is output.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The address type.",
+                        "types": [
+                            "string"
+                        ],
+                        "variable": "$address_type"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The address book entries.",
+                        "types": [
+                            "array"
+                        ],
+                        "variable": "$address_book_entries"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
             "name": "fc_pro_after_cart_section_{$section_id}",
             "aliases": [
                 "fc_pro_after_cart_section_cart_items",
@@ -1376,6 +1434,52 @@
             "args": 1
         },
         {
+            "name": "fc_pro_delayed_account_created",
+            "file": "inc/delayed-account-creation.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires after a customer account is created from an order via delayed account creation.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The newly created customer ID.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$customer_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The order the account was created from.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 2
+        },
+        {
+            "name": "fc_pro_delivery_fields",
+            "file": "inc/checkout-local-pickup.php",
+            "type": "action",
+            "doc": {
+                "description": "Fires when outputting the delivery fields.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "5.0.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
             "name": "fc_pro_order_details_section_header_{$section_id}",
             "aliases": [
                 "fc_pro_order_details_section_header_customer_information",
@@ -2112,23 +2216,6 @@
             "args": 0
         },
         {
-            "name": "fc_pro_pickup_point_fields",
-            "file": "inc/checkout-local-pickup.php",
-            "type": "action",
-            "doc": {
-                "description": "Fires when outputting the pickup point fields.",
-                "long_description": "",
-                "tags": [
-                    {
-                        "name": "since",
-                        "content": "2.0.2"
-                    }
-                ],
-                "long_description_html": ""
-            },
-            "args": 0
-        },
-        {
             "name": "fc_pro_woo_delivery_slots_after_fields",
             "file": "inc/compat/plugins/compat-plugin-iconic-woo-delivery-slots.php",
             "type": "action",
@@ -2374,8 +2461,67 @@
             "args": 1
         },
         {
+            "name": "woocommerce_account_dashboard",
+            "file": "templates/compat/themes/buddyboss-theme/myaccount/dashboard.php",
+            "type": "action",
+            "doc": {
+                "description": "My Account dashboard.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "2.6.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "woocommerce_after_my_account",
+            "file": "templates/compat/themes/buddyboss-theme/myaccount/dashboard.php",
+            "type": "action",
+            "doc": {
+                "description": "Deprecated woocommerce_after_my_account action.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "deprecated",
+                        "content": "2.6.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
             "name": "woocommerce_after_order_details",
             "file": "templates/fc-pro/order-details/order/order-details.php",
+            "type": "action",
+            "doc": {
+                "description": "Action hook fired after the order details.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "since",
+                        "content": "4.4.0"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Order data.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 1
+        },
+        {
+            "name": "woocommerce_after_order_details",
+            "file": "templates/fc-pro/order-details/order/order-details-fulfillments.php",
             "type": "action",
             "doc": {
                 "description": "Action hook fired after the order details.",
@@ -2409,6 +2555,23 @@
                     {
                         "name": "since",
                         "content": "3.6.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 0
+        },
+        {
+            "name": "woocommerce_before_my_account",
+            "file": "templates/compat/themes/buddyboss-theme/myaccount/dashboard.php",
+            "type": "action",
+            "doc": {
+                "description": "Deprecated woocommerce_before_my_account action.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "deprecated",
+                        "content": "2.6.0"
                     }
                 ],
                 "long_description_html": ""
@@ -2595,6 +2758,104 @@
                 "long_description_html": ""
             },
             "args": 2
+        },
+        {
+            "name": "woocommerce_order_item_meta_end",
+            "file": "templates/fc-pro/order-details-emails/emails/email-fulfillment-items.php",
+            "type": "action",
+            "doc": {
+                "description": "Allow other plugins to add additional product information.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The item ID.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$item_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The item object.",
+                        "types": [
+                            "\\WC_Order_Item_Product"
+                        ],
+                        "variable": "$item"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether the email is plain text or not.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$plain_text"
+                    },
+                    {
+                        "name": "since",
+                        "content": "2.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 4
+        },
+        {
+            "name": "woocommerce_order_item_meta_start",
+            "file": "templates/fc-pro/order-details-emails/emails/email-fulfillment-items.php",
+            "type": "action",
+            "doc": {
+                "description": "Allow other plugins to add additional product information.",
+                "long_description": "",
+                "tags": [
+                    {
+                        "name": "param",
+                        "content": "The item ID.",
+                        "types": [
+                            "int"
+                        ],
+                        "variable": "$item_id"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The item object.",
+                        "types": [
+                            "\\WC_Order_Item_Product"
+                        ],
+                        "variable": "$item"
+                    },
+                    {
+                        "name": "param",
+                        "content": "The order object.",
+                        "types": [
+                            "\\WC_Order"
+                        ],
+                        "variable": "$order"
+                    },
+                    {
+                        "name": "param",
+                        "content": "Whether the email is plain text or not.",
+                        "types": [
+                            "bool"
+                        ],
+                        "variable": "$plain_text"
+                    },
+                    {
+                        "name": "since",
+                        "content": "2.3.0"
+                    }
+                ],
+                "long_description_html": ""
+            },
+            "args": 4
         },
         {
             "name": "woocommerce_pay_order_before_payment",

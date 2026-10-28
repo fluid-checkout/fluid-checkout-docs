@@ -12,6 +12,8 @@ Keep the plugins your site already runs. Fluid Checkout works with payment gatew
 
 The list below is every plugin with explicit compatibility code in Fluid Checkout Lite and Fluid Checkout PRO together. Each plugin is listed once. Free and Pro editions of the same plugin are one entry. A plugin marked **Fluid Checkout PRO** needs Fluid Checkout PRO, because that is where its compatibility code lives.
 
+In each category, plugins that need Fluid Checkout PRO are listed first.
+
 Where a plugin needs a specific setting, the entry has a short note and a link to the guide.
 
 ## Payment gateways (32) {/* #payment-gateways */}
@@ -19,8 +21,10 @@ Where a plugin needs a specific setting, the entry has a short note and a link t
 Payment plugins with explicit compatibility code.
 
 - Deposits and Partial Payments for WooCommerce - Pro. **Fluid Checkout PRO**
-- Dintero Checkout for WooCommerce
 - FunnelKit Stripe Payment Gateway. **Fluid Checkout PRO**
+- Payment Plugins Braintree for WooCommerce. **Fluid Checkout PRO**
+- Up2pay e-Transactions. **Fluid Checkout PRO**
+- Dintero Checkout for WooCommerce
 - Integration Rede for WooCommerce
 - Klarna Payments for WooCommerce
 - Kustom Checkout for WooCommerce (formerly Klarna Checkout for WooCommerce). [See the guide](/compatibility/plugins/klarna-checkout/).
@@ -28,7 +32,6 @@ Payment plugins with explicit compatibility code.
 - Mollie Payments for WooCommerce
 - Nets Easy for WooCommerce. [See the guide](/compatibility/plugins/nets-easy/).
 - PagSeguro for WooCommerce
-- Payment Plugins Braintree for WooCommerce. **Fluid Checkout PRO**
 - Payment Plugins for PayPal WooCommerce
 - Payment Plugins for Stripe WooCommerce
 - PayPal Brasil para WooCommerce
@@ -40,7 +43,6 @@ Payment plugins with explicit compatibility code.
 - Svea Checkout for WooCommerce
 - Tamara Checkout
 - Tilopay
-- Up2pay e-Transactions. **Fluid Checkout PRO**
 - WebToffee PayPal Express Checkout Payment Gateway for WooCommerce
 - WooCommerce Amazon Pay
 - WooCommerce Authorize.Net Gateway
@@ -76,39 +78,39 @@ WooCommerce PayPal Payments, Mollie Payments for WooCommerce, and Amazon Payment
 
 Shipping methods, pickup points, delivery dates, and labels.
 
+- Calculadora de frete melhorada para lojas brasileiras. **Fluid Checkout PRO**
+- Delivery and Pickup Date Time for WooCommerce by CodeRockz (free and Pro). **Fluid Checkout PRO**. [See the guide](/compatibility/plugins/coderockz-delivery-date-time/).
+- Estimated Delivery Date Plugin For WooCommerce. **Fluid Checkout PRO**
+- Free Shipping Label. **Fluid Checkout PRO**
+- Order Delivery Date Pro for WooCommerce. **Fluid Checkout PRO**. [See the guide](/compatibility/plugins/delivery-date-plugins/).
+- Order Delivery for WooCommerce (by Kestrel). **Fluid Checkout PRO**. You can show the delivery date as an inline calendar. [See the guide](/compatibility/plugins/order-delivery/).
+- Shipping Packages for WooCommerce. **Fluid Checkout PRO**
+- WooCommerce Local Pickup Plus. **Fluid Checkout PRO**
+- WooCommerce Shipit. **Fluid Checkout PRO**
+- WooCommerce Shipment Tracking. **Fluid Checkout PRO**
 - Advanced Flat Rate Shipping For WooCommerce Premium
 - Biteship for WooCommerce
 - BOX NOW Delivery Croatia
 - BRT Fermopoint
-- Calculadora de frete melhorada para lojas brasileiras. **Fluid Checkout PRO**
 - Colissimo shipping methods for WooCommerce
 - CurieRO
-- Delivery and Pickup Date Time for WooCommerce by CodeRockz (free and Pro). **Fluid Checkout PRO**. [See the guide](/compatibility/plugins/coderockz-delivery-date-time/).
 - DPD Baltic Shipping
 - ELEX EasyPost Shipping Plugin
-- Estimated Delivery Date Plugin For WooCommerce. **Fluid Checkout PRO**
 - Flat Rate Shipping Method for WooCommerce
 - Flexible Shipping
-- Free Shipping Label. **Fluid Checkout PRO**
 - GLS Shipping for WooCommerce
 - Hungarian Pickup Points and Shipping Labels for WooCommerce
 - LP Express Shipping Method for WooCommerce
 - Mondial Relay - WordPress
 - MyParcel. Delivery options always show below the shipping methods. [See the guide](/compatibility/plugins/myparcel/).
 - Omniva shipping
-- Order Delivery Date Pro for WooCommerce. **Fluid Checkout PRO**. [See the guide](/compatibility/plugins/delivery-date-plugins/).
-- Order Delivery for WooCommerce (by Kestrel). **Fluid Checkout PRO**. You can show the delivery date as an inline calendar. [See the guide](/compatibility/plugins/order-delivery/).
 - Packlink PRO Shipping
 - SEUR Oficial. [See the guide](/compatibility/plugins/seur/).
-- Shipping Packages for WooCommerce. **Fluid Checkout PRO**
 - Shipping Zones by Drawing (free and Premium). Not compatible with the local pickup feature of Fluid Checkout PRO. [See the guide](/compatibility/plugins/shipping-zones-by-drawing/).
 - WooCommerce Carrier Agents
 - WooCommerce Correios
 - WooCommerce Delivery Slots by Iconic. [See the guide](/compatibility/plugins/iconic-delivery-slots/).
 - WooCommerce FedEx Shipping Pro
-- WooCommerce Local Pickup Plus. **Fluid Checkout PRO**
-- WooCommerce Shipit. **Fluid Checkout PRO**
-- WooCommerce Shipment Tracking. **Fluid Checkout PRO**
 - Woocommerce UPS Israel Domestic Printing Plugin
 
 ## Address and location (8) {/* #address-and-location */}
@@ -140,17 +142,17 @@ Not compatible, and not included in Checkout fields: Checkout Fields Manager for
 
 Coupons, loyalty points, gift cards, and dynamic pricing.
 
+- Free Gifts for WooCommerce. **Fluid Checkout PRO**. [See the guide](/compatibility/plugins/free-gifts/).
+- WooCommerce Gift Cards. **Fluid Checkout PRO**. [See the guide](/compatibility/plugins/woocommerce-gift-cards/).
+- WooCommerce Points and Rewards. **Fluid Checkout PRO**. [See the guide](/compatibility/plugins/woocommerce-points-and-rewards/).
+- WPLoyalty (free and Pro). **Fluid Checkout PRO**
 - Acowebs WooCommerce Dynamic Pricing (free and Pro)
 - Advanced Coupons for WooCommerce Free. Loyalty points and store credit show before the checkout steps. [See the guide](/compatibility/plugins/advanced-coupons/).
-- Free Gifts for WooCommerce. **Fluid Checkout PRO**. [See the guide](/compatibility/plugins/free-gifts/).
 - Gift Cards - Coupon Input
 - Loyalty Program for WooCommerce (for Advanced Coupons)
 - WooCommerce Buy One Get One Free
-- WooCommerce Gift Cards. **Fluid Checkout PRO**. [See the guide](/compatibility/plugins/woocommerce-gift-cards/).
-- WooCommerce Points and Rewards. **Fluid Checkout PRO**. [See the guide](/compatibility/plugins/woocommerce-points-and-rewards/).
 - WooCommerce Quantity Discounts, Rules and Swatches
 - WooCommerce Smart Coupons. Choose where the available coupons show in the Fluid Checkout integration settings. [See the guide](/compatibility/plugins/smart-coupons/).
-- WPLoyalty (free and Pro). **Fluid Checkout PRO**
 
 ## Quantity limits (2) {/* #quantity-limits */}
 
@@ -163,8 +165,8 @@ Plugins that limit or step product quantities.
 
 Subscription plugins with explicit compatibility code.
 
-- SUMO Subscriptions
 - Woo All Products For Subscriptions. **Fluid Checkout PRO**
+- SUMO Subscriptions
 - WooCommerce Subscriptions. [See the guide](/compatibility/plugins/woocommerce-subscriptions/).
 
 ## Product options (3) {/* #product-options */}
@@ -180,9 +182,9 @@ Product add-ons and file uploads.
 Invoices, packing slips, and similar documents.
 
 - Challan - PDF Invoice and Packing Slip by WebAppick (free and Pro). **Fluid Checkout PRO**
+- WooCommerce Print Invoices/Packing Lists. **Fluid Checkout PRO**
 - SuperFaktúra WooCommerce
 - WooCommerce PDF Invoices and Packing Slips
-- WooCommerce Print Invoices/Packing Lists. **Fluid Checkout PRO**
 
 ## Tax and EU checkout (6) {/* #tax-and-eu-checkout */}
 
@@ -234,8 +236,8 @@ Social login, phone login, and email verification.
 
 Captcha, firewalls, and checkout spam protection.
 
-- Captcha Pro
 - Koala Google reCAPTCHA for WooCommerce. **Fluid Checkout PRO**
+- Captcha Pro
 - VerifyPass
 - Wordfence Login Security
 - Wordfence Security
@@ -245,34 +247,34 @@ Captcha, firewalls, and checkout spam protection.
 
 Cache and performance plugins with explicit compatibility code.
 
-- Debloat
 - LiteSpeed Cache. **Fluid Checkout PRO**
 - SiteGround Speed Optimizer. **Fluid Checkout PRO**
+- Debloat
 
 ## Page builders (5) {/* #page-builders */}
 
 Page builders and checkout funnel plugins.
 
+- The Plus Addons for Elementor Pro. **Fluid Checkout PRO**
 - Breakdance. Add the header class to your Breakdance header so the checkout lines up below it. [See the guide](/compatibility/plugins/breakdance/).
 - CartFlows. Use the "Other" ready template with the checkout shortcode, and turn off the CartFlows layout, field, and design options. [See the guide](/compatibility/plugins/cartflows/).
 - Elementor Pro. Add the cart and checkout with the Shortcode widget. [See the guide](/compatibility/plugins/elementor/).
 - Oxygen Builder
-- The Plus Addons for Elementor Pro. **Fluid Checkout PRO**
 
 ## Theme companion plugins (15) {/* #theme-companion-plugins */}
 
 Plugins that ship with a theme. The matching theme is on the themes page when it has its own compatibility code.
 
+- Botiga Pro. **Fluid Checkout PRO**
+- Phlox Core Elements. **Fluid Checkout PRO**
 - Aperitif Core
 - Astra Pro
 - Auxin Shop
 - Avada Builder
 - Blocksy Companion Pro
-- Botiga Pro. **Fluid Checkout PRO**
 - Ettore Core
 - GP Premium
 - Kadence Shop Kit
-- Phlox Core Elements. **Fluid Checkout PRO**
 - Qode Framework
 - Storefront Powerpack. Its checkout layout options are turned off while Fluid Checkout is active. [See the guide](/compatibility/plugins/storefront-powerpack/).
 - TemplateMela Autorapid
@@ -284,20 +286,20 @@ Plugins that ship with a theme. The matching theme is on the themes page when it
 Plugins that do not fit the groups above.
 
 - B2BKing. **Fluid Checkout PRO**
-- FFL Checkout by TTG for WooCommerce
-- FooEvents for WooCommerce. [See the guide](/compatibility/plugins/fooevents/).
 - License Manager for WooCommerce. **Fluid Checkout PRO**. [See the guide](/compatibility/plugins/license-manager/).
-- Polylang
-- Shop as Client for WooCommerce
 - SMS for WooCommerce. **Fluid Checkout PRO**. To use international phone numbers, turn off its phone number validation. [See the guide](/compatibility/plugins/sms-for-woocommerce/).
-- The Bluehost Plugin
-- TI WooCommerce Wishlist Premium
 - Uncanny Groups for LearnDash. **Fluid Checkout PRO**
-- Wawp Country Code and Chat Widget for WooCommerce
-- WooCommerce Fast Cart
 - WooCommerce Lottery Pick Number. **Fluid Checkout PRO**
 - WooCommerce Price Based on Country. **Fluid Checkout PRO**
 - WooCommerce Side Cart Premium. **Fluid Checkout PRO**
+- FFL Checkout by TTG for WooCommerce
+- FooEvents for WooCommerce. [See the guide](/compatibility/plugins/fooevents/).
+- Polylang
+- Shop as Client for WooCommerce
+- The Bluehost Plugin
+- TI WooCommerce Wishlist Premium
+- Wawp Country Code and Chat Widget for WooCommerce
+- WooCommerce Fast Cart
 
 
 ## Related guides

@@ -1,0 +1,5 @@
+{
+  "fc_vat_reverse_charge_countries_skip_list_options": {
+    "long_description": "The value passed to the filter is the full WooCommerce country list, keyed by country code. Fluid Checkout PRO attaches callbacks that limit the list to EU countries and remove the shop country."
+  }
+}

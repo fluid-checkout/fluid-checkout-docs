@@ -22,7 +22,7 @@ This repository is the public developer docs site for Fluid Checkout plugins. Gu
 }
 ```
 
-EU-VAT's sidebar has no Guides category. Its hooks index intro follows the same section pattern as Lite and PRO.
+Lite and PRO follow that section pattern. PRO's hooks index also covers the EU VAT hooks (`fc_vat_`), which are part of Fluid Checkout PRO.
 
 Pages are compiled as MDX. Keep `{` and `}` inside inline code or fenced code blocks.
 
@@ -35,16 +35,16 @@ The text at the top of a plugin's hooks index is `hooks-intro/<plugin>/index.md`
 3. Run `npm run generate`. The generator inserts the intro above the hook tables in `docs/<plugin>/hooks/index.md` and rewrites relative image paths so the generated page can load them. The next generate overwrites that index, so change the intro file instead.
 4. Keep `{` and `}` inside inline code or fenced code blocks.
 
-The generated index heading and sidebar label are `Using PHP hooks`. The browser title is `<plugin label> hooks reference` (for example `Fluid Checkout Lite hooks reference`, `Fluid Checkout PRO hooks reference`, and `EU-VAT Assistant hooks reference`). Each of those pages has its own meta description. Links inside an intro that refer to the actions list, the filters list, or another heading on that same page use a `#section-id` anchor. Other internal links include the trailing slash (`/lite/hooks/fc_checkout_before_steps/`).
+The generated index heading and sidebar label are `Using PHP hooks`. The browser title is `<plugin label> hooks reference` (for example `Fluid Checkout Lite hooks reference` and `Fluid Checkout PRO hooks reference`). Each of those pages has its own meta description. Links inside an intro that refer to the actions list, the filters list, or another heading on that same page use a `#section-id` anchor. Other internal links include the trailing slash (`/lite/hooks/fc_checkout_before_steps/`).
 
 ## Add a hook example
 
 Examples are hand-written Markdown under `examples/`. They are the source of truth. `npm run generate` copies a matching file onto the hook page and never creates, overwrites, or deletes files in `examples/`.
 
 1. Run `npm run generate` once and use the hook page file name under `docs/<plugin>/hooks/` as `<hook-slug>`.
-2. Add `examples/<plugin>/<hook-slug>.md`. `<plugin>` is the id in `plugins.json` (`eu-vat`, `lite`, `pro`), not the GitHub repository name.
-   - A normal hook uses its name: `examples/eu-vat/fc_vat_number_field_args.md`.
-   - A dynamic hook uses the generator slug. Braces are removed and nothing is inserted in their place: `fc_vat_enable_compat_plugin_{plugin_slug}` becomes `examples/eu-vat/fc_vat_enable_compat_plugin_plugin_slug.md`, and `fc_vat_{current_section}_settings` becomes `examples/eu-vat/fc_vat_current_section_settings.md`.
+2. Add `examples/<plugin>/<hook-slug>.md`. `<plugin>` is the id in `plugins.json` (`lite`, `pro`), not the GitHub repository name. EU VAT hooks are part of PRO, so their examples live in `examples/pro/`.
+   - A normal hook uses its name: `examples/pro/fc_vat_number_field_args.md`.
+   - A dynamic hook uses the generator slug. Braces are removed and nothing is inserted in their place: `fc_pro_enable_compat_account_details_plugin_style_{plugin_slug}` becomes `examples/pro/fc_pro_enable_compat_account_details_plugin_style_plugin_slug.md`.
    - Each normalized hook name has one page. Call sites are ordered by source file, then source line, then JSON order, and later sites of the same name are ignored. A `-2` or `-3` suffix is only used when two different names share a slug. Name the example file with the published slug. If a file or `related_hooks` entry still uses an unpublished `-N` slug, `npm run generate` moves it onto the unsuffixed hook.
 3. Write the example body in that file. The generator adds the `## Examples` heading after the parameters and source sections, so the file should not repeat the heading. Pages are MDX. Keep `{` and `}` inside inline code or fenced code blocks.
 4. When one snippet uses several hooks, keep the full snippet on the main hook and list the others:
@@ -67,22 +67,26 @@ Do not edit `docs/<plugin>/hooks/` or `sidebars/<plugin>.hooks.json` by hand. Bo
 | --- | --- |
 | `data/<plugin>/actions.json` | wp-hooks/generator 1.0.x document |
 | `data/<plugin>/filters.json` | wp-hooks/generator 1.0.x document |
+| `data/<plugin>/supplemental/<id>/actions.json` | Optional extra hooks merged into that plugin's pages. Not the plugin repository export. |
+| `data/<plugin>/supplemental/<id>/filters.json` | Optional extra filters merged the same way. |
+| `data/<plugin>/supplemental/<id>/source.json` | `pluginPrefix` used to normalize that supplemental file before the merge. |
 | `data/<plugin>/readme.txt` | Plugin readme. The changelog page uses the `== Changelog ==` section (newest releases). |
 | `data/<plugin>/changelog.md` | Older releases. Optional. Omitted when the plugin repository has no `changelog.md`. |
 | `data/<plugin>/legacy/<id>/readme.txt` | Optional earlier changelog for an add-on listed in `legacyChangelogs`. Same `== Changelog ==` rules. |
 | `data/<plugin>/legacy/<id>/changelog.md` | Older releases for that add-on. Optional. |
+| `data/<plugin>/hook-text.json` | Optional replacements for a published hook's `description` or `long_description`. The export JSON stays unchanged. |
 | `plugins.json` | Plugin id, `pluginPrefix`, `hookPrefixes`, global `hookExcludePrefixes` and `hookExcludeNames`, and the docs route |
 
-`npm run generate` also writes `docs/<plugin>/changelog.md` from those source files. Readme entries come first. A version present in both files is kept from `readme.txt`. Do not edit the generated page. The `changelog.md` introduction that explains where entries are written first is not part of the published page. Optional `relatedChangelogs` on a plugin in `plugins.json` adds an info callout linking to another plugin's changelog. Lite and PRO list each other. EU-VAT Assistant does not. Each changelog intro links to `/changelog-format/` instead of semver.org. `npm run generate` also writes that page to `src/pages/changelog-format.mdx` from `plugins.json`. Do not edit it.
+`npm run generate` also writes `docs/<plugin>/changelog.md` from those source files. Readme entries come first. A version present in both files is kept from `readme.txt`. Do not edit the generated page. The `changelog.md` introduction that explains where entries are written first is not part of the published page. Optional `relatedChangelogs` on a plugin in `plugins.json` adds an info callout linking to another plugin's changelog. Lite and PRO list each other. Each changelog intro links to `/changelog-format/` instead of semver.org. `npm run generate` also writes that page to `src/pages/changelog-format.mdx` from `plugins.json`. Do not edit it.
 
-Optional `legacyChangelogs` lists add-on changelogs for the bottom of a plugin page. Each item has `id` and `title`. PRO uses `address-book` and `google-address-autocomplete`. When `data/pro/legacy/<id>/readme.txt` or `changelog.md` is present, those versions are rendered with anchors such as `#address-book-3-1-0`. Until the files are added, the page shows a short note that the add-on is being merged into Fluid Checkout PRO. That note is the only text published for a missing source.
+Optional `legacyChangelogs` lists add-on changelogs for the bottom of a plugin page. Each item has `id` and `title`. PRO lists `address-book`, `google-address-autocomplete`, and `eu-vat`. Those histories live in `data/pro/legacy/<id>/readme.txt` and are rendered on `/pro/changelog/` with anchors such as `#address-book-3-1-6`. They are not separate plugin pages. `data/pro/readme.txt` and `data/pro/changelog.md` stay the PRO plugin export, so a workflow that replaces those two files leaves the legacy sections in place. A missing legacy source still shows a short note that the add-on is being merged into Fluid Checkout PRO. That note is the only text published for a missing source.
 
 `npm run build` runs `npm run generate` before Docusaurus. Generation reads every plugin with `"status": "available"` that has JSON under `data/<plugin>/`.
 
 A new plugin needs:
 
 - an entry in `plugins.json` with `status`, `routeBasePath`, `pluginPrefix`, and `hookPrefixes`
-- `sidebars/<id>.ts` (copy `sidebars/eu-vat.ts`)
+- `sidebars/<id>.ts` (copy `sidebars/lite.ts`)
 - `docs/<id>/index.md` with `slug: /`
 - `data/<id>/actions.json` and `data/<id>/filters.json`
 - `data/<id>/readme.txt`, with an `== Changelog ==` section. Add `data/<id>/changelog.md` too when the plugin repository has that file.
@@ -101,8 +105,8 @@ Example files use the published slug. If an example file or a `related_hooks` en
 
 Dynamic names from the generator are PHP expressions. They are normalized as follows:
 
-- `'fc_vat_enable_compat_plugin_' . $plugin_slug` → `fc_vat_enable_compat_plugin_{plugin_slug}`
-- `fc_vat_' . $current_section . '_settings` (outer quotes already stripped by the generator) → `fc_vat_{current_section}_settings`
+- `'fc_pro_enable_compat_account_details_plugin_style_' . $plugin_slug` → `fc_pro_enable_compat_account_details_plugin_style_{plugin_slug}`
+- `fc_pro_' . $section . '_settings` (outer quotes already stripped by the generator) → `fc_pro_{section}_settings`
 - `self::$plugin_prefix . '_admin_notices'` → `<pluginPrefix>_admin_notices`
 
 ## Which hooks are published
@@ -113,11 +117,10 @@ wp-hooks/generator also records hooks the plugin calls that belong to WooCommerc
 
 | Plugin | id | `hookPrefixes` |
 | --- | --- | --- |
-| EU-VAT Assistant | `eu-vat` | `fc_vat_` |
 | Fluid Checkout Lite | `lite` | `fc_` |
-| Fluid Checkout PRO | `pro` | `fc_pro_`, `fc_`, `fc_adb_`, `fc_gaa_` |
+| Fluid Checkout PRO | `pro` | `fc_pro_`, `fc_`, `fc_adb_`, `fc_gaa_`, `fc_vat_` |
 
-Address Book and Google Address Autocomplete are merging into PRO. Address Book's published hooks use `fc_pro_` and `fc_adb_` (compat and feature-control filters such as `fc_adb_enable_compat_plugin_{plugin_slug}`). Google Address Autocomplete's published hooks use `fc_gaa_` only. The Address Book list also includes `fc_override_template_with_theme_file`, which is already covered by `fc_`.
+Address Book and Google Address Autocomplete ship with PRO. Address Book's published hooks use `fc_pro_` and `fc_adb_` (compat and feature-control filters such as `fc_adb_enable_compat_plugin_{plugin_slug}`). Google Address Autocomplete's published hooks use `fc_gaa_` only.
 
 Examples after normalization:
 
@@ -126,18 +129,25 @@ Examples after normalization:
 - `'fc_pro_enable_compat_plugin_' . $plugin_slug` becomes `fc_pro_enable_compat_plugin_{plugin_slug}` and is kept for PRO
 - `'fc_adb_enable_compat_plugin_' . $plugin_slug` becomes `fc_adb_enable_compat_plugin_{plugin_slug}` and is kept for PRO
 - `fc_gaa_google_autocomplete_js_settings` is kept for PRO
-- `self::$plugin_prefix . '_admin_notices'` becomes `<pluginPrefix>_admin_notices` (for EU-VAT, `fc_vat_admin_notices`)
+- `fc_vat_number_field_args` is kept for PRO
+- `self::$plugin_prefix . '_admin_notices'` becomes `<pluginPrefix>_admin_notices`. PRO's prefix makes this `fc_pro_admin_notices`.
 - `woocommerce_checkout_fields` and `'woocommerce_' . $action` are skipped
 - `fc_licenses_is_activated`, `'fc_licenses_client_' . $action`, and `fc_lcs_*` are skipped for every plugin
-- `fc_show_settings_license_keys`, `fc_admin_license_key_script_url`, `fc_admin_license_key_style_url`, and `fc_admin_field_type_license_exists` are skipped for every plugin
+- `fc_show_settings_license_keys`, `fc_admin_license_key_script_url`, `fc_admin_license_key_style_url`, `fc_admin_field_type_license_exists`, and `fc_admin_license_key_activate_response` are skipped for every plugin
 
-`hookExcludePrefixes` and `hookExcludeNames` at the top of `plugins.json` apply to every plugin after the allowlist. The prefixes are `fc_licenses_` and `fc_lcs_`. The exact names are `fc_admin_license_key_script_url`, `fc_admin_license_key_style_url`, `fc_admin_field_type_license_exists`, and `fc_show_settings_license_keys`. Those hooks belong to the separate Fluid Licenses plugin, including internal-only admin hooks. Other plugins only fire them because they bundle its client class, so they are not documented for PRO, EU-VAT, Lite, or any other plugin. PRO's `fc_` allowlist would otherwise keep them. A matching hook is skipped with the other skipped names: no page, no index row, and no sidebar entry. Aliases that match an exclude prefix or an exact exclude name are dropped.
+`hookExcludePrefixes` and `hookExcludeNames` at the top of `plugins.json` apply to every plugin after the allowlist. The prefixes are `fc_licenses_` and `fc_lcs_`. The exact names are `fc_admin_license_key_script_url`, `fc_admin_license_key_style_url`, `fc_admin_field_type_license_exists`, `fc_show_settings_license_keys`, and `fc_admin_license_key_activate_response`. Those hooks belong to the separate Fluid Licenses plugin, including internal-only admin hooks. Other plugins only fire them because they bundle its client class, so they are not documented for PRO, Lite, or any other plugin. PRO's `fc_` allowlist would otherwise keep them. A matching hook is skipped with the other skipped names: no page, no index row, and no sidebar entry. Aliases that match an exclude prefix or an exact exclude name are dropped.
 
-A skipped hook has no page, no row on the hooks index, and no sidebar entry. An alias is dropped when its normalized name does not match the allowlist, matches an exclude prefix, or is an exact exclude name. An alias such as `fc_vat_enable_compat_plugin_woocommerce-germanized-pro` stays, because the name starts with `fc_vat_` and the `woocommerce` segment is the plugin slug.
+`data/<plugin>/hook-text.json` is optional. Each key is a published hook name. `description` replaces the short description, and `long_description` replaces the long description. A long-description replacement is used instead of `long_description_html` from the export. The export files stay as the generator wrote them. A name that is not a published hook fails generation. PRO uses this file for `fc_vat_reverse_charge_countries_skip_list_options`, whose export still says "EU-VAT Assistant". The PRO source docblock should be updated so the next export matches the page.
+
+A skipped hook has no page, no row on the hooks index, and no sidebar entry. An alias is dropped when its normalized name does not match the allowlist, matches an exclude prefix, or is an exact exclude name. An alias that starts with an allowed prefix stays, including when the rest of the name contains `woocommerce`.
 
 `npm run generate` prints the skipped hook count and each skipped name (plus dropped aliases, when any) so the list is visible in CI. A plugin with `"status": "available"` and no `hookPrefixes` fails generation instead of publishing every hook in the JSON.
 
 Lite and PRO are `"status": "available"`. Generation writes their hook pages from `data/lite/` and `data/pro/`. Their getting started text is `hooks-intro/lite/index.md` and `hooks-intro/pro/index.md`.
+
+EU VAT features are part of Fluid Checkout PRO. Their hooks use `fc_vat_` and are published under `/pro/hooks/` from `data/pro/actions.json` and `data/pro/filters.json`. That JSON is the Hook docs data export from `fluid-checkout/fluid-checkout-pro` on `release/next-FEATURE` (plugin version 5.0.0-alpha-19, commit `7162374503006fad19fc1e7362dbad1987148349`).
+
+Optional `data/<plugin>/supplemental/<id>/` is still read when the directory exists. It needs `source.json` with `pluginPrefix`, plus `actions.json` and `filters.json`. Those hooks are normalized with that prefix and appended when the name is not already in the plugin export. PRO has no supplemental directory. Do not put the PRO export in a supplemental directory.
 
 ## Contract for plugin repositories
 
@@ -155,7 +165,7 @@ Do not add the plugin-side workflow to this repo. Each plugin repository will la
    - `data/<plugin-id>/changelog.md` when that file exists in the plugin repository
    - `data/<plugin-id>/rest-api.json` when that plugin exports REST API documentation
 
-`<plugin-id>` is the id in `plugins.json`, not the GitHub repo name. EU-VAT Assistant uses `eu-vat`. Address Book REST docs publish under **pro**. Copy `readme.txt` from the plugin repository on every run. Copy `changelog.md` when the plugin repository has one (EU-VAT Assistant does not). Newest release notes live in `readme.txt` and are moved into `changelog.md` in the plugin repository later. Copy both files as they are. This docs repository merges them and drops a version that appears in both, keeping the `readme.txt` text.
+`<plugin-id>` is the id in `plugins.json`, not the GitHub repo name. EU VAT hooks publish with PRO (`pro`), not as a separate plugin. Address Book REST docs publish under **pro**. Copy `readme.txt` from the plugin repository on every run. Copy `changelog.md` when the plugin repository has one. Newest release notes live in `readme.txt` and are moved into `changelog.md` in the plugin repository later. Copy both files as they are. This docs repository merges them and drops a version that appears in both, keeping the `readme.txt` text.
 
 5. Do not add a top-level `commit` field or a repository URL to `actions.json` or `filters.json`. The docs site does not store GitHub revision info in the hook JSON, and the generator does not read it.
 
@@ -172,7 +182,7 @@ Hand-written authentication and overview copy lives in `rest-api-intro/<plugin-i
 ### Branch name and pull request
 
 - Branch: `docs/<plugin-id>/hooks-<source-sha>` for hook/changelog updates, or `docs/<plugin-id>/rest-api-<source-sha>` for REST API data
-- Example: `docs/eu-vat/hooks-a1b2c3d4`, `docs/pro/rest-api-a1b2c3d4`
+- Example: `docs/pro/hooks-a1b2c3d4`, `docs/pro/rest-api-a1b2c3d4`
 - Title: `docs(<plugin-id>): update hook data` or `docs(<plugin-id>): update REST API data`
 - The pull request body should name the source repository, commit, and tag (if any).
 
@@ -193,7 +203,7 @@ When version snapshots are enabled, create one only for a release tag that is pl
 The snapshot command is per docs instance, not for the whole site:
 
 ```bash
-npm run docusaurus docs:version:eu-vat 3.0.1
+npm run docusaurus docs:version:pro 3.0.1
 ```
 
 A push to the plugin's default branch updates the latest JSON only. It does not create a version snapshot. A plain semver tag is the only versioning trigger, and even then the snapshot is a later step in this docs repo, not something the plugin workflow should write into `versioned_docs/` yet.

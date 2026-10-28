@@ -6,6 +6,8 @@ import test from 'node:test';
 import {fileURLToPath} from 'node:url';
 import {
   formatExampleLog,
+  loadSupplementalSets,
+  mergeSupplementalHooks,
   prepareHooks,
   resolveHookExclusions,
   writePluginDocs,
@@ -282,8 +284,8 @@ test('regenerating hook pages leaves example files unchanged', () => {
   const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fc-hook-docs-'));
   try {
     const plugin = {
-      id: 'eu-vat',
-      label: 'EU-VAT Assistant',
+      id: 'pro',
+      label: 'Fluid Checkout PRO',
       pluginPrefix: 'fc_vat',
       hookPrefixes: ['fc_vat_'],
       repository: null,
@@ -306,7 +308,7 @@ test('regenerating hook pages leaves example files unchanged', () => {
       'fc_vat_number_field_args',
     ]);
 
-    const examplesDir = path.join(rootDir, 'examples', 'eu-vat');
+    const examplesDir = path.join(rootDir, 'examples', 'pro');
     fs.mkdirSync(examplesDir, {recursive: true});
     const examplePath = path.join(examplesDir, 'fc_vat_number_field_args.md');
     const exampleSource = [
@@ -332,7 +334,7 @@ test('regenerating hook pages leaves example files unchanged', () => {
     const nestedExample = path.join(nestedDir, 'index.md');
     fs.writeFileSync(nestedExample, 'Old nested example.\n');
 
-    const hooksDir = path.join(rootDir, 'docs', 'eu-vat', 'hooks');
+    const hooksDir = path.join(rootDir, 'docs', 'pro', 'hooks');
     fs.mkdirSync(hooksDir, {recursive: true});
     const stalePage = path.join(hooksDir, 'fc_vat_removed.md');
     fs.writeFileSync(stalePage, 'stale\n');
@@ -371,13 +373,13 @@ test('regenerating hook pages leaves example files unchanged', () => {
     assert.equal(fs.existsSync(path.join(hooksDir, 'woocommerce_checkout_fields.md')), false);
 
     assert.deepEqual(formatExampleLog(plugin, written), [
-      'Included 1 example file for eu-vat:',
-      '  - examples/eu-vat/fc_vat_number_field_args.md',
-      'Related example links for eu-vat:',
+      'Included 1 example file for pro:',
+      '  - examples/pro/fc_vat_number_field_args.md',
+      'Related example links for pro:',
       '  - fc_vat_is_vat_number_field -> fc_vat_number_field_args',
-      'Left 2 unused example files for eu-vat (no matching published hook; not modified):',
-      '  - examples/eu-vat/fc_licenses_is_activated.md',
-      '  - examples/eu-vat/woocommerce_checkout_fields.md',
+      'Left 2 unused example files for pro (no matching published hook; not modified):',
+      '  - examples/pro/fc_licenses_is_activated.md',
+      '  - examples/pro/woocommerce_checkout_fields.md',
     ]);
   } finally {
     fs.rmSync(rootDir, {recursive: true, force: true});
@@ -387,12 +389,12 @@ test('regenerating hook pages leaves example files unchanged', () => {
 test('a bad related hook fails before generated pages are replaced', () => {
   const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fc-hook-docs-bad-'));
   try {
-    const plugin = {id: 'eu-vat', label: 'EU-VAT Assistant', repository: null};
-    const examplesDir = path.join(rootDir, 'examples', 'eu-vat');
+    const plugin = {id: 'pro', label: 'Fluid Checkout PRO', repository: null};
+    const examplesDir = path.join(rootDir, 'examples', 'pro');
     fs.mkdirSync(examplesDir, {recursive: true});
     const examplePath = path.join(examplesDir, 'fc_vat_js_settings.md');
     fs.writeFileSync(examplePath, '---\nrelated_hooks:\n  - missing_hook\n---\n\nSnippet.\n');
-    const hooksDir = path.join(rootDir, 'docs', 'eu-vat', 'hooks');
+    const hooksDir = path.join(rootDir, 'docs', 'pro', 'hooks');
     fs.mkdirSync(hooksDir, {recursive: true});
     const existing = path.join(hooksDir, 'fc_vat_js_settings.md');
     fs.writeFileSync(existing, 'previous page\n');
@@ -408,23 +410,25 @@ test('a bad related hook fails before generated pages are replaced', () => {
   }
 });
 
-test('live eu-vat examples attach to the published hooks', () => {
+test('EU VAT examples in examples/pro attach to the merged PRO hooks', () => {
   const catalog = JSON.parse(fs.readFileSync(path.join(root, 'plugins.json'), 'utf8'));
-  const plugin = catalog.plugins.find((entry) => entry.id === 'eu-vat');
-  const actions = JSON.parse(fs.readFileSync(path.join(root, 'data/eu-vat/actions.json'), 'utf8'));
-  const filters = JSON.parse(fs.readFileSync(path.join(root, 'data/eu-vat/filters.json'), 'utf8'));
-  const result = prepareHooks(
+  const plugin = catalog.plugins.find((entry) => entry.id === 'pro');
+  const actions = JSON.parse(fs.readFileSync(path.join(root, 'data/pro/actions.json'), 'utf8'));
+  const filters = JSON.parse(fs.readFileSync(path.join(root, 'data/pro/filters.json'), 'utf8'));
+  const merged = mergeSupplementalHooks(
     [...actions.hooks, ...filters.hooks],
+    loadSupplementalSets(path.join(root, 'data', 'pro')),
     plugin,
-    resolveHookExclusions(catalog),
   );
-  const examplesDir = path.join(root, 'examples', 'eu-vat');
-  const {loaded, unused} = loadHookExamples(examplesDir, result.hooks, 'eu-vat');
+  const result = prepareHooks(merged.hooks, plugin, resolveHookExclusions(catalog));
+  const examplesDir = path.join(root, 'examples', 'pro');
+  const {loaded, unused} = loadHookExamples(examplesDir, result.hooks, 'pro');
   const sections = resolveExampleSections(plugin, result.hooks, loaded);
 
   const fieldPath = path.join(examplesDir, 'fc_vat_number_field_args.md');
   const field = parseExampleMarkdown(fs.readFileSync(fieldPath, 'utf8'));
-  assert.equal(unused.length, 0);
+  assert.equal(unused.includes('fc_vat_number_field_args.md'), false);
+  assert.equal(unused.includes('fc_vat_is_vat_number_field.md'), false);
   assert.deepEqual(field.relatedHooks, []);
   assert.match(field.body, /add_filter\( 'fc_vat_number_field_args'/);
   assert.match(field.body, /Tax ID Number/);

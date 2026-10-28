@@ -4,22 +4,10 @@
     "fc_admin_license_key_script_url",
     "fc_admin_license_key_style_url",
     "fc_admin_field_type_license_exists",
-    "fc_show_settings_license_keys"
+    "fc_show_settings_license_keys",
+    "fc_admin_license_key_activate_response"
   ],
   "plugins": [
-    {
-      "id": "eu-vat",
-      "icon": "/img/plugins/eu-vat.svg",
-      "order": 3,
-      "productUrl": "https://fluidcheckout.com/fc-eu-vat-assistant/",
-      "label": "EU-VAT Assistant",
-      "navLabel": "EU-VAT",
-      "description": "Hooks for the EU-VAT Assistant add-on.",
-      "pluginPrefix": "fc_vat",
-      "hookPrefixes": ["fc_vat_"],
-      "status": "available",
-      "routeBasePath": "eu-vat"
-    },
     {
       "id": "lite",
       "icon": "/img/plugins/lite.svg",
@@ -43,9 +31,9 @@
       "productUrl": "https://fluidcheckout.com/pricing/",
       "label": "Fluid Checkout PRO",
       "navLabel": "PRO",
-      "description": "Hooks for Fluid Checkout PRO.",
+      "description": "Hooks for Fluid Checkout PRO, including EU VAT, Address Book, and Google Address Autocomplete.",
       "pluginPrefix": "fc_pro",
-      "hookPrefixes": ["fc_pro_", "fc_", "fc_adb_", "fc_gaa_"],
+      "hookPrefixes": ["fc_pro_", "fc_", "fc_adb_", "fc_gaa_", "fc_vat_"],
       "status": "available",
       "routeBasePath": "pro",
       "restApiDataFile": "rest-api.json",
@@ -60,6 +48,10 @@
         {
           "id": "google-address-autocomplete",
           "title": "Google Address Autocomplete (before merging into PRO)"
+        },
+        {
+          "id": "eu-vat",
+          "title": "EU VAT (before merging into PRO)"
         }
       ]
     }

@@ -13,7 +13,7 @@ Filters whether local pickup available.
 ## Signature
 
 ```php
-apply_filters( 'fc_is_local_pickup_available', $is_local_pickup_available, $packages );
+apply_filters( 'fc_is_local_pickup_available', $is_local_pickup_available );
 ```
 
 ## Parameters
@@ -21,7 +21,6 @@ apply_filters( 'fc_is_local_pickup_available', $is_local_pickup_available, $pack
 | Name | Type | Description |
 | --- | --- | --- |
 | `$is_local_pickup_available` | `bool` | Whether local pickup available. |
-| `$packages` | `array` | Shipping packages. |
 
 ## Since
 

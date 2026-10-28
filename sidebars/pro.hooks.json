@@ -40,6 +40,16 @@
       },
       {
         "type": "doc",
+        "id": "hooks/fc_pro_address_book_after_checkout_entries_list",
+        "label": "fc_pro_address_book_after_checkout_entries_list"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_address_book_before_checkout_entries_list",
+        "label": "fc_pro_address_book_before_checkout_entries_list"
+      },
+      {
+        "type": "doc",
         "id": "hooks/fc_pro_after_cart_section_section_id",
         "label": "fc_pro_after_cart_section_{section_id}"
       },
@@ -320,6 +330,16 @@
       },
       {
         "type": "doc",
+        "id": "hooks/fc_pro_delayed_account_created",
+        "label": "fc_pro_delayed_account_created"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_delivery_fields",
+        "label": "fc_pro_delivery_fields"
+      },
+      {
+        "type": "doc",
         "id": "hooks/fc_pro_order_details_section_header_section_id",
         "label": "fc_pro_order_details_section_header_{section_id}"
       },
@@ -475,11 +495,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_pickup_point_fields",
-        "label": "fc_pro_pickup_point_fields"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_woo_delivery_slots_after_fields",
         "label": "fc_pro_woo_delivery_slots_after_fields"
       },
@@ -531,6 +546,26 @@
     "items": [
       {
         "type": "doc",
+        "id": "hooks/fc_adb_is_entry_add_enabled",
+        "label": "fc_adb_is_entry_add_enabled"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_adb_is_entry_delete_enabled",
+        "label": "fc_adb_is_entry_delete_enabled"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_adb_is_entry_edit_enabled",
+        "label": "fc_adb_is_entry_edit_enabled"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_adb_is_new_address_source_enabled",
+        "label": "fc_adb_is_new_address_source_enabled"
+      },
+      {
+        "type": "doc",
         "id": "hooks/fc_address_type_same_as_address_type_alt_display_substep_review_text_notice",
         "label": "fc_{address_type}_same_as_{address_type_alt}_display_substep_review_text_notice"
       },
@@ -538,6 +573,11 @@
         "type": "doc",
         "id": "hooks/fc_billing_same_as_shipping_display_substep_review_text_notice",
         "label": "fc_billing_same_as_shipping_display_substep_review_text_notice"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_checkout_contact_login_link_classes",
+        "label": "fc_checkout_contact_login_link_classes"
       },
       {
         "type": "doc",
@@ -553,11 +593,6 @@
         "type": "doc",
         "id": "hooks/fc_checkout_express_checkout_section_title",
         "label": "fc_checkout_express_checkout_section_title"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_checkout_login_button_class",
-        "label": "fc_checkout_login_button_class"
       },
       {
         "type": "doc",
@@ -578,11 +613,6 @@
         "type": "doc",
         "id": "hooks/fc_checkout_woocommerce_gift_cards_script_settings",
         "label": "fc_checkout_woocommerce_gift_cards_script_settings"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_checkout_wrapper_inside_element_custom_attributes",
-        "label": "fc_checkout_wrapper_inside_element_custom_attributes"
       },
       {
         "type": "doc",
@@ -663,6 +693,26 @@
         "type": "doc",
         "id": "hooks/fc_fix_zoom_in_form_fields_mobile_devices",
         "label": "fc_fix_zoom_in_form_fields_mobile_devices"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_gaa_brasil_api_autocomplete_js_settings",
+        "label": "fc_gaa_brasil_api_autocomplete_js_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_gaa_google_autocomplete_js_settings",
+        "label": "fc_gaa_google_autocomplete_js_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_gaa_google_places_api_test_url_parameters",
+        "label": "fc_gaa_google_places_api_test_url_parameters"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_gaa_settings",
+        "label": "fc_gaa_settings"
       },
       {
         "type": "doc",
@@ -766,11 +816,6 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_override_template_with_theme_file",
-        "label": "fc_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_packing_slips_message_box_args",
         "label": "fc_packing_slips_message_box_args"
       },
@@ -796,8 +841,68 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_admin_notices",
-        "label": "fc_pro_admin_notices"
+        "id": "hooks/fc_pro_address_book_address_sources_options",
+        "label": "fc_pro_address_book_address_sources_options"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_address_book_display_layout",
+        "label": "fc_pro_address_book_display_layout"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_address_book_entries_before_add_entry",
+        "label": "fc_pro_address_book_entries_before_add_entry"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_address_book_entries_end_tag_markup",
+        "label": "fc_pro_address_book_entries_end_tag_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_address_book_entries_start_tag_markup",
+        "label": "fc_pro_address_book_entries_start_tag_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_address_book_entry_before_add",
+        "label": "fc_pro_address_book_entry_before_add"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_address_book_entry_before_update",
+        "label": "fc_pro_address_book_entry_before_update"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_address_book_entry_display_data",
+        "label": "fc_pro_address_book_entry_display_data"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_address_book_entry_markup",
+        "label": "fc_pro_address_book_entry_markup"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_address_book_entry_template",
+        "label": "fc_pro_address_book_entry_template"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_address_book_save_from_order_extra_fields",
+        "label": "fc_pro_address_book_save_from_order_extra_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_address_book_save_from_order_skip_fields",
+        "label": "fc_pro_address_book_save_from_order_skip_fields"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_address_book_saved_addresses_filter_min_count",
+        "label": "fc_pro_address_book_saved_addresses_filter_min_count"
       },
       {
         "type": "doc",
@@ -1076,8 +1181,43 @@
       },
       {
         "type": "doc",
+        "id": "hooks/fc_pro_delayed_account_creation_display_benefits",
+        "label": "fc_pro_delayed_account_creation_display_benefits"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_delayed_account_creation_privacy_notice_text",
+        "label": "fc_pro_delayed_account_creation_privacy_notice_text"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_delayed_account_creation_script_settings",
+        "label": "fc_pro_delayed_account_creation_script_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_delayed_account_creation_section_position_args",
+        "label": "fc_pro_delayed_account_creation_section_position_args"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_delayed_account_creation_success_message",
+        "label": "fc_pro_delayed_account_creation_success_message"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_delayed_account_creation_terms_notice_text",
+        "label": "fc_pro_delayed_account_creation_terms_notice_text"
+      },
+      {
+        "type": "doc",
         "id": "hooks/fc_pro_display_cart_page_title",
         "label": "fc_pro_display_cart_page_title"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_display_pickup_shipping_zone_filter_fields",
+        "label": "fc_pro_display_pickup_shipping_zone_filter_fields"
       },
       {
         "type": "doc",
@@ -1093,6 +1233,16 @@
         "type": "doc",
         "id": "hooks/fc_pro_enable_cart_quantity_spinner_buttons",
         "label": "fc_pro_enable_cart_quantity_spinner_buttons"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_enable_compat_account_details_plugin_style_plugin_slug",
+        "label": "fc_pro_enable_compat_account_details_plugin_style_{plugin_slug}"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_enable_compat_account_details_style_theme_slug",
+        "label": "fc_pro_enable_compat_account_details_style_{theme_slug}"
       },
       {
         "type": "doc",
@@ -1221,8 +1371,8 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_is_order_pay_page_or_fragment",
-        "label": "fc_pro_is_order_pay_page_or_fragment"
+        "id": "hooks/fc_pro_is_ship_delivery_available",
+        "label": "fc_pro_is_ship_delivery_available"
       },
       {
         "type": "doc",
@@ -1231,13 +1381,23 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_is_substep_pickup_location_visible",
-        "label": "fc_pro_is_substep_pickup_location_visible"
+        "id": "hooks/fc_pro_is_substep_delivery_visible",
+        "label": "fc_pro_is_substep_delivery_visible"
       },
       {
         "type": "doc",
         "id": "hooks/fc_pro_license_manager_for_woocommerce_order_details_section_hook_priority_order_subscriptions",
         "label": "fc_pro_license_manager_for_woocommerce_order_details_section_hook_priority_order_subscriptions"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_local_pickup_shipping_address_skip_field_keys",
+        "label": "fc_pro_local_pickup_shipping_address_skip_field_keys"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_local_pickup_shipping_zone_selected_fields_keys",
+        "label": "fc_pro_local_pickup_shipping_zone_selected_fields_keys"
       },
       {
         "type": "doc",
@@ -1566,18 +1726,8 @@
       },
       {
         "type": "doc",
-        "id": "hooks/fc_pro_override_template_with_theme_file",
-        "label": "fc_pro_override_template_with_theme_file"
-      },
-      {
-        "type": "doc",
         "id": "hooks/fc_pro_pickup_point_address_data",
         "label": "fc_pro_pickup_point_address_data"
-      },
-      {
-        "type": "doc",
-        "id": "hooks/fc_pro_pickup_point_label_text",
-        "label": "fc_pro_pickup_point_label_text"
       },
       {
         "type": "doc",
@@ -1613,6 +1763,16 @@
         "type": "doc",
         "id": "hooks/fc_pro_settings_skip_enabling_list",
         "label": "fc_pro_settings_skip_enabling_list"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_skip_add_pickup_info_as_shipping_method_description",
+        "label": "fc_pro_skip_add_pickup_info_as_shipping_method_description"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_pro_skip_choose_pickup_location_description",
+        "label": "fc_pro_skip_choose_pickup_location_description"
       },
       {
         "type": "doc",
@@ -1753,6 +1913,31 @@
         "type": "doc",
         "id": "hooks/fc_thankyou_order_received_failed_title",
         "label": "fc_thankyou_order_received_failed_title"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_account_vat_company_field_script_settings",
+        "label": "fc_vat_account_vat_company_field_script_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_admin_script_settings",
+        "label": "fc_vat_admin_script_settings"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_is_vat_number_field",
+        "label": "fc_vat_is_vat_number_field"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_number_field_args",
+        "label": "fc_vat_number_field_args"
+      },
+      {
+        "type": "doc",
+        "id": "hooks/fc_vat_reverse_charge_countries_skip_list_options",
+        "label": "fc_vat_reverse_charge_countries_skip_list_options"
       },
       {
         "type": "doc",

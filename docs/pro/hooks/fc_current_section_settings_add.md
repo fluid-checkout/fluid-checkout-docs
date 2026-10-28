@@ -29,6 +29,6 @@ apply_filters( 'fc_{current_section}_settings_add', $settings, $current_section 
 
 ## Since
 
-- `4.0.7`
+- `5.0.0`
 
 Source: `inc/admin/admin-settings-license-keys.php`

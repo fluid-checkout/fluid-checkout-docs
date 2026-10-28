@@ -1,8 +1,8 @@
 ## What hooks are
 
-Fluid Checkout PRO runs WordPress actions and filters for the cart, order pay, order received, and the features that ship with PRO. They work alongside Fluid Checkout Lite hooks, so a store running both plugins can use either set.
+Fluid Checkout PRO runs WordPress actions and filters for the cart, order pay, order received, and the features that ship with PRO. They work alongside Fluid Checkout Lite hooks, so a site running both plugins can use either set.
 
-Address Book hooks use the prefix `fc_adb_`. Google Address Autocomplete hooks use the prefix `fc_gaa_`. You do not need to edit the plugin.
+Address Book hooks use the prefix `fc_adb_`. Google Address Autocomplete hooks use the prefix `fc_gaa_`. EU VAT hooks use the prefix `fc_vat_`. You do not need to edit the plugin.
 
 ## Best practices
 
@@ -16,7 +16,7 @@ An action runs your code at a moment in the page. [`fc_pro_order_received_succes
 
 A filter receives the current value and must return a replacement. [`fc_pro_cart_action_label_continue_shopping`](/pro/hooks/fc_pro_cart_action_label_continue_shopping/) receives the Continue shopping label on the cart.
 
-The [actions](#actions) and [filters](#filters) lists below include every hook exported from Fluid Checkout PRO.
+The [actions](#actions) and [filters](#filters) lists below include every hook exported from Fluid Checkout PRO, including the EU VAT hooks (`fc_vat_`).
 
 ## Read a hook page
 
@@ -46,5 +46,27 @@ add_action( 'fc_pro_order_received_successful', function( $order ) {
         __( 'Thanks for your order, %s.', 'my-store' ),
         $order->get_billing_first_name()
     ) ) . '</p>';
+}, 10 );
+```
+
+## EU VAT hooks
+
+EU VAT features in Fluid Checkout PRO run filters around the checkout VAT number.
+
+![EU VAT number moving from the checkout field, through a filter, to validation and storage](./img/eu-vat-hooks-overview.svg)
+
+[`fc_vat_number_field_args`](/pro/hooks/fc_vat_number_field_args/) receives the VAT number field arguments.
+
+```php
+/**
+ * Customize the VAT number field label and description.
+ *
+ * @param array $args VAT number field arguments.
+ * @return array
+ */
+add_filter( 'fc_vat_number_field_args', function( $args ) {
+    $args['label'] = __( 'Tax ID Number', 'my-store' );
+    $args['description'] = __( 'Enter your business tax identification number.', 'my-store' );
+    return $args;
 }, 10 );
 ```
