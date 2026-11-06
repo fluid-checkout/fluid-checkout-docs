@@ -7,7 +7,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {formatChangelogLog, loadPluginChangelog, renderChangelogFormatPage} from './changelog.mjs';
+import {
+  formatChangelogLog,
+  LEGACY_CHANGELOG_DOC_ID,
+  loadPluginChangelog,
+  renderChangelogFormatPage,
+} from './changelog.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -22,8 +27,10 @@ function main() {
     }
 
     const loaded = loadPluginChangelog(root, plugin, plugins);
-    const outPath = path.join(root, 'docs', plugin.id, 'changelog.md');
-    fs.mkdirSync(path.dirname(outPath), {recursive: true});
+    const outDir = path.join(root, 'docs', plugin.id);
+    const outPath = path.join(outDir, 'changelog.md');
+    const legacyOutPath = path.join(outDir, `${LEGACY_CHANGELOG_DOC_ID}.md`);
+    fs.mkdirSync(outDir, {recursive: true});
     fs.writeFileSync(outPath, loaded.page);
     generated += 1;
     console.log(`Generated changelog for ${plugin.id} (${loaded.merged.entries.length} versions).`);
@@ -33,12 +40,20 @@ function main() {
     })) {
       console.log(line);
     }
-    for (const section of loaded.legacy) {
-      if (section.placeholder) {
-        console.log(`${plugin.id} legacy ${section.id}: placeholder, no changelog.md yet.`);
-        continue;
+
+    if (loaded.legacyPage) {
+      fs.writeFileSync(legacyOutPath, loaded.legacyPage);
+      console.log(`Generated ${plugin.id} ${LEGACY_CHANGELOG_DOC_ID}.`);
+      for (const section of loaded.legacy) {
+        if (section.placeholder) {
+          console.log(`${plugin.id} legacy ${section.id}: placeholder, no changelog.md yet.`);
+          continue;
+        }
+        console.log(`${plugin.id} legacy ${section.id}: ${section.entries.length} versions from changelog.md.`);
       }
-      console.log(`${plugin.id} legacy ${section.id}: ${section.entries.length} versions from changelog.md.`);
+    } else if (fs.existsSync(legacyOutPath)) {
+      fs.unlinkSync(legacyOutPath);
+      console.log(`Removed stale ${plugin.id} ${LEGACY_CHANGELOG_DOC_ID}.`);
     }
   }
 

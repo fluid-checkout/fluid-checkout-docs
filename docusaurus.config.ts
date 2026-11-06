@@ -17,12 +17,17 @@ type PluginEntry = {
   routeBasePath?: string;
   order?: number;
   productUrl?: string;
+  /** When false, keep the docs hub but omit from home, navbar, and footer product lists. */
+  listedAsProduct?: boolean;
 };
 
 const plugins = sortPlugins(catalog.plugins as PluginEntry[]);
 const availablePlugins = plugins.filter(
   (plugin): plugin is PluginEntry & {routeBasePath: string} =>
     plugin.status === 'available' && Boolean(plugin.routeBasePath),
+);
+const productPlugins = availablePlugins.filter(
+  (plugin) => plugin.listedAsProduct !== false,
 );
 
 function envValue(name: string): string | undefined {
@@ -171,7 +176,7 @@ const config: Config = {
         src: 'img/logo.png',
       },
       items: [
-        ...availablePlugins.map((plugin) => ({
+        ...productPlugins.map((plugin) => ({
           type: 'doc' as const,
           docId: 'index',
           docsPluginId: plugin.id,
@@ -199,7 +204,7 @@ const config: Config = {
           items: [
             {label: 'Website', href: 'https://fluidcheckout.com/'},
             {label: 'Compatibility', to: '/compatibility/'},
-            ...plugins.flatMap((plugin) =>
+            ...productPlugins.flatMap((plugin) =>
               plugin.productUrl ? [{label: plugin.label, href: plugin.productUrl}] : [],
             ),
             {label: 'Support', href: 'https://fluidcheckout.com/support/'},
@@ -209,7 +214,7 @@ const config: Config = {
         {
           title: 'Developer docs',
           items: [
-            ...availablePlugins.map((plugin) => ({
+            ...productPlugins.map((plugin) => ({
               label: plugin.label,
               to: `/${plugin.routeBasePath}/`,
             })),

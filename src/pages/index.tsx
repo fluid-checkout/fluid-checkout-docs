@@ -15,9 +15,12 @@ type PluginCard = {
   routeBasePath?: string;
   icon?: string;
   order?: number;
+  listedAsProduct?: boolean;
 };
 
-const pluginCards = sortPlugins(catalog.plugins as PluginCard[]);
+const pluginCards = sortPlugins(catalog.plugins as PluginCard[]).filter(
+  (plugin) => plugin.listedAsProduct !== false,
+);
 
 function PluginIcon({src, name}: {src: string; name: string}): ReactNode {
   const iconSrc = useBaseUrl(src);

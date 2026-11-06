@@ -2,7 +2,7 @@
   "pro": {
     "id": "pro",
     "pluginPrefix": "fc_pro",
-    "hookPrefixes": ["fc_pro_", "fc_", "fc_adb_", "fc_gaa_"],
+    "hookPrefixes": ["fc_pro_", "fc_", "fc_adb_", "fc_gaa_", "fc_vat_"],
     "hooks": [
       {
         "name": "fc_checkout_steps",

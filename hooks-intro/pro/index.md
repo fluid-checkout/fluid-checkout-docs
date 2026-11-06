@@ -2,7 +2,7 @@
 
 Fluid Checkout PRO runs WordPress actions and filters for the cart, order pay, order received, and the features that ship with PRO. They work alongside Fluid Checkout Lite hooks, so a store running both plugins can use either set.
 
-Address Book hooks use the prefix `fc_adb_`. Google Address Autocomplete hooks use the prefix `fc_gaa_`. You do not need to edit the plugin.
+Address Book hooks use the prefix `fc_adb_`. Google Address Autocomplete hooks use the prefix `fc_gaa_`. EU-VAT Assistant hooks use the prefix `fc_vat_`. You do not need to edit the plugin.
 
 ## Best practices
 
