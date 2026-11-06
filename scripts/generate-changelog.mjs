@@ -35,15 +35,10 @@ function main() {
     }
     for (const section of loaded.legacy) {
       if (section.placeholder) {
-        console.log(`${plugin.id} legacy ${section.id}: placeholder, no source files yet.`);
+        console.log(`${plugin.id} legacy ${section.id}: placeholder, no changelog.md yet.`);
         continue;
       }
-      for (const line of formatChangelogLog(`${plugin.id} legacy ${section.id}`, section.merged, {
-        readmeCount: section.readmeCount,
-        changelogCount: section.changelogCount,
-      })) {
-        console.log(line);
-      }
+      console.log(`${plugin.id} legacy ${section.id}: ${section.entries.length} versions from changelog.md.`);
     }
   }
 

@@ -54,12 +54,16 @@
       "restApiStatus": "upcoming",
       "legacyChangelogs": [
         {
-          "id": "address-book",
+          "id": "fc-address-book",
           "title": "Address Book (before merging into PRO)"
         },
         {
-          "id": "google-address-autocomplete",
+          "id": "fc-google-address-autocomplete",
           "title": "Google Address Autocomplete (before merging into PRO)"
+        },
+        {
+          "id": "fc-vat-assistant",
+          "title": "EU-VAT Assistant (before merging into PRO)"
         }
       ]
     }

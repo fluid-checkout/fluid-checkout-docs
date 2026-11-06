@@ -217,8 +217,8 @@ test('legacy changelogs render source history or a public placeholder', () => {
     id: 'pro',
     label: 'Fluid Checkout PRO',
     legacyChangelogs: [
-      {id: 'address-book', title: 'Address Book (before merging into PRO)'},
-      {id: 'google-address-autocomplete', title: 'Google Address Autocomplete (before merging into PRO)'},
+      {id: 'fc-address-book', title: 'Address Book (before merging into PRO)'},
+      {id: 'fc-google-address-autocomplete', title: 'Google Address Autocomplete (before merging into PRO)'},
     ],
   };
   assert.equal(
@@ -227,29 +227,20 @@ test('legacy changelogs render source history or a public placeholder', () => {
   );
   assert.throws(
     () => normalizeLegacyChangelogs({id: 'pro', legacyChangelogs: [{id: 'Address Book', title: 'Address Book'}]}),
-    /lowercase slug/,
+    /lowercase plugin slug/,
   );
 
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fc-legacy-'));
-  const dir = path.join(tmp, 'data', 'pro', 'legacy', 'address-book');
+  const dir = path.join(tmp, 'data', 'pro', 'legacy', 'fc-address-book');
   fs.mkdirSync(dir, {recursive: true});
-  fs.writeFileSync(path.join(dir, 'readme.txt'), [
-    '== Description ==',
-    'Not a release note.',
-    '== Changelog ==',
-    '= 3.1.0 - 2024-05-01 =',
-    '* Added: From readme <field>.',
-    '= 3.0.0 - 2024-01-01 =',
-    '* Added: Shared.',
-    '== Upgrade Notice ==',
-    '= 1.0 =',
-    '* Not part of the page.',
-  ].join('\n'));
   fs.writeFileSync(path.join(dir, 'changelog.md'), [
     'To avoid duplicate work, changes are first added to the readme.',
     '',
-    '= 3.1.0 - 2024-06-01 =',
-    '* Added: From changelog file.',
+    '= 3.1.0 - 2024-05-01 =',
+    '* Added: From changelog <field>.',
+    '',
+    '= 3.0.0 - 2024-01-01 =',
+    '* Added: Shared.',
     '',
     '= 2.0.0 - 2023-01-01 =',
     '* Added: Only changelog.',
@@ -258,7 +249,7 @@ test('legacy changelogs render source history or a public placeholder', () => {
   const sections = loadLegacyChangelogs(tmp, plugin);
   assert.equal(sections[0].placeholder, false);
   assert.deepEqual(sections[0].entries.map((entry) => entry.version), ['3.1.0', '3.0.0', '2.0.0']);
-  assert.equal(sections[0].entries[0].body, '* Added: From readme <field>.');
+  assert.equal(sections[0].entries[0].body, '* Added: From changelog <field>.');
   assert.equal(sections[0].entries[0].date, '2024-05-01');
   assert.equal(sections[1].placeholder, true);
   assert.equal(sections[1].entries.length, 0);
@@ -272,14 +263,12 @@ test('legacy changelogs render source history or a public placeholder', () => {
     source: 'readme',
   }], {readme: true, changelog: false}, [], sections);
   assert.match(page, /^## 4\.0\.6 - 2026-08-19 \{\/\* #4-0-6 \*\/\}$/m);
-  assert.match(page, /^## Address Book \(before merging into PRO\) \{\/\* #address-book \*\/\}$/m);
-  assert.match(page, /^## 3\.1\.0 - 2024-05-01 \{\/\* #address-book-3-1-0 \*\/\}$/m);
-  assert.match(page, /^## 2\.0\.0 - 2023-01-01 \{\/\* #address-book-2-0-0 \*\/\}$/m);
-  assert.match(page, /From readme &lt;field>/);
-  assert.doesNotMatch(page, /From changelog file/);
+  assert.match(page, /^## Address Book \(before merging into PRO\) \{\/\* #fc-address-book \*\/\}$/m);
+  assert.match(page, /^## 3\.1\.0 - 2024-05-01 \{\/\* #fc-address-book-3-1-0 \*\/\}$/m);
+  assert.match(page, /^## 2\.0\.0 - 2023-01-01 \{\/\* #fc-address-book-2-0-0 \*\/\}$/m);
+  assert.match(page, /From changelog &lt;field>/);
   assert.doesNotMatch(page, /To avoid duplicate work/);
-  assert.doesNotMatch(page, /Upgrade Notice/);
-  assert.match(page, /from data\/pro\/readme.txt and data\/pro\/legacy\/address-book\/readme.txt and data\/pro\/legacy\/address-book\/changelog.md/);
+  assert.match(page, /from data\/pro\/readme.txt and data\/pro\/legacy\/fc-address-book\/changelog.md/);
   assert.match(
     page,
     /Google Address Autocomplete is being merged into Fluid Checkout PRO\. Its changelog for earlier versions, from when it was a separate add-on, will be added here\./,
@@ -288,12 +277,12 @@ test('legacy changelogs render source history or a public placeholder', () => {
   const visible = page.split(/^# Changelog$/m)[1];
   assert.doesNotMatch(visible, /data\/pro\/legacy/);
   assert.doesNotMatch(visible, /plugins\.json/);
-  assert.ok(page.indexOf('{/* #4-0-6 */}') < page.indexOf('{/* #address-book */}'));
-  assert.ok(page.indexOf('{/* #address-book */}') < page.indexOf('{/* #address-book-3-1-0 */}'));
-  assert.ok(page.indexOf('{/* #address-book-2-0-0 */}') < page.indexOf('{/* #google-address-autocomplete */}'));
+  assert.ok(page.indexOf('{/* #4-0-6 */}') < page.indexOf('{/* #fc-address-book */}'));
+  assert.ok(page.indexOf('{/* #fc-address-book */}') < page.indexOf('{/* #fc-address-book-3-1-0 */}'));
+  assert.ok(page.indexOf('{/* #fc-address-book-2-0-0 */}') < page.indexOf('{/* #fc-google-address-autocomplete */}'));
 
-  fs.writeFileSync(path.join(dir, 'readme.txt'), 'No changelog section here.\n');
-  assert.throws(() => loadLegacyChangelogs(tmp, plugin), /no == Changelog == section/);
+  fs.writeFileSync(path.join(dir, 'changelog.md'), 'No version headings here.\n');
+  assert.throws(() => loadLegacyChangelogs(tmp, plugin), /has no versions/);
 });
 
 test('published plugin changelogs keep every source version and the readme copy', () => {
@@ -378,18 +367,31 @@ test('published plugin changelogs keep every source version and the readme copy'
   assert.equal(pro.merged.entries.at(-1).version, '1.2.0');
   assert.equal(pro.merged.entries.at(-1).suffix, '(first public release)');
   assert.match(pro.page, /:::info\[Lite changelog\]\n\nLooking for Fluid Checkout Lite changes\? See the \[Lite changelog\]\(\/lite\/changelog\/\)\.\n\n:::/);
-  assert.match(pro.page, /^## Address Book \(before merging into PRO\) \{\/\* #address-book \*\/\}$/m);
-  assert.match(pro.page, /Address Book is being merged into Fluid Checkout PRO\. Its changelog for earlier versions, from when it was a separate add-on, will be added here\./);
-  assert.match(pro.page, /^## Google Address Autocomplete \(before merging into PRO\) \{\/\* #google-address-autocomplete \*\/\}$/m);
-  assert.match(pro.page, /Google Address Autocomplete is being merged into Fluid Checkout PRO\. Its changelog for earlier versions, from when it was a separate add-on, will be added here\./);
-  assert.ok(pro.page.lastIndexOf('{/* #1-2-0 */}') < pro.page.indexOf('{/* #address-book */}'));
-  assert.ok(pro.page.indexOf('{/* #address-book */}') < pro.page.indexOf('{/* #google-address-autocomplete */}'));
+  assert.match(pro.page, /from data\/pro\/readme\.txt and data\/pro\/changelog\.md and data\/pro\/legacy\/fc-address-book\/changelog\.md and data\/pro\/legacy\/fc-google-address-autocomplete\/changelog\.md and data\/pro\/legacy\/fc-vat-assistant\/changelog\.md/);
+  assert.match(pro.page, /^## Address Book \(before merging into PRO\) \{\/\* #fc-address-book \*\/\}$/m);
+  assert.match(pro.page, /^## 3\.1\.5 - 2026-08-21 \{\/\* #fc-address-book-3-1-5 \*\/\}$/m);
+  assert.match(pro.page, /^## 2\.0\.0 - 2023-06-16 \{\/\* #fc-address-book-2-0-0 \*\/\}$/m);
+  assert.match(pro.page, /^## Google Address Autocomplete \(before merging into PRO\) \{\/\* #fc-google-address-autocomplete \*\/\}$/m);
+  assert.match(pro.page, /^## 2\.3\.0 - 2026-07-26 \{\/\* #fc-google-address-autocomplete-2-3-0 \*\/\}$/m);
+  assert.match(pro.page, /^## 1\.0\.0 - 2021-09-20 \{\/\* #fc-google-address-autocomplete-1-0-0 \*\/\}$/m);
+  assert.match(pro.page, /^## EU-VAT Assistant \(before merging into PRO\) \{\/\* #fc-vat-assistant \*\/\}$/m);
+  assert.match(pro.page, /^## 2\.1\.2 - 2026-08-21 \{\/\* #fc-vat-assistant-2-1-2 \*\/\}$/m);
+  assert.match(pro.page, /^## 0\.1\.0 - 2023-09-27 \{\/\* #fc-vat-assistant-0-1-0 \*\/\}$/m);
+  assert.doesNotMatch(pro.page, /is being merged into Fluid Checkout PRO/);
+  assert.ok(pro.page.lastIndexOf('{/* #1-2-0 */}') < pro.page.indexOf('{/* #fc-address-book */}'));
+  assert.ok(pro.page.indexOf('{/* #fc-address-book */}') < pro.page.indexOf('{/* #fc-address-book-3-1-5 */}'));
+  assert.ok(pro.page.indexOf('{/* #fc-address-book-2-0-0 */}') < pro.page.indexOf('{/* #fc-google-address-autocomplete */}'));
+  assert.ok(pro.page.indexOf('{/* #fc-google-address-autocomplete */}') < pro.page.indexOf('{/* #fc-vat-assistant */}'));
   assert.doesNotMatch(pro.page.split(/^# Changelog$/m)[1], /data\/pro\/legacy/);
   assert.match(pro.page, /^title: "Fluid Checkout PRO changelog"$/m);
   assert.match(pro.page, /^description: "Release history for Fluid Checkout PRO, newest version first\."$/m);
   assert.match(pro.page, /^## 1\.2\.0 – 2022-02-05 \(first public release\) \{\/\* #1-2-0 \*\/\}$/m);
   assert.match(pro.page, /Minimum required version for Fluid Checkout Lite is 4\.2\.0/);
   assert.equal(pro.readmeCount, 7);
+  assert.equal(pro.legacy.length, 3);
+  assert.equal(pro.legacy[0].entries.length, 34);
+  assert.equal(pro.legacy[1].entries.length, 51);
+  assert.equal(pro.legacy[2].entries.length, 26);
 
   const euVat = loadPluginChangelog(root, catalog.plugins.find((plugin) => plugin.id === 'eu-vat'), catalog.plugins);
   assert.equal(euVat.changelogCount, 0);
@@ -442,14 +444,16 @@ test('changelog format page is generated and is the only published semver.org li
   assert.match(page, /\[Fluid Checkout Lite\]\(\/lite\/changelog\/\)/);
   assert.match(page, /\[Fluid Checkout PRO\]\(\/pro\/changelog\/\)/);
   assert.match(page, /\[EU-VAT Assistant\]\(\/eu-vat\/changelog\/\)/);
-  assert.match(page, /\[Address Book\]\(\/pro\/changelog\/#address-book\) \(part of the Fluid Checkout PRO changelog\)/);
-  assert.match(page, /\[Google Address Autocomplete\]\(\/pro\/changelog\/#google-address-autocomplete\) \(part of the Fluid Checkout PRO changelog\)/);
+  assert.match(page, /\[Address Book\]\(\/pro\/changelog\/#fc-address-book\) \(part of the Fluid Checkout PRO changelog\)/);
+  assert.match(page, /\[Google Address Autocomplete\]\(\/pro\/changelog\/#fc-google-address-autocomplete\) \(part of the Fluid Checkout PRO changelog\)/);
+  assert.match(page, /\[EU-VAT Assistant\]\(\/pro\/changelog\/#fc-vat-assistant\) \(part of the Fluid Checkout PRO changelog\)/);
   const lite = page.indexOf('[Fluid Checkout Lite](/lite/changelog/)');
   const pro = page.indexOf('[Fluid Checkout PRO](/pro/changelog/)');
   const euVat = page.indexOf('[EU-VAT Assistant](/eu-vat/changelog/)');
-  const addressBook = page.indexOf('[Address Book](/pro/changelog/#address-book)');
-  const autocomplete = page.indexOf('[Google Address Autocomplete](/pro/changelog/#google-address-autocomplete)');
-  assert.ok(lite < pro && pro < euVat && euVat < addressBook && addressBook < autocomplete);
+  const addressBook = page.indexOf('[Address Book](/pro/changelog/#fc-address-book)');
+  const autocomplete = page.indexOf('[Google Address Autocomplete](/pro/changelog/#fc-google-address-autocomplete)');
+  const euVatLegacy = page.indexOf('[EU-VAT Assistant](/pro/changelog/#fc-vat-assistant)');
+  assert.ok(lite < pro && pro < euVat && euVat < addressBook && addressBook < autocomplete && autocomplete < euVatLegacy);
 
   const published = [
     ...markdownFiles(path.join(root, 'docs')),

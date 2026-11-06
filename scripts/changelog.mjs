@@ -129,7 +129,7 @@ export function legacyAddonName(title) {
 }
 
 /**
- * Shown when data/<plugin>/legacy/<id>/ has no readme.txt and no changelog.md.
+ * Shown when data/<plugin>/legacy/<id>/changelog.md is missing.
  *
  * @param {string} addonName
  * @param {string} pluginLabel
@@ -141,8 +141,8 @@ export function legacyPlaceholder(addonName, pluginLabel) {
 
 /**
  * Optional add-on changelogs appended after the plugin's own versions.
- * Each item is `{id, title}`. Sources live at
- * data/<plugin>/legacy/<id>/readme.txt and changelog.md.
+ * Each item is `{id, title}`. The full history lives at
+ * data/<plugin>/legacy/<id>/changelog.md.
  *
  * @param {{id?: string, legacyChangelogs?: unknown}} plugin
  * @returns {{id: string, title: string, name: string}[]}
@@ -164,7 +164,7 @@ export function normalizeLegacyChangelogs(plugin) {
     const title = typeof record.title === 'string' ? record.title.trim() : '';
     if (!LEGACY_ID.test(id)) {
       throw new Error(
-        `${plugin.id || 'plugin'} legacyChangelogs[${index}].id must be a lowercase slug such as "address-book".`,
+        `${plugin.id || 'plugin'} legacyChangelogs[${index}].id must be a lowercase plugin slug such as "fc-address-book".`,
       );
     }
     if (!title) {
@@ -410,13 +410,7 @@ export function renderChangelogPage(plugin, entries, sources, related = [], lega
     if (section.placeholder) {
       continue;
     }
-    const base = `data/${plugin.id}/legacy/${section.id}`;
-    if (section.readme) {
-      sourceList.push(`${base}/readme.txt`);
-    }
-    if (section.changelog) {
-      sourceList.push(`${base}/changelog.md`);
-    }
+    sourceList.push(`data/${plugin.id}/legacy/${section.id}/changelog.md`);
   }
 
   const lines = [
@@ -596,9 +590,9 @@ export function loadPluginChangelog(rootDir, plugin, plugins = []) {
 }
 
 /**
- * Load optional add-on changelogs. A section with neither source file
- * keeps a public placeholder. A source file that cannot be parsed fails
- * the build.
+ * Load optional add-on changelogs from data/<plugin>/legacy/<id>/changelog.md.
+ * A missing file keeps a public placeholder. An empty or unreadable file
+ * fails the build.
  *
  * @param {string} rootDir
  * @param {{id: string, legacyChangelogs?: unknown}} plugin
@@ -615,55 +609,25 @@ export function loadLegacyChangelogs(rootDir, plugin) {
  * @returns {LegacySection}
  */
 function loadLegacySection(rootDir, pluginId, legacy) {
-  const relativeDir = `data/${pluginId}/legacy/${legacy.id}`;
-  const dir = path.join(rootDir, relativeDir);
-  const readmePath = path.join(dir, 'readme.txt');
-  const changelogPath = path.join(dir, 'changelog.md');
-  const hasReadme = fs.existsSync(readmePath);
-  const hasChangelog = fs.existsSync(changelogPath);
-  if (!hasReadme && !hasChangelog) {
+  const relativePath = `data/${pluginId}/legacy/${legacy.id}/changelog.md`;
+  const changelogPath = path.join(rootDir, relativePath);
+  if (!fs.existsSync(changelogPath)) {
     return {
       ...legacy,
       placeholder: true,
       entries: [],
-      readme: false,
-      changelog: false,
-      merged: {entries: [], differences: [], identicalDuplicates: []},
-      readmeCount: 0,
-      changelogCount: 0,
     };
   }
 
-  /** @type {ChangelogEntry[]} */
-  let readmeEntries = [];
-  if (hasReadme) {
-    const readme = fs.readFileSync(readmePath, 'utf8');
-    if (extractReadmeChangelogSection(readme) == null) {
-      throw new Error(`${relativeDir}/readme.txt has no == Changelog == section.`);
-    }
-    readmeEntries = parseReadmeChangelog(readme);
-    if (readmeEntries.length === 0) {
-      throw new Error(`${relativeDir}/readme.txt Changelog section has no versions.`);
-    }
+  const entries = parseChangelogDocument(fs.readFileSync(changelogPath, 'utf8'));
+  if (entries.length === 0) {
+    throw new Error(`${relativePath} has no versions.`);
   }
 
-  const changelogEntries = hasChangelog
-    ? parseChangelogDocument(fs.readFileSync(changelogPath, 'utf8'))
-    : [];
-  if (!hasReadme && changelogEntries.length === 0) {
-    throw new Error(`${relativeDir}/changelog.md has no versions.`);
-  }
-
-  const merged = mergeChangelogs(readmeEntries, changelogEntries);
   return {
     ...legacy,
     placeholder: false,
-    entries: merged.entries,
-    readme: hasReadme,
-    changelog: hasChangelog,
-    merged,
-    readmeCount: readmeEntries.length,
-    changelogCount: changelogEntries.length,
+    entries,
   };
 }
 
@@ -793,9 +757,4 @@ function summarizeDifference(diff) {
  * @property {string} name
  * @property {boolean} placeholder
  * @property {ChangelogEntry[]} entries
- * @property {boolean} readme
- * @property {boolean} changelog
- * @property {ReturnType<typeof mergeChangelogs>} merged
- * @property {number} readmeCount
- * @property {number} changelogCount
  */
