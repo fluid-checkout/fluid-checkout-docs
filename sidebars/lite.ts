@@ -2,7 +2,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 import hookItems from './lite.hooks.json';
 import restApiItems from './lite.rest-api.json';
 import {restApiCategoryLabel} from './rest-api-category';
-import {changelogSidebarItem} from './with-changelog';
+import {changelogSidebarItem, releaseNotesSidebarItem} from './with-changelog';
 
 const sidebars: SidebarsConfig = {
   lite: [
@@ -17,6 +17,7 @@ const sidebars: SidebarsConfig = {
       label: 'Hooks',
       items: hookItems as SidebarsConfig[string],
     },
+    releaseNotesSidebarItem,
     changelogSidebarItem,
   ],
 };

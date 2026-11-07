@@ -1,4 +1,14 @@
 /**
+ * Top-level Release notes sidebar item (sibling of Changelog).
+ * The page lives at docs/<plugin>/release-notes/5-0.md.
+ */
+export const releaseNotesSidebarItem = {
+  type: 'doc' as const,
+  id: 'release-notes/5-0' as const,
+  label: 'Release notes',
+};
+
+/**
  * Top-level Changelog sidebar item (sibling of Hooks / REST API).
  */
 export const changelogSidebarItem = {

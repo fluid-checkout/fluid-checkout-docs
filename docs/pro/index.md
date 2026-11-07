@@ -18,4 +18,5 @@ Developer reference for Fluid Checkout PRO. These pages cover the WordPress acti
 ## Hooks
 
 - [Using PHP hooks](/pro/hooks/) lists every action and filter. Each hook page includes the signature, parameters, the version that introduced it, and the source file.
+- [Fluid Checkout PRO 5.0 release notes](/pro/release-notes/5-0/)
 - [Changelog](/pro/changelog/) lists every release, newest first.
