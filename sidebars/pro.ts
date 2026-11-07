@@ -3,9 +3,8 @@ import hookItems from './pro.hooks.json';
 import restApiItems from './pro.rest-api.json';
 import {restApiCategoryLabel} from './rest-api-category';
 import {
-  changelogSidebarItem,
-  legacyChangelogSidebarItem,
-  releaseNotesSidebarItem,
+  changelogSidebarCategory,
+  releaseNotesSidebarCategory,
 } from './with-changelog';
 
 const sidebars: SidebarsConfig = {
@@ -21,9 +20,8 @@ const sidebars: SidebarsConfig = {
       label: 'Hooks',
       items: hookItems as SidebarsConfig[string],
     },
-    releaseNotesSidebarItem,
-    changelogSidebarItem,
-    legacyChangelogSidebarItem,
+    releaseNotesSidebarCategory,
+    changelogSidebarCategory,
   ],
 };
 

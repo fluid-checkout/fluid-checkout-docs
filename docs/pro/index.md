@@ -18,5 +18,12 @@ Developer reference for Fluid Checkout PRO. These pages cover the WordPress acti
 ## Hooks
 
 - [Using PHP hooks](/pro/hooks/) lists every action and filter. Each hook page includes the signature, parameters, the version that introduced it, and the source file.
-- [Fluid Checkout PRO 5.0 release notes](/pro/release-notes/5-0/)
+
+## Release notes
+
+- [Release notes](/pro/release-notes/) lists major and minor release notes for Fluid Checkout PRO.
+
+## Changelog
+
 - [Changelog](/pro/changelog/) lists every release, newest first.
+- [Changelog legacy add-ons](/pro/changelog-legacy-add-ons/) covers Address Book, Google Address Autocomplete, and EU-VAT Assistant before they merged into PRO.

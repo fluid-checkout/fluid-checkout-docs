@@ -1,11 +1,21 @@
 /**
- * Top-level Release notes sidebar item (sibling of Changelog).
- * The page lives at docs/<plugin>/release-notes/5-0.md.
+ * Release notes category (sibling of Hooks / REST API / Changelog).
+ * Overview lists each release notes page; add new docs under docs/<plugin>/release-notes/.
  */
-export const releaseNotesSidebarItem = {
-  type: 'doc' as const,
-  id: 'release-notes/5-0' as const,
+export const releaseNotesSidebarCategory = {
+  type: 'category' as const,
   label: 'Release notes',
+  link: {
+    type: 'doc' as const,
+    id: 'release-notes/index' as const,
+  },
+  items: [
+    {
+      type: 'doc' as const,
+      id: 'release-notes/5-0' as const,
+      label: '5.0',
+    },
+  ],
 };
 
 /**
@@ -18,10 +28,17 @@ export const changelogSidebarItem = {
 };
 
 /**
- * Legacy add-ons changelog sidebar item (PRO). Sibling of Changelog.
+ * Changelog category for PRO (current changelog plus legacy add-ons).
  */
-export const legacyChangelogSidebarItem = {
-  type: 'doc' as const,
-  id: 'changelog-legacy-add-ons' as const,
-  label: 'Changelog legacy add-ons',
+export const changelogSidebarCategory = {
+  type: 'category' as const,
+  label: 'Changelog',
+  items: [
+    changelogSidebarItem,
+    {
+      type: 'doc' as const,
+      id: 'changelog-legacy-add-ons' as const,
+      label: 'Changelog legacy add-ons',
+    },
+  ],
 };
