@@ -19,6 +19,44 @@ Additional labels for beta builds are available as extensions to the MAJOR.MINOR
 
 [See latest changes in the plugin's readme.txt](https://github.com/fluid-checkout/fluid-checkout-pro/blob/main/readme.txt)
 
+= 4.0.4 - 2026-05-26 =
+
+* Bump tested up to WordPress 7.0 and WooCommerce 10.8.0
+* Improved: Allow opening the order summary popup/dropdown on the cart page when using the distraction free header template in the same way as on the checkout page.
+* Fixed: Show shipping costs on cart page when option to hide shipping at cart is selected but there are already shipping costs applied to the cart.
+
+= 4.0.3 - 2026-04-23 =
+
+* Improved: Add CSS variables for product image sizes on the cart page.
+* Fixed: Compatibility with plugin WooCommerce PayPal Payments. Fix place order button disabled on the order pay page.
+* Fixed: Non-logged user verification for order pay page. Additional fixes.
+
+= 4.0.2 - 2026-04-21 =
+
+* Improved: Update Fluid Checkout template files to the current latest versions from WooCommerce.
+* Fixed: Non-logged user verification for order pay page.
+
+= 4.0.1 - 2026-04-07 =
+
+* Bump tested up to WooCommerce 10.6.1
+* Improved: Update international phone number code library (intl-tel-input) to its latest available version.
+* Fixed: Compatibility with plugin WooCommerce Smart Coupons. Fix coupons section alignment when using the split design template.
+* Fixed: Compatibility with plugin Authorize.net. Fix width of express payment buttons.
+* Fixed: Order summary layout issue when displayed in the sidebar on the order received page.
+* Fixed: Alignment of the progress bar with the content section on one-column layout when also using the minimalist design template.
+* Fixed: Always replace the account creation fragment to prevent it from staying visible when an account match is found for the email provided.
+* Fixed: Distraction free header staying offset when WP admin bar is scrolled out of view on the cart page.
+
+= 4.0.0 - 2026-03-10 =
+
+* BREAKING CHANGES - Minimum required version for Fluid Checkout Lite is 4.2.0 for this add-on to work. Please make sure you update Fluid Checkout Lite to 4.2.0+ to continue using this add-on.
+
+* Bump tested up to WooCommerce 10.6.0
+* Added: New feature for displaying order summary before the checkout steps on mobile devices on the checkout and order pay pages.
+* Added: New feature for one column layout on checkout, cart and order pay pages.
+* Added: New feature for precise international phone number validation.
+* Fixed: International phone number validation behavior on page load.
+* Fixed: Fatal error in rare cases when using the Local Pickup feature and the Address Book add-on.
 
 = 3.1.6 - 2026-02-26 =
 

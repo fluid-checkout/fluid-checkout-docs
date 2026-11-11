@@ -191,6 +191,14 @@ const config: Config = {
           label: 'Compatibility',
         },
         {
+          href: 'https://fluidcheckout.com/',
+          label: 'Go to homepage',
+          position: 'right',
+          target: '_blank',
+          rel: 'noopener noreferrer',
+          className: 'fc-navbar-website',
+        },
+        {
           type: 'search',
           position: 'right',
         },

@@ -40,6 +40,9 @@
   --ifm-global-radius: 0.5rem;
   --fc-border: #dfdfde;
   --fc-surface-muted: #f9f9f9;
+  /* PRO feature promo pill text (fc-settings-promo-pill in Lite admin). */
+  --fc-pro-badge-color: #c47809;
+  --fc-pro-badge-color-hover: #a86608;
 }
 
 /*
@@ -213,6 +216,15 @@ h6 {
   color: var(--ifm-color-primary);
 }
 
+.navbar__link.fc-navbar-website {
+  color: var(--fc-pro-badge-color);
+}
+
+.navbar__link.fc-navbar-website:hover,
+.navbar__link.fc-navbar-website:focus-visible {
+  color: var(--fc-pro-badge-color-hover);
+}
+
 .navbar__logo {
   height: 2rem;
 }
@@ -226,6 +238,12 @@ h6 {
   font-weight: 700;
   letter-spacing: 0.02em;
   color: #213245;
+}
+
+.navbar__title::after {
+  content: 'Docs';
+  font-weight: 300;
+  margin-left: 5px;
 }
 
 [data-theme='dark'] .navbar__title {

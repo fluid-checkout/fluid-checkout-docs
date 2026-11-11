@@ -19,6 +19,55 @@ Looking for Fluid Checkout PRO changes? See the [PRO changelog](/pro/changelog/)
 
 This project follows the [changelog format and semantic version numbers](/changelog-format/).
 
+## 5.0.0 - 2026-11-08 {/* #5-0-0 */}
+
+* Bump tested up to WooCommerce 11.3
+* Added: New settings pages, with guided setup and live preview of checkout pages.
+* Added: Boxed design template, now available without PRO and used by default on new installs.
+* Added: Support for Split design template for the 1-column layout (PRO feature).
+* Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
+* Added: Compatibility with theme Purple.
+* Added: Filter `fc_local_pickup_shipping_zone_fields_options` for the local pickup shipping zone fields setting (PRO feature).
+* Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.
+* Added: Filter `fc_prevent_shipping_method_autoselect` to prevent automatic selection of the first shipping method. Return `true` to prevent auto-selecting a shipping method.
+* Improved: Layout of WooCommerce address autocomplete suggestions and search icon on checkout and account edit-address form fields.
+* Improved: Updated replaced files for WooCommerce `address-i18n.js` and EU/UK VAT for WooCommerce to match latest upstream versions.
+* Improved: Updated replaced checkout templates `form-shipping.php` and `review-order.php` for WooCommerce 11.2.0 compatibility.
+* Improved: Show the Fluid Checkout plugin icon on admin notices.
+* Improved: Default position of the shipping method section is now before the shipping address.
+* Improved: Show settings that are locked by a compatible plugin or theme as disabled, with a note explaining why the value cannot be changed.
+* Improved: Upgraded Sass build tooling to the latest version.
+* Improved: Filter `fc_shipping_method_display_package_destination_substep_text_lines` now also receives the shipping method and the package index.
+* Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue). Prevent duplicate newsletter opt-in checkbox when it is moved to the contact step.
+* Fixed: Compatibility with plugin Colissimo. Hide dependent international phone number settings when the feature is disabled.
+* Fixed: Compatibility with plugin Hungarian Pickup Points & Shipping Labels for WooCommerce. Fix required shipping address field errors when placing an order with the plugin's pickup point shipping method. Fix pickup point map not listing points for the shipping country.
+* Fixed: Compatibility with plugin Wawp (Automation Web Platform). Fix phone country code being applied twice after a page reload, and the phone country dropdown collapsing so countries cannot be selected on checkout.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Recurring shipping methods were hidden when the only package index was 0.
+* Fixed: Compatibility with plugin Astra Pro modern input animation when Select2 country or state fields update during checkout.
+* Fixed: Compatibility with plugin Svea Checkout for WooCommerce. Fix checkout page reloading indefinitely, style issues and missing shipping options with versions 3.0.0+, and checkout fields being cleared when switching to other payment methods.
+* Fixed: Checkout step names appearing partially visible inside the progress bar with some themes.
+* Fixed: Shipping step and substep visibility when the cart starts or stops needing shipping during checkout AJAX updates.
+* Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
+* Fixed: Proceed button being displayed instead of the edit and save buttons for an incomplete checkout step the user already passed.
+* Fixed: "Same as billing address" behavior on the cart shipping calculator.
+* Fixed: JavaScript error in collapsible blocks when a child element fires `transitionend` (for example on the view-order account page).
+* Fixed: JavaScript error when focusing a shipping method after checkout update if that method is no longer available in the refreshed fragment.
+* Fixed: Settings page header missing after third-party admin notices are stripped on Fluid Checkout settings screens.
+* Fixed: Plugin deactivation syncs only non-Fluid Checkout settings from the active profile to wp_options. Managed `fc_*` values stay in the profile.
+* Fixed: PHP deprecation notice across the plugin.
+* Fixed: Keep the checkout email after placing an order so the next checkout is not empty.
+* Fixed: Do not allow removing logged-in customer email on checkout, use the registered customer account email when a value is missing for checkout session.
+* Deprecated: Filter `fc_next_step_button_label` now shows a deprecation notice, use `fc_proceed_to_next_step_button_label` instead.
+* Deprecated: Filter `fc_shipping_methods_disable_auto_select`, use `fc_prevent_shipping_method_autoselect` instead. Note that the new filter has inverted logic: return `true` to prevent auto-selecting a shipping method.
+* Deprecated: Filter `fc_skip_add_pickup_point_info_as_review_text_lines`. Returning true from this filter still skips pickup point details from the shipping method review text. Use `fc_add_pickup_point_info_as_review_text_lines` instead.
+* Removed: Option to disable the integrated coupon code section. It is always enabled when WooCommerce coupons are available.
+* Removed: Option `fc_local_pickup_display_clear_shipping_methods_button` not relevant for new Local Pickup feature.
+* Removed: Option to prevent automatic selection of the first shipping method. Use the filter `fc_prevent_shipping_method_autoselect` to prevent it with code.
+
+## 4.2.8 - 2026-10-26 {/* #4-2-8 */}
+
+* Added checks whether the plugin is active before loading it, preparing for the upcoming release of Lite and PRO 5.0.
+
 ## 4.2.7 - 2026-08-19 {/* #4-2-7 */}
 
 * Bump tested up to WordPress 7.1+

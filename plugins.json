@@ -20,8 +20,7 @@
       "status": "available",
       "routeBasePath": "lite",
       "relatedChangelogs": ["pro"],
-      "relatedRestApiErrors": ["pro"],
-      "restApiStatus": "upcoming"
+      "relatedRestApiErrors": ["pro"]
     },
     {
       "id": "pro",
@@ -38,7 +37,6 @@
       "restApiDataFile": "rest-api.json",
       "relatedChangelogs": ["lite"],
       "relatedRestApiErrors": ["lite"],
-      "restApiStatus": "upcoming",
       "legacyChangelogs": [
         {
           "id": "fc-address-book",

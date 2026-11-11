@@ -2,11 +2,11 @@
 Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
-Requires at least: 5.0
+Requires at least: 6.5
 Tested up to: 7.1
-Stable tag: 4.0.6
-License: GPLv3 or later
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Stable tag: 5.0.0
+License: Proprietary
+License URI: https://fluidcheckout.com/terms/
 
 An even better Fluid Checkout experience for any WooCommerce store. The PRO version provides your store with optimized Cart and Order Received pages, account matching, edit cart items at checkout, and more to come.
 
@@ -18,7 +18,9 @@ An even better Fluid Checkout experience for any WooCommerce store. The PRO vers
 
 = Minimum Requirements =
 
-* PHP version 7.4 or later
+* PHP 7.4 or later
+* WordPress 6.5 or later
+* WooCommerce 6.5 or later
 
 = Automatic installation =
 
@@ -35,6 +37,80 @@ Press the "Upload Plugin" and select the zip file, then click "Install Now".
 
 == Changelog ==
 
+= 5.0.0 - 2026-11-08 =
+
+* Added: Bundle Fluid Checkout Lite inside the PRO package. Lite is no longer required for PRO. PRO automatically deactivates legacy Lite and add-ons if they are still active.
+* Added: Moved Address Book add-on into PRO.
+* Added: Moved Google Address Autocomplete add-on into PRO.
+* Added: Moved EU-VAT Assistant into PRO.
+
+* Bump tested up to WooCommerce 11.3
+* Added: New feature design customization settings.
+* Added: New feature delayed account creation.
+* Added: New Local Pickup feature, changed default behavior with support for pickup locations unrelated to shipping zones.
+* Added: Support for the Split design template with the 1-column layout on checkout, cart and order received pages.
+* Added: Setting to choose a background color for the Split design secondary column.
+* Added: Compatibility with theme Purple.
+* Improved: Replaced the license system with own Fluid Licenses.
+* Improved: License key expiration dates now show in the site timezone.
+* Improved: Compatibility with plugin Order Delivery for WooCommerce by Kestrel. Update the delivery date template file to support version 4.0.0 of that plugin.
+* Improved: Compatibility with plugin Wawp - OTP Verification, Order Notifications, and Country Code Selector for WooCommerce. Disable the international phone number fields setting and explain why it is forced when that plugin is active.
+* Improved: Compatibility with plugin WooCommerce Stripe Gateway. Update express checkout banner template to match upstream skeleton loading behavior while keeping Fluid Checkout layout changes.
+* Improved: Compatibility with WooCommerce feature Order Fulfillments. Style the order details fulfillments templates and table layout.
+* Improved: Updated replaced templates `cart.php`, `thankyou.php`, and `email-order-details.php` for WooCommerce 11.2.0 compatibility.
+* Improved: Filter `fc_pro_pickup_point_address_data` keeps its previous argument order and adds the shipping method object as a fourth argument.
+* Improved: Show EU-VAT validation status in Checkout Field Editor Pro custom section review text.
+* Fixed: Compatibility with theme TheGem. Display the theme page title on the cart page after the header.
+* Fixed: Compatibility with plugin ActiveCampaign for WooCommerce. Fix cart item quantity updates failing for guests without an email address.
+* Fixed: Compatibility with plugin Checkout Field Editor PRO by Themehigh. Keep the contact review text and checkout fragments when the editor is unavailable, and skip one invalid section instead of stopping the rest. Fix substeps marked as incomplete when required fields or sections are hidden by conditional rules.
+* Fixed: Compatibility with plugin Order Delivery for WooCommerce by Kestrel. Fix delivery date and time frame being cleared when switching shipping methods. Fix time frame keeping the previous selection after changing the date. Fix delivery date section being displayed when no dates are available, or when that plugin is set to show dates for pickups only.
+* Fixed: Compatibility with plugin Order Delivery Date Pro for WooCommerce by Tyche Softwares. Fix delivery date fields not being displayed and labels not being applied correctly.
+* Fixed: Compatibility with plugin Payment Plugins for Stripe WooCommerce. Fix duplicate express checkout banner and endless skeleton loader on checkout when using Stripe 4.0+.
+* Fixed: Compatibility with plugin WooCommerce Stripe Gateway. Fix checkout distraction free template not working when Stripe's express checkout is enabled.
+* Fixed: Checkout reload when "Force billing and shipping addresses to the same" must switch between the merged address section and a separate billing step after cart items change whether shipping is needed.
+* Fixed: Substep corner styles on the order pay page before JavaScript runs.
+* Fixed: Shipping methods section on the cart page staying blocked with a loading overlay after clicking the update button of the shipping calculator without changing the address fields.
+* Fixed: Order summary background color missing for guest customers on desktop when using the Split design template.
+* Fixed: International phone country names now follow the active site language, including WPML.
+* Fixed: Order Delivery estimated time and Points and Rewards redeem message position show a field label.
+* Fixed: WooCommerce Subscriptions keeps the default for one shipping methods section until that option is enabled.
+* Fixed: PHP deprecation notice across the plugin.
+* Deprecated: Filter `fc_pro_is_substep_pickup_location_visible`, use `fc_pro_is_substep_delivery_visible` instead.
+* Deprecated: Filter `fc_substep_pickup_point_attributes`, use `fc_substep_delivery_attributes` instead.
+* Deprecated: Filter `fc_pro_pickup_point_label_text`, use `fc_substep_title_delivery` instead.
+* Deprecated: Action `fc_pro_pickup_point_fields`, use `fc_pro_delivery_fields` instead.
+* Deprecated: Filter `fc_substep_pickup_point_text_lines`, use `fc_substep_delivery_text_lines` instead.
+* Deprecated: Filter `fc_pro_order_pay_substep_pickup_point_text_lines`, use `fc_pro_order_pay_substep_shipping_method_text_lines` instead.
+* Deprecated: Filter `fc_substep_gift_cards_section_title`, use `fc_substep_title_gift_cards` instead.
+* Removed: Filter `fc_pro_override_template_with_theme_file`, use `fc_override_template_with_theme_file` from Fluid Checkout Lite instead.
+* Removed: Filter `fc_vat_reverse_charge_countries_skip_list_options`, only intended for internal use and now obsolete.
+* Removed: Unused filter registration in the compatibility with Amazon Pay.
+
+Address Book
+* Added: Moved Address Book add-on into PRO.
+* Added: New display layout options for saved addresses (cards, list, dropdown).
+* Added: Search field for saved addresses at checkout when many addresses are available.
+* Added: New REST API endpoints for address book entries.
+* Added: Filters for restricting actions customer can take on their saved address.
+* Improved: Update template files and other replacements from WooCommerce.
+* Fixed: Select the first available address source when the value saved in the session is no longer offered.
+* Fixed: Do not save pickup location into address book when Local Pickup is selected.
+* Fixed: Detect local pickup from the selected shipping method when the delivery type is still the default ship value.
+* Fixed: "Same as billing address" behavior on the cart shipping calculator.
+
+Google Address Autocomplete
+* Added: Moved Google Address Autocomplete add-on into PRO.
+* Improved: Disable WooCommerce address autocomplete while Google Address Autocomplete is enabled to avoid conflicting suggestion UIs.
+
+EU-VAT Assistant
+* Added: Moved EU-VAT Assistant into PRO.
+* Fixed: Prevent fatal errors when loading admin notice styles before plugin features are initialized.
+* Fixed: Unlock VAT Assistant settings and remove the promo card when this add-on is active.
+
+= 4.0.7 - 2026-10-26 =
+
+* Added checks whether the plugin is active before loading it, preparing for the upcoming release of Lite and PRO 5.0.
+
 = 4.0.6 - 2026-08-19 =
 
 * Bump tested up to WordPress 7.1+
@@ -42,6 +118,7 @@ Press the "Upload Plugin" and select the zip file, then click "Install Now".
 * Added: Compatibility with plugin B2BKing.
 * Added: Compatibility with plugin Order Delivery Date Pro for WooCommerce by Tyche Softwares.
 * Improved: Update replacement files for Revolut Gateway for WooCommerce.
+* Improved: Compatibility with plugin WooCommerce Subscriptions. Add option to show only one shipping methods section for subscription orders.
 * Fixed: Compatibility with theme Shoptimizer. Fix misplaced quantity field layout caused by theme quantity-nav markup conflicting with Fluid Checkout Pro quantity spinners.
 * Fixed: International phone field country flag not being automatically selected when limiting countries to those allowed for shipping or billing.
 * Fixed: Precise phone number validation no longer sends checkout back to the shipping address after refresh for US and similar numbers.
@@ -65,45 +142,4 @@ Press the "Upload Plugin" and select the zip file, then click "Install Now".
 * Fixed: Pickup point address not being displayed on the order pay page when a local pickup method is selected.
 * Fixed: Billing address section not visible on checkout when using the billing address position "As a sub-step before/after the shipping address section" and the cart does not need shipping.
 
-= 4.0.4 - 2026-05-26 =
-
-* Bump tested up to WordPress 7.0 and WooCommerce 10.8.0
-* Improved: Allow opening the order summary popup/dropdown on the cart page when using the distraction free header template in the same way as on the checkout page.
-* Fixed: Show shipping costs on cart page when option to hide shipping at cart is selected but there are already shipping costs applied to the cart.
-
-= 4.0.3 - 2026-04-23 =
-
-* Improved: Add CSS variables for product image sizes on the cart page.
-* Fixed: Compatibility with plugin WooCommerce PayPal Payments. Fix place order button disabled on the order pay page.
-* Fixed: Non-logged user verification for order pay page. Additional fixes.
-
-= 4.0.2 - 2026-04-21 =
-
-* Improved: Update Fluid Checkout template files to the current latest versions from WooCommerce.
-* Fixed: Non-logged user verification for order pay page.
-
-= 4.0.1 - 2026-04-07 =
-
-* Bump tested up to WooCommerce 10.6.1
-* Improved: Update international phone number code library (intl-tel-input) to its latest available version.
-* Fixed: Compatibility with plugin WooCommerce Smart Coupons. Fix coupons section alignment when using the split design template.
-* Fixed: Compatibility with plugin Authorize.net. Fix width of express payment buttons.
-* Fixed: Order summary layout issue when displayed in the sidebar on the order received page.
-* Fixed: Alignment of the progress bar with the content section on one-column layout when also using the minimalist design template.
-* Fixed: Always replace the account creation fragment to prevent it from staying visible when an account match is found for the email provided.
-* Fixed: Distraction free header staying offset when WP admin bar is scrolled out of view on the cart page.
-
-= 4.0.0 - 2026-03-10 =
-
-* BREAKING CHANGES - Minimum required version for Fluid Checkout Lite is 4.2.0 for this add-on to work. Please make sure you update Fluid Checkout Lite to 4.2.0+ to continue using this add-on.
-
-* Bump tested up to WooCommerce 10.6.0
-* Added: New feature for displaying order summary before the checkout steps on mobile devices on the checkout and order pay pages.
-* Added: New feature for one column layout on checkout, cart and order pay pages.
-* Added: New feature for precise international phone number validation.
-* Fixed: International phone number validation behavior on page load.
-* Fixed: Fatal error in rare cases when using the Local Pickup feature and the Address Book add-on.
-
 [See complete changelog](https://fluidcheckout.com/docs/changelog-fluid-checkout/)
-
-
