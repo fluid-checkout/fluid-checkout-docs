@@ -50,7 +50,7 @@ export function onRouteDidUpdate({
     }
     paq.push(['setReferrerUrl', previousLocation.pathname]);
     paq.push(['setCustomUrl', location.pathname + location.search]);
-    paq.push(['setDocumentTitle', document.title]);
+    paq.push(['setDocumentTitle', document.domain + '/' + document.title]);
     paq.push(['trackPageView']);
   }, 0);
 }
