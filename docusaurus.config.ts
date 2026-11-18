@@ -47,7 +47,9 @@ const useAlgolia = Boolean(algoliaAppId && algoliaApiKey && algoliaIndexName);
 const matomoTrackingScript = `
 var _paq = window._paq = window._paq || [];
 _paq.push(['setCookieDomain', '*.fluidcheckout.com']);
-_paq.push(['setDomains', ['*.fluidcheckout.com']]);
+_paq.push(['setDocumentTitle', document.domain + '/' + document.title]);
+_paq.push(['setDomains', ['fluidcheckout.com', 'demos.fluidcheckout.com', 'docs.fluidcheckout.com']]);
+_paq.push(['enableCrossDomainLinking']);
 _paq.push(['enableLinkTracking']);
 _paq.push(['setTrackerUrl', 'https://fluidcheckout.matomo.cloud/matomo.php']);
 _paq.push(['setSiteId', '3']);
